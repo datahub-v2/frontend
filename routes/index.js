@@ -8,8 +8,12 @@ module.exports = function() {
   var router = express.Router()
 
   router.get('/', function (req, res) {
-		// res.send('Hello Data Ninja!')
     res.render('home.html', {
+    });
+	})
+
+  router.get('/:owner/:id', function (req, res) {
+    res.render('showcase.html', {
     });
 	})
 

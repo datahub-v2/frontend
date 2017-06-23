@@ -1,0 +1,176 @@
+{% macro r(dataset) -%}
+<p>In order to use Data Package in R follow instructions below:</p>
+<div class="highlight">
+<pre>
+<span></span>install.packages<span class="p">(</span><span class="s">"devtools"</span><span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>devtools<span class="p">)</span>
+install_github<span class="p">(</span><span class="s">"hadley/readr"</span><span class="p">)</span>
+install_github<span class="p">(</span><span class="s">"ropenscilabs/jsonvalidate"</span><span class="p">)</span>
+install_github<span class="p">(</span><span class="s">"ropenscilabs/datapkg"</span><span class="p">)</span>
+
+<span class="c1">#Load client</span>
+<span class="kn">library</span><span class="p">(</span>datapkg<span class="p">)</span>
+
+<span class="c1">#Get Data Package</span>
+datapackage <span class="o">&lt;-</span> datapkg_read<span class="p">(</span><span class="s">"https://bits.datapackaged.com/metadata/{{ dataset.owner }}/{{ dataset.name }}/_v/latest"</span><span class="p">)</span>
+
+<span class="c1">#Package info</span>
+<span class="kp">print</span><span class="p">(</span>datapackage<span class="p">)</span>
+
+<span class="c1">#Open actual data in RStudio Viewer</span>
+{% for resource in dataset.resources %}View<span class="p">(</span>datapackage<span class="o">$</span>data<span class="o">$</span><span class="s">"{{resource.name}}"</span><span class="p">)</span>
+{% endfor %}
+</pre>
+</div>
+{%- endmacro %}
+
+{% macro pandas(dataset) -%}
+<p>Tested with Python 3.5.2</p>
+
+<p>To generate Pandas data frames based on JSON Table Schema descriptors we have to install <code>jsontableschema-pandas</code> plugin.
+To load resources from a data package as Pandas data frames use <code>datapackage.push_datapackage</code> function. <i>Storage</i> works as a container for Pandas data frames.</p>
+
+<p>In order to work with Data Packages in Pandas you need to install our packages:</p>
+
+<div class="highlight">
+<pre>
+$ pip install datapackage
+$ pip install jsontableschema-pandas
+</pre>
+</div>
+<p>To get Data Package run following code:</p>
+
+<div class="highlight">
+<pre>
+<span></span><span class="kn">import</span> <span class="nn">datapackage</span>
+
+<span class="n">data_url</span> <span class="o">=</span> <span class="s2">"https://bits.datapackaged.com/metadata/{{ dataset.owner }}/{{ dataset.name }}/_v/latest/datapackage.json"</span>
+
+<span class="c1"># to load Data Package into storage</span>
+<span class="n">storage</span> <span class="o">=</span> <span class="n">datapackage</span><span class="o">.</span><span class="n">push_datapackage</span><span class="p">(</span><span class="n">data_url</span><span class="p">,</span> <span class="s1">'pandas'</span><span class="p">)</span>
+
+<span class="c1"># to see datasets in this package</span>
+<span class="n">storage</span><span class="o">.</span><span class="n">buckets</span>
+
+<span class="c1"># you can access datasets inside storage, e.g. the first one:</span>
+<span class="n">storage</span><span class="p">[</span><span class="n">storage</span><span class="o">.</span><span class="n">buckets</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+</pre>
+</div>
+
+{%- endmacro %}
+
+{% macro python(dataset) -%}
+<p>In order to work with Data Packages in Python you need to install our packages:</p>
+
+<div class="highlight">
+<pre>
+$ pip install datapackage
+</pre>
+</div>
+
+<p>To get Data Package into your Python environment, run following code:</p>
+
+<div class="highlight">
+<pre>
+<span></span><span class="kn">import</span> <span class="nn">datapackage</span>
+
+<span class="n">dp</span> <span class="o">=</span> <span class="n">datapackage</span><span class="o">.</span><span class="n">DataPackage</span><span class="p">(</span><span class="s1">'https://bits.datapackaged.com/metadata/{{ dataset.owner }}/{{ dataset.name }}/_v/latest/datapackage.json'</span><span class="p">)</span>
+
+<span class="c1"># see metadata</span>
+<span class="k">print</span><span class="p">(</span><span class="n">dp</span><span class="o">.</span><span class="n">descriptor</span><span class="p">)</span>
+
+<span class="c1"># get list of csv files</span>
+<span class="n">csvList</span> <span class="o">=</span> <span class="p">[</span><span class="n">dp</span><span class="o">.</span><span class="n">resources</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">descriptor</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">dp</span><span class="o">.</span><span class="n">resources</span><span class="p">))]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">csvList</span><span class="p">)</span> <span class="c1"># ["resource name", ...]</span>
+
+<span class="c1"># access csv file by the index starting 0</span>
+<span class="k">print</span><span class="p">(</span><span class="n">dp</span><span class="o">.</span><span class="n">resources</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre>
+</div>
+{%- endmacro %}
+
+{% macro javascript(dataset) -%}
+<p>To use this Data Package in JavaScript, please, follow instructions below:</p>
+<p>Install <code>datapackage</code> using <code>npm</code>:</p>
+<p>
+<div class="highlight">
+<pre>$ npm install datapackage@0.8.1</pre>
+</div>
+</p>
+<p>Once the package is installed, use code snippet below</p>
+
+<div class="highlight">
+<pre>
+<span></span>
+<span class="kr">const</span> <span class="nx">Datapackage</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'datapackage'</span><span class="p">).</span><span class="nx">Datapackage</span>
+
+<span class="nx">async</span> <span class="kd">function</span> <span class="nx">fetchDataPackageAndData</span><span class="p">(</span><span class="nx">dataPackageIdentifier</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">dp</span> <span class="o">=</span> <span class="nx">await</span> <span class="k">new</span> <span class="nx">Datapackage</span><span class="p">(</span><span class="nx">dataPackageIdentifier</span><span class="p">)</span>
+  <span class="nx">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">dp</span><span class="p">.</span><span class="nx">resources</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">async</span> <span class="p">(</span><span class="nx">resource</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">resource</span><span class="p">.</span><span class="nx">descriptor</span><span class="p">.</span><span class="nx">format</span> <span class="o">===</span> <span class="s1">'geojson'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">baseUrl</span> <span class="o">=</span> <span class="nx">resource</span><span class="p">.</span><span class="nx">_basePath</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">'/datapackage.json'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+      <span class="kr">const</span> <span class="nx">resourceUrl</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">baseUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="p">.</span><span class="nx">_descriptor</span><span class="p">.</span><span class="nx">path</span><span class="si">}</span><span class="sb">`</span>
+      <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">resourceUrl</span><span class="p">)</span>
+      <span class="nx">resource</span><span class="p">.</span><span class="nx">descriptor</span><span class="p">.</span><span class="nx">_values</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">// we assume resource is tabular for now ...</span>
+      <span class="kr">const</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">resource</span><span class="p">.</span><span class="nx">table</span>
+      <span class="c1">// rows are simple arrays -- we can convert to objects elsewhere as needed</span>
+      <span class="kr">const</span> <span class="nx">rowsAsObjects</span> <span class="o">=</span> <span class="kc">false</span>
+      <span class="nx">resource</span><span class="p">.</span><span class="nx">descriptor</span><span class="p">.</span><span class="nx">_values</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">table</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">rowsAsObjects</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}))</span>
+
+  <span class="c1">// see the data package object</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">dp</span><span class="p">)</span>
+
+  <span class="c1">// data itself is stored in Resource object, e.g. to access first resource:</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dp</span><span class="p">.</span><span class="nx">resources</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">_values</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="nx">dp</span>
+<span class="p">}</span>
+
+
+<span class="nx">fetchDataPackageAndData</span><span class="p">(</span><span class="s1">'https://bits.datapackaged.com/metadata/{{ dataset.owner }}/{{ dataset.name }}/_v/latest/datapackage.json'</span><span class="p">);</span>
+</pre>
+</div>
+
+<p>Our JavaScript is written using ES6 features. We are using <code>node.js v7.4.0</code> and passing <code>--harmony</code> option to enable ES6:</p>
+<p>
+<div class="highlight">
+<pre>$ node --harmony index.js</pre>
+</div>
+</p>
+{%- endmacro %}
+
+{% macro sql(dataset) -%}
+<p>In order to work with Data Packages in SQL you need to install our packages:</p>
+<div class="highlight"><pre><span></span>$ pip install datapackage
+$ pip install jsontableschema-sql
+$ pip install sqlalchemy
+</pre></div>
+
+<p>To import Data Package to your SQLite Database, run following code:</p>
+
+<div class="highlight">
+<pre>
+<span></span><span class="kn">import</span> <span class="nn">datapackage</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+
+<span class="n">data_url</span> <span class="o">=</span> <span class="s1">'https://bits.datapackaged.com/metadata/{{ dataset.owner }}/{{ dataset.name }}/_v/latest/datapackage.json'</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">'sqlite:///:memory:'</span><span class="p">)</span>
+
+<span class="c1"># to load Data Package into storage</span>
+<span class="n">storage</span> <span class="o">=</span> <span class="n">datapackage</span><span class="o">.</span><span class="n">push_datapackage</span><span class="p">(</span><span class="n">data_url</span><span class="p">,</span> <span class="s1">'sql'</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="c1"># to see datasets in this package</span>
+<span class="n">storage</span><span class="o">.</span><span class="n">buckets</span>
+
+<span class="c1"># to execute sql command (assuming data is in "data" folder, name of resource is data and file name is data.csv)</span>
+<span class="n">storage</span><span class="o">.</span><span class="n">_Storage__connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">'select * from data__data___data limit 1;'</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="c1"># description of the table columns</span>
+<span class="n">storage</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="s1">'data__data___data'</span><span class="p">)</span>
+</pre>
+</div>
+{%- endmacro %}

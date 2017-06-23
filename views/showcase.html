@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+{% import '_snippets.html' as snippets %}
+{% import '_instructions.html' as instructions %}
+
+{% block title %}
+{{dataset.title}} - Dataset
+{% endblock %}
+
+{% block content %}
+<div class="showcase">
+  <div class="row row-eq-height">
+    <div class="col-sm-3 side-bar side-img hidden-xs">
+      <img src="{{ s3_cdn }}/static/img/elephant-push-cube.png" class="img-responsive">
+    </div>
+    <div class="col-sm-9 header main-section col-xs-12">
+      <div class="row">
+        <h1 class="text-center">
+          {{ dataset.title }}
+        </h1>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+          <h2 class="text-center publisher">
+            <div class="col-xs-2 left-cube">
+              <img src="{{ s3_cdn }}/static/img/cube17.svg" class="img-responsive">
+            </div>
+            <div class="col-xs-8 text-cube">
+              by <a href="/{{ dataset.owner }}">{{ dataset.owner }}</a>
+            </div>
+            <div class="col-xs-2 right-cube">
+              <img src="{{ s3_cdn }}/static/img/cube17.svg" class="img-responsive">
+            </div>
+          </h2>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="dataset row row-eq-height">
+    <div class="col-sm-3 side-bar hidden-xs">
+      <div class="side-section">
+        <h3>KEY INFO</h3>
+        <p>Format(s):
+        {% for resource in dataset.resources %}
+          {% if resource.format %}
+            {{ resource.format }}
+          {% endif %}
+        {% endfor %}
+        </p>
+        <p>More datasets from <a href="/{{ dataset.owner }}" class="explore">{{ dataset.owner }}</a></p>
+        <div class="btn-group">
+          <a href="{{ datapackageUrl }}/datapackage.json" class="btn btn-xs btn-default" target="_blank"><small>Data Package Descriptor (JSON)</small></a>
+          {% if dataset.bugs and dataset.bugs.url %}
+          <a href="{{dataset.bugs.url}}" class="btn btn-xs btn-default" target="_blank">Report an Issue</a>
+          {% endif %}
+        </div>
+        <div class="homepage truncate">
+          <!-- <p class="small">
+            <i class="fa fa-home"></i> <a href="{{dataset.homepage}}" title="Home Page">Home page</a>
+          </p> -->
+          <p class="small">
+            Sources:<br>
+            {{snippets.listify(dataset.sources)}}
+          </p>
+        </div>
+        {% if dataset.licenses %}
+        <div class="license">
+          <i class="fa fa-gavel"></i> <a href="{{dataset.licenses[0].url}}" title="Available under the following License">{{dataset.licenses[0].name or dataset.licenses[0].id}}</a>
+          <br />
+          <a href="https://opendefinition.org" title="This data is open data as per the Open Definition"><img src="https://assets.okfn.org/images/buttons/od_80x15_blue.png" /></a>
+        </div>
+        {% elif dataset.license %}
+        <div class="license">
+          <i class="fa fa-gavel"></i> {{ dataset.license }}
+          <br />
+          <a href="https://opendefinition.org" title="This data is open data as per the Open Definition"><img src="https://assets.okfn.org/images/buttons/od_80x15_blue.png" /></a>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="side-section">
+        <h3>DOWNLOAD FILES</h3>
+        <!-- <a href="#data" class="btn btn-sm btn-primary" onclick="scrollDown(this)">Download</a> -->
+        <div class="resource-listing part">
+          <table class="table table-condensed table-bordered resource-listing">
+            <thead>
+              <th>File</th>
+              <th>Link</th>
+            </thead>
+            <tbody>
+            {% for resource in dataset.resources %}
+              <tr>
+                <td>
+                  <i class="fa fa-file-text-o"></i> <a href="#resource-{{resource.name}}" class="explore" onclick="scrollDown(this)">{{resource.name}}</a> [{{resource.format}}]
+                </td>
+                <td class="download truncate text-center">
+                    <a href="{{ datapackageUrl | replace("/datapackage.json","")}}/{{ resource.path }}" onclick="trackOutboundLink(this.href)">
+                        <i class="fa fa-download" aria-hidden="true"></i>
+                    </a>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="side-section">
+        <h3>ABOUT</h3>
+        <div class="description">{{readmeShort|truncate}} <a href="#readme" class="explore" onclick="scrollDown(this)">read more</a></div>
+      </div>
+    </div>
+
+    <div class="col-sm-9 main-section col-xs-12">
+      <div class="react-me part" data-type="data-views" id="next-section"></div>
+      <div class="resources part" id="data">
+        <h2 class="section-title">USE WITH YOUR FAVOURITE LANGUAGE</h2>
+        <ul class="nav nav-pills">
+          <li class="active"><a data-toggle="pill" href="#r">R</a></li>
+          <li><a data-toggle="pill" href="#pandas">Pandas</a></li>
+          <li><a data-toggle="pill" href="#python">Python</a></li>
+          <li><a data-toggle="pill" href="#javascript">JavaScript</a></li>
+          <li><a data-toggle="pill" href="#sql">SQL</a></li>
+        </ul>
+
+        <div class="tab-content">
+
+          <div id="r" class="tab-pane fade in active">
+            <div class="part">
+              {{instructions.r(dataset)}}
+            </div>
+          </div>
+
+          <div id="pandas" class="tab-pane fade">
+            <div class="part">
+              {{instructions.pandas(dataset)}}
+            </div>
+          </div>
+
+          <div id="python" class="tab-pane fade">
+            <div class="part">
+              {{instructions.python(dataset)}}
+            </div>
+          </div>
+
+          <div id="javascript" class="tab-pane fade">
+            <div class="part">
+              {{instructions.javascript(dataset)}}
+            </div>
+          </div>
+
+          <div id="sql" class="tab-pane fade">
+            <div class="part">
+              {{instructions.sql(dataset)}}
+            </div>
+          </div>
+        </div>
+        <script>
+          // this is for tabs to work as anchors
+          jQuery("ul.nav-pills > li > a").on("shown.bs.tab", function (e) {
+             scrollposition = jQuery(document).scrollTop();
+             var id = jQuery(e.target).attr("href").substr(1);
+             window.location.hash = id;
+             jQuery(document).scrollTop(scrollposition);
+          });
+          var hash = window.location.hash;
+          jQuery('.nav.nav-pills a[href="' + hash + '"]').tab('show', function() {
+              jQuery(document).scrollTop();
+          });
+        </script>
+        {% for resource in dataset.resources %}
+        <div class="resource-info part">
+          <h2 id="resource-{{resource.name}}" class="section-title">PREVIEW ({{resource.name}})</h2>
+          <div id="resource-{{loop.index - 1}}" class="react-me tables"
+               data-type="resource-preview" data-resource="{{ loop.index - 1 }}"></div>
+          <div class="row download">
+            <a href="{{ datapackageUrl | replace("/datapackage.json","")}}/{{ resource.path }}" class="btn btn-sm btn-primary pull-right" onclick="trackOutboundLink(this.href)">
+              Download
+            </a>
+          </div>
+          {% if resource.format == "csv" %}
+           <h2 class="section-title">FIELD INFORMATION</h2>
+           <table class="table table-bordered table-striped resource-summary">
+             <thead>
+               <tr>
+                 <th>Field Name</th>
+                 <th>Order</th>
+                 <th>Type (Format)</th>
+                 <th>Description</th>
+               </tr>
+             </thead>
+             <tbody>
+               {% for field in resource.schema.fields %}
+               <tr>
+                 <th>{{field.name}}</th>
+                 <td>{{loop.index}}</td>
+                 <td class="type type-{{field.type}}">{{field.type}} {% if field.format %}({{field.format}}) {% endif %}</td>
+                 <td>{{field.description}}</td>
+               </tr>
+               {% endfor %}
+             </tbody>
+           </table>
+         {% endif %}
+        </div>
+        {% endfor %}
+      </div> <!-- / resoures -->
+
+      <div class="row moreinfo">
+        <div class="col-md-8">
+          <h2 id="readme" class="section-title">README</h2>
+          <div class="readme">{{readme_long|safe}}</div>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+
+      <script type="text/javascript">
+        var DATA_PACKAGE_URL = "{{ datapackageUrl }}";
+      </script>
+    </div>
+  </div><!-- / dataset show -->
+
+  <link rel="stylesheet" media="screen" href="{{ s3_cdn }}/static/dpr-js/dist/main.css">
+  <script type="text/javascript" src="{{ s3_cdn }}/static/dpr-js/dist/bundle.js"></script>
+</div>
+{% endblock %}
