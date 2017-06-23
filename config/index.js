@@ -13,7 +13,9 @@ nconf.defaults({
   debug: process.env.DEBUG || false,
   app: {
     port: process.env.PORT || 4000
-  }
+  },
+  baseUrl: 'https://staging.datapackaged.com',
+  bitstoreBaseUrl: 'https://bits-staging.datapackaged.com'
 });
 
 module.exports = {
@@ -21,4 +23,3 @@ module.exports = {
   set: nconf.set.bind(nconf),
   reset: nconf.reset.bind(nconf)
 };
-
