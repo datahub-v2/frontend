@@ -14,4 +14,15 @@ describe('Routes', function(){
         done()
     })
   })
+
+  it('Showcase page returns 200 and has correct content', function(done){
+    request(app)
+      .get('/demo/demo-package')
+      .expect(200)
+      .end(function(err, res) {
+        assert.equal(res.statusCode, 200)
+        assert(res.text.match('DataHub'), res.text)
+        done()
+    })
+  })
 })
