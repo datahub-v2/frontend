@@ -21,7 +21,8 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "nconf": "^0.8.4",
-    "nunjucks": "^3.0.1"
+    "nunjucks": "^3.0.1",
+    "supertest": "^3.0.0"
   },
   "devDependencies": {
     "mocha": "^3.4.2"
