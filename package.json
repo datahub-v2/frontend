@@ -21,6 +21,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "nconf": "^0.8.4",
+    "nock": "^9.0.13",
     "nunjucks": "^3.0.1",
     "supertest": "^3.0.0"
   },
