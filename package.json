@@ -4,6 +4,7 @@
   "description": "DataHub frontend",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "mocha tests"
   },
   "repository": {
