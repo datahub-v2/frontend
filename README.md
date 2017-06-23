@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/datopian/datahub-frontend.svg?branch=master)](https://travis-ci.org/datopian/datahub-frontend)
+
 DataHub frontend in node.js.
 
 
@@ -12,4 +14,3 @@ npm start
 ```
 
 See the docs for more information.
-
