@@ -1,0 +1,25 @@
+{
+  "name": "datahub-frontend",
+  "version": "0.4.0",
+  "description": "DataHub frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/datopian/datahub-frontend.git"
+  },
+  "author": "Datopian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/datopian/datahub-frontend/issues"
+  },
+  "homepage": "https://github.com/datopian/datahub-frontend#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "nconf": "^0.8.4",
+    "nunjucks": "^3.0.1"
+  }
+}
