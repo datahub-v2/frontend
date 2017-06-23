@@ -1,0 +1,19 @@
+footer{ background:#ededed; padding: 25px 0; margin-top: 0; }
+footer p, footer a { color:#b5b5b5; font-size:14px; margin-right: 2em;}
+footer a:hover { color:#666; text-decoration: none;}
+footer .connect li a {
+  font-size: 28px;
+}
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  .container {
+    padding-top: 0;
+  }
+  ul li a {
+    color: $black;
+    padding: 7px 0 0 0 !important;
+  }
+}

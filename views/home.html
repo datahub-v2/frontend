@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}
+Welcome Home
+{% endblock %}
+
+{% block content %}
+<!-- Jumbotron main -->
+    <div class="jumbotron jumbotron-primary">
+      <div class="container text-center">
+        <div class="row">
+            <h1>Discover Data</h1>
+        </div>
+        <div class="row">
+          <form action="/search" method="GET">
+            <input type="text" class="form-control" placeholder="e.g. country" name="q">
+          </form>
+        </div>
+        <div class="row narrow">
+          <img src="{{ s3_cdn }}/static/img/cube-03-elephant.png" class="img-responsive" />
+          <hr>
+        </div>
+        <div class="row">
+          <p class="message">Discover, share and explore data</p>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 col-sm-offset-3 col-xs-6">
+            <a href="#publish" class="btn btn-lg btn-default" onclick="scrollDown(this)">
+              Publish
+            </a>
+          </div>
+          <div class="col-sm-3 col-xs-6">
+            <a href="#next-section" class="btn btn-lg btn-default" onclick="scrollDown(this)">
+              Read more
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <a href="#next-section" onclick="scrollDown(this)">
+            <i class="fa fa-chevron-down fa-2x" aria-hidden="true" style="color:black"></i>
+          </a>
+        </div>
+      </div>
+    </div><!-- End of jumbotron main -->
+    <!-- Section 1 -->
+    <div class="section" id="next-section">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-5">
+            <div class="row">
+              <h1>HAVE A LOOK AT OUR BEST DATA</h1>
+            </div>
+            {% for package in showcase_packages %}
+              <div class="row">
+                <div class="col-xs-3">
+                  <img src="{{ s3_cdn }}/static/img/cube15.svg" class="img-responsive" />
+                </div>
+                <div class="col-xs-9">
+                  <a href="{{ package['descriptor']['owner'] }}/{{ package['descriptor']['name'] }}">
+                    <h3>{{ package['descriptor']['title'] }}</h3>
+                  </a>
+                  <h6 class="text-left">
+                    <b>{{ package['descriptor']['name'] }}</b> | files {{ package.descriptor.resources|length }}
+                  </h6>
+                  {% if package.short_readme %}
+                  <p>
+                    {{ package.short_readme|truncate(150) }}
+                    <a href="{{ package['descriptor']['owner'] }}/{{ package['descriptor']['name'] }}" class="explore">
+                      explore more <span>&rsaquo;</span>
+                    </a>
+                  </p>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="col-md-5 col-md-offset-2">
+            <div class="row">
+              <h1>SHARE & STORE YOUR DATA</h1>
+            </div>
+            {% for package in tutorial_packages %}
+              <div class="row">
+                <div class="col-xs-3">
+                  <img src="{{ s3_cdn }}/static/img/cube16.svg" class="img-responsive" />
+                </div>
+                <div class="col-xs-9">
+                  <a href="{{ package['descriptor']['owner'] }}/{{ package['descriptor']['name'] }}">
+                    <h3>{{ package['descriptor']['title'] }}</h3>
+                  </a>
+                  <h6 class="text-left">
+                    <b>{{ package['descriptor']['name'] }}</b> | files {{ package.descriptor.resources|length }}
+                  </h6>
+                  <p>
+                    {{ package.short_readme|truncate(150) }}
+                    <a href="{{ package['descriptor']['owner'] }}/{{ package['descriptor']['name'] }}" class="explore">
+                      explore more <span>&rsaquo;</span>
+                    </a>
+                  </p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="row text-center">
+          <a href="#publish" class="btn btn-lg btn-default" onclick="scrollDown(this)">
+            Publish
+          </a>
+        </div>
+        <div class="row text-center">
+          <a href="#publish" onclick="scrollDown(this)">
+            <i class="fa fa-chevron-down fa-2x" aria-hidden="true" style="color:black"></i>
+          </a>
+        </div>
+      </div>
+    </div><!-- End of section 1 -->
+
+    <!-- Section 2 -->
+    <div class="jumbotron jumbotron-secondary" id="publish">
+      <div class="container text-center">
+        <div class="row medium">
+          <img src="{{ s3_cdn }}/static/img/elephants-publish.png" class="img-responsive" />
+          <hr>
+        </div>
+        <div class="row">
+          <p class="message">Publish and store your data</p>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <p class="terminal-heading"><strong>Publish</strong> from the command line</p>
+          </div>
+          <div class="col-sm-6"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <img src="{{ s3_cdn }}/static/img/terminal-black.png" class="img-responsive" />
+          </div>
+          <div class="col-sm-6">
+            <img src="{{ s3_cdn }}/static/img/terminal-white.png" class="img-responsive" />
+          </div>
+        </div>
+
+        <div class="row">
+          <p class="message">Publishing is coming soon!</p>
+        </div>
+        <div class="row">
+          <p class="message">Sign up to get first access when we launch!</p>
+        </div>
+
+        <div class="row">
+          <form action="https://formspree.io/anuar.ustayev@datopian.com" method="POST">
+              <input type="text" name="name" placeholder="Name *" class="form-control" />
+              <input type="email" name="_replyto" placeholder="Email *" class="form-control" />
+              <input type="submit" value="Send" class="btn btn-default pull-left">
+          </form>
+        </div>
+      </div>
+    </div><!-- End of section 2 -->
+{% endblock %}

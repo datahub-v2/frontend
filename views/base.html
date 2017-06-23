@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>
+    {% block title%}{{title}}{% endblock %}
+    - DataHub - Frictionless Data
+  </title>
+  <meta name="author" content="Open Knowledge International">
+  <meta name="description" content="{{title}}. Frictionless open data. Open data with tools to make it easy to use. Managed by Open Knowledge International">
+  <meta name="keywords" content="open data,data package,reference data,indicators">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="/static/stylesheets/app.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/static/vendor/jwt-decode.min.js"></script>
+  <script>
+    var trackOutboundLink = function(url) {
+       ga('send', 'event', 'outbound', 'click', url, {
+         'transport': 'beacon',
+         'hitCallback': function(){document.location = url;}
+       });
+    }
+  </script>
+</head>
+  <body>
+    <!-- Page header -->
+    <div class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="main-logo pull-left" href="/"></a>
+        </div>
+        <!--
+        <div class="nav navbar-nav searchbox">
+          <form class="form-inline" action="/search" method="GET">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Find data" name="q">
+            </div>
+          </form>
+        </div>
+        -->
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="/#publish" onclick="scrollDown(this)">Publish</a>
+            </li>
+            <li>
+              <a href="/search">Discover</a>
+            </li>
+            {% if current_user == None %}
+              <li>
+                <a href="/api/auth/login">Sign In With <span class="fa fa-github fa-lg"></span></a>
+              </li>
+            {% else %}
+              <li>
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div><!-- End of page header -->
+
+    {% block content %}{{content}}{% endblock %}
+
+    <!-- footer -->
+    <footer>
+      <div class="container">
+        <a href="http://datopian.com/" rel="external" target="_blank">
+          <img src="http://datopian.com/images/datopian-logo.png" width="123" height="32" alt="Sloan Foundation">
+        </a>
+        <a href="https://okfn.org/" rel="external" target="_blank">
+          <img src="http://frictionlessdata.io/img/open-knowledge.png" width="123" height="32" alt="Open Knowledge">
+        </a>
+        <a href="http://www.sloan.org/" rel="external" target="_blank">
+          <img src="http://frictionlessdata.io/img/supporters/sloan-footer.png" width="123" height="32" alt="Sloan Foundation">
+        </a>
+        <ul class="nav navbar-nav pull-right">
+          <li><a href="{{ config['API_DOCS'] }}">API</a></li>
+        </ul>
+      </div>
+    </footer>
+    <!-- End of footer -->
+
+    {% block scripts %}{% endblock %}
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-80458846-3', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script type="text/javascript" src="/static/js/smoothscroll.js"></script>
+    <script>
+      function scrollDown(el) {
+        if(el.attributes.href.value === "/#publish") {
+          document.querySelector("#publish").scrollIntoView({
+            behavior: 'smooth'
+          });
+        } else {
+          document.querySelector(el.attributes.href.value).scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      }
+    </script>
+  </body>
+
+</html>

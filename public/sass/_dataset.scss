@@ -1,0 +1,130 @@
+.showcase {
+  max-width: 100%;
+  @media (max-width: $screen-xs-min) {
+    margin-bottom: 3em;
+  }
+}
+.side-bar {
+  background-color: $brand-success;
+}
+.side-img {
+  padding: 3% 4% 0 4%;
+}
+.side-section {
+  margin: 50px 2vw 0 4vw;
+  overflow-wrap: break-word;
+  .btn-group a.btn {
+    border: 0;
+  }
+}
+.header {
+  max-width: 700px;
+  margin: auto;
+}
+.row-eq-height {
+  max-width: 100vw;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+h2.publisher {
+  font-style: italic;
+  font-size: 1.8em;
+}
+.dataset {
+  .main-img {
+    padding: 10%;
+  }
+  .info {
+    padding-top: 5%;
+  }
+  h2 {
+    font-size: 1.5em;
+    color: $brand-info;
+  }
+  h2.section-title {
+    font-size: 1.9em;
+    color: $brand-primary;
+  }
+  h3 {
+    font-size: 1.3em;
+    color: $brand-info;
+  }
+  .side-section h3 {
+    font-size: 1.3em;
+    margin-bottom: 0.8em;
+    color: $black;
+    @media (min-width: $screen-sm-min) {
+      font-size: 1.3em;
+    }
+
+    @media (min-width: $screen-md-min) {
+      font-size: 1.7em;
+    }
+  }
+  .actions .row {
+    margin-bottom: 2em;
+  }
+  .react-me {
+    text-align: center;
+    max-width: 100%;
+  }
+  .part {
+    margin-bottom: 4em;
+  }
+  .btn-group {
+    margin-bottom: 10px;
+  }
+  .side-section {
+    .table-bordered {
+      border-color: darken($gray, 20%);
+      th, td {
+        border-color: darken($gray, 20%);
+      }
+    }
+  }
+}
+
+.text-cube {
+  margin: 0;
+  padding: 2% 0;
+}
+.left-cube {
+  padding-right: 0;
+}
+.right-cube {
+  padding-left: 0;
+}
+
+.handsontable {
+  height: 432px;
+  overflow: hidden;
+}
+#hTable0, #hTable1, #hTable2, #hTable3, #hTable4, #hTable5,
+#hTable6, #hTable7, #hTable8, #hTable9, #hTable10,
+#hTable0v, #hTable1v, #hTable2v, #hTable3v {
+  border-bottom: 1px solid #ccc;
+}
+#hTable0v, #hTable1v, #hTable2v, #hTable3v {
+  margin-bottom: 30px;
+}
+.main-section {
+  padding-left: calc(2vw + 15px);
+}
+.download {
+  margin: 20px 0 4em 0;
+  padding-right: 0;
+}
+.nav li.active a {
+  color: $black;
+  &:hover, &:focus {
+    color: $black;
+  }
+}
+.nav-pills li a {
+  border: 1px solid #eee;
+}
+.tab-content {
+  margin-top: 20px;
+}

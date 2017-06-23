@@ -1,0 +1,23 @@
+h2 {
+  margin-top: 0;
+}
+
+#publisher-package-input {
+  margin-bottom: 30px;
+  border-color: $gray;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.badge {
+  font-size: 0.6em;
+  color: #212121;
+  background-color: lighten($gray, 40%);
+}
+
+.profile {
+  @media (max-width: $screen-xs-min) {
+    margin: 2em 0;
+  }
+}

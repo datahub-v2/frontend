@@ -1,0 +1,44 @@
+/* Navbar
+====================================*/
+
+.navbar {
+  .navbar-main {
+    width: 70%;
+    margin: auto;
+  }
+  .navbar-right {
+    li a {
+      color: $black;
+    }
+  }
+  .main-logo {
+    width: 140px;
+    height: 50px;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    background: url('../img/data-hub-logo.png') no-repeat;
+    background-size: 100%;
+  }
+  .searchbox {
+    margin: 7.5px;
+    input {
+      border-color: $gray;
+      -webkit-box-shadow: none !important;
+      -moz-box-shadow: none !important;
+      box-shadow: none !important;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar .container {
+    padding-top: 0;
+    padding-left: 1%;
+  }
+  .navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+  }
+}

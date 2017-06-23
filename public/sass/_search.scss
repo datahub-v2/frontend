@@ -1,0 +1,45 @@
+h4.search-summary {
+  color: $black;
+  margin: 1.5em 0em 0.8em 0em;
+}
+
+#search-page-search {
+  border-color: $black;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.btn-primary-outline {
+  border: 1px solid $black;
+  &:hover,
+  &:focus {
+    color: $brand-primary;
+  }
+}
+
+img.elephant {
+  margin: 0.9em 0;
+}
+img.flip {
+  -moz-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+img.cube {
+  margin-top: 20px;
+  @media (min-width: $screen-sm-min) {
+    padding-left: 40%;
+  }
+}
+
+.icon {
+  padding-right: 7px;
+}
+.publisher {
+  padding-left: 3px;
+}
+.package-summary {
+  margin-bottom: 20px;
+}

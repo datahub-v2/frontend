@@ -8,7 +8,9 @@ module.exports = function() {
   var router = express.Router()
 
   router.get('/', function (req, res) {
-		res.send('Hello Data Ninja!')
+		// res.send('Hello Data Ninja!')
+    res.render('home.html', {
+    });
 	})
 
   return router

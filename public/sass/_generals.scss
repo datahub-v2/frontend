@@ -1,0 +1,75 @@
+/* General stylings
+=====================================*/
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+body {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 82px;
+  @media (max-width: $screen-xs-min) {
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
+.biege-wrapper {
+  background-color: $brand-success;
+  min-height: calc(100vh - 52px - 82px);
+  @media (max-width: $screen-xs-min) {
+    margin-bottom: 3em;
+  }
+}
+p {
+  overflow-wrap: break-word;
+}
+a {
+  color: $black;
+  &:hover {
+    color: $black;
+  }
+}
+a.explore {
+  text-decoration: underline;
+  color: $brand-info;
+}
+.container {
+  padding-left: 5%;
+  padding-right: 5%;
+  @media (min-width: 768px) {
+    padding-top: 30px;
+  }
+}
+
+.table {
+  font-size: 12px;
+}
+
+.ReactVirtualized__Table__headerRow {
+  height: 30px !important;
+  padding-top: 5px;
+  border: 1px solid #ddd;
+  border-bottom-width: 2px;
+}
+.ReactVirtualized__Table__headerColumn {
+  border-right: 1px solid #ddd;
+  &:last-of-type {
+    border-right: 0;
+  }
+}
+
+.ReactVirtualized__Table__row {
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.ReactVirtualized__Table__rowColumn {
+  padding-top: 5px;
+  border-right: 1px solid #ddd;
+  &:last-of-type {
+    border-right: 0;
+  }
+}
