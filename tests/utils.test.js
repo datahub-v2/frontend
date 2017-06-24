@@ -21,4 +21,13 @@ describe('Utils', () => {
 		res = utils.dpInReadme(readme3, dpJson)
 		assert(res.indexOf(JSON.stringify(dpJson, null, 2)) > -1)
   })
+
+	it('Sanitizes the markdown', () => {
+		let res = utils.textToMarkdown('**hello world**')
+		assert.equal(res, '<p><strong>hello world</strong></p>\n')
+	})
+	it('Does not writes not allowed tags', () => {
+		let res = utils.textToMarkdown('<script> let test = test </script>**')
+		assert.equal(res, '<p>**</p>\n')
+	})
 })
