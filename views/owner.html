@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% import '_snippets.html' as snippets %}
+
+{% block title %}
+{{publisher.title}}
+{% endblock %}
+
+{% block content %}
+<div class="biege-wrapper">
+  <div class="container container-normal">
+    <div class="row">
+      <div class="col-sm-3 profile">
+        <div class="row">
+          <div class="col-sm-12 col-xs-6">
+            <img src="https://avatars3.githubusercontent.com/u/22451011?v=3&s=200" class="img-responsive img-thumbnail">
+          </div>
+          <div class="col-sm-12 col-xs-6">
+            {% if publisher.title %}
+              <h1>{{ publisher.title }}</h1>
+            {% endif %}
+            <h1>[{{ publisher.name }}]</h1>
+            <p><span class="fa fa-calendar"></span> Member since {{ publisher.joined }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-offset-1 col-sm-8">
+        <div class="row">
+          <div class="col-sm-7 col-xs-12">
+            <h2>Data Packages <span class="badge">{{datapackage_list|length}}</span></h2>
+          </div>
+          <div class="col-sm-5">
+            {% if datapackage_list|length > 0 %}
+            <div class="input-group pull-right col-xs-12">
+              <input id="publisher-package-input" type="text" class="form-control"
+                     onkeyup="dpFilterFunction()" placeholder="Search for data package" />
+            </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div id="publisher-package-list">
+          {% if  datapackage_list|length > 0 %}
+            {{ snippets.package_list_show(publisher.name, datapackage_list) }}
+          {% else %}
+            <p>This publisher has no data packages.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function dpFilterFunction() {
+  var packages = document.getElementById("publisher-package-list")
+       .getElementsByClassName("panel");
+  var input = document.getElementById('publisher-package-input');
+  var filter = input.value.toLowerCase();
+  for (var i=0; i < packages.length; i++){
+    var pack = packages[i];
+    var a = pack.getElementsByTagName("h4")[0].innerText.toLowerCase();
+    if (a.indexOf(filter) > -1){
+      pack.style.display = "";
+    } else {
+      pack.style.display = "none";
+    }
+  }
+}
+</script>
+{% endblock %}
