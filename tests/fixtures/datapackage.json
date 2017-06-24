@@ -1,6 +1,7 @@
 {
   "homepage": "http://www.cboe.com/micro/VIX/",
-  "license": "PDDL-1.0", "name": "demo-package", "resources": [
+  "license": "PDDL-1.0", "name": "demo-package",
+	"resources": [
     {
       "format": "csv",
       "mediatype": "text/csv",

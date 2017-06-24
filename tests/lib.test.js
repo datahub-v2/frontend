@@ -19,6 +19,6 @@ describe('Lib', () => {
   it('Gets README', async () => {
     let api = new lib.DataHubApi(config)
     let readme = await api.getPackageFile('admin', 'demo-package', 'README.md')
-    assert.equal(readme.slice(0,27), 'DataHub frontend in node.js')
+    assert.equal(readme.slice(0,27), 'This README and datapackage')
   });
 })

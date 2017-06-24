@@ -5,7 +5,7 @@ var config = require('../../config')
 var fs = require('fs')
 
 module.exports.dataPackage = require('./datapackage.json')
-module.exports.readme = fs.readFileSync('README.md')
+module.exports.readme = fs.readFileSync('tests/fixtures/README.md').toString()
 
 module.exports.initMocks = function() {
   var data = module.exports
@@ -19,4 +19,3 @@ module.exports.initMocks = function() {
     .get('/metadata/admin/demo-package/_v/latest/README.md')
     .reply(200, data.readme, {'access-control-allow-origin': '*'})
 }
-
