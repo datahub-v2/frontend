@@ -1,0 +1,3 @@
+[submodule "public/dpr-js"]
+	path = public/dpr-js
+	url = https://github.com/frictionlessdata/dpr-js
