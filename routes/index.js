@@ -29,7 +29,7 @@ module.exports = function () {
     res.render('showcase.html', {
       title: req.params.owner + ' | ' + req.params.name,
       dataset: dpjson,
-      datapackageUrl: dpBitStoreUrl,
+      datapackageUrl: dpBitStoreUrl + '/datapackage.json',
       readmeShort: '',
 			// eslint-disable-next-line camelcase
       readme_long: readme

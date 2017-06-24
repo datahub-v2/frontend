@@ -204,11 +204,11 @@
 
       <!-- pass datapackageUrl to front-end -->
       <script type="text/javascript">
-        var DATA_PACKAGE_URL = "https://bits-staging.datapackaged.com/metadata/admin/demo-package/_v/latest";//"{{ datapackageUrl }}";
+        var DATA_PACKAGE_URL = "{{ datapackageUrl }}";
       </script>
     </div>
   </div>
-  <link rel="stylesheet" media="screen" href="{{ s3_cdn }}/static/dpr-js/dist/main.css">
-  <script type="text/javascript" src="{{ s3_cdn }}/static/dpr-js/dist/bundle.js"></script>
+  <link rel="stylesheet" media="screen" href="/static/dpr-js/dist/main.css">
+  <script type="text/javascript" src="/static/dpr-js/dist/bundle.js"></script>
 </div>
 {% endblock %}
