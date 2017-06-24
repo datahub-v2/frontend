@@ -31,11 +31,13 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "marked": "^0.3.6",
     "nconf": "^0.8.4",
     "nock": "^9.0.13",
     "nunjucks": "^3.0.1",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.4",
+    "sanitize-html": "^1.14.1",
     "xo": "^0.18.2"
   },
   "devDependencies": {
