@@ -1,33 +1,31 @@
 'use strict'
 
-var express = require('express')
-var request = require('request')
+const express = require('express')
+const config = require('../config')
+const lib = require('../lib')
 
-var config = require('../config')
-var lib = require('../lib')
-
-module.exports = function() {
+module.exports = function () {
   // eslint-disable-next-line new-cap
-  var router = express.Router()
+  const router = express.Router()
 
-  router.get('/', function (req, res) {
+  router.get('/', (req, res) => {
     res.render('home.html', {
-    });
-	})
+    })
+  })
 
-  router.get('/:owner/:name', async function (req, res) {
+  router.get('/:owner/:name', async (req, res) => {
     const api = new lib.DataHubApi(config)
     const dpjson = await api.getPackage(req.params.owner, req.params.name)
     const readme = await api.getPackageFile(req.params.owner, req.params.name, 'README.md')
     const dpBitStoreUrl = [config.get('bitstoreBaseUrl'), 'metadata', req.params.owner, req.params.name, '_v', 'latest'].join('/')
     res.render('showcase.html', {
-       dataset: dpjson,
-       datapackageUrl: dpBitStoreUrl,
-       readmeShort: '',
-       readme_long: readme
-    });
-	})
+      dataset: dpjson,
+      datapackageUrl: dpBitStoreUrl,
+      readmeShort: '',
+			// eslint-disable-next-line camelcase
+      readme_long: readme
+    })
+  })
 
   return router
 }
-
