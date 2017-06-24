@@ -2635,6 +2635,10 @@ registry-url@^3.0.3:
   dependencies:
     rc "^1.0.1"
 
+remove-markdown@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/remove-markdown/-/remove-markdown-0.2.0.tgz#47f5efe3478db48c265db41e4706676a6820ec95"
+
 remove-trailing-separator@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/remove-trailing-separator/-/remove-trailing-separator-1.0.2.tgz#69b062d978727ad14dc6b56ba4ab772fd8d70511"
@@ -3023,6 +3027,10 @@ term-size@^0.1.0:
 text-table@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
+
+textversionjs@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/textversionjs/-/textversionjs-1.0.2.tgz#1061b9bf613eb07ae6b67301c57a3976b82c280a"
 
 the-argv@^1.0.0:
   version "1.0.0"
