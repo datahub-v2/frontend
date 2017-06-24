@@ -17,6 +17,11 @@ module.exports = function() {
     });
 	})
 
+  router.get('/:owner', function (req, res) {
+    res.render('owner.html', {
+      
+    });
+  })
+
   return router
 }
-
