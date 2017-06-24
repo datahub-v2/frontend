@@ -1,5 +1,6 @@
 const assert = require('assert')
 
+const fixtures = require('./fixtures')
 const utils = require('../lib/utils')
 
 const readme1 = 'README for with {{ dp.json }}'
@@ -23,11 +24,17 @@ describe('Utils', () => {
   })
 
 	it('Sanitizes the markdown', () => {
-		let res = utils.textToMarkdown('**hello world**')
+		const res = utils.textToMarkdown('**hello world**')
 		assert.equal(res, '<p><strong>hello world</strong></p>\n')
 	})
 	it('Does not writes not allowed tags', () => {
-		let res = utils.textToMarkdown('<script> let test = test </script>**')
+		const res = utils.textToMarkdown('<script> let test = test </script>**')
 		assert.equal(res, '<p>**</p>\n')
+	})
+
+	it('Handles with small reamde', () => {
+		const res = utils.makeSmallReadme(fixtures.readme)
+		assert.equal(res.length, 294)
+		assert(res.indexOf("S&P" > -1))
 	})
 })
