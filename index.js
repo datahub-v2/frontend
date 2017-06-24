@@ -1,15 +1,15 @@
 'use strict'
 
-var express = require('express')
-var nunjucks = require('nunjucks')
-var path = require('path')
-var bodyParser = require('body-parser')
+const path = require('path')
+const express = require('express')
+const nunjucks = require('nunjucks')
+const bodyParser = require('body-parser')
 
-var config = require('./config')
-var routes = require('./routes')
+const config = require('./config')
+const routes = require('./routes')
 
-module.exports.makeApp = function() {
-  var app = express()
+module.exports.makeApp = function () {
+  const app = express()
 
   app.set('config', config)
   app.set('port', config.get('app:port'))
@@ -28,7 +28,8 @@ module.exports.makeApp = function() {
     routes()
   ])
 
-  var env = nunjucks.configure(app.get('views'), {
+	// eslint-disable-next-line no-unused-vars
+  const env = nunjucks.configure(app.get('views'), {
     autoescape: true,
     express: app
   })
@@ -36,15 +37,16 @@ module.exports.makeApp = function() {
   return app
 }
 
-module.exports.start = function() {
-  return new Promise(function(resolve, reject) {
-    var app = module.exports.makeApp()
+module.exports.start = function () {
+	// eslint-disable-next-line no-unused-vars
+  return new Promise((resolve, reject) => {
+    const app = module.exports.makeApp()
 
-    var server = app.listen(app.get('port'), function() {
+    let server = app.listen(app.get('port'), () => {
       console.log('Listening on :' + app.get('port'))
       resolve(server)
     })
-    app.shutdown = function() {
+    app.shutdown = function () {
       server.close()
       server = null
     }

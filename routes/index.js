@@ -1,11 +1,12 @@
 'use strict'
 
-var express = require('express')
+const express = require('express')
+const config = require('../config')
+const lib = require('../lib')
 
-
-module.exports = function() {
+module.exports = function () {
   // eslint-disable-next-line new-cap
-  var router = express.Router()
+  const router = express.Router()
 
   router.get('/', function (req, res) {
     // TODO: check if a user is signed in here later + add tests:
@@ -19,10 +20,19 @@ module.exports = function() {
     });
 	})
 
-  router.get('/:owner/:id', function (req, res) {
+  router.get('/:owner/:name', async (req, res) => {
+    const api = new lib.DataHubApi(config)
+    const dpjson = await api.getPackage(req.params.owner, req.params.name)
+    const readme = await api.getPackageFile(req.params.owner, req.params.name, 'README.md')
+    const dpBitStoreUrl = [config.get('bitstoreBaseUrl'), 'metadata', req.params.owner, req.params.name, '_v', 'latest'].join('/')
     res.render('showcase.html', {
-    });
-	})
+      dataset: dpjson,
+      datapackageUrl: dpBitStoreUrl,
+      readmeShort: '',
+			// eslint-disable-next-line camelcase
+      readme_long: readme
+    })
+  })
 
   router.get('/search', function (req, res) {
     res.render('search.html', {

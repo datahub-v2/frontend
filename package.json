@@ -5,7 +5,18 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha tests"
+    "test": "xo && mocha tests"
+  },
+  "xo": {
+    "space": true,
+    "semicolon": false,
+    "ignores": [
+      "public/**",
+      "tests/**"
+    ],
+    "rules": {
+      "no-var": "warn"
+    }
   },
   "repository": {
     "type": "git",
@@ -23,9 +34,16 @@
     "nconf": "^0.8.4",
     "nock": "^9.0.13",
     "nunjucks": "^3.0.1",
-    "supertest": "^3.0.0"
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4",
+    "xo": "^0.18.2"
   },
   "devDependencies": {
-    "mocha": "^3.4.2"
+    "babel-core": "^6.25.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-node6": "^11.0.0",
+    "mocha": "^3.4.2",
+    "supertest": "^3.0.0"
   }
 }
