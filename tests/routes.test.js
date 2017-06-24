@@ -4,6 +4,8 @@ var mocks = require('./fixtures')
 
 var app = require('../index').makeApp()
 
+mocks.initMocks()
+
 describe('Routes', function(){
   it('Home page returns 200 and has correct content', function(done){
     request(app)
@@ -28,7 +30,6 @@ describe('Routes', function(){
   })
 
   it('Showcase page has readme, title and publisher in content', function(done){
-    mocks.initMocks()
     request(app)
       .get('/demo/demo-package')
       .expect(200)
