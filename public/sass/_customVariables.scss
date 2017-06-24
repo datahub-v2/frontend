@@ -17,7 +17,7 @@ $gray-blue:             #dcedfd !default;
 // $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 $black:                 #000 !default;
 //
-$brand-primary:         #02bac1 !default; //cambridge blue
+$brand-primary:         #000 !default; //cambridge blue
 $brand-success:         #ecd3ad !default;
 $brand-info:            #484d99 !default;
 $brand-warning:         #ff5500 !default;
@@ -155,8 +155,8 @@ $btn-font-weight:                lighter !default;
 // $btn-default-bg:                 #fff !default;
 $btn-default-border:             $black !default;
 //
-$btn-primary-color:              #000 !default;
-// $btn-primary-bg:                 $brand-primary !default;
+$btn-primary-color:              white !default;
+$btn-primary-bg:                 $brand-primary !default;
 // $btn-primary-border:             darken($btn-primary-bg, 5%) !default;
 //
 // $btn-success-color:              #fff !default;

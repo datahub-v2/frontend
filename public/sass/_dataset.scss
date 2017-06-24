@@ -3,6 +3,48 @@
   @media (max-width: $screen-xs-min) {
     margin-bottom: 3em;
   }
+  a.btn {
+    padding: 8px 25px;
+
+  }
+}
+blockquote {
+  font-size: inherit;
+}
+.avatar {
+  width: 20px;
+  display: inline-block;
+  margin-right: 5px;
+}
+.info {
+  table-layout: fixed;
+  thead tr th {
+    position: relative;
+    font-size: 1.15em;
+    border-bottom: 0;
+  }
+  tbody tr td {
+    border-top: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+.resource-listing {
+  thead tr th {
+    position: relative;
+    border-bottom: 0;
+  }
+  tbody tr td {
+    border-top: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+.readme {
+  line-height: 1.8;
+  margin-bottom: 2em;
 }
 .side-bar {
   background-color: $brand-success;
@@ -32,6 +74,9 @@ h2.publisher {
   font-style: italic;
   font-size: 1.8em;
 }
+.publisher {
+  margin: 0 0 20px 0;
+}
 .dataset {
   .main-img {
     padding: 10%;
@@ -46,6 +91,9 @@ h2.publisher {
   h2.section-title {
     font-size: 1.9em;
     color: $brand-primary;
+    a i {
+      font-size: 0.8em;
+    }
   }
   h3 {
     font-size: 1.3em;
@@ -117,9 +165,9 @@ h2.publisher {
   padding-right: 0;
 }
 .nav li.active a {
-  color: $black;
+  color: white;
   &:hover, &:focus {
-    color: $black;
+    color: white;
   }
 }
 .nav-pills li a {
