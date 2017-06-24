@@ -8,7 +8,14 @@ module.exports = function() {
   var router = express.Router()
 
   router.get('/', function (req, res) {
+    // TODO: check if a user is signed in here later + add tests:
+    if (false) {
+      res.render('dashboard.html', {
+        title: 'Dashboard'
+      });
+    }
     res.render('home.html', {
+      title: 'Home'
     });
 	})
 
@@ -22,7 +29,7 @@ module.exports = function() {
 
     });
   })
-  
+
   router.get('/:owner', function (req, res) {
     res.render('owner.html', {
 
