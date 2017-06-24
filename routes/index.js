@@ -17,9 +17,15 @@ module.exports = function() {
     });
 	})
 
+  router.get('/search', function (req, res) {
+    res.render('search.html', {
+
+    });
+  })
+  
   router.get('/:owner', function (req, res) {
     res.render('owner.html', {
-      
+
     });
   })
 
