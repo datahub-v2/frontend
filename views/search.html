@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import '_snippets.html' as snippets %}
+
+{% block title %}
+Search
+{% endblock %}
+
+{% block content %}
+<div class="biege-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1 col-md-offset-2 hidden-xs hidden-sm">
+        <img src="{{ s3_cdn }}/static/img/cube-04-elephant.png" class="img-responsive flip elephant">
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <h1 class="text-center">Discover Data</h1>
+        <div id="custom-search-input">
+          <form id="search-page-search-form" class="input-group col-xs-12" action="/search" method="GET">
+            <input id="search-page-search" type="text" class="form-control input-lg" placeholder="Search ..." name="q" value="{{ query_term }}" required/>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-1 hidden-xs hidden-sm">
+        <img src="{{ s3_cdn }}/static/img/cube-04-elephant.png" class="img-responsive elephant">
+      </div>
+    </div>
+    {% if total_count %}
+    <div class="col-md-8 col-md-offset-2">
+      <h4 class="search-summary text-center">{{ total_count }} package(s) found for <b>"{{ query_term }}"</b></h4>
+      {{ snippets.search_package_list(datapackage_list) }}
+    </div>
+    {% else %}
+    <div class="col-md-8 col-md-offset-2">
+      <h4 class="search-summary">0 packages found for <b>"{{ query_term }}"</b></h4>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
