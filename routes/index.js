@@ -27,6 +27,7 @@ module.exports = function () {
     const readme = await api.getPackageFile(req.params.owner, req.params.name, 'README.md')
     const dpBitStoreUrl = [config.get('bitstoreBaseUrl'), 'metadata', req.params.owner, req.params.name, '_v', 'latest'].join('/')
     res.render('showcase.html', {
+      title: req.params.owner + ' | ' + req.params.name,
       dataset: dpjson,
       datapackageUrl: dpBitStoreUrl,
       readmeShort: '',
@@ -37,13 +38,13 @@ module.exports = function () {
 
   router.get('/search', (req, res) => {
     res.render('search.html', {
-
+      title: 'Search'
     })
   })
 
   router.get('/:owner', (req, res) => {
     res.render('owner.html', {
-
+      title: req.params.owner
     })
   })
 
