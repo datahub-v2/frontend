@@ -8,17 +8,18 @@ module.exports = function () {
   // eslint-disable-next-line new-cap
   const router = express.Router()
 
-  router.get('/', function (req, res) {
+  router.get('/', (req, res) => {
     // TODO: check if a user is signed in here later + add tests:
+    // eslint-disable-next-line no-constant-condition
     if (false) {
       res.render('dashboard.html', {
         title: 'Dashboard'
-      });
+      })
     }
     res.render('home.html', {
       title: 'Home'
-    });
-	})
+    })
+  })
 
   router.get('/:owner/:name', async (req, res) => {
     const api = new lib.DataHubApi(config)
@@ -34,16 +35,16 @@ module.exports = function () {
     })
   })
 
-  router.get('/search', function (req, res) {
+  router.get('/search', (req, res) => {
     res.render('search.html', {
 
-    });
+    })
   })
 
-  router.get('/:owner', function (req, res) {
+  router.get('/:owner', (req, res) => {
     res.render('owner.html', {
 
-    });
+    })
   })
 
   return router
