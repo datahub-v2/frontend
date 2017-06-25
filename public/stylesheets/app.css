@@ -6425,14 +6425,16 @@ blockquote {
     white-space: nowrap;
     text-overflow: ellipsis; }
 
-.resource-listing thead tr th {
-  position: relative;
-  border-bottom: 0; }
-.resource-listing tbody tr td {
-  border-top: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis; }
+.resource-listing {
+  table-layout: fixed; }
+  .resource-listing thead tr th {
+    position: relative;
+    border-bottom: 0; }
+  .resource-listing tbody tr td {
+    border-top: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
 
 .readme {
   line-height: 1.8;

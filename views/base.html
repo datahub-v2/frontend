@@ -50,18 +50,18 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a href="/#publish" onclick="scrollDown(this)">Publish</a>
+              <a href="/#publish" onclick="scrollDown(this)">PUBLISH</a>
             </li>
             <li>
-              <a href="/search">Discover</a>
+              <a href="/search">DISCOVER</a>
             </li>
             {% if current_user == None %}
               <li>
-                <a href="/api/auth/login">Sign In With <span class="fa fa-github fa-lg"></span></a>
+                <a href="/api/auth/login">SIGN IN WITH <span class="fa fa-github fa-lg"></span></a>
               </li>
             {% else %}
               <li>
-                <a class="nav-link" href="/logout">Logout</a>
+                <a class="nav-link" href="/logout">LOGOUT</a>
               </li>
             {% endif %}
           </ul>

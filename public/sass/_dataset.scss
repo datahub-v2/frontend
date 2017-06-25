@@ -31,6 +31,7 @@ blockquote {
   }
 }
 .resource-listing {
+  table-layout: fixed;
   thead tr th {
     position: relative;
     border-bottom: 0;
