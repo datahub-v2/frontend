@@ -30,6 +30,7 @@
   "homepage": "https://github.com/datopian/datahub-frontend#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "bytes": "^2.5.0",
     "express": "^4.15.3",
     "marked": "^0.3.6",
     "nconf": "^0.8.4",

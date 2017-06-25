@@ -37,4 +37,19 @@ describe('Utils', () => {
 		assert.equal(res.length, 294)
 		assert(res.indexOf("S&P" > -1))
 	})
+
+	it('Prettifies bytes in dpjson', () => {
+		let dpjson = {
+			name: 'testing-bytes',
+			size: 123000,
+			resources: [
+				{
+					name: 'testing-bytes',
+					size: 123000
+				}
+			]
+		}
+		const res = utils.prettifyBytes(dpjson)
+		assert.equal(res.size, '120.12kB')
+	})
 })
