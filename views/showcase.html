@@ -13,8 +13,12 @@
       {{ dataset.title }}
     </h1>
     <p class="publisher">
-      <img src="https://avatars3.githubusercontent.com/u/22451011?v=3&s=200" class="img-responsive img-circle avatar" />
-       <a href="/{{ dataset.owner }}">{{ dataset.owner }}</a>
+      {% if dataset.owner.email %}
+      <img src="https://www.gravatar.com/avatar/{{ dataset.owner.email }}" class="img-responsive img-circle avatar" />
+      {% else %}
+      <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
+      {% endif %}
+      <a href="/{{ dataset.owner.username }}">{{ dataset.owner.username }}</a>
     </p>
     <div class="dataset show">
       <!-- info about data package -->
@@ -40,8 +44,8 @@
                   {{ resource.format }}
                 {% endfor %}
               </td>
-              <td class="col-xs-2">{{ dataset.created_at }}</td>
-              <td class="col-xs-2">{{ dataset.changed_at }}</td>
+              <td class="col-xs-2">{{ dataset.created }}</td>
+              <td class="col-xs-2">{{ dataset.updated }}</td>
               <td class="col-xs-2">
                 {% if dataset.licenses %}
                 <i class="fa fa-gavel"></i> <a href="{{dataset.licenses[0].url}}" title="Available under the following License">{{dataset.licenses[0].name or dataset.licenses[0].id}}</a>
@@ -89,8 +93,8 @@
               <td class="col-xs-1">
                 {{ resource.size }}
               </td>
-              <td class="col-xs-1">
-                {{ resource.changed_at }}
+              <td class="col-xs-2">
+                {{ resource.updated }}
               </td>
               <td class="download truncate col-xs-1">
                   <a href="{{ datapackageUrl | replace("/datapackage.json","")}}/{{ resource.path }}" onclick="trackOutboundLink(this.href)">

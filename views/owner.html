@@ -12,7 +12,11 @@
       <div class="col-sm-3 profile">
         <div class="row">
           <div class="col-sm-12 col-xs-6">
-            <img src="https://avatars3.githubusercontent.com/u/22451011?v=3&s=200" class="img-responsive img-thumbnail">
+            {% if dataset.owner.email %}
+            <img src="https://www.gravatar.com/avatar/{{ dataset.owner.email }}" class="img-responsive img-thumbnail">
+            {% else %}
+            <img src="/static/img/logo-cube03.png" class="img-responsive img-thumbnail" />
+            {% endif %}
           </div>
           <div class="col-sm-12 col-xs-6">
             {% if publisher.title %}
