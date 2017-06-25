@@ -3,6 +3,7 @@
 const express = require('express')
 const config = require('../config')
 const lib = require('../lib')
+const utils = require('../lib/utils')
 
 module.exports = function () {
   // eslint-disable-next-line new-cap
@@ -24,13 +25,16 @@ module.exports = function () {
   router.get('/:owner/:name', async (req, res) => {
     const api = new lib.DataHubApi(config)
     const dpjson = await api.getPackage(req.params.owner, req.params.name)
-    const readme = await api.getPackageFile(req.params.owner, req.params.name, 'README.md')
+    let readme = await api.getPackageFile(req.params.owner, req.params.name, 'README.md')
+    const shortReadme = utils.makeSmallReadme(readme)
+    readme = utils.dpInReadme(readme, dpjson)
+    readme = utils.textToMarkdown(readme)
     const dpBitStoreUrl = [config.get('bitstoreBaseUrl'), 'metadata', req.params.owner, req.params.name, '_v', 'latest'].join('/')
     res.render('showcase.html', {
       title: req.params.owner + ' | ' + req.params.name,
       dataset: dpjson,
       datapackageUrl: dpBitStoreUrl + '/datapackage.json',
-      readmeShort: '',
+      readmeShort: shortReadme,
 			// eslint-disable-next-line camelcase
       readme_long: readme
     })
