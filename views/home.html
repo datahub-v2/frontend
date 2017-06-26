@@ -50,22 +50,22 @@ Welcome Home
             <div class="row">
               <h1>HAVE A LOOK AT OUR BEST DATA</h1>
             </div>
-            {% for package in showcase_packages %}
+            {% for package in showcasePackages %}
               <div class="row">
                 <div class="col-xs-3">
                   <img src="{{ s3_cdn }}/static/img/cube15.svg" class="img-responsive" />
                 </div>
                 <div class="col-xs-9">
-                  <a href="{{ package['descriptor']['owner'] }}/{{ package['descriptor']['name'] }}">
-                    <h3>{{ package['descriptor']['title'] }}</h3>
+                  <a href="core/{{ package['name'] }}">
+                    <h3>{{ package['title'] }}</h3>
                   </a>
                   <h6 class="text-left">
-                    <b>{{ package['descriptor']['name'] }}</b> | files {{ package.descriptor.resources|length }}
+                    <b>{{ package['name'] }}</b> | files {{ package.resources|length }}
                   </h6>
-                  {% if package.short_readme %}
+                  {% if package.shortReadme %}
                   <p>
-                    {{ package.short_readme|truncate(150) }}
-                    <a href="{{ package['descriptor']['owner'] }}/{{ package['descriptor']['name'] }}" class="explore">
+                    {{ package.shortReadme|truncate(150) }}
+                    <a href="core/{{ package['name'] }}" class="explore">
                       explore more <span>&rsaquo;</span>
                     </a>
                   </p>
@@ -78,21 +78,21 @@ Welcome Home
             <div class="row">
               <h1>SHARE & STORE YOUR DATA</h1>
             </div>
-            {% for package in tutorial_packages %}
+            {% for package in tutorialPackages %}
               <div class="row">
                 <div class="col-xs-3">
                   <img src="{{ s3_cdn }}/static/img/cube16.svg" class="img-responsive" />
                 </div>
                 <div class="col-xs-9">
-                  <a href="{{ package['descriptor']['owner'] }}/{{ package['descriptor']['name'] }}">
-                    <h3>{{ package['descriptor']['title'] }}</h3>
+                  <a href="examples/{{ package['name'] }}">
+                    <h3>{{ package['title'] }}</h3>
                   </a>
                   <h6 class="text-left">
-                    <b>{{ package['descriptor']['name'] }}</b> | files {{ package.descriptor.resources|length }}
+                    <b>{{ package['name'] }}</b> | files {{ package.resources|length }}
                   </h6>
                   <p>
-                    {{ package.short_readme|truncate(150) }}
-                    <a href="{{ package['descriptor']['owner'] }}/{{ package['descriptor']['name'] }}" class="explore">
+                    {{ package.shortReadme|truncate(150) }}
+                    <a href="examples/{{ package['name'] }}" class="explore">
                       explore more <span>&rsaquo;</span>
                     </a>
                   </p>

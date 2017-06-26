@@ -9,7 +9,7 @@ module.exports = function () {
   // eslint-disable-next-line new-cap
   const router = express.Router()
 
-  router.get('/', (req, res) => {
+  router.get('/', async (req, res) => {
     // TODO: check if a user is signed in here later + add tests:
     // eslint-disable-next-line no-constant-condition
     if (false) {
@@ -17,8 +17,15 @@ module.exports = function () {
         title: 'Dashboard'
       })
     }
+    // Get showcase and turorial packages for the front page
+    const listOfShowcasePkgId = config.get('showcasePackages')
+    const listOfTutorialPkgId = config.get('tutorialPackages')
+    const showcasePackages = await utils.getListOfDpWithReadme(listOfShowcasePkgId)
+    const tutorialPackages = await utils.getListOfDpWithReadme(listOfTutorialPkgId)
     res.render('home.html', {
-      title: 'Home'
+      title: 'Home',
+      showcasePackages,
+      tutorialPackages
     })
   })
 
