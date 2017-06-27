@@ -1,8 +1,6 @@
 FROM node:7-alpine
-WORKDIR /
-COPY package.json /
+RUN git clone --recursive https://github.com/datopian/datahub-frontend.git frontend-app
+RUN cd frontend-app
 RUN npm install
-COPY . /
 EXPOSE 4000
 CMD [ "npm", "start" ]
-
