@@ -80,7 +80,7 @@ describe('Utils', () => {
 		assert(res[0].includes('This README and datapackage is borrowed'))
 	})
 
-	it('Generates list of datapackages with readme', async () => {
+	it('Generates list of datapackages with readme and owner info', async () => {
 		const listOfPkgId = [
 			{
 				owner: 'admin',
@@ -89,5 +89,6 @@ describe('Utils', () => {
 		]
 		const res = await utils.getListOfDpWithReadme(listOfPkgId)
 		assert.equal(res[0].shortReadme.length, 294)
+		assert.equal(res[0].owner.username, 'admin')
 	})
 })
