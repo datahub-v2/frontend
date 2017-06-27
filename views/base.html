@@ -50,7 +50,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a href="/#publish" onclick="scrollDown(this)">PUBLISH</a>
+              <a href="https://github.com/datopian/datahub-cli/releases/latest" target="_blank">PUBLISH</a>
             </li>
             <li>
               <a href="/search">DISCOVER</a>
@@ -103,15 +103,9 @@
     <script type="text/javascript" src="/static/js/smoothscroll.js"></script>
     <script>
       function scrollDown(el) {
-        if(el.attributes.href.value === "/#publish") {
-          document.querySelector("#publish").scrollIntoView({
-            behavior: 'smooth'
-          });
-        } else {
-          document.querySelector(el.attributes.href.value).scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
+        document.querySelector(el.attributes.href.value).scrollIntoView({
+          behavior: 'smooth'
+        });
       }
     </script>
   </body>
