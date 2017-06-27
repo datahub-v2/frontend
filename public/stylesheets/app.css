@@ -5979,7 +5979,7 @@ a.explore {
 /* Jumbotron main
 ====================================*/
 .jumbotron-primary, .jumbotron-secondary {
-  background: linear-gradient(90deg, #000 50%, #ecd3ad 50%);
+  background: white;
   padding-bottom: 5em; }
 
 .jumbotron-primary a.btn {
@@ -6017,6 +6017,8 @@ a.explore {
   .jumbotron h1 {
     font-weight: 200;
     margin-bottom: 30px; }
+  .jumbotron h1.main-title {
+    margin: 0 0 20px 0; }
   .jumbotron form {
     margin-bottom: 30px;
     padding: 0 10%; }
@@ -6042,14 +6044,18 @@ a.explore {
   .jumbotron a {
     margin: 20px 0; }
 
+.main-img {
+  width: 100px;
+  height: 100px; }
+
 /* Section 1
 ====================================*/
 .section {
-  background: linear-gradient(90deg, #02bac1 50%, #ecd3ad 50%);
+  background: white;
   padding: 30px 0; }
   .section h1 {
     font-size: 3em;
-    margin: 1em 0;
+    margin: 0.5em 0;
     line-height: 1.625; }
   .section h3 {
     text-align: left;
@@ -6068,6 +6074,12 @@ a.explore {
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
     box-shadow: none !important; }
+
+.package-title {
+  text-decoration: underline; }
+
+.normal {
+  margin-bottom: 10px !important; }
 
 footer {
   background: #ededed;

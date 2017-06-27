@@ -2,11 +2,11 @@
 ====================================*/
 
 .section {
-  background: linear-gradient(90deg, #02bac1 50%, #ecd3ad 50%);
+  background: white;
   padding: 30px 0;
   h1 {
     font-size: 3em;
-    margin: 1em 0;
+    margin: 0.5em 0;
     line-height: 1.625;
   }
   h3 {
@@ -31,4 +31,12 @@
     -moz-box-shadow: none !important;
     box-shadow: none !important;
   }
+}
+
+.package-title {
+  text-decoration: underline;
+}
+
+.normal {
+  margin-bottom: 10px !important;
 }

@@ -6,154 +6,111 @@ Welcome Home
 
 {% block content %}
 <!-- Jumbotron main -->
-    <div class="jumbotron jumbotron-primary">
-      <div class="container text-center">
-        <div class="row">
-            <h1>Discover Data</h1>
+<div class="container">
+  <div class="jumbotron jumbotron-primary">
+    <div class="text-center">
+      <div class="row">
+        <div class="col-xs-2 col-xs-offset-2">
+          <img src="/static/img/logo-cube.png" class="img-responsive main-img" alt="">
         </div>
-        <div class="row">
-          <form action="/search" method="GET">
-            <input type="text" class="form-control" placeholder="e.g. country" name="q">
-          </form>
+        <div class="col-xs-8 text-left">
+          <h1 class="main-title">Data publishing and sharing,</h1>
+          <h1 class="main-title">made simple, clean and fast.</h1>
         </div>
-        <div class="row narrow">
-          <img src="{{ s3_cdn }}/static/img/cube-03-elephant.png" class="img-responsive" />
-          <hr>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="col-xs-11 col-xs-offset-1 text-left">
+            <p class="terminal-heading"><b>Publish</b> from the command line</p>
+          </div>
         </div>
-        <div class="row">
-          <p class="message">Discover, share and explore data</p>
+        <div class="col-sm-6"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <img src="/static/img/terminal-black.png" class="img-responsive" />
         </div>
+        <div class="col-sm-6">
+          <img src="/static/img/terminal-white.png" class="img-responsive" />
+        </div>
+      </div>
+      <div class="row">
+        <p>Get Started now!</p>
+      </div>
+      <div class="row">
+        <a href="#publish" class="btn btn-lg btn-primary" onclick="scrollDown(this)">
+          Publish
+        </a>
+      </div>
+    </div>
+  </div><!-- End of jumbotron main -->
+  <!-- Section 1 -->
+  <div class="inner_container">
+    <div class="section">
+      <div class="row">
+
         <div class="row">
-          <div class="col-sm-3 col-sm-offset-3 col-xs-6">
-            <a href="#publish" class="btn btn-lg btn-default" onclick="scrollDown(this)">
-              Publish
+          <h1>Some of our most popular data</h1>
+        </div>
+
+        {% for package in showcasePackages %}
+          <div class="row">
+            <a href="{{ package['owner']['username'] }}/{{ package['name'] }}" class="package-title">
+              <h3>{{ package['title'] }}</h3>
             </a>
+            <p class="publisher normal">
+              {% if package.owner.email %}
+              <img src="https://www.gravatar.com/avatar/{{ dataset.owner.email }}" class="img-responsive img-circle avatar" />
+              {% else %}
+              <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
+              {% endif %}
+              <a href="{{ package['owner']['username'] }}">core</a>
+            </p>
+            <h6 class="text-left">
+              <b>{{ package['name'] }}</b> | {{ package.resources|length }} files | {{ package.size }}
+            </h6>
+            {% if package.shortReadme %}
+            <p class="readme">
+              {{ package.shortReadme }}
+              <a href="{{ package['owner']['username'] }}/{{ package['name'] }}" class="explore">
+                explore more <span>&rsaquo;</span>
+              </a>
+            </p>
+            {% endif %}
           </div>
-          <div class="col-sm-3 col-xs-6">
-            <a href="#next-section" class="btn btn-lg btn-default" onclick="scrollDown(this)">
-              Read more
+        {% endfor %}
+
+        <div class="row">
+          <h1>Tutorials</h1>
+        </div>
+
+        {% for package in tutorialPackages %}
+          <div class="row">
+            <a href="{{ package['owner']['username'] }}/{{ package['name'] }}" class="package-title">
+              <h3>{{ package['title'] }}</h3>
             </a>
+            <p class="publisher normal">
+              {% if package.owner.email %}
+              <img src="https://www.gravatar.com/avatar/{{ dataset.owner.email }}" class="img-responsive img-circle avatar" />
+              {% else %}
+              <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
+              {% endif %}
+              <a href="{{ package['owner']['username'] }}">examples</a>
+            </p>
+            <h6 class="text-left">
+              <b>{{ package['name'] }}</b> | {{ package.resources|length }} files | {{ package.size }}
+            </h6>
+            <p class="readme">
+              {{ package.shortReadme }}
+              <a href="{{ package['owner']['username'] }}/{{ package['name'] }}" class="explore">
+                explore more <span>&rsaquo;</span>
+              </a>
+            </p>
           </div>
-        </div>
-        <div class="row">
-          <a href="#next-section" onclick="scrollDown(this)">
-            <i class="fa fa-chevron-down fa-2x" aria-hidden="true" style="color:black"></i>
-          </a>
-        </div>
+        {% endfor %}
+
       </div>
-    </div><!-- End of jumbotron main -->
-    <!-- Section 1 -->
-    <div class="section" id="next-section">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-md-5">
-            <div class="row">
-              <h1>HAVE A LOOK AT OUR BEST DATA</h1>
-            </div>
-            {% for package in showcasePackages %}
-              <div class="row">
-                <div class="col-xs-3">
-                  <img src="{{ s3_cdn }}/static/img/cube15.svg" class="img-responsive" />
-                </div>
-                <div class="col-xs-9">
-                  <a href="core/{{ package['name'] }}">
-                    <h3>{{ package['title'] }}</h3>
-                  </a>
-                  <h6 class="text-left">
-                    <b>{{ package['name'] }}</b> | files {{ package.resources|length }}
-                  </h6>
-                  {% if package.shortReadme %}
-                  <p>
-                    {{ package.shortReadme|truncate(150) }}
-                    <a href="core/{{ package['name'] }}" class="explore">
-                      explore more <span>&rsaquo;</span>
-                    </a>
-                  </p>
-                  {% endif %}
-                </div>
-              </div>
-            {% endfor %}
-          </div>
-          <div class="col-md-5 col-md-offset-2">
-            <div class="row">
-              <h1>SHARE & STORE YOUR DATA</h1>
-            </div>
-            {% for package in tutorialPackages %}
-              <div class="row">
-                <div class="col-xs-3">
-                  <img src="{{ s3_cdn }}/static/img/cube16.svg" class="img-responsive" />
-                </div>
-                <div class="col-xs-9">
-                  <a href="examples/{{ package['name'] }}">
-                    <h3>{{ package['title'] }}</h3>
-                  </a>
-                  <h6 class="text-left">
-                    <b>{{ package['name'] }}</b> | files {{ package.resources|length }}
-                  </h6>
-                  <p>
-                    {{ package.shortReadme|truncate(150) }}
-                    <a href="examples/{{ package['name'] }}" class="explore">
-                      explore more <span>&rsaquo;</span>
-                    </a>
-                  </p>
-                </div>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-        <div class="row text-center">
-          <a href="#publish" class="btn btn-lg btn-default" onclick="scrollDown(this)">
-            Publish
-          </a>
-        </div>
-        <div class="row text-center">
-          <a href="#publish" onclick="scrollDown(this)">
-            <i class="fa fa-chevron-down fa-2x" aria-hidden="true" style="color:black"></i>
-          </a>
-        </div>
-      </div>
-    </div><!-- End of section 1 -->
-
-    <!-- Section 2 -->
-    <div class="jumbotron jumbotron-secondary" id="publish">
-      <div class="container text-center">
-        <div class="row medium">
-          <img src="{{ s3_cdn }}/static/img/elephants-publish.png" class="img-responsive" />
-          <hr>
-        </div>
-        <div class="row">
-          <p class="message">Publish and store your data</p>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-6">
-            <p class="terminal-heading"><strong>Publish</strong> from the command line</p>
-          </div>
-          <div class="col-sm-6"></div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <img src="{{ s3_cdn }}/static/img/terminal-black.png" class="img-responsive" />
-          </div>
-          <div class="col-sm-6">
-            <img src="{{ s3_cdn }}/static/img/terminal-white.png" class="img-responsive" />
-          </div>
-        </div>
-
-        <div class="row">
-          <p class="message">Publishing is coming soon!</p>
-        </div>
-        <div class="row">
-          <p class="message">Sign up to get first access when we launch!</p>
-        </div>
-
-        <div class="row">
-          <form action="https://formspree.io/anuar.ustayev@datopian.com" method="POST">
-              <input type="text" name="name" placeholder="Name *" class="form-control" />
-              <input type="email" name="_replyto" placeholder="Email *" class="form-control" />
-              <input type="submit" value="Send" class="btn btn-default pull-left">
-          </form>
-        </div>
-      </div>
-    </div><!-- End of section 2 -->
+    </div>
+  </div><!-- End of section 1 -->
+</div>
 {% endblock %}
