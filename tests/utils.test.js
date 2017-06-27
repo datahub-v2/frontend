@@ -2,6 +2,7 @@ const assert = require('assert')
 
 const fixtures = require('./fixtures')
 const utils = require('../lib/utils')
+const mocks = require('./fixtures')
 
 const readme1 = 'README for with {{ dp.json }}'
 const readme2 = 'README for with {{ datapackage }}'
@@ -10,6 +11,8 @@ const dpJson =  {
 	name: "test",
 	resources: []
 }
+
+mocks.initMocks()
 
 describe('Utils', () => {
   it('Inserts dp.json into README', async () => {
@@ -51,5 +54,41 @@ describe('Utils', () => {
 		}
 		const res = utils.prettifyBytes(dpjson)
 		assert.equal(res.size, '120.12kB')
+	})
+
+	it('Generates list of packages', async () => {
+		const listOfPkgId = [
+			{
+				owner: 'admin',
+				name: 'demo-package'
+			}
+		]
+		const res = await utils.getListOfDatapackages(listOfPkgId)
+		assert.equal(res[0]['name'], 'demo-package')
+		assert.equal(res.length, 1)
+	})
+
+	it('Generates list of readme for given list of pkgIds', async () => {
+		const listOfPkgId = [
+			{
+				owner: 'admin',
+				name: 'demo-package'
+			}
+		]
+		const res = await utils.getListOfReadme(listOfPkgId)
+		assert.equal(res.length, 1)
+		assert(res[0].includes('This README and datapackage is borrowed'))
+	})
+
+	it('Generates list of datapackages with readme and owner info', async () => {
+		const listOfPkgId = [
+			{
+				owner: 'admin',
+				name: 'demo-package'
+			}
+		]
+		const res = await utils.getListOfDpWithReadme(listOfPkgId)
+		assert.equal(res[0].shortReadme.length, 294)
+		assert.equal(res[0].owner.username, 'admin')
 	})
 })

@@ -15,7 +15,17 @@ nconf.defaults({
     port: process.env.PORT || 4000
   },
   baseUrl: 'https://staging.datapackaged.com',
-  bitstoreBaseUrl: 'https://bits-staging.datapackaged.com'
+  bitstoreBaseUrl: 'https://bits-staging.datapackaged.com',
+  showcasePackages: [
+    {owner: 'core', name: 's-and-p-500-companies'},
+    {owner: 'core', name: 'house-prices-us'},
+    {owner: 'core', name: 'gold-prices'}
+  ],
+  tutorialPackages: [
+    {owner: 'examples', name: 'simple-graph-spec'},
+    {owner: 'examples', name: 'vega-views-tutorial-lines'},
+    {owner: 'examples', name: 'geojson-tutorial'}
+  ]
 })
 
 module.exports = {
