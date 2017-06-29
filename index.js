@@ -4,6 +4,7 @@ const path = require('path')
 const express = require('express')
 const nunjucks = require('nunjucks')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 
 const config = require('./config')
 const routes = require('./routes')
@@ -22,6 +23,7 @@ module.exports.makeApp = function () {
       extended: true
     })
   )
+  app.use(cookieParser())
 
   // Controllers
   app.use([
