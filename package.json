@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "start:local": "nodemon index.js --baseUrl http://0.0.0.0:4000",
     "test": "xo && mocha tests"
   },
   "xo": {
