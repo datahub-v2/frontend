@@ -31,6 +31,30 @@ describe('Routes', function(){
       })
   })
 
+  it('Login with GitHub redirects to correct path', function(done){
+    request(app)
+      .get('/login/github')
+      .end(function(err, res) {
+        assert.equal(res.header.location, 'https://github.com/login/')
+        done()
+      })
+  })
+
+  it('Login with GOOGLE redirects to correct path', function(done){
+    request(app)
+      .get('/login/google')
+      .end(function(err, res) {
+        assert.equal(res.header.location, 'https://accounts.google.com/o/oauth2/auth')
+        done()
+      })
+  })
+
+  it('When redirected to /success it gets user info and writes into cookies then redirects to /', function(done){
+    request(app)
+      .get('/success?jwt=1a2b3c')
+      .expect('set-cookie', 'jwt=1a2b3c; Path=/,email=test_username_but_not_email; Path=/,name=Firstname%20Secondname; Path=/', done)
+  })
+
   it('Showcase page returns 200 and has correct content', function(done){
     request(app)
       .get('/admin/demo-package')

@@ -8,6 +8,7 @@ const utils = require('../lib/utils')
 module.exports = function () {
   // eslint-disable-next-line new-cap
   const router = express.Router()
+  const api = new lib.DataHubApi(config)
 
   router.get('/', async (req, res) => {
     if (req.cookies.jwt) {
@@ -33,8 +34,26 @@ module.exports = function () {
     }
   })
 
+  router.get('/login/:provider', async (req, res) => {
+    const providers = await api.authenticate()
+    const providerUrlForLogin = providers.providers[req.params.provider].url
+    res.redirect(providerUrlForLogin) // Which then redirects to `/sucess` if OK
+  })
+
+  router.get('/success', async (req, res) => {
+    const jwt = req.query.jwt
+    const isAuthenticated = await api.authenticate(jwt)
+    if (isAuthenticated.authenticated) {
+      res.cookie('jwt', jwt)
+      res.cookie('email', isAuthenticated.profile.email)
+      res.cookie('name', isAuthenticated.profile.name)
+      res.redirect('/')
+    } else {
+      console.log('Something went wrong. Try again later.')
+    }
+  })
+
   router.get('/:owner/:name', async (req, res) => {
-    const api = new lib.DataHubApi(config)
     const dpjson = await api.getPackage(req.params.owner, req.params.name)
     let readme = await api.getPackageFile(req.params.owner, req.params.name, 'README.md')
     const shortReadme = utils.makeSmallReadme(readme)
