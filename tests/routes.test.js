@@ -20,6 +20,17 @@ describe('Routes', function(){
     })
   })
 
+  it('Dashboard page renders instead of Home when jwt in cookies setup', function(done){
+    request(app)
+      .get('/')
+      .set('Cookie', ['jwt=123456'])
+      .end(function(err, res) {
+        assert.equal(res.statusCode, 200)
+        assert(res.text.match('Your Access Token: 123456'), res.text)
+        done()
+      })
+  })
+
   it('Showcase page returns 200 and has correct content', function(done){
     request(app)
       .get('/admin/demo-package')

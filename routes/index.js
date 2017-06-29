@@ -10,23 +10,27 @@ module.exports = function () {
   const router = express.Router()
 
   router.get('/', async (req, res) => {
-    // TODO: check if a user is signed in here later + add tests:
-    // eslint-disable-next-line no-constant-condition
-    if (false) {
+    if (req.cookies.jwt) {
       res.render('dashboard.html', {
-        title: 'Dashboard'
+        title: 'Dashboard',
+        currentUser: {
+          secret: req.cookies.jwt,
+          email: req.cookies.email,
+          name: req.cookies.name
+        }
+      })
+    } else {
+      // Get showcase and turorial packages for the front page
+      const listOfShowcasePkgId = config.get('showcasePackages')
+      const listOfTutorialPkgId = config.get('tutorialPackages')
+      const showcasePackages = await utils.getListOfDpWithReadme(listOfShowcasePkgId)
+      const tutorialPackages = await utils.getListOfDpWithReadme(listOfTutorialPkgId)
+      res.render('home.html', {
+        title: 'Home',
+        showcasePackages,
+        tutorialPackages
       })
     }
-    // Get showcase and turorial packages for the front page
-    const listOfShowcasePkgId = config.get('showcasePackages')
-    const listOfTutorialPkgId = config.get('tutorialPackages')
-    const showcasePackages = await utils.getListOfDpWithReadme(listOfShowcasePkgId)
-    const tutorialPackages = await utils.getListOfDpWithReadme(listOfTutorialPkgId)
-    res.render('home.html', {
-      title: 'Home',
-      showcasePackages,
-      tutorialPackages
-    })
   })
 
   router.get('/:owner/:name', async (req, res) => {
