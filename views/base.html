@@ -55,13 +55,16 @@
             <li>
               <a href="/search">DISCOVER</a>
             </li>
-            {% if current_user == None %}
+            {% if login %}
               <li>
-                <a href="/api/auth/login">SIGN IN WITH <span class="fa fa-github fa-lg"></span></a>
+                <a class="nav-link" href="/logout">LOGOUT</a>
               </li>
             {% else %}
               <li>
-                <a class="nav-link" href="/logout">LOGOUT</a>
+                <a href="/login/github"><span class="fa fa-github fa-lg"></span></a>
+              </li>
+              <li>
+                <a href="/login/google"><span class="fa fa-google fa-lg"></span></a>
               </li>
             {% endif %}
           </ul>

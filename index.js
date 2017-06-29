@@ -25,6 +25,16 @@ module.exports.makeApp = function () {
   )
   app.use(cookieParser())
 
+  // Check if looged in and set locals for nunjucks
+  app.use((req, res, next) => {
+    if (req.cookies.jwt) {
+      res.locals.login = true
+    } else {
+      res.locals.login = false
+    }
+    next()
+  })
+
   // Controllers
   app.use([
     routes()
