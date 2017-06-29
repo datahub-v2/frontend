@@ -55,6 +55,24 @@ describe('Routes', function(){
       .expect('set-cookie', 'jwt=1a2b3c; Path=/,email=test_username_but_not_email; Path=/,name=Firstname%20Secondname; Path=/', done)
   })
 
+  it('When user logs out, it clears jwt from cookie and redirects to /', function(done){
+    request(app)
+      .get('/logout')
+      .end(function(err, res) {
+        assert.equal(res.header.location, '/?logout=true')
+        done()
+      })
+  })
+
+  it('When user logs out, it renders home page with alert message', function(done){
+    request(app)
+      .get('/?logout=true')
+      .end(function(err, res) {
+        assert(res.text.match('You have been successfully logged out.'), res.text)
+        done()
+      })
+  })
+
   it('Showcase page returns 200 and has correct content', function(done){
     request(app)
       .get('/admin/demo-package')

@@ -29,7 +29,9 @@ module.exports = function () {
       res.render('home.html', {
         title: 'Home',
         showcasePackages,
-        tutorialPackages
+        tutorialPackages,
+        logout: req.query.logout,
+        error: req.query.error
       })
     }
   })
@@ -49,8 +51,13 @@ module.exports = function () {
       res.cookie('name', isAuthenticated.profile.name)
       res.redirect('/')
     } else {
-      console.log('Something went wrong. Try again later.')
+      res.redirect('/?error=true')
     }
+  })
+
+  router.get('/logout', async (req, res) => {
+    res.clearCookie('jwt')
+    res.redirect('/?logout=true')
   })
 
   router.get('/:owner/:name', async (req, res) => {
