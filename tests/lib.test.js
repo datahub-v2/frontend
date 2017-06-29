@@ -1,62 +1,12 @@
 'use strict';
 
 var assert = require('assert')
-var nock = require('nock')
 
 var config = require('../config')
 var lib = require('../lib/')
 var mocks = require('./fixtures')
 
 mocks.initMocks()
-
-// Mock api calls for authentication
-// Not authenticated returns urls for login
-nock('https://datax.phonaris.com')
-  .persist()
-  .get('/auth/check?jwt=undefined&next=https://staging.datapackaged.com/success')
-  .reply(200, {
-    "authenticated": false,
-    "providers": {
-      "github": {
-        "url": "https://github.com/login/"
-      },
-      "google": {
-        "url": "https://accounts.google.com/o/oauth2/auth"
-      }
-    }
-  })
-// GitHub
-nock('https://datax.phonaris.com')
-  .persist()
-  .get('/auth/check?jwt=1a2b3c&next=https://staging.datapackaged.com/success')
-  .reply(200, {
-    "authenticated": true,
-    "profile": {
-      "avatar_url": "https://avatars2.githubusercontent.com/u/000000?v=3",
-      "email": "test_username_but_not_email",
-      "id": "123456abc",
-      "join_date": "Tue, 27 Jun 2017 10:15:05 GMT",
-      "name": "Firstname Secondname",
-      "provider_id": "github:17809581",
-      "username": null
-    }
-  })
-// GOOGLE
-nock('https://datax.phonaris.com')
-  .persist()
-  .get('/auth/check?jwt=1a2b3c4d&next=https://staging.datapackaged.com/success')
-  .reply(200, {
-    "authenticated": true,
-    "profile": {
-      "avatar_url": "https://lh4.googleusercontent.com/photo.jpg",
-      "email": "actual_email@gmail.com",
-      "id": "123456abc",
-      "join_date": "Tue, 27 Jun 2017 10:58:08 GMT",
-      "name": "Firstname Secondname",
-      "provider_id": "google:117985331094635516621",
-      "username": null
-    }
-  })
 
 describe('Lib', () => {
   const api = new lib.DataHubApi(config)
