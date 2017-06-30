@@ -8,29 +8,59 @@ const utils = require('../lib/utils')
 module.exports = function () {
   // eslint-disable-next-line new-cap
   const router = express.Router()
+  const api = new lib.DataHubApi(config)
 
   router.get('/', async (req, res) => {
-    // TODO: check if a user is signed in here later + add tests:
-    // eslint-disable-next-line no-constant-condition
-    if (false) {
+    if (req.cookies.jwt) {
       res.render('dashboard.html', {
-        title: 'Dashboard'
+        title: 'Dashboard',
+        currentUser: {
+          secret: req.cookies.jwt,
+          email: req.cookies.email,
+          name: req.cookies.name
+        }
+      })
+    } else {
+      // Get showcase and turorial packages for the front page
+      const listOfShowcasePkgId = config.get('showcasePackages')
+      const listOfTutorialPkgId = config.get('tutorialPackages')
+      const showcasePackages = await utils.getListOfDpWithReadme(listOfShowcasePkgId)
+      const tutorialPackages = await utils.getListOfDpWithReadme(listOfTutorialPkgId)
+      res.render('home.html', {
+        title: 'Home',
+        showcasePackages,
+        tutorialPackages,
+        logout: req.query.logout,
+        error: req.query.error
       })
     }
-    // Get showcase and turorial packages for the front page
-    const listOfShowcasePkgId = config.get('showcasePackages')
-    const listOfTutorialPkgId = config.get('tutorialPackages')
-    const showcasePackages = await utils.getListOfDpWithReadme(listOfShowcasePkgId)
-    const tutorialPackages = await utils.getListOfDpWithReadme(listOfTutorialPkgId)
-    res.render('home.html', {
-      title: 'Home',
-      showcasePackages,
-      tutorialPackages
-    })
+  })
+
+  router.get('/login/:provider', async (req, res) => {
+    const providers = await api.authenticate()
+    const providerUrlForLogin = providers.providers[req.params.provider].url
+    res.redirect(providerUrlForLogin) // Which then redirects to `/sucess` if OK
+  })
+
+  router.get('/success', async (req, res) => {
+    const jwt = req.query.jwt
+    const isAuthenticated = await api.authenticate(jwt)
+    if (isAuthenticated.authenticated) {
+      res.cookie('jwt', jwt)
+      res.cookie('email', isAuthenticated.profile.email)
+      res.cookie('name', isAuthenticated.profile.name)
+      res.redirect('/')
+    } else {
+      res.redirect('/?error=true')
+    }
+  })
+
+  router.get('/logout', async (req, res) => {
+    res.clearCookie('jwt')
+    res.redirect('/?logout=true')
   })
 
   router.get('/:owner/:name', async (req, res) => {
-    const api = new lib.DataHubApi(config)
     const dpjson = await api.getPackage(req.params.owner, req.params.name)
     let readme = await api.getPackageFile(req.params.owner, req.params.name, 'README.md')
     const shortReadme = utils.makeSmallReadme(readme)

@@ -20,6 +20,59 @@ describe('Routes', function(){
     })
   })
 
+  it('Dashboard page renders instead of Home when jwt in cookies setup', function(done){
+    request(app)
+      .get('/')
+      .set('Cookie', ['jwt=123456'])
+      .end(function(err, res) {
+        assert.equal(res.statusCode, 200)
+        assert(res.text.match('Your Access Token: 123456'), res.text)
+        done()
+      })
+  })
+
+  it('Login with GitHub redirects to correct path', function(done){
+    request(app)
+      .get('/login/github')
+      .end(function(err, res) {
+        assert.equal(res.header.location, 'https://github.com/login/')
+        done()
+      })
+  })
+
+  it('Login with GOOGLE redirects to correct path', function(done){
+    request(app)
+      .get('/login/google')
+      .end(function(err, res) {
+        assert.equal(res.header.location, 'https://accounts.google.com/o/oauth2/auth')
+        done()
+      })
+  })
+
+  it('When redirected to /success it gets user info and writes into cookies then redirects to /', function(done){
+    request(app)
+      .get('/success?jwt=1a2b3c')
+      .expect('set-cookie', 'jwt=1a2b3c; Path=/,email=test_username_but_not_email; Path=/,name=Firstname%20Secondname; Path=/', done)
+  })
+
+  it('When user logs out, it clears jwt from cookie and redirects to /', function(done){
+    request(app)
+      .get('/logout')
+      .end(function(err, res) {
+        assert.equal(res.header.location, '/?logout=true')
+        done()
+      })
+  })
+
+  it('When user logs out, it renders home page with alert message', function(done){
+    request(app)
+      .get('/?logout=true')
+      .end(function(err, res) {
+        assert(res.text.match('You have been successfully logged out.'), res.text)
+        done()
+      })
+  })
+
   it('Showcase page returns 200 and has correct content', function(done){
     request(app)
       .get('/admin/demo-package')

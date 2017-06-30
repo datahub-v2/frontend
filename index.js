@@ -4,6 +4,7 @@ const path = require('path')
 const express = require('express')
 const nunjucks = require('nunjucks')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 
 const config = require('./config')
 const routes = require('./routes')
@@ -22,6 +23,17 @@ module.exports.makeApp = function () {
       extended: true
     })
   )
+  app.use(cookieParser())
+
+  // Check if looged in and set locals for nunjucks
+  app.use((req, res, next) => {
+    if (req.cookies.jwt) {
+      res.locals.login = true
+    } else {
+      res.locals.login = false
+    }
+    next()
+  })
 
   // Controllers
   app.use([
