@@ -6007,8 +6007,6 @@ a.explore {
   padding-top: 10px;
   margin-bottom: 0; }
   .jumbotron .terminal-heading {
-    font-size: 1.3em;
-    color: #000;
     margin-bottom: 0;
     margin-top: 40px; }
     .jumbotron .terminal-heading span {
@@ -6051,8 +6049,7 @@ a.explore {
 /* Section 1
 ====================================*/
 .section {
-  background: white;
-  padding: 30px 0; }
+  padding: 30px 0 0 0; }
   .section h1 {
     font-size: 3em;
     margin: 0.5em 0;
@@ -6075,8 +6072,20 @@ a.explore {
     -moz-box-shadow: none !important;
     box-shadow: none !important; }
 
+.section-gray {
+  background-color: #fafafa; }
+
 .package-title {
   text-decoration: underline; }
+  .package-title h3 {
+    font-size: 21px;
+    font-weight: 200; }
+
+h2.section-title {
+  font-size: 32px; }
+
+.readable-width {
+  max-width: 650px; }
 
 .normal {
   margin-bottom: 10px !important; }

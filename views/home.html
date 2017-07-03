@@ -49,18 +49,22 @@ Welcome Home
         </a>
       </div>
     </div>
-  </div><!-- End of jumbotron main -->
-  <!-- Section 1 -->
+  </div>
+</div><!-- End of jumbotron main -->
+
+<!-- Section 1 -->
+<div class="section-gray">
+<div class="container">
   <div class="inner_container">
     <div class="section">
       <div class="row">
 
         <div class="row">
-          <h1>Some of our most popular data</h1>
+          <h2 class="section-title">Some of our most popular data</h2>
         </div>
 
         {% for package in showcasePackages %}
-          <div class="row">
+          <div class="row readable-width">
             <a href="{{ package['owner']['username'] }}/{{ package['name'] }}" class="package-title">
               <h3>{{ package['title'] }}</h3>
             </a>
@@ -85,13 +89,23 @@ Welcome Home
             {% endif %}
           </div>
         {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- End of section 1 -->
 
+<!-- Section 2 -->
+<div class="container">
+  <div class="inner_container">
+    <div class="section">
+      <div class="row">
         <div class="row">
-          <h1>Tutorials</h1>
+          <h2 class="section-title">Tutorials</h2>
         </div>
 
         {% for package in tutorialPackages %}
-          <div class="row">
+          <div class="row readable-width">
             <a href="{{ package['owner']['username'] }}/{{ package['name'] }}" class="package-title">
               <h3>{{ package['title'] }}</h3>
             </a>
@@ -117,6 +131,6 @@ Welcome Home
 
       </div>
     </div>
-  </div><!-- End of section 1 -->
-</div>
+  </div>
+</div><!-- End of section 2 -->
 {% endblock %}
