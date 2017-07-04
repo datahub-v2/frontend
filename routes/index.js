@@ -69,7 +69,7 @@ module.exports = function () {
     const dpBitStoreUrl = [config.get('bitstoreBaseUrl'), 'metadata', req.params.owner, req.params.name, '_v', 'latest'].join('/')
     res.render('showcase.html', {
       title: req.params.owner + ' | ' + req.params.name,
-      dataset: utils.prettifyBytes(dpjson),
+      dataset: utils.extendDpjson(dpjson),
       datapackageUrl: dpBitStoreUrl + '/datapackage.json',
       readmeShort: shortReadme,
 			// eslint-disable-next-line camelcase
