@@ -7,23 +7,31 @@
 {% endblock %}
 
 {% block content %}
+<!-- title and owner info -->
 <div class="container">
   <div class="inner_container">
-    <h1>
-      {{ dataset.title }}
-    </h1>
-    <p class="publisher">
-      {% if dataset.owner.email %}
-      <img src="https://www.gravatar.com/avatar/{{ dataset.owner.email }}" class="img-responsive img-circle avatar" />
-      {% else %}
-      <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
-      {% endif %}
-      <a href="/{{ dataset.owner.username }}">{{ dataset.owner.username }}</a>
-    </p>
+    <div class="showcase-page-header">
+      <h1>
+        {{ dataset.title }}
+      </h1>
+      <p class="publisher">
+        {% if dataset.owner.email %}
+        <img src="https://www.gravatar.com/avatar/{{ dataset.owner.email }}" class="img-responsive img-circle avatar" />
+        {% else %}
+        <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
+        {% endif %}
+        <a href="/{{ dataset.owner.username }}">{{ dataset.owner.username }}</a>
+      </p>
+    </div>
+  </div>
+</div><!-- end of title and owner info -->
+
+<div class="container-no-top-padding">
+  <div class="inner_container">
     <div class="dataset show">
       <!-- info about data package -->
       <div>
-        <table class="table info">
+        <table class="table info no-left-padding">
           <thead>
             <tr>
               <th>Files</th>
@@ -40,8 +48,8 @@
               <td class="col-xs-1">{{ dataset.resources | length }}</td>
               <td class="col-xs-1">{{ dataset.size }}</td>
               <td class="col-xs-2 format-list">
-                {% for resource in dataset.resources %}
-                  {{ resource.format }}
+                {% for format in dataset.formats %}
+                  {{ format }}
                 {% endfor %}
               </td>
               <td class="col-xs-2">{{ dataset.created }}</td>
@@ -62,7 +70,7 @@
       </div>
 
       <!-- short readme -->
-      <div class="readme">{{readmeShort|truncate}} <a href="#readme" class="explore" onclick="scrollDown(this)">read more</a></div>
+      <div class="readme readable-width">{{readmeShort|truncate}} <a href="#readme" class="explore" onclick="scrollDown(this)">read more</a></div>
 
       <!-- download button -->
       <a href="#data" class="btn btn-lg btn-primary" onclick="scrollDown(this)">Download</a>
@@ -144,12 +152,26 @@
        {% endif %}
       </div>
       {% endfor %}
+    </div>
+  </div>
+</div>
 
-      <!-- readme section -->
-      <h2 id="readme" class="section-title">Read me</h2>
-      <div class="readme part">{{readme_long|safe}}</div>
+<!-- readme section -->
+<div class="section-gray">
+  <div class="container">
+    <div class="inner_container">
+      <div class="dataset show">
+        <h2 id="readme" class="section-title">Read me</h2>
+        <div class="readme part readable-width">{{readme_long|safe}}</div>
+      </div>
+    </div>
+  </div>
+</div><!-- end of readme section -->
 
-      <!-- import into your tool section -->
+<!-- import into your tool section -->
+<div class="container">
+  <div class="inner_container">
+    <div class="dataset show">
       <h2 class="section-title">Import into your tool</h2>
       <ul class="nav nav-pills">
         <li class="active"><a data-toggle="pill" href="#r">R</a></li>
@@ -191,28 +213,30 @@
           </div>
         </div>
       </div>
-
-      <!-- script for tabs to work as anchors -->
-      <script>
-        jQuery("ul.nav-pills > li > a").on("shown.bs.tab", function (e) {
-           scrollposition = jQuery(document).scrollTop();
-           var id = jQuery(e.target).attr("href").substr(1);
-           window.location.hash = id;
-           jQuery(document).scrollTop(scrollposition);
-        });
-        var hash = window.location.hash;
-        jQuery('.nav.nav-pills a[href="' + hash + '"]').tab('show', function() {
-            jQuery(document).scrollTop();
-        });
-      </script>
-
-      <!-- pass datapackageUrl to front-end -->
-      <script type="text/javascript">
-        var DATA_PACKAGE_URL = "{{ datapackageUrl }}";
-      </script>
     </div>
   </div>
-  <link rel="stylesheet" media="screen" href="/static/dpr-js/dist/main.css">
-  <script type="text/javascript" src="/static/dpr-js/dist/bundle.js"></script>
-</div>
+</div><!-- end of import into your tool section -->
+
+<!-- script for tabs to work as anchors -->
+<script>
+  jQuery("ul.nav-pills > li > a").on("shown.bs.tab", function (e) {
+     scrollposition = jQuery(document).scrollTop();
+     var id = jQuery(e.target).attr("href").substr(1);
+     window.location.hash = id;
+     jQuery(document).scrollTop(scrollposition);
+  });
+  var hash = window.location.hash;
+  jQuery('.nav.nav-pills a[href="' + hash + '"]').tab('show', function() {
+      jQuery(document).scrollTop();
+  });
+</script>
+
+<!-- pass datapackageUrl to front-end -->
+<script type="text/javascript">
+  var DATA_PACKAGE_URL = "{{ datapackageUrl }}";
+</script>
+
+<link rel="stylesheet" media="screen" href="/static/dpr-js/dist/main.css">
+<script type="text/javascript" src="/static/dpr-js/dist/bundle.js"></script>
+
 {% endblock %}

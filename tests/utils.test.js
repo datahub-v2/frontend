@@ -56,6 +56,57 @@ describe('Utils', () => {
 		assert.equal(res.size, '120.12kB')
 	})
 
+	it('Formats date and time as ago, e.g., "2d ago"', () => {
+		const dpjson = {
+			created: '2017-07-02',
+			updated: '2017-07-02',
+			resources: [
+				{
+					updated: '2017-07-02'
+				}
+			]
+		}
+		const res = utils.formatDateTimeAsAgo(dpjson)
+		assert(res.created.includes('ago'))
+		assert(res.updated.includes('ago'))
+		assert(res.resources[0].updated.includes('ago'))
+	})
+
+	it('Adds formats property into dpjson', () => {
+		const dpjson = {
+			name: 'test',
+			resources: [
+				{
+					format: 'csv'
+				}
+			]
+		}
+		const res = utils.addFormatsAttr(dpjson)
+		assert.equal(dpjson.formats.length, 1)
+	})
+
+	it('Extends and formats attributes in given dpjson', () => {
+		const dpjson = {
+			name: 'test',
+			created: '2017-07-02',
+			updated: '2017-07-02',
+			size: 123000,
+			resources: [
+				{
+					name: 'test-resource',
+					updated: '2017-07-02',
+					size: 123000,
+					format: 'csv'
+				}
+			]
+		}
+		const res = utils.extendDpjson(dpjson)
+		assert.notDeepEqual(res, dpjson)
+		assert(res.created.includes('ago'))
+		assert.equal(res.size, '120.12kB')
+		assert.equal(res.formats.length, 1)
+	})
+
 	it('Generates list of packages', async () => {
 		const listOfPkgId = [
 			{
