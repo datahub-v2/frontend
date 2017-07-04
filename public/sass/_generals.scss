@@ -15,6 +15,24 @@ body {
     }
   }
 }
+.container-no-top-padding {
+  @extend .container;
+  padding-top: 0 !important;
+}
+.no-left-padding {
+  margin-left: -8px;
+}
+.resource-summary {
+  thead tr th {
+    border-bottom: 1px solid #ddd;
+  }
+  tbody tr {
+    th, td {
+      border-top: 0;
+      border-bottom: 0;
+    }
+  }
+}
 .biege-wrapper {
   background-color: $brand-success;
   min-height: calc(100vh - 52px - 82px);

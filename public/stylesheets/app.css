@@ -1513,24 +1513,24 @@ pre {
   max-height: 340px;
   overflow-y: scroll; }
 
-.container {
+.container, .container-no-top-padding {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container:before, .container:after {
+  .container:before, .container-no-top-padding:before, .container:after, .container-no-top-padding:after {
     content: " ";
     display: table; }
-  .container:after {
+  .container:after, .container-no-top-padding:after {
     clear: both; }
   @media (min-width: 768px) {
-    .container {
+    .container, .container-no-top-padding {
       width: 750px; } }
   @media (min-width: 992px) {
-    .container {
+    .container, .container-no-top-padding {
       width: 970px; } }
   @media (min-width: 1200px) {
-    .container {
+    .container, .container-no-top-padding {
       width: 1170px; } }
 
 .container-fluid {
@@ -3741,15 +3741,17 @@ tbody.collapse.in {
     .navbar-fixed-bottom .navbar-collapse {
       max-height: 200px; } }
 
-.container > .navbar-header,
+.container > .navbar-header, .container-no-top-padding > .navbar-header,
 .container > .navbar-collapse,
+.container-no-top-padding > .navbar-collapse,
 .container-fluid > .navbar-header,
 .container-fluid > .navbar-collapse {
   margin-right: -15px;
   margin-left: -15px; }
   @media (min-width: 768px) {
-    .container > .navbar-header,
+    .container > .navbar-header, .container-no-top-padding > .navbar-header,
     .container > .navbar-collapse,
+    .container-no-top-padding > .navbar-collapse,
     .container-fluid > .navbar-header,
     .container-fluid > .navbar-collapse {
       margin-right: 0;
@@ -3793,7 +3795,7 @@ tbody.collapse.in {
   .navbar-brand > img {
     display: block; }
   @media (min-width: 768px) {
-    .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+    .navbar > .container .navbar-brand, .navbar > .container-no-top-padding .navbar-brand, .navbar > .container-fluid .navbar-brand {
       margin-left: -15px; } }
 
 .navbar-toggle {
@@ -4309,17 +4311,17 @@ a.badge:hover, a.badge:focus {
     font-weight: 200; }
   .jumbotron > hr {
     border-top-color: black; }
-  .container .jumbotron, .container-fluid .jumbotron {
+  .container .jumbotron, .container-no-top-padding .jumbotron, .container-fluid .jumbotron {
     border-radius: 2px;
     padding-left: 15px;
     padding-right: 15px; }
-  .jumbotron .container {
+  .jumbotron .container, .jumbotron .container-no-top-padding {
     max-width: 100%; }
   @media screen and (min-width: 768px) {
     .jumbotron {
       padding-top: 48px;
       padding-bottom: 48px; }
-      .container .jumbotron, .container-fluid .jumbotron {
+      .container .jumbotron, .container-no-top-padding .jumbotron, .container-fluid .jumbotron {
         padding-left: 60px;
         padding-right: 60px; }
       .jumbotron h1,
@@ -5880,6 +5882,18 @@ body {
       margin-left: 0;
       margin-right: 0; } }
 
+.container-no-top-padding {
+  padding-top: 0 !important; }
+
+.no-left-padding {
+  margin-left: -8px; }
+
+.resource-summary thead tr th {
+  border-bottom: 1px solid #ddd; }
+.resource-summary tbody tr th, .resource-summary tbody tr td {
+  border-top: 0;
+  border-bottom: 0; }
+
 .biege-wrapper {
   background-color: #ecd3ad;
   min-height: calc(100vh - 52px - 82px); }
@@ -5899,11 +5913,11 @@ a.explore {
   text-decoration: underline;
   color: #484d99; }
 
-.container {
+.container, .container-no-top-padding {
   padding-left: 5%;
   padding-right: 5%; }
   @media (min-width: 768px) {
-    .container {
+    .container, .container-no-top-padding {
       padding-top: 30px; } }
 
 .inner_container {
@@ -5964,7 +5978,7 @@ a.explore {
       box-shadow: none !important; }
 
 @media (min-width: 768px) {
-  .navbar .container {
+  .navbar .container, .navbar .container-no-top-padding {
     padding-top: 0;
     padding-left: 1%; }
 
@@ -6112,7 +6126,7 @@ footer {
   right: 0;
   bottom: 0;
   left: 0; }
-  footer .container {
+  footer .container, footer .container-no-top-padding {
     padding-top: 0; }
   footer ul li a {
     color: #000;
@@ -6460,6 +6474,9 @@ blockquote {
 .readme {
   line-height: 1.8;
   margin-bottom: 2em; }
+  .readme h1, .readme h2, .readme h3, .readme h4, .readme h5, .readme h6 {
+    margin: 32px 0 24px 0;
+    color: #5c5c5c; }
 
 .side-bar {
   background-color: #ecd3ad; }
@@ -6496,16 +6513,14 @@ h2.publisher {
 .dataset .info {
   padding-top: 5%; }
 .dataset h2 {
-  font-size: 1.5em;
-  color: #484d99; }
+  font-size: 1.5em; }
 .dataset h2.section-title {
   font-size: 1.9em;
   color: #000; }
   .dataset h2.section-title a i {
     font-size: 0.7em; }
 .dataset h3 {
-  font-size: 1.3em;
-  color: #484d99; }
+  font-size: 1.3em; }
 .dataset .side-section h3 {
   font-size: 1.3em;
   margin-bottom: 0.8em;

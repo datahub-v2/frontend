@@ -46,6 +46,10 @@ blockquote {
 .readme {
   line-height: 1.8;
   margin-bottom: 2em;
+  h1, h2, h3, h4, h5, h6 {
+    margin: 32px 0 24px 0;
+    color: darken($gray, 10%);
+  }
 }
 .side-bar {
   background-color: $brand-success;
@@ -87,7 +91,6 @@ h2.publisher {
   }
   h2 {
     font-size: 1.5em;
-    color: $brand-info;
   }
   h2.section-title {
     font-size: 1.9em;
@@ -98,7 +101,6 @@ h2.publisher {
   }
   h3 {
     font-size: 1.3em;
-    color: $brand-info;
   }
   .side-section h3 {
     font-size: 1.3em;
