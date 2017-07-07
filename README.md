@@ -15,4 +15,9 @@ npm start
 npm run start:local
 ```
 
+### Env vars
+
+* `DATAHUB_API` - base api endpoint.
+  * default = `https://api.datahub.io`
+
 See the docs for more information.
