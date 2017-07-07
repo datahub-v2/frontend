@@ -6,6 +6,66 @@ DataHub Pricing
 
 {% block content %}
 <div class="container">
-  
+  <div class="inner_container">
+    <h1 class="text-center">{{ title }}</h1>
+
+    <table class="table table-pricing">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="heading">Huber</th>
+          <th class="heading">Gold</th>
+          <th class="heading">Premium</th>
+          <th class="heading">Metering</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="left-heading">DATASET</td>
+          <td class="main-info">&infin;</td>
+          <td class="main-info">&infin;</td>
+          <td class="main-info">&infin;</td>
+          <td class="main-info">&infin;</td>
+        </tr>
+        <tr>
+          <td class="left-heading">SIZE</td>
+          <td class="main-info">&le; 5MB</td>
+          <td class="main-info">&le; 1GB</td>
+          <td class="main-info">&le; 10GB</td>
+          <td class="main-info">Pay as you go</td>
+        </tr>
+        <tr>
+          <td class="left-heading">SUPPORT</td>
+          <td class="main-info">Not guaranteed</td>
+          <td class="main-info">~48h</td>
+          <td class="main-info">~24h</td>
+          <td class="main-info">~24h</td>
+        </tr>
+        <tr>
+          <td class="left-heading">PRIVACY</td>
+          <td class="main-info"><i class="fa fa-times" aria-hidden="true"></i></td>
+          <td class="main-info"><i class="fa fa-check" aria-hidden="true"></i></td>
+          <td class="main-info"><i class="fa fa-check" aria-hidden="true"></i></td>
+          <td class="main-info"><i class="fa fa-check" aria-hidden="true"></i></td>
+        </tr>
+        <tr>
+          <td class="left-heading">API</td>
+          <td class="main-info"><i class="fa fa-check" aria-hidden="true"></i></td>
+          <td class="main-info"><i class="fa fa-check" aria-hidden="true"></i></td>
+          <td class="main-info"><i class="fa fa-check" aria-hidden="true"></i></td>
+          <td class="main-info"><i class="fa fa-check" aria-hidden="true"></i></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td class="heading">FREE</td>
+          <td class="heading">$4.99 <span class="secondary">/ mo</span></td>
+          <td class="heading">$9.99 <span class="secondary">/ mo</span></td>
+          <td class="heading">Raw cost + 3%</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
 </div>
 {% endblock %}

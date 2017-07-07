@@ -85,7 +85,7 @@ module.exports = function () {
 
   router.get('/pricing', (req, res) => {
     res.render('pricing.html', {
-      test: 'test1'
+      title: 'Offers'
     })
   })
 

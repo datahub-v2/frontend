@@ -1,0 +1,36 @@
+.table-pricing > tbody > tr > td,
+.table-pricing > tbody > tr > th,
+.table-pricing > tfoot > tr > td,
+.table-pricing > tfoot > tr > th,
+.table-pricing > thead > tr > td,
+.table-pricing > thead > tr > th {
+  border: none;
+}
+
+.table-pricing {
+  .heading {
+    font-size: 1.7em;
+    font-weight: 200;
+  }
+  .main-info {
+    font-size: 1.25em;
+    font-weight: 400;
+    padding-top: 17px;
+    padding-bottom: 17px;
+  }
+  .left-heading {
+    font-size: 1.15em;
+    font-weight: 200;
+    padding-top: 17px;
+    padding-bottom: 17px;
+  }
+  i.fa-times {
+    color: red;
+  }
+  i.fa-check {
+    color: green;
+  }
+  span.secondary {
+    color: $gray-light;
+  }
+}
