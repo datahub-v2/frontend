@@ -119,4 +119,16 @@ describe('Routes', function(){
         done()
     })
   })
+
+  it('Pricing page returns 200 and has correct content', function(done){
+    request(app)
+      .get('/pricing')
+      .expect(200)
+      .end(function(err, res) {
+        assert.equal(res.statusCode, 200)
+        assert(res.text.match('Metering'), res.text)
+        assert(res.text.match('PRIVACY'), res.text)
+        done()
+      })
+  })
 })
