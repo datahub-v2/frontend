@@ -42,9 +42,9 @@ module.exports.initMocks = function() {
 
   // Mock api calls for authentication
   // Not authenticated returns urls for login
-  nock('https://datax.phonaris.com')
+  nock(config.get('DATAHUB_API'))
     .persist()
-    .get('/auth/check?jwt=undefined&next=https://staging.datapackaged.com/success')
+    .get(`/auth/check?jwt=undefined&next=${config.get('baseUrl')}/success`)
     .reply(200, {
       "authenticated": false,
       "providers": {
@@ -57,9 +57,9 @@ module.exports.initMocks = function() {
       }
     })
   // GitHub
-  nock('https://datax.phonaris.com')
+  nock(config.get('DATAHUB_API'))
     .persist()
-    .get('/auth/check?jwt=1a2b3c&next=https://staging.datapackaged.com/success')
+    .get(`/auth/check?jwt=1a2b3c&next=${config.get('baseUrl')}/success`)
     .reply(200, {
       "authenticated": true,
       "profile": {
@@ -73,9 +73,9 @@ module.exports.initMocks = function() {
       }
     })
   // GOOGLE
-  nock('https://datax.phonaris.com')
+  nock(config.get('DATAHUB_API'))
     .persist()
-    .get('/auth/check?jwt=1a2b3c4d&next=https://staging.datapackaged.com/success')
+    .get(`/auth/check?jwt=1a2b3c4d&next=${config.get('baseUrl')}/success`)
     .reply(200, {
       "authenticated": true,
       "profile": {

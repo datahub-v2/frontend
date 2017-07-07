@@ -16,7 +16,8 @@ nconf.defaults({
   app: {
     port: process.env.PORT || 4000
   },
-  baseUrl: 'https://staging.datapackaged.com',
+  DATAHUB_API: process.env.DATAHUB_API || 'https://api.datahub.io',
+  baseUrl: 'https://testing.datapackaged.com',
   bitstoreBaseUrl: 'https://bits-staging.datapackaged.com',
   showcasePackages: [
     {owner: 'core', name: 's-and-p-500-companies'},
