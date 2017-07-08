@@ -83,6 +83,12 @@ module.exports = function () {
     })
   })
 
+  router.get('/pricing', (req, res) => {
+    res.render('pricing.html', {
+      title: 'Offers'
+    })
+  })
+
   router.get('/:owner', (req, res) => {
     res.render('owner.html', {
       title: req.params.owner

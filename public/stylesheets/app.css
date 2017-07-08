@@ -6585,4 +6585,32 @@ h2.publisher {
 .tab-content {
   margin-top: 20px; }
 
+.table-pricing > tbody > tr > td,
+.table-pricing > tbody > tr > th,
+.table-pricing > tfoot > tr > td,
+.table-pricing > tfoot > tr > th,
+.table-pricing > thead > tr > td,
+.table-pricing > thead > tr > th {
+  border: none; }
+
+.table-pricing .heading {
+  font-size: 1.7em;
+  font-weight: 200; }
+.table-pricing .main-info {
+  font-size: 1.25em;
+  font-weight: 400;
+  padding-top: 17px;
+  padding-bottom: 17px; }
+.table-pricing .left-heading {
+  font-size: 1.15em;
+  font-weight: 200;
+  padding-top: 17px;
+  padding-bottom: 17px; }
+.table-pricing i.fa-times {
+  color: red; }
+.table-pricing i.fa-check {
+  color: green; }
+.table-pricing span.secondary {
+  color: #BDBDBD; }
+
 /*# sourceMappingURL=app.css.map */
