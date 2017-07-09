@@ -66,7 +66,7 @@ module.exports = function () {
     const shortReadme = utils.makeSmallReadme(readme)
     readme = utils.dpInReadme(readme, dpjson)
     readme = utils.textToMarkdown(readme)
-    const dpBitStoreUrl = [config.get('bitstoreBaseUrl'), 'metadata', req.params.owner, req.params.name, '_v', 'latest'].join('/')
+    const dpBitStoreUrl = [config.get('BITSTORE_URL'), 'metadata', req.params.owner, req.params.name, '_v', 'latest'].join('/')
     res.render('showcase.html', {
       title: req.params.owner + ' | ' + req.params.name,
       dataset: utils.extendDpjson(dpjson),

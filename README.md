@@ -10,14 +10,14 @@ Clone the repo, install dependencies using yarn (or npm), and run the server:
 # or npm install
 yarn install
 npm start
-
-# start locally with nodemon and baseUrl as 0.0.0.0:4000
-npm run start:local
 ```
 
 ### Env vars
 
-* `DATAHUB_API` - base api endpoint.
-  * default = `https://api.datahub.io`
+We use `.env` file for loading environment variables. Please, use provided `env.template` as a template:
+
+* `SITE_URL` - base URL of the site.
+* `API_URL` - base URL of the API endpoint.
+* `BITSTORE_URL` - base URL for the bitstore (rawstore).
 
 See the docs for more information.

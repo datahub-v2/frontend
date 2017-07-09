@@ -2,12 +2,10 @@
 
 const path = require('path')
 const nconf = require('nconf')
+require('dotenv').config()
 
 nconf.argv()
   .env()
-  .file({
-    file: path.join(__dirname, '/../../settings.json')
-  })
 
 // This is the object that you want to override in your own local config
 nconf.defaults({
@@ -16,9 +14,9 @@ nconf.defaults({
   app: {
     port: process.env.PORT || 4000
   },
-  DATAHUB_API: process.env.DATAHUB_API || 'https://api.datahub.io',
-  baseUrl: 'https://testing.datapackaged.com',
-  bitstoreBaseUrl: 'https://bits-staging.datapackaged.com',
+  API_URL: process.env.API_URL,
+  SITE_URL: process.env.SITE_URL,
+  BITSTORE_URL: process.env.BITSTORE_URL,
   showcasePackages: [
     {owner: 'core', name: 's-and-p-500-companies'},
     {owner: 'core', name: 'house-prices-us'},

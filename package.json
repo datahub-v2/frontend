@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "start:local": "nodemon index.js --baseUrl http://0.0.0.0:4000",
     "test": "xo && mocha tests"
   },
   "xo": {
@@ -33,6 +32,7 @@
     "body-parser": "^1.17.2",
     "bytes": "^2.5.0",
     "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "marked": "^0.3.6",
     "nconf": "^0.8.4",
