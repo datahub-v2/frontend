@@ -12,13 +12,10 @@ module.exports = function () {
 
   router.get('/', async (req, res) => {
     if (req.cookies.jwt) {
+      const currentUser = utils.getCurrentUser(req.cookies)
       res.render('dashboard.html', {
         title: 'Dashboard',
-        currentUser: {
-          secret: req.cookies.jwt,
-          email: req.cookies.email,
-          name: req.cookies.name
-        }
+        currentUser
       })
     } else {
       // Get showcase and turorial packages for the front page
