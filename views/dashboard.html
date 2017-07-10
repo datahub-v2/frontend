@@ -12,48 +12,39 @@ window.history.pushState("", "Dashboard", "/");
 
 {% block content %}
 <div class="container">
-    {% if currentUser.email != None %}
-	<div class="row  justify-content-center">
-	  <div class="col-4">
-        <br>
-        <img src="{{currentUser.email}}" class="img-thumbnail"/>
-        <br>
-        <br>
-        <span class="fa fa-envelope"></span>
-        <span class="help-block">{{currentUser.email}}</span>
+  <div class="inner_container">
+    <h1 class="page-title">Your Dashboard</h1>
+    <div class="row">
+      <div class="col-xs-5">
+        <p class="user">
+          {% if currentUser.email != None %}
+            <img src="https://www.gravatar.com/avatar/{{ currentUser.emailHash }}" class="img-responsive img-circle avatar-lg" />
+            {{ currentUser.email }}
+          {% else %}
+            <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
+            {{ currentUser.name }}
+          {% endif %}
+        </p>
   	  </div>
-	</div>
-    {% endif %}
-	<div>
-		<h1>
-			Welcome {{currentUser.name}}!
-		</h1>
-		<h5>Your Access Token: {{currentUser.secret}}</h5>
-	</div>
-	<div>
-		<h3>Start publishing your data packages in 3 easy steps:</h3>
-		<br>
-    <div class="highlight">
-      <pre>
-        Install dpm, the data package manager  command line tool:
-
-        	$ [sudo] pip install git+https://github.com/frictionlessdata/dpm-py.git
-
-        Set your configuration:
-
-        	$ dpm configure
-        	> Username:  # {{currentUser.name}}
-        	# Use your secret token here (also visible at the top of the page)
-        	> Your access_token:  # {{currentUser.secret}}
-        	# Use server url Eg: https://staging.datapackaged.com/
-        	> Server URL:
-
-        Publish
-
-        	$ cd your-data-package-directory/
-        	$ dpm publish
-      </pre>
+      <div class="col-xs-7">
+        <table class="table table-dashboard">
+          <thead>
+            <tr>
+              <th>PLAN</th>
+              <th>PACKAGES</th>
+              <th>ON DISK</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="main-info">{{ currentUser.plan }}</td>
+              <td class="main-info">{{ currentUser.packages }}</td>
+              <td class="main-info">{{ currentUser.onDisk }} / {{ currentUser.disk }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-	</div>
+  </div>
 </div>
 {% endblock %}
