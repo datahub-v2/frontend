@@ -1,8 +1,8 @@
 DataHub frontend in node.js.
 
-[![Build Status](https://travis-ci.org/datahq/datahub-frontend.svg?branch=master)](https://travis-ci.org/datahq/datahub-frontend)
+[![Build Status](https://travis-ci.org/datahq/frontend.svg?branch=master)](https://travis-ci.org/datahq/frontend)
 
-## Quick Start
+## Quick Start
 
 Clone the repo, install dependencies using yarn (or npm), and run the server:
 
@@ -20,4 +20,4 @@ We use `.env` file for loading environment variables. Please, use provided `env.
 * `API_URL` - base URL of the API endpoint.
 * `BITSTORE_URL` - base URL for the bitstore (rawstore).
 
-See the docs for more information.
+See the [docs](http://docs.datahub.io/developers/) for more information.
