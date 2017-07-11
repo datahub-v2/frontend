@@ -26,7 +26,7 @@ describe('Routes', function(){
       .set('Cookie', ['jwt=123456'])
       .end(function(err, res) {
         assert.equal(res.statusCode, 200)
-        assert(res.text.match('Your Access Token: 123456'), res.text)
+        assert(res.text.match('Your Dashboard'), res.text)
         done()
       })
   })

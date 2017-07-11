@@ -9,7 +9,7 @@ module.exports.readme = fs.readFileSync('tests/fixtures/demo-package/README.md')
 
 module.exports.initMocks = function() {
   var data = module.exports
-  nock(config.get('bitstoreBaseUrl'))
+  nock(config.get('BITSTORE_URL'))
     .persist()
     .get('/metadata/admin/demo-package/_v/latest/datapackage.json')
     .reply(200, data.dataPackage, {'access-control-allow-origin': '*'})
@@ -42,9 +42,10 @@ module.exports.initMocks = function() {
 
   // Mock api calls for authentication
   // Not authenticated returns urls for login
-  nock(config.get('DATAHUB_API'))
+  process.stdout.write(config.get('BITSTORE_URL'))
+  nock(config.get('API_URL'))
     .persist()
-    .get(`/auth/check?jwt=undefined&next=${config.get('baseUrl')}/success`)
+    .get(`/auth/check?jwt=undefined&next=${config.get('SITE_URL')}/success`)
     .reply(200, {
       "authenticated": false,
       "providers": {
@@ -57,9 +58,9 @@ module.exports.initMocks = function() {
       }
     })
   // GitHub
-  nock(config.get('DATAHUB_API'))
+  nock(config.get('API_URL'))
     .persist()
-    .get(`/auth/check?jwt=1a2b3c&next=${config.get('baseUrl')}/success`)
+    .get(`/auth/check?jwt=1a2b3c&next=${config.get('SITE_URL')}/success`)
     .reply(200, {
       "authenticated": true,
       "profile": {
@@ -73,9 +74,9 @@ module.exports.initMocks = function() {
       }
     })
   // GOOGLE
-  nock(config.get('DATAHUB_API'))
+  nock(config.get('API_URL'))
     .persist()
-    .get(`/auth/check?jwt=1a2b3c4d&next=${config.get('baseUrl')}/success`)
+    .get(`/auth/check?jwt=1a2b3c4d&next=${config.get('SITE_URL')}/success`)
     .reply(200, {
       "authenticated": true,
       "profile": {

@@ -6443,7 +6443,7 @@ div.logout {
 blockquote {
   font-size: inherit; }
 
-.avatar {
+.avatar, .avatar-lg {
   width: 20px;
   display: inline-block;
   margin-right: 5px; }
@@ -6585,32 +6585,51 @@ h2.publisher {
 .tab-content {
   margin-top: 20px; }
 
-.table-pricing > tbody > tr > td,
+.table-pricing > tbody > tr > td, .table-dashboard > tbody > tr > td,
 .table-pricing > tbody > tr > th,
+.table-dashboard > tbody > tr > th,
 .table-pricing > tfoot > tr > td,
+.table-dashboard > tfoot > tr > td,
 .table-pricing > tfoot > tr > th,
+.table-dashboard > tfoot > tr > th,
 .table-pricing > thead > tr > td,
-.table-pricing > thead > tr > th {
+.table-dashboard > thead > tr > td,
+.table-pricing > thead > tr > th,
+.table-dashboard > thead > tr > th {
   border: none; }
 
-.table-pricing .heading {
+.table-pricing .heading, .table-dashboard .heading {
   font-size: 1.7em;
   font-weight: 200; }
-.table-pricing .main-info {
+.table-pricing .main-info, .table-dashboard .main-info {
   font-size: 1.25em;
   font-weight: 400;
   padding-top: 17px;
   padding-bottom: 17px; }
-.table-pricing .left-heading {
+.table-pricing .left-heading, .table-dashboard .left-heading {
   font-size: 1.15em;
   font-weight: 200;
   padding-top: 17px;
   padding-bottom: 17px; }
-.table-pricing i.fa-times {
+.table-pricing i.fa-times, .table-dashboard i.fa-times {
   color: red; }
-.table-pricing i.fa-check {
+.table-pricing i.fa-check, .table-dashboard i.fa-check {
   color: green; }
-.table-pricing span.secondary {
+.table-pricing span.secondary, .table-dashboard span.secondary {
   color: #BDBDBD; }
+
+.table-dashboard th {
+  font-size: 0.8em; }
+.table-dashboard .main-info {
+  font-size: 1.35em; }
+
+h1.page-title {
+  margin-bottom: 1.6em; }
+
+p.user {
+  font-size: 1.35em; }
+
+.avatar-lg {
+  width: 30px; }
 
 /*# sourceMappingURL=app.css.map */

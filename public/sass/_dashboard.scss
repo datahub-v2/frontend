@@ -1,0 +1,22 @@
+.table-dashboard {
+  @extend .table-pricing;
+  th {
+    font-size: 0.8em;
+  }
+  .main-info {
+    font-size: 1.35em;
+  }
+}
+
+h1.page-title {
+  margin-bottom: 1.6em;
+}
+
+p.user {
+  font-size: 1.35em;
+}
+
+.avatar-lg {
+  @extend .avatar;
+  width: 30px;
+}

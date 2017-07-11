@@ -142,4 +142,13 @@ describe('Utils', () => {
 		assert.equal(res[0].shortReadme.length, 294)
 		assert.equal(res[0].owner.username, 'admin')
 	})
+
+	it('Generates currentUser object for dashboard page', () => {
+		const currentUser = {
+			email: 'test@test.com'
+		}
+		const res = utils.getCurrentUser(currentUser)
+		assert.equal(res.email, 'test@test.com')
+		assert.equal(res.emailHash, 'b642b4217b34b1e8d3bd915fc65c4452')
+	})
 })

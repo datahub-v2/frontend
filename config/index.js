@@ -1,6 +1,5 @@
 'use strict'
 
-const path = require('path')
 const nconf = require('nconf')
 require('dotenv').config()
 
@@ -14,9 +13,9 @@ nconf.defaults({
   app: {
     port: process.env.PORT || 4000
   },
-  API_URL: process.env.API_URL,
-  SITE_URL: process.env.SITE_URL,
-  BITSTORE_URL: process.env.BITSTORE_URL,
+  API_URL: process.env.API_URL || 'http://0.0.0.0:4000',
+  SITE_URL: process.env.SITE_URL || 'http://0.0.0.0:4000',
+  BITSTORE_URL: process.env.BITSTORE_URL || 'http://0.0.0.0:4000/static/fixtures/',
   showcasePackages: [
     {owner: 'core', name: 's-and-p-500-companies'},
     {owner: 'core', name: 'house-prices-us'},
