@@ -106,7 +106,7 @@
               </td>
               <td class="download truncate col-xs-1">
                   <a href="{{ datapackageUrl | replace("/datapackage.json","")}}/{{ resource.path }}" onclick="trackOutboundLink(this.href)">
-                      <i class="fa fa-download" aria-hidden="true"></i>
+                      <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
                   </a>
               </td>
             </tr>
@@ -122,7 +122,7 @@
           {{resource.name}}
           &nbsp;
           <a href="{{ datapackageUrl | replace("/datapackage.json","")}}/{{ resource.path }}" onclick="trackOutboundLink(this.href)">
-            <i class="fa fa-download" aria-hidden="true"></i>
+            <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
           </a>
         </h2>
         <div id="resource-{{loop.index - 1}}" class="react-me tables part"
