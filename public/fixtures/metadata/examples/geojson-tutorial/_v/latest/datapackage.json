@@ -1,0 +1,13 @@
+{
+  "name": "geojson-tutorial",
+  "title": "GeoJSON Tutorial",
+  "version": "0.1.0",
+  "resources": [
+    {
+      "name": "example",
+      "path": "data/example.geojson",
+      "format": "geojson",
+      "mediatype": "application/json"
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "name": "vega-views-tutorial-lines",
+  "title": "Vega Graph Spec Tutorial - US presidents",
+  "sources": [{
+    "name": "vega-datasets",
+    "web": "https://github.com/vega/vega-datasets"
+  }],
+  "resources": [
+    {
+      "name": "people",
+      "path": "data/people.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "label",
+            "type": "string"
+          },
+          {
+            "name": "born",
+            "type": "number"
+          },
+          {
+            "name": "died",
+            "type": "number"
+          },
+          {
+            "name": "enter",
+            "type": "number"
+          },
+          {
+            "name": "leave",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "events",
+      "path": "data/events.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "when",
+            "type": "date"
+          }
+        ]
+      }
+    }
+  ],
+  "views": [
+    {
+      "name": "demo-datapackage-vega",
+      "title": "Lifelines of first 5 US presidents",
+      "resources": ["people", "events"],
+      "specType": "vega",
+      "spec": {
+        "width": 800,
+        "height": 200,
+        "data": [
+          {
+            "name": "people"
+          },
+          {
+            "name": "events",
+            "format": {"type":"json", "parse":{"when":"date"}}
+          }
+        ],
+        "scales": [
+          {
+            "name": "y",
+            "type": "ordinal",
+            "range": "height",
+            "domain": {"data": "people", "field": "label"}
+          },
+          {
+            "name": "x",
+            "type": "time",
+            "range": "width",
+            "round": true,
+            "nice": "year",
+            "domain": {"data": "people", "field": ["born", "died"]}
+          }
+        ],
+        "axes": [
+          {"type": "x", "scale": "x"}
+        ],
+        "marks": [
+          {
+            "type": "text",
+            "from": {"data": "events"},
+            "properties": {
+              "enter": {
+                "x": {"scale": "x", "field": "when"},
+                "y": {"value": -10},
+                "angle": {"value": -25},
+                "fill": {"value": "#000"},
+                "text": {"field": "name"},
+                "font": {"value": "Helvetica Neue"},
+                "fontSize": {"value": 10}
+              }
+            }
+          },
+          {
+            "type": "rect",
+            "from": {"data": "events"},
+            "properties": {
+              "enter": {
+                "x": {"scale": "x", "field": "when"},
+                "y": {"value": -8},
+                "width": {"value": 1},
+                "height": {"field": {"group": "height"}, "offset": 8},
+                "fill": {"value": "#888"}
+              }
+            }
+          },
+          {
+            "type": "text",
+            "from": {"data": "people"},
+            "properties": {
+              "enter": {
+                "x": {"scale": "x", "field": "born"},
+                "y": {"scale": "y", "field": "label", "offset": -3},
+                "fill": {"value": "#000"},
+                "text": {"field": "label"},
+                "font": {"value": "Helvetica Neue"},
+                "fontSize": {"value": 10}
+              }
+            }
+          },
+          {
+            "type": "rect",
+            "from": {"data": "people"},
+            "properties": {
+              "enter": {
+                "x": {"scale": "x", "field": "born"},
+                "x2": {"scale": "x", "field": "died"},
+                "y": {"scale": "y", "field": "label"},
+                "height": {"value": 2},
+                "fill": {"value": "#557"}
+              }
+            }
+          },
+          {
+            "type": "rect",
+            "from": {"data": "people"},
+            "properties": {
+              "enter": {
+                "x": {"scale": "x", "field": "enter"},
+                "x2": {"scale": "x", "field": "leave"},
+                "y": {"scale": "y", "field": "label", "offset":-1},
+                "height": {"value": 4},
+                "fill": {"value": "#e44"}
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
