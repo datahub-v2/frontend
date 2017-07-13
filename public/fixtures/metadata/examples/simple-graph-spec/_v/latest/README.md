@@ -1,51 +1,124 @@
-CBOE Volatility Index (VIX) time-series dataset including daily open, close,
-high and low. The CBOE Volatility Index (VIX) is a key measure of market
-expectations of near-term volatility conveyed by S&P 500 stock index option
-prices introduced in 1993.
+This is an example Data Package, that demonstrates how to build the simple and nice graphs using the "Simple Graph Spec". We are using CBOE Volatility Index (VIX) time-series dataset for 2015-2016 as an example to create line and bar charts.
 
-## Data
+## Views
 
-From the [VIX FAQ][faq]:
+We assume that you are familiar with what [datapackage.json][datapackage.json] is and it's specifications.
 
-> In 1993, the Chicago Board Options Exchange® (CBOE®) introduced the CBOE
-> Volatility Index®, VIX®, and it quickly became the benchmark for stock market
-> volatility. It is widely followed and has been cited in hundreds of news
-> articles in the Wall Street Journal, Barron's and other leading financial
-> publications. Since volatility often signifies financial turmoil, VIX is
-> often referred to as the "investor fear gauge".
->
-> VIX measures market expectation of near term volatility conveyed by stock
-> index option prices. The original VIX was constructed using the implied
-> volatilities of eight different OEX option series so that, at any given time,
-> it represented the implied volatility of a hypothetical at-the-money OEX
-> option with exactly 30 days to expiration.
-> 
-> The New VIX still measures the market's expectation of 30-day volatility, but
-> in a way that conforms to the latest thinking and research among industry
-> practitioners. The New VIX is based on S&P 500 index option prices and
-> incorporates information from the volatility "skew" by using a wider range of
-> strike prices rather than just at-the-money series. 
+To create graphs for your tabular Data Package, the `datapackage.json` should include the `views` attribute that is responsible for visualizations.
 
-[faq]: http://www.cboe.com/micro/vix/faq.aspx
+"Simple Graph Spec" is the quickest and easiest way to build a graph . To use it, inside `views` you should set `specType` to "simple" and define some graph specifications in `spec`. See example datapackage.json:
 
-## Preparation
+{{ datapackage.json }}
 
-Run the shell script:
+<br>
 
-    . scripts/process.sh
+inside `spec` attribute, there are only 3 properties enough to define graph specifications:
 
-Output data is in `data/`.
+<table class="table table-bordered table-striped resource-summary">
+  <thead>
+   <tr>
+     <th>Attribute</th>
+     <th>Type</th>
+     <th>Description</th>
+   </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>type</th>
+      <td>String</td>
+      <td>line, bar, pie (defaults to line)</td>
+    </tr>
+    <tr>
+      <th>group</th>
+      <td>String</td>
+      <td>Field name, that will be used as abscissa (usually date field)</td>
+    </tr>
+    <tr>
+      <th>series</th>
+      <td>Array</td>
+      <td>Field name(s) that will be used as ordinate</td>
+    </tr>
+  </tbody>
+</table>
 
-### TODO
+You can define multiple views for your Data Package. For example, to display line graph as presented above, we defined graph `type` to be a `line`
 
-* Incorporate computed historical data (1990-2003)
-* Consider incorporating VOX data
+```
+  ...
+  "spec": {
+    "type": "line",
+    ...
+  }
+```
 
-## License
+Similarly to display bar chart we've used `bar` type.
 
-No obvious statement on [historical data page][historical]. Given size and
-factual nature of the data and its source from a US company would imagine this
-was public domain and as such have licensed the Data Package under the Public
-Domain Dedication and License (PDDL).
+```
+  ...
+  "spec": {
+    "type": "bar",
+    ...
+  }
+```
 
-[historical]: http://www.cboe.com/micro/vix/historical.aspx
+We use `Date` field to display data over time, by setting `group` attribute to the field name
+
+```
+  ...
+  "spec": {
+    ...
+    "group": "Date",
+    ...
+  }
+```
+
+You can set any number of fields to display in `series` attribute as an array
+
+```
+  ...
+  "spec": {
+    ...
+    "series": [
+      "VIXHigh",
+      "VIXLow"
+    ]
+ }
+```
+
+In our case we've displayed line graph for `VIXHigh` and `VIXLow` and similarly, in the bar chart, we use all four series and all of them are presented in chart.
+
+Outside of `spec` attribute there are some other important parameters to note:
+
+<table class="table table-bordered table-striped resource-summary">
+  <thead>
+   <tr>
+     <th>Attribute</th>
+     <th>Type</th>
+     <th>Description</th>
+   </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>name</th>
+      <td>String</td>
+      <td>Unique identifier for view within list of views (lines 51 and 62)</td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td>String</td>
+      <td>Title for the graph (lines 52 and 63)</td>
+    </tr>
+    <tr>
+      <th>resources</th>
+      <td>Array</td>
+      <td>Data sources for this spec. It can be either resource name or index. By default it is the first resource (lines 53 and 64)</td>
+    </tr>
+    <tr>
+      <th>specType</th>
+      <td>String</td>
+      <td>Available options: simple, vega, plotly <strong>(Required)</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+[datapackage.json]: http://specs.frictionlessdata.io/data-package/#specification
