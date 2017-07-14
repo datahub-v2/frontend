@@ -1,0 +1,70 @@
+{
+  "name": "simple-graph-spec",
+  "title": "Simple Graph Spec Tutorial",
+  "sources": [{
+    "name": "CBOE VIX Page",
+    "web": "http://www.cboe.com/micro/vix/historical.aspx"
+  }],
+  "resources": [
+    {
+      "name": "vix-daily",
+      "path": "data/vix-daily.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "Date",
+            "type": "date",
+            "description": ""
+          },
+          {
+            "name": "VIXOpen",
+            "type": "number",
+            "description": ""
+          },
+          {
+            "name": "VIXHigh",
+            "type": "number",
+            "description": ""
+          },
+          {
+            "name": "VIXLow",
+            "type": "number",
+            "description": ""
+          },
+          {
+            "name": "VIXClose",
+            "type": "number",
+            "description": ""
+          }
+        ],
+        "primaryKey": "Date"
+      }
+    }
+  ],
+  "views": [
+    {
+      "name": "simple-view-line",
+      "title": "tutorial-on-simple-views-line",
+      "resources": ["vix-daily"],
+      "specType": "simple",
+      "spec": {
+        "type": "line",
+        "group": "Date",
+        "series": ["VIXHigh", "VIXLow"]
+      }
+    },
+    {
+      "name": "simple-view-bar",
+      "title": "tutorial-on-simple-views-bar",
+      "resources": ["vix-daily"],
+      "specType": "simple",
+      "spec": {
+        "type": "bar",
+        "group": "Date",
+        "series": ["VIXOpen", "VIXOpen", "VIXHigh", "VIXLow"]
+      }
+    }
+  ]
+}
