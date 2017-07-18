@@ -15,7 +15,7 @@ nconf.defaults({
   },
   API_URL: process.env.API_URL || 'http://0.0.0.0:4000',
   SITE_URL: process.env.SITE_URL || 'http://0.0.0.0:4000',
-  BITSTORE_URL: process.env.BITSTORE_URL || 'http://0.0.0.0:4000/static/fixtures/',
+  BITSTORE_URL: process.env.BITSTORE_URL || 'http://127.0.0.1:4000/static/fixtures/',
   showcasePackages: [
     {owner: 'core', name: 's-and-p-500-companies'},
     {owner: 'core', name: 'house-prices-us'},

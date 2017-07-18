@@ -18,6 +18,6 @@ We use `.env` file for loading environment variables. Please, use provided `env.
 
 * `SITE_URL` - base URL of the site.
 * `API_URL` - base URL of the API endpoint.
-* `BITSTORE_URL` - base URL for the bitstore (rawstore).
+* `BITSTORE_URL` - base URL for the bitstore (pkgstore).
 
 See the [docs](http://docs.datahub.io/developers/) for more information.
