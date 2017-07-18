@@ -6089,6 +6089,10 @@ a.explore {
 .section-gray {
   background-color: #fafafa; }
 
+.section-centered {
+  padding-left: 15%;
+  padding-right: 15%; }
+
 .package-title {
   text-decoration: underline; }
   .package-title h3 {
