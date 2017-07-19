@@ -24,8 +24,7 @@ describe('Lib', () => {
 
   it('Handles errors if file cannot be retrieved', async () => {
     let dpjson = await api.getPackage('bad-user', 'bad-package')
-    assert.equal(dpjson.error, true)
-    assert.equal(dpjson.name, 404)
+    assert.equal(dpjson, undefined)
   })
 
   it('Authenticate function returns urls for login - GitHub and Google', async () => {
