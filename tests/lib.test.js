@@ -22,6 +22,12 @@ describe('Lib', () => {
     assert.equal(readme.slice(0,27), 'This README and datapackage')
   })
 
+  it('Handles errors if file cannot be retrieved', async () => {
+    let dpjson = await api.getPackage('bad-user', 'bad-package')
+    assert.equal(dpjson.error, true)
+    assert.equal(dpjson.name, 404)
+  })
+
   it('Authenticate function returns urls for login - GitHub and Google', async () => {
     const res = await api.authenticate() // Without jwt so we get urls for login
     assert.equal(res.authenticated, false)
