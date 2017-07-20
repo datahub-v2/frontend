@@ -16,8 +16,8 @@ npm start
 
 We use `.env` file for loading environment variables. Please, use provided `env.template` as a template:
 
-* `SITE_URL` - base URL of the site.
-* `API_URL` - base URL of the API endpoint.
-* `BITSTORE_URL` - base URL for the bitstore (pkgstore).
+* `SITE_URL` - FQ base URL of the site e.g. `https://datahub.io`
+* `API_URL` - FQ base URL of the API endpoint eg. `https://api.datahub.io`
+* `BITSTORE_URL` - base URL for the bitstore (pkgstore) e.g. `https://pkgstore.datahub.io`
 
 See the [docs](http://docs.datahub.io/developers/) for more information.
