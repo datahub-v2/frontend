@@ -107,42 +107,6 @@ describe('Utils', () => {
 		assert.equal(res.formats.length, 1)
 	})
 
-	it('Generates list of packages', async () => {
-		const listOfPkgId = [
-			{
-				owner: 'admin',
-				name: 'demo-package'
-			}
-		]
-		const res = await utils.getListOfDatapackages(listOfPkgId)
-		assert.equal(res[0]['name'], 'demo-package')
-		assert.equal(res.length, 1)
-	})
-
-	it('Generates list of readme for given list of pkgIds', async () => {
-		const listOfPkgId = [
-			{
-				owner: 'admin',
-				name: 'demo-package'
-			}
-		]
-		const res = await utils.getListOfReadme(listOfPkgId)
-		assert.equal(res.length, 1)
-		assert(res[0].includes('This README and datapackage is borrowed'))
-	})
-
-	it('Generates list of datapackages with readme and owner info', async () => {
-		const listOfPkgId = [
-			{
-				owner: 'admin',
-				name: 'demo-package'
-			}
-		]
-		const res = await utils.getListOfDpWithReadme(listOfPkgId)
-		assert.equal(res[0].shortReadme.length, 294)
-		assert.equal(res[0].owner.username, 'admin')
-	})
-
 	it('Generates currentUser object for dashboard page', () => {
 		const currentUser = {
 			email: 'test@test.com'

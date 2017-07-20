@@ -21,8 +21,11 @@ module.exports = function () {
       // Get showcase and turorial packages for the front page
       const listOfShowcasePkgId = config.get('showcasePackages')
       const listOfTutorialPkgId = config.get('tutorialPackages')
-      const showcasePackages = await utils.getListOfDpWithReadme(listOfShowcasePkgId)
-      const tutorialPackages = await utils.getListOfDpWithReadme(listOfTutorialPkgId)
+      // const showcasePackages = await utils.getListOfDpWithReadme(listOfShowcasePkgId)
+      // const tutorialPackages = await utils.getListOfDpWithReadme(listOfTutorialPkgId)
+      // TODO: reinstate with DataHubApi code
+      const showcasePackages = []
+      const tutorialPackages = []
       res.render('home.html', {
         title: 'Home',
         showcasePackages,
@@ -58,11 +61,20 @@ module.exports = function () {
   })
 
   router.get('/:owner/:name', async (req, res) => {
-    const dpjson = await api.getPackage(req.params.owner, req.params.name)
-    let readme = await api.getPackageFile(req.params.owner, req.params.name, 'README.md')
-    const shortReadme = utils.makeSmallReadme(readme)
-    readme = utils.dpInReadme(readme, dpjson)
-    readme = utils.textToMarkdown(readme)
+    let dpjson = null
+    try {
+      dpjson = await api.getPackage(req.params.owner, req.params.name)
+    } catch (e) {
+      if (e.name === 'BadStatusCode' &&  e.res.status === 404) {
+        res.status(404).send('Sorry we cannot locate that dataset for you!')
+        return
+      }
+      throw e
+    }
+
+    const shortReadme = utils.makeSmallReadme(dpjson.readme)
+    let readme = utils.dpInReadme(dpjson.readme, dpjson)
+    readme = utils.textToMarkdown(dpjson.readme)
     const dpBitStoreUrl = [config.get('BITSTORE_URL'), 'metadata', req.params.owner, req.params.name, '_v', 'latest'].join('/')
     res.render('showcase.html', {
       title: req.params.owner + ' | ' + req.params.name,

@@ -96,6 +96,15 @@ describe('Routes', function(){
     })
   })
 
+  it('Showcase page 404s on non-existent dataset', function(done){
+    request(app)
+      .get('/bad-user/bad-package')
+      .expect(404)
+      .end(function(err, res) {
+        done()
+    })
+  })
+
   it('Publisher page returns 200 and has correct content', function(done){
     request(app)
       .get('/publisher')

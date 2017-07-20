@@ -12,19 +12,28 @@ describe('Lib', () => {
   const api = new lib.DataHubApi(config)
 
   it('Gets datapackage.json', async () => {
-    let dpjson = await api.getPackage('admin', 'demo-package')
+    let res = await api.getPackageFile('admin', 'demo-package')
+    let dpjson = await res.json()
     assert.equal(dpjson.name, 'demo-package')
     assert.equal(dpjson.resources.length, 1)
   })
 
   it('Gets README', async () => {
-    let readme = await api.getPackageFile('admin', 'demo-package', 'README.md')
+    const res = await api.getPackageFile('admin', 'demo-package', 'README.md')
+    const readme = await res.text()
     assert.equal(readme.slice(0,27), 'This README and datapackage')
   })
 
+  it('Gets whole package', async () => {
+    const dp = await api.getPackage('admin', 'demo-package')
+    assert.equal(dp.title, 'DEMO - CBOE Volatility Index')
+    assert.equal(dp.owner, 'admin')
+    assert.equal(dp.readme.slice(0,27), 'This README and datapackage')
+  })
+
   it('Handles errors if file cannot be retrieved', async () => {
-    let dpjson = await api.getPackage('bad-user', 'bad-package')
-    assert.equal(dpjson, undefined)
+    let res = await api.getPackageFile('bad-user', 'bad-package')
+    assert.equal(res.status, 404)
   })
 
   it('Authenticate function returns urls for login - GitHub and Google', async () => {
