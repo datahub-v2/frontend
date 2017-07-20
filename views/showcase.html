@@ -105,7 +105,7 @@
                 {{ resource.updated }}
               </td>
               <td class="download truncate col-xs-1">
-                  <a href="{{ datapackageUrl | replace("/datapackage.json","")}}/{{ resource.path }}" onclick="trackOutboundLink(this.href)">
+                <a href="{{ dataset.path }}/{{ resource.path }}" onclick="trackOutboundLink(this.href)">
                       <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
                   </a>
               </td>
@@ -121,7 +121,7 @@
         <h2 id="resource-{{resource.name}}" class="section-title">
           {{resource.name}}
           &nbsp;
-          <a href="{{ datapackageUrl | replace("/datapackage.json","")}}/{{ resource.path }}" onclick="trackOutboundLink(this.href)">
+          <a href="{{ dataset.path }}/{{ resource.path }}" onclick="trackOutboundLink(this.href)">
             <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
           </a>
         </h2>
@@ -233,7 +233,7 @@
 
 <!-- pass datapackageUrl to front-end -->
 <script type="text/javascript">
-  var DATA_PACKAGE_URL = "{{ datapackageUrl }}";
+  var DATA_PACKAGE_URL = "{{ dataset.path }}/datapackage.json";
 </script>
 
 <link rel="stylesheet" media="screen" href="/static/dpr-js/dist/main.css">

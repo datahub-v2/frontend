@@ -12,7 +12,7 @@ install_github<span class="p">(</span><span class="s">"ropenscilabs/datapkg"</sp
 <span class="kn">library</span><span class="p">(</span>datapkg<span class="p">)</span>
 
 <span class="c1">#Get Data Package</span>
-datapackage <span class="o">&lt;-</span> datapkg_read<span class="p">(</span><span class="s">"https://bits.datapackaged.com/metadata/{{ dataset.owner }}/{{ dataset.name }}/_v/latest"</span><span class="p">)</span>
+datapackage <span class="o">&lt;-</span> datapkg_read<span class="p">(</span><span class="s">"{{dataset.path}}"</span><span class="p">)</span>
 
 <span class="c1">#Package info</span>
 <span class="kp">print</span><span class="p">(</span>datapackage<span class="p">)</span>
@@ -44,7 +44,7 @@ $ pip install jsontableschema-pandas
 <pre>
 <span></span><span class="kn">import</span> <span class="nn">datapackage</span>
 
-<span class="n">data_url</span> <span class="o">=</span> <span class="s2">"https://bits.datapackaged.com/metadata/{{ dataset.owner }}/{{ dataset.name }}/_v/latest/datapackage.json"</span>
+<span class="n">data_url</span> <span class="o">=</span> <span class="s2">"{{dataset.path}}/datapackage.json"</span>
 
 <span class="c1"># to load Data Package into storage</span>
 <span class="n">storage</span> <span class="o">=</span> <span class="n">datapackage</span><span class="o">.</span><span class="n">push_datapackage</span><span class="p">(</span><span class="n">data_url</span><span class="p">,</span> <span class="s1">'pandas'</span><span class="p">)</span>
@@ -74,7 +74,7 @@ $ pip install datapackage
 <pre>
 <span></span><span class="kn">import</span> <span class="nn">datapackage</span>
 
-<span class="n">dp</span> <span class="o">=</span> <span class="n">datapackage</span><span class="o">.</span><span class="n">DataPackage</span><span class="p">(</span><span class="s1">'https://bits.datapackaged.com/metadata/{{ dataset.owner }}/{{ dataset.name }}/_v/latest/datapackage.json'</span><span class="p">)</span>
+<span class="n">dp</span> <span class="o">=</span> <span class="n">datapackage</span><span class="o">.</span><span class="n">DataPackage</span><span class="p">(</span><span class="s1">'{{dataset.path}}/datapackage.json'</span><span class="p">)</span>
 
 <span class="c1"># see metadata</span>
 <span class="k">print</span><span class="p">(</span><span class="n">dp</span><span class="o">.</span><span class="n">descriptor</span><span class="p">)</span>
@@ -131,7 +131,7 @@ $ pip install datapackage
 <span class="p">}</span>
 
 
-<span class="nx">fetchDataPackageAndData</span><span class="p">(</span><span class="s1">'https://bits.datapackaged.com/metadata/{{ dataset.owner }}/{{ dataset.name }}/_v/latest/datapackage.json'</span><span class="p">);</span>
+<span class="nx">fetchDataPackageAndData</span><span class="p">(</span><span class="s1">'{{dataset.path}}/datapackage.json'</span><span class="p">);</span>
 </pre>
 </div>
 
@@ -157,7 +157,7 @@ $ pip install sqlalchemy
 <span></span><span class="kn">import</span> <span class="nn">datapackage</span>
 <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
 
-<span class="n">data_url</span> <span class="o">=</span> <span class="s1">'https://bits.datapackaged.com/metadata/{{ dataset.owner }}/{{ dataset.name }}/_v/latest/datapackage.json'</span>
+<span class="n">data_url</span> <span class="o">=</span> <span class="s1">'{{dataset.path}}/datapackage.json'</span>
 <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">'sqlite:///:memory:'</span><span class="p">)</span>
 
 <span class="c1"># to load Data Package into storage</span>

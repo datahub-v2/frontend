@@ -28,6 +28,7 @@ describe('Lib', () => {
     const dp = await api.getPackage('admin', 'demo-package')
     assert.equal(dp.title, 'DEMO - CBOE Volatility Index')
     assert.equal(dp.owner, 'admin')
+    assert.equal(dp.path, 'http://127.0.0.1:4000/static/fixtures/admin/demo-package/latest')
     assert.equal(dp.readme.slice(0,27), 'This README and datapackage')
     assert.equal(dp.readmeSnippet.length, 294)
     assert(dp.readmeHtml.includes('<p>This README and datapackage'))
