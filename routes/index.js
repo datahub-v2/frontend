@@ -61,12 +61,12 @@ module.exports = function () {
     let dpjson = null
     try {
       dpjson = await api.getPackage(req.params.owner, req.params.name)
-    } catch (e) {
-      if (e.name === 'BadStatusCode' &&  e.res.status === 404) {
+    } catch (err) {
+      if (err.name === 'BadStatusCode' && err.res.status === 404) {
         res.status(404).send('Sorry we cannot locate that dataset for you!')
         return
       }
-      throw e
+      throw err
     }
 
     const dpBitStoreUrl = [config.get('BITSTORE_URL'), 'metadata', req.params.owner, req.params.name, '_v', 'latest'].join('/')
