@@ -29,6 +29,20 @@ describe('Lib', () => {
     assert.equal(dp.title, 'DEMO - CBOE Volatility Index')
     assert.equal(dp.owner, 'admin')
     assert.equal(dp.readme.slice(0,27), 'This README and datapackage')
+    assert.equal(dp.readmeSnippet.length, 294)
+    assert(dp.readmeHtml.includes('<p>This README and datapackage'))
+  })
+
+  it('Gets list of packages', async () => {
+    const listOfPkgIds = [
+      {owner: 'core', name: 's-and-p-500-companies'},
+      {owner: 'core', name: 'house-prices-us'}
+    ]
+    const listOfDp = await api.getPackages(listOfPkgIds)
+    assert.equal(listOfDp.length, 2)
+    assert.equal(listOfDp[1].title, 'DEMO - CBOE Volatility Index')
+    assert.equal(listOfDp[1].owner, 'core')
+    assert.equal(listOfDp[1].readme.slice(0,27), 'This README and datapackage')
   })
 
   it('Handles errors if file cannot be retrieved', async () => {

@@ -70,7 +70,7 @@
       </div>
 
       <!-- short readme -->
-      <div class="readme readable-width">{{readmeShort|truncate}} <a href="#readme" class="explore" onclick="scrollDown(this)">read more</a></div>
+      <div class="readme readable-width">{{dataset.readmeSnippet}} <a href="#readme" class="explore" onclick="scrollDown(this)">read more</a></div>
 
       <!-- download button -->
       <a href="#data" class="btn btn-lg btn-primary" onclick="scrollDown(this)">Download</a>
@@ -162,7 +162,7 @@
     <div class="inner_container">
       <div class="dataset show">
         <h2 id="readme" class="section-title">Read me</h2>
-        <div class="readme part readable-width">{{readme_long|safe}}</div>
+        <div class="readme part readable-width">{{dataset.readmeHtml|safe}}</div>
       </div>
     </div>
   </div>

@@ -79,9 +79,9 @@ Welcome Home
             <h6 class="text-left">
               <b>{{ package['name'] }}</b> | {{ package.resources|length }} files | {{ package.size }}
             </h6>
-            {% if package.shortReadme %}
+            {% if package.readmeSnippet %}
             <p class="readme">
-              {{ package.shortReadme }}
+              {{ package.readmeSnippet }}
               <a href="{{ package['owner']['username'] }}/{{ package['name'] }}" class="explore">
                 explore more <span>&rsaquo;</span>
               </a>
@@ -121,7 +121,7 @@ Welcome Home
               <b>{{ package['name'] }}</b> | {{ package.resources|length }} files | {{ package.size }}
             </h6>
             <p class="readme">
-              {{ package.shortReadme }}
+              {{ package.readmeSnippet }}
               <a href="{{ package['owner']['username'] }}/{{ package['name'] }}" class="explore">
                 explore more <span>&rsaquo;</span>
               </a>

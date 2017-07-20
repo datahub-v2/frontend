@@ -21,11 +21,8 @@ module.exports = function () {
       // Get showcase and turorial packages for the front page
       const listOfShowcasePkgId = config.get('showcasePackages')
       const listOfTutorialPkgId = config.get('tutorialPackages')
-      // const showcasePackages = await utils.getListOfDpWithReadme(listOfShowcasePkgId)
-      // const tutorialPackages = await utils.getListOfDpWithReadme(listOfTutorialPkgId)
-      // TODO: reinstate with DataHubApi code
-      const showcasePackages = []
-      const tutorialPackages = []
+      const showcasePackages = await api.getPackages(listOfShowcasePkgId)
+      const tutorialPackages = await api.getPackages(listOfTutorialPkgId)
       res.render('home.html', {
         title: 'Home',
         showcasePackages,
@@ -72,17 +69,11 @@ module.exports = function () {
       throw e
     }
 
-    const shortReadme = utils.makeSmallReadme(dpjson.readme)
-    let readme = utils.dpInReadme(dpjson.readme, dpjson)
-    readme = utils.textToMarkdown(dpjson.readme)
     const dpBitStoreUrl = [config.get('BITSTORE_URL'), 'metadata', req.params.owner, req.params.name, '_v', 'latest'].join('/')
     res.render('showcase.html', {
       title: req.params.owner + ' | ' + req.params.name,
       dataset: utils.extendDpjson(dpjson),
-      datapackageUrl: dpBitStoreUrl + '/datapackage.json',
-      readmeShort: shortReadme,
-			// eslint-disable-next-line camelcase
-      readme_long: readme
+      datapackageUrl: dpBitStoreUrl + '/datapackage.json'
     })
   })
 
