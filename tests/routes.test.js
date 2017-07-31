@@ -20,9 +20,9 @@ describe('Routes', function(){
     })
   })
 
-  it('Dashboard page renders instead of Home when jwt in cookies setup', function(done){
+  it('Dashboard page renders when jwt in cookies setup', function(done){
     request(app)
-      .get('/')
+      .get('/dashboard')
       .set('Cookie', ['jwt=123456'])
       .end(function(err, res) {
         assert.equal(res.statusCode, 200)

@@ -11,6 +11,21 @@ module.exports = function () {
   const api = new lib.DataHubApi(config)
 
   router.get('/', async (req, res) => {
+    // Get showcase and turorial packages for the front page
+    const listOfShowcasePkgId = config.get('showcasePackages')
+    const listOfTutorialPkgId = config.get('tutorialPackages')
+    const showcasePackages = await api.getPackages(listOfShowcasePkgId)
+    const tutorialPackages = await api.getPackages(listOfTutorialPkgId)
+    res.render('home.html', {
+      title: 'Home',
+      showcasePackages,
+      tutorialPackages,
+      logout: req.query.logout,
+      error: req.query.error
+    })
+  })
+
+  router.get('/dashboard', async (req, res) => {
     if (req.cookies.jwt) {
       const currentUser = utils.getCurrentUser(req.cookies)
       res.render('dashboard.html', {
@@ -18,18 +33,7 @@ module.exports = function () {
         currentUser
       })
     } else {
-      // Get showcase and turorial packages for the front page
-      const listOfShowcasePkgId = config.get('showcasePackages')
-      const listOfTutorialPkgId = config.get('tutorialPackages')
-      const showcasePackages = await api.getPackages(listOfShowcasePkgId)
-      const tutorialPackages = await api.getPackages(listOfTutorialPkgId)
-      res.render('home.html', {
-        title: 'Home',
-        showcasePackages,
-        tutorialPackages,
-        logout: req.query.logout,
-        error: req.query.error
-      })
+      res.status(404).send('Sorry, this page was not found.')
     }
   })
 
@@ -46,7 +50,7 @@ module.exports = function () {
       res.cookie('jwt', jwt)
       res.cookie('email', isAuthenticated.profile.email)
       res.cookie('name', isAuthenticated.profile.name)
-      res.redirect('/')
+      res.redirect('/dashboard')
     } else {
       res.redirect('/?error=true')
     }
