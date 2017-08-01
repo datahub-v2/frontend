@@ -44,7 +44,6 @@ module.exports.initMocks = function() {
 
   // Mock api calls for authentication
   // Not authenticated returns urls for login
-  process.stdout.write(config.get('BITSTORE_URL'))
   nock(config.get('API_URL'))
     .persist()
     .get(`/auth/check?jwt=undefined&next=${config.get('SITE_URL')}/success`)
@@ -90,5 +89,24 @@ module.exports.initMocks = function() {
         "provider_id": "google:117985331094635516621",
         "username": null
       }
+    })
+
+  // resolver api
+  nock(`${config.get('API_URL')}/resolver`)
+    .persist()
+    .get('/resolve?path=publisher/package')
+    .reply(200, {
+      userid: 'publisher',
+      packageid: 'package'
+    })
+    .get('/resolve?path=admin/demo-package')
+    .reply(200, {
+      userid: 'admin',
+      packageid: 'demo-package'
+    })
+    .get('/resolve?path=bad-user/bad-package')
+    .reply(200, {
+      userid: 'bad-user',
+      packageid: 'bad-package'
     })
 }

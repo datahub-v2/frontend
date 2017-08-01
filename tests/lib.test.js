@@ -73,4 +73,11 @@ describe('Lib', () => {
     assert.equal(res.profile.email, 'actual_email@gmail.com')
     assert.equal(res.profile.name, 'Firstname Secondname')
   })
+
+  it('Resolves path', async () => {
+    const path_ = 'publisher/package'
+    const res = await api.resolve(path_)
+    assert.equal(res.userid, 'publisher')
+    assert.equal(res.packageid, 'package')
+  })
 })

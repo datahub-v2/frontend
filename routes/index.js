@@ -1,5 +1,6 @@
 'use strict'
 
+const path = require('path')
 const express = require('express')
 const config = require('../config')
 const lib = require('../lib')
@@ -63,8 +64,9 @@ module.exports = function () {
 
   router.get('/:owner/:name', async (req, res) => {
     let dpjson = null
+    const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     try {
-      dpjson = await api.getPackage(req.params.owner, req.params.name)
+      dpjson = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
     } catch (err) {
       if (err.name === 'BadStatusCode' && err.res.status === 404) {
         res.status(404).send('Sorry we cannot locate that dataset for you!')
@@ -73,7 +75,7 @@ module.exports = function () {
       throw err
     }
 
-    const dpBitStoreUrl = [config.get('BITSTORE_URL'), 'metadata', req.params.owner, req.params.name, '_v', 'latest'].join('/')
+    const dpBitStoreUrl = [config.get('BITSTORE_URL'), 'metadata', userAndPkgId.userid, userAndPkgId.packageid, '_v', 'latest'].join('/')
     res.render('showcase.html', {
       title: req.params.owner + ' | ' + req.params.name,
       dataset: utils.extendDpjson(dpjson),
