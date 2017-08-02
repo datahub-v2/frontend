@@ -115,4 +115,15 @@ describe('Utils', () => {
 		assert.equal(res.email, 'test@test.com')
 		assert.equal(res.emailHash, 'b642b4217b34b1e8d3bd915fc65c4452')
 	})
+
+	it('Generates normalized dp from extended dp', () => {
+		const extended = require('./fixtures/extended-dp/datapackage.json')
+		const normalized = utils.normalize(extended)
+		// The main one has name of Original
+		assert.equal(normalized.resources[0].name, 'co2-mm-mlo')
+		// Original is in alternates
+		assert.deepEqual(extended.resources[17], normalized.resources[5].alternates[0])
+		// Json version is in alternates
+		assert.deepEqual(extended.resources[1], normalized.resources[0].alternates[1])
+	})
 })

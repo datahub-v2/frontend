@@ -63,10 +63,10 @@ module.exports = function () {
   })
 
   router.get('/:owner/:name', async (req, res) => {
-    let dpjson = null
+    let extendedDp = null
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     try {
-      dpjson = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
+      extendedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
     } catch (err) {
       if (err.name === 'BadStatusCode' && err.res.status === 404) {
         res.status(404).send('Sorry we cannot locate that dataset for you!')
@@ -75,10 +75,12 @@ module.exports = function () {
       throw err
     }
 
+    const normalizedDp = utils.normalize(extendedDp)
+
     const dpBitStoreUrl = [config.get('BITSTORE_URL'), 'metadata', userAndPkgId.userid, userAndPkgId.packageid, '_v', 'latest'].join('/')
     res.render('showcase.html', {
       title: req.params.owner + ' | ' + req.params.name,
-      dataset: utils.extendDpjson(dpjson),
+      dataset: utils.extendDpjson(normalizedDp),
       datapackageUrl: dpBitStoreUrl + '/datapackage.json'
     })
   })
