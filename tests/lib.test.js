@@ -15,7 +15,7 @@ describe('Lib', () => {
     let res = await api.getPackageFile('admin', 'demo-package')
     let dpjson = await res.json()
     assert.equal(dpjson.name, 'demo-package')
-    assert.equal(dpjson.resources.length, 1)
+    assert.equal(dpjson.resources.length, 3)
   })
 
   it('Gets README', async () => {
