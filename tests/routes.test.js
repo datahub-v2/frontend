@@ -1,4 +1,5 @@
-var assert = require('assert')
+const test = require('ava')
+
 var request = require('supertest')
 var mocks = require('./fixtures')
 
@@ -6,138 +7,104 @@ var app = require('../index').makeApp()
 
 mocks.initMocks()
 
-describe('Routes', function(){
-  it('Home page returns 200 and has correct content', function(done){
-    const pageHeading = 'Data publishing and sharing'
-    request(app)
-      .get('/')
-      .expect(200)
-      .end(function(err, res) {
-        assert.equal(res.statusCode, 200)
-        assert(res.text.match('DataHub'), res.text)
-        assert(res.text.match(pageHeading), res.text)
-        done()
-    })
-  })
-
-  it('Dashboard page renders when jwt in cookies setup', function(done){
-    request(app)
-      .get('/dashboard')
-      .set('Cookie', ['jwt=123456'])
-      .end(function(err, res) {
-        assert.equal(res.statusCode, 200)
-        assert(res.text.match('Your Dashboard'), res.text)
-        done()
-      })
-  })
-
-  it('Login with GitHub redirects to correct path', function(done){
-    request(app)
-      .get('/login/github')
-      .end(function(err, res) {
-        assert.equal(res.header.location, 'https://github.com/login/')
-        done()
-      })
-  })
-
-  it('Login with GOOGLE redirects to correct path', function(done){
-    request(app)
-      .get('/login/google')
-      .end(function(err, res) {
-        assert.equal(res.header.location, 'https://accounts.google.com/o/oauth2/auth')
-        done()
-      })
-  })
-
-  it('When redirected to /success it gets user info and writes into cookies then redirects to /', function(done){
-    request(app)
-      .get('/success?jwt=1a2b3c')
-      .expect('set-cookie', 'jwt=1a2b3c; Path=/,email=test_username_but_not_email; Path=/,name=Firstname%20Secondname; Path=/', done)
-  })
-
-  it('When user logs out, it clears jwt from cookie and redirects to /', function(done){
-    request(app)
-      .get('/logout')
-      .end(function(err, res) {
-        assert.equal(res.header.location, '/?logout=true')
-        done()
-      })
-  })
-
-  it('When user logs out, it renders home page with alert message', function(done){
-    request(app)
-      .get('/?logout=true')
-      .end(function(err, res) {
-        assert(res.text.match('You have been successfully logged out.'), res.text)
-        done()
-      })
-  })
-
-  it('Showcase page returns 200 and has correct content', function(done){
-    request(app)
-      .get('/admin/demo-package')
-      .expect(200)
-      .end(function(err, res) {
-        assert.equal(res.statusCode, 200)
-        assert(res.text.match('DataHub'), res.text)
-        done()
-    })
-  })
-
-  it('Showcase page has readme, title and publisher in content', function(done){
-    request(app)
-      .get('/admin/demo-package')
-      .expect(200)
-      .end(function(err, res) {
-        assert.equal(res.statusCode, 200)
-        assert(res.text.match('Read me'), res.text)
-        assert(res.text.match('DEMO - CBOE Volatility Index'), res.text)
-        done()
-    })
-  })
-
-  it('Showcase page 404s on non-existent dataset', function(done){
-    request(app)
-      .get('/bad-user/bad-package')
-      .expect(404)
-      .end(function(err, res) {
-        done()
-    })
-  })
-
-  it('Publisher page returns 200 and has correct content', function(done){
-    request(app)
-      .get('/publisher')
-      .expect(200)
-      .end(function(err, res) {
-        assert.equal(res.statusCode, 200)
-        assert(res.text.match('Data Packages'), res.text)
-        assert(res.text.match('Member since'), res.text)
-        done()
-    })
-  })
-
-  it('Search page returns 200 and has correct content', function(done){
-    request(app)
-      .get('/search')
-      .expect(200)
-      .end(function(err, res) {
-        assert.equal(res.statusCode, 200)
-        assert(res.text.match('Discover Data'), res.text)
-        assert(res.text.match('packages found for'), res.text)
-        done()
-    })
-  })
-
-  it('Pricing page returns 200 and has correct content', function(done){
-    request(app)
-      .get('/pricing')
-      .expect(200)
-      .end(function(err, res) {
-        assert.equal(res.statusCode, 200)
-        assert(res.text.match('Metering'), res.text)
-        assert(res.text.match('PRIVACY'), res.text)
-        done()
-      })
-  })
+test('Home page returns 200 and has correct content', async t => {
+  const pageHeading = 'Data publishing and sharing'
+  const res = await request(app)
+    .get('/')
+    .expect(200)
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('DataHub'))
+  t.true(res.text.includes(pageHeading))
 })
+
+test('Dashboard page renders when jwt in cookies setup', async t => {
+  const res = await request(app)
+    .get('/dashboard')
+    .set('Cookie', ['jwt=123456'])
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('Your Dashboard'))
+})
+
+test('Login with GitHub redirects to correct path', async t => {
+  const res = await request(app)
+    .get('/login/github')
+  t.is(res.header.location, 'https://github.com/login/')
+})
+
+test('Login with GOOGLE redirects to correct path', async t => {
+  const res = await request(app)
+    .get('/login/google')
+  t.is(res.header.location, 'https://accounts.google.com/o/oauth2/auth')
+})
+
+test('When redirected to /success it gets user info and writes into cookies then redirects to /', async t => {
+  const res = await request(app)
+    .get('/success?jwt=1a2b3c')
+  t.is(res.statusCode, 302)
+  t.true(res.header.location.includes('/dashboard'))
+  t.true(res.text.includes('Redirecting to /dashboard'))
+})
+
+test('When user logs out, it clears jwt from cookie and redirects to /', async t => {
+  const res = await request(app)
+    .get('/logout')
+  t.is(res.header.location, '/?logout=true')
+})
+
+test('When user logs out, it renders home page with alert message', async t => {
+  const res = await request(app)
+    .get('/?logout=true')
+  t.true(res.text.includes('You have been successfully logged out.'))
+})
+
+test('Showcase page returns 200 and has correct content', async t => {
+  const res = await request(app)
+    .get('/admin/demo-package')
+    .expect(200)
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('DataHub'))
+})
+
+test('Showcase page has readme, title and publisher in content', async t => {
+  const res = await request(app)
+    .get('/admin/demo-package')
+    .expect(200)
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('Read me'))
+  t.true(res.text.includes('DEMO - CBOE Volatility Index'))
+})
+
+test('Showcase page 404s on non-existent dataset', async t => {
+  const res = await request(app)
+    .get('/bad-user/bad-package')
+    .expect(404)
+  t.is(res.statusCode, 404)
+})
+
+test('Publisher page returns 200 and has correct content', async t => {
+  const res = await request(app)
+    .get('/publisher')
+    .expect(200)
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('Data Packages'))
+  t.true(res.text.includes('Member since'))
+})
+
+test('Search page returns 200 and has correct content', async t => {
+  const res = await request(app)
+    .get('/search')
+    .expect(200)
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('Discover Data'))
+  t.true(res.text.includes('packages found for'))
+})
+
+test('Pricing page returns 200 and has correct content', async t => {
+  const res = await request(app)
+    .get('/pricing')
+    .expect(200)
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('Metering'))
+  t.true(res.text.includes('PRIVACY'))
+})
+

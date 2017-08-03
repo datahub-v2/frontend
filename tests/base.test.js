@@ -1,7 +1,6 @@
-var assert = require('assert')
+const test = require('ava')
 
-describe('Basic Test', function() {
-  it('Tests are working', function() {
-  assert.equal(1,1)
-  })
+test('Basic Test', async t => {
+  t.deepEqual(1,1)
 })
+
