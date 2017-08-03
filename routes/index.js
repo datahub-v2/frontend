@@ -77,11 +77,10 @@ module.exports = function () {
 
     const normalizedDp = utils.normalize(extendedDp)
 
-    const dpBitStoreUrl = [config.get('BITSTORE_URL'), 'metadata', userAndPkgId.userid, userAndPkgId.packageid, '_v', 'latest'].join('/')
     res.render('showcase.html', {
       title: req.params.owner + ' | ' + req.params.name,
       dataset: utils.extendDpjson(normalizedDp),
-      datapackageUrl: dpBitStoreUrl + '/datapackage.json'
+      owner: req.params.owner
     })
   })
 

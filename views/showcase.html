@@ -15,12 +15,12 @@
         {{ dataset.title }}
       </h1>
       <p class="publisher">
-        {% if dataset.owner.email %}
-        <img src="https://www.gravatar.com/avatar/{{ dataset.owner.email }}" class="img-responsive img-circle avatar" />
+        {% if dataset.datahub.ownerid %}
+        <img src="https://www.gravatar.com/avatar/{{ dataset.datahub.ownerid }}" class="img-responsive img-circle avatar" />
         {% else %}
         <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
         {% endif %}
-        <a href="/{{ dataset.owner.username }}">{{ dataset.owner.username }}</a>
+        <a href="/{{ owner }}">{{ owner }}</a>
       </p>
     </div>
   </div>
@@ -92,7 +92,7 @@
           <tbody>
           {% for resource in dataset.resources %}
             <tr>
-              <td class="col-xs-3">
+              <td class="col-xs-2">
                 <i class="fa fa-file-text-o"></i> <a href="#resource-{{resource.name}}" class="explore" onclick="scrollDown(this)">{{resource.name}}</a> [{{resource.format}}]
               </td>
               <td class="col-xs-4">
@@ -104,10 +104,14 @@
               <td class="col-xs-2">
                 {{ resource.updated }}
               </td>
-              <td class="download truncate col-xs-1">
+              <td class="download truncate col-xs-3">
                 <a href="{{ dataset.path }}/{{ resource.path }}" onclick="trackOutboundLink(this.href)">
-                      <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
-                  </a>
+                  Download [csv]
+                </a>
+                -
+                <a href="{{ dataset.path }}/{{ resource.alternates[1].path }}" onclick="trackOutboundLink(this.href)">
+                  [ JSON ({{resource.alternates[1].prettyBytes}}) ]
+                </a>
               </td>
             </tr>
           {% endfor %}
