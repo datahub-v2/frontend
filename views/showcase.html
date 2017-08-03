@@ -46,7 +46,7 @@
           <tbody>
             <tr>
               <td class="col-xs-1">{{ dataset.resources | length }}</td>
-              <td class="col-xs-1">{{ dataset.size }}</td>
+              <td class="col-xs-1">{{ dataset.datahub.stats.prettyBytes }}</td>
               <td class="col-xs-2 format-list">
                 {% for format in dataset.formats %}
                   {{ format }}
@@ -99,7 +99,7 @@
                 {{ resource.title or resource.description }}
               </td>
               <td class="col-xs-1">
-                {{ resource.size }}
+                {{ resource.prettyBytes }}
               </td>
               <td class="col-xs-2">
                 {{ resource.updated }}

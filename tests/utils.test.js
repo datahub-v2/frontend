@@ -44,16 +44,21 @@ describe('Utils', () => {
 	it('Prettifies bytes in dpjson', () => {
 		let dpjson = {
 			name: 'testing-bytes',
-			size: 123000,
+			datahub: {
+				stats: {
+					bytes: 123000
+				}
+			},
 			resources: [
 				{
 					name: 'testing-bytes',
-					size: 123000
+					bytes: 123000
 				}
 			]
 		}
 		const res = utils.prettifyBytes(dpjson)
-		assert.equal(res.size, '120.12kB')
+		assert.equal(res.datahub.stats.prettyBytes, '120.12kB')
+		assert.equal(res.resources[0].prettyBytes, '120.12kB')
 	})
 
 	it('Formats date and time as ago, e.g., "2d ago"', () => {
@@ -90,12 +95,16 @@ describe('Utils', () => {
 			name: 'test',
 			created: '2017-07-02',
 			updated: '2017-07-02',
-			size: 123000,
+			datahub: {
+				stats: {
+					bytes: 123000
+				}
+			},
 			resources: [
 				{
 					name: 'test-resource',
 					updated: '2017-07-02',
-					size: 123000,
+					bytes: 123000,
 					format: 'csv'
 				}
 			]
@@ -103,7 +112,7 @@ describe('Utils', () => {
 		const res = utils.extendDpjson(dpjson)
 		assert.notDeepEqual(res, dpjson)
 		assert(res.created.includes('ago'))
-		assert.equal(res.size, '120.12kB')
+		assert.equal(res.datahub.stats.prettyBytes, '120.12kB')
 		assert.equal(res.formats.length, 1)
 	})
 
