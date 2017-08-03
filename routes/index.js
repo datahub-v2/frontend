@@ -80,7 +80,9 @@ module.exports = function () {
     res.render('showcase.html', {
       title: req.params.owner + ' | ' + req.params.name,
       dataset: utils.extendDpjson(normalizedDp),
-      owner: req.params.owner
+      owner: req.params.owner,
+      // eslint-disable-next-line no-useless-escape, quotes
+      dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'")
     })
   })
 

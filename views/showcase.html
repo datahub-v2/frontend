@@ -235,9 +235,9 @@
   });
 </script>
 
-<!-- pass datapackageUrl to front-end -->
+<!-- pass DP_ID to front-end -->
 <script type="text/javascript">
-  var DATA_PACKAGE_URL = "{{ dataset.path }}/datapackage.json";
+  var DP_ID = JSON.parse('{{ dpId | safe }}');
 </script>
 
 <link rel="stylesheet" media="screen" href="/static/dpr-js/dist/main.css">
