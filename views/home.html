@@ -65,7 +65,7 @@ Welcome Home
 
         {% for package in showcasePackages %}
           <div class="row readable-width">
-            <a href="{{ package['owner']['username'] }}/{{ package['name'] }}" class="package-title">
+            <a href="core/{{ package['name'] }}" class="package-title">
               <h3>{{ package['title'] }}</h3>
             </a>
             <p class="publisher normal">
@@ -74,7 +74,7 @@ Welcome Home
               {% else %}
               <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
               {% endif %}
-              <a href="{{ package['owner']['username'] }}">core</a>
+              <a href="core">core</a>
             </p>
             <h6 class="text-left">
               <b>{{ package['name'] }}</b> | {{ package.resources|length }} files | {{ package.size }}
@@ -82,7 +82,7 @@ Welcome Home
             {% if package.readmeSnippet %}
             <p class="readme">
               {{ package.readmeSnippet }}
-              <a href="{{ package['owner']['username'] }}/{{ package['name'] }}" class="explore">
+              <a href="core/{{ package['name'] }}" class="explore">
                 explore more <span>&rsaquo;</span>
               </a>
             </p>
@@ -106,7 +106,7 @@ Welcome Home
 
         {% for package in tutorialPackages %}
           <div class="row readable-width">
-            <a href="{{ package['owner']['username'] }}/{{ package['name'] }}" class="package-title">
+            <a href="core/{{ package['name'] }}" class="package-title">
               <h3>{{ package['title'] }}</h3>
             </a>
             <p class="publisher normal">
@@ -115,14 +115,14 @@ Welcome Home
               {% else %}
               <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
               {% endif %}
-              <a href="{{ package['owner']['username'] }}">examples</a>
+              <a href="core">examples</a>
             </p>
             <h6 class="text-left">
               <b>{{ package['name'] }}</b> | {{ package.resources|length }} files | {{ package.size }}
             </h6>
             <p class="readme">
               {{ package.readmeSnippet }}
-              <a href="{{ package['owner']['username'] }}/{{ package['name'] }}" class="explore">
+              <a href="core/{{ package['name'] }}" class="explore">
                 explore more <span>&rsaquo;</span>
               </a>
             </p>
