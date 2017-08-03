@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "xo && mocha tests"
+    "test": "xo && ava -v",
+    "watch:test": "npm run test -- --watch"
   },
   "xo": {
     "space": true,
@@ -17,6 +18,15 @@
     "rules": {
       "no-var": "warn"
     }
+  },
+  "ava": {
+    "require": [
+      "babel-core/register"
+    ],
+    "failFast": false,
+    "files": [
+      "tests/*test.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -46,6 +56,7 @@
     "xo": "^0.18.2"
   },
   "devDependencies": {
+    "ava": "^0.21.0",
     "babel-core": "^6.25.0",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
