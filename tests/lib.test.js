@@ -6,8 +6,8 @@ var mocks = require('./fixtures')
 
 mocks.initMocks()
 
+const api = new lib.DataHubApi(config)
 test('Gets datapackage.json', async t => {
-  const api = new lib.DataHubApi(config)
   let res = await api.getPackageFile('admin', 'demo-package')
   let dpjson = await res.json()
   t.is(dpjson.name, 'demo-package')
@@ -16,14 +16,12 @@ test('Gets datapackage.json', async t => {
 
 
 test('Gets README', async t => {
-  const api = new lib.DataHubApi(config)
   const res = await api.getPackageFile('admin', 'demo-package', 'README.md')
   const readme = await res.text()
   t.is(readme.slice(0,27), 'This README and datapackage')
 })
 
 test('Gets whole package', async t => {
-  const api = new lib.DataHubApi(config)
   const dp = await api.getPackage('admin', 'demo-package')
   t.is(dp.title, 'DEMO - CBOE Volatility Index')
   t.is(dp.owner, 'admin')
@@ -34,7 +32,6 @@ test('Gets whole package', async t => {
 })
 
 test('Gets list of packages', async t => {
-  const api = new lib.DataHubApi(config)
   const listOfPkgIds = [
     {owner: 'core', name: 's-and-p-500-companies'},
     {owner: 'core', name: 'house-prices-us'}
@@ -47,13 +44,11 @@ test('Gets list of packages', async t => {
 })
 
 test('Handles errors if file cannot be retrieved', async t => {
-  const api = new lib.DataHubApi(config)
   let res = await api.getPackageFile('bad-user', 'bad-package')
   t.is(res.status, 404)
 })
 
 test('Handles errors if file cannot be retrieved', async t => {
-  const api = new lib.DataHubApi(config)
   const res = await api.authenticate() // Without jwt so we get urls for login
   t.is(res.authenticated, false)
   t.deepEqual(res.providers.github,{ url: 'https://github.com/login/' })
@@ -62,7 +57,6 @@ test('Handles errors if file cannot be retrieved', async t => {
 })
 
 test('Authenticates with GitHub using given jwt and returns user info', async t => {
-  const api = new lib.DataHubApi(config)
   const jwt = '1a2b3c'
   const res = await api.authenticate(jwt)
   t.is(res.authenticated, true)
@@ -71,7 +65,6 @@ test('Authenticates with GitHub using given jwt and returns user info', async t 
 })
 
 test('Authenticates with GOOGLE using given jwt and returns user info', async t => {
-  const api = new lib.DataHubApi(config)
   const jwt = '1a2b3c4d'
   const res = await api.authenticate(jwt)
   t.is(res.authenticated, true)
@@ -80,7 +73,6 @@ test('Authenticates with GOOGLE using given jwt and returns user info', async t 
 })
 
 test('Resolves path', async t => {
-  const api = new lib.DataHubApi(config)
   const path_ = 'publisher/package'
   const res = await api.resolve(path_)
   t.is(res.userid, 'publisher')
