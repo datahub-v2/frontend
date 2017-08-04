@@ -86,6 +86,51 @@ module.exports = function () {
     })
   })
 
+  router.get('/:owner/:name/r/:fileNameOrIndex', async (req, res) => {
+    let extendedDp = null
+    const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
+    try {
+      extendedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
+    } catch (err) {
+      if (err.name === 'BadStatusCode' && err.res.status === 404) {
+        res.status(404).send('Sorry we cannot locate that dataset for you!')
+        return
+      }
+      throw err
+    }
+    const normalizedDp = utils.normalize(extendedDp)
+
+    const fileParts = path.parse(req.params.fileNameOrIndex)
+    const extension = fileParts.ext
+    const name = fileParts.name
+
+    let resource
+    // Check if file name is a number
+    if (parseInt(name, 10) || parseInt(name, 10) === 0) {
+      // If number it still can be a file name not index so check it
+      resource = normalizedDp.resources.find(res => res.name === name)
+      console.log(resource)
+      // Otherwise get resource by index
+      if (!resource) {
+        resource = normalizedDp.resources[parseInt(name, 10)]
+      }
+    } else {
+      // If name is not a number then just find resource by name
+      resource = normalizedDp.resources.find(res => res.name === name)
+    }
+    // Check if resource was found and give 404 if not
+    if (!resource) {
+      res.status(404).send('Sorry we cannot locate that file for you!')
+    }
+
+    // If resource was found then identify required format by given extension
+    if (!(resource.format === extension.substring(1))) {
+      resource = resource.alternates.find(res => extension.substring(1) === res.format)
+    }
+
+    res.redirect(`${normalizedDp.path}/${resource.path}`)
+  })
+
   router.get('/search', (req, res) => {
     res.render('search.html', {
       title: 'Search'

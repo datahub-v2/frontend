@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "xo && ava -v",
-    "watch:test": "npm run test -- --watch"
+    "test": "ava -v",
+    "watch:test": "npm run test -- --watch",
+    "lint": "xo --quite"
   },
   "xo": {
     "space": true,
