@@ -40,11 +40,9 @@ module.exports.makeApp = function () {
     routes()
   ])
 
-  app.use((err, req, res) => {
-    if (err) {
-      console.error(err.stack)
-      res.status(500).send('Something failed. Please, try again later.')
-    }
+  app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(500).send('Something failed. Please, try again later.')
   })
 
 	// eslint-disable-next-line no-unused-vars
