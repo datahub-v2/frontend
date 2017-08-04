@@ -105,12 +105,12 @@
                 {{ resource.updated }}
               </td>
               <td class="download truncate col-xs-3">
-                <a href="{{ dataset.path }}/{{ resource.path }}" onclick="trackOutboundLink(this.href)">
-                  Download [csv]
+                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}" onclick="trackOutboundLink(this.href)">
+                  Download [{{ resource.format }}]
                 </a>
                 -
-                <a href="{{ dataset.path }}/{{ resource.alternates[1].path }}" onclick="trackOutboundLink(this.href)">
-                  [ JSON ({{resource.alternates[1].prettyBytes}}) ]
+                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.alternates[1].format }}" onclick="trackOutboundLink(this.href)">
+                  [ {{ resource.alternates[1].format }} ({{resource.alternates[1].prettyBytes}}) ]
                 </a>
               </td>
             </tr>
