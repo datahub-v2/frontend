@@ -5842,11 +5842,18 @@ img.cube {
     img.cube {
       padding-left: 40%; } }
 
-.icon {
-  padding-right: 7px; }
+.owner {
+  margin: 20px 0; }
 
 .package-summary {
   margin-bottom: 20px; }
+
+.package-title {
+  margin-bottom: 20px; }
+
+.package-publisher {
+  margin: 0 0 10px 0;
+  padding-left: 0; }
 
 h2 {
   margin-top: 0; }

@@ -35,6 +35,7 @@ module.exports = function () {
       })
     } else {
       res.status(404).send('Sorry, this page was not found.')
+      return
     }
   })
 
@@ -69,7 +70,7 @@ module.exports = function () {
       extendedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
     } catch (err) {
       if (err.name === 'BadStatusCode' && err.res.status === 404) {
-        res.status(404).send('Sorry we cannot locate that dataset for you!')
+        res.status(404).send('Sorry, we cannot locate that dataset for you!')
         return
       }
       throw err
@@ -89,11 +90,15 @@ module.exports = function () {
   router.get('/:owner/:name/r/:fileNameOrIndex', async (req, res) => {
     let extendedDp = null
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
+    if (!userAndPkgId.userid) {
+      res.status(404).send('Sorry, this page was not found.')
+      return
+    }
     try {
       extendedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
     } catch (err) {
       if (err.name === 'BadStatusCode' && err.res.status === 404) {
-        res.status(404).send('Sorry we cannot locate that dataset for you!')
+        res.status(404).send('Sorry, we cannot locate that dataset for you!')
         return
       }
       throw err
@@ -119,7 +124,7 @@ module.exports = function () {
     }
     // Check if resource was found and give 404 if not
     if (!resource) {
-      res.status(404).send('Sorry we cannot locate that file for you!')
+      res.status(404).send('Sorry, we cannot locate that file for you!')
     }
 
     // If resource was found then identify required format by given extension
@@ -142,9 +147,19 @@ module.exports = function () {
     })
   })
 
-  router.get('/:owner', (req, res) => {
+  router.get('/:owner', async (req, res) => {
+    // First check if user exists using resolver
+    const userAndPkgId = await api.resolve(path.join(req.params.owner, 'package'))
+    if (!userAndPkgId.userid) {
+      res.status(404).send('Sorry, this page was not found.')
+      return
+    }
+    const token = req.cookies.jwt
+    const packages = await api.getPackagesFromMetastore(`datahub.ownerid="${userAndPkgId.userid}"&size=20`, token)
     res.render('owner.html', {
-      title: req.params.owner
+      packages,
+      emailHash: userAndPkgId.userid,
+      owner: req.params.owner
     })
   })
 
