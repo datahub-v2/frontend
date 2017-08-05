@@ -56,17 +56,18 @@ test('Handles errors if file cannot be retrieved', async t => {
 })
 
 test('Metastore API wrapper function works', async t => {
-  let query = 'q=test'
+  let query = 'q="test"'
   let res = await api.getPackagesFromMetastore(query)
   let expected = {
-    total_count: 1,
-    items: [
+    total: 1,
+    results: [
       {
         name: 'package',
         title: 'test',
         datahub: {
           findability: 'published'
-        }
+        },
+        datapackage: {}
       }
     ]
   }

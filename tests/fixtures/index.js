@@ -45,16 +45,17 @@ module.exports.initMocks = function() {
   // Mock api calls for Metastore
   nock(config.get('API_URL'))
     .persist()
-    .get('/metastore/search?q=test')
+    .get('/metastore/search?q=%22test%22')
     .reply(200, {
-      total_count: 1,
-      items: [
+      total: 1,
+      results: [
         {
           name: 'package',
           title: 'test',
           datahub: {
             findability: 'published'
-          }
+          },
+          datapackage: {}
         }
       ]
     })
