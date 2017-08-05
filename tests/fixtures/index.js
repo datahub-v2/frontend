@@ -42,6 +42,23 @@ module.exports.initMocks = function() {
     .get('/examples/geojson-tutorial/latest/README.md')
     .reply(200, data.readme, {'access-control-allow-origin': '*'})
 
+  // Mock api calls for Metastore
+  nock(config.get('API_URL'))
+    .persist()
+    .get('/metastore/search?q=test')
+    .reply(200, {
+      total_count: 1,
+      items: [
+        {
+          name: 'package',
+          title: 'test',
+          datahub: {
+            findability: 'published'
+          }
+        }
+      ]
+    })
+
   // Mock api calls for authentication
   // Not authenticated returns urls for login
   nock(config.get('API_URL'))

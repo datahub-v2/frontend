@@ -109,7 +109,6 @@ module.exports = function () {
     if (parseInt(name, 10) || parseInt(name, 10) === 0) {
       // If number it still can be a file name not index so check it
       resource = normalizedDp.resources.find(res => res.name === name)
-      console.log(resource)
       // Otherwise get resource by index
       if (!resource) {
         resource = normalizedDp.resources[parseInt(name, 10)]
