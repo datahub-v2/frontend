@@ -94,11 +94,12 @@ test('Publisher page returns 200 and has correct content', async t => {
 
 test('Search page returns 200 and has correct content', async t => {
   const res = await request(app)
-    .get('/search')
+    .get('/search?q=test')
     .expect(200)
   t.is(res.statusCode, 200)
   t.true(res.text.includes('Discover Data'))
-  t.true(res.text.includes('packages found for'))
+  t.true(res.text.includes('<input id="search-page-search"'))
+  t.true(res.text.includes('1 package(s) found for <b>"test"</b>'))
 })
 
 test('Pricing page returns 200 and has correct content', async t => {

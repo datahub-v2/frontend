@@ -45,7 +45,7 @@ module.exports.initMocks = function() {
   // Mock api calls for Metastore
   nock(config.get('API_URL'))
     .persist()
-    .get('/metastore/search?q=%22test%22')
+    .get('/metastore/search?q=%22test%22&size=20')
     .reply(200, {
       total: 1,
       results: [
