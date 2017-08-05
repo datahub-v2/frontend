@@ -88,8 +88,6 @@ test('Publisher page returns 200 and has correct content', async t => {
   t.is(res.statusCode, 200)
   t.true(res.text.includes('<h2 class="owner">publisher</h2>'))
   t.true(res.text.includes('<h2>Data Packages <span class="badge">1</span></h2>'))
-  t.true(res.text.includes('<h3 class="package-title">title</h3>'))
-  t.true(res.text.includes('<a href="/publisher/name">'))
 })
 
 test('Search page returns 200 and has correct content', async t => {

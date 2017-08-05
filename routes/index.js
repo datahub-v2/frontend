@@ -134,7 +134,7 @@ module.exports = function () {
 
   router.get('/search', async (req, res) => {
     const token = req.cookies.jwt
-    const packages = await api.getPackagesFromMetastore(`q="${req.query.q}"&size=20`, token)
+    const packages = await api.search(`q="${req.query.q}"&size=20`, token)
     res.render('search.html', {
       packages,
       query: req.query.q
@@ -155,7 +155,7 @@ module.exports = function () {
       return
     }
     const token = req.cookies.jwt
-    const packages = await api.getPackagesFromMetastore(`datahub.ownerid="${userAndPkgId.userid}"&size=20`, token)
+    const packages = await api.search(`datahub.ownerid="${userAndPkgId.userid}"&size=20`, token)
     res.render('owner.html', {
       packages,
       emailHash: userAndPkgId.userid,

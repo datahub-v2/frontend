@@ -43,6 +43,7 @@ module.exports.initMocks = function() {
     .reply(200, data.readme, {'access-control-allow-origin': '*'})
 
   // Mock api calls for Metastore
+  const extendedDp = require('./extended-dp/datapackage.json')
   nock(config.get('API_URL'))
     .persist()
     .get('/metastore/search?q=%22test%22&size=20')
@@ -50,12 +51,7 @@ module.exports.initMocks = function() {
       total: 1,
       results: [
         {
-          name: 'package',
-          title: 'test',
-          datahub: {
-            findability: 'published'
-          },
-          datapackage: {}
+          datapackage: extendedDp
         }
       ]
     })
@@ -68,10 +64,7 @@ module.exports.initMocks = function() {
           datahub: {
             owner: 'publisher'
           },
-          datapackage: {
-            name: 'name',
-            title: 'title'
-          }
+          datapackage: extendedDp
         }
       ]
     })

@@ -74,23 +74,11 @@ test('Handles errors if file cannot be retrieved', async t => {
   t.deepEqual(res.providers.google,{ url: 'https://accounts.google.com/o/oauth2/auth' })
 })
 
-test('Metastore API wrapper function works', async t => {
+test('Metastore API wrapper (search) function works', async t => {
   let query = 'q="test"&size=20'
-  let res = await api.getPackagesFromMetastore(query)
-  let expected = {
-    total: 1,
-    results: [
-      {
-        name: 'package',
-        title: 'test',
-        datahub: {
-          findability: 'published'
-        },
-        datapackage: {}
-      }
-    ]
-  }
-  t.deepEqual(res, expected)
+  let res = await api.search(query)
+  let logical = require('./fixtures/logical-dp/datapackage.json')
+  t.deepEqual(res.results[0].datapackage, logical)
 })
 
 test('Authenticates with GitHub using given jwt and returns user info', async t => {
