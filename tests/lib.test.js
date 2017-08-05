@@ -14,6 +14,17 @@ test('Gets datapackage.json', async t => {
   t.is(dpjson.resources.length, 3)
 })
 
+test("Generates logical dp from extended dp", async t => {
+	const extended = require('./fixtures/extended-dp/datapackage.json')
+	const logical = lib.DataHubApi.extendedToLogical(extended)
+	// The main one has name of Original
+	t.is(logical.resources[0].name, 'co2-mm-mlo')
+  t.is(logical.resources[0].datahub.derivedFrom[0], 'co2-mm-mlo')
+	// Original is in alternates
+	t.is(extended.resources[17], logical.resources[5].alternates[0])
+	// Json version is in alternates
+	t.is(extended.resources[1], logical.resources[0].alternates[1])
+})
 
 test('Gets README', async t => {
   const res = await api.getPackageFile('admin', 'demo-package', 'README.md')
@@ -24,11 +35,19 @@ test('Gets README', async t => {
 test('Gets whole package', async t => {
   const dp = await api.getPackage('admin', 'demo-package')
   t.is(dp.title, 'DEMO - CBOE Volatility Index')
-  t.is(dp.owner, 'admin')
-  t.is(dp.path, 'http://127.0.0.1:4000/static/fixtures/admin/demo-package/latest')
+  t.is(dp.datahub.owner, 'admin')
+  t.is(dp.path, `https://pkgstore-testing.datahub.io/${dp.datahub.ownerid}/${dp.name}/latest`)
   t.is(dp.readme.slice(0,27), 'This README and datapackage')
   t.is(dp.readmeSnippet.length, 294)
   t.true(dp.readmeHtml.includes('<p>This README and datapackage'))
+})
+
+test('getPackage has normalized resources', async t => {
+  const dp = await api.getPackage('admin', 'demo-package')
+  t.is(dp.resources.length, 1)
+  t.is(dp.resources[0].name, 'demo-resource')
+  t.is(dp.resources[0].datahub.derivedFrom[0], 'demo-resource')
+  t.is(dp.resources[0].alternates.length, 2)
 })
 
 test('Gets list of packages', async t => {
@@ -39,7 +58,7 @@ test('Gets list of packages', async t => {
   const listOfDp = await api.getPackages(listOfPkgIds)
   t.is(listOfDp.length, 2)
   t.is(listOfDp[1].title, 'DEMO - CBOE Volatility Index')
-  t.is(listOfDp[1].owner, 'core')
+  // t.is(listOfDp[1].owner, 'core')
   t.is(listOfDp[1].readme.slice(0,27), 'This README and datapackage')
 })
 

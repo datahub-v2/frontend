@@ -75,7 +75,7 @@ test(`Formats data and time as ago, q.g., "2d ago"`, async t => {
 	const res = utils.formatDateTimeAsAgo(dpjson)
 	t.true(res.created.includes('ago'))
 	t.true(res.updated.includes('ago'))
-	t.true(res.resources[0].updated.includes('ago'))	
+	t.true(res.resources[0].updated.includes('ago'))
 })
 
 test("Adds formats property into dpjson", async t => {
@@ -88,7 +88,7 @@ test("Adds formats property into dpjson", async t => {
 		]
 	}
 	const res = utils.addFormatsAttr(dpjson)
-	t.is(dpjson.formats.length, 1)	
+	t.is(dpjson.formats.length, 1)
 })
 
 test("Extends and formats attributes in given dpjson", async t => {
@@ -125,15 +125,3 @@ test("generates currentUser object for dashboard page", async t => {
 	t.is(res.email, 'test@test.com')
 	t.is(res.emailHash, 'b642b4217b34b1e8d3bd915fc65c4452')
 })
-
-test("Generates normalized dp from extended dp", async t => {
-	const extended = require('./fixtures/extended-dp/datapackage.json')
-	const normalized = utils.normalize(extended)
-	// The main one has name of Original
-	t.is(normalized.resources[0].name, 'co2-mm-mlo')
-	// Original is in alternates
-	t.is(extended.resources[17], normalized.resources[5].alternates[0])
-	// Json version is in alternates
-	t.is(extended.resources[1], normalized.resources[0].alternates[1])
-})
-

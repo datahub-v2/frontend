@@ -64,10 +64,10 @@ module.exports = function () {
   })
 
   router.get('/:owner/:name', async (req, res) => {
-    let extendedDp = null
+    let normalizedDp = null
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     try {
-      extendedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
+      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
     } catch (err) {
       if (err.name === 'BadStatusCode' && err.res.status === 404) {
         res.status(404).send('Sorry, we cannot locate that dataset for you!')
@@ -75,8 +75,6 @@ module.exports = function () {
       }
       throw err
     }
-
-    const normalizedDp = utils.normalize(extendedDp)
 
     res.render('showcase.html', {
       title: req.params.owner + ' | ' + req.params.name,
@@ -88,14 +86,14 @@ module.exports = function () {
   })
 
   router.get('/:owner/:name/r/:fileNameOrIndex', async (req, res) => {
-    let extendedDp = null
+    let normalizedDp = null
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     if (!userAndPkgId.userid) {
       res.status(404).send('Sorry, this page was not found.')
       return
     }
     try {
-      extendedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
+      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
     } catch (err) {
       if (err.name === 'BadStatusCode' && err.res.status === 404) {
         res.status(404).send('Sorry, we cannot locate that dataset for you!')
@@ -103,7 +101,6 @@ module.exports = function () {
       }
       throw err
     }
-    const normalizedDp = utils.normalize(extendedDp)
 
     const fileParts = path.parse(req.params.fileNameOrIndex)
     const extension = fileParts.ext
