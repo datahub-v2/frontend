@@ -15,6 +15,7 @@ test('Home page returns 200 and has correct content', async t => {
   t.is(res.statusCode, 200)
   t.true(res.text.includes('DataHub'))
   t.true(res.text.includes(pageHeading))
+  t.true(res.text.includes('UA-80458846-4'))
 })
 
 test('Dashboard page renders when jwt in cookies setup', async t => {
