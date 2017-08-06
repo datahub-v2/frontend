@@ -1,17 +1,16 @@
 {
   "datahub": {
-    "findability": [
-      "published"
-    ],
-    "hash": "dc3a0eb3e71867c952e24abddcd6d187",
+    "findability": "published",
+    "hash": "be4f4f2bd01dfdfb000fad3c6ae2cea6",
     "owner": "admin",
-    "ownerid": "90998f7f90e086bd5fc7c9075dfda43b",
+    "ownerid": "admin",
     "stats": {
       "bytes": 87678,
       "rowcount": 1302
     }
   },
   "homepage": "http://www.cboe.com/micro/VIX/",
+  "id": "admin/demo-package",
   "license": "PDDL-1.0",
   "name": "demo-package",
   "readme": "This README and datapackage is borrowed from http://data.okfn.org/data/core/finance-vix\nCBOE Volatility Index (VIX) time-series dataset including daily open, close,\nhigh and low. The CBOE Volatility Index (VIX) is a key measure of market\nexpectations of near-term volatility conveyed by S&P 500 stock index option\nprices introduced in 1993.\n\n## Data\n\nFrom the [VIX FAQ][faq]:\n\n> In 1993, the Chicago Board Options ExchangeÂ® (CBOEÂ®) introduced the CBOE\n> Volatility IndexÂ®, VIXÂ®, and it quickly became the benchmark for stock market\n> volatility. It is widely followed and has been cited in hundreds of news\n> articles in the Wall Street Journal, Barron's and other leading financial\n> publications. Since volatility often signifies financial turmoil, VIX is\n> often referred to as the \"investor fear gauge\".\n>\n> VIX measures market expectation of near term volatility conveyed by stock\n> index option prices. The original VIX was constructed using the implied\n> volatilities of eight different OEX option series so that, at any given time,\n> it represented the implied volatility of a hypothetical at-the-money OEX\n> option with exactly 30 days to expiration.\n> \n> The New VIX still measures the market's expectation of 30-day volatility, but\n> in a way that conforms to the latest thinking and research among industry\n> practitioners. The New VIX is based on S&P 500 index option prices and\n> incorporates information from the volatility \"skew\" by using a wider range of\n> strike prices rather than just at-the-money series. \n\n[faq]: http://www.cboe.com/micro/vix/faq.aspx\n\n## Preparation\n\nRun the shell script:\n\n    . scripts/process.sh\n\nOutput data is in `data/`.\n\n### TODO\n\n* Incorporate computed historical data (1990-2003)\n* Consider incorporating VOX data\n\n## License\n\nNo obvious statement on [historical data page][historical]. Given size and\nfactual nature of the data and its source from a US company would imagine this\nwas public domain and as such have licensed the Data Package under the Public\nDomain Dedication and License (PDDL).\n\n[historical]: http://www.cboe.com/micro/vix/historical.aspx\n",
@@ -163,6 +162,58 @@
         "primaryKey": "Date"
       },
       "url": "https://s3.amazonaws.com/rawstore-testing.datahub.io/b0503f17cecc447d595aa9a7f0f4455b"
+    },
+    {
+      "name": "__datasets",
+      "path": "nonexistent",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "es:index": false,
+            "name": "datapackage",
+            "type": "object"
+          },
+          {
+            "es:schema": {
+              "fields": [
+                {
+                  "name": "owner",
+                  "type": "string"
+                },
+                {
+                  "name": "ownerid",
+                  "type": "string"
+                },
+                {
+                  "name": "findability",
+                  "type": "string"
+                }
+              ]
+            },
+            "name": "datahub",
+            "type": "object"
+          }
+        ],
+        "primaryKey": [
+          "id"
+        ]
+      }
     }
   ],
   "sources": [
@@ -185,9 +236,5 @@
       },
       "type": "Graph"
     }
-  ],
-  "owner": "90998f7f90e086bd5fc7c9075dfda43b",
-  "path": "https://pkgstore-testing.datahub.io/90998f7f90e086bd5fc7c9075dfda43b/demo-package/latest",
-  "readmeSnippet": "This README and datapackage is borrowed from http://data.okfn.org/data/core/finance-vix\nCBOE Volatility Index (VIX) time-series dataset including daily open, close,\nhigh and low. The CBOE Volatility Index (VIX) is a key measure of market\nexpectations of near-term volatility conveyed by S&P 500",
-  "readmeHtml": "<p>This README and datapackage is borrowed from <a href=\"http://data.okfn.org/data/core/finance-vix\">http://data.okfn.org/data/core/finance-vix</a>\nCBOE Volatility Index (VIX) time-series dataset including daily open, close,\nhigh and low. The CBOE Volatility Index (VIX) is a key measure of market\nexpectations of near-term volatility conveyed by S&amp;P 500 stock index option\nprices introduced in 1993.</p>\n<h2>Data</h2>\n<p>From the <a href=\"http://www.cboe.com/micro/vix/faq.aspx\">VIX FAQ</a>:</p>\n<blockquote>\n<p>In 1993, the Chicago Board Options ExchangeÂ® (CBOEÂ®) introduced the CBOE\nVolatility IndexÂ®, VIXÂ®, and it quickly became the benchmark for stock market\nvolatility. It is widely followed and has been cited in hundreds of news\narticles in the Wall Street Journal, Barron's and other leading financial\npublications. Since volatility often signifies financial turmoil, VIX is\noften referred to as the &quot;investor fear gauge&quot;.</p>\n<p>VIX measures market expectation of near term volatility conveyed by stock\nindex option prices. The original VIX was constructed using the implied\nvolatilities of eight different OEX option series so that, at any given time,\nit represented the implied volatility of a hypothetical at-the-money OEX\noption with exactly 30 days to expiration.</p>\n<p>The New VIX still measures the market's expectation of 30-day volatility, but\nin a way that conforms to the latest thinking and research among industry\npractitioners. The New VIX is based on S&amp;P 500 index option prices and\nincorporates information from the volatility &quot;skew&quot; by using a wider range of\nstrike prices rather than just at-the-money series. </p>\n</blockquote>\n<h2>Preparation</h2>\n<p>Run the shell script:</p>\n<pre><code>. scripts/process.sh\n</code></pre><p>Output data is in <code>data/</code>.</p>\n<h3>TODO</h3>\n<ul>\n<li>Incorporate computed historical data (1990-2003)</li>\n<li>Consider incorporating VOX data</li>\n</ul>\n<h2>License</h2>\n<p>No obvious statement on <a href=\"http://www.cboe.com/micro/vix/historical.aspx\">historical data page</a>. Given size and\nfactual nature of the data and its source from a US company would imagine this\nwas public domain and as such have licensed the Data Package under the Public\nDomain Dedication and License (PDDL).</p>\n"
+  ]
 }

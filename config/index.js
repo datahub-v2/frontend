@@ -17,14 +17,14 @@ nconf.defaults({
   SITE_URL: process.env.SITE_URL || 'http://0.0.0.0:4000',
   BITSTORE_URL: process.env.BITSTORE_URL || 'http://127.0.0.1:4000/static/fixtures/',
   showcasePackages: [
-    {owner: 'core', name: 's-and-p-500-companies'},
-    {owner: 'core', name: 'house-prices-us'},
-    {owner: 'core', name: 'gold-prices'}
+    {ownerid: 'core', name: 's-and-p-500-companies'},
+    {ownerid: 'core', name: 'house-prices-us'},
+    {ownerid: 'core', name: 'gold-prices'}
   ],
   tutorialPackages: [
-    {owner: 'examples', name: 'simple-graph-spec'},
-    {owner: 'examples', name: 'vega-views-tutorial-lines'},
-    {owner: 'examples', name: 'geojson-tutorial'}
+    {ownerid: 'examples', name: 'simple-graph-spec'},
+    {ownerid: 'examples', name: 'vega-views-tutorial-lines'},
+    {ownerid: 'examples', name: 'geojson-tutorial'}
   ]
 })
 

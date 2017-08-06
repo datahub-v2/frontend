@@ -7,11 +7,12 @@ var mocks = require('./fixtures')
 mocks.initMocks()
 
 const api = new lib.DataHubApi(config)
-test('Gets datapackage.json', async t => {
+test('Gets datapackage.json (as extended)', async t => {
   let res = await api.getPackageFile('admin', 'demo-package')
   let dpjson = await res.json()
   t.is(dpjson.name, 'demo-package')
-  t.is(dpjson.resources.length, 3)
+  t.is(dpjson.datahub.findability, 'published')
+  t.is(dpjson.resources.length, 4)
 })
 
 test("Generates logical dp from extended dp", async t => {
@@ -36,7 +37,7 @@ test('Gets whole package', async t => {
   const dp = await api.getPackage('admin', 'demo-package')
   t.is(dp.title, 'DEMO - CBOE Volatility Index')
   t.is(dp.datahub.owner, 'admin')
-  t.is(dp.path, `https://pkgstore-testing.datahub.io/${dp.datahub.ownerid}/${dp.name}/latest`)
+  t.is(dp.path, `${api.bitstoreUrl}${dp.datahub.ownerid}/${dp.name}/latest`)
   t.is(dp.readme.slice(0,27), 'This README and datapackage')
   t.is(dp.readmeSnippet.length, 294)
   t.true(dp.readmeHtml.includes('<p>This README and datapackage'))
@@ -52,8 +53,8 @@ test('getPackage has normalized resources', async t => {
 
 test('Gets list of packages', async t => {
   const listOfPkgIds = [
-    {owner: 'core', name: 's-and-p-500-companies'},
-    {owner: 'core', name: 'house-prices-us'}
+    {ownerid: 'core', name: 's-and-p-500-companies'},
+    {ownerid: 'core', name: 'house-prices-us'}
   ]
   const listOfDp = await api.getPackages(listOfPkgIds)
   t.is(listOfDp.length, 2)
