@@ -772,14 +772,14 @@ $panel-body-padding:          25px !default;
 // $well-border:                 darken($well-bg, 7%) !default;
 //
 //
-// //== Badges
-// //
-// //##
+//== Badges
 //
-// $badge-color:                 #fff !default;
-// //** Linked badge text color on hover
+//##
+
+$badge-color:                 #fff !default;
+//** Linked badge text color on hover
 // $badge-link-hover-color:      #fff !default;
-// $badge-bg:                    $gray-light !default;
+$badge-bg:                    $black !default;
 //
 // //** Badge text color in active nav link
 // $badge-active-color:          $link-color !default;
@@ -788,7 +788,7 @@ $panel-body-padding:          25px !default;
 //
 // $badge-font-weight:           bold !default;
 // $badge-line-height:           1 !default;
-// $badge-border-radius:         10px !default;
+$badge-border-radius:         50% !default;
 //
 //
 // //== Breadcrumbs

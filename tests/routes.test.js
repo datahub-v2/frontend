@@ -88,7 +88,7 @@ test('Publisher page returns 200 and has correct content', async t => {
     .expect(200)
   t.is(res.statusCode, 200)
   t.true(res.text.includes('<h2 class="owner">publisher</h2>'))
-  t.true(res.text.includes('<h2>Data Packages <span class="badge">1</span></h2>'))
+  t.true(res.text.includes('<h2>Datasets <span class="badge" title="1 published datasets">1</span></h2>'))
 })
 
 test('Search page returns 200 and has correct content', async t => {

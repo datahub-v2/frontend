@@ -15,11 +15,7 @@
         {{ dataset.title }}
       </h1>
       <p class="publisher">
-        {% if dataset.datahub.ownerid %}
-        <img src="https://www.gravatar.com/avatar/{{ dataset.datahub.ownerid }}" class="img-responsive img-circle avatar" />
-        {% else %}
-        <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
-        {% endif %}
+        <img src="https://www.gravatar.com/avatar/{{ dataset.datahub.ownerid }}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar" />
         <a href="/{{ owner }}">{{ owner }}</a>
       </p>
     </div>

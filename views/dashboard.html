@@ -18,7 +18,7 @@ window.history.pushState("", "Dashboard", "/");
       <div class="col-xs-5">
         <p class="user">
           {% if currentUser.email != None %}
-            <img src="https://www.gravatar.com/avatar/{{ currentUser.emailHash }}" class="img-responsive img-circle avatar-lg" />
+            <img src="https://www.gravatar.com/avatar/{{ currentUser.emailHash }}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar-lg" />
             {{ currentUser.email }}
           {% else %}
             <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />

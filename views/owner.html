@@ -12,11 +12,7 @@
       <div class="col-sm-3 profile">
         <div class="row">
           <div class="col-sm-12 col-xs-6">
-            {% if emailHash %}
-            <img src="https://www.gravatar.com/avatar/{{ emailHash }}?s=300" class="img-responsive img-thumbnail">
-            {% else %}
-            <img src="/static/img/logo-cube03.png" class="img-responsive img-thumbnail" />
-            {% endif %}
+            <img src="https://www.gravatar.com/avatar/{{ emailHash }}?s=300&d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive">
           </div>
           <div class="col-sm-12 col-xs-6">
             {% if owner %}
@@ -28,7 +24,7 @@
       <div class="col-sm-offset-2 col-sm-7">
         <div class="row">
           <div class="col-sm-6 col-xs-12">
-            <h2>Data Packages <span class="badge">{{packages.total}}</span></h2>
+            <h2>Datasets <span class="badge" title="{{packages.total}} published datasets">{{packages.total}}</span></h2>
           </div>
           <div class="col-sm-6">
             {% if packages.results|length > 0 %}

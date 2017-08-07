@@ -4271,8 +4271,8 @@ a.label:hover, a.label:focus {
   vertical-align: middle;
   white-space: nowrap;
   text-align: center;
-  background-color: #BDBDBD;
-  border-radius: 10px; }
+  background-color: #000;
+  border-radius: 50%; }
   .badge:empty {
     display: none; }
   .btn .badge {
@@ -5867,8 +5867,7 @@ h2 {
 
 .badge {
   font-size: 0.6em;
-  color: #212121;
-  background-color: #dbdbdb; }
+  padding: 6px; }
 
 @media (max-width: 480px) {
   .profile {
@@ -5986,8 +5985,7 @@ a.explore {
 
 @media (min-width: 768px) {
   .navbar .container, .navbar .container-no-top-padding {
-    padding-top: 0;
-    padding-left: 1%; }
+    padding-top: 0; }
 
   .navbar-nav.navbar-center {
     position: absolute;
