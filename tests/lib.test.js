@@ -49,6 +49,9 @@ test('getPackage has normalized resources', async t => {
   t.is(dp.resources[0].name, 'demo-resource')
   t.is(dp.resources[0].datahub.derivedFrom[0], 'demo-resource')
   t.is(dp.resources[0].alternates.length, 2)
+  // Test for prepareForFrontend applied
+  t.is(dp.datahub.stats.prettyBytes, '86kB')
+  t.is(dp.resources[0].prettyBytes, '23kB')
 })
 
 test('Gets list of packages', async t => {

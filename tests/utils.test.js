@@ -110,7 +110,7 @@ test("Extends and formats attributes in given dpjson", async t => {
 			}
 		]
 	}
-	const res = utils.extendDpjson(dpjson)
+	const res = utils.prepareForFrontend(dpjson)
 	t.notDeepEqual(res, dpjson)
 	t.true(res.created.includes('ago'))
 	t.is(res.datahub.stats.prettyBytes, '120kB')

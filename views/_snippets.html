@@ -1,30 +1,10 @@
 {% import '_instructions.html' as instructions %}
-{% macro dataset_summary(dataset) -%}
-  <div class="dataset summary">
-    <img src="https://assets.okfn.org/p/data/img/icon-128.png"
-      alt="{{dataset.title}}" class="logo" />
-    <h3><a href="/{{dataset.owner}}/{{dataset.id}}">{{dataset.title}}</a></h3>
-    <div class="description">{{dataset.description}}</div>
-    <div class="actions">
-      <a href="/{{dataset.owner}}/{{dataset.id}}" class="btn btn-primary btn-small">View &raquo;</a>
-      {% if dataset.download_url %}
-      <a href="{{dataset.download_url}}" class="btn btn-success btn-small">Download CSV &raquo;</a>
-      {% endif %}
-    </div>
-    <div class="source">Source: {{listify(dataset.sources)}}</div>
-    <ul class="keywords">
-      {% for kw in dataset.keywords or [] %}
-      <li>{{kw}}</li>
-      {% endfor %}
-    </ul>
-  </div>
-{%- endmacro %}
 
 {% macro listify(list_) -%}
   {% for item in list_ or [] %}
-  <a href="{{item.web}}" title="Uses data from {{item.name}}" target="_blank">
+  <a href="{{item.web}}" title="Uses data from {{item.title}}" target="_blank">
     <i class="fa fa-external-link-square"></i>
-    {{item.name}}
+    {{item.title}}
   </a>
   {% endfor %}
 {%- endmacro %}
@@ -45,7 +25,7 @@
         </div>
       </div>
       <h6 class="text-left">
-        <b>{{ package.datapackage.name }}</b> | files {{ package.datapackage.resources|length }}
+        <b>{{ package.datapackage.name }}</b> | files {{ package.datapackage.resources|length }} | {{ package.datapackage.datahub.stats.prettyBytes }}
       </h6>
       {% if package.datapackage.readme %}
       <p>
@@ -76,7 +56,7 @@
         </div>
       </div>
       <h6 class="text-left">
-        <b>{{ package.datapackage.name }}</b> | files {{ package.datapackage.resources|length }}
+        <b>{{ package.datapackage.name }}</b> | files {{ package.datapackage.resources|length }} | {{ package.datapackage.datahub.stats.prettyBytes }}
       </h6>
       {% if package.datapackage.readme %}
       <p>

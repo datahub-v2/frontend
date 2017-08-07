@@ -69,15 +69,15 @@ Welcome Home
               <h3>{{ package['title'] }}</h3>
             </a>
             <p class="publisher normal">
-              {% if package.owner.email %}
-              <img src="https://www.gravatar.com/avatar/{{ dataset.owner.email }}" class="img-responsive img-circle avatar" />
+              {% if package.datahub.ownerid %}
+              <img src="https://www.gravatar.com/avatar/{{ package.datahub.ownerid }}" class="img-responsive img-circle avatar" />
               {% else %}
               <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
               {% endif %}
               <a href="core">core</a>
             </p>
             <h6 class="text-left">
-              <b>{{ package['name'] }}</b> | {{ package.resources|length }} files | {{ package.size }}
+              <b>{{ package['name'] }}</b> | {{ package.resources|length }} files | {{ package.datahub.stats.prettyBytes }}
             </h6>
             {% if package.readmeSnippet %}
             <p class="readme">
@@ -110,15 +110,15 @@ Welcome Home
               <h3>{{ package['title'] }}</h3>
             </a>
             <p class="publisher normal">
-              {% if package.owner.email %}
-              <img src="https://www.gravatar.com/avatar/{{ dataset.owner.email }}" class="img-responsive img-circle avatar" />
+              {% if package.datahub.ownerid %}
+              <img src="https://www.gravatar.com/avatar/{{ package.datahub.ownerid }}" class="img-responsive img-circle avatar" />
               {% else %}
               <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
               {% endif %}
               <a href="core">examples</a>
             </p>
             <h6 class="text-left">
-              <b>{{ package['name'] }}</b> | {{ package.resources|length }} files | {{ package.size }}
+              <b>{{ package['name'] }}</b> | {{ package.resources|length }} files | {{ package.datahub.stats.prettyBytes }}
             </h6>
             <p class="readme">
               {{ package.readmeSnippet }}
