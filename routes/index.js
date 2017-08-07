@@ -69,11 +69,35 @@ module.exports = function () {
     try {
       normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
     } catch (err) {
-      if (err.name === 'BadStatusCode' && err.res.status === 404) {
-        res.status(404).send('Sorry, we cannot locate that dataset for you!')
+      if (err.res.status !== 404) {
+        throw err
+      }
+    }
+
+    if (!normalizedDp) {
+      let status
+      try {
+        status = await api.checkStatus(userAndPkgId.userid, userAndPkgId.packageid)
+      } catch (err) {
+        if (err.status === 404) {
+          res.status(404).send('Sorry, this page was not found.')
+          return
+        }
+        throw err
+      }
+      const waiting = ['LOADED', 'REGISTERED', 'RUNNING']
+      if (waiting.indexOf(status.state) !== -1) {
+        res.send('Your datapackage is being processed. Please, try again in couple of minutes.')
+        return
+      } else if (status.state === 'FAILED') {
+        res.send(status.logs.join('\n'))
+        return
+      } else if (status.state === 'SUCCEEDED') {
+        normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
+      } else {
+        res.send('Something went wrong. Please, try again later.')
         return
       }
-      throw err
     }
 
     res.render('showcase.html', {
@@ -96,7 +120,7 @@ module.exports = function () {
       normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
     } catch (err) {
       if (err.name === 'BadStatusCode' && err.res.status === 404) {
-        res.status(404).send('Sorry, we cannot locate that dataset for you!')
+        res.status(404).send('Sorry, we cannot locate that dataset for you.')
         return
       }
       throw err
@@ -121,7 +145,7 @@ module.exports = function () {
     }
     // Check if resource was found and give 404 if not
     if (!resource) {
-      res.status(404).send('Sorry, we cannot locate that file for you!')
+      res.status(404).send('Sorry, we cannot locate that file for you.')
     }
 
     // If resource was found then identify required format by given extension

@@ -75,11 +75,25 @@ test('Showcase page has readme, title and publisher in content', async t => {
   t.true(res.text.includes('DEMO - CBOE Volatility Index'))
 })
 
-test('Showcase page 404s on non-existent dataset', async t => {
+test('Showcase page displays message if 404 and status is running', async t => {
+  const res = await request(app)
+    .get('/admin/running-package')
+    .expect(200)
+  t.is(res.text, 'Your datapackage is being processed. Please, try again in couple of minutes.')
+})
+
+test('Showcase page displays logs if 404 and status is failed', async t => {
+  const res = await request(app)
+    .get('/admin/failed-package')
+    .expect(200)
+  t.is(res.text, 'log1\nlog2')
+})
+
+test('Showcase page displays 404 if package not found in neither pkg-store or status api', async t => {
   const res = await request(app)
     .get('/bad-user/bad-package')
     .expect(404)
-  t.is(res.statusCode, 404)
+  t.is(res.text, 'Sorry, this page was not found.')
 })
 
 test('Publisher page returns 200 and has correct content', async t => {

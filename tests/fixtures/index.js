@@ -17,6 +17,10 @@ module.exports.initMocks = function() {
     .reply(200, data.readme, {'access-control-allow-origin': '*'})
     .get('/bad-user/bad-package/latest/datapackage.json')
     .reply(404, "not found", {'access-control-allow-origin': '*'})
+    .get('/admin/running-package/latest/datapackage.json')
+    .reply(404, "not found", {'access-control-allow-origin': '*'})
+    .get('/admin/failed-package/latest/datapackage.json')
+    .reply(404, "not found", {'access-control-allow-origin': '*'})
     .get('/core/s-and-p-500-companies/latest/datapackage.json')
     .reply(200, data.dataPackage, {'access-control-allow-origin': '*'})
     .get('/core/s-and-p-500-companies/latest/README.md')
@@ -118,6 +122,21 @@ module.exports.initMocks = function() {
       }
     })
 
+  // status api
+  nock(`${config.get('API_URL')}`)
+    .persist()
+    .get('/source/admin/running-package/status')
+    .reply(200, {
+      state: 'RUNNING'
+    })
+    .get('/source/admin/failed-package/status')
+    .reply(200, {
+      state: 'FAILED',
+      logs: ['log1', 'log2']
+    })
+    .get('/source/bad-user/bad-package/status')
+    .reply(404)
+
   // resolver api
   nock(`${config.get('API_URL')}/resolver`)
     .persist()
@@ -135,5 +154,15 @@ module.exports.initMocks = function() {
     .reply(200, {
       userid: 'bad-user',
       packageid: 'bad-package'
+    })
+    .get('/resolve?path=admin/running-package')
+    .reply(200, {
+      userid: 'admin',
+      packageid: 'running-package'
+    })
+    .get('/resolve?path=admin/failed-package')
+    .reply(200, {
+      userid: 'admin',
+      packageid: 'failed-package'
     })
 }
