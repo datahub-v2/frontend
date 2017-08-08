@@ -21,3 +21,13 @@ We use `.env` file for loading environment variables. Please, use provided `env.
 * `BITSTORE_URL` - base URL for the bitstore (pkgstore) e.g. `https://pkgstore.datahub.io`
 
 See the [docs](http://docs.datahub.io/developers/) for more information.
+
+## Developers
+
+To build the CSS:
+
+1. Install sass
+2. Run:
+
+   `sass --watch public/sass:public/stylesheets`
+
