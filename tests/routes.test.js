@@ -97,6 +97,18 @@ test('Showcase page displays 404 if package not found in neither pkg-store or st
   t.is(res.text, 'Sorry, this page was not found.')
 })
 
+test('Pipeline page displays logs for a dataset', async t => {
+  const notExist = await request(app)
+    .get('/bad-user/bad-package/pipelines')
+  t.is(notExist.status, 404)
+
+  const res = await request(app)
+    .get('/admin/running-package/pipelines')
+  t.is(res.status, 200)
+  t.true(res.text.includes('admin/running-package - Pipelines'))
+  t.true(res.text.includes('log1\nlog2'))
+})
+
 test('Publisher page returns 200 and has correct content', async t => {
   const res = await request(app)
     .get('/publisher')

@@ -84,7 +84,7 @@ module.exports = function () {
       })
     } else { // Not in pkgstore but may be loading
       try {
-        const status = await api.checkStatus(userAndPkgId.userid, userAndPkgId.packageid)
+        const status = await api.pipelineStatus(userAndPkgId.userid, userAndPkgId.packageid)
         res.render('uploading.html', {
           ownerid: userAndPkgId,
           name: req.params.name,
@@ -97,6 +97,25 @@ module.exports = function () {
         } else {
           throw err
         }
+      }
+    }
+  })
+
+  router.get('/:owner/:name/pipelines', async (req, res) => {
+    const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
+    try {
+      const status = await api.pipelineStatus(userAndPkgId.userid, userAndPkgId.packageid)
+      res.render('pipelines.html', {
+        owner: req.params.owner,
+        name: req.params.name,
+        status
+      })
+    } catch (err) {
+      if (err.status === 404) { // Pkgstore 404 + pipeline status 404 => dataset does not exist
+        res.status(404).send('Sorry, this page was not found.')
+        return
+      } else {
+        throw err
       }
     }
   })

@@ -127,7 +127,8 @@ module.exports.initMocks = function() {
     .persist()
     .get('/source/admin/running-package/status')
     .reply(200, {
-      state: 'RUNNING'
+      state: 'RUNNING',
+      logs: ['log1', 'log2']
     })
     .get('/source/admin/failed-package/status')
     .reply(200, {

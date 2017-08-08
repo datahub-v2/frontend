@@ -104,10 +104,10 @@ test('Authenticates with GOOGLE using given jwt and returns user info', async t 
   t.is(res.profile.name, 'Firstname Secondname')
 })
 
-test('checkStatus hits status API and returns status object', async t => {
+test('pipelineStatus hits status API and returns status object', async t => {
   const ownerid = 'admin'
   const name = 'running-package'
-  const res = await api.checkStatus(ownerid, name)
+  const res = await api.pipelineStatus(ownerid, name)
   t.is(res.state, 'RUNNING')
 })
 
