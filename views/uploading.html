@@ -21,19 +21,20 @@ Uploading {{owner}}/{{name}}
     var checkCondition = function(resolve, reject) {
         // If the condition is met, we're done!
         fn().then(function(res) {
-          if (res.state === 'SUCCEEDED' || res.state === 'FAILED') {
-            resolve(res);
-          }
-          // If the condition isn't met but the timeout hasn't elapsed, go again
-          else if (Number(new Date()) < endTime) {
-              setTimeout(checkCondition, interval, resolve, reject);
-          }
-          // Didn't match and too much time, reject!
-          else {
-              reject(new Error('timed out for ' + fn + ': ' + arguments));
-          }
+          res.json().then(function(out) {
+            if (out.state === 'SUCCEEDED' || out.state === 'FAILED') {
+              resolve(out);
+            }
+            // If the condition isn't met but the timeout hasn't elapsed, go again
+            else if (Number(new Date()) < endTime) {
+                setTimeout(checkCondition, interval, resolve, reject);
+            }
+            // Didn't match and too much time, reject!
+            else {
+                reject(new Error('timed out for ' + fn + ': ' + arguments));
+            }
+          })
         })
-
     };
 
     return new Promise(checkCondition);
