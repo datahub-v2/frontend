@@ -9,19 +9,19 @@
   {% endfor %}
 {%- endmacro %}
 
-{% macro package_list_show(publisher, packages) -%}
+{% macro package_list_show(packages) -%}
   {%- for package in packages  %}
   <div class="row package-summary">
     <div class="col-xs-12">
-      <a href="/{{ publisher }}/{{ package.datapackage.name }}">
+      <a href="/{{ package.datapackage.datahub.owner }}/{{ package.datapackage.name }}">
         <h3 class="package-title">{{ package.datapackage.title }}</h3>
       </a>
       <div class="row show-grid clearfix">
         <div class="col-sm-1 col-xs-2 icon">
-          <img src="https://www.gravatar.com/avatar/{{package.datahub.ownerid}}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle" />
+          <img src="https://www.gravatar.com/avatar/{{package.datapackage.datahub.ownerid}}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle" />
         </div>
         <div class="col-sm-5 col-xs-4 package-publisher">
-            <small><a href="/{{ publisher }} " class="explore">by {{ publisher }}</a></small>
+            <small><a href="/{{ package.datapackage.datahub.owner }} " class="explore">by {{ package.datapackage.datahub.owner }}</a></small>
         </div>
       </div>
       <h6 class="text-left">
@@ -30,38 +30,7 @@
       {% if package.datapackage.readme %}
       <p>
         {{ package.datapackage.readme|truncate }}
-        <a href="/{{ publisher }}/{{ package.datapackage.name }}" class="explore">
-          explore more <span>&rsaquo;</span>
-        </a>
-      </p>
-      {% endif %}
-    </div>
-  </div>
-  {%- endfor %}
-{%- endmacro %}
-
-{% macro search_package_list(packages) -%}
-  {%- for package in packages %}
-  <div class="row package-summary">
-    <div class="col-xs-12">
-      <a href="/{{ publisher }}/{{ package.datapackage.name }}">
-        <h3 class="package-title">{{ package.datapackage.title }}</h3>
-      </a>
-      <div class="row show-grid clearfix">
-        <div class="col-sm-1 col-xs-2 icon">
-          <img src="https://www.gravatar.com/avatar/{{package.datahub.ownerid}}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle" />
-        </div>
-        <div class="col-sm-5 col-xs-4 package-publisher">
-            <small><a href="/{{ publisher }} " class="explore">by {{ publisher }}</a></small>
-        </div>
-      </div>
-      <h6 class="text-left">
-        <b>{{ package.datapackage.name }}</b> | files {{ package.datapackage.resources|length }} | {{ package.datapackage.datahub.stats.prettyBytes }}
-      </h6>
-      {% if package.datapackage.readme %}
-      <p>
-        {{ package.datapackage.readme|truncate }}
-        <a href="/{{ publisher }}/{{ package.datapackage.name }}" class="explore">
+        <a href="/{{ package.datapackage.datahub.owner }}/{{ package.datapackage.name }}" class="explore">
           explore more <span>&rsaquo;</span>
         </a>
       </p>

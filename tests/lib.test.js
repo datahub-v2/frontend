@@ -82,7 +82,10 @@ test('Metastore API wrapper (search) function works', async t => {
   let query = 'q="test"&size=20'
   let res = await api.search(query)
   let logical = require('./fixtures/logical-dp/datapackage.json')
-  t.deepEqual(res.results[0].datapackage, logical)
+  t.is(res.results[0].datapackage.resources.length, logical.resources.length)
+  t.is(res.total, 1)
+  t.is(res.results[0].datapackage.datahub.owner, 'core')
+  t.is(res.results[0].datapackage.datahub.stats.prettyBytes, '192kB')
 })
 
 test('Authenticates with GitHub using given jwt and returns user info', async t => {

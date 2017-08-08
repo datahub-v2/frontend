@@ -38,7 +38,7 @@
 
         <div id="publisher-package-list">
           {% if packages.results|length > 0 %}
-            {{ snippets.package_list_show(owner, packages.results) }}
+            {{ snippets.package_list_show(packages.results) }}
           {% else %}
             <p>This publisher has no data packages.</p>
           {% endif %}
