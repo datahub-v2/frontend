@@ -41,7 +41,7 @@ Uploading {{owner}}/{{name}}
 
   poll(function() {
     return window.fetch('{{ statusApi }}');
-  }, 60000, 2000).then(function(status) {
+  }, 1200000, 2000).then(function(status) {
     if (status.state === 'FAILED') {
       var target = document.getElementById('message')
       target.innerHTML = 'Something went wrong. Redirecting to pipelines page...';
