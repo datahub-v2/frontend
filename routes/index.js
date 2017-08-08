@@ -86,7 +86,9 @@ module.exports = function () {
       try {
         const status = await api.pipelineStatus(userAndPkgId.userid, userAndPkgId.packageid)
         res.render('uploading.html', {
-          ownerid: userAndPkgId,
+          successUrl: `/${req.params.owner}/${req.params.name}`,
+          failUrl: `/${req.params.owner}/${req.params.name}/pipelines`,
+          statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/status`,
           name: req.params.name,
           owner: req.params.owner
         })
