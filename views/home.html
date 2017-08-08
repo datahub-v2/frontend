@@ -102,19 +102,19 @@ Welcome Home
 
         {% for package in tutorialPackages %}
           <div class="row readable-width">
-            <a href="core/{{ package['name'] }}" class="package-title">
+            <a href="examples/{{ package['name'] }}" class="package-title">
               <h3>{{ package['title'] }}</h3>
             </a>
             <p class="publisher normal">
               <img src="https://www.gravatar.com/avatar/{{ package.datahub.ownerid }}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar" />
-              <a href="core">examples</a>
+              <a href="examples">examples</a>
             </p>
             <h6 class="text-left">
               <b>{{ package['name'] }}</b> | {{ package.resources|length }} files | {{ package.datahub.stats.prettyBytes }}
             </h6>
             <p class="readme">
               {{ package.readmeSnippet }}
-              <a href="core/{{ package['name'] }}" class="explore">
+              <a href="examples/{{ package['name'] }}" class="explore">
                 explore more <span>&rsaquo;</span>
               </a>
             </p>
