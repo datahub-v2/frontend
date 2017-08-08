@@ -74,39 +74,31 @@ module.exports = function () {
       }
     }
 
-    if (!normalizedDp) {
-      let status
+    if (normalizedDp) {
+      res.render('showcase.html', {
+        title: req.params.owner + ' | ' + req.params.name,
+        dataset: normalizedDp,
+        owner: req.params.owner,
+        // eslint-disable-next-line no-useless-escape, quotes
+        dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'")
+      })
+    } else { // Not in pkgstore but may be loading
       try {
-        status = await api.checkStatus(userAndPkgId.userid, userAndPkgId.packageid)
+        const status = await api.checkStatus(userAndPkgId.userid, userAndPkgId.packageid)
+        res.render('uploading.html', {
+          ownerid: userAndPkgId,
+          name: req.params.name,
+          owner: req.params.owner
+        })
       } catch (err) {
-        if (err.status === 404) {
+        if (err.status === 404) { // Pkgstore 404 + pipeline status 404 => dataset does not exist
           res.status(404).send('Sorry, this page was not found.')
           return
+        } else {
+          throw err
         }
-        throw err
-      }
-      const waiting = ['LOADED', 'REGISTERED', 'RUNNING']
-      if (waiting.indexOf(status.state) !== -1) {
-        res.send('Your datapackage is being processed. Please, try again in couple of minutes.')
-        return
-      } else if (status.state === 'FAILED') {
-        res.send(status.logs.join('\n'))
-        return
-      } else if (status.state === 'SUCCEEDED') {
-        normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
-      } else {
-        res.send('Something went wrong. Please, try again later.')
-        return
       }
     }
-
-    res.render('showcase.html', {
-      title: req.params.owner + ' | ' + req.params.name,
-      dataset: normalizedDp,
-      owner: req.params.owner,
-      // eslint-disable-next-line no-useless-escape, quotes
-      dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'")
-    })
   })
 
   router.get('/:owner/:name/r/:fileNameOrIndex', async (req, res) => {

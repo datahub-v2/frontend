@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="inner_container">
+    <p>Your data is safely stored and is getting processed - it will be here soon!</p>
+    <p>Processing {{name}}...</p>
+    <div id="status"></div>
+  </div>
+</div>
+<script type="text/javascript">
+  // pass necessary variables here for dpr-js
+</script>
+
+<link rel="stylesheet" media="screen" href="/static/dpr-js/dist/main.css">
+<script type="text/javascript" src="/static/dpr-js/dist/bundle.js"></script>
+{% endblock %}

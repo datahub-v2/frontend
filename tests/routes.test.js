@@ -75,14 +75,15 @@ test('Showcase page has readme, title and publisher in content', async t => {
   t.true(res.text.includes('DEMO - CBOE Volatility Index'))
 })
 
-test('Showcase page displays message if 404 and status is running', async t => {
+test('Showcase page displays message if 404 (pkgstore) and pipeline status exists', async t => {
   const res = await request(app)
     .get('/admin/running-package')
     .expect(200)
-  t.is(res.text, 'Your datapackage is being processed. Please, try again in couple of minutes.')
+  t.true(res.text.includes('Your data is safely stored and is getting processed - it will be here soon!'))
 })
 
-test('Showcase page displays logs if 404 and status is failed', async t => {
+// Need to think through edge case, e.g., should it be only owner who sees the logs
+test.skip('Showcase page displays logs if 404 and pipeline status is failed', async t => {
   const res = await request(app)
     .get('/admin/failed-package')
     .expect(200)
