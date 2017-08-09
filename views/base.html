@@ -26,7 +26,7 @@
   </script>
 </head>
   <body>
-    <div class="banner">Welcome to the <a href="https://discuss.okfn.org/t/upcoming-changes-to-datahub-io/5852">new rebooted DataHub</a>. The old DataHub is now available at <a href="https://old.datahub.io">old.datahub.io</a></div>
+    <div class="banner">Welcome to the <a href="https://discuss.okfn.org/t/upcoming-changes-to-datahub-io/5852">new rebooted DataHub</a>. The old DataHub remains available at <a href="https://old.datahub.io">old.datahub.io</a></div>
     <!-- Page header -->
     <div class="navbar navbar-default">
       <div class="container">
@@ -63,11 +63,13 @@
               </li>
             {% else %}
               <li>
-                <a href="/login/github"><span class="fa fa-github fa-lg"></span></a>
+                <a href="/login/github">LOGIN <span class="fa fa-github fa-lg"></span></a>
               </li>
+              <!--
               <li>
                 <a href="/login/google"><span class="fa fa-google fa-lg"></span></a>
               </li>
+              -->
             {% endif %}
           </ul>
         </div>
