@@ -26,6 +26,34 @@ module.exports = function () {
     })
   })
 
+  // ----------------------------
+  // Redirects for old.datahub.io
+  // 
+  // come first to avoid any risk of conflict with /:owner or /:owner/:dataset
+
+  function redirect(path, base='https://old.datahub.io') {
+    return function(req, res) {
+      let dest = base + path;
+      if (req.params[0]) {
+        dest += '/' + req.params[0]
+      }
+      res.redirect(302, dest);
+    }
+  }
+  const redirectPaths = [
+    '/organization',
+    '/api',
+    '/dataset',
+    '/user',
+    '/tag'
+  ]
+  for(let offset of redirectPaths) {
+    router.get([offset, offset+'/*'], redirect(offset))
+  }
+
+  // /end redirects
+  // -------------
+
   router.get('/dashboard', async (req, res) => {
     if (req.cookies.jwt) {
       const currentUser = utils.getCurrentUser(req.cookies)
@@ -184,6 +212,7 @@ module.exports = function () {
     })
   })
 
+  // MUST come last in order to catch all the publisher pages
   router.get('/:owner', async (req, res) => {
     // First check if user exists using resolver
     const userAndPkgId = await api.resolve(path.join(req.params.owner, 'package'))

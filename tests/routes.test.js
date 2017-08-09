@@ -8,14 +8,11 @@ var app = require('../index').makeApp()
 mocks.initMocks()
 
 test('Home page returns 200 and has correct content', async t => {
-  const pageHeading = 'Data publishing and sharing'
   const res = await request(app)
     .get('/')
     .expect(200)
   t.is(res.statusCode, 200)
   t.true(res.text.includes('DataHub'))
-  t.true(res.text.includes(pageHeading))
-  t.true(res.text.includes('UA-80458846-4'))
 })
 
 test('Dashboard page renders when jwt in cookies setup', async t => {
@@ -154,4 +151,28 @@ test('Downloading a resource by name or index works for csv and json', async t =
     .get('/admin/demo-package/r/0.json')
   t.is(res.statusCode, 302)
   t.true(res.header.location.includes('/latest/data/json/data/demo-resource.json'))
+})
+
+test('Redirects to old.datahub.io', async t => {
+  const old  = 'https://old.datahub.io'
+  const urls = [
+    '/organization',
+    '/organization/abc',
+    '/api',
+    '/api/xyz',
+    '/api/rest/v2/datasets',
+    '/dataset',
+    '/dataset/iso-3166-1-alpha2-country-codes',
+    '/dataset/iso-3166-1-alpha2-country-codes/resource/xyz',
+    '/user',
+    '/user/rufuspollock',
+    '/tag',
+    '/tag/abc'
+  ]
+  for(let url of urls) {
+    const expected = old + url
+    let res = await request(app).get(url)
+    t.is(res.statusCode, 302)
+    t.is(res.header.location, expected)
+  }
 })
