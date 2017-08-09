@@ -28,7 +28,7 @@ module.exports = function () {
 
   // ----------------------------
   // Redirects for old.datahub.io
-  // 
+  //
   // come first to avoid any risk of conflict with /:owner or /:owner/:dataset
 
   function redirect(path, base='https://old.datahub.io') {
@@ -101,18 +101,29 @@ module.exports = function () {
         throw err
       }
     }
+    let status
+    try {
+      status = await api.pipelineStatus(userAndPkgId.userid, userAndPkgId.packageid)
+    } catch (err) {
+      if (err.status !== 404) {
+        throw err
+      }
+    }
 
-    if (normalizedDp) {
+    if (normalizedDp) { // In pkgstore
       res.render('showcase.html', {
         title: req.params.owner + ' | ' + req.params.name,
         dataset: normalizedDp,
         owner: req.params.owner,
         // eslint-disable-next-line no-useless-escape, quotes
-        dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'")
+        dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'"),
+        status: status.state,
+        successUrl: `/${req.params.owner}/${req.params.name}`,
+        failUrl: `/${req.params.owner}/${req.params.name}/pipelines`,
+        statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/status`
       })
-    } else { // Not in pkgstore but may be loading
-      try {
-        const status = await api.pipelineStatus(userAndPkgId.userid, userAndPkgId.packageid)
+    } else { // Not in pkgstore
+      if (status) {
         res.render('uploading.html', {
           successUrl: `/${req.params.owner}/${req.params.name}`,
           failUrl: `/${req.params.owner}/${req.params.name}/pipelines`,
@@ -120,13 +131,9 @@ module.exports = function () {
           name: req.params.name,
           owner: req.params.owner
         })
-      } catch (err) {
-        if (err.status === 404) { // Pkgstore 404 + pipeline status 404 => dataset does not exist
-          res.status(404).send('Sorry, this page was not found.')
-          return
-        } else {
-          throw err
-        }
+      } else { // Nor in pipelines
+        res.status(404).send('Sorry, this dataset was not found.')
+        return
       }
     }
   })

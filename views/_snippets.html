@@ -39,3 +39,60 @@
   </div>
   {%- endfor %}
 {%- endmacro %}
+
+{% macro uploading(statusApi, failUrl, successUrl) -%}
+  <p id="message" class="text-center">
+    <i class="fa fa-spinner fa-spin" aria-hidden="true"> </i>
+    Your data is safely stored and is getting processed - it will be here soon!
+  </p>
+
+  <script type="text/javascript">
+    // The polling function
+    function poll(fn, timeout, interval) {
+      var endTime = Number(new Date()) + (timeout || 2000);
+      interval = interval || 100;
+
+      var checkCondition = function(resolve, reject) {
+          // If the condition is met, we're done!
+          fn().then(function(res) {
+            res.json().then(function(out) {
+              if (out.state === 'SUCCEEDED' || out.state === 'FAILED') {
+                resolve(out);
+              }
+              // If the condition isn't met but the timeout hasn't elapsed, go again
+              else if (Number(new Date()) < endTime) {
+                  setTimeout(checkCondition, interval, resolve, reject);
+              }
+              // Didn't match and too much time, reject!
+              else {
+                  reject(new Error('timed out for ' + fn + ': ' + arguments));
+              }
+            })
+          })
+      };
+
+      return new Promise(checkCondition);
+    }
+
+    poll(function() {
+      return window.fetch('{{ statusApi }}');
+    }, 1200000, 2000).then(function(status) {
+      if (status.state === 'FAILED') {
+        var target = document.getElementById('message')
+        target.innerHTML = 'Something went wrong. Redirecting to pipelines page...';
+        setTimeout(function() {
+          window.location = '{{ failUrl }}';
+        }, 1000);
+      } else if (status.state === 'SUCCEEDED') {
+        var target = document.getElementById('message')
+        target.innerHTML = 'Success! Reloading...';
+        setTimeout(function() {
+          window.location = '{{ successUrl }}';
+        }, 1000);
+      }
+    }).catch(function() {
+      // Polling timed out, handle the error!
+      alert('Please, reload the page...');
+    });
+  </script>
+{%- endmacro %}

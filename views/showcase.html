@@ -10,6 +10,17 @@
 <!-- title and owner info -->
 <div class="container">
   <div class="inner_container">
+    {% if status === 'FAILED' %}
+    <div class="alert alert-danger text-center" role="alert">
+      We've failed to build your latest changes. Please, see <a href="/{{ owner }}/{{ dataset.name }}/pipelines">details here.</a>
+    </div>
+    {% elif status === 'SUCCEEDED' %}
+    {% elif status %}
+    <div class="alert alert-info" role="alert">
+      {{ snippets.uploading(statusApi, failUrl, successUrl) }}
+    </div>
+    {% endif %}
+
     <div class="showcase-page-header">
       <h1>
         {{ dataset.title }}

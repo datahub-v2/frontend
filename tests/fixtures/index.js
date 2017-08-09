@@ -135,6 +135,18 @@ module.exports.initMocks = function() {
       state: 'FAILED',
       logs: ['log1', 'log2']
     })
+    .get('/source/admin/demo-package/status')
+    .reply(200, {
+      state: 'SUCCEEDED'
+    })
+    .get('/source/core/house-prices-us/status')
+    .reply(200, {
+      state: 'RUNNING'
+    })
+    .get('/source/core/gold-prices/status')
+    .reply(200, {
+      state: 'FAILED'
+    })
     .get('/source/bad-user/bad-package/status')
     .reply(404)
 
@@ -165,5 +177,15 @@ module.exports.initMocks = function() {
     .reply(200, {
       userid: 'admin',
       packageid: 'failed-package'
+    })
+    .get('/resolve?path=core/house-prices-us')
+    .reply(200, {
+      userid: 'core',
+      packageid: 'house-prices-us'
+    })
+    .get('/resolve?path=core/gold-prices')
+    .reply(200, {
+      userid: 'core',
+      packageid: 'gold-prices'
     })
 }
