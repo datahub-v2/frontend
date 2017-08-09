@@ -27,9 +27,9 @@
       <h6 class="text-left">
         <b>{{ package.datapackage.name }}</b> | files {{ package.datapackage.resources|length }} | {{ package.datapackage.datahub.stats.prettyBytes }}
       </h6>
-      {% if package.datapackage.readme %}
+      {% if package.datapackage.readmeSnippet %}
       <p>
-        {{ package.datapackage.readme|truncate }}
+        {{ package.datapackage.readmeSnippet }}
         <a href="/{{ package.datapackage.datahub.owner }}/{{ package.datapackage.name }}" class="explore">
           explore more <span>&rsaquo;</span>
         </a>

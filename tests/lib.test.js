@@ -86,6 +86,7 @@ test('Metastore API wrapper (search) function works', async t => {
   t.is(res.total, 1)
   t.is(res.results[0].datapackage.datahub.owner, 'core')
   t.is(res.results[0].datapackage.datahub.stats.prettyBytes, '192kB')
+  t.is(res.results[0].datapackage.readmeSnippet.length, 293)
 })
 
 test('Authenticates with GitHub using given jwt and returns user info', async t => {
