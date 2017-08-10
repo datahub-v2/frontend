@@ -1,6 +1,10 @@
 /* Section 1
 ====================================*/
 
+a {
+  color: $black;
+}
+
 .section {
   padding: 30px 0 0 0;
   h1 {
@@ -18,9 +22,6 @@
   }
   .row {
     margin-bottom: 40px;
-  }
-  a {
-    color: $black;
   }
   input {
     width: 50%;

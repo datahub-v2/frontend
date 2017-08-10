@@ -7,9 +7,8 @@
 }
 
 .jumbotron-primary {
-  a.btn {
-    width: 130px;
-  }
+  margin-top: -30px;
+
   a.arrow {
     font-size: 3em;
   }
@@ -40,46 +39,23 @@
   }
 }
 
-.jumbotron {
+.container .jumbotron {
+  padding: 30px;
   padding-top: 10px;
   margin-bottom: 0;
-  .terminal-heading {
-    margin-bottom: 0;
-    margin-top: 40px;
-    span {
-      padding: 3px;
-      border: 1px solid;
-    }
+
+  .main-img {
+    width: 70px;
+    height: 70px;
+    margin: auto;
   }
+
   h1 {
     font-weight: 200;
     margin-bottom: 30px;
   }
   h1.main-title {
-    margin: 30px 0;
-  }
-  form {
-    margin-bottom: 30px;
-    padding: 0 10%;
-    @media (min-width: $screen-sm-min) {
-      padding: 0 15%;
-    }
-    @media (min-width: $screen-md-min) {
-      padding: 0 25%;
-    }
-  }
-  .narrow {
-    padding: 0 5%;
-    @media (min-width: $screen-sm-min) {
-      padding: 0 15%;
-    }
-    @media (min-width: $screen-md-min) {
-      padding: 0 35%;
-    }
-    hr {
-      margin-bottom: 0;
-      border-top: 2px solid #000;
-    }
+    margin: 30px 0 20px;
   }
   .message {
     font-style: italic;
@@ -87,21 +63,23 @@
   a {
     margin: 20px 0;
   }
-}
 
-.main-img {
-  width: 100px;
-  height: 100px;
+  .request-access {
+    font-size: 80%;
+    text-style: italic;
+  }
 }
-
 
 .jumbotron .demo {
+  margin-top: 25px;
+
   .console {
     width: 450px;
     height: 290px;
     border-radius: 5px;
     background: #000;
     box-shadow: 70px 70px 100px 10px rgba(0,0,0,0.1);
+    margin: auto;
   }
 
   .window {
@@ -118,6 +96,7 @@
     width: 450px;
     height: 290px;
     border-radius: 5px;
+    margin: auto;
   }
 
   .browser .window {
@@ -221,5 +200,24 @@
     }
   }
 
+  .browser .body img {
+    margin: auto;
+    max-height: 100%;
+  }
+}
+
+.jumbotron .call-to-action {
+	margin-top: 10px;
+
+	.subtitle {
+    font-family: -apple-system,BlinkMacSystemFont,"Droid Sans","Helvetica Neue",sans-serif;
+		font-size: 20px;
+		font-weight: 400;
+		margin-top: 40px;
+	}
+
+	p {
+		font-size: 14px;
+	}
 }
 

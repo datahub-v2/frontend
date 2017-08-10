@@ -5963,6 +5963,7 @@ a.explore {
   text-align: center;
   padding: 10px;
   font-size: 12px;
+  margin-bottom: 10px;
   border-bottom: 1px solid #eaeaea; }
 
 .banner a {
@@ -6014,10 +6015,10 @@ a.explore {
   background: white;
   padding-bottom: 5em; }
 
-.jumbotron-primary a.btn {
-  width: 130px; }
-.jumbotron-primary a.arrow {
-  font-size: 3em; }
+.jumbotron-primary {
+  margin-top: -30px; }
+  .jumbotron-primary a.arrow {
+    font-size: 3em; }
 
 .jumbotron-secondary form {
   margin-top: 30px; }
@@ -6037,143 +6038,141 @@ a.explore {
 .jumbotron-secondary strong {
   font-style: bold; }
 
-.jumbotron {
+.container .jumbotron, .container-no-top-padding .jumbotron {
+  padding: 30px;
   padding-top: 10px;
   margin-bottom: 0; }
-  .jumbotron .terminal-heading {
-    margin-bottom: 0;
-    margin-top: 40px; }
-    .jumbotron .terminal-heading span {
-      padding: 3px;
-      border: 1px solid; }
-  .jumbotron h1 {
+  .container .jumbotron .main-img, .container-no-top-padding .jumbotron .main-img {
+    width: 70px;
+    height: 70px;
+    margin: auto; }
+  .container .jumbotron h1, .container-no-top-padding .jumbotron h1 {
     font-weight: 200;
     margin-bottom: 30px; }
-  .jumbotron h1.main-title {
-    margin: 30px 0; }
-  .jumbotron form {
-    margin-bottom: 30px;
-    padding: 0 10%; }
-    @media (min-width: 768px) {
-      .jumbotron form {
-        padding: 0 15%; } }
-    @media (min-width: 992px) {
-      .jumbotron form {
-        padding: 0 25%; } }
-  .jumbotron .narrow {
-    padding: 0 5%; }
-    @media (min-width: 768px) {
-      .jumbotron .narrow {
-        padding: 0 15%; } }
-    @media (min-width: 992px) {
-      .jumbotron .narrow {
-        padding: 0 35%; } }
-    .jumbotron .narrow hr {
-      margin-bottom: 0;
-      border-top: 2px solid #000; }
-  .jumbotron .message {
+  .container .jumbotron h1.main-title, .container-no-top-padding .jumbotron h1.main-title {
+    margin: 30px 0 20px; }
+  .container .jumbotron .message, .container-no-top-padding .jumbotron .message {
     font-style: italic; }
-  .jumbotron a {
+  .container .jumbotron a, .container-no-top-padding .jumbotron a {
     margin: 20px 0; }
+  .container .jumbotron .request-access, .container-no-top-padding .jumbotron .request-access {
+    font-size: 80%;
+    text-style: italic; }
 
-.main-img {
-  width: 100px;
-  height: 100px; }
-
-.jumbotron .demo .console {
-  width: 450px;
-  height: 290px;
-  border-radius: 5px;
-  background: #000;
-  box-shadow: 70px 70px 100px 10px rgba(0, 0, 0, 0.1); }
-.jumbotron .demo .window {
-  border: 1px solid #333;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  border-radius: 5px;
-  box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.1); }
-.jumbotron .demo .browser {
-  background: #fff;
-  width: 450px;
-  height: 290px;
-  border-radius: 5px; }
-.jumbotron .demo .browser .window {
-  border-color: #fff; }
-.jumbotron .demo .header {
-  width: 100%;
-  height: 36px;
-  position: absolute; }
-  .jumbotron .demo .header .title {
-    color: #999;
-    font-size: 12px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+.jumbotron .demo {
+  margin-top: 25px; }
+  .jumbotron .demo .console {
+    width: 450px;
+    height: 290px;
+    border-radius: 5px;
+    background: #000;
+    box-shadow: 70px 70px 100px 10px rgba(0, 0, 0, 0.1);
+    margin: auto; }
+  .jumbotron .demo .window {
+    border: 1px solid #333;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.1); }
+  .jumbotron .demo .browser {
+    background: #fff;
+    width: 450px;
+    height: 290px;
+    border-radius: 5px;
+    margin: auto; }
+  .jumbotron .demo .browser .window {
+    border-color: #fff; }
+  .jumbotron .demo .header {
+    width: 100%;
+    height: 36px;
+    position: absolute; }
+    .jumbotron .demo .header .title {
+      color: #999;
+      font-size: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      position: absolute;
+      top: 6px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      width: 200px;
+      margin: auto;
+      border-radius: 4px;
+      padding: 4px; }
+    .jumbotron .demo .header .title-bg {
+      background-color: #F7F7F7; }
+    .jumbotron .demo .header .icon {
+      border-radius: 50%;
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%); }
+    .jumbotron .demo .header .close-terminal {
+      background-color: #ff5f56;
+      left: 13px; }
+    .jumbotron .demo .header .minimize {
+      background-color: #ffbd2e;
+      left: 33px; }
+    .jumbotron .demo .header .fullScreen {
+      background-color: #27c93f;
+      left: 53px; }
+  .jumbotron .demo .body {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    padding-top: 43px;
     position: absolute;
-    top: 6px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    width: 200px;
-    margin: auto;
-    border-radius: 4px;
-    padding: 4px; }
-  .jumbotron .demo .header .title-bg {
-    background-color: #F7F7F7; }
-  .jumbotron .demo .header .icon {
-    border-radius: 50%;
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%); }
-  .jumbotron .demo .header .close-terminal {
-    background-color: #ff5f56;
-    left: 13px; }
-  .jumbotron .demo .header .minimize {
-    background-color: #ffbd2e;
-    left: 33px; }
-  .jumbotron .demo .header .fullScreen {
-    background-color: #27c93f;
-    left: 53px; }
-.jumbotron .demo .body {
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-  padding-top: 43px;
-  position: absolute;
-  overflow: auto; }
-.jumbotron .demo .console-inner {
-  color: #fff;
-  font-size: 12px;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-  line-height: 24px;
-  margin: 0 16px;
-  text-align: left; }
-  .jumbotron .demo .console-inner pre {
+    overflow: auto; }
+  .jumbotron .demo .console-inner {
+    color: #fff;
     font-size: 12px;
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-    line-height: 20px;
-    margin: 0;
-    white-space: pre-wrap;
-    color: #fff;
-    background-color: transparent;
-    border: none; }
-  .jumbotron .demo .console-inner .prompt {
-    color: #ccc; }
-  .jumbotron .demo .console-inner .square {
-    color: #fff; }
-  .jumbotron .demo .console-inner .cursor {
-    background: #f81ce5;
-    display: inline-block;
-    width: 7px;
-    height: 15px;
-    vertical-align: middle; }
+    line-height: 24px;
+    margin: 0 16px;
+    text-align: left; }
+    .jumbotron .demo .console-inner pre {
+      font-size: 12px;
+      font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+      line-height: 20px;
+      margin: 0;
+      white-space: pre-wrap;
+      color: #fff;
+      background-color: transparent;
+      border: none; }
+    .jumbotron .demo .console-inner .prompt {
+      color: #ccc; }
+    .jumbotron .demo .console-inner .square {
+      color: #fff; }
+    .jumbotron .demo .console-inner .cursor {
+      background: #f81ce5;
+      display: inline-block;
+      width: 7px;
+      height: 15px;
+      vertical-align: middle; }
+  .jumbotron .demo .browser .body img {
+    margin: auto;
+    max-height: 100%; }
+
+.jumbotron .call-to-action {
+  margin-top: 10px; }
+  .jumbotron .call-to-action .subtitle {
+    font-family: -apple-system,BlinkMacSystemFont,"Droid Sans","Helvetica Neue",sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 40px; }
+  .jumbotron .call-to-action p {
+    font-size: 14px; }
 
 /* Section 1
 ====================================*/
+a {
+  color: #000; }
+
 .section {
   padding: 30px 0 0 0; }
   .section h1 {
@@ -6188,8 +6187,6 @@ a.explore {
     margin-bottom: 30px; }
   .section .row {
     margin-bottom: 40px; }
-  .section a {
-    color: #000; }
   .section input {
     width: 50%;
     margin: auto;

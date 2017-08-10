@@ -14,71 +14,71 @@ Welcome Home
   <div class="alert alert-danger" role="alert">Something went wrong. Please, try again later.</div>
   {% endif %}
   <div class="jumbotron jumbotron-primary">
-    <div class="text-center">
-      <div class="row">
-        <div class="col-xs-2 col-xs-offset-2">
-          <img src="/static/img/logo-cube.png" class="img-responsive main-img" alt="">
-        </div>
-        <div class="col-xs-8 text-left">
-          <h1 class="main-title">Data online made simple</h1>
-        </div>
+    <div class="row">
+      <div class="text-center">
+        <img src="/static/img/logo-cube.png" class="img-responsive main-img" alt="">
+        <h1 class="main-title">Data online made simple</h1>
       </div>
-      <div class="row demo">
-        <div class="col-sm-6">
-					<div class="console">
-						<div class="window">
-							<div class="header">
-								<span class="icon close-terminal"></span>
-                <span class="icon minimize"></span>
-                <span class="icon fullScreen"></span>
-								<div class="title">
-									bash
-								</div>
-							</div>
-							<div class="body">
-								<div class="console-inner">
-									<pre>
-<span class="prompt"><span class="square">■</span> ~/my-proj $</span> ls
+    </div>
+    <div class="row demo">
+      <div class="col-sm-6">
+        <div class="console">
+          <div class="window">
+            <div class="header">
+              <span class="icon close-terminal"></span>
+              <span class="icon minimize"></span>
+              <span class="icon fullScreen"></span>
+              <div class="title">
+                bash
+              </div>
+            </div>
+            <div class="body">
+              <div class="console-inner">
+                <pre>
+<span class="prompt"><span class="square">■</span> ~/my-data $</span> ls
 datapackage.json   data.csv
-<span class="prompt"><span class="square">■</span> ~/my-proj $</span> data push
-  &gt; Uploading [====================] 100% 8.5s
-  &gt; Push complete (9.61MB) [8509ms]
-  &gt; Ready! https://datahub.io/your-username/my-proj
-    (copied to clipboard)
-<span class="prompt"><span class="square">■</span> ~/my-proj $</span> <span class="cursor"></span>
-                  </pre>
-								</div>
-							</div>
-						</div>
-					</div>
-        </div>
-        <div class="col-sm-6">
-					<div class="browser">
-						<div class="window">
-							<div class="header">
-								<span class="icon close-terminal"></span>
-                <span class="icon minimize"></span>
-                <span class="icon fullScreen"></span>
-								<div class="title title-bg">
-									https://datahub.io/you/your-data
-								</div>
-							</div>
-							<div class="body">
-								<img src="/static/img/terminal-white.png" class="img-responsive" />
-							</div>
-						</div>
-					</div>
+<span class="prompt"><span class="square">■</span> ~/my-data $</span> data push
+&gt; Uploading [====================] 100% 8.5s
+&gt; Push complete (9.61MB) [8509ms]
+&gt; Ready! https://datahub.io/your-username/my-data
+  (copied to clipboard)
+<span class="prompt"><span class="square">■</span> ~/my-data $</span> <span class="cursor"></span>
+                </pre>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <p>Get Started now!</p>
+      <div class="col-sm-6">
+        <div class="browser">
+          <div class="window">
+            <div class="header">
+              <span class="icon close-terminal"></span>
+              <span class="icon minimize"></span>
+              <span class="icon fullScreen"></span>
+              <div class="title title-bg">
+                https://datahub.io/you/your-data
+              </div>
+            </div>
+            <div class="body">
+              <img src="/static/img/terminal-white.png" class="img-responsive" />
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="row">
-        <a href="https://github.com/datopian/datahub-cli/releases/latest" target="_blank" class="btn btn-lg btn-primary">
-          Download
+    </div>
+    <div class="row text-center call-to-action">
+			<h2 class="subtitle">Power and Simplicity.</h2>
+			<p><span style="font-size: 100%; font-family: monospace">❒</span> <strong>datahub</strong> is the fastest way for individuals and teams to <strong>find, share and publish</strong> high quality data online</p>
+      <div>
+        <a href="#showcase" class="btn btn-lg btn-primary" onclick="scrollDown(this)">
+          Explore Datasets
         </a>
+        <div class="request-access">
+          Want to try out publishing data? We're in alpha and you can <a href="/login/github">sign up to request early access &raquo;</a>
+        </div>
       </div>
-      <div class="row">
+      <div>
         <a href="#showcase" class="arrow" onclick="scrollDown(this)">
           <i class="fa fa-angle-down" aria-hidden="true"></i>
         </a>
@@ -120,6 +120,12 @@ datapackage.json   data.csv
             {% endif %}
           </div>
         {% endfor %}
+
+        <div class="row">
+          <a href="/search" class="btn btn-lg btn-primary">
+            See more datasets
+          </a>
+        </div>
       </div>
     </div>
   </div>
