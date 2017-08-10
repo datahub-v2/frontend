@@ -61,7 +61,7 @@ test('getPackage has normalized resources', async t => {
 
 test('Gets list of packages', async t => {
   const listOfPkgIds = [
-    {ownerid: 'core', name: 's-and-p-500-companies'},
+    {ownerid: 'core', name: 'gold-prices'},
     {ownerid: 'core', name: 'house-prices-us'}
   ]
   const listOfDp = await api.getPackages(listOfPkgIds)
