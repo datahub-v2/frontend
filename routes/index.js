@@ -208,10 +208,12 @@ module.exports = function () {
 
   router.get('/search', async (req, res) => {
     const token = req.cookies.jwt
-    const packages = await api.search(`q="${req.query.q}"&size=20`, token)
+    const keyword = req.query.q ? req.query.q : 'core'
+    const query = req.query.q ? `q="${keyword}"` : `datahub.ownerid="${keyword}"`
+    const packages = await api.search(`${query}&size=20`, token)
     res.render('search.html', {
       packages,
-      query: req.query.q
+      query: keyword
     })
   })
 
