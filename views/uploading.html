@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import '_snippets.html' as snippets %}
 
 {% block title %}
 Uploading {{owner}}/{{name}}
@@ -7,83 +8,9 @@ Uploading {{owner}}/{{name}}
 {% block content %}
 <div class="container">
   <div class="inner_container">
-    <p id="message" class="text-center">Your data is safely stored and is getting processed - it will be here soon!</p>
-    <div id="status"></div>
+    <div class="alert alert-info" role="alert">
+      {{ snippets.uploading(statusApi, failUrl, successUrl) }}
+    </div>
   </div>
 </div>
-<script type="text/javascript" src="/static/js/spin.min.js"></script>
-<script type="text/javascript">
-  // The polling function
-  function poll(fn, timeout, interval) {
-    var endTime = Number(new Date()) + (timeout || 2000);
-    interval = interval || 100;
-
-    var checkCondition = function(resolve, reject) {
-        // If the condition is met, we're done!
-        fn().then(function(res) {
-          res.json().then(function(out) {
-            if (out.state === 'SUCCEEDED' || out.state === 'FAILED') {
-              resolve(out);
-            }
-            // If the condition isn't met but the timeout hasn't elapsed, go again
-            else if (Number(new Date()) < endTime) {
-                setTimeout(checkCondition, interval, resolve, reject);
-            }
-            // Didn't match and too much time, reject!
-            else {
-                reject(new Error('timed out for ' + fn + ': ' + arguments));
-            }
-          })
-        })
-    };
-
-    return new Promise(checkCondition);
-  }
-
-  poll(function() {
-    return window.fetch('{{ statusApi }}');
-  }, 1200000, 2000).then(function(status) {
-    if (status.state === 'FAILED') {
-      var target = document.getElementById('message')
-      target.innerHTML = 'Something went wrong. Redirecting to pipelines page...';
-      setTimeout(function() {
-        window.location = '{{ failUrl }}';
-      }, 1000);
-    } else if (status.state === 'SUCCEEDED') {
-      var target = document.getElementById('message')
-      target.innerHTML = 'Success! Reloading...';
-      setTimeout(function() {
-        window.location = '{{ successUrl }}';
-      }, 1000);
-    }
-  }).catch(function() {
-    // Polling timed out, handle the error!
-    alert('Please, reload the page...');
-  });
-
-  var opts = {
-    lines: 11 // The number of lines to draw
-  , length: 34 // The length of each line
-  , width: 12 // The line thickness
-  , radius: 42 // The radius of the inner circle
-  , scale: 0.75 // Scales overall size of the spinner
-  , corners: 1 // Corner roundness (0..1)
-  , color: '#000' // #rgb or #rrggbb or array of colors
-  , opacity: 0.25 // Opacity of the lines
-  , rotate: 0 // The rotation offset
-  , direction: 1 // 1: clockwise, -1: counterclockwise
-  , speed: 1 // Rounds per second
-  , trail: 60 // Afterglow percentage
-  , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
-  , zIndex: 2e9 // The z-index (defaults to 2000000000)
-  , className: 'spinner' // The CSS class to assign to the spinner
-  , top: '50%' // Top position relative to parent
-  , left: '50%' // Left position relative to parent
-  , shadow: false // Whether to render a shadow
-  , hwaccel: false // Whether to use hardware acceleration
-  , position: 'absolute' // Element positioning
-  }
-  var target = document.getElementById('status')
-  var spinner = new Spinner(opts).spin(target);
-</script>
 {% endblock %}

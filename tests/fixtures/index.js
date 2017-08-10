@@ -21,9 +21,9 @@ module.exports.initMocks = function() {
     .reply(404, "not found", {'access-control-allow-origin': '*'})
     .get('/admin/failed-package/latest/datapackage.json')
     .reply(404, "not found", {'access-control-allow-origin': '*'})
-    .get('/core/s-and-p-500-companies/latest/datapackage.json')
+    .get('/core/co2-ppm/latest/datapackage.json')
     .reply(200, data.dataPackage, {'access-control-allow-origin': '*'})
-    .get('/core/s-and-p-500-companies/latest/README.md')
+    .get('/core/co2-ppm/latest/README.md')
     .reply(200, data.readme, {'access-control-allow-origin': '*'})
     .get('/core/house-prices-us/latest/datapackage.json')
     .reply(200, data.dataPackage, {'access-control-allow-origin': '*'})
@@ -133,7 +133,32 @@ module.exports.initMocks = function() {
     .get('/source/admin/failed-package/status')
     .reply(200, {
       state: 'FAILED',
-      logs: ['log1', 'log2']
+      error_log: ['err1', 'err2'],
+      source: {
+        meta: {
+          dataset: 'failed-package',
+          owner: 'admin'
+        }
+      }
+    })
+    .get('/source/admin/demo-package/status')
+    .reply(200, {
+      state: 'SUCCEEDED',
+      logs: ['log1', 'log2'],
+      source: {
+        meta: {
+          dataset: 'demo-package',
+          owner: 'admin'
+        }
+      }
+    })
+    .get('/source/core/house-prices-us/status')
+    .reply(200, {
+      state: 'RUNNING'
+    })
+    .get('/source/core/gold-prices/status')
+    .reply(200, {
+      state: 'FAILED'
     })
     .get('/source/bad-user/bad-package/status')
     .reply(404)
@@ -165,5 +190,15 @@ module.exports.initMocks = function() {
     .reply(200, {
       userid: 'admin',
       packageid: 'failed-package'
+    })
+    .get('/resolve?path=core/house-prices-us')
+    .reply(200, {
+      userid: 'core',
+      packageid: 'house-prices-us'
+    })
+    .get('/resolve?path=core/gold-prices')
+    .reply(200, {
+      userid: 'core',
+      packageid: 'gold-prices'
     })
 }
