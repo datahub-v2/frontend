@@ -25,6 +25,11 @@ test("Generates logical dp from extended dp", async t => {
 	t.is(extended.resources[17], logical.resources[5].alternates[0])
 	// Json version is in alternates
 	t.is(extended.resources[1], logical.resources[0].alternates[1])
+
+  const extendedNonTabular = require('./fixtures/extended-dp-non-tabular/datapackage.json')
+  const logicalNonTabular = lib.DataHubApi.extendedToLogical(extendedNonTabular)
+  // It doesn't change anything
+  t.deepEqual(extendedNonTabular, logicalNonTabular)
 })
 
 test('Gets README', async t => {
