@@ -133,11 +133,24 @@ module.exports.initMocks = function() {
     .get('/source/admin/failed-package/status')
     .reply(200, {
       state: 'FAILED',
-      logs: ['log1', 'log2']
+      error_log: ['err1', 'err2'],
+      source: {
+        meta: {
+          dataset: 'failed-package',
+          owner: 'admin'
+        }
+      }
     })
     .get('/source/admin/demo-package/status')
     .reply(200, {
-      state: 'SUCCEEDED'
+      state: 'SUCCEEDED',
+      logs: ['log1', 'log2'],
+      source: {
+        meta: {
+          dataset: 'demo-package',
+          owner: 'admin'
+        }
+      }
     })
     .get('/source/core/house-prices-us/status')
     .reply(200, {

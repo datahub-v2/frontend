@@ -115,11 +115,23 @@ test('Pipeline page displays logs for a dataset', async t => {
     .get('/bad-user/bad-package/pipelines')
   t.is(notExist.status, 404)
 
-  const res = await request(app)
+  const stillRunning = await request(app)
     .get('/admin/running-package/pipelines')
-  t.is(res.status, 200)
-  t.true(res.text.includes('admin/running-package - Pipelines'))
-  t.true(res.text.includes('log1\nlog2'))
+  t.is(stillRunning.status, 404)
+
+  const failed = await request(app)
+    .get('/admin/failed-package/pipelines')
+  t.is(failed.status, 200)
+  t.true(failed.text.includes('admin/failed-package - Pipelines'))
+  t.true(failed.text.includes('Status: FAILED'))
+  t.true(failed.text.includes('err1\nerr2'))
+
+  const succeeded = await request(app)
+    .get('/admin/demo-package/pipelines')
+  t.is(succeeded.status, 200)
+  t.true(succeeded.text.includes('admin/demo-package - Pipelines'))
+  t.true(succeeded.text.includes('Status: SUCCEEDED'))
+  t.true(succeeded.text.includes('log1\nlog2'))
 })
 
 test('Publisher page returns 200 and has correct content', async t => {

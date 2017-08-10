@@ -7,11 +7,21 @@ Pipelines
 {% block content %}
 <div class="container">
   <div class="inner_container">
-    <h2>{{ owner }}/{{ name }} - Pipelines</h2>
+    <h2>{{ status.source.meta.owner }}/{{ status.source.meta.dataset }} - Pipelines</h2>
     <p>Status: {{ status.state }}</p>
-    <textarea style="width:100%;height:400px">
+    <br>
+    {% if status.state === 'FAILED' %}
+    <h4>Errors</h4>
+    <textarea class="logs">
+      {{ status.error_log | join("\n") }}
+    </textarea>
+    {% endif %}
+    {% if status.logs %}
+    <h4>Logs</h4>
+    <textarea class="logs">
       {{ status.logs | join("\n") }}
     </textarea>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

@@ -142,11 +142,13 @@ module.exports = function () {
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     try {
       const status = await api.pipelineStatus(userAndPkgId.userid, userAndPkgId.packageid)
-      res.render('pipelines.html', {
-        owner: req.params.owner,
-        name: req.params.name,
-        status
-      })
+      if (status.state === 'FAILED' || status.state === 'SUCCEEDED') {
+        res.render('pipelines.html', {
+          status
+        })
+      } else {
+        res.status(404).send('Sorry, this page was not found.')
+      }
     } catch (err) {
       if (err.status === 404) { // Pkgstore 404 + pipeline status 404 => dataset does not exist
         res.status(404).send('Sorry, this page was not found.')
