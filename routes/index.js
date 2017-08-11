@@ -79,6 +79,7 @@ module.exports = function () {
     if (isAuthenticated.authenticated) {
       res.cookie('jwt', jwt)
       res.cookie('email', isAuthenticated.profile.email)
+      res.cookie('id', isAuthenticated.profile.id)
       res.cookie('name', isAuthenticated.profile.name)
       res.redirect('/dashboard')
     } else {

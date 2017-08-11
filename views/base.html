@@ -10,6 +10,7 @@
   <meta name="description" content="{{title}}. Data online made easy. Share and find data, quickly and easily. Simple, solid, slick. Frictionless and fast. Built for data scientists and wranglers. Managed by Datopian and Open Knowledge International">
   <meta name="keywords" content="data,datasets,data publishing,data sharing,data hosting,data package,reference data,indicators">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="icon" type="img/ico" href="/static/img/favicon.ico" sizes="16x16">
   <link rel="stylesheet" media="screen" href="/static/stylesheets/app.css">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
@@ -62,7 +63,10 @@
 						-->
             {% if login %}
               <li>
-                <a class="nav-link" href="/logout">Logout</a>
+                <a class="nav-link nav-avatar" href="#" data-toggle="popover" title=""
+                  data-content="<p><a href='/dashboard' class='a-popover'>Dashboard</a></p><p><a href='/logout' class='a-popover'>Logout</a></p>">
+                  <img src="" id="avatar" class="img-responsive img-circle nav-avatar" />
+                </a>
               </li>
             {% else %}
               <li>
@@ -121,6 +125,25 @@
         document.querySelector(el.attributes.href.value).scrollIntoView({
           behavior: 'smooth'
         });
+      }
+      // Popover on avatar icon in navbar
+      jQuery(document).ready(function(){
+        jQuery('[data-toggle="popover"]').popover({
+          'placement': 'bottom',
+          'trigger': 'focus',
+          'html': true
+        });
+      });
+      // Set avatar in navbar using id in cookies
+      function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+      }
+      var src = `https://www.gravatar.com/avatar/${getCookie('id')}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png`;
+      var avatar = document.getElementById('avatar');
+      if (avatar) {
+        avatar.src = src;
       }
     </script>
   </body>

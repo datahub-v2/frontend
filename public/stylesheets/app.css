@@ -3031,31 +3031,31 @@ a.btn.disabled, fieldset[disabled] a.btn {
 
 .btn-warning {
   color: #fff;
-  background-color: #ff5500;
-  border-color: #e64d00; }
+  background-color: #ff7900;
+  border-color: #e66d00; }
   .btn-warning:focus, .btn-warning.focus {
     color: #fff;
-    background-color: #cc4400;
-    border-color: #662200; }
+    background-color: #cc6100;
+    border-color: #663000; }
   .btn-warning:hover {
     color: #fff;
-    background-color: #cc4400;
-    border-color: #a83800; }
+    background-color: #cc6100;
+    border-color: #a85000; }
   .btn-warning:active, .btn-warning.active, .open > .btn-warning.dropdown-toggle {
     color: #fff;
-    background-color: #cc4400;
-    border-color: #a83800; }
+    background-color: #cc6100;
+    border-color: #a85000; }
     .btn-warning:active:hover, .btn-warning:active:focus, .btn-warning:active.focus, .btn-warning.active:hover, .btn-warning.active:focus, .btn-warning.active.focus, .open > .btn-warning.dropdown-toggle:hover, .open > .btn-warning.dropdown-toggle:focus, .open > .btn-warning.dropdown-toggle.focus {
       color: #fff;
-      background-color: #a83800;
-      border-color: #662200; }
+      background-color: #a85000;
+      border-color: #663000; }
   .btn-warning:active, .btn-warning.active, .open > .btn-warning.dropdown-toggle {
     background-image: none; }
   .btn-warning.disabled:hover, .btn-warning.disabled:focus, .btn-warning.disabled.focus, .btn-warning[disabled]:hover, .btn-warning[disabled]:focus, .btn-warning[disabled].focus, fieldset[disabled] .btn-warning:hover, fieldset[disabled] .btn-warning:focus, fieldset[disabled] .btn-warning.focus {
-    background-color: #ff5500;
-    border-color: #e64d00; }
+    background-color: #ff7900;
+    border-color: #e66d00; }
   .btn-warning .badge {
-    color: #ff5500;
+    color: #ff7900;
     background-color: #fff; }
 
 .btn-danger {
@@ -4251,9 +4251,9 @@ a.label:hover, a.label:focus {
     background-color: #383c76; }
 
 .label-warning {
-  background-color: #ff5500; }
+  background-color: #ff7900; }
   .label-warning[href]:hover, .label-warning[href]:focus {
-    background-color: #cc4400; }
+    background-color: #cc6100; }
 
 .label-danger {
   background-color: #d9534f; }
@@ -4479,7 +4479,7 @@ a.thumbnail.active {
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
 
 .progress-bar-warning {
-  background-color: #ff5500; }
+  background-color: #ff7900; }
   .progress-striped .progress-bar-warning {
     background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
     background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -5917,7 +5917,7 @@ a {
 
 a.explore {
   text-decoration: underline;
-  color: #484d99; }
+  color: #ff7900; }
 
 .container, .container-no-top-padding {
   padding-left: 5%;
@@ -5968,7 +5968,6 @@ a.explore {
 
 .banner a {
   text-decoration: none;
-  color: #067df7;
   font-size: inherit; }
 
 .navbar {
@@ -6004,6 +6003,26 @@ a.explore {
     margin-left: 6px;
     margin-bottom: 1px;
     border-radius: 20%; }
+  .navbar a.nav-avatar {
+    padding-top: 16px; }
+  .navbar img.nav-avatar {
+    width: 28px; }
+  .navbar div.popover {
+    top: 48px !important;
+    left: -100px !important; }
+    .navbar div.popover .arrow {
+      left: 80% !important; }
+    .navbar div.popover .popover-content {
+      padding: 20px 65px 20px 20px; }
+    .navbar div.popover a.a-popover {
+      color: #757575 !important; }
+      .navbar div.popover a.a-popover:hover {
+        color: #000 !important;
+        text-decoration: none; }
+    .navbar div.popover p {
+      margin-bottom: 20px; }
+      .navbar div.popover p:last-child {
+        margin-bottom: 0; }
 
 @media (min-width: 768px) {
   .navbar .container, .navbar .container-no-top-padding {
