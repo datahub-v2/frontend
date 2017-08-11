@@ -117,6 +117,27 @@ test('pipelineStatus hits status API and returns status object', async t => {
   t.is(res.state, 'RUNNING')
 })
 
+test('getProfile method works', async t => {
+  const owner = 'admin'
+  const res = await api.getProfile(owner)
+  const exp = {
+    found: true,
+    profile: {
+      id: 'admin',
+      join_date: 'Mon, 24 Jul 2017 12:17:50 GMT'
+    }
+  }
+  t.deepEqual(res, exp)
+
+  const notExist = 'notexist'
+  const badRes = await api.getProfile(notExist)
+  const expBadRes = {
+    found: false,
+    profile: null
+  }
+  t.deepEqual(badRes, expBadRes)
+})
+
 test('Resolves path', async t => {
   const path_ = 'publisher/package'
   const res = await api.resolve(path_)

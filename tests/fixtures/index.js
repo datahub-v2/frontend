@@ -175,6 +175,30 @@ module.exports.initMocks = function() {
     .get('/source/bad-user/bad-package/info')
     .reply(404)
 
+  nock(`${config.get('API_URL')}/auth`)
+    .persist()
+    .get('/get_profile?username=admin')
+    .reply(200, {
+      found: true,
+      profile: {
+        id: 'admin',
+        join_date: 'Mon, 24 Jul 2017 12:17:50 GMT'
+      }
+    })
+    .get('/get_profile?username=notexist')
+    .reply(200, {
+      found: false,
+      profile: null
+    })
+    .get('/get_profile?username=publisher')
+    .reply(200, {
+      found: true,
+      profile: {
+        id: 'publisher',
+        join_date: 'Mon, 24 Jul 2017 12:17:50 GMT'
+      }
+    })
+
   // resolver api
   nock(`${config.get('API_URL')}/resolver`)
     .persist()

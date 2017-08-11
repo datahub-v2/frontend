@@ -226,16 +226,20 @@ module.exports = function () {
   // MUST come last in order to catch all the publisher pages
   router.get('/:owner', async (req, res) => {
     // First check if user exists using resolver
-    const userAndPkgId = await api.resolve(path.join(req.params.owner, 'package'))
-    if (!userAndPkgId.userid) {
+    const userProfile = await api.getProfile(req.params.owner)
+    if (!userProfile.found) {
       res.status(404).send('Sorry, this page was not found.')
       return
     }
     const token = req.cookies.jwt
-    const packages = await api.search(`datahub.ownerid="${userAndPkgId.userid}"&size=20`, token)
+    const packages = await api.search(`datahub.ownerid="${userProfile.profile.id}"&size=20`, token)
+    const joinDate = new Date(userProfile.profile.join_date)
+    const joinYear = joinDate.getUTCFullYear()
+    const joinMonth = joinDate.toLocaleString('en-us', { month: "long" })
     res.render('owner.html', {
       packages,
-      emailHash: userAndPkgId.userid,
+      emailHash: userProfile.profile.id,
+      joinDate: joinMonth + ' ' + joinYear,
       owner: req.params.owner
     })
   })
