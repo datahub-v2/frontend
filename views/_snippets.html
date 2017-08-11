@@ -42,9 +42,12 @@
 
 {% macro uploading(statusApi, failUrl, successUrl) -%}
   <p id="message" class="text-center">
-    <i class="fa fa-spinner fa-spin" aria-hidden="true"> </i>
     Your data is safely stored and is getting processed - it will be here soon!
   </p>
+  <br>
+  <div class="text-center">
+    <img src="/static/img/spinner.gif" width="30px">
+  </div>
 
   <script type="text/javascript">
     // The polling function

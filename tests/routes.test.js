@@ -77,7 +77,7 @@ test('Showcase page displays uploading page if 404 (pkgstore) and pipeline statu
     .get('/admin/running-package')
     .expect(200)
   t.true(res.text.includes('Your data is safely stored and is getting processed - it will be here soon!'))
-  t.true(res.text.includes('<i class="fa fa-spinner fa-spin" aria-hidden="true">'))
+  t.true(res.text.includes('<img src="/static/img/spinner.gif" width="30px">'))
 })
 
 // Need to think through edge case, e.g., should it be only owner who sees the logs
@@ -100,7 +100,7 @@ test('Showcase page has mini uploading banner if pkgstore 200 & status is RUNNIN
     .get('/core/house-prices-us')
     .expect(200)
   t.true(res.text.includes('Your data is safely stored and is getting processed - it will be here soon!'))
-  t.true(res.text.includes('<i class="fa fa-spinner fa-spin" aria-hidden="true">'))
+  t.true(res.text.includes('<img src="/static/img/spinner.gif" width="30px">'))
 })
 
 test('Showcase page has mini error banner if pkgstore 200 & status is FAILED', async t => {
