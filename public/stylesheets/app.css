@@ -5977,18 +5977,13 @@ a.explore {
   .navbar .navbar-main {
     width: 70%;
     margin: auto; }
-  .navbar .navbar-right li a {
-    color: #000; }
   .navbar .main-logo {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    width: 50px;
-    height: 50px;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    background: url("../img/logo-cube.png") no-repeat;
-    background-size: 100%; }
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    background-color: #000;
+    color: #fff; }
   .navbar .searchbox {
     margin: 7.5px; }
     .navbar .searchbox input {
@@ -5996,6 +5991,19 @@ a.explore {
       -webkit-box-shadow: none !important;
       -moz-box-shadow: none !important;
       box-shadow: none !important; }
+  .navbar .navbar-nav > li > a {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #999; }
+  .navbar .navbar-nav > li > a.chat:after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    background: #8be2df;
+    margin-left: 6px;
+    margin-bottom: 1px;
+    border-radius: 20%; }
 
 @media (min-width: 768px) {
   .navbar .container, .navbar .container-no-top-padding {
@@ -6016,7 +6024,7 @@ a.explore {
   padding-bottom: 5em; }
 
 .jumbotron-primary {
-  margin-top: -30px; }
+  margin-top: -10px; }
   .jumbotron-primary a.arrow {
     font-size: 3em; }
 
