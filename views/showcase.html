@@ -100,7 +100,7 @@
           {% for resource in dataset.resources %}
             <tr>
               <td class="col-xs-2">
-                <i class="fa fa-file-text-o"></i> <a href="#resource-{{resource.name}}" class="explore" onclick="scrollDown(this)">{{resource.name}}</a> [{{resource.format}}]
+                <i class="fa fa-file-text-o"></i> <a href="#resource-{{resource.name}}" onclick="scrollDown(this)">{{resource.name}}</a> [{{resource.format}}]
               </td>
               <td class="col-xs-4">
                 {{ resource.title or resource.description }}
@@ -112,11 +112,11 @@
                 {{ resource.updated }}
               </td>
               <td class="download truncate col-xs-3">
-                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}" onclick="trackOutboundLink(this.href)">
+                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}" onclick="trackOutboundLink(this.href)" class="explore">
                   Download [{{ resource.format }}]
                 </a>
                 -
-                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.alternates[1].format }}" onclick="trackOutboundLink(this.href)">
+                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.alternates[1].format }}" onclick="trackOutboundLink(this.href)" class="explore">
                   [ {{ resource.alternates[1].format }} ({{resource.alternates[1].prettyBytes}}) ]
                 </a>
               </td>
@@ -132,8 +132,8 @@
         <h2 id="resource-{{resource.name}}" class="section-title">
           {{resource.name}}
           &nbsp;
-          <a href="{{ dataset.path }}/{{ resource.path }}" onclick="trackOutboundLink(this.href)">
-            <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
+          <a href="{{ dataset.path }}/{{ resource.path }}" onclick="trackOutboundLink(this.href)" class="explore">
+            <i class="fa fa-arrow-circle-o-down" aria-hidden="true" style="font-size:0.9em"></i>
           </a>
         </h2>
         <div id="resource-{{loop.index - 1}}" class="react-me tables part"
