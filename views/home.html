@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% import '_snippets.html' as snippets %}
 
 {% block title %}
-Welcome Home
+Welcome - Home
 {% endblock %}
 
 {% block content %}
@@ -75,7 +76,7 @@ datapackage.json   data.csv
           Explore Datasets
         </a>
         <div class="request-access">
-          Want to try out publishing data? We're in alpha and you can <a href="/login/github" class="explore">sign up to request early access &raquo;</a>
+          Want to try out publishing data? We're in alpha and you can <a href="/login/github">sign up to request early access &raquo;</a>
         </div>
       </div>
       <div>
@@ -89,43 +90,17 @@ datapackage.json   data.csv
 
 <!-- Section 1 -->
 <div class="section-gray" id="showcase">
-<div class="container">
+<div class="container home">
   <div class="inner_container">
     <div class="section section-centered">
       <div class="row">
+        <h2 class="section-title">Some of our most popular data</h2>
 
-        <div class="row">
-          <h2 class="section-title">Some of our most popular data</h2>
-        </div>
+        {{ snippets.package_list_show(showcasePackages) }}
 
-        {% for package in showcasePackages %}
-          <div class="row readable-width">
-            <a href="core/{{ package['name'] }}" class="package-title">
-              <h3>{{ package['title'] }}</h3>
-            </a>
-            <p class="publisher normal">
-              <img src="https://www.gravatar.com/avatar/{{ package.datahub.ownerid }}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar" />
-              <a href="core">core</a>
-            </p>
-            <h6 class="text-left">
-              <b>{{ package['name'] }}</b> | {{ package.resources|length }} files | {{ package.datahub.stats.prettyBytes }}
-            </h6>
-            {% if package.readmeSnippet %}
-            <p class="readme">
-              {{ package.readmeSnippet }}
-              <a href="core/{{ package['name'] }}" class="explore">
-                explore more <span>&rsaquo;</span>
-              </a>
-            </p>
-            {% endif %}
-          </div>
-        {% endfor %}
-
-        <div class="row">
-          <a href="/search" class="btn btn-lg btn-primary">
-            See more datasets
-          </a>
-        </div>
+        <a href="/search" class="btn btn-lg btn-primary">
+          See more datasets
+        </a>
       </div>
     </div>
   </div>
@@ -133,35 +108,13 @@ datapackage.json   data.csv
 </div><!-- End of section 1 -->
 
 <!-- Section 2 -->
-<div class="container">
+<div class="container home">
   <div class="inner_container">
     <div class="section section-centered">
       <div class="row">
-        <div class="row">
-          <h2 class="section-title">Tutorials</h2>
-        </div>
+        <h2 class="section-title">Tutorials</h2>
 
-        {% for package in tutorialPackages %}
-          <div class="row readable-width">
-            <a href="examples/{{ package['name'] }}" class="package-title">
-              <h3>{{ package['title'] }}</h3>
-            </a>
-            <p class="publisher normal">
-              <img src="https://www.gravatar.com/avatar/{{ package.datahub.ownerid }}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar" />
-              <a href="examples">examples</a>
-            </p>
-            <h6 class="text-left">
-              <b>{{ package['name'] }}</b> | {{ package.resources|length }} files | {{ package.datahub.stats.prettyBytes }}
-            </h6>
-            <p class="readme">
-              {{ package.readmeSnippet }}
-              <a href="examples/{{ package['name'] }}" class="explore">
-                explore more <span>&rsaquo;</span>
-              </a>
-            </p>
-          </div>
-        {% endfor %}
-
+        {{ snippets.package_list_show(tutorialPackages) }}
       </div>
     </div>
   </div>

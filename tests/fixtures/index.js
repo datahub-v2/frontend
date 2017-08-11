@@ -47,6 +47,7 @@ module.exports.initMocks = function() {
     .reply(200, data.readme, {'access-control-allow-origin': '*'})
 
   // Mock api calls for Metastore
+  // TODO: 2017-08-11 ~rufuspollock construct extended DP ourselves from an input fixture package so that we can test more cleanly
   const extendedDp = require('./extended-dp/datapackage.json')
   nock(config.get('API_URL'))
     .persist()

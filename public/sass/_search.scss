@@ -34,18 +34,24 @@ img.cube {
   }
 }
 
-.owner {
-  margin: 20px 0;
-}
-.icon {
-}
 .package-summary {
   margin-bottom: 20px;
-}
-.package-title {
-  margin-bottom: 20px;
-}
-.package-publisher {
-  margin: 0 0 10px 0;
-  padding-left: 0;
+
+  .publisher {
+    margin: 0 0 10px 0;
+  }
+  .package-title {
+    font-size: 21px;
+    font-weight: 200;
+    margin-bottom: 15px;
+
+    a {
+      text-decoration: underline;
+      color: $black;
+    }
+  }
+  .meta {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
 }

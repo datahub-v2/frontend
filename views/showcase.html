@@ -77,7 +77,7 @@
       </div>
 
       <!-- short readme -->
-      <div class="readme readable-width">{{dataset.readmeSnippet}} <a href="#readme" class="explore" onclick="scrollDown(this)">read more</a></div>
+      <div class="readme readable-width">{{dataset.readmeSnippet}} <a href="#readme" onclick="scrollDown(this)">read more</a></div>
 
       <!-- download button -->
       <a href="#data" class="btn btn-lg btn-primary" onclick="scrollDown(this)">Download</a>
@@ -112,11 +112,11 @@
                 {{ resource.updated }}
               </td>
               <td class="download truncate col-xs-3">
-                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}" onclick="trackOutboundLink(this.href)" class="explore">
+                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}" onclick="trackOutboundLink(this.href)">
                   Download [{{ resource.format }}]
                 </a>
                 -
-                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.alternates[1].format }}" onclick="trackOutboundLink(this.href)" class="explore">
+                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.alternates[1].format }}" onclick="trackOutboundLink(this.href)">
                   [ {{ resource.alternates[1].format }} ({{resource.alternates[1].prettyBytes}}) ]
                 </a>
               </td>
@@ -132,7 +132,7 @@
         <h2 id="resource-{{resource.name}}" class="section-title">
           {{resource.name}}
           &nbsp;
-          <a href="{{ dataset.path }}/{{ resource.path }}" onclick="trackOutboundLink(this.href)" class="explore">
+          <a href="{{ dataset.path }}/{{ resource.path }}" onclick="trackOutboundLink(this.href)">
             <i class="fa fa-arrow-circle-o-down" aria-hidden="true" style="font-size:0.9em"></i>
           </a>
         </h2>

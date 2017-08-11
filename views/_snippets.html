@@ -10,34 +10,32 @@
 {%- endmacro %}
 
 {% macro package_list_show(packages) -%}
+  <div class="package-summary-list">
   {%- for package in packages  %}
-  <div class="row package-summary">
-    <div class="col-xs-12">
-      <a href="/{{ package.datapackage.datahub.owner }}/{{ package.datapackage.name }}">
-        <h3 class="package-title">{{ package.datapackage.title }}</h3>
-      </a>
-      <div class="row show-grid clearfix">
-        <div class="col-sm-1 col-xs-2 icon">
-          <img src="https://www.gravatar.com/avatar/{{package.datapackage.datahub.ownerid}}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle" />
-        </div>
-        <div class="col-sm-5 col-xs-4 package-publisher">
-            <small><a href="/{{ package.datapackage.datahub.owner }} ">{{ package.datapackage.datahub.owner }}</a></small>
-        </div>
+    <div class="package-summary">
+      <h3 class="package-title">
+        <a href="/{{ package.datahub.owner }}/{{ package.name }}">
+          {{ package.title }}
+        </a>
+      </h3>
+      <div class="publisher">
+        <img src="https://www.gravatar.com/avatar/{{package.datahub.ownerid}}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar" />
+        <a href="/{{ package.datahub.owner }}">{{ package.datahub.owner }}</a>
       </div>
-      <h6 class="text-left">
-        <b>{{ package.datapackage.name }}</b> | files {{ package.datapackage.resources|length }} | {{ package.datapackage.datahub.stats.prettyBytes }}
-      </h6>
-      {% if package.datapackage.readmeSnippet %}
-      <p>
-        {{ package.datapackage.readmeSnippet }}
-        <a href="/{{ package.datapackage.datahub.owner }}/{{ package.datapackage.name }}" class="explore">
+      <div class="meta">
+        <strong>{{ package.name }}</strong> | files {{ package.resources|length }} | {{ package.datahub.stats.prettyBytes }}
+      </div>
+      {% if package.readmeSnippet %}
+      <p class="readme">
+        {{ package.readmeSnippet }}
+        <a href="/{{ package.datahub.owner }}/{{ package.name }}">
           explore more <span>&rsaquo;</span>
         </a>
       </p>
       {% endif %}
     </div>
-  </div>
   {%- endfor %}
+  </div>
 {%- endmacro %}
 
 {% macro uploading(statusApi, failUrl, successUrl) -%}

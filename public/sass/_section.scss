@@ -1,10 +1,6 @@
 /* Section 1
 ====================================*/
 
-a {
-  color: $black;
-}
-
 .section {
   padding: 30px 0 0 0;
   h1 {
@@ -40,14 +36,6 @@ a {
 .section-centered {
   padding-left: 15%;
   padding-right: 15%;
-}
-
-.package-title {
-  text-decoration: underline;
-  h3 {
-    font-size: 21px;
-    font-weight: 200;
-  }
 }
 
 h2.section-title {

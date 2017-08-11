@@ -20,10 +20,14 @@ Search
     </div>
     <div class="col-md-7 col-md-offset-2">
     {% if packages.total %}
+
       <h4 class="search-summary text-center">{{ packages.total }} package(s) found for <b>"{{ query }}"</b></h4>
       {{ snippets.package_list_show(packages.results) }}
+
     {% else %}
+
       <h4 class="search-summary">0 packages found for <b>"{{ query }}"</b></h4>
+
     {% endif %}
     </div>
   </div>

@@ -44,15 +44,12 @@ p {
   overflow-wrap: break-word;
 }
 a {
-  color: $black;
+  color: $brand-warning;
   &:hover {
     color: $black;
   }
 }
-a.explore {
-  text-decoration: underline;
-  color: $brand-warning;
-}
+
 .container {
   padding-left: 5%;
   padding-right: 5%;

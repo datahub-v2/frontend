@@ -5842,18 +5842,20 @@ img.cube {
     img.cube {
       padding-left: 40%; } }
 
-.owner {
-  margin: 20px 0; }
-
 .package-summary {
   margin-bottom: 20px; }
-
-.package-title {
-  margin-bottom: 20px; }
-
-.package-publisher {
-  margin: 0 0 10px 0;
-  padding-left: 0; }
+  .package-summary .publisher {
+    margin: 0 0 10px 0; }
+  .package-summary .package-title {
+    font-size: 21px;
+    font-weight: 200;
+    margin-bottom: 15px; }
+    .package-summary .package-title a {
+      text-decoration: underline;
+      color: #000; }
+  .package-summary .meta {
+    font-size: 12px;
+    margin-bottom: 10px; }
 
 h2 {
   margin-top: 0; }
@@ -5911,13 +5913,9 @@ p {
   overflow-wrap: break-word; }
 
 a {
-  color: #000; }
+  color: #ff7900; }
   a:hover {
     color: #000; }
-
-a.explore {
-  text-decoration: underline;
-  color: #ff7900; }
 
 .container, .container-no-top-padding {
   padding-left: 5%;
@@ -5965,10 +5963,6 @@ a.explore {
   font-size: 12px;
   margin-bottom: 10px;
   border-bottom: 1px solid #eaeaea; }
-
-.banner a {
-  text-decoration: none;
-  font-size: inherit; }
 
 .navbar {
   border: 0;
@@ -6195,11 +6189,11 @@ a.explore {
   .jumbotron .call-to-action p {
     font-size: 14px; }
 
+.home .section-title {
+  margin-bottom: 50px; }
+
 /* Section 1
 ====================================*/
-a {
-  color: #000; }
-
 .section {
   padding: 30px 0 0 0; }
   .section h1 {
@@ -6228,12 +6222,6 @@ a {
 .section-centered {
   padding-left: 15%;
   padding-right: 15%; }
-
-.package-title {
-  text-decoration: underline; }
-  .package-title h3 {
-    font-size: 21px;
-    font-weight: 200; }
 
 h2.section-title {
   font-size: 32px; }
