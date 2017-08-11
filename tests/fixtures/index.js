@@ -130,7 +130,13 @@ module.exports.initMocks = function() {
       state: 'RUNNING',
       logs: ['log1', 'log2']
     })
+    .get('/source/admin/running-package/info')
+    .reply(404)
     .get('/source/admin/failed-package/status')
+    .reply(200, {
+      state: 'FAILED'
+    })
+    .get('/source/admin/failed-package/info')
     .reply(200, {
       state: 'FAILED',
       error_log: ['err1', 'err2'],
@@ -142,6 +148,10 @@ module.exports.initMocks = function() {
       }
     })
     .get('/source/admin/demo-package/status')
+    .reply(200, {
+      state: 'SUCCEEDED'
+    })
+    .get('/source/admin/demo-package/info')
     .reply(200, {
       state: 'SUCCEEDED',
       logs: ['log1', 'log2'],
@@ -161,6 +171,8 @@ module.exports.initMocks = function() {
       state: 'FAILED'
     })
     .get('/source/bad-user/bad-package/status')
+    .reply(404)
+    .get('/source/bad-user/bad-package/info')
     .reply(404)
 
   // resolver api

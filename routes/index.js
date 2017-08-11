@@ -103,7 +103,7 @@ module.exports = function () {
     }
     let status
     try {
-      status = await api.pipelineStatus(userAndPkgId.userid, userAndPkgId.packageid)
+      status = await api.pipelineStatus(userAndPkgId.userid, userAndPkgId.packageid, 'status')
     } catch (err) {
       if (err.status !== 404) {
         throw err
@@ -141,7 +141,7 @@ module.exports = function () {
   router.get('/:owner/:name/pipelines', async (req, res) => {
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     try {
-      const status = await api.pipelineStatus(userAndPkgId.userid, userAndPkgId.packageid)
+      const status = await api.pipelineStatus(userAndPkgId.userid, userAndPkgId.packageid, 'info')
       if (status.state === 'FAILED' || status.state === 'SUCCEEDED') {
         res.render('pipelines.html', {
           status
