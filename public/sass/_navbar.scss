@@ -48,6 +48,36 @@
       box-shadow: none !important;
     }
   }
+
+	a.nav-avatar {
+		padding-top: 16px;
+	}
+	img.nav-avatar {
+		width: 28px;
+	}
+	div.popover {
+		top: 48px !important;
+		left: -100px !important;
+		.arrow {
+			left: 80% !important;
+		}
+		.popover-content {
+			padding: 20px 65px 20px 20px;
+		}
+		a.a-popover {
+			color: $gray !important;
+			&:hover {
+				color: $black !important;
+				text-decoration: none;
+			}
+		}
+		p {
+			margin-bottom: 20px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
 }
 
 @media (min-width: 768px) {

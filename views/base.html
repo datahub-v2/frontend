@@ -60,7 +60,10 @@
 						-->
             {% if login %}
               <li>
-                <a class="nav-link" href="/logout">LOGOUT</a>
+                <a class="nav-link nav-avatar" href="#" data-toggle="popover" title=""
+                  data-content="<p><a href='/dashboard' class='a-popover'>Dashboard</a></p><p><a href='/logout' class='a-popover'>Logout</a></p>">
+                  <img src="https://www.gravatar.com/avatar/{{ package.datahub.ownerid }}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle nav-avatar" />
+                </a>
               </li>
             {% else %}
               <li>
@@ -120,6 +123,14 @@
           behavior: 'smooth'
         });
       }
+      // Popover on avatar icon in navbar
+      jQuery(document).ready(function(){
+        jQuery('[data-toggle="popover"]').popover({
+          'placement': 'bottom',
+          'trigger': 'focus',
+          'html': true
+        });
+      });
     </script>
   </body>
 
