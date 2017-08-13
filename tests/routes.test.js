@@ -23,16 +23,10 @@ test('Dashboard page renders when jwt in cookies setup', async t => {
   t.true(res.text.includes('Your Dashboard'))
 })
 
-test('Login with GitHub redirects to correct path', async t => {
+test('Login page works', async t => {
   const res = await request(app)
-    .get('/login/github')
-  t.is(res.header.location, 'https://github.com/login/')
-})
-
-test('Login with GOOGLE redirects to correct path', async t => {
-  const res = await request(app)
-    .get('/login/google')
-  t.is(res.header.location, 'https://accounts.google.com/o/oauth2/auth')
+    .get('/login')
+  t.true(res.text.includes('<a href="https://github.com/login/"'))
 })
 
 test('When redirected to /success it gets user info and writes into cookies then redirects to /', async t => {

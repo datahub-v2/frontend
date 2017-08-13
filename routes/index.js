@@ -67,10 +67,12 @@ module.exports = function () {
     }
   })
 
-  router.get('/login/:provider', async (req, res) => {
+  router.get('/login', async (req, res) => {
     const providers = await api.authenticate()
-    const providerUrlForLogin = providers.providers[req.params.provider].url
-    res.redirect(providerUrlForLogin) // Which then redirects to `/sucess` if OK
+    const githubLoginUrl = providers.providers.github.url
+    res.render('login.html', {
+      githubLoginUrl
+    })
   })
 
   router.get('/success', async (req, res) => {

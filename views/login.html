@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+Sign up | Login
+{% endblock %}
+
+{% block content %}
+<div class="vertical-center">
+  <div class="container">
+    <h1>Authenticate</h1>
+    <p>To sign up or log in, you can use your existing GitHub account:</p>
+    <a href="{{ githubLoginUrl }}" class="btn btn-default login">GitHub <span class="fa fa-github fa-lg"></a>
+  </div>
+</div>
+{% endblock %}

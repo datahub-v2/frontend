@@ -5917,6 +5917,28 @@ a {
   a:hover {
     color: #000; }
 
+.vertical-center {
+  height: calc(100vh - 345px);
+  width: 100%;
+  text-align: center;
+  /* align the inline(-block) elements horizontally */ }
+
+.vertical-center:before {
+  /* create a full-height inline block pseudo=element */
+  content: " ";
+  display: inline-block;
+  vertical-align: middle;
+  /* vertical alignment of the inline element */
+  height: 100%; }
+
+.vertical-center > .container, .vertical-center > .container-no-top-padding {
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  /* vertical alignment of the inline element */ }
+  .vertical-center > .container .login, .vertical-center > .container-no-top-padding .login {
+    margin-top: 20px; }
+
 .container, .container-no-top-padding {
   padding-left: 5%;
   padding-right: 5%; }
