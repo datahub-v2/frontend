@@ -5947,7 +5947,7 @@ a {
       padding-top: 30px; } }
 
 .inner_container {
-  max-width: 900px;
+  max-width: 960px;
   margin: auto; }
 
 .table {
@@ -6059,7 +6059,9 @@ a {
   padding-bottom: 5em; }
 
 .jumbotron-primary {
-  margin-top: -10px; }
+  margin-top: -10px;
+  padding-left: 0px !important;
+  padding-right: 0px !important; }
   .jumbotron-primary a.arrow {
     font-size: 3em; }
 

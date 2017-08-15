@@ -8,7 +8,8 @@
 
 .jumbotron-primary {
   margin-top: -10px;
-
+  padding-left: 0px !important;
+  padding-right: 0px !important;
   a.arrow {
     font-size: 3em;
   }
@@ -169,7 +170,7 @@
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
     line-height: 24px;
     margin: 0 16px;
-    
+
     text-align: left;
 
     pre {
