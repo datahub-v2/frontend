@@ -43,13 +43,8 @@ blockquote {
     text-overflow: ellipsis;
   }
 }
-.readme {
-  line-height: 1.8;
+.readme-snippet {
   margin-bottom: 2em;
-  h1, h2, h3, h4, h5, h6 {
-    margin: 32px 0 24px 0;
-    color: darken($gray, 10%);
-  }
 }
 .side-bar {
   background-color: $brand-success;
