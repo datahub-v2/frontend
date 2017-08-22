@@ -5,3 +5,7 @@ yarn-error.log
 
 # sass
 .sass-cache
+
+# misc
+sandbox/*
+.env
