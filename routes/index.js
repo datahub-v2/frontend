@@ -1,7 +1,11 @@
 'use strict'
 
+const fs = require('fs')
 const path = require('path')
+
 const express = require('express')
+const marked = require('marked')
+
 const config = require('../config')
 const lib = require('../lib')
 const utils = require('../lib/utils')
@@ -93,6 +97,67 @@ module.exports = function () {
     res.clearCookie('jwt')
     res.redirect('/?logout=true')
   })
+
+  // ==============
+  // Docs (patterns, standards etc)
+
+  /*
+* [ ] docs system
+  * [ ] Test ...
+  * [ ] Template + router
+    * [ ] custom markdown
+      * [ ] TOC
+  * [ ] mermaid js
+    * [ ] bespoke css and js on a given page ... (is it worth it limiting it per page or ...?)
+    * [ ] 
+    */
+  const showDoc = function(req, res) {
+    var page = req.params[0] || 'index'
+    var filepath = 'docs/' + page + '.md'
+    if (!fs.existsSync(filepath)) {
+      res.status(404).send('Sorry no documentation was found')
+      return
+    }
+
+    const renderer = new marked.Renderer()
+    // insert anchor links
+    renderer.heading = function (text, level) {
+      var escaped = text.toLowerCase().replace(/[^\w]+/g, '-')
+      return `<h${level}>${text} <a name="${escaped}" class="anchor" href="#${escaped}"><span class="icon-link header-link"></span></a></h${level}>`
+    }
+    marked.setOptions({
+      renderer: renderer,
+      gfm: true,
+      tables: true,
+      breaks: true,
+      pedantic: false,
+      sanitize: false,
+      smartLists: true,
+      smartypants: true 
+    });
+
+
+    fs.readFile(filepath, 'utf8', function(err, text) {
+      var lines  = text.split('\n')
+      var title = ''
+      if (lines[0].indexOf('#') === 0) {
+        title = lines[0].replace(/#+\s+/g, '')
+        text  = lines.slice(1).join('\n')
+      }
+      var content = marked(text)
+      var githubPath = '//github.com/okfn/data.okfn.org/blob/master/' + filepath
+      res.render('docs.html', {
+        title: title,
+        content: content,
+        githubPath: githubPath
+      })
+    })
+  }
+
+  router.get(['/docs', '/docs/*'], showDoc)
+  
+  // ===== /end docs
+
 
   router.get('/:owner/:name', async (req, res) => {
     let normalizedDp = null
@@ -225,6 +290,7 @@ module.exports = function () {
       title: 'Offers'
     })
   })
+
 
   // MUST come last in order to catch all the publisher pages
   router.get('/:owner', async (req, res) => {

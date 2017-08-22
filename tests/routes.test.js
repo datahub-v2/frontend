@@ -200,3 +200,11 @@ test('Redirects to old.datahub.io', async t => {
     t.is(res.header.location, expected)
   }
 })
+
+test('Docs work', async t => {
+  let res = await request(app).get('/docs')
+  t.is(res.status, 200)
+  t.true(res.text.includes('<!-- doc page test placeholder -->'))
+  t.true(res.text.includes('Documentation'))
+})
+
