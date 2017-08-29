@@ -101,16 +101,6 @@ module.exports = function () {
   // ==============
   // Docs (patterns, standards etc)
 
-  /*
-* [ ] docs system
-  * [ ] Test ...
-  * [ ] Template + router
-    * [ ] custom markdown
-      * [ ] TOC
-  * [ ] mermaid js
-    * [ ] bespoke css and js on a given page ... (is it worth it limiting it per page or ...?)
-    * [ ] 
-    */
   const showDoc = function(req, res) {
     var page = req.params[0] || 'index'
     var filepath = 'docs/' + page + '.md'
@@ -129,7 +119,7 @@ module.exports = function () {
       renderer: renderer,
       gfm: true,
       tables: true,
-      breaks: true,
+      breaks: false,
       pedantic: false,
       sanitize: false,
       smartLists: true,
