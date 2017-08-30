@@ -5882,9 +5882,6 @@ body {
       margin-left: 0;
       margin-right: 0; } }
 
-img {
-  max-width: 100%; }
-
 .container-no-top-padding {
   padding-top: 0 !important; }
 
@@ -6731,6 +6728,9 @@ h2.publisher {
 .logs {
   width: 100%;
   height: calc(100vh - 345px); }
+
+div.readme img {
+  max-width: 100%; }
 
 .table-pricing > tbody > tr > td, .table-dashboard > tbody > tr > td,
 .table-pricing > tbody > tr > th,

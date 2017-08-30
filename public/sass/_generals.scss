@@ -15,9 +15,6 @@ body {
     }
   }
 }
-img {
-  max-width: 100%;
-}
 .container-no-top-padding {
   @extend .container;
   padding-top: 0 !important;
