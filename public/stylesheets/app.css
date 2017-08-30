@@ -5882,6 +5882,9 @@ body {
       margin-left: 0;
       margin-right: 0; } }
 
+img {
+  max-width: 100%; }
+
 .container-no-top-padding {
   padding-top: 0 !important; }
 
