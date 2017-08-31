@@ -5,6 +5,8 @@ const express = require('express')
 const nunjucks = require('nunjucks')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
+const session = require('express-session')
+const flash = require('connect-flash')
 
 const config = require('./config')
 const routes = require('./routes')
@@ -24,7 +26,8 @@ module.exports.makeApp = function () {
     })
   )
   app.use(cookieParser())
-
+  app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+  app.use(flash())
   // Check if looged in and set locals for nunjucks
   app.use((req, res, next) => {
     if (req.cookies.jwt) {

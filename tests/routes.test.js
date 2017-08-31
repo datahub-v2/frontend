@@ -40,13 +40,7 @@ test('When redirected to /success it gets user info and writes into cookies then
 test('When user logs out, it clears jwt from cookie and redirects to /', async t => {
   const res = await request(app)
     .get('/logout')
-  t.is(res.header.location, '/?logout=true')
-})
-
-test('When user logs out, it renders home page with alert message', async t => {
-  const res = await request(app)
-    .get('/?logout=true')
-  t.true(res.text.includes('You have been successfully logged out.'))
+  t.is(res.header.location, '/')
 })
 
 test('Showcase page returns 200 and has correct content', async t => {
@@ -207,4 +201,3 @@ test('Docs work', async t => {
   t.true(res.text.includes('<!-- doc page test placeholder -->'))
   t.true(res.text.includes('Documentation'))
 })
-

@@ -11,11 +11,8 @@ Welcome - Home
 <!-- Jumbotron main -->
 <div class="container">
   <div class="inner_container">
-    {% if logout %}
-    <div class="alert alert-danger" role="alert">You have been successfully logged out.</div>
-    {% endif %}
-    {% if error %}
-    <div class="alert alert-danger" role="alert">Something went wrong. Please, try again later.</div>
+    {% if message %}
+    <div class="alert alert-danger" role="alert">{{ message }}</div>
     {% endif %}
     <div class="jumbotron jumbotron-primary">
       <div class="row">

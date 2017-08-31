@@ -42,9 +42,11 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "bytes": "^2.5.0",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
+    "express-session": "^1.15.5",
     "marked": "^0.3.6",
     "md5": "^2.2.1",
     "nconf": "^0.8.4",

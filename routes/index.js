@@ -21,12 +21,12 @@ module.exports = function () {
     const listOfTutorialPkgId = config.get('tutorialPackages')
     const showcasePackages = await api.getPackages(listOfShowcasePkgId)
     const tutorialPackages = await api.getPackages(listOfTutorialPkgId)
+    const message = req.flash('message')[0]
     res.render('home.html', {
       title: 'Home',
       showcasePackages,
       tutorialPackages,
-      logout: req.query.logout,
-      error: req.query.error
+      message
     })
   })
 
@@ -89,13 +89,15 @@ module.exports = function () {
       res.cookie('name', isAuthenticated.profile.name)
       res.redirect('/dashboard')
     } else {
-      res.redirect('/?error=true')
+      req.flash('message', 'Something went wrong. Please, try again later.')
+      res.redirect('/')
     }
   })
 
   router.get('/logout', async (req, res) => {
     res.clearCookie('jwt')
-    res.redirect('/?logout=true')
+    req.flash('message', 'You have been successfully logged out.')
+    res.redirect('/')
   })
 
   // ==============
@@ -123,7 +125,7 @@ module.exports = function () {
       pedantic: false,
       sanitize: false,
       smartLists: true,
-      smartypants: true 
+      smartypants: true
     });
 
 
@@ -145,7 +147,7 @@ module.exports = function () {
   }
 
   router.get(['/docs', '/docs/*'], showDoc)
-  
+
   // ===== /end docs
 
 
