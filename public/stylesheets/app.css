@@ -6779,4 +6779,22 @@ p.user {
 .avatar-lg {
   width: 30px; }
 
+.docs-section {
+  margin: 50px 0 130px 0; }
+  .docs-section div {
+    margin-top: 30px; }
+
+a.section-link {
+  color: #000; }
+  a.section-link:hover div {
+    border-color: #ff7900; }
+  a.section-link div {
+    border: 1px solid transparent;
+    border-radius: 2px;
+    padding: 0 5%; }
+    a.section-link div h4 {
+      color: #ff7900; }
+    a.section-link div p {
+      color: #000; }
+
 /*# sourceMappingURL=app.css.map */

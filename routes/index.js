@@ -110,40 +110,45 @@ module.exports = function () {
       res.status(404).send('Sorry no documentation was found')
       return
     }
-
-    const renderer = new marked.Renderer()
-    // insert anchor links
-    renderer.heading = function (text, level) {
-      var escaped = text.toLowerCase().replace(/[^\w]+/g, '-')
-      return `<h${level}>${text} <a name="${escaped}" class="anchor" href="#${escaped}"><span class="icon-link header-link"></span></a></h${level}>`
-    }
-    marked.setOptions({
-      renderer: renderer,
-      gfm: true,
-      tables: true,
-      breaks: false,
-      pedantic: false,
-      sanitize: false,
-      smartLists: true,
-      smartypants: true
-    });
-
-
-    fs.readFile(filepath, 'utf8', function(err, text) {
-      var lines  = text.split('\n')
-      var title = ''
-      if (lines[0].indexOf('#') === 0) {
-        title = lines[0].replace(/#+\s+/g, '')
-        text  = lines.slice(1).join('\n')
-      }
-      var content = marked(text)
-      var githubPath = '//github.com/okfn/data.okfn.org/blob/master/' + filepath
-      res.render('docs.html', {
-        title: title,
-        content: content,
-        githubPath: githubPath
+    if (page === 'index') {
+      res.render('docs_home.html', {
+        title: 'Documentation'
       })
-    })
+    } else {
+      const renderer = new marked.Renderer()
+      // insert anchor links
+      renderer.heading = function (text, level) {
+        var escaped = text.toLowerCase().replace(/[^\w]+/g, '-')
+        return `<h${level}>${text} <a name="${escaped}" class="anchor" href="#${escaped}"><span class="icon-link header-link"></span></a></h${level}>`
+      }
+      marked.setOptions({
+        renderer: renderer,
+        gfm: true,
+        tables: true,
+        breaks: false,
+        pedantic: false,
+        sanitize: false,
+        smartLists: true,
+        smartypants: true
+      });
+
+
+      fs.readFile(filepath, 'utf8', function(err, text) {
+        var lines  = text.split('\n')
+        var title = ''
+        if (lines[0].indexOf('#') === 0) {
+          title = lines[0].replace(/#+\s+/g, '')
+          text  = lines.slice(1).join('\n')
+        }
+        var content = marked(text)
+        var githubPath = '//github.com/okfn/data.okfn.org/blob/master/' + filepath
+        res.render('docs.html', {
+          title: title,
+          content: content,
+          githubPath: githubPath
+        })
+      })
+    }
   }
 
   router.get(['/docs', '/docs/*'], showDoc)

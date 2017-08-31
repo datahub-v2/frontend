@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block title%}{{title}} - Docs{% endblock %}
+
+{% block bodyclass %}docs{% endblock %}
+
+{% block content %}
+
+<!-- doc page -->
+<div class="container">
+  <div class="inner_container">
+    <!-- Getting Started -->
+    <div class="docs-section">
+      <h2 style="text-align: center;">
+        Getting Started
+      </h2>
+      <p class="text-center">
+        Learn how to use DataHub!
+      </p>
+      <div class="row">
+        <a href="/docs/getting-started/installing-data" class="section-link">
+          <div class="col-md-4">
+            <h4>Installing ❒ data</h4>
+            <p>This guide will cover how to install the <b>data</b> tool and verify that it is working properly.</p>
+          </div>
+        </a>
+        <a href="/docs/getting-started/pushing-data" class="section-link">
+          <div class="col-md-4">
+            <h4>Pushing data</h4>
+            <p>This guide walks you through how to put data online using <b>data</b> and the DataHub.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <!-- end of Getting Started -->
+    <!-- Examples -->
+    <!-- end of Examples -->
+    <!-- Features -->
+    <div class="docs-section">
+      <h2 style="text-align: center;">
+        Features
+      </h2>
+      <p class="text-center">
+        Discover DataHub features!
+      </p>
+      <div class="row">
+        <a href="/docs/features/data-cli" class="section-link">
+          <div class="col-md-4">
+            <h4>Data's Command Line Interface</h4>
+            <p>Learn how to use our Command Line Tool.</p>
+          </div>
+        </a>
+        <a href="/docs/features/views" class="section-link">
+          <div class="col-md-4">
+            <h4>Views</h4>
+            <p>Find out what are DataHub views and what you can do with it.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <!-- end of Features -->
+    <!-- Data Packages -->
+    <div class="docs-section">
+      <h2 style="text-align: center;">
+        Data Packages
+      </h2>
+      <p class="text-center">
+        Learn about Data Packages!
+      </p>
+      <div class="row">
+        <a href="/docs/data-packages" class="section-link">
+          <div class="col-md-4">
+            <h4>Data Packages</h4>
+            <p>A Data Package (or DataPackage) is a simple way of "packaging" up data.</p>
+          </div>
+        </a>
+        <a href="/docs/data-packages/tabular" class="section-link">
+          <div class="col-md-4">
+            <h4>Tabular Data Packages</h4>
+            <p>Tabular Data Package is a simple structure for publishing and sharing tabular data.</p>
+          </div>
+        </a>
+        <a href="/docs/data-packages/csv" class="section-link">
+          <div class="col-md-4">
+            <h4>CSV &ndash; Comma Separated Values</h4>
+            <p>This page provides an overview CSV (Comma Separated Values) format for data.</p>
+          </div>
+        </a>
+        <a href="/docs/data-packages/publish" class="section-link">
+          <div class="col-md-4">
+            <h4>Publish Data as Data Packages</h4>
+            <p>You can publish <b>any kind of data</b> as a Data Package.</p>
+          </div>
+        </a>
+        <a href="/docs/data-packages/publish-any" class="section-link">
+          <div class="col-md-4">
+            <h4>Publish Any Kind of Data</h4>
+            <p>You can publish <b>all and any kind of data</b> as Data packages.</p>
+          </div>
+        </a>
+        <a href="/docs/data-packages/publish-faq" class="section-link">
+          <div class="col-md-4">
+            <h4>Publishing Data Packages - Best practice patterns</h4>
+            <p>This page summarizes the best practice patterns that should be followed when creating a data package.</p>
+          </div>
+        </a>
+        <a href="/docs/data-packages/publish-faq" class="section-link">
+          <div class="col-md-4">
+            <h4>Publishing Geospatial Data as Data Packages</h4>
+            <p>Publishing your Geodata as Data Packages is very easy.</p>
+          </div>
+        </a>
+        <a href="/docs/data-packages/publish-faq" class="section-link">
+          <div class="col-md-4">
+            <h4>Put it Online</h4>
+            <p>This tutorial is about how to publish your Data Package online for others to find and use.</p>
+          </div>
+        </a>
+        <a href="/docs/data-packages/publish-faq" class="section-link">
+          <div class="col-md-4">
+            <h4>Publishing Tabular Data</h4>
+            <p>Here's how to publish your tabular data as Tabular Data Packages.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <!-- end of Data Packages -->
+  </div>
+</div>
+
+{% endblock %}
