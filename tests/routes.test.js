@@ -152,6 +152,13 @@ test('Pricing page returns 200 and has correct content', async t => {
   t.true(res.text.includes('PRIVACY'))
 })
 
+test('"API" for datapackage.json file', async t => {
+  let res = await request(app)
+    .get('/admin/demo-package/datapackage.json')
+  t.is(res.statusCode, 302)
+  t.true(res.header.location.includes('/latest/datapackage.json'))
+})
+
 test('Downloading a resource by name or index works for csv and json', async t => {
   let res = await request(app)
     .get('/admin/demo-package/r/demo-resource.csv')

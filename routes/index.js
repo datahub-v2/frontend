@@ -219,6 +219,26 @@ module.exports = function () {
     }
   })
 
+  router.get('/:owner/:name/datapackage.json', async (req, res) => {
+    let normalizedDp = null
+    const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
+    if (!userAndPkgId.userid) {
+      res.status(404).send('Sorry, this page was not found.')
+      return
+    }
+    try {
+      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
+    } catch (err) {
+      if (err.name === 'BadStatusCode' && err.res.status === 404) {
+        res.status(404).send('Sorry, we cannot locate that dataset for you.')
+        return
+      }
+      throw err
+    }
+
+    res.redirect(`${normalizedDp.path}/datapackage.json`)
+  })
+
   router.get('/:owner/:name/r/:fileNameOrIndex', async (req, res) => {
     let normalizedDp = null
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
