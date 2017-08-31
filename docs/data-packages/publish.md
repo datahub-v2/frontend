@@ -18,7 +18,7 @@ simple as [putting it online][online] or sending an email.
         Tabular
       </h3>
       <p>Rows and columns, spreadsheets &hellip;</p>
-      <a href="/doc/publish-tabular" class="btn btn-primary btn-large">
+      <a href="/docs/data-packages/publish-tabular/" class="btn btn-primary btn-large">
         Go &raquo;
       </a>
     </div>
@@ -29,7 +29,7 @@ simple as [putting it online][online] or sending an email.
         Geospatial
       </h3>
       <p>Map or location related? It's geospatial &hellip;</p>
-      <a href="/doc/publish-geo" class="btn btn-primary btn-large">
+      <a href="/docs/data-packages/publish-geo/" class="btn btn-primary btn-large">
         Go &raquo;
       </a>
     </div>
@@ -40,7 +40,7 @@ simple as [putting it online][online] or sending an email.
         Any Kind
       </h3>
       <p>Any kind of data you have - graph, binary, RDF &hellip;</p>
-      <a href="/doc/publish-any" class="btn btn-primary btn-large">
+      <a href="/docs/data-packages/publish-any/" class="btn btn-primary btn-large">
         Go &raquo;
       </a>
     </div>
