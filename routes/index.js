@@ -104,17 +104,13 @@ module.exports = function () {
   // Docs (patterns, standards etc)
 
   const showDoc = function(req, res) {
-    var page = req.params[0] || 'index'
-    var filepath = 'docs/' + page + '.md'
-    if (!fs.existsSync(filepath)) {
-      res.status(404).send('Sorry no documentation was found')
-      return
-    }
-    if (page === 'index') {
-      res.render('docs_home.html', {
-        title: 'Documentation'
-      })
-    } else {
+    if (req.params[0]) {
+      var page = req.params[0]
+      var filepath = 'docs/' + page + '.md'
+      if (!fs.existsSync(filepath)) {
+        res.status(404).send('Sorry no documentation was found')
+        return
+      }
       const renderer = new marked.Renderer()
       // insert anchor links
       renderer.heading = function (text, level) {
@@ -147,6 +143,10 @@ module.exports = function () {
           content: content,
           githubPath: githubPath
         })
+      })
+    } else {
+      res.render('docs_home.html', {
+        title: 'Documentation'
       })
     }
   }
