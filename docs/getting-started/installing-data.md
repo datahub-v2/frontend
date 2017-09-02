@@ -5,7 +5,7 @@ This guide will cover how to install the **data** tool and verify that it is wor
 There are two options for installation:
 
 1. Installing pre-built binaries. These have no dependencies and will work "out of the box"
-2. Install via npm: if you have node (>= v7) and npm installed you can install via npm
+2. Install via npm: if you have node (>= v7.6) and npm installed you can install via npm
 
 ## Installing binaries
 
@@ -33,7 +33,7 @@ To test that it is installed correctly run:
 $ data --version
 ```
 
-This should output a version number, for example on my machine:
+This should output a version number, for example on my machine it shows:
 
 ```
 0.4.1
