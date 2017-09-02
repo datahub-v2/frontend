@@ -6787,6 +6787,8 @@ body.docs .docs-section {
     text-align: center; }
   body.docs .docs-section h1 {
     margin-bottom: 40px; }
+body.docs img {
+  max-width: 100%; }
 body.docs a.section-link {
   color: #000; }
   body.docs a.section-link:hover div {
