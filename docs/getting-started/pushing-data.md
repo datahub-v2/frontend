@@ -1,23 +1,56 @@
-# Pushing data
+# Pushing a data file
 
-This guide walks you through how to put data online using **data** and the DataHub.
+This guide walks you through how to put data online using **data** tool and the DataHub.
 
-`data` is the command-line tool to prepare, push and get data. With `data` you will be able to:
+Using it, you can store your data online safely and securely, get a showcase that provides a visual overview to your data.
 
-* Push data to the DataHub
-* Get data from the DataHub (and elsewhere)
-* Get information about data files and datasets
-* Validate data to ensure its quality
+Here we focus on tabular data and especially CSV. CSV is a universal basic format for structured data.
 
-```
-data push my.csv
-```
+:::info
+You can read and learn about CSV in [this post](/docs/data-packages/csv).
+:::
 
-Example:
+## Install the data CLI tool
+
+[Download and install the `data` CLI tool](/docs/getting-started/installing-data) using our separate instructions.
+
+## Get some CSV data
+
+You'll need a CSV file to push.
+
+Let's have a simple CSV file. Create a file in your current directory named `mydata.csv` and paste the following into it (you can use your own):
 
 ```
 A,B,C
-1,2,3
-4,5,6
+1,one,true
+2,two,false
 ```
 
+## Push the data
+
+Putting your data online is now just one simple command:
+
+```
+data push mydata.csv
+```
+
+The output will be:
+
+```
+🙌  your data is published!
+🔗  https://datahub.io/username/dataset (copied to clipboard)
+```
+
+## Your data's online!
+
+You will see the showcase page with description and preview of the pushed CSV file:
+
+![](https://datahub.io/static/img/showcase.png)
+
+It's may still be processing and in that case you would see the following:
+
+![](https://datahub.io/static/img/processing.png)
+
+Just wait for few moments until we process your file.
+
+Once your data is online share the link to it with your colleagues or friends so they can use it in their code!
