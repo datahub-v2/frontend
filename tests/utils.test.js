@@ -32,7 +32,7 @@ test('Sanitizes the markdown', async t => {
 
 test('Does not writes not allowed tags', async t => {
 	const res = utils.textToMarkdown('<script> let test = test </script>**')
-	t.is(res, '<p>**</p>\n')
+	t.is(res, '**')
 })
 
 test('Handles with small readme', async t => {

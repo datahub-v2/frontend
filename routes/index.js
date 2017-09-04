@@ -4,7 +4,13 @@ const fs = require('fs')
 const path = require('path')
 
 const express = require('express')
-const marked = require('marked')
+const md = require('markdown-it')({
+  html: true,
+  linkify: true,
+  typographer: true
+})
+  .use(require('markdown-it-anchor'), {})
+  .use(require('markdown-it-container'), 'info')
 
 const config = require('../config')
 const lib = require('../lib')
@@ -111,23 +117,6 @@ module.exports = function () {
         res.status(404).send('Sorry no documentation was found')
         return
       }
-      const renderer = new marked.Renderer()
-      // insert anchor links
-      renderer.heading = function (text, level) {
-        var escaped = text.toLowerCase().replace(/[^\w]+/g, '-')
-        return `<h${level}>${text} <a name="${escaped}" class="anchor" href="#${escaped}"><span class="icon-link header-link"></span></a></h${level}>`
-      }
-      marked.setOptions({
-        renderer: renderer,
-        gfm: true,
-        tables: true,
-        breaks: false,
-        pedantic: false,
-        sanitize: false,
-        smartLists: true,
-        smartypants: true
-      });
-
 
       fs.readFile(filepath, 'utf8', function(err, text) {
         var lines  = text.split('\n')
@@ -136,7 +125,7 @@ module.exports = function () {
           title = lines[0].replace(/#+\s+/g, '')
           text  = lines.slice(1).join('\n')
         }
-        var content = marked(text)
+        var content = md.render(text)
         var githubPath = '//github.com/okfn/data.okfn.org/blob/master/' + filepath
         res.render('docs.html', {
           title: title,
