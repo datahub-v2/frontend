@@ -6731,6 +6731,19 @@ h2.publisher {
 
 div.readme img {
   max-width: 100%; }
+div.readme div.info {
+  border: 1px solid #BDBDBD;
+  border-radius: 2px;
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #fafafa;
+  color: #757575; }
+  div.readme div.info p {
+    margin: 0; }
+div.readme .header-anchor i {
+  font-size: 16px;
+  color: #BDBDBD;
+  padding: 0 6px; }
 
 .table-pricing > tbody > tr > td, .table-dashboard > tbody > tr > td,
 .table-pricing > tbody > tr > th,
@@ -6805,5 +6818,23 @@ body.docs .header-anchor i {
   font-size: 16px;
   color: #BDBDBD;
   padding: 0 6px; }
+body.docs div.info {
+  border: 1px solid #BDBDBD;
+  border-radius: 2px;
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #fafafa;
+  color: #757575; }
+  body.docs div.info p {
+    margin: 0; }
+body.docs div.cli-output {
+  border: 1px solid #000;
+  border-radius: 2px;
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #000;
+  color: white; }
+  body.docs div.cli-output p {
+    margin: 0; }
 
 /*# sourceMappingURL=app.css.map */

@@ -4,16 +4,6 @@ const fs = require('fs')
 const path = require('path')
 
 const express = require('express')
-const md = require('markdown-it')({
-  html: true,
-  linkify: true,
-  typographer: true
-})
-  .use(require('markdown-it-anchor'), {
-    permalink: true,
-    permalinkSymbol: '<i class="fa fa-link" aria-hidden="true"></i>'
-  })
-  .use(require('markdown-it-container'), 'info')
 
 const config = require('../config')
 const lib = require('../lib')
@@ -128,7 +118,7 @@ module.exports = function () {
           title = lines[0].replace(/#+\s+/g, '')
           text  = lines.slice(1).join('\n')
         }
-        var content = md.render(text)
+        var content = utils.md.render(text)
         var githubPath = '//github.com/okfn/data.okfn.org/blob/master/' + filepath
         res.render('docs.html', {
           title: title,

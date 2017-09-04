@@ -179,6 +179,28 @@ h2.publisher {
   width: 100%;
   height: calc(100vh - 345px);
 }
-div.readme img {
-  max-width: 100%;
+div.readme {
+  img {
+    max-width: 100%;
+  }
+
+  div.info {
+    border: 1px solid $gray-light;
+    border-radius: 2px;
+    margin: 40px 0;
+    padding: 20px;
+    background-color: $gray-very-light;
+    color: $gray;
+    p {
+      margin: 0;
+    }
+  }
+
+  .header-anchor {
+    i {
+      font-size: 16px;
+      color: $gray-light;
+      padding: 0 6px;
+    }
+  }
 }
