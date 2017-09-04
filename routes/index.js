@@ -9,7 +9,10 @@ const md = require('markdown-it')({
   linkify: true,
   typographer: true
 })
-  .use(require('markdown-it-anchor'), {})
+  .use(require('markdown-it-anchor'), {
+    permalink: true,
+    permalinkSymbol: '<i class="fa fa-link" aria-hidden="true"></i>'
+  })
   .use(require('markdown-it-container'), 'info')
 
 const config = require('../config')

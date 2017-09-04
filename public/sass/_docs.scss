@@ -33,4 +33,11 @@ body.docs {
       }
     }
   }
+  .header-anchor {
+    i {
+      font-size: 16px;
+      color: $gray-light;
+      padding: 0 6px;
+    }
+  }
 }

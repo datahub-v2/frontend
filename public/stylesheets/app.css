@@ -6801,5 +6801,9 @@ body.docs a.section-link {
       color: #ff7900; }
     body.docs a.section-link div p {
       color: #000; }
+body.docs .header-anchor i {
+  font-size: 16px;
+  color: #BDBDBD;
+  padding: 0 6px; }
 
 /*# sourceMappingURL=app.css.map */
