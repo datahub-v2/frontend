@@ -61,5 +61,11 @@ body.docs {
     p {
       margin: 0;
     }
+    a {
+      &:hover {
+        color: $brand-warning;
+        text-decoration: none;
+      }
+    }
   }
 }

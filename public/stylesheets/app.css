@@ -6836,5 +6836,8 @@ body.docs div.cli-output {
   color: white; }
   body.docs div.cli-output p {
     margin: 0; }
+  body.docs div.cli-output a:hover {
+    color: #ff7900;
+    text-decoration: none; }
 
 /*# sourceMappingURL=app.css.map */

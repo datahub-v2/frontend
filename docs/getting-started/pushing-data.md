@@ -30,15 +30,16 @@ A,B,C
 
 Putting your data online is now just one simple command:
 
-```
-data push mydata.csv
+```bash
+$ data push mydata.csv
 ```
 
 The output will be:
 
-```
-🙌  your data is published!
-🔗  https://datahub.io/username/dataset (copied to clipboard)
+```cli-output
+\> 🙌  your data is published!
+
+\> 🔗  https://datahub.io/username/dataset (copied to clipboard)
 ```
 
 ## Your data's online!
