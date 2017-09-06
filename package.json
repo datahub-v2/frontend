@@ -50,6 +50,7 @@
     "markdown-it": "^8.4.0",
     "markdown-it-anchor": "^4.0.0",
     "markdown-it-container": "^2.0.0",
+    "markdown-it-table-of-contents": "^0.3.2",
     "md5": "^2.2.1",
     "nconf": "^0.8.4",
     "nock": "^9.0.13",
