@@ -88,7 +88,7 @@ test('Metastore API wrapper (search) function works', async t => {
   let res = await api.search(query)
   let logical = require('./fixtures/logical-dp/datapackage.json')
   t.is(res.results[0].resources.length, logical.resources.length)
-  t.is(res.total, 1)
+  t.is(res.summary.total, 1)
   t.is(res.results[0].datahub.owner, 'core')
   t.is(res.results[0].datahub.stats.prettyBytes, '192kB')
   t.is(res.results[0].readmeSnippet.length, 293)

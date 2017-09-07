@@ -53,7 +53,9 @@ module.exports.initMocks = function() {
     .persist()
     .get('/metastore/search?q=%22test%22&size=20')
     .reply(200, {
-      total: 1,
+      summary: {
+        total: 1
+      },
       results: [
         {
           datapackage: extendedDp
@@ -62,7 +64,9 @@ module.exports.initMocks = function() {
     })
     .get('/metastore/search?datahub.ownerid=%22publisher%22&size=20')
     .reply(200, {
-      total: 1,
+      summary: {
+        total: 1
+      },
       results: [
         {
           name: 'package',

@@ -19,9 +19,9 @@ Search
       </div>
     </div>
     <div class="col-md-7 col-md-offset-2">
-    {% if packages.total %}
+    {% if packages.summary.total %}
 
-      <h4 class="search-summary text-center">{{ packages.total }} package(s) found for <b>"{{ query }}"</b></h4>
+      <h4 class="search-summary text-center">{{ packages.summary.total }} package(s) found for <b>"{{ query }}"</b></h4>
       {{ snippets.package_list_show(packages.results) }}
 
     {% else %}
