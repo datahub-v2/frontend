@@ -4,6 +4,7 @@ const fs = require('fs')
 const path = require('path')
 
 const express = require('express')
+const bytes = require('bytes')
 
 const config = require('../config')
 const lib = require('../lib')
@@ -59,11 +60,20 @@ module.exports = function () {
 
   router.get('/dashboard', async (req, res) => {
     if (req.cookies.jwt) {
-      const currentUser = utils.getCurrentUser(req.cookies)
-      res.render('dashboard.html', {
-        title: 'Dashboard',
-        currentUser
-      })
+      const isAuthenticated = await api.authenticate(req.cookies.jwt)
+      if (isAuthenticated) {
+        const packages = await api.search(`datahub.ownerid="${req.cookies.id}"&size=0`, req.cookies.jwt)
+        const currentUser = utils.getCurrentUser(req.cookies)
+        res.render('dashboard.html', {
+          title: 'Dashboard',
+          currentUser,
+          totalPackages: packages.summary.total,
+          totalSpace: bytes(packages.summary.totalBytes, {decimalPlaces: 0})
+        })
+      } else {
+        req.flash('message', 'Your token has expired. Please, login to see your dashboard.')
+        res.redirect('/')
+      }
     } else {
       res.status(404).send('Sorry, this page was not found.')
       return

@@ -77,6 +77,14 @@ module.exports.initMocks = function() {
         }
       ]
     })
+    .get('/metastore/search?datahub.ownerid=%22publisher%22&size=0')
+    .reply(200, {
+      summary: {
+        total: 1,
+        totalBytes: 1234567
+      },
+      results: []
+    })
 
   // Mock api calls for authentication
   // Not authenticated returns urls for login

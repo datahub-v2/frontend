@@ -18,9 +18,10 @@ test('Home page returns 200 and has correct content', async t => {
 test('Dashboard page renders when jwt in cookies setup', async t => {
   const res = await request(app)
     .get('/dashboard')
-    .set('Cookie', ['jwt=123456'])
+    .set('Cookie', ['jwt=1a2b3c;id=publisher'])
   t.is(res.statusCode, 200)
   t.true(res.text.includes('Your Dashboard'))
+  t.true(res.text.includes('1MB'))
 })
 
 test('Login page works', async t => {
