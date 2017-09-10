@@ -1,5 +1,5 @@
 footer{ background:#ededed; padding: 25px 0; margin-top: 0; }
-footer p, footer a { color:#b5b5b5; font-size:14px; margin-right: 2em;}
+footer p, footer a { color:#b5b5b5; font-size:14px; margin-right: 3em;}
 footer a:hover { color:#666; text-decoration: none;}
 footer .connect li a {
   font-size: 28px;
@@ -12,8 +12,14 @@ footer {
   .container {
     padding-top: 0;
   }
+  .nav {
+    display: inline-block;
+  }
   ul li a {
     color: $black;
-    padding: 7px 0 0 0 !important;
+    padding: 0 !important;
+  }
+  a img {
+    vertical-align: top;
   }
 }

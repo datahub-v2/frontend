@@ -5993,7 +5993,7 @@ footer {
 footer p, footer a {
   color: #b5b5b5;
   font-size: 14px;
-  margin-right: 2em; }
+  margin-right: 3em; }
 
 footer a:hover {
   color: #666;
@@ -6009,9 +6009,13 @@ footer {
   left: 0; }
   footer .container, footer .container-no-top-padding {
     padding-top: 0; }
+  footer .nav {
+    display: inline-block; }
   footer ul li a {
     color: #000;
-    padding: 7px 0 0 0 !important; }
+    padding: 0 !important; }
+  footer a img {
+    vertical-align: top; }
 
 /* Jumbotron main
 ====================================*/
