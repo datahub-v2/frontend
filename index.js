@@ -35,6 +35,7 @@ module.exports.makeApp = function () {
     } else {
       res.locals.login = false
     }
+    res.locals.message = req.flash('message')
     next()
   })
 

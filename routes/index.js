@@ -21,12 +21,10 @@ module.exports = function () {
     const listOfTutorialPkgId = config.get('tutorialPackages')
     const showcasePackages = await api.getPackages(listOfShowcasePkgId)
     const tutorialPackages = await api.getPackages(listOfTutorialPkgId)
-    const message = req.flash('message')[0]
     res.render('home.html', {
       title: 'Home',
       showcasePackages,
-      tutorialPackages,
-      message
+      tutorialPackages
     })
   })
 
