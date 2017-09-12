@@ -6005,7 +6005,7 @@ footer .connect li a {
 footer {
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: -40;
   left: 0; }
   footer .container, footer .container-no-top-padding {
     padding-top: 0; }
