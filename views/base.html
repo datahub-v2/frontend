@@ -26,7 +26,7 @@
   </script>
 </head>
 <body class="{% block bodyclass %}{{bodyclass}}{% endblock %}">
-    <div class="banner">We're in alpha for the new rebooted DataHub &ndash; <a href="https://github.com/datahubio/qa">report issues here</a>. The old DataHub remains available at <a href="https://old.datahub.io">old.datahub.io</a></div>
+    <div class="banner">We're in alpha for the new rebooted DataHub &ndash; <a href="https://github.com/datahubio/qa">report issues here</a>. The old DataHub remains available at <a href="https://old.datahub.io">old.datahub.io</a>.<br>We need your feedback, <a href="https://goo.gl/forms/s1aKuCEhob3aTRWL2" target="_blank">click to fill survey!</a></div>
     <!-- Page header -->
     <div class="navbar navbar-default">
       <div class="container">
@@ -89,7 +89,7 @@
     <div class="container">
       <div class="inner_container">
         {% if message.length > 0 %}
-        <div class="alert alert-danger" role="alert">{{ message }}</div>
+        <div class="alert alert-danger" role="alert">{{ message | safe }}</div>
         {% endif %}
       </div>
     </div>
