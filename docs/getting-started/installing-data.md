@@ -38,22 +38,10 @@ This should output a version number, for example on my machine it shows:
 ```
 0.4.1
 ```
-\- To get all the available commands:
-```
-data help
-```
 
 \- Get info on data (file or dataset) at path or url
 ```bash
 data info http://datahub.io/core/finance-vix
 ```
 
-\- Get a Data Package from the DataHub owned by core and with name finance-vix
-```bash
-data get http://datahub.io/core/finance-vix
-```
 
-\- Read data at path and write to out (or stdout)
-```bash
-data cat https://raw.githubusercontent.com/datasets/finance-vix/master/data/vix-daily.csv
-```
