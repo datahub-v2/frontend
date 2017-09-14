@@ -26,6 +26,9 @@
     <div class="showcase-page-header">
       <h1>
         {{ dataset.title }}
+        {% if dataset.datahub.findability === 'unlisted' %}
+        <span class="label label-primary" title="This dataset is not published yet.">unlisted</span>
+        {% endif %}
       </h1>
       <p class="publisher">
         <img src="https://www.gravatar.com/avatar/{{ dataset.datahub.ownerid }}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar" />

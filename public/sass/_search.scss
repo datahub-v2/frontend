@@ -40,7 +40,7 @@ img.cube {
   .publisher {
     margin: 0 0 10px 0;
   }
-  .package-title {
+  .package-title, .package-title-published, .package-title-unlisted {
     a {
       text-decoration: underline;
       color: $black;

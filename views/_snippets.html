@@ -13,7 +13,7 @@
   <div class="package-summary-list">
   {%- for package in packages  %}
     <div class="package-summary">
-      <h3 class="package-title">
+      <h3 class="package-title-{{package.datahub.findability}}">
         <a href="/{{ package.datahub.owner }}/{{ package.name }}">
           {{ package.title }}
         </a>
@@ -23,6 +23,9 @@
         <a href="/{{ package.datahub.owner }}">{{ package.datahub.owner }}</a>
       </div>
       <div class="meta">
+        {% if package.datahub.findability === 'unlisted' %}
+        <span class="label label-primary" title="This dataset is not published yet.">unlisted</span>
+        {% endif %}
         <strong>{{ package.name }}</strong> | files {{ package.resources|length }} | {{ package.datahub.stats.prettyBytes }}
       </div>
       {% if package.readmeSnippet %}

@@ -6255,7 +6255,7 @@ img.cube {
   margin-bottom: 20px; }
   .package-summary .publisher {
     margin: 0 0 10px 0; }
-  .package-summary .package-title a {
+  .package-summary .package-title a, .package-summary .package-title-published a, .package-summary .package-title-unlisted a {
     text-decoration: underline;
     color: #000; }
   .package-summary .meta {
@@ -6587,6 +6587,10 @@ div.logout {
       margin-bottom: 3em; } }
   .showcase a.btn {
     padding: 8px 25px; }
+
+h1 span {
+  vertical-align: middle !important;
+  font-size: 14px !important; }
 
 blockquote {
   font-size: inherit; }
