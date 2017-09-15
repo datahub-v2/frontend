@@ -198,7 +198,8 @@ module.exports = function () {
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     try {
       const status = await api.pipelineStatus(userAndPkgId.userid, userAndPkgId.packageid, 'info')
-      if (status.state === 'FAILED' || status.state === 'SUCCEEDED') {
+      const resolvedStates = ['SUCCEEDED', 'FAILED', 'INVALID']
+      if (resolvedStates.includes(status.state)) {
         res.render('pipelines.html', {
           status
         })

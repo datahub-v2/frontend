@@ -51,6 +51,7 @@
   </div>
 
   <script type="text/javascript">
+    var resolvedStates = ['SUCCEEDED', 'FAILED', 'INVALID']
     // The polling function
     function poll(fn, timeout, interval) {
       var endTime = Number(new Date()) + (timeout || 2000);
@@ -60,7 +61,7 @@
           // If the condition is met, we're done!
           fn().then(function(res) {
             res.json().then(function(out) {
-              if (out.state === 'SUCCEEDED' || out.state === 'FAILED') {
+              if (resolvedStates.includes(out.state)) {
                 resolve(out);
               }
               // If the condition isn't met but the timeout hasn't elapsed, go again
@@ -81,7 +82,7 @@
     poll(function() {
       return window.fetch('{{ statusApi }}');
     }, 1200000, 2000).then(function(status) {
-      if (status.state === 'FAILED') {
+      if (status.state === 'FAILED' || status.state === 'INVALID') {
         var target = document.getElementById('message')
         target.innerHTML = 'Something went wrong. Redirecting to pipelines page...';
         setTimeout(function() {

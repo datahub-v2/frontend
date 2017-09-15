@@ -10,7 +10,7 @@ Pipelines
     <h2>{{ status.source.meta.owner }}/{{ status.source.meta.dataset }} - Pipelines</h2>
     <p>Status: {{ status.state }}</p>
     <br>
-    {% if status.state === 'FAILED' %}
+    {% if status.state === 'FAILED' or status.state === 'INVALID' %}
     <h4>Errors</h4>
     <textarea class="logs">
       {{ status.error_log | join("\n") }}
