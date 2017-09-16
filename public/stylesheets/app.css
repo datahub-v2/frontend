@@ -5817,7 +5817,7 @@ html {
 body {
   position: relative;
   min-height: 100%;
-  padding-bottom: 82px; }
+  padding-bottom: 122px; }
   @media (max-width: 480px) {
     body .row {
       margin-left: 0;
@@ -6005,7 +6005,7 @@ footer .connect li a {
 footer {
   position: absolute;
   right: 0;
-  bottom: -40;
+  bottom: 0;
   left: 0; }
   footer .container, footer .container-no-top-padding {
     padding-top: 0; }
@@ -6800,6 +6800,9 @@ p.user {
 .avatar-lg {
   width: 30px; }
 
+body.docs div.row {
+  margin-left: 0;
+  margin-right: 0; }
 body.docs .docs-section {
   margin: 50px 0 130px 0; }
   body.docs .docs-section div {
