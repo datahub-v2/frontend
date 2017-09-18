@@ -36,7 +36,10 @@ module.exports = function () {
   function redirect(path, base='https://old.datahub.io') {
     return function(req, res) {
       let dest = base + path;
-      if (req.params[0]) {
+      if (req.params[0] && Object.keys(req.query).length > 0) {
+        let query_string = '?' + req.url.split('?')[1]
+        dest += '/' + req.params[0] + query_string
+      } else if (req.params[0]) {
         dest += '/' + req.params[0]
       }
       res.redirect(302, dest);
