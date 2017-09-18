@@ -193,7 +193,8 @@ test('Redirects to old.datahub.io', async t => {
     '/user',
     '/user/rufuspollock',
     '/tag',
-    '/tag/abc'
+    '/tag/abc',
+    '/tag/abc?id=123'
   ]
   for(let url of urls) {
     const expected = old + url
