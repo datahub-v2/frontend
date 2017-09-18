@@ -37,8 +37,8 @@ module.exports = function () {
     return function(req, res) {
       let dest = base + path;
       if (req.params[0] && Object.keys(req.query).length > 0) {
-        let query_string = '?' + req.url.split('?')[1]
-        dest += '/' + req.params[0] + query_string
+        let queryString = '?' + req.url.split('?')[1]
+        dest += '/' + req.params[0] + queryString
       } else if (req.params[0]) {
         dest += '/' + req.params[0]
       }
