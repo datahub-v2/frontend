@@ -35,7 +35,7 @@
       "hash": "b0503f17cecc447d595aa9a7f0f4455b",
       "mediatype": "text/csv",
       "name": "demo-resource_csv",
-      "path": "data/csv/data/demo-resource.csv",
+      "path": "http://localhost:4000/admin/demo-package:demo-resource_csv/data/demo-resource_csv.csv",
       "rowcount": 651,
       "schema": {
         "fields": [
@@ -90,7 +90,7 @@
       "hash": "e68e179acaa858b500a02ab80512efcd",
       "mediatype": "text/csv",
       "name": "demo-resource_json",
-      "path": "data/json/data/demo-resource.json",
+      "path": "http://localhost:4000/admin/demo-package:demo-resource_json/data/demo-resource_json.json",
       "rowcount": 651,
       "schema": {
         "fields": [

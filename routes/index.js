@@ -279,7 +279,7 @@ module.exports = function () {
       resource = resource.alternates.find(res => extension.substring(1) === res.format)
     }
 
-    res.redirect(`${normalizedDp.path}/${resource.path}`)
+    res.redirect(`${resource.path}`)
   })
 
   router.get('/search', async (req, res) => {
