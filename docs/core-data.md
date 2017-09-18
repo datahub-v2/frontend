@@ -23,7 +23,7 @@ You can find the data online on the DataHub:
 
 https://datahub.io/core/
 
-## Core Data Curators
+## Core Data Curators
 
 Core Data is curated by a team of Curators. If you're interested in becoming a curator find out more on the [Core Data Curators page][curators].
 

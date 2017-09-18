@@ -1,6 +1,6 @@
 ## Core Data Curators Guide
 
-This is a guide for curators of ["core datasets"][core-intro]. Curators collect and maintain these important and commonly-used (“core”) datasets as high-quality, easy-to-use, open [Data Packages][dp].
+This is a guide for curators of ["core data"][core-intro]. Curators collect and maintain these important and commonly-used (“core”) datasets as high-quality, easy-to-use, open [Data Packages][dp].
 
 [dp]: http://frictionlessdata.io/data-packages/
 
@@ -13,10 +13,10 @@ This is a guide for curators of ["core datasets"][core-intro]. Curators collect 
 - [Packaging Queue (GitHub Issues Tracker)](https://github.com/datasets/registry/issues)
 - [Publish Data Packages Howto on Frictionless Data Site][publish-howto]
 
-[core-intro]: /publishers/core-datasets/
-[core-intro-team]: /publishers/core-datasets/#curators
+[core-intro]: /docs/core-data
+[core-intro-team]: /docs/core-data/curators
 [forum]: http://discuss.okfn.org/category/open-knowledge-labs/core-datasets
-[publish-howto]: http://frictionlessdata.io/guides/publish/
+[publish-howto]: /docs/data-packages/publish/
 
 ## Quick Start
 
@@ -92,8 +92,8 @@ We have a few extra specific requirements:
 * All Data Packages must (ultimately) be stored in a public GitHub repo
   * First publish to your own repository
   * Then arrange a move the repository to [github.com/datasets/ organization](https://github.com/datasets/) - as the owner of a repository you can initiate a transfer request to github.com/datasets/ which can then be approved
-* Add to the [catalog list](https://github.com/datasets/registry/blob/master/catalog-list.txt) **and** the [core list](https://github.com/datasets/registry/blob/master/core-list.txt) **and** the associated csv files: [catalog-list.csv](https://github.com/datasets/registry/blob/master/data/catalog-list.csv) and [core-list.csv](https://github.com/datasets/registry/blob/master/data/core-list.csv).
-* Reload [http://data.okfn.org/data/](http://data.okfn.org/data/) by visiting <http://data.okfn.org/admin/reload/>
+* Add to [core-list.csv](https://github.com/datasets/registry/blob/master/core-list.csv).
+* Push to datahub.io
 * If you have access, tweet from the @OKFNLabs account a link to the http://data.okfn.org/data/ page for the dataset.
 
 
