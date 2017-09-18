@@ -94,7 +94,6 @@ module.exports = function () {
       res.cookie('email', isAuthenticated.profile.email)
       res.cookie('id', isAuthenticated.profile.id)
       res.cookie('name', isAuthenticated.profile.name)
-      req.flash('message', 'We need your feedback, <a href="https://docs.google.com/forms/d/e/1FAIpQLSftMblNkMcfbMsOQNh6G5_e5Ut8PwseJUOIf079StW5K7fU1w/viewform?usp=pp_url&entry.1134149563&entry.647346014&entry.783731634&entry.1867832994&entry.158198641&entry.1225821941=Yes&entry.435264640&entry.431722203" target="_blank">click to fill survey!</a> If you have already filled in, thank you!')
       res.redirect('/dashboard')
     } else {
       req.flash('message', 'Something went wrong. Please, try again later.')
