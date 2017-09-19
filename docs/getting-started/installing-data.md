@@ -38,28 +38,3 @@ This should output a version number, for example on my machine it shows:
 ```
 0.4.1
 ```
-
-\- Get info on data (file or dataset) at path or url
-```bash
-data info http://datahub.io/core/finance-vix
-```
-
-The output will be:
-
-```cli-output
-...
-# RESOURCES
-
-┌────────────────┬────────┐
-│ Name           │ Format │
-├────────────────┼────────┤
-│ vix-daily      │ csv    │
-├────────────────┼────────┤
-│ vix-daily_csv  │ csv    │
-├────────────────┼────────┤
-│ vix-daily_json │ json   │
-└────────────────┴────────┘
-
-# README
-...
-```
