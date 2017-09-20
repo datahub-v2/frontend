@@ -75,7 +75,7 @@ Once we have a suggested dataset marked as "ready to package" we can move to pac
 
 How to package up data is covered in the [general publishing guide][pub].
 
-[pub]: /doc/publish
+[pub]: /docs/data-packages/publish
 
 #### 3. Quality Assurance
 
