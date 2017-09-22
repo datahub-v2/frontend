@@ -35,28 +35,28 @@ Then you could describe your view like this:
 
 Finally, you need to connect your view with the underlying data source in the `datapackage.json`
 
-```
+```javascript
 ...
 "resources": [{
 	"name": "mydata"
 	"path": "mydata.csv",
-	"schema": ... schema for the 
-}]
-views: [{
+	"schema": ... // schema for the 
+}],
+"views": [{
 	"name": "graph-1",
-	"title": "My awesome view"
+	"title": "My awesome view",
 
 	// the data to connect to this view
-	"resources": ["mydata"]
+	"resources": ["mydata"],
 
 	// specType here is optional as simple is the default
-	"specType": "simple"
+	"specType": "simple",
 	"spec": {
 		"type": "line",
 		"group": "x",
 		"series": [ "y", "z" ]
 	}
-}}
+}]
 ```
 
 To learn more see the examples live examples below.
