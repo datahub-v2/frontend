@@ -23,12 +23,12 @@ The Data Package approach provides a **very simple**, **web friendly**,
 <div class="row">
 <div class="span2">
 <h3>Full Spec</h3>
-There is a full **<a href="http://dataprotocols.org/data-packages/">RFC-style specification of Data Package format</a>**
+There is a full <b><a href="http://dataprotocols.org/data-packages/">RFC-style specification of Data Package format</a></b>
 on the Data Protocols website to complement this quick introduction.
 </div>
 <div class="span2">
 <h3>Tabular Data</h3>
-**<a href="/docs/data-packages/tabular/">Tabular Data Package</a>** extends Data Packages for tabular data. It supports providing additional information such as data types
+<b><a href="/docs/data-packages/tabular/">Tabular Data Package</a></b> extends Data Packages for tabular data. It supports providing additional information such as data types
 of columns.
 </div>
 <div class="span2">
@@ -78,14 +78,14 @@ minimal example of a `datapackage.json` file:
 Here is a much more extensive example of a datapackage JSON file:
 
 <div class="alert alert-info">
-**Note:** a complete list of potential attributes and their meaning can be found in the
+<b>Note:</b> a complete list of potential attributes and their meaning can be found in the
 [full Data Package spec][spec].
 </div>
 
 [spec]: http://dataprotocols.org/data-packages/
 
 <div class="alert alert-info">
-**Note:** the Data Package format is **extensible** in that it allows you add
+<b>Note:</b> the Data Package format is <b>extensible</b> in that it allows you add
 your own attributes to the `datapackage.json`
 </div>
 

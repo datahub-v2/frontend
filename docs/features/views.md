@@ -71,7 +71,7 @@ Simple graph spec is the easiest and quickest way to specify a view in a Data Pa
 
 * [Simple Graph Spec Tutorial][ex-simple]
 
-[ex-simple]: https://datahub.io/examples/simple-graph-spec)
+[ex-simple]: https://datahub.io/examples/simple-graph-spec
 
 ### Vega graphs
 
