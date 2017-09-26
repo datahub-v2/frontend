@@ -1,4 +1,4 @@
-# CSV &ndash; Comma Separated Values
+# CSV - Comma Separated Values
 
 This page provides an overview CSV (Comma Separated Values) format for data.
 

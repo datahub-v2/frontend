@@ -23,7 +23,7 @@ Putting data online is one command: `push`.
 data push [FILE-or-DATA-PACKAGE-PATH]
 ```
 
-**Login befor pushing**: you will need to login (or signup) before pushing:
+**Login before pushing**: you will need to login (or signup) before pushing:
 
 ```
 data login
