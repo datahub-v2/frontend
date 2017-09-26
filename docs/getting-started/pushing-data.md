@@ -30,7 +30,7 @@ A,B,C
 
 Putting your data online is now just one simple command:
 
-```bash
+```
 $ data push mydata.csv
 ```
 
@@ -40,6 +40,12 @@ The output will be:
 \> 🙌  your data is published!
 
 \> 🔗  https://datahub.io/username/dataset (copied to clipboard)
+```
+
+**Note:** *by default, findability flag for your dataset is set to **unlisted**, meaning nobody else is able to see it, except you. Use **published** flag to make it publicly available*
+
+```
+$ data push mydata.csv --published
 ```
 
 ## Your data's online!

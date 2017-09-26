@@ -23,6 +23,12 @@ Putting data online is one command: `push`.
 data push [FILE-or-DATA-PACKAGE-PATH]
 ```
 
+**Note:** *by default, findability flag for your dataset is set to **unlisted**, meaning nobody else is able to see it, except you. Use **published** flag to make it publicly available*
+
+```
+data push [FILE-or-DATA-PACKAGE-PATH] --published
+```
+
 **Login before pushing**: you will need to login (or signup) before pushing:
 
 ```
