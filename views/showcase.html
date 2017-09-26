@@ -120,10 +120,12 @@
                 <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}" onclick="trackOutboundLink(this.href)">
                   Download [{{ resource.format }}]
                 </a>
+                {% if resource.alternates %}
                 -
                 <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.alternates[1].format }}" onclick="trackOutboundLink(this.href)">
                   [ {{ resource.alternates[1].format }} ({{resource.alternates[1].prettyBytes}}) ]
                 </a>
+                {% endif %}
               </td>
             </tr>
           {% endfor %}
