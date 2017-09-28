@@ -2,7 +2,7 @@
 
 {% macro listify(list_) -%}
   {% for item in list_ or [] %}
-  <a href="{{item.web}}" title="Uses data from {{item.title}}" target="_blank">
+  <a href="{{item.path}}" title="Uses data from {{item.title}}" target="_blank">
     <i class="fa fa-external-link-square"></i>
     {{item.title}}
   </a>
