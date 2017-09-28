@@ -32,6 +32,25 @@ test("Generates logical dp from extended dp", async t => {
   t.deepEqual(extendedNonTabular, logicalNonTabular)
 })
 
+test("Generates good dp from prepareForFrontend dp", async t => {
+  const dp = {resources:
+    [
+      {
+        name: 'test',
+        alternates: [
+          {
+            name: 'alt',
+            datahub: {type: 'derived/json'}
+          }
+        ]
+      }
+    ]
+  }
+  const goodDp = lib.DataHubApi.makeGoodDp(dp)
+  t.is(goodDp.downloads[0].name, 'test')
+  t.is(goodDp.downloads[0].otherFormats[0].name, 'alt')
+})
+
 test('Gets README', async t => {
   const res = await api.getPackageFile('admin', 'demo-package', 'README.md')
   const readme = await res.text()

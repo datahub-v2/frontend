@@ -94,38 +94,40 @@
       <h2 class="section-title" id="data">Data Files</h2>
       <div class="resource-listing part">
         <table class="table table-condensed table-striped resource-listing">
-          <!-- <thead>
-            <th>File</th>
-            <th>Description</th>
-            <th>Size</th>
-            <th>Last changed</th>
+          <thead>
+            <th class="col-xs-2">File</th>
+            <th class="col-xs-2">Description</th>
+            <th class="col-xs-1">Size</th>
+            <th class="col-xs-2">Last changed</th>
             <th>Download</th>
-          </thead> -->
+            <th>Other formats</th>
+          </thead>
           <tbody>
-          {% for resource in dataset.resources %}
+          {% for resource in dataset.downloads %}
             <tr>
               <td class="col-xs-2">
                 <i class="fa fa-file-text-o"></i> <a href="#resource-{{resource.name}}" onclick="scrollDown(this)">{{resource.name}}</a> [{{resource.format}}]
               </td>
-              <td class="col-xs-4">
+              <td class="col-xs-3">
                 {{ resource.title or resource.description }}
               </td>
               <td class="col-xs-1">
                 {{ resource.prettyBytes }}
               </td>
-              <td class="col-xs-2">
-                {{ resource.updated }}
+              <td class="col-xs-1">
+                {{ resource.modified }}
               </td>
               <td class="download truncate col-xs-3">
                 <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}" onclick="trackOutboundLink(this.href)">
-                  Download [{{ resource.format }}]
+                  {{ resource.name }} [{{ resource.format }}]
                 </a>
-                {% if resource.alternates %}
-                -
-                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.alternates[1].format }}" onclick="trackOutboundLink(this.href)">
-                  [ {{ resource.alternates[1].format }} ({{resource.alternates[1].prettyBytes}}) ]
+              </td>
+              <td class="download truncate col-xs-2">
+                {% for alt in resource.otherFormats %}
+                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ alt.format }}" onclick="trackOutboundLink(this.href)">
+                  {{ resource.name }} [{{alt.format}}] ({{alt.prettyBytes}})
                 </a>
-                {% endif %}
+                {% endfor %}
               </td>
             </tr>
           {% endfor %}
