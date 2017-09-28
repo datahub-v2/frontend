@@ -279,7 +279,7 @@ module.exports = function () {
 
     // If resource was found then identify required format by given extension
     if (!(resource.format === extension.substring(1))) {
-      resource = resource.alternates.find(res => extension.substring(1) === res.format)
+      resource = resource.alternates.find(res => (extension.substring(1) === res.format && res.datahub.type !== 'derived/preview'))
     }
 
     res.redirect(`${resource.path}`)
