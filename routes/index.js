@@ -155,7 +155,7 @@ module.exports = function () {
     try {
       normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
     } catch (err) {
-      if (err.res.status !== 404) {
+      if (err.name === 'BadStatusCode' && err.res.status !== 404) {
         throw err
       }
     }
