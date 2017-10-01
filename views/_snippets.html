@@ -47,7 +47,7 @@
   </p>
   <br>
   <div class="text-center">
-    <img src="/static/img/spinner.gif" width="30px">
+    <i class="fa fa-spinner fa-pulse fa-2x fa-fw" aria-hidden="true" id="spinner"></i>
   </div>
 
   <script type="text/javascript">
@@ -83,21 +83,23 @@
       return window.fetch('{{ statusApi }}');
     }, 1200000, 2000).then(function(status) {
       if (status.state === 'FAILED' || status.state === 'INVALID') {
-        var target = document.getElementById('message')
+        var target = document.getElementById('message');
         target.innerHTML = 'Something went wrong. Redirecting to pipelines page...';
         setTimeout(function() {
           window.location = '{{ failUrl }}';
         }, 1000);
       } else if (status.state === 'SUCCEEDED') {
-        var target = document.getElementById('message')
+        var target = document.getElementById('message');
         target.innerHTML = 'Success! Reloading...';
         setTimeout(function() {
           window.location = '{{ successUrl }}';
         }, 1000);
       }
     }).catch(function() {
-      // Polling timed out, handle the error!
-      alert('Please, reload the page...');
+      // Polling timed out, tell the user to reload the page:
+      var target = document.getElementById('message');
+      target.innerHTML = 'Polling timed out. Please, reload the page...';
+      document.getElementById('spinner').classList.remove('fa-pulse');
     });
   </script>
 {%- endmacro %}
