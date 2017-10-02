@@ -51,7 +51,7 @@
   </div>
 
   <script type="text/javascript">
-    var resolvedStates = ['SUCCEEDED', 'FAILED', 'INVALID']
+    var resolvedStates = ['SUCCEEDED', 'FAILED']
     // The polling function
     function poll(fn, timeout, interval) {
       var endTime = Number(new Date()) + (timeout || 2000);
@@ -82,7 +82,7 @@
     poll(function() {
       return window.fetch('{{ statusApi }}');
     }, 1200000, 2000).then(function(status) {
-      if (status.state === 'FAILED' || status.state === 'INVALID') {
+      if (status.state === 'FAILED') {
         var target = document.getElementById('message');
         target.innerHTML = 'Something went wrong. Redirecting to pipelines page...';
         setTimeout(function() {

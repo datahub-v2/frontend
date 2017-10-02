@@ -12,7 +12,7 @@
 <!-- title and owner info -->
 <div class="container">
   <div class="inner_container">
-    {% if status === 'FAILED' or status === 'INVALID' %}
+    {% if status === 'FAILED' %}
     <div class="alert alert-danger text-center" role="alert">
       We've failed to build your latest changes. Please, see <a href="/{{ owner }}/{{ dataset.name }}/pipelines">details here.</a>
     </div>
