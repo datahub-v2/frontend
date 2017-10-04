@@ -153,8 +153,26 @@ module.exports = function () {
 
   // ==============
   // Blog
+  router.get('/blog', (req, res) => {
+    const listOfPosts = []
+    fs.readdirSync('blog/').forEach(post => {
+      const filePath = `blog/${post}`
+      const text = fs.readFileSync(filePath, 'utf8')
+      let parsedWithFM = fm(text)
+      parsedWithFM.body = utils.md.render(parsedWithFM.body)
+      parsedWithFM.attributes.date = moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY')
+      parsedWithFM.attributes.author = authors[parsedWithFM.attributes.author]
+      parsedWithFM.path = `blog/${post.slice(11, -3)}`
+      listOfPosts.unshift(parsedWithFM)
+    })
+    res.render('blog.html', {
+      title: 'Blog',
+      posts: listOfPosts
+    })
+  })
+
   router.get('/blog/:post', showPost)
-  
+
   function showPost(req, res) {
     const page = req.params.post
     const fileName = fs.readdirSync('blog/').find(post => {

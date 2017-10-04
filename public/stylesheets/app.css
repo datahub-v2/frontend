@@ -6852,6 +6852,14 @@ body.blog .page-header h1 {
   text-align: center; }
 body.blog .page-header p {
   text-align: center;
-  color: #757575; }
+  color: #757575;
+  font-size: 12px; }
+body.blog .container .inner_container .post, body.blog .container-no-top-padding .inner_container .post {
+  margin-bottom: 80px; }
+body.blog .container .inner_container a h2, body.blog .container-no-top-padding .inner_container a h2 {
+  color: #000; }
+body.blog .container .inner_container p.meta, body.blog .container-no-top-padding .inner_container p.meta {
+  color: #757575;
+  font-size: 12px; }
 
 /*# sourceMappingURL=app.css.map */

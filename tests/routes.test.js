@@ -205,14 +205,17 @@ test('Redirects to old.datahub.io', async t => {
 })
 
 test('Docs work', async t => {
-  let res = await request(app).get('/docs')
+  const res = await request(app).get('/docs')
   t.is(res.status, 200)
   t.true(res.text.includes('<!-- doc page -->'))
   t.true(res.text.includes('Documentation'))
 })
 
-test('Blog post (single post) works', async t => {
+test('Blog page works', async t => {
   let res = await request(app).get('/blog/space-usage')
+  t.is(res.status, 200)
+  t.true(res.text.includes('<!-- blog post page test placeholder -->'))
+  res = await request(app).get('/blog')
   t.is(res.status, 200)
   t.true(res.text.includes('<!-- blog post page test placeholder -->'))
 })

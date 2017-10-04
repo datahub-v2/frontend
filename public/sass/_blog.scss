@@ -6,6 +6,19 @@ body.blog {
     p {
       text-align: center;
       color: $gray;
+      font-size: 12px;
+    }
+  }
+  .container .inner_container {
+    .post {
+      margin-bottom: 80px;
+    }
+    a h2 {
+      color: $black;
+    }
+    p.meta {
+      color: $gray;
+      font-size: 12px;
     }
   }
 }

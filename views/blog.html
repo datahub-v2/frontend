@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title%}{{title}} - Blog{% endblock %}
+
+{% block bodyclass %}blog{% endblock %}
+
+{% block content %}
+<!-- blog post page test placeholder -->
+<div class="container">
+  <div class="inner_container">
+    {% for post in posts %}
+    <div class="post">
+      <a href="{{post.path}}">
+        <h2>{{post.attributes.title}}</h2>
+      </a>
+      <p class="meta">
+        <i class="fa fa-calendar" aria-hidden="true"></i> {{post.attributes.date}}
+        {% if post.attributes.author %}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <img src="https://www.gravatar.com/avatar/{{post.attributes.author.gravatar}}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar" />
+          {{post.attributes.author.name}}
+        {% endif %}
+      </p>
+      {{post.body | truncate(200) | safe}}
+      <p><a href="{{post.path}}">Read more</a></p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
