@@ -9,6 +9,15 @@ body.blog {
       font-size: 12px;
     }
   }
+  p.info {
+    color: $gray;
+    font-size: 12px;
+    border-top: 1px solid $gray-light;
+    margin: 50px 0;
+  }
+  div.row img {
+    margin: 60px 0;
+  }
   .container .inner_container {
     .post {
       margin-bottom: 80px;
