@@ -5,6 +5,9 @@ const path = require('path')
 
 const express = require('express')
 const bytes = require('bytes')
+const fm = require('front-matter')
+const moment = require('moment')
+const md5 = require('md5')
 
 const config = require('../config')
 const lib = require('../lib')
@@ -116,13 +119,13 @@ module.exports = function () {
   const showDoc = function(req, res) {
     if (req.params[0]) {
       var page = req.params[0]
-      var filepath = 'docs/' + page + '.md'
-      if (!fs.existsSync(filepath)) {
+      var filePath = 'docs/' + page + '.md'
+      if (!fs.existsSync(filePath)) {
         res.status(404).send('Sorry no documentation was found')
         return
       }
 
-      fs.readFile(filepath, 'utf8', function(err, text) {
+      fs.readFile(filePath, 'utf8', function(err, text) {
         var lines  = text.split('\n')
         var title = ''
         if (lines[0].indexOf('#') === 0) {
@@ -130,7 +133,7 @@ module.exports = function () {
           text  = lines.slice(1).join('\n')
         }
         var content = utils.md.render(text)
-        var githubPath = '//github.com/okfn/data.okfn.org/blob/master/' + filepath
+        var githubPath = '//github.com/okfn/data.okfn.org/blob/master/' + filePath
         res.render('docs.html', {
           title: title,
           content: content,
@@ -148,6 +151,40 @@ module.exports = function () {
 
   // ===== /end docs
 
+  // ==============
+  // Blog
+  router.get('/blog/:post', showPost)
+  
+  function showPost(req, res) {
+    const page = req.params.post
+    const fileName = fs.readdirSync('blog/').find(post => {
+      return post.slice(11, -3) === page
+    })
+    if (fileName) {
+      const filePath = `blog/${fileName}`
+      fs.readFile(filePath, 'utf8', function(err, text) {
+        if (err) throw err
+        const parsedWithFM = fm(text)
+        res.render('post.html', {
+          title: parsedWithFM.attributes.title,
+          date: moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY'),
+          author: authors[parsedWithFM.attributes.author],
+          content: utils.md.render(parsedWithFM.body)
+        })
+      })
+    } else {
+      res.status(404).send('Sorry no post was found')
+      return
+    }
+  }
+  const authors = {
+    'Rufus Pollock': {name: 'Rufus Pollock', gravatar: md5('rufus.pollock@datopian.com')},
+    'Anuar Ustayev': {name: 'Anuar Ustayev', gravatar: md5('anuar.ustayev@gmail.com')},
+    'Irakli Mchedlishvili': {name: 'Irakli Mchedlishvili', gravatar: md5('irakli.mchedlishvili@datopian.com')},
+    'Meiran Zhiyenbayev': {name: 'Meiran Zhiyenbayev', gravatar: md5('meiran1991@gmail.com ')},
+    'Adam Kariv': {name: 'Adam Kariv', gravatar: md5('adam.kariv@gmail.com')}
+  }
+  // ===== /end blog
 
   router.get('/:owner/:name', async (req, res) => {
     let normalizedDp = null

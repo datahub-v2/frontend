@@ -6848,4 +6848,10 @@ body.docs div.cli-output {
     color: #ff7900;
     text-decoration: none; }
 
+body.blog .page-header h1 {
+  text-align: center; }
+body.blog .page-header p {
+  text-align: center;
+  color: #757575; }
+
 /*# sourceMappingURL=app.css.map */

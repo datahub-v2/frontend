@@ -210,3 +210,9 @@ test('Docs work', async t => {
   t.true(res.text.includes('<!-- doc page -->'))
   t.true(res.text.includes('Documentation'))
 })
+
+test('Blog post (single post) works', async t => {
+  let res = await request(app).get('/blog/space-usage')
+  t.is(res.status, 200)
+  t.true(res.text.includes('<!-- blog post page test placeholder -->'))
+})
