@@ -1,4 +1,6 @@
-# Data Packages
+---
+title: Data Packages
+---
 
 A Data Package (or DataPackage) is a simple way of "packaging" up data.
 
@@ -17,7 +19,7 @@ Imagine a situation such as the following:
 * Information like: author, license, list of files in the dataset (and possibly
   info on those files, like a schema)
 
-The Data Package approach provides a **very simple**, **web friendly**, 
+The Data Package approach provides a **very simple**, **web friendly**,
 **standardized** and **extensible**, way for you to do this.
 
 <div class="row">
@@ -61,7 +63,7 @@ or analyzing the data) and other material may be provided but are not required.
 * A "manifest" in the the form of a list of the data resources (data files)
   included in this data package along with information on those files (e.g.
   size and schema)
-    
+
 As its file extension indicates it must be a [JSON][] file. Here's a very
 minimal example of a `datapackage.json` file:
 
@@ -210,7 +212,7 @@ This data package has TopoJSON and the data is external to the repo.
 <script src="http://gist-it.appspot.com/github/datasets/ex-topojson/blob/master/datapackage.json"></script>
 
 [datasets]: https://github.com/datasets
-[World GDP]: https://github.com/datasets/gdp 
+[World GDP]: https://github.com/datasets/gdp
 [ISO 3166-2 country codes]: https://github.com/datasets/country-codes
 [topojson]: https://github.com/datasets/ex-topojson
 

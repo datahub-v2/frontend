@@ -1,4 +1,7 @@
-# Installing ❒ data
+---
+title: Installing ❒ data
+date: 2017-09-19
+---
 
 This guide will cover how to install the **data** tool and verify that it is working properly. **data** is distributed as a command line tool.
 
@@ -12,7 +15,7 @@ There are two options for installation:
 1. Go to the [releases page](https://github.com/datahq/datahub-cli/releases)
 2. Download the pre-built binary for your platform (MacOS and LinuxOS x64 at present)
 3. Move the binary into your `$PATH` e.g. on Mac you could move to `/usr/local/bin/`
- 
+
     ```bash
     $ mv data-{os-distribution} /usr/local/bin/data
     ```

@@ -1,7 +1,20 @@
 body.docs {
+  .page-header {
+    h1 {
+      text-align: center;
+    }
+    p {
+      text-align: center;
+      color: $gray;
+      font-size: 12px;
+    }
+  }
   div.row {
     margin-left: 0;
     margin-right: 0;
+    img {
+      margin: 60px 0;
+    }
   }
   .docs-section {
     margin: 50px 0 130px 0;

@@ -1,4 +1,6 @@
-# Put it Online
+---
+title: Put it Online
+---
 
 This tutorial is about how to publish your Data Package online for others to
 find and use.
@@ -101,7 +103,7 @@ mind:
 * The structure of your Data Package should be preserved. Specifically the
   paths between your `datapackage.json` and the data files must be preserved.
   For example, if your Data Package directory looked like this on disk:
-  
+
       datapackage.json
       data.csv
       somedir/other-data.csv
@@ -111,7 +113,7 @@ mind:
       http://your.website.com/mydatapackage/datapackage.json
       http://your.website.com/mydatapackage/data.csv
       http://your.website.com/mydatapackage/somedir/other-data.csv
-  
+
   This can be a problem with services like e.g. Google Drive where files in a
   given folder don't have a web address that relates to that folder. The reason
   we need to preserve relative paths is that when using the Data Package client

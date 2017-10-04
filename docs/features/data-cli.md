@@ -1,4 +1,6 @@
-# Data's Command Line Interface
+---
+title: Data's Command Line Interface
+---
 
 `data` is the command-line tool to prepare, push and get data. With `data` you will be able to:
 
@@ -36,4 +38,3 @@ data login
 ```
 
 This will carry out login / signup entirely from the command line.
-

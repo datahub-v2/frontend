@@ -1,4 +1,6 @@
-# Core Data Curators
+---
+title: Core Data Curators
+---
 
 The Core Data Curators curate the [core data][].
 
@@ -54,4 +56,3 @@ Here's what you need to know when you sign up:
 To register your interest fill in the following form.
 
 <iframe src="https://docs.google.com/forms/d/1d9chMK0jU9CJs0_mnK_JQU9iIJocjm7AEp0ZM5eSiNg/viewform?embedded=true" width="620" height="1425" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-

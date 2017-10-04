@@ -1,4 +1,6 @@
-## Core Data Curators Guide
+---
+title: Core Data Curators Guide
+---
 
 This is a guide for curators of ["core data"][core-intro]. Curators collect and maintain these important and commonly-used (“core”) datasets as high-quality, easy-to-use, open [Data Packages][dp].
 
@@ -116,4 +118,3 @@ For a dataset to be designated as "core" it should meet the following criteria:
 * Relevance and importance - the focus at present is on indicators and reference data
 * Ongoing support - it should have a maintainer
 * Openness - data should be <a href="http://opendefinition.org/">open data</a> and openly licensed in accordance with the <a href="http://opendefinition.org/">Open Definition</a>
-

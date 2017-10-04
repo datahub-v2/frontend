@@ -1,4 +1,6 @@
-# Tabular Data Packages
+---
+title: Tabular Data Packages
+---
 
 Tabular Data Package is a simple structure for publishing and sharing tabular data with
 the following key features:
@@ -44,7 +46,7 @@ data.csv looks like:
     B,3,4.3
 
 That is there are 3 fields (columns) and 2 rows of data.
-    
+
 A simple datapackage.json for this data would be:
 
     {
@@ -124,7 +126,7 @@ There are a few specific requirements for CSV files in Tabular Data Packages:
 #### Delimiters other than Comma
 
 CSV files in Tabular Data Package are not absolutely required to have "," as the
-field delimeter - you can use tab, ";" or any other kind of character. 
+field delimeter - you can use tab, ";" or any other kind of character.
 
 If you do use a delimiter other than "," you must specify the info about the
 delimiters in the resource entry using a "dialect" attribute and [CSV Dialect
@@ -139,7 +141,7 @@ Here is an example of how the datapackage.json would look in this case:
         dialect: { # as per CSV Dialect specification
           "delimiter": ";"
         },
-        schema:  # as per JSON Table Schema 
+        schema:  # as per JSON Table Schema
       }
     ]
 
@@ -154,7 +156,7 @@ There are many examples of Tabular Data Packages in the [datasets organization o
 
 ### [World GDP][]
 
-[World GDP]: https://github.com/datasets/gdp 
+[World GDP]: https://github.com/datasets/gdp
 
 <script src="http://gist-it.appspot.com/github/datasets/gdp/blob/master/datapackage.json"></script>
 

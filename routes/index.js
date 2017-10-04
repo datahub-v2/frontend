@@ -126,18 +126,18 @@ module.exports = function () {
       }
 
       fs.readFile(filePath, 'utf8', function(err, text) {
-        var lines  = text.split('\n')
-        var title = ''
-        if (lines[0].indexOf('#') === 0) {
-          title = lines[0].replace(/#+\s+/g, '')
-          text  = lines.slice(1).join('\n')
-        }
-        var content = utils.md.render(text)
-        var githubPath = '//github.com/okfn/data.okfn.org/blob/master/' + filePath
+        if (err) throw err
+        const parsedWithFM = fm(text)
+        const content = utils.md.render(parsedWithFM.body)
+        const date = parsedWithFM.attributes.date
+          ? moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY')
+          : null
+        const githubPath = '//github.com/okfn/data.okfn.org/blob/master/' + filePath
         res.render('docs.html', {
-          title: title,
-          content: content,
-          githubPath: githubPath
+          title: parsedWithFM.attributes.title,
+          date,
+          content,
+          githubPath
         })
       })
     } else {

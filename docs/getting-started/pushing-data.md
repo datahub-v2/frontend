@@ -1,4 +1,7 @@
-# Pushing a data file
+---
+title: Pushing a data file
+date: 2017-09-26
+---
 
 This guide walks you through how to put data online using **data** tool and the DataHub.
 

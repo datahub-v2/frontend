@@ -1,13 +1,15 @@
-# Publishing Data Packages - Best practice patterns
+---
+title: Publishing Data Packages - Best practice patterns
+---
 
 This page summarizes the best practice patterns that should be followed when creating a data package. It addresses
-* [The Data Package name](#data-package-name), 
+* [The Data Package name](#data-package-name),
 * [The resource and data file names](#resource-and-file-names),
 * [The descriptor `datapackage.json`](#descriptor-code-datapackage-json-code-),
 * [The Data Package folder names and structure](#data-package-folder-names-and-structure),
 * [The README file](#readme),
 * [Validate and preview](#validate-and-preview-your-data-package),
-* [Examples of well-structured packages](#examples). 
+* [Examples of well-structured packages](#examples).
 
 Complete specifications are available at http://dataprotocols.org/data-packages.
 
@@ -30,7 +32,7 @@ For country specific datasets:
 
 ```
 {topic}                  # e.g. gdp
-{topic}-{2-digit-iso}    # e.g. gdp-us 
+{topic}-{2-digit-iso}    # e.g. gdp-us
 ```
 
 For time series data:
@@ -89,7 +91,7 @@ Bad alignment:
 ```
 {
   "name": "corruption-perceptions-index","title": "Corruption Perceptions Index (CPI)",
-  "sources": 
+  "sources":
   [{
     "name": "Transparency International",
     "web": "http://www.transparency.org/research/cpi/overview"}]
@@ -154,7 +156,7 @@ Start with a short description of the dataset (the first sentence and first
 paragraph should be extractable to provide short standalone descriptions).
 
 Unlike other sections **this section SHOULD NOT have a heading** as it starts the README. (i.e. you do not
-need the heading `## Introduction` 
+need the heading `## Introduction`
 
 #### **Data**
 
@@ -173,11 +175,11 @@ generate the data should go here.
 Put additional information on the permissions and licensing of the data in the
 Data Package in the License section.
 
-Since licensing information is often not clear from the data producers, the guideline here is to license the Data Package under the Public Domain Dedication and License, and then to add any relevant information or disclaimers regarding the source data. 
+Since licensing information is often not clear from the data producers, the guideline here is to license the Data Package under the Public Domain Dedication and License, and then to add any relevant information or disclaimers regarding the source data.
 
-See for example 
+See for example
 * http://data.okfn.org/data/core/corruption-perceptions-index#readme
-* http://data.okfn.org/data/core/geo-nuts-administrative-boundaries#readme 
+* http://data.okfn.org/data/core/geo-nuts-administrative-boundaries#readme
 
 See also the following thread https://discuss.okfn.org/t/copyright-on-data-sources/189.
 
@@ -196,4 +198,3 @@ Then use the [Online Data Package viewer app](/tools/view) to have a preview of 
 For examples of well-structured Data Package see:
 * For tabular data: http://data.okfn.org/data/core/corruption-perceptions-index
 * For geospatial data: http://data.okfn.org/data/core/geo-nuts-administrative-boundaries
-

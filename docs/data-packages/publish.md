@@ -1,4 +1,6 @@
-# Publish Data as Data Packages
+---
+title: Publish Data as Data Packages
+---
 
 You can publish **any kind of data** as a Data Package.
 

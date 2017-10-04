@@ -1,4 +1,6 @@
-# Views
+---
+title: Views
+---
 
 Producers and consumers of data want to see views on their data in the forms of tables, graphs and maps.
 
@@ -40,7 +42,7 @@ Finally, you need to connect your view with the underlying data source in the `d
 "resources": [{
 	"name": "mydata"
 	"path": "mydata.csv",
-	"schema": ... // schema for the 
+	"schema": ... // schema for the
 }],
 "views": [{
 	"name": "graph-1",
@@ -103,4 +105,3 @@ In the following examples, we demonstrate how transforms can be used in Data Pac
 [views-dev]: /developers/views/
 [views-spec]: https://specs.frictionlessdata.io/views/
 [Vega]: https://vega.github.io/vega/
-

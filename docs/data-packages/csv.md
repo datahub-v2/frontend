@@ -1,4 +1,6 @@
-# CSV - Comma Separated Values
+---
+title: CSV - Comma Separated Values
+---
 
 This page provides an overview CSV (Comma Separated Values) format for data.
 
@@ -178,4 +180,3 @@ and to [James Smith](http://theodi.org/blog/adapting-git-simple-data).
 [chrome-csv]: https://chrome.google.com/webstore/detail/recline-csv-viewer/ibfcfelnbfhlbpelldnngdcklnndhael
 [OpenRefine]: http://openrefine.org/
 [datax]: http://explorer.okfnlabs.org/
-

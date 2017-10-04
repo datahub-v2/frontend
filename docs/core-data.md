@@ -1,4 +1,6 @@
-# Core Data
+---
+title: Core Data
+---
 
 *Important, commonly-used data as high quality, easy-to-use & open data packages*
 
@@ -6,7 +8,7 @@ Core Datasets are important, commonly-used **"core" data** like GDP or country c
 
 https://datahub.io/core/
 
-## Key features 
+## Key features
 
 * **High Quality & Reliable**: we source, normalize and quality check the data so you don't have to
 * **Standardized & Bulk**: all data is provided in a **standardized** form and can be accessed in **bulk as CSV** together with a simple **JSON schema**
@@ -32,4 +34,3 @@ Core Data is curated by a team of Curators. If you're interested in becoming a c
 ## More Info
 
 <iframe src="https://docs.google.com/presentation/d/1-BLImNBv2RtEkFVq_DdWjy05baHfprWHHdXZiMrmihQ/embed?start=false&loop=false&delayms=3000" frameborder="0" width="680" height="551" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-

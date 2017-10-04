@@ -1,4 +1,6 @@
-# Privacy Policy
+---
+title: Privacy Policy
+---
 
 Last update: 2017-08-09
 
@@ -91,4 +93,3 @@ To keep your Personal Data accurate, current, and complete, please contact us as
 Please also feel free to contact us if you have any questions about **Datopian**'s Privacy Policy or the information practices of the Services You may contact us by emailing us at **datahub-legal@datopian.com**.
 
 [tos]: /docs/terms-of-service
-

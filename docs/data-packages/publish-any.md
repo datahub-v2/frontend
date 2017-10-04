@@ -1,4 +1,6 @@
-# Publish Any Kind of Data
+---
+title: Publish Any Kind of Data
+---
 
 You can publish **all and any kind of data** as Data packages. It's as simple as 1-2-3:
 

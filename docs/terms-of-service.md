@@ -1,4 +1,6 @@
-# Term of Service
+---
+title: Term of Service
+---
 
 Last update: 2017-08-09
 
@@ -77,4 +79,3 @@ This agreement is made under the laws of England and Wales.
 Please visit our [Privacy Policy][privacy] to understand how the Company collects and uses personal information.
 
 [privacy]: /docs/privacy
-

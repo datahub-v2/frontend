@@ -1,4 +1,6 @@
-# Publishing Geospatial Data as Data Packages
+---
+title: Publishing Geospatial Data as Data Packages
+---
 
 Publishing your Geodata as Data Packages is very easy.
 
@@ -38,7 +40,7 @@ Demonstrates `multipolygon` and `point` geometry
 <script src="http://gist-it.appspot.com/github/datasets/ex-geojson/blob/master/datapackage.json"></script>
 
 #### [Traffic signs of Hansbeke, Belgium](https://github.com/peterdesmet/traffic-signs-hansbeke)
-  
+
 Example of using `point` geometries with described properties in real world situation.
 
 [View it with the Data Package Viewer][view-2]
