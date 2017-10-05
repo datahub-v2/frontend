@@ -41,3 +41,23 @@ This should output a version number, for example on my machine it shows:
 ```
 0.4.1
 ```
+
+## A first step
+
+Finally, and as a last test, you can try out your first `❒ data` command: `info`.
+
+Note: This command makes **no** changes to anything on your machine or on the DataHub so it is completely safe to try out!
+
+The `info` command provides info on a data file or dataset whether it is on the DataHub or your local disk. Here's an example for you to try:
+
+```bash
+data info https://datahub.io/core/finance-vix
+```
+
+It should something like this:
+
+```cli-output
+CBOE Volatility Index (VIX) time-series dataset including daily open, close,
+high and ...
+```
+
