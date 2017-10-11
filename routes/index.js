@@ -199,7 +199,7 @@ module.exports = function () {
     'Rufus Pollock': {name: 'Rufus Pollock', gravatar: md5('rufus.pollock@datopian.com')},
     'Anuar Ustayev': {name: 'Anuar Ustayev', gravatar: md5('anuar.ustayev@gmail.com')},
     'Irakli Mchedlishvili': {name: 'Irakli Mchedlishvili', gravatar: md5('irakli.mchedlishvili@datopian.com')},
-    'Meiran Zhiyenbayev': {name: 'Meiran Zhiyenbayev', gravatar: md5('meiran1991@gmail.com ')},
+    'Meiran Zhiyenbayev': {name: 'Meiran Zhiyenbayev', gravatar: md5('meiran1991@gmail.com')},
     'Adam Kariv': {name: 'Adam Kariv', gravatar: md5('adam.kariv@gmail.com')}
   }
   // ===== /end blog
