@@ -276,7 +276,14 @@ The script enables you to automate updating your `datapackage.json` for the foll
 
 [norm-script]: https://github.com/datahq/datapackage-normalize-js
 
-If you download the script you can do:
+This is a simple script that you can download directly from here:
+
+https://raw.githubusercontent.com/datahq/datapackage-normalize-js/master/normalize.js
+
+e.g. using wget:
+```bash
+wget https://raw.githubusercontent.com/datahq/datapackage-normalize-js/master/normalize.js
+```
 
 ```bash
 // path (optional) is the path to datapackage.json (if not provided looks in current directory)
