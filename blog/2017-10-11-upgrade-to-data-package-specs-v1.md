@@ -24,7 +24,7 @@ In addition, there were a fair number of substantive changes. We summarize these
 
 Link to spec: https://specs.frictionlessdata.io/table-schema/
 
-| property | spec pre v1 | spec v1 | Notes | Issue |
+| Property | Pre v1 | v1 Spec | Notes | Issue |
 |---|---|---|---|---|
 | id/name | id | name | Renamed id to name to be consistent across specs |  |
 | type/numberformat | currencyformat | format: currency - removed format: bareNumber format: decimalChar and groupChar |  | [#509] [#246] |
@@ -51,7 +51,7 @@ Link to spec: https://specs.frictionlessdata.io/data-resource/
 
 *Note: Data Resource did not exist as a separate spec pre-v1 so strictly we are comparing the Data Resource section of the old Data Package spec with the new Data Resource spec.*
 
-| property | spec pre v1  | spec v1 | Notes | Issue |
+| Property | Pre v1 | v1 Spec | Notes | Issue |
 | ---- | ---- | ---- | ---- | --- |
 | path | path and url | path only | url merged into path and path can now be a url or local path | [#250]  |
 | path | string | string or array | path can be an array to support a single resource split across multiple files | [#228] |
@@ -75,7 +75,7 @@ There were no significant changes here beyond those in Data Resource.
 
 Link to spec: https://specs.frictionlessdata.io/data-package/
 
-| property | spec pre v1 | spec v1 | Notes | Issue |
+| Property | Pre v1 | v1 Spec | Notes | Issue |
 | --- | ----| ---- | ---- | ---- |
 | name | required | recommended | Unique names are not essential to any part of the present tooling so we have have moved to recommended. | [#237]  |
 | id  |  | id property-globally unique | Globally unique id property | [#237]  |
@@ -131,27 +131,23 @@ The script enables you to automate updating your `datapackage.json` for the foll
 If you download the script you can do:
 
 ```bash
-// install package globally
-npm install -g
-
-// you can use it as following
+// path (optional) is the path to datapackage.json (if not provided looks in current directory)
 normalize.js [path]
 
-// path (optional) is the path to datapackage.json
-// prints out updated dp 
+// prints out updated datapackage.json 
 ```
 
 You can also use as a library:
 
 ```bash
 // install it from npm
-npm install normalize.js
+npm install datapackage-normalize
 ```
 
 so you can use it in your javascript:
 
 ```javascript
-const normalize = require('normalize.js')
+const normalize = require('datapackage-normalize')
 
 const path = 'path/to/datapackage.json'
 normalize(path)
