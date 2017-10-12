@@ -6,24 +6,28 @@
 
 {% block content %}
 <!-- blog post page test placeholder -->
-<div class="page-header">
-  <h1>
-    {{title}}
-  </h1>
-  <p>
-    <i class="fa fa-calendar" aria-hidden="true"></i> {{date}}
-    {% if author %}
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <img src="https://www.gravatar.com/avatar/{{author.gravatar}}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar" />
-      {{author.name}}
-    {% endif %}
-  </p>
-</div>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    {{content | safe}}
-    
-    <p class="info">If you have questions, comments or feedback join our <a href="https://gitter.im/datahubio/chat" target="_blank">chat channel</a> or open an issue on our <a href="https://github.com/datahubio/qa" target="_blank">tracker</a>.</p>
+<div class="container">
+  <div class="inner_container">
+    <div class="page-header">
+      <h1>
+        {{title}}
+      </h1>
+      <p>
+        <i class="fa fa-calendar" aria-hidden="true"></i> {{date}}
+        {% if author %}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <img src="https://www.gravatar.com/avatar/{{author.gravatar}}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar" />
+          {{author.name}}
+        {% endif %}
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        {{content | safe}}
+
+        <p class="info">If you have questions, comments or feedback join our <a href="https://gitter.im/datahubio/chat" target="_blank">chat channel</a> or open an issue on our <a href="https://github.com/datahubio/qa" target="_blank">tracker</a>.</p>
+      </div>
+    </div>
   </div>
 </div>
 
