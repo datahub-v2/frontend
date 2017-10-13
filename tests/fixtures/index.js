@@ -62,7 +62,7 @@ module.exports.initMocks = function() {
         }
       ]
     })
-    .get('/metastore/search?datahub.ownerid=%22publisher%22&size=20')
+    .get('/metastore/search?datahub.ownerid=%22publisher%22&size=100')
     .reply(200, {
       summary: {
         total: 1
