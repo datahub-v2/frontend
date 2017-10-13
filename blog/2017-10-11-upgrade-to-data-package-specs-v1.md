@@ -286,17 +286,17 @@ wget https://raw.githubusercontent.com/datahq/datapackage-normalize-js/master/no
 ```
 
 ```bash
-// path (optional) is the path to datapackage.json
-// if not provided looks in current directory
+# path (optional) is the path to datapackage.json
+# if not provided looks in current directory
 normalize.js [path]
 
-// prints out updated datapackage.json
+# prints out updated datapackage.json
 ```
 
 You can also use as a library:
 
 ```bash
-// install it from npm
+# install it from npm
 npm install datapackage-normalize
 ```
 

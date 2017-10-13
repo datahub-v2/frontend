@@ -35,7 +35,7 @@ and it would prompt you to select a sheet. Let's select the first sheet so it wi
 
 Now we can push the file to the DataHub:
 
-```
+```bash
 data push excel.xlsx
 ```
 
@@ -71,7 +71,7 @@ Scrolling down, you can find a preview table of your data:
 
 Sometimes, you need to process multiple sheets from your Excel file or you just need a sheet other than the first one. In such situations, you can use `--sheets` option when pushing your data to DataHub. In our sample data, we have 2 sheets and in the example above we have pushed only the first one. Now, let's push both of them:
 
-```
+```bash
 data push excel.xlsx --sheets=all
 ```
 
