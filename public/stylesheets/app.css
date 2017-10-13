@@ -6834,6 +6834,11 @@ body.docs .header-anchor i {
   font-size: 16px;
   color: #BDBDBD;
   padding: 0 6px; }
+body.docs p.info {
+  color: #757575;
+  font-size: 12px;
+  border-top: 1px solid #BDBDBD;
+  margin: 50px 0; }
 body.docs div.info {
   border: 1px solid #BDBDBD;
   border-radius: 2px;
@@ -6862,6 +6867,10 @@ body.blog .page-header p {
   text-align: center;
   color: #757575;
   font-size: 12px; }
+body.blog .header-anchor i {
+  font-size: 16px;
+  color: #BDBDBD;
+  padding: 0 6px; }
 body.blog p.info {
   color: #757575;
   font-size: 12px;

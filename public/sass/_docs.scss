@@ -57,6 +57,12 @@ body.docs {
       padding: 0 6px;
     }
   }
+  p.info {
+    color: $gray;
+    font-size: 12px;
+    border-top: 1px solid $gray-light;
+    margin: 50px 0;
+  }
   div.info {
     border: 1px solid $gray-light;
     border-radius: 2px;
