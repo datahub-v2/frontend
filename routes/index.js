@@ -214,39 +214,48 @@ module.exports = function () {
         throw err
       }
     }
-    let status
+    let status = {state: ''}
+    // If pipelineStatus API does not respond within 5 sec,
+    // then render the page without status:
+    const timeoutObj = setTimeout(() => {
+      renderPage(status)
+    }, 5000)
+
     try {
       status = await api.pipelineStatus(userAndPkgId.userid, userAndPkgId.packageid, 'status')
+      clearTimeout(timeoutObj)
+      renderPage(status)
     } catch (err) {
-      if (err.status !== 404) {
-        throw err
-      }
+      // Page should still load but console log error so we can debug
+      console.error('> pipelineStatus api failed.')
     }
 
-    if (normalizedDp) { // In pkgstore
-      res.render('showcase.html', {
-        title: req.params.owner + ' | ' + req.params.name,
-        dataset: normalizedDp,
-        owner: req.params.owner,
-        // eslint-disable-next-line no-useless-escape, quotes
-        dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'"),
-        status: status.state,
-        successUrl: `/${req.params.owner}/${req.params.name}`,
-        failUrl: `/${req.params.owner}/${req.params.name}/pipelines`,
-        statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/status`
-      })
-    } else { // Not in pkgstore
-      if (status) {
-        res.render('uploading.html', {
+    function renderPage(status) {
+      if (normalizedDp) { // In pkgstore
+        res.render('showcase.html', {
+          title: req.params.owner + ' | ' + req.params.name,
+          dataset: normalizedDp,
+          owner: req.params.owner,
+          // eslint-disable-next-line no-useless-escape, quotes
+          dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'"),
+          status: status.state,
           successUrl: `/${req.params.owner}/${req.params.name}`,
           failUrl: `/${req.params.owner}/${req.params.name}/pipelines`,
-          statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/status`,
-          name: req.params.name,
-          owner: req.params.owner
+          statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/status`
         })
-      } else { // Nor in pipelines
-        res.status(404).send('Sorry, this dataset was not found.')
-        return
+      } else { // Not in pkgstore
+        if (status && status.state) {
+          res.render('uploading.html', {
+            successUrl: `/${req.params.owner}/${req.params.name}`,
+            failUrl: `/${req.params.owner}/${req.params.name}/pipelines`,
+            statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/status`,
+            name: req.params.name,
+            owner: req.params.owner
+          })
+        } else { // Nor in pipelines
+          res.status(404).send('Sorry, this dataset was not found.')
+          return
+        }
       }
     }
   })
