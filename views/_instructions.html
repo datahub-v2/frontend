@@ -90,57 +90,26 @@ $ pip install datapackage
 {%- endmacro %}
 
 {% macro javascript(dataset) -%}
-<p>To use this Data Package in JavaScript, please, follow instructions below:</p>
-<p>Install <code>datapackage</code> using <code>npm</code>:</p>
+<p>To use this dataset in JavaScript, please, follow instructions below:</p>
+<p>Install <code>data.js</code> module using <code>npm</code>:</p>
 <p>
-<div class="highlight">
-<pre>$ npm install datapackage@0.8.1</pre>
-</div>
+  <pre class="hljs">
+  <code>$ npm install data.js
+</code></pre>
 </p>
-<p>Once the package is installed, use code snippet below</p>
+<p>Once the package is installed, use code snippet below:</p>
 
-<div class="highlight">
-<pre>
-<span></span>
-<span class="kr">const</span> <span class="nx">Datapackage</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'datapackage'</span><span class="p">).</span><span class="nx">Datapackage</span>
+<pre class="hljs">
+  <code><span class="hljs-keyword">const</span> {Dataset} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'data.js'</span>)
 
-<span class="nx">async</span> <span class="kd">function</span> <span class="nx">fetchDataPackageAndData</span><span class="p">(</span><span class="nx">dataPackageIdentifier</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">dp</span> <span class="o">=</span> <span class="nx">await</span> <span class="k">new</span> <span class="nx">Datapackage</span><span class="p">(</span><span class="nx">dataPackageIdentifier</span><span class="p">)</span>
-  <span class="nx">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">dp</span><span class="p">.</span><span class="nx">resources</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">async</span> <span class="p">(</span><span class="nx">resource</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">resource</span><span class="p">.</span><span class="nx">descriptor</span><span class="p">.</span><span class="nx">format</span> <span class="o">===</span> <span class="s1">'geojson'</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kr">const</span> <span class="nx">baseUrl</span> <span class="o">=</span> <span class="nx">resource</span><span class="p">.</span><span class="nx">_basePath</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">'/datapackage.json'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
-      <span class="kr">const</span> <span class="nx">resourceUrl</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">baseUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="p">.</span><span class="nx">_descriptor</span><span class="p">.</span><span class="nx">path</span><span class="si">}</span><span class="sb">`</span>
-      <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">resourceUrl</span><span class="p">)</span>
-      <span class="nx">resource</span><span class="p">.</span><span class="nx">descriptor</span><span class="p">.</span><span class="nx">_values</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="c1">// we assume resource is tabular for now ...</span>
-      <span class="kr">const</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">resource</span><span class="p">.</span><span class="nx">table</span>
-      <span class="c1">// rows are simple arrays -- we can convert to objects elsewhere as needed</span>
-      <span class="kr">const</span> <span class="nx">rowsAsObjects</span> <span class="o">=</span> <span class="kc">false</span>
-      <span class="nx">resource</span><span class="p">.</span><span class="nx">descriptor</span><span class="p">.</span><span class="nx">_values</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">table</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">rowsAsObjects</span><span class="p">)</span>
-    <span class="p">}</span>
-  <span class="p">}))</span>
+  <span class="hljs-keyword">const</span> path = <span class="hljs-string">'{{dataset.path}}/datapackage.json'</span>
 
-  <span class="c1">// see the data package object</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">dp</span><span class="p">)</span>
+  <span class="hljs-keyword">const</span> dataset = Dataset.load(path)
 
-  <span class="c1">// data itself is stored in Resource object, e.g. to access first resource:</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dp</span><span class="p">.</span><span class="nx">resources</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">_values</span><span class="p">)</span>
-
-  <span class="k">return</span> <span class="nx">dp</span>
-<span class="p">}</span>
-
-
-<span class="nx">fetchDataPackageAndData</span><span class="p">(</span><span class="s1">'{{dataset.path}}/datapackage.json'</span><span class="p">);</span>
-</pre>
-</div>
-
-<p>Our JavaScript is written using ES6 features. We are using <code>node.js v7.4.0</code> and passing <code>--harmony</code> option to enable ES6:</p>
-<p>
-<div class="highlight">
-<pre>$ node --harmony index.js</pre>
-</div>
-</p>
+  <span class="hljs-comment">// get a data file in this dataset</span>
+  <span class="hljs-keyword">const</span> file = dataset.resources[<span class="hljs-number">0</span>]
+  <span class="hljs-keyword">const</span> data = file.stream()
+</code></pre>
 {%- endmacro %}
 
 {% macro sql(dataset) -%}
