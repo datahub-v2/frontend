@@ -1,10 +1,8 @@
 ---
-title: Push Excel files
+title: "Excel Files on the DataHub: Automated Previews and Data Extraction"
 date: 2017-10-16
 author: Anuar Ustayev
 ---
-
-*As we have recently implemented support for Excel files in DataHub, publishers can push Excel directly to our platform. Please, refer to the tutorial below to get started.*
 
 In this tutorial, we will explain how to push Excel data to the DataHub. When an Excel file is pushed, we can extract data from selected sheets for previewing and downloading in alternative formats. By default, our CLI tool would process only first sheet of the Excel, but publishers can specify any sheets they want.
 
@@ -78,7 +76,7 @@ Sometimes, you need to process multiple sheets from your Excel file or you just 
 data push excel.xlsx --sheets=all
 ```
 
-We have used `--sheets=all` option to specify that we want to push "all" sheets. You also can list sheet numbers, e.g., `--sheets=1,2`. If you wanted to push only the second sheet, you would do `--sheet=2`.
+We have used `--sheets=all` option to specify that we want to push "all" sheets. You also can list sheet numbers, e.g., `--sheets=1,2`. If you wanted to push only the second sheet, you would do `--sheets=2`.
 
 **Note:** *sheet number starts from 1.*
 
