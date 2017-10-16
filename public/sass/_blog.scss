@@ -16,6 +16,9 @@ body.blog {
       padding: 0 6px;
     }
   }
+  img {
+    max-width: 100%;
+  }
   p.info {
     color: $gray;
     font-size: 12px;
@@ -35,6 +38,23 @@ body.blog {
     p.meta {
       color: $gray;
       font-size: 12px;
+    }
+  }
+  div.cli-output {
+    border: 1px solid $black;
+    border-radius: 2px;
+    margin: 40px 0;
+    padding: 20px;
+    background-color: $black;
+    color: white;
+    p {
+      margin: 0;
+    }
+    a {
+      &:hover {
+        color: $brand-warning;
+        text-decoration: none;
+      }
     }
   }
 }

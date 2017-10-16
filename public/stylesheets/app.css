@@ -6619,6 +6619,8 @@ body.blog .header-anchor i {
   font-size: 16px;
   color: #BDBDBD;
   padding: 0 6px; }
+body.blog img {
+  max-width: 100%; }
 body.blog p.info {
   color: #757575;
   font-size: 12px;
@@ -6633,5 +6635,17 @@ body.blog .container .inner_container a h2, body.blog .container-no-top-padding 
 body.blog .container .inner_container p.meta, body.blog .container-no-top-padding .inner_container p.meta {
   color: #757575;
   font-size: 12px; }
+body.blog div.cli-output {
+  border: 1px solid #000;
+  border-radius: 2px;
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #000;
+  color: white; }
+  body.blog div.cli-output p {
+    margin: 0; }
+  body.blog div.cli-output a:hover {
+    color: #ff7900;
+    text-decoration: none; }
 
 /*# sourceMappingURL=app.css.map */
