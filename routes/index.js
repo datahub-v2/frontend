@@ -100,6 +100,7 @@ module.exports = function () {
       res.cookie('email', isAuthenticated.profile.email)
       res.cookie('id', isAuthenticated.profile.id)
       res.cookie('name', isAuthenticated.profile.name)
+      res.cookie('username', isAuthenticated.profile.username)
       res.redirect('/dashboard')
     } else {
       req.flash('message', 'Something went wrong. Please, try again later.')
