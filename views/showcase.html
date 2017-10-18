@@ -152,8 +152,11 @@
             <i class="fa fa-arrow-circle-o-down" aria-hidden="true" style="font-size:0.9em"></i>
           </a>
         </h2>
-        <div id="resource-{{loop.index - 1}}" class="react-me tables part"
+        <div id="resource-{{loop.index - 1}}" class="react-me tables"
              data-type="resource-preview" data-resource="{{ loop.index - 1 }}"></div>
+        <p class="notice">
+          This is a preview version. There might be more data in <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}" onclick="trackOutboundLink(this.href)">the original version.</a>
+        </p>
         {% if resource.format == "csv" %}
          <h2 class="section-title">Field information</h2>
          <table class="table table-bordered table-striped resource-summary">

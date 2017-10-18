@@ -6434,6 +6434,10 @@ h2.publisher {
   max-width: 100%; }
 .dataset .part {
   margin-bottom: 4em; }
+.dataset .notice {
+  margin: 1em 0 4em;
+  color: #757575;
+  font-size: 12px; }
 .dataset .btn-group {
   margin-bottom: 10px; }
 .dataset .side-section .table-bordered {
