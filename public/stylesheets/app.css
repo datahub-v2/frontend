@@ -6592,11 +6592,10 @@ body.docs p.info {
   border-top: 1px solid #BDBDBD;
   margin: 50px 0; }
 body.docs div.info {
-  border: 1px solid #BDBDBD;
+  border: 1px solid #ff7900;
   border-radius: 2px;
   margin: 40px 0;
   padding: 20px;
-  background-color: #fafafa;
   color: #757575; }
   body.docs div.info p {
     margin: 0; }
@@ -6630,6 +6629,14 @@ body.blog p.info {
   font-size: 12px;
   border-top: 1px solid #BDBDBD;
   margin: 50px 0; }
+body.blog div.info {
+  border: 1px solid #ff7900;
+  border-radius: 2px;
+  margin: 40px 0;
+  padding: 20px;
+  color: #757575; }
+  body.blog div.info p {
+    margin: 0; }
 body.blog div.row img {
   margin: 60px 0; }
 body.blog .container .inner_container .post, body.blog .container-no-top-padding .inner_container .post {

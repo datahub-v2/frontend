@@ -25,6 +25,16 @@ body.blog {
     border-top: 1px solid $gray-light;
     margin: 50px 0;
   }
+  div.info {
+    border: 1px solid #ff7900;
+    border-radius: 2px;
+    margin: 40px 0;
+    padding: 20px;
+    color: $gray;
+    p {
+      margin: 0;
+    }
+  }
   div.row img {
     margin: 60px 0;
   }
