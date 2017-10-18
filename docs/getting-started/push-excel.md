@@ -53,7 +53,7 @@ You can just open your browser and paste the link, which is already copied to yo
 
 Once your data is online, you will see the following page:
 
-![](/static/img/showcase-excel-1.png)
+![](/static/img/docs/showcase-excel-1.png)
 
 :::info
 DataHub may still be processing your data. In this case you will see an appropriate message on the page. Just allow it couple of moments and it will be there!
@@ -61,11 +61,11 @@ DataHub may still be processing your data. In this case you will see an appropri
 
 We have converted the first sheet to CSV. If you take a look at downloads table, there are options to get data in CSV or JSON versions. Also, you still can download your original data:
 
-![](/static/img/showcase-downloads-excel-1.png)
+![](/static/img/docs/showcase-downloads-excel-1.png)
 
 Scrolling down, you can find a preview table of your data:
 
-![](/static/img/showcase-preview-excel-1.png)
+![](/static/img/docs/showcase-preview-excel-1.png)
 
 ## Processing multiple sheets
 
@@ -89,10 +89,10 @@ Again, you should get a success message with the link to your data:
 
 By opening the link, you would see the following page:
 
-![](/static/img/showcase-excel-2.png)
+![](/static/img/docs/showcase-excel-2.png)
 
 We have converted all sheets of the file to CSV so now you can download each of them in CSV or JSON formats:
 
-![](/static/img/showcase-downloads-excel-2.png)
+![](/static/img/docs/showcase-downloads-excel-2.png)
 
 You also can find preview tables for each sheet by scrolling down the page.

@@ -55,11 +55,11 @@ $ data push mydata.csv --published
 
 You will see the showcase page with description and preview of the pushed CSV file:
 
-![](https://datahub.io/static/img/showcase.png)
+![](/static/img/docs/showcase.png)
 
 It's may still be processing and in that case you would see the following:
 
-![](https://datahub.io/static/img/processing.png)
+![](/static/img/docs/processing.png)
 
 Just wait for few moments until we process your file.
 

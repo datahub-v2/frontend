@@ -8,4 +8,4 @@ We've just added the functionality some basic information on how many datasets y
 
 You can see this information by logging in and visiting your dashboard page.
 
-<img src="https://image.prntscr.com/image/nMxuEExLQb_ZZOtPWZBsig.png" class="img-responsive">
+<img src="/static/img/docs/dashboard.png" class="img-responsive">
