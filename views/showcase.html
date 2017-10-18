@@ -68,7 +68,14 @@
               <td class="col-xs-2">{{ dataset.datahub.modified }}</td>
               <td class="col-xs-2">
                 {% if dataset.licenses %}
-                <i class="fa fa-gavel"></i> <a href="{{dataset.licenses[0].url}}" title="Available under the following License">{{dataset.licenses[0].name or dataset.licenses[0].id}}</a>
+                  {% for item in dataset.licenses %}
+                  <i class="fa fa-gavel"></i>
+                  {% if item.path %}
+                    <a href="{{item.path}}" title="{{item.title}}">{{item.name}}</a>
+                  {% else %}
+                    {{item.name}}
+                  {% endif %}
+                  {% endfor %}
                 {% elif dataset.license %}
                 <i class="fa fa-gavel"></i> {{ dataset.license }}
                 {% endif %}
