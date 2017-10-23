@@ -20,6 +20,12 @@ There are two options for installation:
     $ mv data-{os-distribution} /usr/local/bin/data
     ```
 
+**Note:** *For linux users, if you encounter errors related to location of `xdg-open` package. Use the following command to copy it from `/usr/bin/xdg-open` to `/usr/local/bin/xdg-open`. This is temporary solution unless `pkg` library will fix this issue.*
+
+```
+$ cp /usr/bin/xdg-open /usr/local/bin/xdg-open
+```
+
 ## Installing via npm
 
 You can also install it from `npm` as follows:
