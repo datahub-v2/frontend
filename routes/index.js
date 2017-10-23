@@ -8,6 +8,7 @@ const bytes = require('bytes')
 const fm = require('front-matter')
 const moment = require('moment')
 const md5 = require('md5')
+const timeago = require('timeago.js')
 
 const config = require('../config')
 const lib = require('../lib')
@@ -66,11 +67,17 @@ module.exports = function () {
     if (req.cookies.jwt) {
       const isAuthenticated = await api.authenticate(req.cookies.jwt)
       if (isAuthenticated) {
+        const events = await api.getEvents(`owner="${req.cookies.username}"&size=10`, req.cookies.jwt)
+        events.results = events.results.map(item => {
+          item.timeago = timeago().format(item.timestamp)
+          return item
+        })
         const packages = await api.search(`datahub.ownerid="${req.cookies.id}"&size=0`, req.cookies.jwt)
         const currentUser = utils.getCurrentUser(req.cookies)
         res.render('dashboard.html', {
           title: 'Dashboard',
           currentUser,
+          events: events.results,
           totalPackages: packages.summary.total,
           totalSpace: bytes(packages.summary.totalBytes, {decimalPlaces: 0})
         })

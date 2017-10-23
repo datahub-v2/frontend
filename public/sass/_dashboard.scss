@@ -16,3 +16,67 @@ p.user {
   @extend .avatar;
   width: 30px;
 }
+
+.timeline {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto 40px 13px;
+  border-bottom: 3px solid $gray-very-light;
+}
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  background-color: $gray-light;
+  top: 0;
+  bottom: 0;
+  margin-left: -3px;
+}
+
+.event {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  border-top: 1px solid $gray-very-light;
+}
+
+.event-flow::after, .event-account::after {
+  font-family: FontAwesome;
+  font-size: 12px;
+  color: $gray;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border: 1px solid $gray-light;
+  border-radius: 50%;
+  z-index: 1;
+  left: -16px;
+  padding: 2px 0 0 7px;
+}
+
+.event-flow::after {
+  content: '\f1c9';
+}
+
+.event-account::after {
+  content: '\f2c0';
+}
+
+.event::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+.timeago {
+  color: $gray;
+  font-size: 12px;
+}

@@ -46,7 +46,7 @@ module.exports.initMocks = function() {
     .get('/examples/geojson-tutorial/latest/README.md')
     .reply(200, data.readme, {'access-control-allow-origin': '*'})
 
-  // Mock api calls for Metastore
+  // Mock api calls for Metastore (search)
   // TODO: 2017-08-11 ~rufuspollock construct extended DP ourselves from an input fixture package so that we can test more cleanly
   const extendedDp = require('./extended-dp/datapackage.json')
   nock(config.get('API_URL'))
@@ -84,6 +84,20 @@ module.exports.initMocks = function() {
         totalBytes: 1234567
       },
       results: []
+    })
+
+  // Mock api calls for Metastore (events)
+  nock(config.get('API_URL'))
+    .persist()
+    .get('/metastore/search/events?owner=%22test%22&size=10')
+    .reply(200, {
+      results: [
+        {
+          event_entity: 'flow',
+          timestamp: '2017-10-20T08:45:25'
+        }
+      ],
+      summary: { total: 36, totalBytes: 0 }
     })
 
   // Mock api calls for authentication

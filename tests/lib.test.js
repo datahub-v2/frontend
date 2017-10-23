@@ -113,6 +113,12 @@ test('Metastore API wrapper (search) function works', async t => {
   t.is(res.results[0].readmeSnippet.length, 293)
 })
 
+test('Metastore API wrapper (events) function works', async t => {
+  let query = 'owner="test"&size=10'
+  let res = await api.getEvents(query)
+  t.is(res.results.length, 1)
+})
+
 test('Authenticates with GitHub using given jwt and returns user info', async t => {
   const jwt = '1a2b3c'
   const res = await api.authenticate(jwt)

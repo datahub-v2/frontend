@@ -47,6 +47,24 @@ Dashboard
         </table>
       </div>
     </div>
+
+    <!-- Events -->
+    <h3>Recent events</h3>
+    <div class="timeline">
+    {% for item in events %}
+      {% if item.event_entity === 'flow' %}
+      <div class="event event-flow">
+        <a href="/{{ currentUser.username }}/{{ item.dataset }}">{{ item.dataset }}</a> - {{ item.event_action }}
+        <span class="pull-right timeago">{{ item.timeago }}</span>
+      </div>
+      {% elif item.event_entity === 'account' %}
+      <div class="event event-account">
+        <b>You</b> {{ item.event_action }}
+        <span class="pull-right timeago">{{ item.timeago }}</span>
+      </div>
+      {% endif %}
+    {% endfor %}
+    </div>
   </div>
 </div>
 {% endblock %}
