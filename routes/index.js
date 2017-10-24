@@ -369,7 +369,8 @@ module.exports = function () {
       })
       res.render('events.html', {
         events: events.results,
-        username: req.params.owner
+        username: req.params.owner,
+        dataset: req.params.name
       })
     } else if (response.status === 404) {
       res.status(404).send('Sorry, this page was not found.')
