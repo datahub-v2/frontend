@@ -70,23 +70,22 @@ $ pip install datapackage
 
 <p>To get Data Package into your Python environment, run following code:</p>
 
-<div class="highlight">
-<pre>
-<span></span><span class="kn">import</span> <span class="nn">datapackage</span>
+<pre class="hljs"><code><span class="hljs-keyword">from</span> datapackage <span class="hljs-keyword">import</span> Package, Resource
 
-<span class="n">dp</span> <span class="o">=</span> <span class="n">datapackage</span><span class="o">.</span><span class="n">DataPackage</span><span class="p">(</span><span class="s1">'{{dataset.path}}/datapackage.json'</span><span class="p">)</span>
+package = Package(<span class="hljs-string">'https://pkgstore.datahub.io/core/finance-vix/latest/datapackage.json'</span>)
 
-<span class="c1"># see metadata</span>
-<span class="k">print</span><span class="p">(</span><span class="n">dp</span><span class="o">.</span><span class="n">descriptor</span><span class="p">)</span>
+<span class="hljs-comment"># see metadata</span>
+print(package.descriptor)
 
-<span class="c1"># get list of csv files</span>
-<span class="n">csvList</span> <span class="o">=</span> <span class="p">[</span><span class="n">dp</span><span class="o">.</span><span class="n">resources</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">descriptor</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">dp</span><span class="o">.</span><span class="n">resources</span><span class="p">))]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">csvList</span><span class="p">)</span> <span class="c1"># ["resource name", ...]</span>
+<span class="hljs-comment"># get list of resources</span>
+resources = package.descriptor[<span class="hljs-string">'resources'</span>]
+resourceList = [resources[x][<span class="hljs-string">'name'</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(resources))]
+print(resourceList) <span class="hljs-comment"># ["resource name", ...]</span>
 
-<span class="c1"># access csv file by the index starting 0</span>
-<span class="k">print</span><span class="p">(</span><span class="n">dp</span><span class="o">.</span><span class="n">resources</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-</pre>
-</div>
+<span class="hljs-comment"># access csv file by the index starting 0</span>
+resource = Resource({<span class="hljs-string">'path'</span>: package.descriptor[<span class="hljs-string">'resources'</span>][<span class="hljs-number">0</span>][<span class="hljs-string">'path'</span>]})
+print(resource.read(keyed=<span class="hljs-keyword">True</span>))
+</code></pre>
 {%- endmacro %}
 
 {% macro javascript(dataset) -%}
