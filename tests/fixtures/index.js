@@ -89,7 +89,7 @@ module.exports.initMocks = function() {
   // Mock api calls for Metastore (events)
   nock(config.get('API_URL'))
     .persist()
-    .get('/metastore/search/events?owner=%22test%22&size=10')
+    .get('/metastore/search/events?owner=%22publisher%22&size=10')
     .reply(200, {
       results: [
         {

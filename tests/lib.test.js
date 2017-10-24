@@ -114,7 +114,7 @@ test('Metastore API wrapper (search) function works', async t => {
 })
 
 test('Metastore API wrapper (events) function works', async t => {
-  let query = 'owner="test"&size=10'
+  let query = 'owner="publisher"&size=10'
   let res = await api.getEvents(query)
   t.is(res.results.length, 1)
 })

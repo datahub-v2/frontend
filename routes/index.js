@@ -383,12 +383,18 @@ module.exports = function () {
       return
     }
     const token = req.cookies.jwt
+    const events = await api.getEvents(`owner="${req.params.owner}"&size=10`, token)
+    events.results = events.results.map(item => {
+      item.timeago = timeago().format(item.timestamp)
+      return item
+    })
     const packages = await api.search(`datahub.ownerid="${userProfile.profile.id}"&size=100`, token)
     const joinDate = new Date(userProfile.profile.join_date)
     const joinYear = joinDate.getUTCFullYear()
     const joinMonth = joinDate.toLocaleString('en-us', { month: "long" })
     res.render('owner.html', {
       packages,
+      events: events.results,
       emailHash: userProfile.profile.id,
       joinDate: joinMonth + ' ' + joinYear,
       owner: req.params.owner

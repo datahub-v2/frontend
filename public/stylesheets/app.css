@@ -6262,23 +6262,64 @@ img.cube {
     font-size: 12px;
     margin-bottom: 10px; }
 
-h2 {
-  margin-top: 0; }
-
-#publisher-package-input {
+body.owner h2 {
+  margin-top: 16px; }
+body.owner #publisher-package-input {
   margin-bottom: 30px;
   border-color: #757575;
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important; }
-
-.badge {
+body.owner .badge {
   font-size: 0.6em;
   padding: 6px; }
-
-@media (max-width: 480px) {
-  .profile {
-    margin: 2em 0; } }
+body.owner .profile {
+  margin-bottom: 2em; }
+  @media (max-width: 480px) {
+    body.owner .profile {
+      margin: 2em 0; } }
+body.owner .timeline {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto 40px 13px;
+  border-bottom: 3px solid #fafafa; }
+body.owner .timeline::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  background-color: #BDBDBD;
+  top: 0;
+  bottom: 0;
+  margin-left: -3px; }
+body.owner .event {
+  font-size: 11px;
+  padding: 10px 0 10px 15px;
+  position: relative;
+  background-color: inherit;
+  border-top: 1px solid #fafafa; }
+body.owner .event-flow::after, body.owner .event-account::after {
+  margin-top: -28px;
+  font-family: FontAwesome;
+  font-size: 11px;
+  color: #757575;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border: 1px solid #BDBDBD;
+  border-radius: 50%;
+  z-index: 1;
+  left: -16px;
+  padding: 3px 0 0 7px; }
+body.owner .event-flow::after {
+  content: '\f1c9'; }
+body.owner .event-account::after {
+  content: '\f2c0'; }
+body.owner .timeago, body.owner .info {
+  color: #757575;
+  font-size: 11px; }
+body.owner .event-action, body.owner .join-date {
+  margin: 0; }
 
 .hljs {
   display: block;
@@ -6589,18 +6630,6 @@ p.user {
 
 .event-account::after {
   content: '\f2c0'; }
-
-.event::before {
-  content: " ";
-  height: 0;
-  position: absolute;
-  top: 22px;
-  width: 0;
-  z-index: 1;
-  left: 30px;
-  border: medium solid white;
-  border-width: 10px 10px 10px 0;
-  border-color: transparent white transparent transparent; }
 
 .timeago {
   color: #757575;

@@ -5,6 +5,8 @@
 {{owner}}
 {% endblock %}
 
+{% block bodyclass %}owner{% endblock %}
+
 {% block content %}
 <div class="container">
   <div class="inner_container">
@@ -19,10 +21,34 @@
               <h2 class="owner">{{ owner }}</h2>
             {% endif %}
             {% if joinDate %}
-              <p>Since: {{ joinDate }}</p>
+              <p class="join-date">Since {{ joinDate }}</p>
             {% endif %}
           </div>
         </div>
+        <hr />
+        <!-- Events -->
+        <h4>Recent events</h4>
+        {% if events|length > 0 %}
+          <div class="timeline">
+          {% for item in events %}
+            {% if item.event_entity === 'flow' %}
+            <div class="event event-flow">
+              <a href="/{{ currentUser.username }}/{{ item.dataset }}">{{ item.dataset }}</a>
+              <p class="event-action">
+                {{ item.event_action }} <span class="timeago">{{ item.timeago }}</span>
+              </p>
+            </div>
+            {% elif item.event_entity === 'account' %}
+            <div class="event event-account">
+              <b>You</b> {{ item.event_action }}
+              <span class="timeago">{{ item.timeago }}</span>
+            </div>
+            {% endif %}
+          {% endfor %}
+          </div>
+        {% else %}
+          <span class="info">No events.</span>
+        {% endif %}
       </div>
       <div class="col-sm-offset-2 col-sm-7">
         <div class="row">

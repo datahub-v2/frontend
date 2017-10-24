@@ -18,10 +18,11 @@ test('Home page returns 200 and has correct content', async t => {
 test('Dashboard page renders when jwt in cookies setup', async t => {
   const res = await request(app)
     .get('/dashboard')
-    .set('Cookie', ['jwt=1a2b3c;id=publisher;username=test;'])
+    .set('Cookie', ['jwt=1a2b3c;id=publisher;username=publisher;'])
   t.is(res.statusCode, 200)
   t.true(res.text.includes('Your Dashboard'))
   t.true(res.text.includes('1MB'))
+  t.true(res.text.includes('<!-- Events -->'))
 })
 
 test('Login page works', async t => {
@@ -130,6 +131,7 @@ test('Publisher page returns 200 and has correct content', async t => {
   t.is(res.statusCode, 200)
   t.true(res.text.includes('<h2 class="owner">publisher</h2>'))
   t.true(res.text.includes('<h2>Datasets <span class="badge" title="1 published datasets">1</span></h2>'))
+  t.true(res.text.includes('<!-- Events -->'))
 })
 
 test('Search page returns 200 and has correct content', async t => {

@@ -63,19 +63,6 @@ p.user {
   content: '\f2c0';
 }
 
-.event::before {
-  content: " ";
-  height: 0;
-  position: absolute;
-  top: 22px;
-  width: 0;
-  z-index: 1;
-  left: 30px;
-  border: medium solid white;
-  border-width: 10px 10px 10px 0;
-  border-color: transparent white transparent transparent;
-}
-
 .timeago {
   color: $gray;
   font-size: 12px;

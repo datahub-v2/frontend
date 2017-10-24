@@ -1,22 +1,83 @@
-h2 {
-  margin-top: 0;
-}
-
-#publisher-package-input {
-  margin-bottom: 30px;
-  border-color: $gray;
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  box-shadow: none !important;
-}
-
-.badge {
-  font-size: 0.6em;
-  padding: 6px;
-}
-
-.profile {
-  @media (max-width: $screen-xs-min) {
-    margin: 2em 0;
+body.owner {
+  h2 {
+    margin-top: 16px;
   }
+
+  #publisher-package-input {
+    margin-bottom: 30px;
+    border-color: $gray;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  .badge {
+    font-size: 0.6em;
+    padding: 6px;
+  }
+
+  .profile {
+    @media (max-width: $screen-xs-min) {
+      margin: 2em 0;
+    }
+    margin-bottom: 2em;
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto 40px 13px;
+    border-bottom: 3px solid $gray-very-light;
+  }
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    background-color: $gray-light;
+    top: 0;
+    bottom: 0;
+    margin-left: -3px;
+  }
+
+  .event {
+    font-size: 11px;
+    padding: 10px 0 10px 15px;
+    position: relative;
+    background-color: inherit;
+    border-top: 1px solid $gray-very-light;
+  }
+
+  .event-flow::after, .event-account::after {
+    margin-top: -28px;
+    font-family: FontAwesome;
+    font-size: 11px;
+    color: $gray;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border: 1px solid $gray-light;
+    border-radius: 50%;
+    z-index: 1;
+    left: -16px;
+    padding: 3px 0 0 7px;
+  }
+
+  .event-flow::after {
+    content: '\f1c9';
+  }
+
+  .event-account::after {
+    content: '\f2c0';
+  }
+
+  .timeago, .info {
+    color: $gray;
+    font-size: 11px;
+  }
+
+  .event-action, .join-date {
+    margin: 0;
+  }
+
 }
