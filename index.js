@@ -55,7 +55,7 @@ module.exports.makeApp = function () {
   ])
 
   app.use((err, req, res, next) => {
-    console.error(err.stack)
+    console.error(err)
     res.status(500).send('Something failed. Please, try again later.')
   })
 
