@@ -6384,7 +6384,7 @@ h1 span {
 blockquote {
   font-size: inherit; }
 
-.avatar, .avatar-lg {
+.avatar, body.dashboard .avatar-lg {
   width: 20px;
   display: inline-block;
   margin-right: 5px; }
@@ -6546,57 +6546,53 @@ div.readme .header-anchor i {
   color: #BDBDBD;
   padding: 0 6px; }
 
-.table-pricing > tbody > tr > td, .table-dashboard > tbody > tr > td,
+.table-pricing > tbody > tr > td, body.dashboard .table-dashboard > tbody > tr > td,
 .table-pricing > tbody > tr > th,
-.table-dashboard > tbody > tr > th,
+body.dashboard .table-dashboard > tbody > tr > th,
 .table-pricing > tfoot > tr > td,
-.table-dashboard > tfoot > tr > td,
+body.dashboard .table-dashboard > tfoot > tr > td,
 .table-pricing > tfoot > tr > th,
-.table-dashboard > tfoot > tr > th,
+body.dashboard .table-dashboard > tfoot > tr > th,
 .table-pricing > thead > tr > td,
-.table-dashboard > thead > tr > td,
+body.dashboard .table-dashboard > thead > tr > td,
 .table-pricing > thead > tr > th,
-.table-dashboard > thead > tr > th {
+body.dashboard .table-dashboard > thead > tr > th {
   border: none; }
 
-.table-pricing .heading, .table-dashboard .heading {
+.table-pricing .heading, body.dashboard .table-dashboard .heading {
   font-size: 1.7em;
   font-weight: 200; }
-.table-pricing .main-info, .table-dashboard .main-info {
+.table-pricing .main-info, body.dashboard .table-dashboard .main-info {
   font-size: 1.25em;
   font-weight: 400;
   padding-top: 17px;
   padding-bottom: 17px; }
-.table-pricing .left-heading, .table-dashboard .left-heading {
+.table-pricing .left-heading, body.dashboard .table-dashboard .left-heading {
   font-size: 1.15em;
   font-weight: 200;
   padding-top: 17px;
   padding-bottom: 17px; }
-.table-pricing i.fa-times, .table-dashboard i.fa-times {
+.table-pricing i.fa-times, body.dashboard .table-dashboard i.fa-times {
   color: red; }
-.table-pricing i.fa-check, .table-dashboard i.fa-check {
+.table-pricing i.fa-check, body.dashboard .table-dashboard i.fa-check {
   color: green; }
-.table-pricing span.secondary, .table-dashboard span.secondary {
+.table-pricing span.secondary, body.dashboard .table-dashboard span.secondary {
   color: #BDBDBD; }
 
-.table-dashboard th {
+body.dashboard .table-dashboard th {
   font-size: 0.8em; }
-.table-dashboard .main-info {
+body.dashboard .table-dashboard .main-info {
   font-size: 1.35em; }
-
-p.user {
+body.dashboard p.user {
   font-size: 1.35em; }
-
-.avatar-lg {
+body.dashboard .avatar-lg {
   width: 30px; }
-
-.timeline {
+body.dashboard .timeline {
   position: relative;
   max-width: 100%;
   margin: 0 auto 40px 13px;
   border-bottom: 3px solid #fafafa; }
-
-.timeline::after {
+body.dashboard .timeline::after {
   content: '';
   position: absolute;
   width: 1px;
@@ -6604,14 +6600,12 @@ p.user {
   top: 0;
   bottom: 0;
   margin-left: -3px; }
-
-.event {
+body.dashboard .event {
   padding: 10px 40px;
   position: relative;
   background-color: inherit;
   border-top: 1px solid #fafafa; }
-
-.event-flow::after, .event-account::after {
+body.dashboard .event-flow::after, body.dashboard .event-account::after {
   font-family: FontAwesome;
   font-size: 12px;
   color: #757575;
@@ -6624,14 +6618,11 @@ p.user {
   z-index: 1;
   left: -16px;
   padding: 2px 0 0 7px; }
-
-.event-flow::after {
+body.dashboard .event-flow::after {
   content: '\f1c9'; }
-
-.event-account::after {
+body.dashboard .event-account::after {
   content: '\f2c0'; }
-
-.timeago {
+body.dashboard .timeago, body.dashboard .info {
   color: #757575;
   font-size: 12px; }
 
@@ -6744,5 +6735,46 @@ body.blog div.cli-output {
   body.blog div.cli-output a:hover {
     color: #ff7900;
     text-decoration: none; }
+
+body.events .title {
+  margin-bottom: 1em; }
+body.events .timeline {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto 40px 13px;
+  border-bottom: 3px solid #fafafa; }
+body.events .timeline::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  background-color: #BDBDBD;
+  top: 0;
+  bottom: 0;
+  margin-left: -3px; }
+body.events .event {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  border-top: 1px solid #fafafa; }
+body.events .event-flow::after, body.events .event-account::after {
+  font-family: FontAwesome;
+  font-size: 12px;
+  color: #757575;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border: 1px solid #BDBDBD;
+  border-radius: 50%;
+  z-index: 1;
+  left: -16px;
+  padding: 2px 0 0 7px; }
+body.events .event-flow::after {
+  content: '\f1c9'; }
+body.events .event-account::after {
+  content: '\f2c0'; }
+body.events .timeago, body.events .info {
+  color: #757575;
+  font-size: 12px; }
 
 /*# sourceMappingURL=app.css.map */

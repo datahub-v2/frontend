@@ -99,6 +99,16 @@ module.exports.initMocks = function() {
       ],
       summary: { total: 36, totalBytes: 0 }
     })
+    .get('/metastore/search/events?owner=%22admin%22&dataset=%22demo-package%22')
+    .reply(200, {
+      results: [
+        {
+          event_entity: 'flow',
+          timestamp: '2017-10-20T08:45:25'
+        }
+      ],
+      summary: { total: 36, totalBytes: 0 }
+    })
 
   // Mock api calls for authentication
   // Not authenticated returns urls for login

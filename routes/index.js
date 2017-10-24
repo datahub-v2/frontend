@@ -357,6 +357,27 @@ module.exports = function () {
     res.redirect(`${resource.path}`)
   })
 
+  router.get('/:owner/:name/events', async (req, res, next) => {
+    // First check if dataset exists
+    const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
+    const response = await api.getPackageFile(userAndPkgId.userid, req.params.name)
+    if (response.status === 200) {
+      const events = await api.getEvents(`owner="${req.params.owner}"&dataset="${req.params.name}"`, req.cookies.jwt)
+      events.results = events.results.map(item => {
+        item.timeago = timeago().format(item.timestamp)
+        return item
+      })
+      res.render('events.html', {
+        events: events.results,
+        username: req.params.owner
+      })
+    } else if (response.status === 404) {
+      res.status(404).send('Sorry, this page was not found.')
+    } else {
+      next(response)
+    }
+  })
+
   router.get('/search', async (req, res) => {
     const token = req.cookies.jwt
     const query = req.query.q ? `q="${req.query.q}"&size=20` : `size=20`

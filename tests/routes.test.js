@@ -124,6 +124,16 @@ test('Pipeline page displays logs for a dataset', async t => {
   t.true(succeeded.text.includes('log1\nlog2'))
 })
 
+test('Events page works', async t => {
+  const notExist = await request(app)
+    .get('/bad-user/bad-package/events')
+  t.is(notExist.status, 404)
+
+  const eventsPage = await request(app)
+    .get('/admin/demo-package/events')
+  t.true(eventsPage.text.includes('<!-- Events -->'))
+})
+
 test('Publisher page returns 200 and has correct content', async t => {
   const res = await request(app)
     .get('/publisher')

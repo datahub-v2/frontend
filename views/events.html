@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+Events
+{% endblock %}
+
+{% block bodyclass %}events{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="inner_container">
+    <!-- Events -->
+    <h2 class="title">Recent events</h2>
+    {% if events|length > 0 %}
+      <div class="timeline">
+      {% for item in events %}
+        {% if item.event_entity === 'flow' %}
+        <div class="event event-flow">
+          <a href="/{{ username }}/{{ item.dataset }}">{{ item.dataset }}</a> - {{ item.event_action }}
+          <span class="pull-right timeago">{{ item.timeago }}</span>
+        </div>
+        {% elif item.event_entity === 'account' %}
+        <div class="event event-account">
+          <b>You</b> {{ item.event_action }}
+          <span class="pull-right timeago">{{ item.timeago }}</span>
+        </div>
+        {% endif %}
+      {% endfor %}
+      </div>
+    {% else %}
+      <span class="info">No events.</span>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
