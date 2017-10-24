@@ -33,7 +33,7 @@
           {% for item in events %}
             {% if item.event_entity === 'flow' %}
             <div class="event event-flow">
-              <a href="/{{ currentUser.username }}/{{ item.dataset }}">{{ item.dataset }}</a>
+              <a href="/{{ owner }}/{{ item.dataset }}">{{ item.dataset }}</a>
               <p class="event-action">
                 {{ item.event_action }} <span class="timeago">{{ item.timeago }}</span>
               </p>
