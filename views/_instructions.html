@@ -1,25 +1,21 @@
 {% macro r(dataset) -%}
 <p>In order to use Data Package in R follow instructions below:</p>
 <div class="highlight">
-<pre>
-<span></span>install.packages<span class="p">(</span><span class="s">"devtools"</span><span class="p">)</span>
-<span class="kn">library</span><span class="p">(</span>devtools<span class="p">)</span>
-install_github<span class="p">(</span><span class="s">"hadley/readr"</span><span class="p">)</span>
-install_github<span class="p">(</span><span class="s">"ropenscilabs/jsonvalidate"</span><span class="p">)</span>
-install_github<span class="p">(</span><span class="s">"ropenscilabs/datapkg"</span><span class="p">)</span>
+<pre class="hljs"><code>install.packages(<span class="hljs-string">"rjson"</span>)
+<span class="hljs-keyword">library</span>(<span class="hljs-string">"rjson"</span>)
 
-<span class="c1">#Load client</span>
-<span class="kn">library</span><span class="p">(</span>datapkg<span class="p">)</span>
+json_file &lt;- <span class="hljs-string">"https://pkgstore.datahub.io/core/finance-vix/latest/datapackage.json"</span>
+json_data &lt;- fromJSON(paste(readLines(json_file), collapse=<span class="hljs-string">""</span>))
 
-<span class="c1">#Get Data Package</span>
-datapackage <span class="o">&lt;-</span> datapkg_read<span class="p">(</span><span class="s">"{{dataset.path}}"</span><span class="p">)</span>
+<span class="hljs-comment"># see metadata</span>
+print(json_data, row.names = <span class="hljs-literal">FALSE</span>)
 
-<span class="c1">#Package info</span>
-<span class="kp">print</span><span class="p">(</span>datapackage<span class="p">)</span>
 
-<span class="c1">#Open actual data in RStudio Viewer</span>
-{% for resource in dataset.resources %}View<span class="p">(</span>datapackage<span class="o">$</span>data<span class="o">$</span><span class="s">"{{resource.name}}"</span><span class="p">)</span>
-{% endfor %}
+<span class="hljs-comment"># access csv file by the index starting 1</span>
+csv_url = json_data[[<span class="hljs-string">"resources"</span>]][[<span class="hljs-number">1</span>]][[<span class="hljs-string">"path"</span>]]
+data &lt;- read.csv(url(csv_url))
+print(data)
+</code>
 </pre>
 </div>
 {%- endmacro %}
