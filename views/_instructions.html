@@ -4,7 +4,7 @@
 <pre class="hljs"><code>install.packages(<span class="hljs-string">"rjson"</span>)
 <span class="hljs-keyword">library</span>(<span class="hljs-string">"rjson"</span>)
 
-json_file &lt;- <span class="hljs-string">"https://pkgstore.datahub.io/core/finance-vix/latest/datapackage.json"</span>
+json_file &lt;- <span class="hljs-string">'{{dataset.path}}/datapackage.json'</span>
 json_data &lt;- fromJSON(paste(readLines(json_file), collapse=<span class="hljs-string">""</span>))
 
 <span class="hljs-comment"># see metadata</span>
@@ -68,7 +68,7 @@ $ pip install datapackage
 
 <pre class="hljs"><code><span class="hljs-keyword">from</span> datapackage <span class="hljs-keyword">import</span> Package, Resource
 
-package = Package(<span class="hljs-string">'https://pkgstore.datahub.io/core/finance-vix/latest/datapackage.json'</span>)
+package = Package(<span class="hljs-string">'{{dataset.path}}/datapackage.json'</span>)
 
 <span class="hljs-comment"># see metadata</span>
 print(package.descriptor)
