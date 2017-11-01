@@ -1,7 +1,7 @@
 ---
 title: Data Package v1 Specifications. What has Changed and how to Upgrade
 date: 2017-10-11
-author: Meiran Zhiyenbayev
+authors: ['mikanebu']
 ---
 
 This post walks you through the major changes in the Data Package v1 specs compared to pre-v1. It covers changes in the full suite of Data Package specifications including Data Resources and Table Schema. It is particularly valuable if:

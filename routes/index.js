@@ -169,7 +169,7 @@ module.exports = function () {
       let parsedWithFM = fm(text)
       parsedWithFM.body = utils.md.render(parsedWithFM.body)
       parsedWithFM.attributes.date = moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY')
-      parsedWithFM.attributes.author = authors[parsedWithFM.attributes.author]
+      parsedWithFM.attributes.authors = parsedWithFM.attributes.authors.map(author => authors[author])
       parsedWithFM.path = `blog/${post.slice(11, -3)}`
       listOfPosts.unshift(parsedWithFM)
     })
@@ -194,7 +194,7 @@ module.exports = function () {
         res.render('post.html', {
           title: parsedWithFM.attributes.title,
           date: moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY'),
-          author: authors[parsedWithFM.attributes.author],
+          authors: parsedWithFM.attributes.authors.map(author => authors[author]),
           content: utils.md.render(parsedWithFM.body)
         })
       })
@@ -204,11 +204,11 @@ module.exports = function () {
     }
   }
   const authors = {
-    'Rufus Pollock': {name: 'Rufus Pollock', gravatar: md5('rufus.pollock@datopian.com')},
-    'Anuar Ustayev': {name: 'Anuar Ustayev', gravatar: md5('anuar.ustayev@gmail.com')},
-    'Irakli Mchedlishvili': {name: 'Irakli Mchedlishvili', gravatar: md5('irakli.mchedlishvili@datopian.com')},
-    'Meiran Zhiyenbayev': {name: 'Meiran Zhiyenbayev', gravatar: md5('meiran1991@gmail.com')},
-    'Adam Kariv': {name: 'Adam Kariv', gravatar: md5('adam.kariv@gmail.com')}
+    'rufuspollock': {name: 'Rufus Pollock', gravatar: md5('rufus.pollock@datopian.com'), username: 'rufuspollock'},
+    'anuveyatsu': {name: 'Anuar Ustayev', gravatar: md5('anuar.ustayev@gmail.com'), username: 'anuveyatsu'},
+    'zelima': {name: 'Irakli Mchedlishvili', gravatar: md5('irakli.mchedlishvili@datopian.com'), username: 'zelima1'},
+    'mikanebu': {name: 'Meiran Zhiyenbayev', gravatar: md5('meiran1991@gmail.com'), username: 'Mikanebu'},
+    'akariv': {name: 'Adam Kariv', gravatar: md5('adam.kariv@gmail.com'), username: 'akariv'}
   }
   // ===== /end blog
 

@@ -1,7 +1,7 @@
 ---
 title: How much space are you using?
 date: 2017-10-04
-author: Anuar Ustayev
+authors: ['anuveyatsu']
 ---
 
 We've just added the functionality some basic information on how many datasets you have and how much space you are using.

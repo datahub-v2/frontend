@@ -1,7 +1,7 @@
 ---
 title: "Excel Files on the DataHub: Automated Previews and Data Extraction"
 date: 2017-10-16
-author: Anuar Ustayev
+authors: ['anuveyatsu']
 ---
 
 In this tutorial, we will explain how to push Excel data to the DataHub. When an Excel file is pushed, we can extract data from selected sheets for previewing and downloading in alternative formats. By default, our CLI tool would process only first sheet of the Excel, but publishers can specify any sheets they want.
