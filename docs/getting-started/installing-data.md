@@ -12,7 +12,7 @@ There are two options for installation:
 
 ## Installing binaries
 
-1. Go to the [releases page](https://github.com/datahq/datahub-cli/releases)
+1. Go to the [releases page](https://github.com/datahq/datahub-cli/releases/latest)
 2. Download the pre-built binary for your platform (MacOS and LinuxOS x64 at present)
 3. Move the binary into your `$PATH` e.g. on Mac you could move to `/usr/local/bin/`
 
@@ -20,7 +20,7 @@ There are two options for installation:
     $ mv data-{os-distribution} /usr/local/bin/data
     ```
 
-**Note:** *For linux users, if you encounter errors related to location of `xdg-open` package. Use the following command to copy it from `/usr/bin/xdg-open` to `/usr/local/bin/xdg-open`. This is temporary solution unless `pkg` library will fix this issue.*
+**Note:** *For linux users, if you encounter errors related to location of `xdg-open` package. Use the following command to copy it from `/usr/bin/xdg-open` to `/usr/local/bin/xdg-open`.*
 
 ```
 $ cp /usr/bin/xdg-open /usr/local/bin/xdg-open
@@ -67,3 +67,4 @@ CBOE Volatility Index (VIX) time-series dataset including daily open, close,
 high and ...
 ```
 
+You can learn more about **data** tool here - http://datahub.io/docs/features/data-cli.

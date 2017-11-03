@@ -179,30 +179,6 @@ puts data
 
 Learn more about `datapackage` library for Ruby - https://github.com/frictionlessdata/datapackage-rb.
 
-## PHP
-
-Install the datapackage library designed for PHP using `composer`:
-
-```bash
-composer require frictionlessdata/datapackage
-```
-
-Use following code snippets to work with data:
-
-```php
-use frictionlessdata\datapackage\Package;
-
-// Get the metadata:
-$path = 'https://datahub.io/core/country-list/datapackage.json';
-$package = Package::load($path);
-
-// Get the data using resource name:
-$resource = $package->resource("data")
-$resource->read();
-```
-
-Learn more about datapackages for PHP here - https://github.com/frictionlessdata/datapackage-php.
-
 ## Summary
 
 We hope this tutorial is useful and you found information for your needs. Once you know how to get the data, you can explore available datasets on DataHub. There are dozens of core datasets already available and many more being worked on - https://datahub.io/core.

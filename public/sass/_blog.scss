@@ -1,4 +1,9 @@
 body.blog {
+  table {
+    @extend .table;
+    @extend .table-striped;
+    @extend .table-bordered;
+  }
   .page-header {
     h1 {
       text-align: center;

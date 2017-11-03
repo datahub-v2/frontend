@@ -63,4 +63,4 @@ It's may still be processing and in that case you would see the following:
 
 Just wait for few moments until we process your file.
 
-Once your data is online share the link to it with your colleagues or friends so they can use it in their code!
+Once your data is online share the link to it with your colleagues or friends so they can use it in their code! You can find more information about how to use data in our Getting Data tutorial - http://datahub.io/docs/getting-started/getting-data.
