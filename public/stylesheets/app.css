@@ -6706,6 +6706,8 @@ body.blog p.info {
   font-size: 12px;
   border-top: 1px solid #BDBDBD;
   margin: 50px 0; }
+body.blog p.meta-info {
+  line-height: calc(1em + 12px); }
 body.blog div.info {
   border: 1px solid #ff7900;
   border-radius: 2px;

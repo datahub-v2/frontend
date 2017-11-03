@@ -12,8 +12,11 @@
       <h1>
         {{title}}
       </h1>
-      <p>
+      <p class="meta-info">
         <i class="fa fa-calendar" aria-hidden="true"></i> {{date}}
+        {% if authors|length > 1 %}
+        <br />
+        {% endif %}
         {% for author in authors %}
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <img src="https://www.gravatar.com/avatar/{{author.gravatar}}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar" />
