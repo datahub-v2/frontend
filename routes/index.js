@@ -174,7 +174,7 @@ module.exports = function () {
       listOfPosts.unshift(parsedWithFM)
     })
     res.render('blog.html', {
-      title: 'Blog',
+      title: 'Home',
       posts: listOfPosts
     })
   })
