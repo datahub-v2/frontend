@@ -6582,8 +6582,8 @@ img.cube {
     font-size: 12px;
     margin-bottom: 10px; }
 
-body.owner h2 {
-  margin-top: 16px; }
+body.owner .owner-page-title {
+  margin: 0; }
 body.owner #publisher-package-input {
   margin-bottom: 30px;
   border-color: #757575;
