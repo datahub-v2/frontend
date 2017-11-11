@@ -79,6 +79,11 @@ body.docs {
     }
   }
   div.cli-output {
+    .table-striped {
+      > tbody > tr:nth-of-type(odd) {
+        background-color: transparent;
+      }
+    }
     border: 1px solid $black;
     border-radius: 2px;
     margin: 40px 0;

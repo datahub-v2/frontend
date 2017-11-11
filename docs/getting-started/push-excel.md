@@ -81,7 +81,7 @@ Sometimes, you need to process multiple sheets from your Excel file or you just 
 data push excel.xlsx --sheets=all
 ```
 
-We have used `--sheets=all` option to specify that we want to push "all" sheets. You also can list sheet numbers, e.g., `--sheets=1,2`. If you wanted to push only the second sheet, you would do `--sheet=2`.
+We have used `--sheets=all` option to specify that we want to push "all" sheets. You also can list sheet numbers, e.g., `--sheets=1,2`. If you wanted to push only the second sheet, you would do `--sheets=2`.
 
 **Note:** *sheet number starts from 1.*
 

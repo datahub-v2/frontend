@@ -7003,6 +7003,8 @@ body.docs div.cli-output {
   padding: 20px;
   background-color: #000;
   color: white; }
+  body.docs div.cli-output .table-striped > tbody > tr:nth-of-type(odd), body.docs div.cli-output table > tbody > tr:nth-of-type(odd), body.docs div.cli-output body.blog table > tbody > tr:nth-of-type(odd), body.blog body.docs div.cli-output table > tbody > tr:nth-of-type(odd) {
+    background-color: transparent; }
   body.docs div.cli-output p {
     margin: 0; }
   body.docs div.cli-output a:hover {
@@ -7052,6 +7054,8 @@ body.blog div.cli-output {
   padding: 20px;
   background-color: #000;
   color: white; }
+  body.blog div.cli-output .table-striped > tbody > tr:nth-of-type(odd), body.blog div.cli-output body.docs table > tbody > tr:nth-of-type(odd), body.docs body.blog div.cli-output table > tbody > tr:nth-of-type(odd), body.blog div.cli-output table > tbody > tr:nth-of-type(odd) {
+    background-color: transparent; }
   body.blog div.cli-output p {
     margin: 0; }
   body.blog div.cli-output a:hover {
