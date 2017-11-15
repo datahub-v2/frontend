@@ -72,10 +72,9 @@ module.exports = function () {
     '/*/dataset/us-employment-bls/*'
   ], redirectToDest('/core/employment-us'))
 
-  // All requests related to "iso-4217-currency-codes" + "lodcloud" group redirect
+  // All requests related to "iso-4217-currency-codes" redirect
   // to new "currency-codes" dataset
   router.get([
-    '/group/lodcloud',
     '/dataset/iso-4217-currency-codes',
     '/dataset/iso-4217-currency-codes/*',
     '/*/dataset/iso-4217-currency-codes',
