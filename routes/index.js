@@ -33,12 +33,98 @@ module.exports = function () {
   })
 
   // ----------------------------
+  // Redirects from old datahub.io to new website
+
+  function redirectToDest(dest) {
+    return (req, res) => {
+      res.redirect(302, dest)
+    }
+  }
+
+  // Following paths to be redirected to new "/search" page
+  router.get([
+    '/dataset',
+    '/dataset?res_format=CSV',
+    '/es/dataset', '/it/dataset', '/fr/dataset', '/zh_CN/dataset'
+  ], redirectToDest('/search'))
+
+  // These should be redirected to new "/core" page
+  router.get([
+    '/organization/core',
+    '/dataset/core'
+  ], redirectToDest('/core'))
+
+  // Following variations of "iso-3166-1-alpha-2-country-codes" dataset should
+  // be redirected to new "country-list" dataset.
+  // There are number of variations due to language/country versions.
+  router.get([
+    '/dataset/iso-3166-1-alpha-2-country-codes',
+    '/dataset/iso-3166-1-alpha-2-country-codes/*',
+    '/*/dataset/iso-3166-1-alpha-2-country-codes',
+    '/*/dataset/iso-3166-1-alpha-2-country-codes/*'
+  ], redirectToDest('/core/country-list'))
+
+  // All requests related to "us-employment-bls" redirect to new "employment-us"
+  router.get([
+    '/dataset/us-employment-bls',
+    '/dataset/us-employment-bls/*',
+    '/*/dataset/us-employment-bls',
+    '/*/dataset/us-employment-bls/*'
+  ], redirectToDest('/core/employment-us'))
+
+  // All requests related to "iso-4217-currency-codes" + "lodcloud" group redirect
+  // to new "currency-codes" dataset
+  router.get([
+    '/group/lodcloud',
+    '/dataset/iso-4217-currency-codes',
+    '/dataset/iso-4217-currency-codes/*',
+    '/*/dataset/iso-4217-currency-codes',
+    '/*/dataset/iso-4217-currency-codes/*'
+  ], redirectToDest('/core/currency-codes'))
+
+  // "standard-and-poors-500-shiller" => "s-and-p-500" under core
+  router.get([
+    '/dataset/standard-and-poors-500-shiller',
+    '/dataset/standard-and-poors-500-shiller/*',
+    '/*/dataset/standard-and-poors-500-shiller',
+    '/*/dataset/standard-and-poors-500-shiller/*'
+  ], redirectToDest('/core/s-and-p-500'))
+
+  // "cofog" => "cofog" under core
+  router.get([
+    '/dataset/cofog',
+    '/dataset/cofog/*',
+    '/*/dataset/cofog',
+    '/*/dataset/cofog/*'
+  ], redirectToDest('/core/cofog'))
+
+  // same here
+  router.get([
+    '/dataset/gold-prices',
+    '/dataset/gold-prices/*',
+    '/*/dataset/gold-prices',
+    '/*/dataset/gold-prices/*'
+  ], redirectToDest('/core/gold-prices'))
+
+  // and here also
+  router.get([
+    '/dataset/imf-weo',
+    '/dataset/imf-weo/*',
+    '/*/dataset/imf-weo',
+    '/*/dataset/imf-weo/*'
+  ], redirectToDest('/core/imf-weo'))
+
+  // Finally, redirections for login and dashboard pages
+  router.get('/user/login', redirectToDest('/login'))
+  router.get(['/dashboard/datasets', '/dashboard/groups'], redirectToDest('/dashboard'))
+
+  // ----------------------------
   // Redirects for old.datahub.io
   //
   // come first to avoid any risk of conflict with /:owner or /:owner/:dataset
 
   function redirect(path, base='https://old.datahub.io') {
-    return function(req, res) {
+    return (req, res) => {
       let dest = base + path;
       if (req.params[0] && Object.keys(req.query).length > 0) {
         let queryString = '?' + req.url.split('?')[1]

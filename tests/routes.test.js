@@ -191,6 +191,25 @@ test('Downloading a resource by name or index works for csv and json', async t =
   t.true(res.header.location.includes('data/demo-resource_json.json'))
 })
 
+test('Redirects from old to new website', async t => {
+  // Testing only the most important ones
+  let urls = ['/dataset', '/fr/dataset', '/dataset?res_format=CSV']
+  for(let url of urls) {
+    const expected = '/search'
+    let res = await request(app).get(url)
+    t.is(res.statusCode, 302)
+    t.is(res.header.location, expected)
+  }
+
+  urls = ['/organization/core', '/dataset/core']
+  for(let url of urls) {
+    const expected = '/core'
+    let res = await request(app).get(url)
+    t.is(res.statusCode, 302)
+    t.is(res.header.location, expected)
+  }
+})
+
 test('Redirects to old.datahub.io', async t => {
   const old  = 'https://old.datahub.io'
   const urls = [
@@ -199,9 +218,6 @@ test('Redirects to old.datahub.io', async t => {
     '/api',
     '/api/xyz',
     '/api/rest/v2/datasets',
-    '/dataset',
-    '/dataset/iso-3166-1-alpha2-country-codes',
-    '/dataset/iso-3166-1-alpha2-country-codes/resource/xyz',
     '/user',
     '/user/rufuspollock',
     '/tag',
