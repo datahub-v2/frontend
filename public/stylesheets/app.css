@@ -6135,6 +6135,8 @@ html {
   box-sizing: border-box; }
 
 body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   position: relative;
   min-height: 100%;
   padding-bottom: 122px; }
@@ -6261,7 +6263,7 @@ a {
       box-shadow: none !important; }
   .navbar .navbar-nav > li > a {
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 13px;
     color: #999; }
   .navbar .navbar-nav > li > a.chat:after {
     content: '';
@@ -6270,8 +6272,7 @@ a {
     display: inline-block;
     background: #8be2df;
     margin-left: 6px;
-    margin-bottom: 1px;
-    border-radius: 20%; }
+    border-radius: 50%; }
   .navbar a.nav-avatar {
     padding-top: 16px; }
   .navbar img.nav-avatar {
