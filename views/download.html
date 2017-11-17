@@ -20,7 +20,7 @@
       <div class="img-wrapper">
         <img src="/static/img/data-desktop.png" class="img-responsive" />
       </div>
-      <a href="{{desktopAppUrl}}" class="btn btn-lg btn-primary">
+      <a href="{{desktopAppUrl}}" class="btn btn-lg btn-primary" onclick="trackOutboundLink('data-desktop-app')">
         <i class="fa fa-apple" aria-hidden="true"></i> Download data
       </a>
 
@@ -30,10 +30,10 @@
         <br />
         You don't need to have Node.js to use it!
       </p>
-      <a href="{{binReleaseMacos}}" class="btn btn-lg btn-primary">
+      <a href="{{binReleaseMacos}}" class="btn btn-lg btn-primary" onclick="trackOutboundLink('bin-macos')">
         <i class="fa fa-apple" aria-hidden="true"></i> data for macos
       </a>
-      <a href="{{binReleaseLinux}}" class="btn btn-lg btn-primary">
+      <a href="{{binReleaseLinux}}" class="btn btn-lg btn-primary" onclick="trackOutboundLink('bin-linux')">
         <i class="fa fa-linux" aria-hidden="true"></i> data for linux
       </a>
     </div>
