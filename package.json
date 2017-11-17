@@ -40,6 +40,7 @@
   },
   "homepage": "https://github.com/datopian/datahub-frontend#readme",
   "dependencies": {
+    "apicache": "^1.1.0",
     "body-parser": "^1.17.2",
     "bytes": "^2.5.0",
     "connect-flash": "^0.1.1",

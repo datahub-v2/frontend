@@ -124,47 +124,6 @@ test('Pipeline page displays logs for a dataset', async t => {
   t.true(succeeded.text.includes('log1\nlog2'))
 })
 
-test('Events page works', async t => {
-  const notExist = await request(app)
-    .get('/bad-user/bad-package/events')
-  t.is(notExist.status, 404)
-
-  const eventsPage = await request(app)
-    .get('/admin/demo-package/events')
-  t.true(eventsPage.text.includes('<!-- Events -->'))
-})
-
-test('Publisher page returns 200 and has correct content', async t => {
-  const res = await request(app)
-    .get('/publisher')
-    .expect(200)
-  t.is(res.statusCode, 200)
-  t.true(res.text.includes('<h2 class="owner">publisher</h2>'))
-  t.true(res.text.includes('Datasets <span class="badge" title="1 published datasets">1</span>'))
-  t.true(res.text.includes('<!-- Events -->'))
-})
-
-test('Search page returns 200 and has correct content', async t => {
-  const res = await request(app)
-    .get('/search?q=test')
-    .expect(200)
-  t.is(res.statusCode, 200)
-  const html = res.text  // we get much cleaner debug this way
-  t.true(html.includes('Discover Data'))
-  t.true(html.includes('<input id="search-page-search"'))
-  t.true(html.includes('1 package(s) found for <b>"test"</b>'))
-  t.true(html.includes('Trends in Atmospheric Carbon Dioxide'))
-})
-
-test('Pricing page returns 200 and has correct content', async t => {
-  const res = await request(app)
-    .get('/pricing')
-    .expect(200)
-  t.is(res.statusCode, 200)
-  t.true(res.text.includes('Metering'))
-  t.true(res.text.includes('PRIVACY'))
-})
-
 test('"API" for datapackage.json file', async t => {
   let res = await request(app)
     .get('/admin/demo-package/datapackage.json')
@@ -189,6 +148,69 @@ test('Downloading a resource by name or index works for csv and json', async t =
     .get('/admin/demo-package/r/0.json')
   t.is(res.statusCode, 302)
   t.true(res.header.location.includes('data/demo-resource_json.json'))
+})
+
+test('Events page works', async t => {
+  const notExist = await request(app)
+    .get('/bad-user/bad-package/events')
+  t.is(notExist.status, 404)
+
+  const eventsPage = await request(app)
+    .get('/admin/demo-package/events')
+  t.true(eventsPage.text.includes('<!-- Events -->'))
+})
+
+test('Docs work', async t => {
+  const res = await request(app).get('/docs')
+  t.is(res.status, 200)
+  t.true(res.text.includes('<!-- doc page -->'))
+  t.true(res.text.includes('Documentation'))
+})
+
+test('Blog page works', async t => {
+  let res = await request(app).get('/blog/space-usage')
+  t.is(res.status, 200)
+  t.true(res.text.includes('<!-- blog post page test placeholder -->'))
+  res = await request(app).get('/blog')
+  t.is(res.status, 200)
+  t.true(res.text.includes('<!-- blog post page test placeholder -->'))
+})
+
+test('Search page returns 200 and has correct content', async t => {
+  const res = await request(app)
+    .get('/search?q=test')
+    .expect(200)
+  t.is(res.statusCode, 200)
+  const html = res.text  // we get much cleaner debug this way
+  t.true(html.includes('Discover Data'))
+  t.true(html.includes('<input id="search-page-search"'))
+  t.true(html.includes('1 package(s) found for <b>"test"</b>'))
+  t.true(html.includes('Trends in Atmospheric Carbon Dioxide'))
+})
+
+test('Pricing page returns 200 and has correct content', async t => {
+  const res = await request(app)
+    .get('/pricing')
+    .expect(200)
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('Metering'))
+  t.true(res.text.includes('PRIVACY'))
+})
+
+test('Download page returns 200 and has correct content', async t => {
+  const res = await request(app).get('/download')
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('<!-- download page test placeholder -->'))
+})
+
+test('Publisher page returns 200 and has correct content', async t => {
+  const res = await request(app)
+    .get('/publisher')
+    .expect(200)
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('<h2 class="owner">publisher</h2>'))
+  t.true(res.text.includes('Datasets <span class="badge" title="1 published datasets">1</span>'))
+  t.true(res.text.includes('<!-- Events -->'))
 })
 
 test('Redirects from old to new website', async t => {
@@ -230,20 +252,4 @@ test('Redirects to old.datahub.io', async t => {
     t.is(res.statusCode, 302)
     t.is(res.header.location, expected)
   }
-})
-
-test('Docs work', async t => {
-  const res = await request(app).get('/docs')
-  t.is(res.status, 200)
-  t.true(res.text.includes('<!-- doc page -->'))
-  t.true(res.text.includes('Documentation'))
-})
-
-test('Blog page works', async t => {
-  let res = await request(app).get('/blog/space-usage')
-  t.is(res.status, 200)
-  t.true(res.text.includes('<!-- blog post page test placeholder -->'))
-  res = await request(app).get('/blog')
-  t.is(res.status, 200)
-  t.true(res.text.includes('<!-- blog post page test placeholder -->'))
 })

@@ -4,6 +4,8 @@ const fs = require('fs')
 const path = require('path')
 
 const express = require('express')
+const apicache = require('apicache')
+const fetch = require('node-fetch')
 const bytes = require('bytes')
 const fm = require('front-matter')
 const moment = require('moment')
@@ -480,6 +482,46 @@ module.exports = function () {
     })
   })
 
+
+  // Download page
+  // Hit Github API only once in 10 minutes as github limits requests per hour
+  const cache = apicache.middleware
+  const onlyStatus200 = (req, res) => res.statusCode === 200
+  const cacheSuccesses = cache('10 minutes', onlyStatus200)
+
+  router.get('/download', cacheSuccesses, async (req, res) => {
+    let desktopAppUrl, binReleaseMacos, binReleaseLinux
+    let desktopRelease = await fetch('https://api.github.com/repos/datahq/data-desktop/releases/latest')
+    let binRelease = await fetch('https://api.github.com/repos/datahq/datahub-cli/releases/latest')
+
+    if (desktopRelease.status === 200) {
+      desktopRelease = await desktopRelease.json()
+      desktopAppUrl = desktopRelease.assets
+        .find(asset => path.parse(asset.name).ext === '.dmg')
+        .browser_download_url
+    } else { // If github api is unavailable then just have a link to releases page
+      desktopAppUrl = 'https://github.com/datahq/data-desktop/releases'
+    }
+    if (binRelease.status === 200) {
+      binRelease = await binRelease.json()
+      binReleaseMacos = binRelease.assets
+        .find(asset => asset.name.includes('macos'))
+        .browser_download_url
+      binReleaseLinux = binRelease.assets
+        .find(asset => asset.name.includes('linux'))
+        .browser_download_url
+    } else { // If github api is unavailable then just have a link to releases page
+      binReleaseMacos = 'https://github.com/datahq/datahub-cli/releases'
+      binReleaseLinux = 'https://github.com/datahq/datahub-cli/releases'
+    }
+
+    res.render('download.html', {
+      title: 'Download',
+      desktopAppUrl,
+      binReleaseMacos,
+      binReleaseLinux
+    })
+  })
 
   // MUST come last in order to catch all the publisher pages
   router.get('/:owner', async (req, res) => {

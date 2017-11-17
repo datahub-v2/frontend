@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title%}
+{{title}}
+{% endblock %}
+
+{% block bodyclass %}download{% endblock %}
+
+{% block content %}
+<!-- download page test placeholder -->
+<div class="container">
+  <div class="inner_container">
+    <div class="wrapper">
+      <h1>Desktop app</h1>
+      <p>
+        Our app is the recommended way to put data on the DataHub and use its services.
+        <br />
+        It also installs and maintains the command line program up to date automatically.
+      </p>
+      <div class="img-wrapper">
+        <img src="/static/img/data-desktop.png" class="img-responsive" />
+      </div>
+      <a href="{{desktopAppUrl}}" class="btn btn-lg btn-primary">
+        <i class="fa fa-apple" aria-hidden="true"></i> Download data
+      </a>
+
+      <h1>Command Line Tool</h1>
+      <p>
+        You can get our packaged binaries of <b>data</b> tool.
+        <br />
+        You don't need to have Node.js to use it!
+      </p>
+      <a href="{{binReleaseMacos}}" class="btn btn-lg btn-primary">
+        <i class="fa fa-apple" aria-hidden="true"></i> data for macos
+      </a>
+      <a href="{{binReleaseLinux}}" class="btn btn-lg btn-primary">
+        <i class="fa fa-linux" aria-hidden="true"></i> data for linux
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}
