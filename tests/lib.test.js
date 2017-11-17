@@ -15,6 +15,15 @@ test('Gets datapackage.json (as extended)', async t => {
   t.is(dpjson.resources.length, 4)
 })
 
+test('Gets datapackage.json signedUrl', async t => {
+  let res = await api.getPackageFile(
+      'admin', 'private-package', 'datapackage.json', 'token')
+  let dpjson = await res.json()
+  t.is(dpjson.name, 'demo-package')
+  t.is(dpjson.datahub.findability, 'published')
+  t.is(dpjson.resources.length, 4)
+})
+
 test("Generates logical dp from extended dp", async t => {
 	const extended = require('./fixtures/extended-dp/datapackage.json')
 	const logical = lib.DataHubApi.extendedToLogical(extended)

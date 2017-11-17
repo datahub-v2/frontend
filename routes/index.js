@@ -301,9 +301,10 @@ module.exports = function () {
 
   router.get('/:owner/:name', async (req, res) => {
     let normalizedDp = null
+    const token = req.cookies.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     try {
-      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
+      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, token)
     } catch (err) {
       if (err.name === 'BadStatusCode' && err.res.status !== 404) {
         throw err
@@ -327,6 +328,14 @@ module.exports = function () {
 
     function renderPage(status) {
       if (normalizedDp) { // In pkgstore
+        normalizedDp.resources.forEach(async resource => {
+          let response = await fetch(resource.path)
+          if (response.status === 403) {
+            const signedUrl = await api.checkForSignedUrl(
+              resource.path, userAndPkgId.userid, token)
+            resource.path = signedUrl.url
+          }
+        })
         res.render('showcase.html', {
           title: req.params.owner + ' | ' + req.params.name,
           dataset: normalizedDp,
@@ -379,13 +388,14 @@ module.exports = function () {
 
   router.get('/:owner/:name/datapackage.json', async (req, res) => {
     let normalizedDp = null
+    const token = req.cookies.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     if (!userAndPkgId.userid) {
       res.status(404).send('Sorry, this page was not found.')
       return
     }
     try {
-      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
+      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, token)
     } catch (err) {
       if (err.name === 'BadStatusCode' && err.res.status === 404) {
         res.status(404).send('Sorry, we cannot locate that dataset for you.')
@@ -399,13 +409,14 @@ module.exports = function () {
 
   router.get('/:owner/:name/r/:fileNameOrIndex', async (req, res) => {
     let normalizedDp = null
+    const token = req.cookies.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     if (!userAndPkgId.userid) {
       res.status(404).send('Sorry, this page was not found.')
       return
     }
     try {
-      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid)
+      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, token)
     } catch (err) {
       if (err.name === 'BadStatusCode' && err.res.status === 404) {
         res.status(404).send('Sorry, we cannot locate that dataset for you.')
@@ -446,8 +457,9 @@ module.exports = function () {
 
   router.get('/:owner/:name/events', async (req, res, next) => {
     // First check if dataset exists
+    const token = req.cookies.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
-    const response = await api.getPackageFile(userAndPkgId.userid, req.params.name)
+    const response = await api.getPackageFile(userAndPkgId.userid, req.params.name, token)
     if (response.status === 200) {
       const events = await api.getEvents(`owner="${req.params.owner}"&dataset="${req.params.name}"`, req.cookies.jwt)
       events.results = events.results.map(item => {
