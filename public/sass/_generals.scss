@@ -5,6 +5,8 @@ html {
   box-sizing: border-box;
 }
 body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   position: relative;
   min-height: 100%;
   padding-bottom: 122px;
