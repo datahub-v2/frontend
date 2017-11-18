@@ -94,13 +94,13 @@
       </div>
     </div><!-- End of page header -->
 
+    {% if message.length > 0 %}
     <div class="container">
       <div class="inner_container">
-        {% if message.length > 0 %}
         <div class="alert alert-danger" role="alert">{{ message | safe }}</div>
-        {% endif %}
       </div>
     </div>
+    {% endif %}
 
     {% block content %}{{content}}{% endblock %}
 
