@@ -71,9 +71,23 @@
                 <a href="/">DISCOVER</a>
               </li>
   						-->
-              <li id="login">
-
-              </li>
+              {% if login %}
+                <li>
+                  <a class="nav-link nav-avatar" href="#" tabindex="0" data-toggle="popover" title=""
+                    data-content="<p><a href='/dashboard' class='a-popover'>Dashboard</a></p><p><a href='/logout' class='a-popover'>Logout</a></p>">
+                    <img src="" id="avatar" class="img-responsive img-circle nav-avatar" />
+                  </a>
+                </li>
+              {% else %}
+                <li>
+                  <a href="/login">Login</a>
+                </li>
+                <!--
+                <li>
+                  <a href="/login/google"><span class="fa fa-google fa-lg"></span></a>
+                </li>
+                -->
+              {% endif %}
             </ul>
           </div>
         </div>
@@ -152,30 +166,16 @@
           'html': true
         });
       });
-
-      // Show either login or logout button depending on cookies:
-      if (getCookie('jwt')) {
-        document.getElementById('login').innerHTML = `
-        <a class="nav-link nav-avatar" href="#" tabindex="0" data-toggle="popover" title=""
-          data-content="<p><a href='/dashboard' class='a-popover'>Dashboard</a></p><p><a href='/logout' class='a-popover'>Logout</a></p>">
-          <img src="" id="avatar" class="img-responsive img-circle nav-avatar" />
-        </a>
-        `
-      } else {
-        document.getElementById('login').innerHTML = `<a href="/login">Login</a>`
-      }
-
-      // Set avatar in navbar using id in cookies:
-      var src = `https://www.gravatar.com/avatar/${getCookie('id')}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png`;
-      var avatar = document.getElementById('avatar');
-      if (avatar) {
-        avatar.src = src;
-      }
-
+      // Set avatar in navbar using id in cookies
       function getCookie(name) {
         var value = "; " + document.cookie;
         var parts = value.split("; " + name + "=");
         if (parts.length == 2) return parts.pop().split(";").shift();
+      }
+      var src = `https://www.gravatar.com/avatar/${getCookie('id')}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png`;
+      var avatar = document.getElementById('avatar');
+      if (avatar) {
+        avatar.src = src;
       }
     </script>
   </body>
