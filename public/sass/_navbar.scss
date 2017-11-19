@@ -42,6 +42,10 @@
     color: #999;
   }
 
+	.navbar-nav > li > a.download-link {
+    color: $brand-warning;
+  }
+
   .navbar-nav > li > a.chat:after {
     content: '';
     width: 8px;

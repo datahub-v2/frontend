@@ -10,9 +10,6 @@
   margin-top: -10px;
   padding-left: 0px !important;
   padding-right: 0px !important;
-  a.arrow {
-    font-size: 3em;
-  }
 }
 
 .jumbotron-secondary {
@@ -220,6 +217,19 @@
 	p {
 		font-size: 14px;
 	}
+
+  a:nth-of-type(1) {
+    margin-right: 20px;
+  }
+  a:nth-of-type(2) {
+    margin-left: 20px;
+    padding-left: 38.5px;
+    padding-right: 38.5px;
+  }
+  a.arrow {
+    font-size: 3em;
+    margin-right: 0;
+  }
 }
 
 .home {

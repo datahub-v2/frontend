@@ -6265,6 +6265,8 @@ a {
     text-transform: uppercase;
     font-size: 13px;
     color: #999; }
+  .navbar .navbar-nav > li > a.download-link {
+    color: #ff7900; }
   .navbar .navbar-nav > li > a.chat:after {
     content: '';
     width: 8px;
@@ -6348,8 +6350,6 @@ footer {
   margin-top: -10px;
   padding-left: 0px !important;
   padding-right: 0px !important; }
-  .jumbotron-primary a.arrow {
-    font-size: 3em; }
 
 .jumbotron-secondary form {
   margin-top: 30px; }
@@ -6498,6 +6498,15 @@ footer {
     margin-top: 40px; }
   .jumbotron .call-to-action p {
     font-size: 14px; }
+  .jumbotron .call-to-action a:nth-of-type(1) {
+    margin-right: 20px; }
+  .jumbotron .call-to-action a:nth-of-type(2) {
+    margin-left: 20px;
+    padding-left: 38.5px;
+    padding-right: 38.5px; }
+  .jumbotron .call-to-action a.arrow {
+    font-size: 3em;
+    margin-right: 0; }
 
 .home .section-title {
   margin-bottom: 50px; }
