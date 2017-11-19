@@ -193,8 +193,7 @@ test('Pricing page returns 200 and has correct content', async t => {
     .get('/pricing')
     .expect(200)
   t.is(res.statusCode, 200)
-  t.true(res.text.includes('Metering'))
-  t.true(res.text.includes('PRIVACY'))
+  t.true(res.text.includes('Private'))
 })
 
 test('Download page returns 200 and has correct content', async t => {

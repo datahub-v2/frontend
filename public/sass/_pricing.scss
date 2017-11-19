@@ -7,23 +7,41 @@
   border: none;
 }
 
-.table-pricing {
-  .heading {
-    font-size: 1.7em;
-    font-weight: 200;
+.table.pricing {
+  width: 650px;
+  margin: auto;
+  margin-top: 50px;
+
+  tbody, td, th, tr {
+    vertical-align: middle;
+    border: none;
+    text-align: left;
+    padding: 0;
   }
-  .main-info {
-    font-size: 1.25em;
+
+  th {
+    font-size: 20px;
     font-weight: 400;
-    padding-top: 17px;
-    padding-bottom: 17px;
+    width: 150px;
   }
+
+  td {
+    font-size: 14px;
+    padding: 17px 0;
+  }
+
+  .pricing td {
+    font-weight: 500;
+    font-size: 18px;
+  }
+
   .left-heading {
-    font-size: 1.15em;
-    font-weight: 200;
-    padding-top: 17px;
-    padding-bottom: 17px;
+    font-size: 12px;
+    font-weight: 100;
+    text-transform: uppercase;
+    padding: 17px 0;
   }
+
   i.fa-times {
     color: red;
   }
@@ -31,6 +49,11 @@
     color: green;
   }
   span.secondary {
+    color: $gray-light;
+  }
+
+  tfoot td {
+    font-size: 12px;
     color: $gray-light;
   }
 }
