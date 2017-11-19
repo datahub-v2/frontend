@@ -72,7 +72,7 @@
               </li>
   						-->
               <li id="login">
-                
+
               </li>
             </ul>
           </div>
@@ -80,13 +80,13 @@
       </div>
     </div><!-- End of page header -->
 
+    {% if message.length > 0 %}
     <div class="container">
       <div class="inner_container">
-        {% if message.length > 0 %}
         <div class="alert alert-danger" role="alert">{{ message | safe }}</div>
-        {% endif %}
       </div>
     </div>
+    {% endif %}
 
     {% block content %}{{content}}{% endblock %}
 
@@ -156,7 +156,7 @@
       // Show either login or logout button depending on cookies:
       if (getCookie('jwt')) {
         document.getElementById('login').innerHTML = `
-        <a class="nav-link nav-avatar" href="#" data-toggle="popover" title=""
+        <a class="nav-link nav-avatar" href="#" tabindex="0" data-toggle="popover" title=""
           data-content="<p><a href='/dashboard' class='a-popover'>Dashboard</a></p><p><a href='/logout' class='a-popover'>Logout</a></p>">
           <img src="" id="avatar" class="img-responsive img-circle nav-avatar" />
         </a>
