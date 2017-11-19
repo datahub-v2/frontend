@@ -4,7 +4,6 @@ const fs = require('fs')
 const path = require('path')
 
 const express = require('express')
-const apicache = require('apicache')
 const fetch = require('node-fetch')
 const bytes = require('bytes')
 const fm = require('front-matter')
@@ -484,35 +483,85 @@ module.exports = function () {
 
 
   // Download page
-  // Hit Github API only once in 10 minutes as github limits requests per hour
-  const cache = apicache.middleware
-  const onlyStatus200 = (req, res) => res.statusCode === 200
-  const cacheSuccesses = cache('10 minutes', onlyStatus200)
+  router.get('/download', async (req, res) => {
+    let desktopAppUrl, binReleaseMacos, binReleaseLinux, etagForDesktop, etagForBinary
 
-  router.get('/download', cacheSuccesses, async (req, res) => {
-    let desktopAppUrl, binReleaseMacos, binReleaseLinux
-    let desktopRelease = await fetch('https://api.github.com/repos/datahq/data-desktop/releases/latest')
-    let binRelease = await fetch('https://api.github.com/repos/datahq/datahub-cli/releases/latest')
-
-    if (desktopRelease.status === 200) {
-      desktopRelease = await desktopRelease.json()
-      desktopAppUrl = desktopRelease.assets
-        .find(asset => path.parse(asset.name).ext === '.dmg')
-        .browser_download_url
-    } else { // If github api is unavailable then just have a link to releases page
-      desktopAppUrl = 'https://github.com/datahq/data-desktop/releases'
+    if (req.app.locals.github) {
+      etagForDesktop = req.app.locals.github.releases.desktop
+        ? req.app.locals.github.releases.desktop.etag : ''
+      etagForBinary = req.app.locals.github.releases.binary
+        ? req.app.locals.github.releases.binary.etag : ''
+    } else {
+      req.app.locals.github = {releases: {}}
     }
-    if (binRelease.status === 200) {
-      binRelease = await binRelease.json()
-      binReleaseMacos = binRelease.assets
-        .find(asset => asset.name.includes('macos'))
-        .browser_download_url
-      binReleaseLinux = binRelease.assets
-        .find(asset => asset.name.includes('linux'))
-        .browser_download_url
-    } else { // If github api is unavailable then just have a link to releases page
-      binReleaseMacos = 'https://github.com/datahq/datahub-cli/releases'
-      binReleaseLinux = 'https://github.com/datahq/datahub-cli/releases'
+
+    const desktopReleaseModified = await fetch('https://api.github.com/repos/datahq/data-desktop/releases/latest', {
+      method: 'GET',
+      headers: {'If-None-Match': etagForDesktop}
+    })
+    const binaryReleaseModified = await fetch('https://api.github.com/repos/datahq/datahub-cli/releases/latest', {
+      method: 'GET',
+      headers: {'If-None-Match': etagForBinary}
+    })
+
+    if (desktopReleaseModified.status === 304) { // No new release
+      desktopAppUrl = req.app.locals.github.releases.desktop.url
+    } else { // Go and get new release
+      let desktopRelease = await fetch('https://api.github.com/repos/datahq/data-desktop/releases/latest')
+      if (desktopRelease.status === 200) {
+        const etag = desktopRelease.headers.get('ETag').slice(2)
+        // Now get URL for downloading dekstop app:
+        desktopRelease = await desktopRelease.json()
+        desktopAppUrl = desktopRelease.assets
+          .find(asset => path.parse(asset.name).ext === '.dmg')
+          .browser_download_url
+        // Update desktop release in the app.locals:
+        const newRelease = {
+          desktop: {
+            etag,
+            url: desktopAppUrl
+          }
+        }
+        req.app.locals.github.releases = Object.assign(
+          req.app.locals.github.releases,
+          newRelease
+        )
+      } else { // If github api is unavailable then just have a link to releases page
+        desktopAppUrl = 'https://github.com/datahq/data-desktop/releases'
+      }
+    }
+
+    if (binaryReleaseModified.status === 304) { // No new release
+      binReleaseMacos = req.app.locals.github.releases.binary.macos
+      binReleaseLinux = req.app.locals.github.releases.binary.linux
+    } else { // Go and get new release
+      let binRelease = await fetch('https://api.github.com/repos/datahq/datahub-cli/releases/latest')
+      if (binRelease.status === 200) {
+        const etag = binRelease.headers.get('ETag').slice(2)
+        // Now get URLs for downloading binaries:
+        binRelease = await binRelease.json()
+        binReleaseMacos = binRelease.assets
+          .find(asset => asset.name.includes('macos'))
+          .browser_download_url
+        binReleaseLinux = binRelease.assets
+          .find(asset => asset.name.includes('linux'))
+          .browser_download_url
+        // Update binary release in the app.locals:
+        const newRelease = {
+          binary: {
+            etag,
+            macos: binReleaseMacos,
+            linux: binReleaseLinux
+          }
+        }
+        req.app.locals.github.releases = Object.assign(
+          req.app.locals.github.releases,
+          newRelease
+        )
+      } else { // If github api is unavailable then just have a link to releases page
+        binReleaseMacos = 'https://github.com/datahq/datahub-cli/releases'
+        binReleaseLinux = 'https://github.com/datahq/datahub-cli/releases'
+      }
     }
 
     res.render('download.html', {

@@ -3,24 +3,24 @@ body.download {
   .wrapper {
     margin-bottom: 100px;
     text-align: center;
-  }
-  .img-wrapper {
-    padding: 0 23%;
-    margin-bottom: 30px;
-  }
-  h1, p {
-    margin-bottom: 30px;
-  }
-  h1:nth-of-type(2) {
-    margin-top: 3.5em;
-  }
-  a {
-    padding: 14px 26px;
-  }
-  a:nth-of-type(2) {
-    margin-right: 25px;
-  }
-  a:nth-of-type(3) {
-    margin-left: 25px;
+    .img-wrapper {
+      padding: 0 23%;
+      margin-bottom: 30px;
+    }
+    h1, p {
+      margin-bottom: 30px;
+    }
+    h1:nth-of-type(2) {
+      margin-top: 3.5em;
+    }
+    a {
+      padding: 14px 26px;
+    }
+    a:nth-of-type(2) {
+      margin-right: 25px;
+    }
+    a:nth-of-type(3) {
+      margin-left: 25px;
+    }
   }
 }
