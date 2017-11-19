@@ -30,11 +30,6 @@ module.exports.makeApp = function () {
   app.use(flash())
   // Check if looged in and set locals for nunjucks
   app.use((req, res, next) => {
-    if (req.cookies.jwt) {
-      res.locals.login = true
-    } else {
-      res.locals.login = false
-    }
     res.locals.message = req.flash('message')
     next()
   })
