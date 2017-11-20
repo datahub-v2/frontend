@@ -13,6 +13,8 @@ module.exports.initMocks = function() {
     .persist()
     .get('/admin/demo-package/latest/datapackage.json')
     .reply(200, data.dataPackage, {'access-control-allow-origin': '*'})
+    .get('/admin/private-package/latest/datapackage.json')
+    .reply(403, {})
     .get('/admin/demo-package/latest/README.md')
     .reply(200, data.readme, {'access-control-allow-origin': '*'})
     .get('/bad-user/bad-package/latest/datapackage.json')
@@ -48,6 +50,13 @@ module.exports.initMocks = function() {
 
   // Mock api calls for Metastore (search)
   // TODO: 2017-08-11 ~rufuspollock construct extended DP ourselves from an input fixture package so that we can test more cleanly
+  nock(config.get('API_URL'))
+    .persist()
+    .get('/rawstore/presign?jwt=token&ownerid=admin&url=http://127.0.0.1:4000/static/fixtures/admin/private-package/latest/datapackage.json')
+    .reply(200, {
+        "url": config.get('BITSTORE_URL')+"admin/demo-package/latest/datapackage.json"
+      })
+
   const extendedDp = require('./extended-dp/datapackage.json')
   nock(config.get('API_URL'))
     .persist()
