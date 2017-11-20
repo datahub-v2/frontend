@@ -23,7 +23,7 @@ package viewer][viewer] on this site will automatically preview a Geo Data Packa
 imagery or raster data).*
 
 [any]: /docs/data-packages/publish-any/
-[viewer]: /tools/view
+[viewer]: http://data.okfn.org/tools/view
 
 ## Geo Data Packages
 
