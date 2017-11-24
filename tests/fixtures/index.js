@@ -56,6 +56,15 @@ module.exports.initMocks = function() {
     .reply(200, {
         "url": config.get('BITSTORE_URL')+"admin/demo-package/latest/datapackage.json"
       })
+  nock(config.get('API_URL'), {reqheaders: {'Auth-Token': 'token'}})
+    .persist()
+    .get('/auth/authorize?service=frontend')
+    .reply(200, {"token": "simple-token"})
+
+  nock(config.get('API_URL'), {reqheaders: {'Auth-Token': 'private-token'}})
+    .persist()
+    .get('/auth/authorize?service=frontend')
+    .reply(200, {"token": "token"})
 
   const extendedDp = require('./extended-dp/datapackage.json')
   nock(config.get('API_URL'))
@@ -282,5 +291,10 @@ module.exports.initMocks = function() {
     .reply(200, {
       userid: 'core',
       packageid: 'gold-prices'
+    })
+    .get('/resolve?path=admin/private-package')
+    .reply(200, {
+      userid: 'admin',
+      packageid: 'private-package'
     })
 }

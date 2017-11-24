@@ -53,6 +53,39 @@ test('Showcase page returns 200 and has correct content', async t => {
   t.true(res.text.includes('DataHub'))
 })
 
+test('Showcase page returns 200 if logged in', async t => {
+  const res = await request(app)
+    .get('/admin/demo-package')
+    .set('Cookie', ['jwt=token'])
+    .expect(200)
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('DataHub'))
+})
+
+test('Showcase page returns 200 if logged in and private dataset', async t => {
+  const res = await request(app)
+    .get('/admin/private-package')
+    .set('Cookie', ['jwt=private-token'])
+    .expect(200)
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('DataHub'))
+})
+
+test('Showcase page returns 404 not logged in and private dataset', async t => {
+  const res = await request(app)
+    .get('/admin/private-package')
+    .expect(404)
+  t.is(res.statusCode, 404)
+})
+
+test('Showcase page returns 404 if logged in but not owns private dataset', async t => {
+  const res = await request(app)
+    .get('/admin/private-package')
+    .set('Cookie', ['jwt=token'])
+    .expect(404)
+  t.is(res.statusCode, 404)
+})
+
 test('Showcase page has readme, title and publisher in content', async t => {
   const res = await request(app)
     .get('/admin/demo-package')
@@ -129,6 +162,29 @@ test('"API" for datapackage.json file', async t => {
     .get('/admin/demo-package/datapackage.json')
   t.is(res.statusCode, 302)
   t.true(res.header.location.includes('/latest/datapackage.json'))
+})
+
+test('"API" for datapackage.json returns 302 if logged in', async t => {
+  const res = await request(app)
+    .get('/admin/demo-package/datapackage.json')
+    .set('Cookie', ['jwt=token'])
+  t.is(res.statusCode, 302)
+  t.true(res.header.location.includes('/latest/datapackage.json'))
+})
+
+test('"API" for datapackage.json works if logged in and private dataset', async t => {
+  const res = await request(app)
+    .get('/admin/private-package/datapackage.json')
+    .set('Cookie', ['jwt=private-token'])
+  t.is(res.statusCode, 302)
+  t.true(res.header.location.includes('/latest/datapackage.json'))
+})
+
+test('"API" for datapackage.json returns 404 not logged in and private dataset', async t => {
+  const res = await request(app)
+    .get('/admin/private-package/datapackage.json')
+    .expect(404)
+  t.is(res.statusCode, 404)
 })
 
 test('Downloading a resource by name or index works for csv and json', async t => {

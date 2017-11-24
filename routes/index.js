@@ -300,13 +300,20 @@ module.exports = function () {
 
   router.get('/:owner/:name', async (req, res) => {
     let normalizedDp = null
-    const token = req.cookies.jwt
+    let token = null
+    const jwt = req.cookies.jwt
+    if (jwt) {
+      token = await api.authz(jwt)
+    }
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     try {
       normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, token)
     } catch (err) {
       if (err.name === 'BadStatusCode' && err.res.status !== 404) {
         throw err
+      } else if (err.name === 'Forbidden') {
+        res.status(404).send('Sorry, this page was not found.')
+        return
       }
     }
     let status = {state: ''}
@@ -387,7 +394,11 @@ module.exports = function () {
 
   router.get('/:owner/:name/datapackage.json', async (req, res) => {
     let normalizedDp = null
-    const token = req.cookies.jwt
+    let token = null
+    const jwt = req.cookies.jwt
+    if (jwt) {
+      token = await api.authz(jwt)
+    }
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     if (!userAndPkgId.userid) {
       res.status(404).send('Sorry, this page was not found.')
@@ -399,11 +410,20 @@ module.exports = function () {
       if (err.name === 'BadStatusCode' && err.res.status === 404) {
         res.status(404).send('Sorry, we cannot locate that dataset for you.')
         return
+      } else if (err.name === 'Forbidden') {
+        res.status(404).send('Sorry, this page was not found.')
+        return
       }
       throw err
     }
-
-    res.redirect(`${normalizedDp.path}/datapackage.json`)
+    let redirectUrl = `${normalizedDp.path}/datapackage.json`
+    let resp = await fetch(redirectUrl)
+    if (resp.status === 403) {
+      const signedUrl = await api.checkForSignedUrl(
+        redirectUrl, userAndPkgId.userid, token)
+      redirectUrl = signedUrl.url
+    }
+    res.redirect(redirectUrl)
   })
 
   router.get('/:owner/:name/r/:fileNameOrIndex', async (req, res) => {
