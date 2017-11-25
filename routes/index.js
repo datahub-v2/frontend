@@ -332,16 +332,34 @@ module.exports = function () {
       console.error('> pipelineStatus api failed.')
     }
 
-    function renderPage(status) {
+    async function renderPage(status) {
       if (normalizedDp) { // In pkgstore
-        normalizedDp.resources.forEach(async resource => {
+        await Promise.all(normalizedDp.resources.map(async resource => {
           let response = await fetch(resource.path)
           if (response.status === 403) {
             const signedUrl = await api.checkForSignedUrl(
-              resource.path, userAndPkgId.userid, token)
+              resource.path,
+              userAndPkgId.userid,
+              token
+            )
             resource.path = signedUrl.url
           }
-        })
+          if (resource.alternates) {
+            const previewResource = resource.alternates.find(res => res.datahub.type === 'derived/preview')
+            if (previewResource) {
+              let response = await fetch(previewResource.path)
+              if (response.status === 403) {
+                const signedUrl = await api.checkForSignedUrl(
+                  previewResource.path,
+                  userAndPkgId.userid,
+                  token
+                )
+                previewResource.path = signedUrl.url
+              }
+            }
+          }
+        }))
+
         res.render('showcase.html', {
           title: req.params.owner + ' | ' + req.params.name,
           dataset: normalizedDp,
