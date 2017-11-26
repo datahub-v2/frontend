@@ -450,7 +450,11 @@ module.exports = function () {
 
   router.get('/:owner/:name/r/:fileNameOrIndex', async (req, res) => {
     let normalizedDp = null
-    const token = req.cookies.jwt
+    let token = null
+    const jwt = req.cookies.jwt
+    if (jwt) {
+      token = await api.authz(jwt)
+    }
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     if (!userAndPkgId.userid) {
       res.status(404).send('Sorry, this page was not found.')
@@ -471,7 +475,7 @@ module.exports = function () {
     const name = fileParts.name
 
     let resource
-    // Check if file name is a number
+    // Check if file name is a number (check if zero explicitely as 0 evaluates to false in JS)
     if (parseInt(name, 10) || parseInt(name, 10) === 0) {
       // If number it still can be a file name not index so check it
       resource = normalizedDp.resources.find(res => res.name === name)
@@ -491,9 +495,25 @@ module.exports = function () {
     // If resource was found then identify required format by given extension
     if (!(resource.format === extension.substring(1))) {
       resource = resource.alternates.find(res => (extension.substring(1) === res.format && res.datahub.type !== 'derived/preview'))
+      // If given format was not found then show 404
+      if (!resource) {
+        res.status(404).send('Sorry, we cannot locate that file for you.')
+      }
     }
 
-    res.redirect(`${resource.path}`)
+    // If dataset's findability is private then get a signed url for the resource
+    let finalPath = resource.path
+    if (normalizedDp.datahub.findability === 'private') {
+      let resp = await fetch(resource.path)
+      if (resp.status === 403) {
+        const signedUrl = await api.checkForSignedUrl(
+          resource.path, userAndPkgId.userid, token
+        )
+        finalPath = signedUrl.url
+      }
+    }
+
+    res.redirect(finalPath)
   })
 
   router.get('/:owner/:name/events', async (req, res, next) => {
