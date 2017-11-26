@@ -334,31 +334,33 @@ module.exports = function () {
 
     async function renderPage(status) {
       if (normalizedDp) { // In pkgstore
-        await Promise.all(normalizedDp.resources.map(async resource => {
-          let response = await fetch(resource.path)
-          if (response.status === 403) {
-            const signedUrl = await api.checkForSignedUrl(
-              resource.path,
-              userAndPkgId.userid,
-              token
-            )
-            resource.path = signedUrl.url
-          }
-          if (resource.alternates) {
-            const previewResource = resource.alternates.find(res => res.datahub.type === 'derived/preview')
-            if (previewResource) {
-              let response = await fetch(previewResource.path)
-              if (response.status === 403) {
-                const signedUrl = await api.checkForSignedUrl(
-                  previewResource.path,
-                  userAndPkgId.userid,
-                  token
-                )
-                previewResource.path = signedUrl.url
+        if (normalizedDp.datahub.findability === 'private') {
+          await Promise.all(normalizedDp.resources.map(async resource => {
+            let response = await fetch(resource.path)
+            if (response.status === 403) {
+              const signedUrl = await api.checkForSignedUrl(
+                resource.path,
+                userAndPkgId.userid,
+                token
+              )
+              resource.path = signedUrl.url
+            }
+            if (resource.alternates) {
+              const previewResource = resource.alternates.find(res => res.datahub.type === 'derived/preview')
+              if (previewResource) {
+                let response = await fetch(previewResource.path)
+                if (response.status === 403) {
+                  const signedUrl = await api.checkForSignedUrl(
+                    previewResource.path,
+                    userAndPkgId.userid,
+                    token
+                  )
+                  previewResource.path = signedUrl.url
+                }
               }
             }
-          }
-        }))
+          }))
+        }
 
         res.render('showcase.html', {
           title: req.params.owner + ' | ' + req.params.name,
@@ -435,11 +437,13 @@ module.exports = function () {
       throw err
     }
     let redirectUrl = `${normalizedDp.path}/datapackage.json`
-    let resp = await fetch(redirectUrl)
-    if (resp.status === 403) {
-      const signedUrl = await api.checkForSignedUrl(
-        redirectUrl, userAndPkgId.userid, token)
-      redirectUrl = signedUrl.url
+    if (normalizedDp.datahub.findability === 'private') {
+      let resp = await fetch(redirectUrl)
+      if (resp.status === 403) {
+        const signedUrl = await api.checkForSignedUrl(
+          redirectUrl, userAndPkgId.userid, token)
+        redirectUrl = signedUrl.url
+      }
     }
     res.redirect(redirectUrl)
   })
