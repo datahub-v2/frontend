@@ -56,6 +56,12 @@ module.exports.initMocks = function() {
     .reply(200, {
         "url": config.get('BITSTORE_URL')+"admin/demo-package/latest/datapackage.json"
       })
+  nock(config.get('API_URL'))
+    .persist()
+    .get('/rawstore/presign?jwt=simple-token&ownerid=admin&url=http://127.0.0.1:4000/static/fixtures/admin/private-package/latest/datapackage.json')
+    .reply(200, {
+        "url": config.get('BITSTORE_URL')+"admin/demo-package/latest/datapackage.json"
+      })
   nock(config.get('API_URL'), {reqheaders: {'Auth-Token': 'token'}})
     .persist()
     .get('/auth/authorize?service=frontend')

@@ -300,11 +300,7 @@ module.exports = function () {
 
   router.get('/:owner/:name', async (req, res) => {
     let normalizedDp = null
-    let token = null
-    const jwt = req.cookies.jwt
-    if (jwt) {
-      token = await api.authz(jwt)
-    }
+    let token = req.cookies.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     try {
       normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, token)
@@ -335,13 +331,15 @@ module.exports = function () {
     async function renderPage(status) {
       if (normalizedDp) { // In pkgstore
         if (normalizedDp.datahub.findability === 'private') {
+          const authzToken = await api.authz(token)
           await Promise.all(normalizedDp.resources.map(async resource => {
             let response = await fetch(resource.path)
             if (response.status === 403) {
               const signedUrl = await api.checkForSignedUrl(
                 resource.path,
                 userAndPkgId.userid,
-                token
+                null,
+                authzToken
               )
               resource.path = signedUrl.url
             }
@@ -353,7 +351,8 @@ module.exports = function () {
                   const signedUrl = await api.checkForSignedUrl(
                     previewResource.path,
                     userAndPkgId.userid,
-                    token
+                    null,
+                    authzToken
                   )
                   previewResource.path = signedUrl.url
                 }
@@ -414,11 +413,7 @@ module.exports = function () {
 
   router.get('/:owner/:name/datapackage.json', async (req, res) => {
     let normalizedDp = null
-    let token = null
-    const jwt = req.cookies.jwt
-    if (jwt) {
-      token = await api.authz(jwt)
-    }
+    let token = req.cookies.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     if (!userAndPkgId.userid) {
       res.status(404).send('Sorry, this page was not found.')
@@ -438,10 +433,12 @@ module.exports = function () {
     }
     let redirectUrl = `${normalizedDp.path}/datapackage.json`
     if (normalizedDp.datahub.findability === 'private') {
+      const authzToken = await api.authz(token)
       let resp = await fetch(redirectUrl)
       if (resp.status === 403) {
         const signedUrl = await api.checkForSignedUrl(
-          redirectUrl, userAndPkgId.userid, token)
+          redirectUrl, userAndPkgId.userid, null, authzToken
+        )
         redirectUrl = signedUrl.url
       }
     }
@@ -450,11 +447,7 @@ module.exports = function () {
 
   router.get('/:owner/:name/r/:fileNameOrIndex', async (req, res) => {
     let normalizedDp = null
-    let token = null
-    const jwt = req.cookies.jwt
-    if (jwt) {
-      token = await api.authz(jwt)
-    }
+    let token = req.cookies.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     if (!userAndPkgId.userid) {
       res.status(404).send('Sorry, this page was not found.')
@@ -504,10 +497,11 @@ module.exports = function () {
     // If dataset's findability is private then get a signed url for the resource
     let finalPath = resource.path
     if (normalizedDp.datahub.findability === 'private') {
+      const authzToken = await api.authz(token)
       let resp = await fetch(resource.path)
       if (resp.status === 403) {
         const signedUrl = await api.checkForSignedUrl(
-          resource.path, userAndPkgId.userid, token
+          resource.path, userAndPkgId.userid, null, authzToken
         )
         finalPath = signedUrl.url
       }

@@ -81,7 +81,7 @@ test('Showcase page returns 404 not logged in and private dataset', async t => {
 test('Showcase page returns 404 if logged in but not owns private dataset', async t => {
   const res = await request(app)
     .get('/admin/private-package')
-    .set('Cookie', ['jwt=token'])
+    .set('Cookie', ['jwt=another-token'])
     .expect(404)
   t.is(res.statusCode, 404)
 })
