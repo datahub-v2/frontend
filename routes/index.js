@@ -514,7 +514,7 @@ module.exports = function () {
     // First check if dataset exists
     const token = req.cookies.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
-    const response = await api.getPackageFile(userAndPkgId.userid, req.params.name, token)
+    const response = await api.getPackageFile(userAndPkgId.userid, req.params.name, undefined, token)
     if (response.status === 200) {
       const events = await api.getEvents(`owner="${req.params.owner}"&dataset="${req.params.name}"`, req.cookies.jwt)
       events.results = events.results.map(item => {
