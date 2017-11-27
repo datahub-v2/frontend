@@ -459,6 +459,9 @@ module.exports = function () {
       if (err.name === 'BadStatusCode' && err.res.status === 404) {
         res.status(404).send('Sorry, we cannot locate that dataset for you.')
         return
+      } else if (err.name === 'Forbidden') {
+        res.status(404).send('Sorry, this page was not found.')
+        return
       }
       throw err
     }
