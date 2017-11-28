@@ -28,7 +28,7 @@
         {% if dataset.title %}
           {{ dataset.title }}
         {% else %}
-          {{ dataset.name | replace("-", " ") | capitalize }}
+          {{ dataset.name }}
         {% endif %}
         {% if dataset.datahub.findability === 'unlisted' %}
         <span class="label label-primary" title="This dataset is not published yet.">unlisted</span>
