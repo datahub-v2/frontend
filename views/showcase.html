@@ -3,7 +3,7 @@
 {% import '_instructions.html' as instructions %}
 
 {% block title %}
-{{dataset.title}} - Dataset
+{{dataset.title or dataset.name}} - Dataset
 {% endblock %}
 
 {% block bodyclass %}showcase{% endblock %}
@@ -25,11 +25,7 @@
 
     <div class="showcase-page-header">
       <h1>
-        {% if dataset.title %}
-          {{ dataset.title }}
-        {% else %}
-          {{ dataset.name }}
-        {% endif %}
+        {{ dataset.title or dataset.name }}
         {% if dataset.datahub.findability === 'unlisted' %}
         <span class="label label-primary" title="This dataset is not published yet.">unlisted</span>
         {% endif %}
