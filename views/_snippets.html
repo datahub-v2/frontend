@@ -19,7 +19,11 @@
     <div class="package-summary">
       <h3 class="package-title-{{package.datahub.findability}}">
         <a href="/{{ package.datahub.owner }}/{{ package.name }}">
-          {{ package.title }}
+          {% if package.title %}
+            {{ package.title }}
+          {% else %}
+            {{ package.name }}
+          {% endif %}
         </a>
       </h3>
       <div class="publisher">
