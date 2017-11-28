@@ -25,7 +25,11 @@
 
     <div class="showcase-page-header">
       <h1>
-        {{ dataset.title }}
+        {% if dataset.title %}
+          {{ dataset.title }}
+        {% else %}
+          {{ dataset.name }}
+        {% endif %}
         {% if dataset.datahub.findability === 'unlisted' %}
         <span class="label label-primary" title="This dataset is not published yet.">unlisted</span>
         {% endif %}
