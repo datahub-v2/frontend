@@ -2,33 +2,33 @@
 {% import '_snippets.html' as snippets %}
 
 {% block title %}
-Search
+Search Datasets
 {% endblock %}
+
+{% block bodyclass %}search{% endblock %}
 
 {% block content %}
 <div class="container">
   <div class="inner_container">
     <div class="row">
       <div class="col-md-7 col-md-offset-2 col-sm-12">
-        <h1 class="text-center">Discover Data</h1>
-        <div id="custom-search-input">
-          <form id="search-page-search-form" class="input-group col-xs-12" action="/search" method="GET">
-            <input id="search-page-search" type="text" class="form-control input-lg" placeholder="Search ..." name="q" value="{{ query_term }}" required/>
-          </form>
-        </div>
+        <h1>
+          <svg class="search-icon" aria-hidden="true" height="30" viewBox="0 0 16 16" width="24"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"></path></svg>
+          Search for datasets
+        </h1>
+        <form class="search-form form form-inline" class="input-group col-xs-12" action="/search" method="GET">
+          <input type="text" class="form-control input-lg" placeholder="Search ..." name="q" value="{{ query }}" required/>
+          <button class="btn btn-primary" type="submit">Search</button>
+        </form>
       </div>
     </div>
-    <div class="col-md-7 col-md-offset-2">
-    {% if packages.summary.total %}
-
-      <h4 class="search-summary text-center">{{ packages.summary.total }} package(s) found for <b>"{{ query }}"</b></h4>
-      {{ snippets.package_list_show(packages.results) }}
-
-    {% else %}
-
-      <h4 class="search-summary">0 packages found for <b>"{{ query }}"</b></h4>
-
-    {% endif %}
+    <div class="row">
+      <div class="col-md-7 col-md-offset-2">
+        <h4 class="search-summary">
+          {{ packages.summary.total }} datasets found
+        </h4>
+        {{ snippets.package_list_show(packages.results) }}
+      </div>
     </div>
   </div>
 </div>
