@@ -239,6 +239,7 @@ test('Search page returns 200 and has correct content', async t => {
   t.is(res.statusCode, 200)
   const html = res.text  // we get much cleaner debug this way
   t.true(html.includes('Search Datasets'))
+  t.true(html.includes('Search for datasets'))
   t.true(html.includes('1 datasets found'))
   t.true(html.includes('Trends in Atmospheric Carbon Dioxide'))
 })

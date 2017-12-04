@@ -10,11 +10,18 @@ body.download {
     h1, p {
       margin-bottom: 30px;
     }
+    p.info {
+      width: 54%;
+      margin: auto;
+      margin-top: 12px;
+      color: $gray;
+      font-size: 12px;
+    }
     h1:nth-of-type(2) {
       margin-top: 3.5em;
     }
     a {
-      padding: 14px 26px;
+      padding: 14px 20px;
     }
     a:nth-of-type(2) {
       margin-right: 25px;
