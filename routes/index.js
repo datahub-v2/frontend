@@ -548,10 +548,13 @@ module.exports = function () {
 
   router.get('/pricing', (req, res) => {
     res.render('pricing.html', {
-      title: 'Offers'
     })
   })
 
+  router.get('/requests', (req, res) => {
+    res.render('requests.html', {
+    })
+  })
 
   // Download page
   router.get('/download', async (req, res) => {
