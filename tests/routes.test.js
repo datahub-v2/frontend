@@ -238,9 +238,8 @@ test('Search page returns 200 and has correct content', async t => {
     .expect(200)
   t.is(res.statusCode, 200)
   const html = res.text  // we get much cleaner debug this way
-  t.true(html.includes('Discover Data'))
-  t.true(html.includes('<input id="search-page-search"'))
-  t.true(html.includes('1 package(s) found for <b>"test"</b>'))
+  t.true(html.includes('Search Datasets'))
+  t.true(html.includes('1 datasets found'))
   t.true(html.includes('Trends in Atmospheric Carbon Dioxide'))
 })
 
