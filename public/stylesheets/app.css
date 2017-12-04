@@ -7128,10 +7128,16 @@ body.download {
       margin-bottom: 30px; }
     body.download .wrapper h1, body.download .wrapper p {
       margin-bottom: 30px; }
+    body.download .wrapper p.info {
+      width: 54%;
+      margin: auto;
+      margin-top: 12px;
+      color: #757575;
+      font-size: 12px; }
     body.download .wrapper h1:nth-of-type(2) {
       margin-top: 3.5em; }
     body.download .wrapper a {
-      padding: 14px 26px; }
+      padding: 14px 20px; }
     body.download .wrapper a:nth-of-type(2) {
       margin-right: 25px; }
     body.download .wrapper a:nth-of-type(3) {
