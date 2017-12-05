@@ -7,7 +7,7 @@ json_file &lt;- <span class="hljs-string">"http://datahub.io/{{dataset.datahub.o
 json_data &lt;- fromJSON(paste(readLines(json_file), collapse=<span class="hljs-string">""</span>))
 
 <span class="hljs-comment"># access csv file by the index starting from 1</span>
-path_to_file = json_data$resources[[<span class="hljs-number">1</span>]]$path
+path_to_file = json_data$resources$path[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]
 data &lt;- read.csv(url(path_to_file))
 print(data)
 </code></pre>
