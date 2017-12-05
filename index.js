@@ -30,9 +30,16 @@ module.exports.makeApp = function () {
   app.use(flash())
   // Check if looged in and set locals for nunjucks
   app.use((req, res, next) => {
-    if (req.cookies.jwt) {
+    // Check if credentials are passed in query params:
+    if (req.query.jwt) {
+      res.cookie('jwt', req.query.jwt)
+      res.cookie('email', req.query.email)
+      res.cookie('id', req.query.id)
+      res.cookie('username', req.query.username)
       res.locals.login = true
-    } else {
+    } else if (req.cookies.jwt) { // Else check if jwt in cookies
+      res.locals.login = true
+    } else { // Otherwise user is not logged in
       res.locals.login = false
     }
     res.locals.message = req.flash('message')
