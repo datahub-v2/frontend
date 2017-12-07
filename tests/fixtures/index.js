@@ -186,54 +186,25 @@ module.exports.initMocks = function() {
   // status api
   nock(`${config.get('API_URL')}`)
     .persist()
-    .get('/source/admin/running-package/status')
+    .get('/source/admin/demo-package/1')
     .reply(200, {
-      state: 'RUNNING',
-      logs: ['log1', 'log2']
-    })
-    .get('/source/admin/running-package/info')
-    .reply(404)
-    .get('/source/admin/failed-package/status')
-    .reply(200, {
-      state: 'FAILED'
-    })
-    .get('/source/admin/failed-package/info')
-    .reply(200, {
-      state: 'FAILED',
-      error_log: ['err1', 'err2'],
-      source: {
-        meta: {
-          dataset: 'failed-package',
-          owner: 'admin'
-        }
-      }
-    })
-    .get('/source/admin/demo-package/status')
-    .reply(200, {
+      id: 1,
       state: 'SUCCEEDED'
     })
-    .get('/source/admin/demo-package/info')
+    .get('/source/admin/demo-package/2')
     .reply(200, {
-      state: 'SUCCEEDED',
-      logs: ['log1', 'log2'],
-      source: {
-        meta: {
-          dataset: 'demo-package',
-          owner: 'admin'
-        }
-      }
+      state: 'INPROGRESS'
     })
-    .get('/source/core/house-prices-us/status')
+    .get('/source/admin/demo-package/latest')
     .reply(200, {
-      state: 'RUNNING'
+      state: 'INPROGRESS'
     })
-    .get('/source/core/gold-prices/status')
+    .get('/source/admin/demo-package/successful')
     .reply(200, {
-      state: 'FAILED'
+      id: 1,
+      state: 'SUCCEEDED'
     })
-    .get('/source/bad-user/bad-package/status')
-    .reply(404)
-    .get('/source/bad-user/bad-package/info')
+    .get('/source/admin/demo-package/3')
     .reply(404)
 
   nock(`${config.get('API_URL')}/auth`)

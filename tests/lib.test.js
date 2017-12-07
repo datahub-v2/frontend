@@ -144,11 +144,25 @@ test('Authenticates with GOOGLE using given jwt and returns user info', async t 
   t.is(res.profile.name, 'Firstname Secondname')
 })
 
-test('pipelineStatus hits status API and returns status object', async t => {
+test('specStoreStatus hits status API with revision-id', async t => {
   const ownerid = 'admin'
-  const name = 'running-package'
-  const res = await api.pipelineStatus(ownerid, name, 'status')
-  t.is(res.state, 'RUNNING')
+  const name = 'demo-package'
+  // Can get status for specific succeeded revision
+  let res = await api.specStoreStatus(ownerid, name, 1)
+  t.is(res.state, 'SUCCEEDED')
+  // Can get status for specific in progress revision
+  res = await api.specStoreStatus(ownerid, name, 2)
+  t.is(res.state, 'INPROGRESS')
+  // Can get status for the latest revision
+  res = await api.specStoreStatus(ownerid, name, 'latest')
+  t.is(res.state, 'INPROGRESS')
+  // Can get status for the latest successful revision
+  res = await api.specStoreStatus(ownerid, name, 'successful')
+  t.is(res.state, 'SUCCEEDED')
+  t.is(res.id, 1)
+  // If no such revision, returns 404
+  res = await t.throws(api.specStoreStatus(ownerid, name, 3))
+  t.is(res.status, 404)
 })
 
 test('getProfile method works', async t => {
