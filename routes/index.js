@@ -297,34 +297,37 @@ module.exports = function () {
   }
   // ===== /end blog
 
-  router.get('/:owner/:name', async (req, res) => {
+  router.get('/:owner/:name', async (req, res, next) => {
     let normalizedDp = null
     let token = req.cookies.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
-    try {
-      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, token)
-    } catch (err) {
-      if (err.name === 'BadStatusCode' && err.res.status !== 404) {
-        throw err
-      } else if (err.name === 'Forbidden') {
-        res.status(404).send('Sorry, this page was not found.')
-        return
-      }
-    }
-    let status = {state: ''}
-    // If pipelineStatus API does not respond within 5 sec,
-    // then render the page without status:
+    // If specStoreStatus API does not respond within 5 sec,
+    // then proceed to error handler and show 500:
     const timeoutObj = setTimeout(() => {
-      renderPage(status)
+      next('status api timed out')
+      return
     }, 5000)
 
+    // Get the latest successful revision, if does not exist show 404
+    let latestSuccessfulRevision
     try {
-      status = await api.pipelineStatus(userAndPkgId.userid, userAndPkgId.packageid, 'status')
+      latestSuccessfulRevision = await api.specStoreStatus(
+        userAndPkgId.userid,
+        userAndPkgId.packageid,
+        'successful'
+      )
       clearTimeout(timeoutObj)
-      renderPage(status)
     } catch (err) {
-      // Page should still load but console log error so we can debug
-      console.error('> pipelineStatus api failed.')
+      next(err)
+      return
+    }
+
+    try {
+      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, latestSuccessfulRevision.id, token)
+      renderPage(latestSuccessfulRevision)
+    } catch (err) {
+      next(err)
+      return
     }
 
     async function renderPage(status) {
@@ -388,29 +391,7 @@ module.exports = function () {
     }
   })
 
-  router.get('/:owner/:name/pipelines', async (req, res) => {
-    const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
-    try {
-      const status = await api.pipelineStatus(userAndPkgId.userid, userAndPkgId.packageid, 'info')
-      const resolvedStates = ['SUCCEEDED', 'FAILED']
-      if (resolvedStates.includes(status.state)) {
-        res.render('pipelines.html', {
-          status
-        })
-      } else {
-        res.status(404).send('Sorry, this page was not found.')
-      }
-    } catch (err) {
-      if (err.status === 404) { // Pkgstore 404 + pipeline status 404 => dataset does not exist
-        res.status(404).send('Sorry, this page was not found.')
-        return
-      } else {
-        throw err
-      }
-    }
-  })
-
-  router.get('/:owner/:name/datapackage.json', async (req, res) => {
+  router.get('/:owner/:name/datapackage.json', async (req, res, next) => {
     let normalizedDp = null
     let token = req.cookies.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
@@ -418,17 +399,25 @@ module.exports = function () {
       res.status(404).send('Sorry, this page was not found.')
       return
     }
+
+    // Get the latest successful revision, if does not exist show 404
+    let latestSuccessfulRevision
     try {
-      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, token)
+      latestSuccessfulRevision = await api.specStoreStatus(
+        userAndPkgId.userid,
+        userAndPkgId.packageid,
+        'successful'
+      )
     } catch (err) {
-      if (err.name === 'BadStatusCode' && err.res.status === 404) {
-        res.status(404).send('Sorry, we cannot locate that dataset for you.')
-        return
-      } else if (err.name === 'Forbidden') {
-        res.status(404).send('Sorry, this page was not found.')
-        return
-      }
-      throw err
+      next(err)
+      return
+    }
+
+    try {
+      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, latestSuccessfulRevision.id, token)
+    } catch (err) {
+      next(err)
+      return
     }
     let redirectUrl = `${normalizedDp.path}/datapackage.json`
     if (normalizedDp.datahub.findability === 'private') {
@@ -444,7 +433,7 @@ module.exports = function () {
     res.redirect(redirectUrl)
   })
 
-  router.get('/:owner/:name/r/:fileNameOrIndex', async (req, res) => {
+  router.get('/:owner/:name/r/:fileNameOrIndex', async (req, res, next) => {
     let normalizedDp = null
     let token = req.cookies.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
@@ -452,17 +441,23 @@ module.exports = function () {
       res.status(404).send('Sorry, this page was not found.')
       return
     }
+    // Get the latest successful revision, if does not exist show 404
+    let latestSuccessfulRevision
     try {
-      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, token)
+      latestSuccessfulRevision = await api.specStoreStatus(
+        userAndPkgId.userid,
+        userAndPkgId.packageid,
+        'successful'
+      )
     } catch (err) {
-      if (err.name === 'BadStatusCode' && err.res.status === 404) {
-        res.status(404).send('Sorry, we cannot locate that dataset for you.')
-        return
-      } else if (err.name === 'Forbidden') {
-        res.status(404).send('Sorry, this page was not found.')
-        return
-      }
-      throw err
+      next(err)
+      return
+    }
+    try {
+      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, latestSuccessfulRevision.id, token)
+    } catch (err) {
+      next(err)
+      return
     }
 
     const fileParts = path.parse(req.params.fileNameOrIndex)
@@ -516,7 +511,19 @@ module.exports = function () {
     // First check if dataset exists
     const token = req.cookies.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
-    const response = await api.getPackageFile(userAndPkgId.userid, req.params.name, undefined, token)
+    // Get the latest successful revision, if does not exist show 404
+    let latestSuccessfulRevision
+    try {
+      latestSuccessfulRevision = await api.specStoreStatus(
+        userAndPkgId.userid,
+        userAndPkgId.packageid,
+        'successful'
+      )
+    } catch (err) {
+      next(err)
+      return
+    }
+    const response = await api.getPackageFile(userAndPkgId.userid, req.params.name, undefined, latestSuccessfulRevision.id, token)
     if (response.status === 200) {
       const events = await api.getEvents(`owner="${req.params.owner}"&dataset="${req.params.name}"`, req.cookies.jwt)
       events.results = events.results.map(item => {

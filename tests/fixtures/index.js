@@ -72,6 +72,15 @@ module.exports.initMocks = function() {
     .get('/auth/authorize?service=frontend')
     .reply(200, {"token": "token"})
 
+  nock(config.get('API_URL'), {reqheaders: {'Auth-Token': 'another-token'}})
+    .persist()
+    .get('/auth/authorize?service=frontend')
+    .reply(200, {"token": "another"})
+  nock(config.get('API_URL'))
+    .persist()
+    .get('/rawstore/presign?jwt=another&ownerid=admin&url=http://127.0.0.1:4000/static/fixtures/admin/private-package/1/datapackage.json')
+    .reply(403)
+
   const extendedDp = require('./extended-dp/datapackage.json')
   nock(config.get('API_URL'))
     .persist()
@@ -206,6 +215,16 @@ module.exports.initMocks = function() {
     })
     .get('/source/admin/demo-package/3')
     .reply(404)
+    .get('/source/admin/timeout/successful')
+    .socketDelay(7000)
+    .reply(502)
+    .get('/source/admin/private-package/successful')
+    .reply(200, {
+      id: 1,
+      state: 'SUCCEEDED'
+    })
+    .get('/source/bad-user/bad-package/successful')
+    .reply(404)
 
   nock(`${config.get('API_URL')}/auth`)
     .persist()
@@ -273,5 +292,10 @@ module.exports.initMocks = function() {
     .reply(200, {
       userid: 'admin',
       packageid: 'private-package'
+    })
+    .get('/resolve?path=admin/timeout')
+    .reply(200, {
+      userid: 'admin',
+      packageid: 'timeout'
     })
 }
