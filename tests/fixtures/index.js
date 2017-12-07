@@ -225,6 +225,36 @@ module.exports.initMocks = function() {
     })
     .get('/source/bad-user/bad-package/successful')
     .reply(404)
+    .get('/source/core/co2-ppm/successful')
+    .reply(200, {
+      id: 1,
+      state: 'SUCCEEDED'
+    })
+    .get('/source/core/house-prices-us/successful')
+    .reply(200, {
+      id: 1,
+      state: 'SUCCEEDED'
+    })
+    .get('/source/core/gold-prices/successful')
+    .reply(200, {
+      id: 1,
+      state: 'SUCCEEDED'
+    })
+    .get('/source/examples/simple-graph-spec/successful')
+    .reply(200, {
+      id: 1,
+      state: 'SUCCEEDED'
+    })
+    .get('/source/examples/vega-views-tutorial-lines/successful')
+    .reply(200, {
+      id: 1,
+      state: 'SUCCEEDED'
+    })
+    .get('/source/examples/geojson-tutorial/successful')
+    .reply(200, {
+      id: 1,
+      state: 'SUCCEEDED'
+    })
 
   nock(`${config.get('API_URL')}/auth`)
     .persist()

@@ -22,8 +22,18 @@ module.exports = function () {
 
   router.get('/', async (req, res) => {
     // Get showcase and turorial packages for the front page
-    const listOfShowcasePkgId = config.get('showcasePackages')
-    const listOfTutorialPkgId = config.get('tutorialPackages')
+    let listOfShowcasePkgId = config.get('showcasePackages')
+    let listOfTutorialPkgId = config.get('tutorialPackages')
+    listOfShowcasePkgId = await Promise.all(listOfShowcasePkgId.map(async pkgId => {
+      const status = await api.specStoreStatus(pkgId.ownerid, pkgId.name, 'successful')
+      pkgId.revisionId = status.id
+      return pkgId
+    }))
+    listOfTutorialPkgId = await Promise.all(listOfTutorialPkgId.map(async pkgId => {
+      const status = await api.specStoreStatus(pkgId.ownerid, pkgId.name, 'successful')
+      pkgId.revisionId = status.id
+      return pkgId
+    }))
     const showcasePackages = await api.getPackages(listOfShowcasePkgId)
     const tutorialPackages = await api.getPackages(listOfTutorialPkgId)
     res.render('home.html', {

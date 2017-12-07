@@ -7,13 +7,13 @@ var app = require('../index').makeApp()
 
 mocks.initMocks()
 
-// test('Home page returns 200 and has correct content', async t => {
-//   const res = await request(app)
-//     .get('/')
-//     .expect(200)
-//   t.is(res.statusCode, 200)
-//   t.true(res.text.includes('DataHub'))
-// })
+test('Home page returns 200 and has correct content', async t => {
+  const res = await request(app)
+    .get('/')
+    .expect(200)
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('DataHub'))
+})
 
 test('Dashboard page renders when jwt in cookies setup', async t => {
   const res = await request(app)
