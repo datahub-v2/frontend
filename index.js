@@ -62,8 +62,16 @@ module.exports.makeApp = function () {
   ])
 
   app.use((err, req, res, next) => {
-    console.error(err)
-    res.status(500).send('Something failed. Please, try again later.')
+    if (err.status === 404) {
+      res.status(404).send('Sorry, this page was not found.')
+      return
+    } else if (err.name === 'Forbidden') {
+      res.status(404).send('Sorry, this page was not found.')
+      return
+    } else {
+      console.error(err)
+      res.status(500).send('Something failed. Please, try again later.')
+    }
   })
 
 	// eslint-disable-next-line no-unused-vars
