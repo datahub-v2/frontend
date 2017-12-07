@@ -8,7 +8,7 @@ mocks.initMocks()
 
 const api = new lib.DataHubApi(config)
 test('Gets datapackage.json (as extended)', async t => {
-  let res = await api.getPackageFile('admin', 'demo-package')
+  let res = await api.getPackageFile('admin', 'demo-package', 'datapackage.json', 1)
   let dpjson = await res.json()
   t.is(dpjson.name, 'demo-package')
   t.is(dpjson.datahub.findability, 'published')
@@ -17,7 +17,7 @@ test('Gets datapackage.json (as extended)', async t => {
 
 test('Gets datapackage.json signedUrl', async t => {
   let res = await api.getPackageFile(
-      'admin', 'private-package', 'datapackage.json', 'token')
+      'admin', 'private-package', 'datapackage.json', 1, 'token')
   let dpjson = await res.json()
   t.is(dpjson.name, 'demo-package')
   t.is(dpjson.datahub.findability, 'published')
@@ -61,23 +61,23 @@ test("Generates good dp from prepareForFrontend dp", async t => {
 })
 
 test('Gets README', async t => {
-  const res = await api.getPackageFile('admin', 'demo-package', 'README.md')
+  const res = await api.getPackageFile('admin', 'demo-package', 'README.md', 1)
   const readme = await res.text()
   t.is(readme.slice(0,27), 'This README and datapackage')
 })
 
 test('Gets whole package', async t => {
-  const dp = await api.getPackage('admin', 'demo-package')
+  const dp = await api.getPackage('admin', 'demo-package', 1)
   t.is(dp.title, 'DEMO - CBOE Volatility Index')
   t.is(dp.datahub.owner, 'admin')
-  t.is(dp.path, `${api.bitstoreUrl}${dp.datahub.ownerid}/${dp.name}/latest`)
+  t.is(dp.path, `${api.bitstoreUrl}${dp.datahub.ownerid}/${dp.name}/1`)
   t.is(dp.readme.slice(0,27), 'This README and datapackage')
   t.is(dp.readmeSnippet.length, 294)
   t.true(dp.readmeHtml.includes('<p>This README and datapackage'))
 })
 
 test('getPackage has normalized resources', async t => {
-  const dp = await api.getPackage('admin', 'demo-package')
+  const dp = await api.getPackage('admin', 'demo-package', 1)
   t.is(dp.resources.length, 1)
   t.is(dp.resources[0].name, 'demo-resource')
   t.is(dp.resources[0].datahub.derivedFrom[0], 'demo-resource')
@@ -89,8 +89,8 @@ test('getPackage has normalized resources', async t => {
 
 test('Gets list of packages', async t => {
   const listOfPkgIds = [
-    {ownerid: 'core', name: 'gold-prices'},
-    {ownerid: 'core', name: 'house-prices-us'}
+    {ownerid: 'core', name: 'gold-prices', revisionId: 1},
+    {ownerid: 'core', name: 'house-prices-us', revisionId: 1}
   ]
   const listOfDp = await api.getPackages(listOfPkgIds)
   t.is(listOfDp.length, 2)
@@ -100,7 +100,7 @@ test('Gets list of packages', async t => {
 })
 
 test('Handles errors if file cannot be retrieved', async t => {
-  let res = await api.getPackageFile('bad-user', 'bad-package')
+  let res = await api.getPackageFile('bad-user', 'bad-package', 'datapackage.json', 1)
   t.is(res.status, 404)
 })
 
