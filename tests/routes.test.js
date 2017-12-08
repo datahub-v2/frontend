@@ -92,11 +92,38 @@ test('Showcase page displays 404 if there is no successful revision found', asyn
   t.is(res.text, 'Sorry, this page was not found.')
 })
 
-test('500', async t => {
+test('Showcase page returns 500 if status api times out', async t => {
   const res = await request(app)
     .get('/admin/timeout')
   t.is(res.statusCode, 500)
   t.is(res.text, 'Something failed. Please, try again later.')
+})
+
+test('Showcase with FULL URL works', async t => {
+  const res = await request(app)
+    .get('/admin/demo-package/v/1')
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('DEMO - CBOE Volatility Index'))
+})
+
+test('Showcase with FULL URL but not existing revision returns 404', async t => {
+  const res = await request(app)
+    .get('/admin/demo-package/v/4')
+  t.is(res.statusCode, 404)
+})
+
+test('Showcase with FULL URL and INPROGRESS revision status uses original dp', async t => {
+  const res = await request(app)
+    .get('/admin/demo-package/v/2')
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('original-dp'))
+})
+
+test('Showcase with FULL URL and FAILED revision status uses original dp', async t => {
+  const res = await request(app)
+    .get('/admin/demo-package/v/3')
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('original-dp'))
 })
 // end of new tests
 

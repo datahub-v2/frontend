@@ -86,17 +86,11 @@
     poll(function() {
       return window.fetch('{{ statusApi }}');
     }, 1200000, 2000).then(function(status) {
-      if (status.state === 'FAILED') {
+      if (status.state === 'FAILED' || status.state === 'SUCCEEDED') {
         var target = document.getElementById('message');
-        target.innerHTML = 'Something went wrong. Redirecting to pipelines page...';
+        target.innerHTML = 'Finished! Reloading the page...';
         setTimeout(function() {
-          window.location = '{{ failUrl }}';
-        }, 1000);
-      } else if (status.state === 'SUCCEEDED') {
-        var target = document.getElementById('message');
-        target.innerHTML = 'Success! Reloading...';
-        setTimeout(function() {
-          window.location = '{{ successUrl }}';
+          window.location = '{{ nextUrl }}';
         }, 1000);
       }
     }).catch(function() {

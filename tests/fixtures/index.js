@@ -193,17 +193,38 @@ module.exports.initMocks = function() {
     })
 
   // status api
+  const specContents = {
+    inputs: [
+      {
+        parameters: {
+          descriptor: {name: 'original-dp'}
+        }
+      }
+    ],
+    meta: {findability: 'published'}
+  }
   nock(`${config.get('API_URL')}`)
     .persist()
     .get('/source/admin/demo-package/1')
     .reply(200, {
       id: 1,
-      state: 'SUCCEEDED'
+      state: 'SUCCEEDED',
+      spec_contents: specContents
     })
     .get('/source/admin/demo-package/2')
     .reply(200, {
-      state: 'INPROGRESS'
+      id: 2,
+      state: 'INPROGRESS',
+      spec_contents: specContents
     })
+    .get('/source/admin/demo-package/3')
+    .reply(200, {
+      id: 3,
+      state: 'FAILED',
+      spec_contents: specContents
+    })
+    .get('/source/admin/demo-package/4')
+    .reply(404)
     .get('/source/admin/demo-package/latest')
     .reply(200, {
       state: 'INPROGRESS'
@@ -211,17 +232,17 @@ module.exports.initMocks = function() {
     .get('/source/admin/demo-package/successful')
     .reply(200, {
       id: 1,
-      state: 'SUCCEEDED'
+      state: 'SUCCEEDED',
+      spec_contents: specContents
     })
-    .get('/source/admin/demo-package/3')
-    .reply(404)
     .get('/source/admin/timeout/successful')
     .socketDelay(7000)
     .reply(502)
     .get('/source/admin/private-package/successful')
     .reply(200, {
       id: 1,
-      state: 'SUCCEEDED'
+      state: 'SUCCEEDED',
+      spec_contents: {meta: {findability: 'private'}}
     })
     .get('/source/bad-user/bad-package/successful')
     .reply(404)

@@ -307,42 +307,54 @@ module.exports = function () {
   }
   // ===== /end blog
 
-  router.get('/:owner/:name', async (req, res, next) => {
-    let normalizedDp = null
-    let token = req.cookies.jwt
-    const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
-    // If specStoreStatus API does not respond within 5 sec,
-    // then proceed to error handler and show 500:
-    const timeoutObj = setTimeout(() => {
-      next('status api timed out')
-      return
-    }, 5000)
+  // Function for rendering showcase page:
+  function renderShowcase(revision) {
+    return async (req, res, next) => {
+      let token = req.cookies.jwt
+      // Hit the resolver to get userid and packageid:
+      const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
+      // If specStoreStatus API does not respond within 5 sec,
+      // then proceed to error handler and show 500:
+      const timeoutObj = setTimeout(() => {
+        next('status api timed out')
+        return
+      }, 5000)
 
-    // Get the latest successful revision, if does not exist show 404
-    let latestSuccessfulRevision
-    try {
-      latestSuccessfulRevision = await api.specStoreStatus(
-        userAndPkgId.userid,
-        userAndPkgId.packageid,
-        'successful'
-      )
-      clearTimeout(timeoutObj)
-    } catch (err) {
-      next(err)
-      return
-    }
+      // Get the latest successful revision, if does not exist show 404
+      let revisionStatus
+      try {
+        revisionStatus = await api.specStoreStatus(
+          userAndPkgId.userid,
+          userAndPkgId.packageid,
+          revision ? revision : req.params.revisionId
+        )
+        clearTimeout(timeoutObj)
+      } catch (err) {
+        next(err)
+        return
+      }
 
-    try {
-      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, latestSuccessfulRevision.id, token)
-      renderPage(latestSuccessfulRevision)
-    } catch (err) {
-      next(err)
-      return
-    }
+      // Get the "normalizedDp" depending on revision status:
+      let normalizedDp = null
+      if (revisionStatus.state === 'SUCCEEDED') { // Get it normally
+        try {
+          normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, revisionStatus.id, token)
+        } catch (err) {
+          next(err)
+          return
+        }
+      } else if (['FAILED', 'INPROGRESS', 'QUEUED'].includes(revisionStatus.state)) { // Use original dp
+        normalizedDp = revisionStatus.spec_contents.inputs[0].parameters.descriptor
+      } else {
+        next('unknown state of given revision')
+        return
+      }
 
-    async function renderPage(status) {
-      if (normalizedDp) { // In pkgstore
-        if (normalizedDp.datahub.findability === 'private') {
+      renderPage(revisionStatus)
+
+      async function renderPage(status) {
+        // Check if it's a private dataset and sign urls if so:
+        if (status.spec_contents.meta.findability === 'private') {
           const authzToken = await api.authz(token)
           await Promise.all(normalizedDp.resources.map(async resource => {
             let response = await fetch(resource.path)
@@ -373,6 +385,7 @@ module.exports = function () {
           }))
         }
 
+        // Now render the page:
         res.render('showcase.html', {
           title: req.params.owner + ' | ' + req.params.name,
           dataset: normalizedDp,
@@ -380,26 +393,15 @@ module.exports = function () {
           // eslint-disable-next-line no-useless-escape, quotes
           dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'"),
           status: status.state,
-          successUrl: `/${req.params.owner}/${req.params.name}`,
-          failUrl: `/${req.params.owner}/${req.params.name}/pipelines`,
-          statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/status`
+          nextUrl: `/${req.params.owner}/${req.params.name}/v/${status.id}`,
+          statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/${status.id}`
         })
-      } else { // Not in pkgstore
-        if (status && status.state) {
-          res.render('uploading.html', {
-            successUrl: `/${req.params.owner}/${req.params.name}`,
-            failUrl: `/${req.params.owner}/${req.params.name}/pipelines`,
-            statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/status`,
-            name: req.params.name,
-            owner: req.params.owner
-          })
-        } else { // Nor in pipelines
-          res.status(404).send('Sorry, this dataset was not found.')
-          return
-        }
       }
     }
-  })
+  }
+
+  router.get('/:owner/:name', renderShowcase('successful'))
+  router.get('/:owner/:name/v/:revisionId', renderShowcase())
 
   router.get('/:owner/:name/datapackage.json', async (req, res, next) => {
     let normalizedDp = null

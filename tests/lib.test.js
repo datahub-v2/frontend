@@ -161,7 +161,7 @@ test('specStoreStatus hits status API with revision-id', async t => {
   t.is(res.state, 'SUCCEEDED')
   t.is(res.id, 1)
   // If no such revision, returns 404
-  res = await t.throws(api.specStoreStatus(ownerid, name, 3))
+  res = await t.throws(api.specStoreStatus(ownerid, name, 4))
   t.is(res.status, 404)
 })
 
