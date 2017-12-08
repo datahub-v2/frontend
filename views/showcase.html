@@ -13,7 +13,7 @@
 <div class="container">
   <div class="inner_container">
     {% if status === 'FAILED' %}
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-danger status" role="alert">
       <h3 class="error-log-heading">Processing this revision has failed. See below for details:</h3>
       {% for pipeline in failedPipelines %}
         <p class="error-log-title" data-toggle="collapse" data-target="#pipeline-{{loop.index}}">{{pipeline.title}}</p>
@@ -28,7 +28,7 @@
     </div>
     {% elif status === 'SUCCEEDED' %}
     {% elif status %}
-    <div class="alert alert-info" role="alert">
+    <div class="alert alert-info status" role="alert">
       {{ snippets.uploading(statusApi, nextUrl) }}
     </div>
     {% endif %}

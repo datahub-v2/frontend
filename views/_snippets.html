@@ -46,13 +46,13 @@
 {%- endmacro %}
 
 {% macro uploading(statusApi, failUrl, successUrl) -%}
-  <p id="message" class="text-center">
+  <p class="progressing-heading" id="message">
     Your data is safely stored and is getting processed - it will be here soon!
   </p>
+  <p class="progressing-title" id="inprogress">
+
+  </p>
   <br>
-  <div class="text-center">
-    <i class="fa fa-spinner fa-pulse fa-2x fa-fw" aria-hidden="true" id="spinner"></i>
-  </div>
 
   <script type="text/javascript">
     var resolvedStates = ['SUCCEEDED', 'FAILED']
@@ -60,11 +60,26 @@
     function poll(fn, timeout, interval) {
       var endTime = Number(new Date()) + (timeout || 2000);
       interval = interval || 100;
-
       var checkCondition = function(resolve, reject) {
           // If the condition is met, we're done!
           fn().then(function(res) {
             res.json().then(function(out) {
+              // If still in progress then show which pipeline is running:
+              var inprogress = document.getElementById('inprogress');
+              inprogress.innerHTML = '';
+              for (let key in out.pipelines) {
+                if (out.pipelines[key].status === 'INPROGRESS' || out.pipelines[key].status === 'QUEUED') { // Running - have a spinner
+                  inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true" id="spinner"></i> ' + out.pipelines[key].title + '</div>';
+                } else if (out.pipelines[key].status === 'FAILED') { // Failed - have a cross
+                  inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-times" aria-hidden="true"></i> ' + out.pipelines[key].title + '</div>';
+                } else if (out.pipelines[key].status === 'SUCCEEDED') { // Success - have a tick
+                  inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-check" aria-hidden="true"></i> ' + out.pipelines[key].title + '</div>';
+                } else { // Unknown state just leave at gray
+                  inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-question" aria-hidden="true"></i> ' + out.pipelines[key].title + '</div>';
+                }
+              }
+
+              // Check if resolved:
               if (resolvedStates.includes(out.state)) {
                 resolve(out);
               }
