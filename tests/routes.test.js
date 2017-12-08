@@ -39,15 +39,15 @@ test('When redirected to /success it gets user info and writes into cookies then
   t.true(res.text.includes('Redirecting to /dashboard'))
 })
 
-// test('Logged in if credentials are passed with params', async t => {
-//   let res = await request(app)
-//     .get('/')
-//   t.is(res.statusCode, 200)
-//   t.true(res.text.includes('Login'))
-//   res = await request(app)
-//     .get('/?jwt=1a2b3c')
-//   t.true(res.text.includes('Logout'))
-// })
+test('Logged in if credentials are passed with params', async t => {
+  let res = await request(app)
+    .get('/')
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('Login'))
+  res = await request(app)
+    .get('/?jwt=1a2b3c')
+  t.true(res.text.includes('Logout'))
+})
 
 test('When user logs out, it clears jwt from cookie and redirects to /', async t => {
   const res = await request(app)
