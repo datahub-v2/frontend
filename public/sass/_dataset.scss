@@ -7,6 +7,39 @@
     padding: 8px 25px;
 
   }
+
+  .error-log-heading {
+    font-size: 14px;
+    margin-top: 12px;
+  }
+  .error-log-title {
+    color: $black;
+    font-weight: 500;
+    margin-top: 8px;
+    &:before {
+      content: "\f105";
+      display: inline-block;
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: 400;
+      margin-right: 5px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      float: left;
+      transition: transform .25s linear;
+      -webkit-transition: -webkit-transform .25s linear;
+    }
+    &[aria-expanded="true"]:before {
+      content: "\f105";
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
+  }
+  .error-log {
+    color: $black;
+    margin: 0;
+    margin-left: 11px;
+  }
 }
 h1 {
   span {

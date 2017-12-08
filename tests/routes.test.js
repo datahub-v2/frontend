@@ -119,11 +119,14 @@ test('Showcase with FULL URL and INPROGRESS revision status uses original dp', a
   t.true(res.text.includes('original-dp'))
 })
 
-test('Showcase with FULL URL and FAILED revision status uses original dp', async t => {
+test('Showcase with FULL URL and FAILED revision status uses original dp + shows failed pipelines with error logs', async t => {
   const res = await request(app)
     .get('/admin/demo-package/v/3')
   t.is(res.statusCode, 200)
   t.true(res.text.includes('original-dp'))
+  t.true(res.text.includes('pipeline 1')) // Includes failed pipeline title
+  t.true(res.text.includes('error 1')) // Includes error logs
+  t.true(res.text.includes('error 2'))
 })
 // end of new tests
 

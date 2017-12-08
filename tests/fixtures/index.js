@@ -221,7 +221,14 @@ module.exports.initMocks = function() {
     .reply(200, {
       id: 3,
       state: 'FAILED',
-      spec_contents: specContents
+      spec_contents: specContents,
+      pipelines: {
+        key1: {
+          title: 'pipeline 1',
+          status: 'FAILED',
+          error_log: ['error 1', 'error 2']
+        }
+      }
     })
     .get('/source/admin/demo-package/4')
     .reply(404)

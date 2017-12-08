@@ -6697,6 +6697,33 @@ div.logout {
       margin-bottom: 3em; } }
   .showcase a.btn {
     padding: 8px 25px; }
+  .showcase .error-log-heading {
+    font-size: 14px;
+    margin-top: 12px; }
+  .showcase .error-log-title {
+    color: #000;
+    font-weight: 500;
+    margin-top: 8px; }
+    .showcase .error-log-title:before {
+      content: "\f105";
+      display: inline-block;
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: 400;
+      margin-right: 5px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      float: left;
+      transition: transform .25s linear;
+      -webkit-transition: -webkit-transform .25s linear; }
+    .showcase .error-log-title[aria-expanded="true"]:before {
+      content: "\f105";
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg); }
+  .showcase .error-log {
+    color: #000;
+    margin: 0;
+    margin-left: 11px; }
 
 h1 span {
   vertical-align: middle !important;

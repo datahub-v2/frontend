@@ -13,8 +13,18 @@
 <div class="container">
   <div class="inner_container">
     {% if status === 'FAILED' %}
-    <div class="alert alert-danger text-center" role="alert">
-      We've failed to build your latest changes. Please, see <a href="/{{ owner }}/{{ dataset.name }}/pipelines">details here.</a>
+    <div class="alert alert-danger" role="alert">
+      <h3 class="error-log-heading">Processing this revision has failed. See below for details:</h3>
+      {% for pipeline in failedPipelines %}
+        <p class="error-log-title" data-toggle="collapse" data-target="#pipeline-{{loop.index}}">{{pipeline.title}}</p>
+        <div id="pipeline-{{loop.index}}" class="collapse">
+          {% for error in pipeline.error_log %}
+            <p class="error-log">
+              {{error}}
+            </p>
+          {% endfor %}
+        </div>
+      {% endfor %}
     </div>
     {% elif status === 'SUCCEEDED' %}
     {% elif status %}

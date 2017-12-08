@@ -336,6 +336,7 @@ module.exports = function () {
 
       // Get the "normalizedDp" depending on revision status:
       let normalizedDp = null
+      let failedPipelines = []
       if (revisionStatus.state === 'SUCCEEDED') { // Get it normally
         try {
           normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, revisionStatus.id, token)
@@ -343,7 +344,14 @@ module.exports = function () {
           next(err)
           return
         }
-      } else if (['FAILED', 'INPROGRESS', 'QUEUED'].includes(revisionStatus.state)) { // Use original dp
+      } else if (revisionStatus.state === 'FAILED') { // Use original dp and collect failed pipelines
+        normalizedDp = revisionStatus.spec_contents.inputs[0].parameters.descriptor
+        for (let key in revisionStatus.pipelines) {
+          if (revisionStatus.pipelines[key].status === 'FAILED') {
+            failedPipelines.push(revisionStatus.pipelines[key])
+          }
+        }
+      } else if (['INPROGRESS', 'QUEUED'].includes(revisionStatus.state)) { // Use original dp
         normalizedDp = revisionStatus.spec_contents.inputs[0].parameters.descriptor
       } else {
         next('unknown state of given revision')
@@ -394,7 +402,8 @@ module.exports = function () {
           dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'"),
           status: status.state,
           nextUrl: `/${req.params.owner}/${req.params.name}/v/${status.id}`,
-          statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/${status.id}`
+          statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/${status.id}`,
+          failedPipelines
         })
       }
     }
