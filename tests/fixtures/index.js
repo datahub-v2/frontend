@@ -207,19 +207,19 @@ module.exports.initMocks = function() {
     .persist()
     .get('/source/admin/demo-package/1')
     .reply(200, {
-      id: 1,
+      id: 'admin/demo-package/1',
       state: 'SUCCEEDED',
       spec_contents: specContents
     })
     .get('/source/admin/demo-package/2')
     .reply(200, {
-      id: 2,
+      id: 'admin/demo-package/2',
       state: 'INPROGRESS',
       spec_contents: specContents
     })
     .get('/source/admin/demo-package/3')
     .reply(200, {
-      id: 3,
+      id: 'admin/demo-package/3',
       state: 'FAILED',
       spec_contents: specContents,
       pipelines: {
@@ -238,7 +238,7 @@ module.exports.initMocks = function() {
     })
     .get('/source/admin/demo-package/successful')
     .reply(200, {
-      id: 1,
+      id: 'admin/demo-package/1',
       state: 'SUCCEEDED',
       spec_contents: specContents
     })
@@ -247,7 +247,7 @@ module.exports.initMocks = function() {
     .reply(502)
     .get('/source/admin/private-package/successful')
     .reply(200, {
-      id: 1,
+      id: 'admin/private-package/1',
       state: 'SUCCEEDED',
       spec_contents: {meta: {findability: 'private'}}
     })
@@ -255,32 +255,32 @@ module.exports.initMocks = function() {
     .reply(404)
     .get('/source/core/co2-ppm/successful')
     .reply(200, {
-      id: 1,
+      id: 'core/co2-ppm/1',
       state: 'SUCCEEDED'
     })
     .get('/source/core/house-prices-us/successful')
     .reply(200, {
-      id: 1,
+      id: 'core/house-prices-us/1',
       state: 'SUCCEEDED'
     })
     .get('/source/core/gold-prices/successful')
     .reply(200, {
-      id: 1,
+      id: 'core/gold-prices/1',
       state: 'SUCCEEDED'
     })
     .get('/source/examples/simple-graph-spec/successful')
     .reply(200, {
-      id: 1,
+      id: 'examples/simple-graph-spec/1',
       state: 'SUCCEEDED'
     })
     .get('/source/examples/vega-views-tutorial-lines/successful')
     .reply(200, {
-      id: 1,
+      id: 'examples/vega-views-tutorial-lines/1',
       state: 'SUCCEEDED'
     })
     .get('/source/examples/geojson-tutorial/successful')
     .reply(200, {
-      id: 1,
+      id: 'examples/geojson-tutorial/1',
       state: 'SUCCEEDED'
     })
 

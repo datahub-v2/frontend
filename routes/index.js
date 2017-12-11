@@ -26,12 +26,12 @@ module.exports = function () {
     let listOfTutorialPkgId = config.get('tutorialPackages')
     listOfShowcasePkgId = await Promise.all(listOfShowcasePkgId.map(async pkgId => {
       const status = await api.specStoreStatus(pkgId.ownerid, pkgId.name, 'successful')
-      pkgId.revisionId = status.id
+      pkgId.revisionId = status.id.split('/')[2] // Id is in `userid/dataset/id` form so we need the latest part
       return pkgId
     }))
     listOfTutorialPkgId = await Promise.all(listOfTutorialPkgId.map(async pkgId => {
       const status = await api.specStoreStatus(pkgId.ownerid, pkgId.name, 'successful')
-      pkgId.revisionId = status.id
+      pkgId.revisionId = status.id.split('/')[2] // Id is in `userid/dataset/id` form so we need the latest part
       return pkgId
     }))
     const showcasePackages = await api.getPackages(listOfShowcasePkgId)
@@ -337,9 +337,12 @@ module.exports = function () {
       // Get the "normalizedDp" depending on revision status:
       let normalizedDp = null
       let failedPipelines = []
+      // Id is in `userid/dataset/id` form so we need the latest part:
+      const revisionId = revisionStatus.id.split('/')[2]
+
       if (revisionStatus.state === 'SUCCEEDED') { // Get it normally
         try {
-          normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, revisionStatus.id, token)
+          normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, revisionId, token)
         } catch (err) {
           next(err)
           return
@@ -401,8 +404,8 @@ module.exports = function () {
           // eslint-disable-next-line no-useless-escape, quotes
           dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'"),
           status: status.state,
-          nextUrl: `/${req.params.owner}/${req.params.name}/v/${status.id}`,
-          statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/${status.id}`,
+          nextUrl: `/${req.params.owner}/${req.params.name}/v/${revisionId}`,
+          statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/${revisionId}`,
           failedPipelines
         })
       }
@@ -435,7 +438,8 @@ module.exports = function () {
     }
 
     try {
-      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, latestSuccessfulRevision.id, token)
+      const revisionId = latestSuccessfulRevision.id.split('/')[2]
+      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, revisionId, token)
     } catch (err) {
       next(err)
       return
@@ -475,7 +479,8 @@ module.exports = function () {
       return
     }
     try {
-      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, latestSuccessfulRevision.id, token)
+      const revisionId = latestSuccessfulRevision.id.split('/')[2]
+      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, revisionId, token)
     } catch (err) {
       next(err)
       return
@@ -544,7 +549,8 @@ module.exports = function () {
       next(err)
       return
     }
-    const response = await api.getPackageFile(userAndPkgId.userid, req.params.name, undefined, latestSuccessfulRevision.id, token)
+    const revisionId = latestSuccessfulRevision.id.split('/')[2]
+    const response = await api.getPackageFile(userAndPkgId.userid, req.params.name, undefined, revisionId, token)
     if (response.status === 200) {
       const events = await api.getEvents(`owner="${req.params.owner}"&dataset="${req.params.name}"`, req.cookies.jwt)
       events.results = events.results.map(item => {
