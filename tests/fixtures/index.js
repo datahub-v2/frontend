@@ -356,4 +356,21 @@ module.exports.initMocks = function() {
       userid: 'admin',
       packageid: 'timeout'
     })
+
+  // Mock for returning reports:
+  nock(config.get('API_URL'))
+    .persist()
+    .get('/datapackage_report.json')
+    .reply(200, [
+      {
+        resource: 'demo-resource',
+        valid: true,
+        time: 0.017,
+        'error-count': 0,
+        'table-count': 0,
+        tables: [],
+        warnings: [],
+        preset: 'datapackage'
+      }
+    ])
 }

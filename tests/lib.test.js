@@ -37,11 +37,18 @@ test("Generates logical dp from extended dp", async t => {
 
   const extendedNonTabular = require('./fixtures/extended-dp-non-tabular/datapackage.json')
   const logicalNonTabular = lib.DataHubApi.extendedToLogical(extendedNonTabular)
-  // It doesn't change anything
+  // It doesn't change anything except adding "report" root property:
+  delete logicalNonTabular.report
   t.deepEqual(extendedNonTabular, logicalNonTabular)
 })
 
-test("Generates good dp from prepareForFrontend dp", async t => {
+test('Includes report resource in the first level "report" property', async t => {
+  const extended = require('./fixtures/demo-package/datapackage.json')
+  const logical = lib.DataHubApi.extendedToLogical(extended)
+  t.is(logical.report.datahub.type, 'derived/report')
+})
+
+test('Generates good dp from prepareForFrontend dp', async t => {
   const dp = {resources:
     [
       {
@@ -55,9 +62,18 @@ test("Generates good dp from prepareForFrontend dp", async t => {
       }
     ]
   }
-  const goodDp = lib.DataHubApi.makeGoodDp(dp)
+  const goodDp = await lib.DataHubApi.makeGoodDp(dp)
   t.is(goodDp.downloads[0].name, 'test')
   t.is(goodDp.downloads[0].otherFormats[0].name, 'alt')
+})
+
+test('Includes reports for each resource', async t => {
+  const extended = require('./fixtures/demo-package/datapackage.json')
+  const logical = lib.DataHubApi.extendedToLogical(extended)
+  const good = await lib.DataHubApi.makeGoodDp(logical)
+  const parsedReport = JSON.parse(good.resources[0].report.replace(/\\"/g, '"'))
+  t.is(parsedReport.resource, 'demo-resource')
+  t.is(parsedReport.valid, true)
 })
 
 test('Gets README', async t => {

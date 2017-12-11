@@ -25,7 +25,7 @@
       "encoding": "utf-8",
       "format": "json",
       "name": "datapackage_report",
-      "path": "https://pkgstore-testing.datahub.io/core/finance-vix/datapackage_report/data/20ec136e91fc7f2bc569754fda9ce91d/datapackage_report.json",
+      "path": "http://0.0.0.0:4000/datapackage_report.json",
       "profile": "data-resource"
     },
     {
