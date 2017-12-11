@@ -12,7 +12,7 @@ test('Gets datapackage.json (as extended)', async t => {
   let dpjson = await res.json()
   t.is(dpjson.name, 'demo-package')
   t.is(dpjson.datahub.findability, 'published')
-  t.is(dpjson.resources.length, 4)
+  t.is(dpjson.resources.length, 6)
 })
 
 test('Gets datapackage.json signedUrl', async t => {
@@ -21,7 +21,7 @@ test('Gets datapackage.json signedUrl', async t => {
   let dpjson = await res.json()
   t.is(dpjson.name, 'demo-package')
   t.is(dpjson.datahub.findability, 'published')
-  t.is(dpjson.resources.length, 4)
+  t.is(dpjson.resources.length, 6)
 })
 
 test("Generates logical dp from extended dp", async t => {
@@ -78,13 +78,19 @@ test('Gets whole package', async t => {
 
 test('getPackage has normalized resources', async t => {
   const dp = await api.getPackage('admin', 'demo-package', 1)
-  t.is(dp.resources.length, 1)
+  t.is(dp.resources.length, 2)
   t.is(dp.resources[0].name, 'demo-resource')
   t.is(dp.resources[0].datahub.derivedFrom[0], 'demo-resource')
-  t.is(dp.resources[0].alternates.length, 2)
+  t.is(dp.resources[0].alternates.length, 3)
+  // Check each alternates, should be: source, preview and json
+  t.is(dp.resources[0].alternates[0].datahub.type, 'source/tabular')
+  t.is(dp.resources[0].alternates[1].datahub.type, 'derived/preview')
+  t.is(dp.resources[0].alternates[2].datahub.type, 'derived/json')
+  // What is the second resource:
+  t.is(dp.resources[1].name, 'datapackage_zip')
   // Test for prepareForFrontend applied
   t.is(dp.datahub.stats.prettyBytes, '86kB')
-  t.is(dp.resources[0].prettyBytes, '23kB')
+  t.is(dp.resources[0].prettyBytes, '122kB')
 })
 
 test('Gets list of packages', async t => {

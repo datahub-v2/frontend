@@ -16,7 +16,20 @@
   "readme": "This README and datapackage is borrowed from http://data.okfn.org/data/core/finance-vix\nCBOE Volatility Index (VIX) time-series dataset including daily open, close,\nhigh and low. The CBOE Volatility Index (VIX) is a key measure of market\nexpectations of near-term volatility conveyed by S&P 500 stock index option\nprices introduced in 1993.\n\n## Data\n\nFrom the [VIX FAQ][faq]:\n\n> In 1993, the Chicago Board Options ExchangeÂ® (CBOEÂ®) introduced the CBOE\n> Volatility IndexÂ®, VIXÂ®, and it quickly became the benchmark for stock market\n> volatility. It is widely followed and has been cited in hundreds of news\n> articles in the Wall Street Journal, Barron's and other leading financial\n> publications. Since volatility often signifies financial turmoil, VIX is\n> often referred to as the \"investor fear gauge\".\n>\n> VIX measures market expectation of near term volatility conveyed by stock\n> index option prices. The original VIX was constructed using the implied\n> volatilities of eight different OEX option series so that, at any given time,\n> it represented the implied volatility of a hypothetical at-the-money OEX\n> option with exactly 30 days to expiration.\n> \n> The New VIX still measures the market's expectation of 30-day volatility, but\n> in a way that conforms to the latest thinking and research among industry\n> practitioners. The New VIX is based on S&P 500 index option prices and\n> incorporates information from the volatility \"skew\" by using a wider range of\n> strike prices rather than just at-the-money series. \n\n[faq]: http://www.cboe.com/micro/vix/faq.aspx\n\n## Preparation\n\nRun the shell script:\n\n    . scripts/process.sh\n\nOutput data is in `data/`.\n\n### TODO\n\n* Incorporate computed historical data (1990-2003)\n* Consider incorporating VOX data\n\n## License\n\nNo obvious statement on [historical data page][historical]. Given size and\nfactual nature of the data and its source from a US company would imagine this\nwas public domain and as such have licensed the Data Package under the Public\nDomain Dedication and License (PDDL).\n\n[historical]: http://www.cboe.com/micro/vix/historical.aspx\n",
   "resources": [
     {
-      "bytes": 23478,
+      "bytes": 230,
+      "datahub": {
+        "type": "derived/report"
+      },
+      "description": "Validation report for tabular data",
+      "dpp:streamedFrom": "datapackage_report.json",
+      "encoding": "utf-8",
+      "format": "json",
+      "name": "datapackage_report",
+      "path": "https://pkgstore-testing.datahub.io/core/finance-vix/datapackage_report/data/20ec136e91fc7f2bc569754fda9ce91d/datapackage_report.json",
+      "profile": "data-resource"
+    },
+    {
+      "bytes": 124884,
       "datahub": {
         "derivedFrom": [
           "demo-resource"
@@ -30,190 +43,239 @@
         "quoteChar": "\"",
         "skipInitialSpace": false
       },
+      "dpp:streamedFrom": "http://www.cboe.com/publish/ScheduledTask/MktData/datahouse/vixcurrent.csv",
       "encoding": "utf-8",
       "format": "csv",
-      "hash": "b0503f17cecc447d595aa9a7f0f4455b",
+      "hash": "11e6ae1c776100998d85ce356ca006a5",
+      "headers": [
+        "Date",
+        "VIXOpen",
+        "VIXHigh",
+        "VIXLow",
+        "VIXClose"
+      ],
       "mediatype": "text/csv",
-      "name": "demo-resource_csv",
-      "path": "http://localhost:4000/admin/demo-package:demo-resource_csv/data/demo-resource_csv.csv",
-      "rowcount": 651,
+      "name": "vix-daily_csv",
+      "path": "https://pkgstore-testing.datahub.io/core/finance-vix/vix-daily_csv/data/11e6ae1c776100998d85ce356ca006a5/vix-daily_csv.csv",
+      "profile": "data-resource",
+      "rowcount": 3505,
       "schema": {
         "fields": [
           {
-            "description": "",
-            "format": "fmt:%Y-%m-%d",
+            "format": "%Y-%m-%d",
             "name": "Date",
             "type": "date"
           },
           {
             "decimalChar": ".",
-            "description": "",
             "groupChar": "",
-            "name": "DEMOOpen",
+            "name": "VIXOpen",
             "type": "number"
           },
           {
             "decimalChar": ".",
-            "description": "",
             "groupChar": "",
-            "name": "DEMOHigh",
+            "name": "VIXHigh",
             "type": "number"
           },
           {
             "decimalChar": ".",
-            "description": "",
             "groupChar": "",
-            "name": "DEMOLow",
+            "name": "VIXLow",
             "type": "number"
           },
           {
             "decimalChar": ".",
-            "description": "",
             "groupChar": "",
-            "name": "DEMOClose",
+            "name": "VIXClose",
             "type": "number"
           }
         ],
         "primaryKey": "Date"
-      }
+      },
+      "skip_rows": 2
     },
     {
-      "bytes": 64200,
+      "bytes": 314098,
+      "datahub": {
+        "derivedFrom": [
+          "demo-resource"
+        ],
+        "type": "derived/preview"
+      },
+      "dialect": {
+        "delimiter": ",",
+        "doubleQuote": true,
+        "lineTerminator": "\r\n",
+        "quoteChar": "\"",
+        "skipInitialSpace": false
+      },
+      "dpp:streamedFrom": "https://s3.amazonaws.com/pkgstore-testing.datahub.io/core/finance-vix/vix-daily_csv/data/11e6ae1c776100998d85ce356ca006a5/vix-daily_csv.csv?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJ4V6GYXGP4YZSWZQ%2F20171204%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20171204T140234Z&X-Amz-Expires=21600&X-Amz-SignedHeaders=host&X-Amz-Signature=424eb3ff48be1699e0ecab5bb755b30ef0e240ddffbb108133649878badabd61",
+      "encoding": "utf-8",
+      "forView": [
+        "datahub-preview-vix-daily_csv_preview"
+      ],
+      "format": "json",
+      "hash": "93ec001dba9e7c42db532f048a933802",
+      "headers": [
+        "Date",
+        "VIXOpen",
+        "VIXHigh",
+        "VIXLow",
+        "VIXClose"
+      ],
+      "mediatype": "text/csv",
+      "name": "vix-daily_csv_preview",
+      "path": "https://pkgstore-testing.datahub.io/core/finance-vix/vix-daily_csv_preview/data/93ec001dba9e7c42db532f048a933802/vix-daily_csv_preview.json",
+      "profile": "data-resource",
+      "rowcount": 5505,
+      "schema": {
+        "fields": [
+          {
+            "format": "%Y-%m-%d",
+            "name": "Date",
+            "type": "date"
+          },
+          {
+            "decimalChar": ".",
+            "groupChar": "",
+            "name": "VIXOpen",
+            "type": "number"
+          },
+          {
+            "decimalChar": ".",
+            "groupChar": "",
+            "name": "VIXHigh",
+            "type": "number"
+          },
+          {
+            "decimalChar": ".",
+            "groupChar": "",
+            "name": "VIXLow",
+            "type": "number"
+          },
+          {
+            "decimalChar": ".",
+            "groupChar": "",
+            "name": "VIXClose",
+            "type": "number"
+          }
+        ],
+        "primaryKey": "Date"
+      },
+      "skip_rows": 2
+    },
+    {
+      "bytes": 331413,
       "datahub": {
         "derivedFrom": [
           "demo-resource"
         ],
         "type": "derived/json"
       },
+      "dpp:streamedFrom": "http://www.cboe.com/publish/ScheduledTask/MktData/datahouse/vixcurrent.csv",
       "encoding": "utf-8",
       "format": "json",
-      "hash": "e68e179acaa858b500a02ab80512efcd",
+      "hash": "1c4751e3126152bf1594e8f106b16ba5",
+      "headers": [
+        "Date",
+        "VIXOpen",
+        "VIXHigh",
+        "VIXLow",
+        "VIXClose"
+      ],
       "mediatype": "text/csv",
-      "name": "demo-resource_json",
-      "path": "http://localhost:4000/admin/demo-package:demo-resource_json/data/demo-resource_json.json",
-      "rowcount": 651,
+      "name": "vix-daily_json",
+      "path": "https://pkgstore-testing.datahub.io/core/finance-vix/vix-daily_json/data/1c4751e3126152bf1594e8f106b16ba5/vix-daily_json.json",
+      "profile": "data-resource",
+      "rowcount": 3505,
       "schema": {
         "fields": [
           {
-            "description": "",
-            "format": "fmt:%Y-%m-%d",
+            "format": "%Y-%m-%d",
             "name": "Date",
             "type": "date"
           },
           {
-            "description": "",
-            "name": "DEMOOpen",
+            "name": "VIXOpen",
             "type": "number"
           },
           {
-            "description": "",
-            "name": "DEMOHigh",
+            "name": "VIXHigh",
             "type": "number"
           },
           {
-            "description": "",
-            "name": "DEMOLow",
+            "name": "VIXLow",
             "type": "number"
           },
           {
-            "description": "",
-            "name": "DEMOClose",
+            "name": "VIXClose",
             "type": "number"
           }
         ],
         "primaryKey": "Date"
-      }
+      },
+      "skip_rows": 2
     },
     {
+      "bytes": 156741,
+      "datahub": {
+        "type": "derived/zip"
+      },
+      "description": "Compressed versions of dataset. Includes normalized CSV and JSON data with original data and datapackage.json.",
+      "dpp:streamedFrom": "/tmp/core.finance-vix.28.zip",
+      "encoding": "utf-8",
+      "format": "zip",
+      "name": "datapackage_zip",
+      "path": "https://pkgstore-testing.datahub.io/core/finance-vix/datapackage_zip/data/6f918bd7cd25aed8b5bb9e55fffed4ee/datapackage_zip.zip",
+      "profile": "data-resource"
+    },
+    {
+      "bytes": 126749,
       "datahub": {
         "type": "source/tabular"
       },
+      "dpp:streamedFrom": "http://www.cboe.com/publish/ScheduledTask/MktData/datahouse/vixcurrent.csv",
+      "encoding": "utf-8",
       "format": "csv",
+      "headers": [
+        "Date",
+        "VIXOpen",
+        "VIXHigh",
+        "VIXLow",
+        "VIXClose"
+      ],
       "mediatype": "text/csv",
       "name": "demo-resource",
+      "path": "https://pkgstore-testing.datahub.io/core/finance-vix/demo-resource/data/ece3f90c23415eb7e3dccc10ac318309/demo-resource.csv",
+      "profile": "data-resource",
       "schema": {
         "fields": [
           {
-            "description": "",
+            "format": "any",
             "name": "Date",
             "type": "date"
           },
           {
-            "description": "",
-            "name": "DEMOOpen",
+            "name": "VIXOpen",
             "type": "number"
           },
           {
-            "description": "",
-            "name": "DEMOHigh",
+            "name": "VIXHigh",
             "type": "number"
           },
           {
-            "description": "",
-            "name": "DEMOLow",
+            "name": "VIXLow",
             "type": "number"
           },
           {
-            "description": "",
-            "name": "DEMOClose",
+            "name": "VIXClose",
             "type": "number"
           }
         ],
         "primaryKey": "Date"
       },
-      "url": "https://s3.amazonaws.com/rawstore-testing.datahub.io/b0503f17cecc447d595aa9a7f0f4455b"
-    },
-    {
-      "name": "__datasets",
-      "path": "nonexistent",
-      "schema": {
-        "fields": [
-          {
-            "name": "id",
-            "type": "string"
-          },
-          {
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "name": "title",
-            "type": "string"
-          },
-          {
-            "name": "description",
-            "type": "string"
-          },
-          {
-            "es:index": false,
-            "name": "datapackage",
-            "type": "object"
-          },
-          {
-            "es:schema": {
-              "fields": [
-                {
-                  "name": "owner",
-                  "type": "string"
-                },
-                {
-                  "name": "ownerid",
-                  "type": "string"
-                },
-                {
-                  "name": "findability",
-                  "type": "string"
-                }
-              ]
-            },
-            "name": "datahub",
-            "type": "object"
-          }
-        ],
-        "primaryKey": [
-          "id"
-        ]
-      }
+      "skip_rows": 2
     }
   ],
   "sources": [
