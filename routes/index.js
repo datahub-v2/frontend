@@ -368,11 +368,11 @@ module.exports = function () {
               report = await report.json()
             }
             normalizedDp.report = report.resources[0]
-            const basePath = urllib.resolve(
-              config.get('BITSTORE_URL'),
-              [userAndPkgId.userid, userAndPkgId.packageid, normalizedDp.report.name].join('/')
-            )
-            normalizedDp = await lib.DataHubApi.handleReport(normalizedDp, basePath)
+            normalizedDp = await api.handleReport(normalizedDp, {
+              ownerid: userAndPkgId.userid,
+              name: userAndPkgId.packageid,
+              token
+            })
           }
         }
       } else if (['INPROGRESS', 'QUEUED'].includes(revisionStatus.state)) { // Use original dp

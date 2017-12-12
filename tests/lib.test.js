@@ -70,8 +70,8 @@ test('Generates good dp from prepareForFrontend dp', async t => {
 test('Includes reports for each resource', async t => {
   const extended = require('./fixtures/demo-package/datapackage.json')
   const logical = lib.DataHubApi.extendedToLogical(extended)
-  const good = await lib.DataHubApi.makeGoodDp(logical)
-  const parsedReport = JSON.parse(good.resources[0].report.replace(/\\"/g, '"'))
+  const withReport = await api.handleReport(logical)
+  const parsedReport = JSON.parse(withReport.resources[0].report.replace(/\\"/g, '"'))
   t.is(parsedReport.resource, 'demo-resource')
   t.is(parsedReport.valid, false)
 })
