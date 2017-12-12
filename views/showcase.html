@@ -9,6 +9,9 @@
 {% block bodyclass %}showcase{% endblock %}
 
 {% block content %}
+<!-- Load goodtables-ui so we can use it in the body of this page. -->
+<script src="https://unpkg.com/goodtables-ui/dist/goodtables-ui.min.js"></script>
+
 <!-- title and owner info -->
 <div class="container">
   <div class="inner_container">
@@ -30,6 +33,13 @@
     {% elif status %}
     <div class="alert alert-info status" role="alert">
       {{ snippets.uploading(statusApi, nextUrl) }}
+    </div>
+    {% endif %}
+
+    <!-- Show notice if any of reports is invalid -->
+    {% if dataset.report and not dataset.report.valid %}
+    <div class="alert alert-danger status" role="alert">
+      <h3 class="error-log-heading">Some of your data has validation errors. Please, scroll down to see validation report.</h3>
     </div>
     {% endif %}
 
@@ -155,6 +165,7 @@
       <!-- preview + field information -->
       {% for resource in dataset.resources %}
       <div class="resource-info part">
+        <!-- Heading for each resource -->
         <h2 id="resource-{{resource.name}}" class="section-title">
           {{resource.name}}
           &nbsp;
@@ -162,8 +173,21 @@
             <i class="fa fa-arrow-circle-o-down" aria-hidden="true" style="font-size:0.9em"></i>
           </a>
         </h2>
+        <!-- Render validation reports for each resource: -->
+        <div id="report-{{loop.index - 1}}"></div>
+        <script>
+          if ('{{resource.report}}') {
+            var report = JSON.parse(`{{ resource.report | dump | safe }}`);
+            report = JSON.parse(report);
+            var element = document.getElementById('report-{{loop.index - 1}}');
+            goodtablesUI.render(goodtablesUI.Report, {report}, element);
+          }
+        </script>
+        <!-- End of reports rendering -->
+        <!-- Placeholder div elements for React components: preview tables -->
         <div id="resource-{{loop.index - 1}}" class="react-me tables"
              data-type="resource-preview" data-resource="{{ loop.index - 1 }}"></div>
+        <!-- End of div elements for React -->
         <p class="notice">
           This is a preview version. There might be more data in <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}" onclick="trackOutboundLink(this.href)">the original version.</a>
         </p>

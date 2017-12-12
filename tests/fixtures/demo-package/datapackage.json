@@ -56,7 +56,7 @@
       ],
       "mediatype": "text/csv",
       "name": "vix-daily_csv",
-      "path": "https://pkgstore-testing.datahub.io/core/finance-vix/vix-daily_csv/data/11e6ae1c776100998d85ce356ca006a5/vix-daily_csv.csv",
+      "path": "http://0.0.0.0:4000/core/finance-vix/vix-daily_csv/data/11e6ae1c776100998d85ce356ca006a5/vix-daily_csv.csv",
       "profile": "data-resource",
       "rowcount": 3505,
       "schema": {
@@ -126,7 +126,7 @@
       ],
       "mediatype": "text/csv",
       "name": "vix-daily_csv_preview",
-      "path": "https://pkgstore-testing.datahub.io/core/finance-vix/vix-daily_csv_preview/data/93ec001dba9e7c42db532f048a933802/vix-daily_csv_preview.json",
+      "path": "http://0.0.0.0:4000/core/finance-vix/vix-daily_csv_preview/data/93ec001dba9e7c42db532f048a933802/vix-daily_csv_preview.json",
       "profile": "data-resource",
       "rowcount": 5505,
       "schema": {
@@ -186,7 +186,7 @@
       ],
       "mediatype": "text/csv",
       "name": "vix-daily_json",
-      "path": "https://pkgstore-testing.datahub.io/core/finance-vix/vix-daily_json/data/1c4751e3126152bf1594e8f106b16ba5/vix-daily_json.json",
+      "path": "http://0.0.0.0:4000/core/finance-vix/vix-daily_json/data/1c4751e3126152bf1594e8f106b16ba5/vix-daily_json.json",
       "profile": "data-resource",
       "rowcount": 3505,
       "schema": {
@@ -227,7 +227,7 @@
       "encoding": "utf-8",
       "format": "zip",
       "name": "datapackage_zip",
-      "path": "https://pkgstore-testing.datahub.io/core/finance-vix/datapackage_zip/data/6f918bd7cd25aed8b5bb9e55fffed4ee/datapackage_zip.zip",
+      "path": "http://0.0.0.0:4000/core/finance-vix/datapackage_zip/data/6f918bd7cd25aed8b5bb9e55fffed4ee/datapackage_zip.zip",
       "profile": "data-resource"
     },
     {
@@ -247,7 +247,7 @@
       ],
       "mediatype": "text/csv",
       "name": "demo-resource",
-      "path": "https://pkgstore-testing.datahub.io/core/finance-vix/demo-resource/data/ece3f90c23415eb7e3dccc10ac318309/demo-resource.csv",
+      "path": "http://0.0.0.0:4000/core/finance-vix/demo-resource/data/ece3f90c23415eb7e3dccc10ac318309/demo-resource.csv",
       "profile": "data-resource",
       "schema": {
         "fields": [

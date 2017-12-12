@@ -128,6 +128,13 @@ test('Showcase with FULL URL and FAILED revision status uses original dp + shows
   t.true(res.text.includes('error 1')) // Includes error logs
   t.true(res.text.includes('error 2'))
 })
+
+test('Showcase displays validation error notice', async t => {
+  const res = await request(app)
+    .get('/admin/demo-package')
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('Some of your data has validation errors.'))
+})
 // end of new tests
 
 test('"API" for datapackage.json file', async t => {

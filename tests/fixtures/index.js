@@ -56,12 +56,23 @@ module.exports.initMocks = function() {
     .reply(200, {
         "url": config.get('BITSTORE_URL')+"admin/demo-package/1/datapackage.json"
       })
-  nock(config.get('API_URL'))
-    .persist()
     .get('/rawstore/presign?jwt=simple-token&ownerid=admin&url=http://127.0.0.1:4000/static/fixtures/admin/private-package/1/datapackage.json')
     .reply(200, {
         "url": config.get('BITSTORE_URL')+"admin/demo-package/1/datapackage.json"
       })
+    .get('/core/finance-vix/vix-daily_csv/data/11e6ae1c776100998d85ce356ca006a5/vix-daily_csv.csv')
+    .reply(403)
+    .get('/core/finance-vix/datapackage_zip/data/6f918bd7cd25aed8b5bb9e55fffed4ee/datapackage_zip.zip')
+    .reply(403)
+    .get('/core/finance-vix/vix-daily_csv_preview/data/93ec001dba9e7c42db532f048a933802/vix-daily_csv_preview.json')
+    .reply(403)
+    .get('/rawstore/presign?jwt=token&ownerid=admin&url=http://0.0.0.0:4000/core/finance-vix/vix-daily_csv/data/11e6ae1c776100998d85ce356ca006a5/vix-daily_csv.csv')
+    .reply(200, {url: 'http://signed-url.com'})
+    .get('/rawstore/presign?jwt=token&ownerid=admin&url=http://0.0.0.0:4000/core/finance-vix/datapackage_zip/data/6f918bd7cd25aed8b5bb9e55fffed4ee/datapackage_zip.zip')
+    .reply(200, {url: 'http://signed-url.com'})
+    .get('/rawstore/presign?jwt=token&ownerid=admin&url=http://0.0.0.0:4000/core/finance-vix/vix-daily_csv_preview/data/93ec001dba9e7c42db532f048a933802/vix-daily_csv_preview.json')
+    .reply(200, {url: 'http://signed-url.com'})
+
   nock(config.get('API_URL'), {reqheaders: {'Auth-Token': 'token'}})
     .persist()
     .get('/auth/authorize?service=frontend')
@@ -363,14 +374,35 @@ module.exports.initMocks = function() {
     .get('/datapackage_report.json')
     .reply(200, [
       {
-        resource: 'demo-resource',
-        valid: true,
-        time: 0.017,
-        'error-count': 0,
-        'table-count': 0,
-        tables: [],
-        warnings: [],
-        preset: 'datapackage'
+        "resource": "demo-resource",
+        "time": 0.017,
+        "valid": false,
+        "error-count": 0,
+        "table-count": 0,
+        "tables": [
+          {
+            "errors": [
+                {
+                    "row-number": null,
+                    "message": "Header in column 3 is blank",
+                    "row": null,
+                    "column-number": 3,
+                    "code": "blank-header"
+                }
+            ],
+            "source": "data/invalid",
+            "headers": [
+                "id",
+                "name",
+                "",
+                "name"
+            ]
+          }
+        ],
+        "warnings": [
+          "Data Package \"data/vix-daily.csv\" has a loading error \"Unable to load JSON at \"data/vix-daily.csv\"\""
+        ],
+        "preset": "datapackage"
       }
     ])
 }

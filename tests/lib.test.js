@@ -73,7 +73,7 @@ test('Includes reports for each resource', async t => {
   const good = await lib.DataHubApi.makeGoodDp(logical)
   const parsedReport = JSON.parse(good.resources[0].report.replace(/\\"/g, '"'))
   t.is(parsedReport.resource, 'demo-resource')
-  t.is(parsedReport.valid, true)
+  t.is(parsedReport.valid, false)
 })
 
 test('Gets README', async t => {
