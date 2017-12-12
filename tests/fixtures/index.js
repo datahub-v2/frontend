@@ -21,6 +21,8 @@ module.exports.initMocks = function() {
     .reply(200, data.readme, {'access-control-allow-origin': '*'})
     .get('/bad-user/bad-package/1/datapackage.json')
     .reply(404, "not found", {'access-control-allow-origin': '*'})
+    .get('/bad-user/bad-package/latest/datapackage.json')
+    .reply(404, "not found", {'access-control-allow-origin': '*'})
     .get('/admin/running-package/1/datapackage.json')
     .reply(404, "not found", {'access-control-allow-origin': '*'})
     .get('/admin/failed-package/1/datapackage.json')
