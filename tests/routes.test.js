@@ -116,17 +116,18 @@ test('Showcase with FULL URL and INPROGRESS revision status uses original dp', a
   const res = await request(app)
     .get('/admin/demo-package/v/2')
   t.is(res.statusCode, 200)
-  t.true(res.text.includes('original-dp'))
+  t.true(res.text.includes('demo-package'))
 })
 
 test('Showcase with FULL URL and FAILED revision status uses original dp + shows failed pipelines with error logs', async t => {
   const res = await request(app)
     .get('/admin/demo-package/v/3')
   t.is(res.statusCode, 200)
-  t.true(res.text.includes('original-dp'))
+  t.true(res.text.includes('demo-package'))
   t.true(res.text.includes('pipeline 1')) // Includes failed pipeline title
   t.true(res.text.includes('error 1')) // Includes error logs
   t.true(res.text.includes('error 2'))
+  t.true(res.text.includes('Some of your data has validation errors.'))
 })
 
 test('Showcase displays validation error notice', async t => {

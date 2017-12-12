@@ -6,6 +6,8 @@ var fs = require('fs')
 
 module.exports.dataPackage = require('./demo-package/datapackage.json')
 module.exports.readme = fs.readFileSync('tests/fixtures/demo-package/README.md').toString()
+module.exports.reportResource = require('./reports/report-resource.json')
+module.exports.failedReport = require('./reports/failed-report.json')
 
 module.exports.initMocks = function() {
   var data = module.exports
@@ -47,6 +49,8 @@ module.exports.initMocks = function() {
     .reply(200, data.dataPackage, {'access-control-allow-origin': '*'})
     .get('/examples/geojson-tutorial/1/README.md')
     .reply(200, data.readme, {'access-control-allow-origin': '*'})
+    .get('/admin/demo-package/validation_report/data/some_hash/validation_report.json')
+    .reply(200, data.failedReport)
 
   // Mock api calls for Metastore (search)
   // TODO: 2017-08-11 ~rufuspollock construct extended DP ourselves from an input fixture package so that we can test more cleanly
@@ -208,7 +212,7 @@ module.exports.initMocks = function() {
     inputs: [
       {
         parameters: {
-          descriptor: {name: 'original-dp'}
+          descriptor: data.dataPackage
         }
       }
     ],
@@ -238,6 +242,13 @@ module.exports.initMocks = function() {
           title: 'pipeline 1',
           status: 'FAILED',
           error_log: ['error 1', 'error 2']
+        },
+        validation_report: {
+          title: 'Validating package contents',
+          status: 'SUCCEEDED',
+          stats: {
+            '.dpp': {'out-datapackage-url': 'http://0.0.0.0:4000/report-resource.json'}
+          }
         }
       }
     })
@@ -371,38 +382,8 @@ module.exports.initMocks = function() {
   // Mock for returning reports:
   nock(config.get('API_URL'))
     .persist()
+    .get('/report-resource.json')
+    .reply(200, require('./reports/report-resource.json'))
     .get('/datapackage_report.json')
-    .reply(200, [
-      {
-        "resource": "demo-resource",
-        "time": 0.017,
-        "valid": false,
-        "error-count": 0,
-        "table-count": 0,
-        "tables": [
-          {
-            "errors": [
-                {
-                    "row-number": null,
-                    "message": "Header in column 3 is blank",
-                    "row": null,
-                    "column-number": 3,
-                    "code": "blank-header"
-                }
-            ],
-            "source": "data/invalid",
-            "headers": [
-                "id",
-                "name",
-                "",
-                "name"
-            ]
-          }
-        ],
-        "warnings": [
-          "Data Package \"data/vix-daily.csv\" has a loading error \"Unable to load JSON at \"data/vix-daily.csv\"\""
-        ],
-        "preset": "datapackage"
-      }
-    ])
+    .reply(200, require('./reports/failed-report.json'))
 }

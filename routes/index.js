@@ -2,6 +2,7 @@
 
 const fs = require('fs')
 const path = require('path')
+const urllib = require('url')
 
 const express = require('express')
 const fetch = require('node-fetch')
@@ -352,6 +353,26 @@ module.exports = function () {
         for (let key in revisionStatus.pipelines) {
           if (revisionStatus.pipelines[key].status === 'FAILED') {
             failedPipelines.push(revisionStatus.pipelines[key])
+          } else if (revisionStatus.pipelines[key].status === 'SUCCEEDED' && key.includes('validation_report')) {
+            // As "validation_report" pipeline SUCCEEDED, we can get reports:
+            let report = await fetch(revisionStatus.pipelines[key].stats['.dpp']['out-datapackage-url'])
+            if (report.status === 403) {
+              const signedUrl = await api.checkForSignedUrl(
+                revisionStatus.pipelines[key].stats['.dpp']['out-datapackage-url'],
+                userAndPkgId.userid,
+                token
+              )
+              let res = await fetch(signedUrl.url)
+              res = await res.json()
+            } else if (report.status === 200) {
+              report = await report.json()
+            }
+            normalizedDp.report = report.resources[0]
+            const basePath = urllib.resolve(
+              config.get('BITSTORE_URL'),
+              [userAndPkgId.userid, userAndPkgId.packageid, normalizedDp.report.name].join('/')
+            )
+            normalizedDp = await lib.DataHubApi.handleReport(normalizedDp, basePath)
           }
         }
       } else if (['INPROGRESS', 'QUEUED'].includes(revisionStatus.state)) { // Use original dp

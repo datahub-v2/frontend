@@ -1,0 +1,22 @@
+{
+  "datahub": {
+    "hash": "c196d0d16cd7aa54e3e546063e465366",
+    "stats": {
+      "bytes": 585
+    }
+  },
+  "name": "validation_report-report",
+  "resources": [
+    {
+      "bytes": 585,
+      "datahub": {
+        "type": "derived/report"
+      },
+      "description": "Validation report for tabular data",
+      "dpp:streamedFrom": "validation_report.json",
+      "format": "json",
+      "name": "validation_report",
+      "path": "data/some_hash/validation_report.json"
+    }
+  ]
+}

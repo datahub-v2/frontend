@@ -1,0 +1,33 @@
+[
+  {
+    "resource": "demo-resource",
+    "time": 0.017,
+    "valid": false,
+    "error-count": 0,
+    "table-count": 0,
+    "tables": [
+      {
+        "errors": [
+          {
+            "row-number": null,
+            "message": "Header in column 3 is blank",
+            "row": null,
+            "column-number": 3,
+            "code": "blank-header"
+          }
+        ],
+        "source": "data/invalid",
+        "headers": [
+          "id",
+          "name",
+          "",
+          "name"
+        ]
+      }
+    ],
+    "warnings": [
+      "Data Package \"data/vix-daily.csv\" has a loading error \"Unable to load JSON at \"data/vix-daily.csv\"\""
+    ],
+    "preset": "datapackage"
+  }
+]
