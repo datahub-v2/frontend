@@ -55,9 +55,33 @@
     margin-top: 8px;
   }
 
+  // Hiding unnecessary parts of goodtables-ui report: warnings, success messages,
+  // report heading. Making number of errors visible.
   .goodtables-ui-report {
     .alert-warning, .alert-success {
       display: none;
+    }
+    .report-table {
+      .panel-heading {
+        position: relative;
+        .label {
+          margin-right: 5px;
+        }
+      }
+      .file-heading {
+        display: none;
+      }
+      .count {
+        @extend .label-danger;
+      }
+      .panel-title {
+        display: inline-block;
+        margin-left: 20px;
+      }
+      .error-details-link {
+        position: absolute;
+        right: 30px;
+      }
     }
   }
 }
