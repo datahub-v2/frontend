@@ -101,11 +101,16 @@
     poll(function() {
       return window.fetch('{{ statusApi }}');
     }, 1200000, 2000).then(function(status) {
-      if (status.state === 'FAILED' || status.state === 'SUCCEEDED') {
-        var target = document.getElementById('message');
-        target.innerHTML = 'Finished! Reloading the page...';
+      var target = document.getElementById('message');
+      if (status.state === 'FAILED') {
+        target.innerHTML = 'Failed... Reloading the page...';
         setTimeout(function() {
-          window.location = '{{ nextUrl }}';
+          window.location = '{{ failUrl }}';
+        }, 1000);
+      } else if (status.state === 'SUCCEEDED') {
+        target.innerHTML = 'Finished! Redirecting...';
+        setTimeout(function() {
+          window.location = '{{ successUrl }}';
         }, 1000);
       }
     }).catch(function() {

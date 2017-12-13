@@ -455,7 +455,8 @@ module.exports = function () {
           // eslint-disable-next-line no-useless-escape, quotes
           dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'"),
           status: status.state,
-          nextUrl: `/${req.params.owner}/${req.params.name}/v/${revisionId}`,
+          failUrl: `/${req.params.owner}/${req.params.name}/v/${revisionId}`,
+          successUrl: `/${req.params.owner}/${req.params.name}`,
           statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/${revisionId}`,
           failedPipelines
         })
