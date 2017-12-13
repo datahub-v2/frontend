@@ -263,31 +263,21 @@ module.exports = function () {
   router.get('/awesome', showAwesomePage);
   router.get('/awesome/:page', showAwesomePage);
 
-  function showAwesomePage(req, res) {
+  async function showAwesomePage(req, res) {
     const BASE = 'https://raw.githubusercontent.com/datahubio/awesome/master/';
     //request raw page from github
     let gitpath = req.params.page ? BASE+req.params.page+'.md' : BASE+'index.md';
-    fetch(gitpath)
-      .then(function(res) {
-        //TODO: handle the 404 from the github
-        return res.text();
-      })
-      .then(function(text) {
-        // parse the raw .md page and render it with an template.
-        const parsedWithFormatter = fm(text);
-        const content = utils.md.render(parsedWithFormatter.body);
-        res.render('awesome.html', {
-          title: parsedWithFormatter.attributes.title,
-          description: parsedWithFormatter.attributes.description,
-          content,
-        })
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    const resp = await fetch(gitpath);
+    const text = await resp.text();
+    // parse the raw .md page and render it with a template.
+    const parsedWithFormatter = fm(text);
+    res.render('awesome.html', {
+      title: parsedWithFormatter.attributes.title,
+      description: parsedWithFormatter.attributes.description,
+      content: utils.md.render(parsedWithFormatter.body)
+    })
   }
-
-  // ===== /end awesome
+  /* end awesome  */
 
 
   // ==============
