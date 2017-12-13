@@ -380,7 +380,18 @@ module.exports = function () {
             })
           }
         }
-      } else if (['INPROGRESS', 'QUEUED'].includes(revisionStatus.state)) { // Use original dp
+      } else if (['INPROGRESS', 'QUEUED'].includes(revisionStatus.state)) {
+        // We don't want to show showcase page from original dp if dataset is
+        // private. If so compare userid with hash of user email from cookies:
+        // TODO: we should probably have API for it.
+        if (revisionStatus.spec_contents.meta.findability === 'private') {
+          const emailHash = req.cookies.email ? md5(req.cookies.email) : ''
+          if (userAndPkgId.userid !== emailHash) {
+            res.status(404).send('Sorry, this page was not found.')
+            return
+          }
+        }
+        // Only if above stuff is passed we use original dp:
         normalizedDp = revisionStatus.spec_contents.inputs[0].parameters.descriptor
       } else {
         next('unknown state of given revision')
