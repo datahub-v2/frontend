@@ -394,6 +394,13 @@ module.exports = function () {
         if (status.spec_contents.meta.findability === 'private') {
           const authzToken = await api.authz(token)
           await Promise.all(normalizedDp.resources.map(async resource => {
+            const pathParts = urllib.parse(resource.path)
+            if (!pathParts.protocol) {
+              resource.path = urllib.resolve(
+                config.get('BITSTORE_URL'),
+                [userAndPkgId.userid, userAndPkgId.packageid, resource.name, resource.path].join('/')
+              )
+            }
             let response = await fetch(resource.path)
             if (response.status === 403) {
               const signedUrl = await api.checkForSignedUrl(
@@ -407,6 +414,13 @@ module.exports = function () {
             if (resource.alternates) {
               const previewResource = resource.alternates.find(res => res.datahub.type === 'derived/preview')
               if (previewResource) {
+                const pathParts = urllib.parse(previewResource.path)
+                if (!pathParts.protocol) {
+                  previewResource.path = urllib.resolve(
+                    config.get('BITSTORE_URL'),
+                    [userAndPkgId.userid, userAndPkgId.packageid, previewResource.name, previewResource.path].join('/')
+                  )
+                }
                 let response = await fetch(previewResource.path)
                 if (response.status === 403) {
                   const signedUrl = await api.checkForSignedUrl(
