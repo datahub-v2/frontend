@@ -62,10 +62,7 @@ module.exports.makeApp = function () {
   ])
 
   app.use((err, req, res, next) => {
-    if (err.status === 404) {
-      res.status(404).send('Sorry, this page was not found.')
-      return
-    } else if (err.name === 'Forbidden') {
+    if (err.status === 404 || err.name === 'Forbidden') {
       res.status(404).send('Sorry, this page was not found.')
       return
     } else {
