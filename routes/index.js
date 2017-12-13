@@ -255,7 +255,11 @@ module.exports = function () {
 
   // ===== /end docs
 
-  // Awesome
+  /** Awesome pages. http://datahub.io/awesome
+   * For this section we will parse, render and
+   * return pages from the awesome github repo:
+   * https://github.com/datahubio/awesome
+   */
   router.get(['/awesome', '/awesome/*'], (req, res) => {
     const BASE = 'https://raw.githubusercontent.com/datahubio/awesome/master/';
     let path = urllib.parse(req.path).path;
@@ -268,26 +272,26 @@ module.exports = function () {
     }
     //request raw page from github
     fetch(fullpath)
-        .then(function(res) {
-            //TODO: handle the 404 from the github
-            return res.text();
+      .then(function(res) {
+        //TODO: handle the 404 from the github
+        return res.text();
+      })
+      .then(function(text) {
+        // parse the raw .md page and render it with an template.
+        const parsedWithFM = fm(text);
+        const content = utils.md.render(parsedWithFM.body);
+        const date = parsedWithFM.attributes.date
+          ? moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY')
+          : null
+        res.render('awesome.html', {
+          title: parsedWithFM.attributes.title,
+          date,
+          content,
         })
-        .then(function(text) {
-            // parse the raw .md page and render it with an template.
-            const parsedWithFM = fm(text);
-            const content = utils.md.render(parsedWithFM.body);
-            const date = parsedWithFM.attributes.date
-                ? moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY')
-                : null
-            res.render('awesome.html', {
-                title: parsedWithFM.attributes.title,
-                date,
-                content,
-            })
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
   })
 
   // ===== /end awesome

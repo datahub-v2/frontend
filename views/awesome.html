@@ -7,25 +7,25 @@
 {% block content %}
 <!-- awesome page test placeholder -->
 <div class="container">
-    <div class="inner_container">
-        <div class="page-header">
-            <h1>
-                {{title}}
-            </h1>
-            {% if date %}
-            <p>
-                <i class="fa fa-calendar" aria-hidden="true"></i> {{date}}
-            </p>
-            {% endif %}
-        </div>
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                {{content | safe}}
-
-                <p class="info">If you have questions, comments or feedback join our <a href="https://gitter.im/datahubio/chat" target="_blank">chat channel</a> or open an issue on our <a href="https://github.com/datahubio/qa" target="_blank">tracker</a>.</p>
-            </div>
-        </div>
+  <div class="inner_container">
+    <div class="page-header">
+      <h1>
+        {{title}}
+      </h1>
+        {% if date %}
+      <p>
+        <i class="fa fa-calendar" aria-hidden="true"></i> {{date}}
+      </p>
+        {% endif %}
     </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        {{content | safe}}
+
+        <p class="info">If you have questions, comments or feedback join our <a href="https://gitter.im/datahubio/chat" target="_blank">chat channel</a> or open an issue on our <a href="https://github.com/datahubio/qa" target="_blank">tracker</a>.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}
