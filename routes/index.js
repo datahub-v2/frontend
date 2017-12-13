@@ -255,6 +255,43 @@ module.exports = function () {
 
   // ===== /end docs
 
+  // Awesome
+  router.get(['/awesome', '/awesome/*'], (req, res) => {
+    const BASE = 'https://raw.githubusercontent.com/datahubio/awesome/master/';
+    let path = urllib.parse(req.path).path;
+    let fullpath;
+    if (path == '/awesome'){
+      fullpath = BASE + 'index.md'
+    } else {
+      // get the page name from the path and create a full adress
+      fullpath = BASE + path.split('/')[2] + '.md';
+    }
+    //request raw page from github
+    fetch(fullpath)
+        .then(function(res) {
+            return res.text();
+        })
+        .then(function(text) {
+            // parse the raw .md page and render it with an template.
+            const parsedWithFM = fm(text);
+            const content = utils.md.render(parsedWithFM.body);
+            const date = parsedWithFM.attributes.date
+                ? moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY')
+                : null
+            res.render('awesome.html', {
+                title: parsedWithFM.attributes.title,
+                date,
+                content,
+            })
+        })
+        .catch(err => {
+          console.log(err)
+        })
+  })
+
+  // ===== /end awesome
+
+
   // ==============
   // Blog
   router.get('/blog', (req, res) => {
