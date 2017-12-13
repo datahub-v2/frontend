@@ -260,18 +260,14 @@ module.exports = function () {
    * return pages from the awesome github repo:
    * https://github.com/datahubio/awesome
    */
-  router.get(['/awesome', '/awesome/*'], (req, res) => {
+  router.get('/awesome', showAwesomePage);
+  router.get('/awesome/:page', showAwesomePage);
+
+  function showAwesomePage(req, res) {
     const BASE = 'https://raw.githubusercontent.com/datahubio/awesome/master/';
-    let path = urllib.parse(req.path).path;
-    let fullpath;
-    if (path == '/awesome'){
-      fullpath = BASE + 'index.md'
-    } else {
-      // get the page name from the path and create a full adress
-      fullpath = BASE + path.split('/')[2] + '.md';
-    }
     //request raw page from github
-    fetch(fullpath)
+    let gitpath = req.params.page ? BASE+req.params.page+'.md' : BASE+'index.md';
+    fetch(gitpath)
       .then(function(res) {
         //TODO: handle the 404 from the github
         return res.text();
@@ -292,7 +288,7 @@ module.exports = function () {
       .catch(err => {
         console.log(err)
       })
-  })
+  }
 
   // ===== /end awesome
 
