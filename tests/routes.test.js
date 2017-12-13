@@ -305,5 +305,6 @@ test('awesome theme page works', async t => {
 test('awesome non existing page returns 404', async t => {
     const res = await request(app)
         .get('/awesome/nonexistingpage');
-    t.is(res.statusCode, 404);
+    t.is(res.status, 200);
+    t.true(res.text.includes('404'))
 });

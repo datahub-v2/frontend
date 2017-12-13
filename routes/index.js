@@ -269,6 +269,7 @@ module.exports = function () {
     //request raw page from github
     fetch(fullpath)
         .then(function(res) {
+            //TODO: handle the 404 from the github
             return res.text();
         })
         .then(function(text) {
