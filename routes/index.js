@@ -311,7 +311,7 @@ module.exports = function () {
   // Function for rendering showcase page:
   function renderShowcase(revision) {
     return async (req, res, next) => {
-      let token = req.cookies.jwt
+      let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
       // Hit the resolver to get userid and packageid:
       const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
       // If specStoreStatus API does not respond within 5 sec,
@@ -363,7 +363,7 @@ module.exports = function () {
                 token
               )
               let res = await fetch(signedUrl.url)
-              res = await res.json()
+              report = await res.json()
             } else if (report.status === 200) {
               report = await report.json()
             }
@@ -438,7 +438,7 @@ module.exports = function () {
 
   router.get('/:owner/:name/datapackage.json', async (req, res, next) => {
     let normalizedDp = null
-    let token = req.cookies.jwt
+    let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     if (!userAndPkgId.userid) {
       res.status(404).send('Sorry, this page was not found.')
@@ -481,7 +481,7 @@ module.exports = function () {
 
   router.get('/:owner/:name/r/:fileNameOrIndex', async (req, res, next) => {
     let normalizedDp = null
-    let token = req.cookies.jwt
+    let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     if (!userAndPkgId.userid) {
       res.status(404).send('Sorry, this page was not found.')
