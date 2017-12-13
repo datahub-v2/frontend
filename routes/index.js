@@ -274,14 +274,11 @@ module.exports = function () {
       })
       .then(function(text) {
         // parse the raw .md page and render it with an template.
-        const parsedWithFM = fm(text);
-        const content = utils.md.render(parsedWithFM.body);
-        const date = parsedWithFM.attributes.date
-          ? moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY')
-          : null
+        const parsedWithFormatter = fm(text);
+        const content = utils.md.render(parsedWithFormatter.body);
         res.render('awesome.html', {
-          title: parsedWithFM.attributes.title,
-          date,
+          title: parsedWithFormatter.attributes.title,
+          description: parsedWithFormatter.attributes.description,
           content,
         })
       })
