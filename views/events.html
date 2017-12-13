@@ -10,6 +10,7 @@ Events - {{ dataset }}
 <div class="container">
   <div class="inner_container">
     <!-- Events -->
+    <a href="/{{ username }}">{{ username }}</a> / <a href="/{{ username }}/{{ events[0].dataset }}"><b>{{ events[0].dataset }}</b></a>
     <h2 class="title">Recent events</h2>
     {% if events|length > 0 %}
       <div class="timeline">
