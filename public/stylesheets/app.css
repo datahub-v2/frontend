@@ -6734,6 +6734,8 @@ div.logout {
     text-align: center; }
   .showcase .progressing-item {
     margin-top: 8px; }
+  .showcase .goodtables-ui-report .alert-warning, .showcase .goodtables-ui-report .alert-success {
+    display: none; }
 
 h1 span {
   vertical-align: middle !important;

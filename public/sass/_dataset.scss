@@ -54,6 +54,12 @@
   .progressing-item {
     margin-top: 8px;
   }
+
+  .goodtables-ui-report {
+    .alert-warning, .alert-success {
+      display: none;
+    }
+  }
 }
 h1 {
   span {
