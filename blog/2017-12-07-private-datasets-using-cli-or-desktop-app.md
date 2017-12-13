@@ -4,7 +4,9 @@ date: 2017-12-07
 authors: ['anuveyatsu']
 ---
 
-We are glad to announce that DataHub users can now have **private** datasets so that only authorized users can view it. Please, read below to learn how to do it.
+We are glad to announce that DataHub users can now have **private** datasets so that only authorized users can view it. This is especially useful when you want to restrict access to your data. Please, take a look at our membership plans to see which users can have private data:
+
+https://datahub.io/pricing
 
 ## How to publish private datasets?
 
