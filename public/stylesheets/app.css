@@ -6698,16 +6698,14 @@ div.logout {
   .showcase a.btn {
     padding: 8px 25px; }
   .showcase .status {
-    padding: 20px 20%; }
+    padding: 20px; }
   .showcase .error-log-heading {
-    text-align: center;
     font-size: 14px;
     margin-top: 12px; }
   .showcase .error-log-title {
     color: #000;
     font-weight: 500;
-    margin-top: 8px;
-    margin-left: 17%; }
+    margin-top: 8px; }
     .showcase .error-log-title:before {
       content: "\f105";
       display: inline-block;
@@ -6727,7 +6725,7 @@ div.logout {
   .showcase .error-log {
     color: #000;
     margin: 0;
-    margin-left: calc(17% + 11px); }
+    margin-left: 11px; }
   .showcase .progressing-heading {
     text-align: center;
     font-size: 14px;
