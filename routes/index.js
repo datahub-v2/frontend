@@ -314,12 +314,12 @@ module.exports = function () {
       let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
       // Hit the resolver to get userid and packageid:
       const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
-      // If specStoreStatus API does not respond within 5 sec,
+      // If specStoreStatus API does not respond within 10 sec,
       // then proceed to error handler and show 500:
       const timeoutObj = setTimeout(() => {
         next('status api timed out')
         return
-      }, 5000)
+      }, 10000)
 
       // Get the latest successful revision, if does not exist show 404
       let revisionStatus
@@ -357,13 +357,18 @@ module.exports = function () {
             // As "validation_report" pipeline SUCCEEDED, we can get reports:
             let report = await fetch(revisionStatus.pipelines[key].stats['.dpp']['out-datapackage-url'])
             if (report.status === 403) {
-              const signedUrl = await api.checkForSignedUrl(
-                revisionStatus.pipelines[key].stats['.dpp']['out-datapackage-url'],
-                userAndPkgId.userid,
-                token
-              )
-              let res = await fetch(signedUrl.url)
-              report = await res.json()
+              try {
+                const signedUrl = await api.checkForSignedUrl(
+                  revisionStatus.pipelines[key].stats['.dpp']['out-datapackage-url'],
+                  userAndPkgId.userid,
+                  token
+                )
+                let res = await fetch(signedUrl.url)
+                report = await res.json()
+              } catch (err) {
+                next(err)
+                return
+              }
             } else if (report.status === 200) {
               report = await report.json()
             }
