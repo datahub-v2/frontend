@@ -4413,9 +4413,9 @@ a.label:hover, a.label:focus {
   .label-warning[href]:hover, .label-warning[href]:focus {
     background-color: #cc6100; }
 
-.label-danger {
+.label-danger, .showcase .goodtables-ui-report .report-table .count {
   background-color: #d9534f; }
-  .label-danger[href]:hover, .label-danger[href]:focus {
+  .label-danger[href]:hover, .showcase .goodtables-ui-report .report-table [href].count:hover, .label-danger[href]:focus, .showcase .goodtables-ui-report .report-table [href].count:focus {
     background-color: #c9302c; }
 
 .badge {
@@ -6736,6 +6736,18 @@ div.logout {
     margin-top: 8px; }
   .showcase .goodtables-ui-report .alert-warning, .showcase .goodtables-ui-report .alert-success {
     display: none; }
+  .showcase .goodtables-ui-report .report-table .panel-heading {
+    position: relative; }
+    .showcase .goodtables-ui-report .report-table .panel-heading .label {
+      margin-right: 5px; }
+  .showcase .goodtables-ui-report .report-table .file-heading {
+    display: none; }
+  .showcase .goodtables-ui-report .report-table .panel-title {
+    display: inline-block;
+    margin-left: 20px; }
+  .showcase .goodtables-ui-report .report-table .error-details-link {
+    position: absolute;
+    right: 30px; }
 
 h1 span {
   vertical-align: middle !important;

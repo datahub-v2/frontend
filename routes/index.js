@@ -255,6 +255,31 @@ module.exports = function () {
 
   // ===== /end docs
 
+  /** Awesome pages. http://datahub.io/awesome
+   * For this section we will parse, render and
+   * return pages from the awesome github repo:
+   * https://github.com/datahubio/awesome
+   */
+  router.get('/awesome', showAwesomePage)
+  router.get('/awesome/:page', showAwesomePage)
+
+  async function showAwesomePage(req, res) {
+    const BASE = 'https://raw.githubusercontent.com/datahubio/awesome/master/'
+    //request raw page from github
+    let gitpath = req.params.page ? BASE + req.params.page + '.md' : BASE + 'index.md'
+    const resp = await fetch(gitpath)
+    const text = await resp.text()
+    // parse the raw .md page and render it with a template.
+    const parsedWithFrontMatter = fm(text)
+    res.render('awesome.html', {
+      title: parsedWithFrontMatter.attributes.title,
+      description: parsedWithFrontMatter.attributes.description,
+      content: utils.md.render(parsedWithFrontMatter.body)
+    })
+  }
+  /* end awesome  */
+
+
   // ==============
   // Blog
   router.get('/blog', (req, res) => {
@@ -380,7 +405,18 @@ module.exports = function () {
             })
           }
         }
-      } else if (['INPROGRESS', 'QUEUED'].includes(revisionStatus.state)) { // Use original dp
+      } else if (['INPROGRESS', 'QUEUED'].includes(revisionStatus.state)) {
+        // We don't want to show showcase page from original dp if dataset is
+        // private. If so compare userid with hash of user email from cookies:
+        // TODO: we should probably have API for it.
+        if (revisionStatus.spec_contents.meta.findability === 'private') {
+          const emailHash = req.cookies.email ? md5(req.cookies.email) : ''
+          if (userAndPkgId.userid !== emailHash) {
+            res.status(404).send('Sorry, this page was not found.')
+            return
+          }
+        }
+        // Only if above stuff is passed we use original dp:
         normalizedDp = revisionStatus.spec_contents.inputs[0].parameters.descriptor
       } else {
         next('unknown state of given revision')
@@ -444,7 +480,8 @@ module.exports = function () {
           // eslint-disable-next-line no-useless-escape, quotes
           dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'"),
           status: status.state,
-          nextUrl: `/${req.params.owner}/${req.params.name}/v/${revisionId}`,
+          failUrl: `/${req.params.owner}/${req.params.name}/v/${revisionId}`,
+          successUrl: `/${req.params.owner}/${req.params.name}`,
           statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/${revisionId}`,
           failedPipelines
         })

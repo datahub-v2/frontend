@@ -32,7 +32,7 @@
     {% elif status === 'SUCCEEDED' %}
     {% elif status %}
     <div class="alert alert-info status" role="alert">
-      {{ snippets.uploading(statusApi, nextUrl) }}
+      {{ snippets.uploading(statusApi, failUrl, successUrl) }}
     </div>
     {% endif %}
 
