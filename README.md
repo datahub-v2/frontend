@@ -20,6 +20,15 @@ We use `.env` file for loading environment variables. Please, use provided `env.
 * `API_URL` - FQ base URL of the API endpoint eg. `https://api.datahub.io`
 * `BITSTORE_URL` - base URL for the bitstore (pkgstore) e.g. `https://pkgstore.datahub.io`
 
+When running locally, use test api address in `.env`:
+```
+API_URL=https://api-testing.datahub.io
+BITSTORE_URL=https://pkgstore-testing.datahub.io
+```
+or run  
+```
+npm start dev
+```
 See the [docs](http://docs.datahub.io/developers/) for more information.
 
 ## Developers
