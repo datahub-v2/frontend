@@ -1,10 +1,14 @@
 ---
-title: Private datasets using CLI or desktop app
-date: 2017-12-07
-authors: ['anuveyatsu']
+title: Introducing private datasets on the DataHub
+date: 2017-12-13
+authors: ['anuveyatsu', 'rufuspollock']
 ---
 
-We are glad to announce that DataHub users can now have **private** datasets so that only authorized users can view it. This is especially useful when you want to restrict access to your data. Please, take a look at our membership plans to see which users can have private data:
+Today we are releasing support for **private** datasets on the DataHub. Private datasets are exactly that: private and visible and accessible only to their owners.
+
+This feature is designed to support several use cases. First, simply storing (and sharing) private data. Second, keeping data private prior to publication -- now users have a way to push data, check it and only make it public when they are ready.
+
+The private datasets feature is available on a trial basis to all DataHub users. If you want to use it on an ongoing basis you'll want to sign up for premium membership:
 
 https://datahub.io/pricing
 
@@ -35,3 +39,8 @@ $ data push myData --private
 :::info
 Learn more about how to publish datasets using the CLI [here](http://datahub.io/docs/getting-started/pushing-data).
 :::
+
+
+## Making a Private Dataset Public
+
+Just publish the dataset again but set the findability to public.
