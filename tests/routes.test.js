@@ -291,19 +291,19 @@ test('Redirects to old.datahub.io', async t => {
 })
 
 test('awesome index page works', async t => {
-  const res = await request(app).get('/awesome');
-  t.is(res.status, 200);
+  const res = await request(app).get('/awesome')
+  t.is(res.status, 200)
   t.true(res.text.includes('awesome'))
-});
+})
 
 test('awesome theme page works', async t => {
-  const res = await request(app).get('/awesome/sport');
-  t.is(res.status, 200);
+  const res = await request(app).get('/awesome/sport')
+  t.is(res.status, 200)
   t.true(res.text.includes('sport'))
-});
+})
 
 test('awesome non existing page returns 404', async t => {
-  const res = await request(app).get('/awesome/nonexistingpage');
-  t.is(res.status, 200);
+  const res = await request(app).get('/awesome/nonexistingpage')
+  t.is(res.status, 200)
   t.true(res.text.includes('404'))
-});
+})
