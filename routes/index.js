@@ -260,21 +260,21 @@ module.exports = function () {
    * return pages from the awesome github repo:
    * https://github.com/datahubio/awesome
    */
-  router.get('/awesome', showAwesomePage);
-  router.get('/awesome/:page', showAwesomePage);
+  router.get('/awesome', showAwesomePage)
+  router.get('/awesome/:page', showAwesomePage)
 
   async function showAwesomePage(req, res) {
-    const BASE = 'https://raw.githubusercontent.com/datahubio/awesome/master/';
+    const BASE = 'https://raw.githubusercontent.com/datahubio/awesome/master/'
     //request raw page from github
-    let gitpath = req.params.page ? BASE+req.params.page+'.md' : BASE+'index.md';
-    const resp = await fetch(gitpath);
-    const text = await resp.text();
+    let gitpath = req.params.page ? BASE + req.params.page + '.md' : BASE + 'index.md'
+    const resp = await fetch(gitpath)
+    const text = await resp.text()
     // parse the raw .md page and render it with a template.
-    const parsedWithFormatter = fm(text);
+    const parsedWithFrontMatter = fm(text)
     res.render('awesome.html', {
-      title: parsedWithFormatter.attributes.title,
-      description: parsedWithFormatter.attributes.description,
-      content: utils.md.render(parsedWithFormatter.body)
+      title: parsedWithFrontMatter.attributes.title,
+      description: parsedWithFrontMatter.attributes.description,
+      content: utils.md.render(parsedWithFrontMatter.body)
     })
   }
   /* end awesome  */
