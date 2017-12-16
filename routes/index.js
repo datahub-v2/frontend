@@ -264,15 +264,18 @@ module.exports = function () {
   router.get('/awesome/:page', showAwesomePage)
 
   async function showAwesomePage(req, res) {
-    const BASE = 'https://raw.githubusercontent.com/datahubio/awesome/master/'
+    const BASE = 'https://raw.githubusercontent.com/datahubio/awesome-data/master/'
+    const path = req.params.page ? req.params.page + '.md' : 'README.md'
     //request raw page from github
-    let gitpath = req.params.page ? BASE + req.params.page + '.md' : BASE + 'index.md'
+    let gitpath = BASE + path
+    let editpath = 'https://github.com/datahubio/awesome-data/edit/master/' + path
     const resp = await fetch(gitpath)
     const text = await resp.text()
     // parse the raw .md page and render it with a template.
     const parsedWithFrontMatter = fm(text)
     res.render('awesome.html', {
       title: parsedWithFrontMatter.attributes.title,
+      editpath: editpath,
       description: parsedWithFrontMatter.attributes.description,
       content: utils.md.render(parsedWithFrontMatter.body)
     })

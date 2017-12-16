@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
-{% block title%}{{title}} - Awesome dataset{% endblock %}
+{% block title%}{{title}} - Awesome Datasets{% endblock %}
 
-{% block bodyclass %}awesome{% endblock %}
+{% block bodyclass %}textual awesome{% endblock %}
 
 {% block content %}
 <!-- awesome page test placeholder -->
@@ -10,15 +10,23 @@
   <div class="inner_container">
     <div class="page-header">
       <h1>
-        {{title}}
+        {{title}} &ndash; Awesome Datasets
       </h1>
-      <i>{{description}}</i>
     </div>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         {{content | safe}}
 
-        <p class="info">If you have questions, comments or feedback join our <a href="https://gitter.im/datahubio/chat" target="_blank">chat channel</a> or open an issue on our <a href="https://github.com/datahubio/qa" target="_blank">tracker</a>.</p>
+        <p class="info">If you have suggestions, questions or feedback join our <a href="https://gitter.im/datahubio/chat" target="_blank">chat channel</a> or open an issue on our <a href="https://github.com/datahubio/qa" target="_blank">issue tracker</a>.</p>
+      </div>
+      <div class="col-md-2 pre-scrollable">
+        <ul data-spy="affix">
+          <a href="{{ editpath }}" class="btn btn-primary btn-md">
+            Edit this page
+            <br/>
+            <small>(on github)</small>
+          </a>
+        </ul>
       </div>
     </div>
   </div>

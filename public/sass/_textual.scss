@@ -1,0 +1,74 @@
+/* common css for styling "textual" pages like docs, blog and awesome */
+
+body.textual {
+  table {
+    @extend .table;
+    @extend .table-striped;
+    @extend .table-bordered;
+  }
+  .page-header {
+    h1 {
+      text-align: center;
+    }
+    p {
+      text-align: center;
+      color: $gray;
+      font-size: 12px;
+    }
+  }
+  .header-anchor {
+    i {
+      font-size: 16px;
+      color: $gray-light;
+      padding: 0 6px;
+    }
+  }
+  img {
+    max-width: 100%;
+  }
+  p.info {
+    color: $gray;
+    font-size: 12px;
+    border-top: 1px solid $gray-light;
+    margin: 50px 0;
+  }
+  p.meta-info {
+    line-height: calc(1em + 12px);
+  }
+  div.info {
+    border: 1px solid #ff7900;
+    border-radius: 2px;
+    margin: 40px 0;
+    padding: 20px;
+    color: $gray;
+    p {
+      margin: 0;
+    }
+  }
+  div.row img {
+    margin: 60px 0;
+  }
+  div.cli-output {
+    .table-striped {
+      > tbody > tr:nth-of-type(odd) {
+        background-color: transparent;
+      }
+    }
+    border: 1px solid $black;
+    border-radius: 2px;
+    margin: 40px 0;
+    padding: 20px;
+    background-color: $black;
+    color: white;
+    p {
+      margin: 0;
+    }
+    a {
+      &:hover {
+        color: $brand-warning;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
