@@ -517,17 +517,20 @@ module.exports = function () {
       return
     }
 
+    const revisionId = latestSuccessfulRevision.id.split('/')[2]
     try {
-      const revisionId = latestSuccessfulRevision.id.split('/')[2]
       normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, revisionId, token)
     } catch (err) {
       next(err)
       return
     }
     let redirectUrl = `${normalizedDp.path}/datapackage.json`
+    let resp = await fetch(redirectUrl)
+    if (resp.status === 404) {
+      redirectUrl = redirectUrl.replace(revisionId, 'latest')
+    }
     if (normalizedDp.datahub.findability === 'private') {
       const authzToken = await api.authz(token)
-      let resp = await fetch(redirectUrl)
       if (resp.status === 403) {
         const signedUrl = await api.checkForSignedUrl(
           redirectUrl, userAndPkgId.userid, null, authzToken
