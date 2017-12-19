@@ -526,8 +526,12 @@ module.exports = function () {
     }
     let redirectUrl = `${normalizedDp.path}/datapackage.json`
     let resp = await fetch(redirectUrl)
+    // After changes in pkgstore, we ended up with some datasets that cannot be
+    // accessed by its revision id unless its revision re-triggered. In such
+    // cases we can access datapackage.json by using 'latest' string instead of
+    // revision id:
     if (resp.status === 404) {
-      redirectUrl = redirectUrl.replace(revisionId, 'latest')
+      redirectUrl = redirectUrl.replace(`/${revisionId}/`, '/latest/')
     }
     if (normalizedDp.datahub.findability === 'private') {
       const authzToken = await api.authz(token)
