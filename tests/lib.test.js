@@ -150,6 +150,18 @@ test('Metastore API wrapper (events) function works', async t => {
   t.is(res.results.length, 1)
 })
 
+test('Filemanager API works', async t => {
+  let owner = 'admin'
+  let pkgId = 'demo-package'
+  let flowId = 1
+  let res = await api.getStorage(owner)
+  t.is(res.totalBytes, 1234)
+  res = await api.getStorage(owner, pkgId)
+  t.is(res.totalBytes, 123)
+  res = await api.getStorage(owner, pkgId, flowId)
+  t.is(res.totalBytes, 12)
+})
+
 test('Authenticates with GitHub using given jwt and returns user info', async t => {
   const jwt = '1a2b3c'
   const res = await api.authenticate(jwt)

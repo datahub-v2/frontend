@@ -388,4 +388,14 @@ module.exports.initMocks = function() {
     .reply(200, require('./reports/report-resource.json'))
     .get('/datapackage_report.json')
     .reply(200, require('./reports/failed-report.json'))
+
+  // Mock for Filemanager API:
+  nock(config.get('API_URL'))
+    .persist()
+    .get('/storage/owner/admin')
+    .reply(200, {totalBytes: 1234})
+    .get('/storage/dataset_id/admin/demo-package')
+    .reply(200, {totalBytes: 123})
+    .get('/storage/flow_id/admin/demo-package/1')
+    .reply(200, {totalBytes: 12})
 }
