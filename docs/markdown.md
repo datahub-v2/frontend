@@ -38,8 +38,8 @@ Santa Claus said:
 
 `https://example.com` https://example.com - automatic  
 `[Example](https://example.com)` [Example](https://datahub.io) - defined text  
-`![image name](https://goo.gl/YPFoy5)`
-![image name](https://goo.gl/YPFoy5)
+`![alt text](https://goo.gl/YPFoy5 "image title")`
+![alt text](https://goo.gl/YPFoy5 "image title")
 
 ### lists
 
