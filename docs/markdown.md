@@ -1,9 +1,8 @@
+---
+title: 5 minutes Markdown guide
+---
 Markdown is an easy-to-use markup language, used to format docs for web, using plain text.  
-Used by datahub, github, bitbucket and many many more
-
-# 5 minutes Markdown guide
-
-`example` result
+Used by datahub, github, bitbucket and many many more.
 
 ### text:
 
