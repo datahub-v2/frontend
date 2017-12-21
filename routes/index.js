@@ -171,12 +171,13 @@ module.exports = function () {
         })
         const packages = await api.search(`datahub.ownerid="${req.cookies.id}"&size=0`, req.cookies.jwt)
         const currentUser = utils.getCurrentUser(req.cookies)
+        const storage = await api.getStorage(req.cookies.username)
         res.render('dashboard.html', {
           title: 'Dashboard',
           currentUser,
           events: events.results,
           totalPackages: packages.summary.total,
-          totalSpace: bytes(packages.summary.totalBytes, {decimalPlaces: 0})
+          totalSpace: bytes(storage.totalBytes, {decimalPlaces: 0})
         })
       } else {
         req.flash('message', 'Your token has expired. Please, login to see your dashboard.')
@@ -475,11 +476,15 @@ module.exports = function () {
           }))
         }
 
+        // Get size of this revision:
+        const [owner, name, revision] = status.id.split('/')
+        const storage = await api.getStorage(owner, name, revision)
         // Now render the page:
         res.render('showcase.html', {
           title: req.params.owner + ' | ' + req.params.name,
           dataset: normalizedDp,
           owner: req.params.owner,
+          size: bytes(storage.totalBytes, {decimalPlaces: 0}),
           // eslint-disable-next-line no-useless-escape, quotes
           dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'"),
           status: status.state,

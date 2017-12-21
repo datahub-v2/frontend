@@ -21,7 +21,7 @@ test('Dashboard page renders when jwt in cookies setup', async t => {
     .set('Cookie', ['jwt=1a2b3c;id=publisher;username=publisher;'])
   t.is(res.statusCode, 200)
   t.true(res.text.includes('Your Dashboard'))
-  t.true(res.text.includes('1MB'))
+  t.true(res.text.includes('121kB'))
   t.true(res.text.includes('<!-- Events -->'))
 })
 
@@ -70,6 +70,7 @@ test('Showcase page returns 200 if logged in and private dataset', async t => {
     .set('Cookie', ['jwt=private-token'])
   t.is(res.statusCode, 200)
   t.true(res.text.includes('DataHub'))
+  t.true(res.text.includes('1kB'))
 })
 
 test('Showcase page returns 404 not logged in and private dataset', async t => {
@@ -117,6 +118,7 @@ test('Showcase with FULL URL and INPROGRESS revision status uses original dp', a
     .get('/admin/demo-package/v/2')
   t.is(res.statusCode, 200)
   t.true(res.text.includes('demo-package'))
+  t.true(res.text.includes('2kB'))
 })
 
 test('Showcase with FULL URL and FAILED revision status uses original dp + shows failed pipelines with error logs', async t => {
@@ -128,6 +130,7 @@ test('Showcase with FULL URL and FAILED revision status uses original dp + shows
   t.true(res.text.includes('error 1')) // Includes error logs
   t.true(res.text.includes('error 2'))
   t.true(res.text.includes('Some of your data has validation errors.'))
+  t.true(res.text.includes('3kB'))
 })
 
 test('Showcase displays validation error notice', async t => {

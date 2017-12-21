@@ -398,4 +398,12 @@ module.exports.initMocks = function() {
     .reply(200, {totalBytes: 123})
     .get('/storage/flow_id/admin/demo-package/1')
     .reply(200, {totalBytes: 12})
+    .get('/storage/flow_id/admin/demo-package/2')
+    .reply(200, {totalBytes: 2000})
+    .get('/storage/flow_id/admin/demo-package/3')
+    .reply(200, {totalBytes: 3000})
+    .get('/storage/flow_id/admin/private-package/1')
+    .reply(200, {totalBytes: 1111})
+    .get('/storage/owner/publisher')
+    .reply(200, {totalBytes: 123456})
 }
