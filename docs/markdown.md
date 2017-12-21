@@ -1,7 +1,5 @@
-Markdown is an easy-to-use markup language, used to format plain text docs in the web incredibly fast.  
-It will take minutes to learn and save hours of time.  
-
-It is widely used by open-source organizations like datahub, github, bitbucket and many more
+Markdown is an easy-to-use markup language, used to format docs for web, using plain text.  
+Used by datahub, github, bitbucket and many many more
 
 # 5 minutes Markdown guide
 
@@ -13,18 +11,25 @@ It is widely used by open-source organizations like datahub, github, bitbucket a
 `*italic text*` *italic text*   
 `**bold text**` **bold text**,  
 `~~crossed though~~` ~~crossed though~~  
-  
-`---` just line:
----
+`double space` - linebreak
 
-`__ # double space` linebrake  
-  
+`---` line:
+
+---  
+### Blockquotes
+
+```
+Santa Claus said:
+> Happy Christmas, hohoho
+```
+Santa Claus said:
+> Happy Christmas, hohoho
 
 
 ### Headers 
 
 ```
-# this is a Header1 tag
+# this is a Header1
 ## Header2
 ...
 ###### Header6
@@ -32,24 +37,13 @@ It is widely used by open-source organizations like datahub, github, bitbucket a
 
 ### links
 
-`[Hyperlink name](https://example.com)` [Hyperlink name](https://datahub.io)  
-  
-`![The cat image](https://goo.gl/YPFoy5)` ![The cat image](https://goo.gl/YPFoy5)
+`https://example.com` https://example.com - automatic  
+`[Example](https://example.com)` [Example](https://datahub.io) - defined text  
+`![image name](https://goo.gl/YPFoy5)`
+![image name](https://goo.gl/YPFoy5)
 
 ### lists
-Ordered:
-```
-1. task 1
-1. task 2
-  2.1. task 2a
-  2.2. task 2b
-```
-1. task 1
-2. task 2
-  2.1 task 2a
-  2.2 task 2b
 
-Unordered:
 ```
 * task 1
 * task 2
@@ -63,15 +57,30 @@ Unordered:
 
 List with checkboxes:
 ```
-* [ ] task 1
-* [x] task 2
+* [x] unchecked 
+* [ ] checked
 ```
 
-* [ ] task 1
-* [x] task 2
+* [x] task 1 
+* [ ] task 2
 
-## datahub extentions:
+## code
+
+```
+This is an inline code: `inline code`
+```
+This is an inline code: `inline code`
+  
+Multi-line code starts with triple back apostrophe (also you can add the programming language name - ```[python|bash|php|etc]  
+print('hello world)
+```python
+print('hello world)
+```
+and ends with triple back apostrophe as well.
+
+---
+As you can see, formatting text with Markdown is as easy as using notepad. Also, the markdown syntax could be extended easily, and here is the features, that we added, and you can use them to format pages for datahub.
+
+## datahub extensions:
 
 [TOC]
-
-enough for today...
