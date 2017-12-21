@@ -2,9 +2,6 @@
 title: 5 minutes Markdown guide
 ---
 
-
-[TOC]
-
 Markdown is an easy-to-use markup language, used to format docs for web, using plain text.  
 Used by datahub, github, bitbucket and many many more.
 
@@ -67,7 +64,7 @@ List with checkboxes:
 * [x] task 1 
 * [ ] task 2
 
-## code
+### code
 
 ```
 This is an inline code: `inline code`
@@ -84,43 +81,21 @@ and ends with triple back apostrophe as well.
 ---
 As you can see, formatting text with Markdown is as easy as using notepad. Also, the markdown syntax could be extended easily, and here is the features, that we added, and you can use them to format pages for datahub.
 
-## DataHub specific features
+## DataHub specific features --under construction--
 
-### How to contribute to DataHub docs?
+### Front Matter ???
 
-You are always welcome to open PR for DataHub docs.
-Since you know how markdown works, there are only couple steps you need to know:
+Front matter is bla bla bla
 
-* Table of content - DataHub docs are created by Markdown processor, and each document has TOC where you need to define your title, date etc.
 ```
+
 ---
 title: Installing data
 date: 2017-09-19
 ---
 ```
-* Template - template for home docs page is located in `views/docs_home.html`, the rest docs use `views/docs.html`
-* css - our default css class is `docs` which is located `/public/sass/_doc.scss`. We use preprocessors like [*Sass*][sass]
 
-**Note:** *file name should be lowercased without any white spaces*.
-
-### How to write blogs on DataHub?
-
-All blogs are located in `blog` section. Blogs use markdown language with table of content. 
-```
----
-title: How much space are you using?
-date: 2017-10-04
-authors: ['anuveyatsu']
----
-```
-
-**Note:** *file name should be lowercased without any white spaces and concatenated date in the beginning*.
-```
-blog/2017-10-04-space-usage
-```
-* Template - template for blog page is located in `views/blog.html`.
-* css - our default css class is `blog` which is located `/public/sass/_blog.scss`. We use preprocessors like [*Sass*][sass]
-
-
-
-[sass]: http://sass-lang.com/
+### Table of content ???
+ 
+When you write `[TOC]` in your document - it will be automatically transformed into Table Of Content section, with links to all your Headers. 
+[TOC]
