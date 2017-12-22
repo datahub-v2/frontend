@@ -1,5 +1,7 @@
 ---
 title: 5 minutes Markdown guide
+date: 2017-12-21
+author: [Dima German]
 ---
 
 Markdown is an easy-to-use markup language, used to format docs for web, using plain text.  
@@ -22,6 +24,7 @@ Used by datahub, github, bitbucket and many many more.
 Santa Claus said:
 > Happy Christmas, hohoho
 ```
+
 Santa Claus said:
 > Happy Christmas, hohoho
 
@@ -50,6 +53,7 @@ Santa Claus said:
   * task 2a
   * task 2b
 ```
+
 * task 1
 * task 2
   * task 2a
@@ -69,6 +73,7 @@ List with checkboxes:
 ```
 This is an inline code: `inline code`
 ```
+
 This is an inline code: `inline code`
   
 Multi-line code starts with triple back apostrophe (also you can add the programming language name - ```[python|bash|php|etc]  
@@ -79,23 +84,30 @@ print('hello world)
 and ends with triple back apostrophe as well.
 
 ---
-As you can see, formatting text with Markdown is as easy as using notepad. Also, the markdown syntax could be extended easily, and here is the features, that we added, and you can use them to format pages for datahub.
+As you can see, formatting text with Markdown is as easy as using notepad. Also, the markdown syntax could be extended easily, and here is the extra features, you can use to format pages for datahub.
 
-## DataHub specific features --under construction--
+## DataHub specific features
 
-### Front Matter ???
+### FrontMatter
 
-Front matter is bla bla bla
+In the world of computer programming, **frontmatter** is metadata at the top of a file. 
+Just put your metadata between two lines like this:
 
 ```
-
 ---
 title: Installing data
-date: 2017-09-19
+date: 2017-12-21
+author: [Dima German]
 ---
 ```
 
-### Table of content ???
+And our site engine will use this metadata while forming the page. The result you can see on top of this page ('author' is used in the blog posts)
+
+
+### Table of content
  
-When you write `[TOC]` in your document - it will be automatically transformed into Table Of Content section, with links to all your Headers. 
-[TOC]
+If you will add `[TOC]` in your document - [TOC] will be automatically transformed into Table Of Content section, with links to all your Headers.
+
+## The end
+
+You can check your skills on https://hackmd.io/ - online markdown notes site.
