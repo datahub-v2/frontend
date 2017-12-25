@@ -160,7 +160,7 @@ module.exports = function () {
   // /end redirects
   // -------------
 
-  router.get('/dashboard', async (req, res) => {
+  router.get('/dashboard', async (req, res, next) => {
     if (req.cookies.jwt) {
       const isAuthenticated = await api.authenticate(req.cookies.jwt)
       if (isAuthenticated) {
@@ -171,7 +171,15 @@ module.exports = function () {
         })
         const packages = await api.search(`datahub.ownerid="${req.cookies.id}"&size=0`, req.cookies.jwt)
         const currentUser = utils.getCurrentUser(req.cookies)
-        const storage = await api.getStorage(req.cookies.username)
+
+        let storage
+        try {
+          storage = await api.getStorage(req.cookies.username)
+        } catch (err) {
+          next(err)
+          return
+        }
+
         res.render('dashboard.html', {
           title: 'Dashboard',
           currentUser,
@@ -478,7 +486,14 @@ module.exports = function () {
 
         // Get size of this revision:
         const [owner, name, revision] = status.id.split('/')
-        const storage = await api.getStorage(owner, name, revision)
+        let storage
+        try {
+          storage = await api.getStorage(owner, name, revision)
+        } catch (err) {
+          next(err)
+          return
+        }
+
         // Now render the page:
         res.render('showcase.html', {
           title: req.params.owner + ' | ' + req.params.name,
