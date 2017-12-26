@@ -21,7 +21,7 @@ You can read and learn about CSV in [this post](/docs/data-packages/csv).
 
 Let's have a simple CSV file. Create a file in your current directory named `mydata.csv` and paste the following into it (you can use your own):
 
-**Note:** *It will validate your data prior publishing, if everything is fine - otherwise you'd get validation errors*
+**Note:** *It will validate your data prior to  publishing, if everything is fine - otherwise you'd get validation errors*
 
 ```
 number,string,boolean
@@ -31,11 +31,7 @@ number,string,boolean
 
 ## Publish the data
 
-You will need to login (or signup) before publishing:
-
-```
-data login
-```
+**Note:** *you will need to be logged in to publish data on datahub. It's simple and easy just type **data login** and follow instructions*
 
 Putting your data online is now just one simple command: `data push [path]`
 
@@ -51,7 +47,7 @@ The output will be:
 🔗  https://datahub.io/username/dataset/v/1 (copied to clipboard)
 ```
 
-**Note:** *by default, findability flag for your dataset is set to **unlisted**, meaning it will not appear in search results. Use **published** flag to make it publicly available*
+**Note:** *by default, it is **unlisted**, meaning it will not appear in search results. Use **published** flag to make it publicly available*
 
 ```
 $ data push mydata.csv --published

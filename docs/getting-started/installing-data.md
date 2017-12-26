@@ -14,7 +14,7 @@ There are two options for installation:
 
 1. Go to the [releases page](/download)
 2. Download the pre-built binary for your platform (MacOS and LinuxOS x64 at present)
-3. Make it executable by running 
+3. Make it executable
 
     ```bash
     $ chmod +x data-{os-distribution}
