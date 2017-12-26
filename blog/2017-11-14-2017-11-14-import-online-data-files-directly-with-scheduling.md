@@ -28,7 +28,7 @@ Once the process is completed open your browser and check it out! It would gener
 
 Note: We've decided to still use the push command, even though unlike local data you are not "pushing" it but rather importing it. [Read more about the `push` command in our getting started guide][getting-started].
 
-[getting-started]: http://datahub.io/docs/getting-started/pushing-data
+[getting-started]: http://datahub.io/docs/getting-started/publishing-data
 
 ### Set up a Schedule
 

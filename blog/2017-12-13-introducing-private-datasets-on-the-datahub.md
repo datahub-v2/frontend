@@ -37,7 +37,7 @@ $ data push myData --private
 ```
 
 :::info
-Learn more about how to publish datasets using the CLI [here](http://datahub.io/docs/getting-started/pushing-data).
+Learn more about how to publish datasets using the CLI [here](http://datahub.io/docs/getting-started/publishing-data).
 :::
 
 
