@@ -11,25 +11,53 @@
 <div class="container">
   <div class="inner_container">
     <div class="wrapper">
-      <h1>Desktop app</h1>
+      <h1>Our publishing app</h1>
       <p>
-        Our app is the recommended way to put data on the DataHub and use its services.
+        Our <u>data</u> app is the recommended way to put data on the DataHub and use its services.
         <br />
-        It also installs and maintains the command line program up to date automatically.
+        You can preview showcase for your data, validate it and publish to DataHub.
       </p>
-      <div class="img-wrapper">
-        <img src="/static/img/data-desktop.jpg" class="img-responsive" />
-      </div>
       <a href="{{desktopAppUrl}}" class="btn btn-lg btn-primary" onclick="trackOutboundLink('data-desktop-app')">
-        <i class="fa fa-apple" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Download data
+        <i class="fa fa-apple" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Download
       </a>
       <p class="info">MacOS only, other OS are coming.</p>
+      <div class="row steps">
+        <div class="col-sm-4">
+          <h3 class="step-heading">Drag and drop your data</h3>
+          <p class="step-body">
+            Just drop a file into the tray menu.
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <h3 class="step-heading">Get a showcase</h3>
+          <p class="step-body">
+            Preview a showcase for your file, validate everything is looking good.
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <h3 class="step-heading">Publish</h3>
+          <p class="step-body">
+            Finally, just hit the "publish" button!
+          </p>
+        </div>
+      </div>
+
+      <div class="img-wrapper">
+        <img src="/static/img/docs/drag-n-drop.gif" class="img-responsive" />
+        <p class="info">
+          Find out more about <u>data</u> app <a href="/blog/data-desktop-app-alpha-release" class="normal-link">here</a>.
+          <br />
+          Getting started is absolutely free! For full pricing information visit <a href="/pricing" class="normal-link">this page</a>.
+        </p>
+      </div>
 
       <h1>Command Line Tool</h1>
       <p>
-        You can get our packaged binaries of <b>data</b> tool.
+        You can get our packaged binaries of <b>data</b> tool for advanced users.
         <br />
         You don't need to have Node.js to use it!
+        <br />
+        Follow <a href="/docs/getting-started/installing-data" class="normal-link">these instructions</a> to start using the tool.
       </p>
       <a href="{{binReleaseMacos}}" class="btn btn-lg btn-primary" onclick="trackOutboundLink('bin-macos')">
         <i class="fa fa-apple" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;data for macos
@@ -37,6 +65,15 @@
       <a href="{{binReleaseLinux}}" class="btn btn-lg btn-primary" onclick="trackOutboundLink('bin-linux')">
         <i class="fa fa-linux" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;data for linux
       </a>
+      <p class="info">
+        If you already have the desktop app, you don't need the CLI tool.
+      </p>
+      <p class="message">
+        You also can install it via NPM:
+      </p>
+      <p class="command">
+        npm install -g datahub-cli
+      </p>
     </div>
   </div>
 </div>

@@ -11,11 +11,17 @@ body.download {
       margin-bottom: 30px;
     }
     p.info {
-      width: 54%;
       margin: auto;
       margin-top: 12px;
+      margin-bottom: 12px;
       color: $gray;
       font-size: 12px;
+    }
+    p.message {
+      margin: 50px 0 30px;
+    }
+    p.command {
+      color: $gray;
     }
     h1:nth-of-type(2) {
       margin-top: 3.5em;
@@ -23,11 +29,23 @@ body.download {
     a {
       padding: 14px 20px;
     }
+    a.normal-link {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
     a:nth-of-type(2) {
       margin-right: 25px;
     }
     a:nth-of-type(3) {
       margin-left: 25px;
+    }
+    .steps {
+      padding: 0 40px;
+      margin: 30px 0;
+    }
+    .step-heading {
+      font-size: 14px;
+      font-weight: bold;
     }
   }
 }

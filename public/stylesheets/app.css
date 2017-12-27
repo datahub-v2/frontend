@@ -7399,18 +7399,31 @@ body.download {
     body.download .wrapper h1, body.download .wrapper p {
       margin-bottom: 30px; }
     body.download .wrapper p.info {
-      width: 54%;
       margin: auto;
       margin-top: 12px;
+      margin-bottom: 12px;
       color: #757575;
       font-size: 12px; }
+    body.download .wrapper p.message {
+      margin: 50px 0 30px; }
+    body.download .wrapper p.command {
+      color: #757575; }
     body.download .wrapper h1:nth-of-type(2) {
       margin-top: 3.5em; }
     body.download .wrapper a {
       padding: 14px 20px; }
+    body.download .wrapper a.normal-link {
+      padding: 0 !important;
+      margin: 0 !important; }
     body.download .wrapper a:nth-of-type(2) {
       margin-right: 25px; }
     body.download .wrapper a:nth-of-type(3) {
       margin-left: 25px; }
+    body.download .wrapper .steps {
+      padding: 0 40px;
+      margin: 30px 0; }
+    body.download .wrapper .step-heading {
+      font-size: 14px;
+      font-weight: bold; }
 
 /*# sourceMappingURL=app.css.map */
