@@ -832,7 +832,8 @@ module.exports = function () {
       events: events.results,
       emailHash: userProfile.profile.id,
       joinDate: joinMonth + ' ' + joinYear,
-      owner: req.params.owner
+      owner: req.params.owner,
+      name: userProfile.profile.name
     })
   })
 
