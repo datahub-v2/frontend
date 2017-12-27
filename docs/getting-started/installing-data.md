@@ -62,14 +62,14 @@ Finally, and as a last test, you can try out your first `❒ data` command: `inf
 The `info` command provides info on a data file or dataset whether it is on the DataHub or your local disk. Here's an example for you to try:
 
 ```bash
-data info https://datahub.io/core/finance-vix
+data info https://datahub.io/core/finance-vix/datapackage.json
 ```
 
 It should something like this:
 
 ```cli-output
 CBOE Volatility Index (VIX) time-series dataset including daily open, close,
-high and ...
+high and low ...
 ```
 
 You can learn more about **data** tool here - http://datahub.io/docs/features/data-cli.
