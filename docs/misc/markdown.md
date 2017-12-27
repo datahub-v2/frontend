@@ -7,7 +7,7 @@ author: [Dima German]
 Markdown is an easy-to-use markup language, used to format docs for web, using plain text.  
 Used by datahub, github, bitbucket and many many more.
 
-### text:
+### TEXT
 
 `usual text` usual text  
 `*italic text*` *italic text*   
@@ -95,7 +95,7 @@ Just put your metadata between two lines like this:
 
 ```
 ---
-title: Installing data
+title: 5 minutes Markdown guide
 date: 2017-12-21
 author: [Dima German]
 ---
@@ -106,8 +106,8 @@ And our site engine will use this metadata while forming the page. The result yo
 
 ### Table of content
  
-If you will add `[TOC]` in your document - [TOC] will be automatically transformed into Table Of Content section, with links to all your Headers.
+If you will add `[[toc]]` in your document - this will be automatically transformed into Table Of Content section, with links to all your Headers.
 
 ## The end
 
-You can check your skills on https://hackmd.io/ - online markdown notes site.
+Now you can use new markdown skills to create or improve one of [Awesome pages](/awesome)
