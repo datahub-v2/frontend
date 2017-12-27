@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% import '_snippets.html' as snippets %}
+
+{% block title %}
+Welcome - Home
+{% endblock %}
+
+{% block bodyclass %}home{% endblock %}
+
+{% block content %}
+<!-- Jumbotron main -->
+<div class="container">
+  <div class="inner_container">
+    <div class="jumbotron jumbotron-primary">
+      <div class="row">
+        <div class="text-center">
+          <h1 class="main-title">Data online made simple</h1>
+        </div>
+      </div>
+      <div class="row demo">
+        <div class="col-sm-6">
+          <div class="console">
+            <div class="window">
+              <div class="header">
+                <span class="icon close-terminal"></span>
+                <span class="icon minimize"></span>
+                <span class="icon fullScreen"></span>
+                <div class="title">
+                  bash
+                </div>
+              </div>
+              <div class="body">
+                <div class="console-inner">
+                  <pre>
+  <span class="prompt"><span class="square">■</span> ~/my-data $</span> ls
+  datapackage.json   data.csv
+  <span class="prompt"><span class="square">■</span> ~/my-data $</span> data push
+  &gt; Uploading [====================] 100% 8.5s
+  &gt; Push complete (9.61MB) [8509ms]
+  &gt; Ready! https://datahub.io/your-username/my-data
+    (copied to clipboard)
+  <span class="prompt"><span class="square">■</span> ~/my-data $</span> <span class="cursor"></span>
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="primary-call-to-action">
+            <a href="/core" class="btn btn-lg btn-default btn-block">
+              Core datasets
+            </a>
+            <a href="/requests" class="btn btn-lg btn-default btn-block">
+              Request data
+            </a>
+            <a href="/download" class="btn btn-lg btn-primary btn-block">
+              Start publishing for free!
+            </a>
+          </div>
+        </div>
+      </div>
+      <p class="info"><span style="font-size: 100%; font-family: monospace">❒</span> <strong>datahub</strong> is the fastest way for individuals and teams to <strong>find, share and publish</strong> high quality data online</p>
+      <div class="row text-center call-to-action call-to-action-new">
+        <div>
+          <a href="#showcase" class="arrow" onclick="scrollDown(this)">
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- End of jumbotron main -->
+
+<!-- Section 1 -->
+<div class="section-gray" id="showcase">
+<div class="container home">
+  <div class="inner_container">
+    <div class="section section-centered">
+      <div class="row">
+        <h2 class="section-title">Some of our most popular data</h2>
+
+        {{ snippets.package_list_show(showcasePackages) }}
+
+        <a href="/search" class="btn btn-lg btn-primary">
+          See more datasets
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- End of section 1 -->
+
+<!-- Section 2 -->
+<div class="container home">
+  <div class="inner_container">
+    <div class="section section-centered">
+      <div class="row">
+        <h2 class="section-title">Tutorials</h2>
+
+        {{ snippets.package_list_show(tutorialPackages) }}
+      </div>
+    </div>
+  </div>
+</div><!-- End of section 2 -->
+{% endblock %}

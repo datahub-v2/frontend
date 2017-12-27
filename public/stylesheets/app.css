@@ -6507,6 +6507,7 @@ footer {
   padding-bottom: 5em; }
 
 .jumbotron-primary {
+  position: relative;
   margin-top: -10px;
   padding-left: 0px !important;
   padding-right: 0px !important; }
@@ -6668,8 +6669,21 @@ footer {
     font-size: 3em;
     margin-right: 0; }
 
+.jumbotron .call-to-action-new {
+  position: absolute;
+  bottom: 0;
+  left: 50%; }
+
 .home .section-title {
   margin-bottom: 50px; }
+.home .primary-call-to-action {
+  padding: 6% 15%; }
+.home .container .jumbotron-primary, .home .container-no-top-padding .jumbotron-primary {
+  min-height: calc(100vh - 114px); }
+.home .info {
+  font-size: 14px;
+  margin-top: 20px;
+  text-align: center; }
 
 /* Section 1
 ====================================*/
