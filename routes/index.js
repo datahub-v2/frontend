@@ -53,23 +53,15 @@ module.exports = function () {
   router.get('/', frontPageTest(), async (req, res) => {
     // Get showcase and turorial packages for the front page
     let listOfShowcasePkgId = config.get('showcasePackages')
-    let listOfTutorialPkgId = config.get('tutorialPackages')
     listOfShowcasePkgId = await Promise.all(listOfShowcasePkgId.map(async pkgId => {
       const status = await api.specStoreStatus(pkgId.ownerid, pkgId.name, 'successful')
       pkgId.revisionId = status.id.split('/')[2] // Id is in `userid/dataset/id` form so we need the latest part
       return pkgId
     }))
-    listOfTutorialPkgId = await Promise.all(listOfTutorialPkgId.map(async pkgId => {
-      const status = await api.specStoreStatus(pkgId.ownerid, pkgId.name, 'successful')
-      pkgId.revisionId = status.id.split('/')[2] // Id is in `userid/dataset/id` form so we need the latest part
-      return pkgId
-    }))
     const showcasePackages = await api.getPackages(listOfShowcasePkgId)
-    const tutorialPackages = await api.getPackages(listOfTutorialPkgId)
     res.render('home_new.html', {
       title: 'Home',
       showcasePackages,
-      tutorialPackages,
       expId: res.locals.ab.id,
       expVar: res.locals.ab.variantId
     })
