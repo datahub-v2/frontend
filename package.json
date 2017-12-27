@@ -47,6 +47,7 @@
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
+    "express-ab": "^0.7.1",
     "express-session": "^1.15.5",
     "front-matter": "^2.2.0",
     "highlight.js": "^9.12.0",

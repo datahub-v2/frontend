@@ -165,6 +165,12 @@
 
       ga('create', 'UA-80458846-4', 'auto');
       ga('send', 'pageview');
+
+      // If experiment data is set then send it to GA:
+      if ('{{expId}}' && '{{expVar}}') {
+        ga('set', 'expId', '{{expId}}');
+        ga('set', 'expVar', '{{expVar}}');
+      }
     </script>
     <script type="text/javascript" src="/static/js/smoothscroll.js"></script>
     <script>

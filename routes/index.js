@@ -5,6 +5,7 @@ const path = require('path')
 const urllib = require('url')
 
 const express = require('express')
+const ab = require('express-ab')
 const fetch = require('node-fetch')
 const bytes = require('bytes')
 const fm = require('front-matter')
@@ -16,12 +17,15 @@ const config = require('../config')
 const lib = require('../lib')
 const utils = require('../lib/utils')
 
+let frontPageTest = ab.test('front-page-layout', { id: '3nmc4iraRcm0eFnbb0uzVw' })
+
 module.exports = function () {
   // eslint-disable-next-line new-cap
   const router = express.Router()
   const api = new lib.DataHubApi(config)
 
-  router.get('/', async (req, res) => {
+  // Here we have 2 settings for `/` route as we're doing A/B testing:
+  router.get('/', frontPageTest(), async (req, res) => {
     // Get showcase and turorial packages for the front page
     let listOfShowcasePkgId = config.get('showcasePackages')
     let listOfTutorialPkgId = config.get('tutorialPackages')
@@ -40,7 +44,34 @@ module.exports = function () {
     res.render('home.html', {
       title: 'Home',
       showcasePackages,
-      tutorialPackages
+      tutorialPackages,
+      expId: res.locals.ab.id,
+      expVar: res.locals.ab.variantId
+    })
+  })
+
+  router.get('/', frontPageTest(), async (req, res) => {
+    // Get showcase and turorial packages for the front page
+    let listOfShowcasePkgId = config.get('showcasePackages')
+    let listOfTutorialPkgId = config.get('tutorialPackages')
+    listOfShowcasePkgId = await Promise.all(listOfShowcasePkgId.map(async pkgId => {
+      const status = await api.specStoreStatus(pkgId.ownerid, pkgId.name, 'successful')
+      pkgId.revisionId = status.id.split('/')[2] // Id is in `userid/dataset/id` form so we need the latest part
+      return pkgId
+    }))
+    listOfTutorialPkgId = await Promise.all(listOfTutorialPkgId.map(async pkgId => {
+      const status = await api.specStoreStatus(pkgId.ownerid, pkgId.name, 'successful')
+      pkgId.revisionId = status.id.split('/')[2] // Id is in `userid/dataset/id` form so we need the latest part
+      return pkgId
+    }))
+    const showcasePackages = await api.getPackages(listOfShowcasePkgId)
+    const tutorialPackages = await api.getPackages(listOfTutorialPkgId)
+    res.render('home_new.html', {
+      title: 'Home',
+      showcasePackages,
+      tutorialPackages,
+      expId: res.locals.ab.id,
+      expVar: res.locals.ab.variantId
     })
   })
 

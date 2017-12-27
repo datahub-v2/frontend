@@ -41,10 +41,6 @@ test('When redirected to /success it gets user info and writes into cookies then
 
 test('Logged in if credentials are passed with params', async t => {
   let res = await request(app)
-    .get('/')
-  t.is(res.statusCode, 200)
-  t.true(res.text.includes('Login'))
-  res = await request(app)
     .get('/?jwt=1a2b3c')
   t.true(res.text.includes('Logout'))
 })
