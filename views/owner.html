@@ -17,8 +17,8 @@
             <img src="https://www.gravatar.com/avatar/{{ emailHash }}?s=300&d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive">
           </div>
           <div class="col-sm-12 col-xs-6">
-            {% if owner %}
-              <h2 class="owner">{{ owner }}</h2>
+            {% if name %}
+              <h3 class="owner">{{ name }}</h3>
             {% endif %}
             {% if joinDate %}
               <p class="join-date">Since {{ joinDate }}</p>
