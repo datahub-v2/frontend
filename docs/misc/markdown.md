@@ -76,12 +76,12 @@ This is an inline code: `inline code`
 
 This is an inline code: `inline code`
   
-Multi-line code starts with triple back apostrophe (also you can add the programming language name - ```[python|bash|php|etc]  
+Multi-line code starts with triple backtick (also you can add the programming language name - ```[python|bash|php|etc]  
 print('hello world)
 ```python
-print('hello world)
+print('hello world')
 ```
-and ends with triple back apostrophe as well.
+and ends with triple backtick apostrophe as well.
 
 ---
 As you can see, formatting text with Markdown is as easy as using notepad. Also, the markdown syntax could be extended easily, and here is the extra features, you can use to format pages for datahub.
@@ -97,7 +97,6 @@ Just put your metadata between two lines like this:
 ---
 title: 5 minutes Markdown guide
 date: 2017-12-21
-author: [Dima German]
 ---
 ```
 
@@ -108,6 +107,6 @@ And our site engine will use this metadata while forming the page. The result yo
  
 If you will add `[[toc]]` in your document - this will be automatically transformed into Table Of Content section, with links to all your Headers.
 
-## The end
+## Summary
 
 Now you can use new markdown skills to create or improve one of [Awesome pages](/awesome)
