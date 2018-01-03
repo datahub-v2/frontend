@@ -17,7 +17,7 @@ const config = require('../config')
 const lib = require('../lib')
 const utils = require('../lib/utils')
 
-let frontPageTest = ab.test('front-page-layout', { id: '3nmc4iraRcm0eFnbb0uzVw' })
+let frontPageTest = ab.test('front-page-layout', { id: '0atclDGyTXmkeIj1_WlXAg' })
 
 module.exports = function () {
   // eslint-disable-next-line new-cap
