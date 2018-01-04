@@ -1,13 +1,16 @@
 ---
-title: 5 minutes Markdown guide
+title: Markdown - A Short Introduction
 date: 2017-12-21
 author: [Dima German]
 ---
 
 Markdown is an easy-to-use markup language, used to format docs for web, using plain text.  
-Used by datahub, github, bitbucket and many many more.
 
-### TEXT
+It is used by DataHub, Github, Stackoverflow and many other sites.
+
+[[toc]]
+
+## Basics
 
 `usual text` usual text  
 `*italic text*` *italic text*   
@@ -15,21 +18,25 @@ Used by datahub, github, bitbucket and many many more.
 `~~crossed though~~` ~~crossed though~~  
 `double space` - linebreak
 
-`---` line:
+`---` horizontal line like this:
 
----  
-### Blockquotes
+---
+
+
+## Blockquotes
 
 ```
 Santa Claus said:
+
 > Happy Christmas, hohoho
 ```
 
 Santa Claus said:
+
 > Happy Christmas, hohoho
 
 
-### Headers 
+## Headers 
 
 ```
 # this is a Header1
@@ -38,14 +45,14 @@ Santa Claus said:
 ###### Header6
 ```
 
-### links
+## Links
 
 `https://example.com` https://example.com - automatic  
 `[Example](https://example.com)` [Example](https://datahub.io) - defined text  
 `![alt text](https://goo.gl/YPFoy5 "image title")`
 ![alt text](https://goo.gl/YPFoy5 "image title")
 
-### lists
+## Lists
 
 ```
 * task 1
@@ -60,6 +67,7 @@ Santa Claus said:
   * task 2b
 
 List with checkboxes:
+
 ```
 * [x] unchecked 
 * [ ] checked
@@ -68,7 +76,7 @@ List with checkboxes:
 * [x] task 1 
 * [ ] task 2
 
-### code
+## Code
 
 ```
 This is an inline code: `inline code`
@@ -78,12 +86,14 @@ This is an inline code: `inline code`
   
 Multi-line code starts with triple backtick (also you can add the programming language name - ```[python|bash|php|etc]  
 print('hello world)
+
 ```python
 print('hello world')
 ```
 and ends with triple backtick apostrophe as well.
 
 ---
+
 As you can see, formatting text with Markdown is as easy as using notepad. Also, the markdown syntax could be extended easily, and here is the extra features, you can use to format pages for datahub.
 
 ## DataHub specific features
@@ -100,13 +110,9 @@ date: 2017-12-21
 ---
 ```
 
-And our site engine will use this metadata while forming the page. The result you can see on top of this page ('author' is used in the blog posts)
+And our site will use this metadata while forming the page. The result you can see on top of this page ('author' is used in the blog posts).
 
-
-### Table of content
+## Table of contents
  
 If you will add `[[toc]]` in your document - this will be automatically transformed into Table Of Content section, with links to all your Headers.
 
-## Summary
-
-Now you can use new markdown skills to create or improve one of [Awesome pages](/awesome)
