@@ -32,14 +32,24 @@ Welcome - Home
               <div class="body">
                 <div class="console-inner">
                   <pre>
-  <span class="prompt"><span class="square">■</span> ~/my-data $</span> ls
-  datapackage.json   data.csv
-  <span class="prompt"><span class="square">■</span> ~/my-data $</span> data push
-  &gt; Uploading [====================] 100% 8.5s
-  &gt; Push complete (9.61MB) [8509ms]
-  &gt; Ready! https://datahub.io/your-username/my-data
-    (copied to clipboard)
-  <span class="prompt"><span class="square">■</span> ~/my-data $</span> <span class="cursor"></span>
+<span class="prompt"><span class="square">■</span> ~/my-data $ <span
+class="txt-show"
+data-start="2000"
+data-text='ls'></span><span class="cursor"></span>
+</span><span class="output" style="display:none">   data.csv</span><span
+class="prompt" style="display:none"><span class="square">■</span> ~/my-data $ <span
+class="txt-show"
+data-start="4500"
+data-text='data push data.csv'></span><span class="cursor"></span>
+</span><span
+class="prompt" style="display:none">   &gt; Uploading <span
+class="txt-show" data-start="12500" data-text="..................."></span> <span class="output" style="display:none">100% 8.5s</span>
+</span><span
+class="output" style="display:none">   &gt; Push complete (9.61MB) [8509ms]
+   &gt; Ready! https://datahub.io/your-username/my-data
+     (copied to clipboard)
+</span><span
+class="prompt" style="display:none"><span class="square">■</span> ~/my-data $ <span class="cursor"></span></span>
                   </pre>
                 </div>
               </div>
@@ -90,4 +100,66 @@ Welcome - Home
   </div>
 </div>
 </div><!-- End of section 1 -->
+{% endblock %}
+
+{% block scripts %}
+<!-- script for animation of terminal -->
+<script>
+  var TxtRotate = function(el, text, start) {
+    this.text = text;
+    this.el = el;
+    this.delay = parseInt(start);
+    this.txt = '';
+    var that = this;
+    setTimeout(function(){
+      that.tick();
+    }, that.delay);
+  };
+
+  TxtRotate.prototype.tick = function() {
+    var prompts = document.getElementsByClassName('prompt');
+    var cursors = document.getElementsByClassName('cursor');
+    var fullTxt = this.text;
+
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+
+    this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+    var that = this;
+    var delta = 300 - Math.random() * 100;
+
+    setTimeout(function() {
+      that.tick();
+    }, delta);
+
+    setTimeout(function() {
+      if (that.txt === fullTxt) {
+        var outputs = document.getElementsByClassName('output')
+        if (fullTxt === 'ls') {
+          cursors[0].style.display = 'none';
+          outputs[0].style.display = 'block';
+          prompts[1].style.display = 'block';
+        } else if (fullTxt === 'data push data.csv') {
+          cursors[1].style.display = 'none';
+          prompts[2].style.display = 'block';
+        } else if (fullTxt.includes('...')) {
+          outputs[1].style.display = 'inline-block';
+          outputs[2].style.display = 'block';
+          prompts[3].style.display = 'block';
+        }
+      }
+    }, 2000);
+  };
+
+  window.onload = function() {
+    var elements = document.getElementsByClassName('txt-show');
+    for (var i=0; i<elements.length; i++) {
+      var start = elements[i].getAttribute('data-start');
+      var text = elements[i].getAttribute('data-text');
+      if (text) {
+        new TxtRotate(elements[i], text, start);
+      }
+    }
+  };
+</script>
 {% endblock %}
