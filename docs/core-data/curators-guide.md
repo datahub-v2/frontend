@@ -96,6 +96,7 @@ We have a few extra specific requirements:
   * Then arrange a move the repository to [github.com/datasets/ organization](https://github.com/datasets/) - as the owner of a repository you can initiate a transfer request to github.com/datasets/ which can then be approved
 * Add to [core-list.csv](https://github.com/datasets/registry/blob/master/core-list.csv).
 * Push to datahub.io
+* Reference datahub.io dataset in github repo (put `http://datahub.io/<dataset_url>` link into `website` section of the repo description) 
 * If you have access, tweet from the @OKFNLabs account a link to the http://data.okfn.org/data/ page for the dataset.
 
 
