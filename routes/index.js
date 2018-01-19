@@ -409,54 +409,74 @@ module.exports = function () {
           next(err)
           return
         }
-      } else if (revisionStatus.state === 'FAILED') { // Use original dp and collect failed pipelines
-        normalizedDp = revisionStatus.spec_contents.inputs[0].parameters.descriptor
-        for (let key in revisionStatus.pipelines) {
-          if (revisionStatus.pipelines[key].status === 'FAILED') {
-            failedPipelines.push(revisionStatus.pipelines[key])
-          } else if (revisionStatus.pipelines[key].status === 'SUCCEEDED' && key.includes('validation_report')) {
-            // As "validation_report" pipeline SUCCEEDED, we can get reports:
-            let report = await fetch(revisionStatus.pipelines[key].stats['.dpp']['out-datapackage-url'])
-            if (report.status === 403) {
-              try {
-                const signedUrl = await api.checkForSignedUrl(
-                  revisionStatus.pipelines[key].stats['.dpp']['out-datapackage-url'],
-                  userAndPkgId.userid,
-                  token
-                )
-                let res = await fetch(signedUrl.url)
-                report = await res.json()
-              } catch (err) {
-                next(err)
-                return
-              }
-            } else if (report.status === 200) {
-              report = await report.json()
-            }
-            normalizedDp.report = report.resources[0]
-            normalizedDp = await api.handleReport(normalizedDp, {
-              ownerid: userAndPkgId.userid,
-              name: userAndPkgId.packageid,
-              token
-            })
-          }
-        }
-      } else if (['INPROGRESS', 'QUEUED'].includes(revisionStatus.state)) {
-        // We don't want to show showcase page from original dp if dataset is
-        // private. If so compare userid with hash of user email from cookies:
-        // TODO: we should probably have API for it.
-        if (revisionStatus.spec_contents.meta.findability === 'private') {
-          const emailHash = req.cookies.email ? md5(req.cookies.email) : ''
-          if (userAndPkgId.userid !== emailHash) {
-            res.status(404).send('Sorry, this page was not found.')
-            return
-          }
-        }
-        // Only if above stuff is passed we use original dp:
-        normalizedDp = revisionStatus.spec_contents.inputs[0].parameters.descriptor
       } else {
-        next('unknown state of given revision')
-        return
+        if (revisionStatus.state === 'FAILED') { // Use original dp and collect failed pipelines
+          normalizedDp = revisionStatus.spec_contents.inputs[0].parameters.descriptor
+          for (let key in revisionStatus.pipelines) {
+            if (revisionStatus.pipelines[key].status === 'FAILED') {
+              failedPipelines.push(revisionStatus.pipelines[key])
+            } else if (revisionStatus.pipelines[key].status === 'SUCCEEDED' && key.includes('validation_report')) {
+              // As "validation_report" pipeline SUCCEEDED, we can get reports:
+              let report = await fetch(revisionStatus.pipelines[key].stats['.dpp']['out-datapackage-url'])
+              if (report.status === 403) {
+                try {
+                  const signedUrl = await api.checkForSignedUrl(
+                    revisionStatus.pipelines[key].stats['.dpp']['out-datapackage-url'],
+                    userAndPkgId.userid,
+                    token
+                  )
+                  let res = await fetch(signedUrl.url)
+                  report = await res.json()
+                } catch (err) {
+                  next(err)
+                  return
+                }
+              } else if (report.status === 200) {
+                report = await report.json()
+              }
+              normalizedDp.report = report.resources[0]
+              normalizedDp = await api.handleReport(normalizedDp, {
+                ownerid: userAndPkgId.userid,
+                name: userAndPkgId.packageid,
+                token
+              })
+            }
+          }
+        } else if (['INPROGRESS', 'QUEUED'].includes(revisionStatus.state)) {
+          // We don't want to show showcase page from original dp if dataset is
+          // private. If so compare userid with hash of user email from cookies:
+          // TODO: we should probably have API for it.
+          if (revisionStatus.spec_contents.meta.findability === 'private') {
+            const emailHash = req.cookies.email ? md5(req.cookies.email) : ''
+            if (userAndPkgId.userid !== emailHash) {
+              res.status(404).send('Sorry, this page was not found.')
+              return
+            }
+          }
+          // Only if above stuff is passed we use original dp:
+          normalizedDp = revisionStatus.spec_contents.inputs[0].parameters.descriptor
+        }
+
+        normalizedDp.resources.forEach(resource => {
+          const pathParts = urllib.parse(resource.path)
+          if (!pathParts.protocol) {
+            const remotePath = revisionStatus.spec_contents.inputs[0].parameters['resource-mapping'][resource.path]
+            resource.path = remotePath || resource.path
+          }
+        })
+        normalizedDp.views = normalizedDp.views || []
+        normalizedDp.resources.forEach(resource => {
+          const view = {
+            datahub: {
+              type: 'preview'
+            },
+            resources: [
+               resource.name
+            ],
+            specType: 'table'
+          }
+          normalizedDp.views.push(view)
+        })
       }
 
       renderPage(revisionStatus)
