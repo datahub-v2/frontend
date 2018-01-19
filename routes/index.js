@@ -484,6 +484,15 @@ module.exports = function () {
           }
           normalizedDp.views.push(view)
         })
+
+        // When we use original dp.json, we only have "readme" property. In the
+        // showcase page we use "readmeSnippet" property to display short readme
+        // in the top of the page and "readmeHtml" property to render full readme:
+        if (normalizedDp.readme) {
+          normalizedDp.readmeSnippet = utils.makeSmallReadme(normalizedDp.readme)
+          const readmeCompiled = utils.dpInReadme(normalizedDp.readme, normalizedDp)
+          normalizedDp.readmeHtml = utils.textToMarkdown(readmeCompiled)
+        }
       }
 
       renderPage(revisionStatus)
