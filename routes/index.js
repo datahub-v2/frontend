@@ -457,6 +457,10 @@ module.exports = function () {
           normalizedDp = revisionStatus.spec_contents.inputs[0].parameters.descriptor
         }
 
+        // When we use original dp.json, "path" for a "resource" can be relative
+        // but to be able to render views using that "resource" we need full URL
+        // of it. We can access full URLs from "resource-mapping" property in the
+        // source API's spec_contents and replace relative paths with it:
         normalizedDp.resources.forEach(resource => {
           const pathParts = urllib.parse(resource.path)
           if (!pathParts.protocol) {
@@ -464,6 +468,9 @@ module.exports = function () {
             resource.path = remotePath || resource.path
           }
         })
+        // Since "frontend-showcase-js" library renders views according to
+        // descriptor's "views" property, we need to include "preview" views:
+        // (in the SUCCEEDED revisions "preview" views are generated)
         normalizedDp.views = normalizedDp.views || []
         normalizedDp.resources.forEach(resource => {
           const view = {
