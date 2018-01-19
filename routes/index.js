@@ -199,8 +199,8 @@ module.exports = function () {
         try {
           storage = await api.getStorage(req.cookies.username)
         } catch (err) {
-          next(err)
-          return
+          // Log the error but continue loading the page without storage info
+          console.error(err)
         }
 
         res.render('dashboard.html', {
@@ -208,7 +208,7 @@ module.exports = function () {
           currentUser,
           events: events.results,
           totalPackages: packages.summary.total,
-          totalSpace: bytes(storage.totalBytes, {decimalPlaces: 0})
+          totalSpace: storage ? bytes(storage.totalBytes, {decimalPlaces: 0}) : 'N/A'
         })
       } else {
         req.flash('message', 'Your token has expired. Please, login to see your dashboard.')
@@ -514,8 +514,8 @@ module.exports = function () {
         try {
           storage = await api.getStorage(owner, name, revision)
         } catch (err) {
-          next(err)
-          return
+          // Log the error but continue loading the page without storage info
+          console.error(err)
         }
 
         // Now render the page:
@@ -523,7 +523,7 @@ module.exports = function () {
           title: req.params.owner + ' | ' + req.params.name,
           dataset: normalizedDp,
           owner: req.params.owner,
-          size: bytes(storage.totalBytes, {decimalPlaces: 0}),
+          size: storage ? bytes(storage.totalBytes, {decimalPlaces: 0}) : 'N/A',
           // eslint-disable-next-line no-useless-escape, quotes
           dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'"),
           status: status.state,
