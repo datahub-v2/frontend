@@ -234,6 +234,12 @@ module.exports.initMocks = function() {
       state: 'INPROGRESS',
       spec_contents: specContents
     })
+    .get('/source/21232f297a57a5a743894a0e4a801fc3/package-in-progress/2')
+    .reply(200, {
+      id: '21232f297a57a5a743894a0e4a801fc3/package-in-progress/2',
+      state: 'INPROGRESS',
+      spec_contents: specContents
+    })
     .get('/source/admin/demo-package/3')
     .reply(200, {
       id: 'admin/demo-package/3',
@@ -335,6 +341,11 @@ module.exports.initMocks = function() {
   // resolver api
   nock(`${config.get('API_URL')}/resolver`)
     .persist()
+    .get('/resolve?path=admin/package-in-progress')
+    .reply(200, {
+      userid: '21232f297a57a5a743894a0e4a801fc3',
+      packageid: 'package-in-progress'
+    })
     .get('/resolve?path=publisher/package')
     .reply(200, {
       userid: 'publisher',
@@ -399,6 +410,8 @@ module.exports.initMocks = function() {
     .get('/storage/flow_id/admin/demo-package/1')
     .reply(200, {totalBytes: 12})
     .get('/storage/flow_id/admin/demo-package/2')
+    .reply(200, {totalBytes: 2000})
+    .get('/storage/flow_id/21232f297a57a5a743894a0e4a801fc3/package-in-progress/2')
     .reply(200, {totalBytes: 2000})
     .get('/storage/flow_id/admin/demo-package/3')
     .reply(200, {totalBytes: 3000})
