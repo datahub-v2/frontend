@@ -4649,10 +4649,10 @@ a.thumbnail.active {
 
 .alert-danger {
   background-color: #eaeaea;
-  border-color: #dddddd;
+  border-color: red;
   color: #000; }
   .alert-danger hr {
-    border-top-color: #d1d1d1; }
+    border-top-color: #e60000; }
   .alert-danger .alert-link {
     color: black; }
 
@@ -6878,6 +6878,8 @@ div.logout {
     margin-top: 12px; }
   .showcase .error-log-title {
     color: #000;
+    text-decoration: underline;
+    cursor: pointer;
     font-weight: 500;
     margin-top: 8px; }
     .showcase .error-log-title:before {
