@@ -48,6 +48,8 @@
         {{ dataset.title or dataset.name }}
         {% if dataset.datahub.findability === 'unlisted' %}
         <span class="label label-primary" title="This dataset is not published yet.">unlisted</span>
+        {% elif dataset.datahub.findability === 'private' %}
+        <span class="label label-primary" title="This dataset is not published yet.">private</span>
         {% endif %}
       </h1>
       <p class="publisher">

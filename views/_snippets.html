@@ -29,6 +29,8 @@
       <div class="meta">
         {% if package.datahub.findability === 'unlisted' %}
         <span class="label label-primary" title="This dataset is not published yet.">unlisted</span>
+        {% elif package.datahub.findability === 'private' %}
+        <span class="label label-primary" title="This dataset is not published yet.">private</span>
         {% endif %}
         <strong>{{ package.name }}</strong> | files {{ package.resources|length }} | {{ package.datahub.stats.prettyBytes }}
       </div>
