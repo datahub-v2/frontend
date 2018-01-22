@@ -111,7 +111,8 @@ test('Showcase with FULL URL but not existing revision returns 404', async t => 
 
 test('Showcase with FULL URL and INPROGRESS revision status uses original dp', async t => {
   const res = await request(app)
-    .get('/admin/demo-package/v/2')
+    .get('/admin/package-in-progress/v/2')
+    .set('Cookie', ['email=admin'])
   t.is(res.statusCode, 200)
   t.true(res.text.includes('demo-package'))
   t.true(res.text.includes('2kB'))
