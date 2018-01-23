@@ -59,6 +59,9 @@
   // Hiding unnecessary parts of goodtables-ui report: warnings, success messages,
   // report heading. Making number of errors visible.
   .goodtables-ui-report {
+    td.danger {
+      background-color: #d9534f;
+    }
     .alert-warning, .alert-success {
       display: none;
     }

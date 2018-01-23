@@ -4649,10 +4649,10 @@ a.thumbnail.active {
 
 .alert-danger {
   background-color: #eaeaea;
-  border-color: red;
+  border-color: #d9534f;
   color: #000; }
   .alert-danger hr {
-    border-top-color: #e60000; }
+    border-top-color: #d43f3a; }
   .alert-danger .alert-link {
     color: black; }
 
@@ -6910,6 +6910,8 @@ div.logout {
     text-align: center; }
   .showcase .progressing-item {
     margin-top: 8px; }
+  .showcase .goodtables-ui-report td.danger {
+    background-color: #d9534f; }
   .showcase .goodtables-ui-report .alert-warning, .showcase .goodtables-ui-report .alert-success {
     display: none; }
   .showcase .goodtables-ui-report .report-table .panel-heading {
