@@ -6926,6 +6926,9 @@ div.logout {
   .showcase .goodtables-ui-report .report-table .error-details-link {
     position: absolute;
     right: 30px; }
+  .showcase .anchor-link {
+    color: black;
+    text-decoration: underline; }
 
 h1 span {
   vertical-align: middle !important;

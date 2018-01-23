@@ -134,19 +134,18 @@
         <table class="table table-condensed table-striped resource-listing">
           <thead>
             <th class="col-xs-2">File</th>
-            <th class="col-xs-2">Description</th>
+            <th class="col-xs-4">Description</th>
             <th class="col-xs-1">Size</th>
             <th class="col-xs-2">Last changed</th>
-            <th>Download</th>
-            <th>Other formats</th>
+            <th class="col-xs-4">Download</th>
           </thead>
           <tbody>
           {% for resource in dataset.downloads %}
             <tr>
               <td class="col-xs-2">
-                <i class="fa fa-file-text-o"></i> <a href="#resource-{{resource.name}}" onclick="scrollDown(this)">{{resource.name}}</a> [{{resource.format}}]
+                <i class="fa fa-file-text-o"></i> <a href="#resource-{{resource.name}}" onclick="scrollDown(this)" class="anchor-link">{{resource.name}}</a>
               </td>
-              <td class="col-xs-3">
+              <td class="col-xs-4" title="{{ resource.title or resource.description }}">
                 {{ resource.title or resource.description }}
               </td>
               <td class="col-xs-1">
@@ -155,15 +154,14 @@
               <td class="col-xs-1">
                 {{ resource.modified }}
               </td>
-              <td class="download truncate col-xs-3">
+              <td class="download truncate col-xs-4">
                 <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}" onclick="trackOutboundLink(this.href)">
-                  {{ resource.name }} [{{ resource.format }}]
+                  {{ resource.format }} ({{resource.prettyBytes}})
                 </a>
-              </td>
-              <td class="download truncate col-xs-2">
                 {% for alt in resource.otherFormats %}
+                ,
                 <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ alt.format }}" onclick="trackOutboundLink(this.href)">
-                  {{ resource.name }} [{{alt.format}}] ({{alt.prettyBytes}})
+                  {{alt.format}} ({{alt.prettyBytes}})
                 </a>
                 {% endfor %}
               </td>
