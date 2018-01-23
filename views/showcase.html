@@ -41,7 +41,14 @@
     <!-- Show notice if any of reports is invalid -->
     {% if dataset.report and not dataset.report.valid %}
     <div class="alert alert-danger status" role="alert">
-      <h3 class="error-log-heading">Some of your data has validation errors. Please, scroll down to see validation report.</h3>
+      <h3 class="error-log-heading">Some of your data has validation errors:</h3>
+      {% for resource in dataset.resources %}
+      {% if resource.reportObj and not resource.reportObj.valid %}
+      <p>
+        - <a href="#report-{{loop.index - 1}}">{{ resource.reportObj.resource }}</a>: {{ resource.reportObj['error-count'] }} error(s) found.
+      </p>
+      {% endif %}
+      {% endfor %}
     </div>
     {% endif %}
 
