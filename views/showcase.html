@@ -193,6 +193,20 @@
             var element = document.getElementById('report-{{loop.index - 1}}');
             goodtablesUI.render(goodtablesUI.Report, {report}, element);
           }
+          // Hide message about "goodtable.yml"
+          var errorDetailsLinks = document.getElementsByClassName('error-details-link');
+          for (var i=0; i<errorDetailsLinks.length; i++) {
+            errorDetailsLinks[i].onclick = function () {
+              setTimeout(function () {
+                var liTags = document.getElementsByTagName('li');
+                for (var i=0; i<liTags.length; i++) {
+                  if (liTags[i].textContent.includes('check in goodtables.yml')) {
+                    liTags[i].style.display = 'none';
+                  }
+                }
+              }, 10)
+            }
+          }
         </script>
         <!-- End of reports rendering -->
         <!-- Placeholder div elements for React components: preview tables -->
