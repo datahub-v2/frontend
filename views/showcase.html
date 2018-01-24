@@ -19,7 +19,7 @@
     <div class="alert alert-danger status" role="alert">
       <h3 class="error-log-heading">Processing this revision has failed. See below for details:</h3>
       {% for pipeline in failedPipelines %}
-        {% if not 'Dependency unsuccessful' in (pipeline.error_log[0] or '') %}
+        {% if not 'Dependency unsuccessful' in (pipeline.error_log[0] or '') and pipeline.error_log[0] %}
         <p class="error-log-title" data-toggle="collapse" data-target="#pipeline-{{loop.index}}">{{pipeline.title}}</p>
         <div id="pipeline-{{loop.index}}" class="collapse">
           {% for error in pipeline.error_log %}
