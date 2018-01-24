@@ -6907,9 +6907,15 @@ div.logout {
     font-size: 14px;
     margin-top: 12px; }
   .showcase .progressing-title {
-    text-align: center; }
+    padding: 0 1% 0 10%; }
   .showcase .progressing-item {
     margin-top: 8px; }
+  .showcase .pipeline-title {
+    text-decoration: underline;
+    margin-top: 20px; }
+  .showcase .main-item {
+    display: inline-block;
+    margin: 10px; }
   .showcase .goodtables-ui-report td.danger {
     background-color: #d9534f; }
   .showcase .goodtables-ui-report .alert-warning, .showcase .goodtables-ui-report .alert-success {
