@@ -47,7 +47,7 @@
   </div>
 {%- endmacro %}
 
-{% macro uploading(statusApi, failUrl, successUrl) -%}
+{% macro uploading(statusApi, failUrl, successUrl, resources) -%}
   <p class="progressing-heading" id="message">
     Your data is safely stored and is getting processed - it will be here soon!
   </p>
@@ -59,7 +59,7 @@
   <script type="text/javascript">
     var resolvedStates = ['SUCCEEDED', 'FAILED']
     // The polling function
-    function poll(fn, timeout, interval) {
+    function poll(fn, timeout, interval, resources_) {
       var endTime = Number(new Date()) + (timeout || 2000);
       interval = interval || 100;
       var checkCondition = function(resolve, reject) {
@@ -68,18 +68,42 @@
             res.json().then(function(out) {
               // If still in progress then show which pipeline is running:
               var inprogress = document.getElementById('inprogress');
+              var flowID = out.id
+              var pipelines = Object.keys(out.pipelines)
               inprogress.innerHTML = '';
-              for (let key in out.pipelines) {
-                if (out.pipelines[key].status === 'INPROGRESS' || out.pipelines[key].status === 'QUEUED') { // Running - have a spinner
-                  inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true" id="spinner"></i> ' + out.pipelines[key].title + '</div>';
-                } else if (out.pipelines[key].status === 'FAILED') { // Failed - have a cross
-                  inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-times" aria-hidden="true"></i> ' + out.pipelines[key].title + '</div>';
-                } else if (out.pipelines[key].status === 'SUCCEEDED') { // Success - have a tick
-                  inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-check" aria-hidden="true"></i> ' + out.pipelines[key].title + '</div>';
-                } else { // Unknown state just leave at gray
-                  inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-question" aria-hidden="true"></i> ' + out.pipelines[key].title + '</div>';
-                }
-              }
+              resources_.forEach(function(resource) {
+                var pipelinePrefix = flowID + '/' + resource.name
+                var resourcePipelines = pipelines.filter(function(pipeline) {
+                  return pipeline.includes(pipelinePrefix)
+                })
+                inprogress.innerHTML += resource.name
+                resourcePipelines.forEach(function(pipeline) {
+                  if (out.pipelines[pipeline].status === 'INPROGRESS' || out.pipelines[pipeline].status === 'QUEUED') { // Running - have a spinner
+                    inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true" id="spinner"></i> ' + out.pipelines[pipeline].title + '</div>';
+                  } else if (out.pipelines[pipeline].status === 'FAILED') { // Failed - have a cross
+                    inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-times" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
+                  } else if (out.pipelines[pipeline].status === 'SUCCEEDED') { // Success - have a tick
+                    inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-check" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
+                  } else { // Unknown state just leave at gray
+                    inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-question" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
+                  }
+                })
+                var pipelines = pipelines.filter(function(pipeline) {
+                  return ! pipeline.includes(pipelinePrefix)
+                })
+                pipelines.forEach(function(pipeline) {
+                  if (out.pipelines[pipeline].status === 'INPROGRESS' || out.pipelines[pipeline].status === 'QUEUED') { // Running - have a spinner
+                    inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true" id="spinner"></i> ' + out.pipelines[pipeline].title + '</div>';
+                  } else if (out.pipelines[pipeline].status === 'FAILED') { // Failed - have a cross
+                    inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-times" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
+                  } else if (out.pipelines[pipeline].status === 'SUCCEEDED') { // Success - have a tick
+                    inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-check" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
+                  } else { // Unknown state just leave at gray
+                    inprogress.innerHTML += '<div class="progressing-item"><i class="fa fa-question" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
+                  }
+                })
+              })
+
 
               // Check if resolved:
               if (resolvedStates.includes(out.state)) {
@@ -99,10 +123,9 @@
 
       return new Promise(checkCondition);
     }
-
     poll(function() {
       return window.fetch('{{ statusApi }}');
-    }, 1200000, 2000).then(function(status) {
+    }, 1200000, 2000, {{ resources | dump | safe }}).then(function(status) {
       var target = document.getElementById('message');
       if (status.state === 'FAILED') {
         target.innerHTML = 'Failed... Reloading the page...';
