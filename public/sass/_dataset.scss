@@ -50,10 +50,18 @@
     margin-top: 12px;
   }
   .progressing-title {
-    text-align: center;
+    padding: 0 1% 0 10%;
   }
   .progressing-item {
     margin-top: 8px;
+  }
+  .pipeline-title {
+    text-decoration: underline;
+    margin-top: 20px;
+  }
+  .main-item {
+    display: inline-block;
+    margin: 10px;
   }
 
   // Hiding unnecessary parts of goodtables-ui report: warnings, success messages,
