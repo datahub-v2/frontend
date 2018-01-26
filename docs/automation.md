@@ -2,11 +2,11 @@
 title: Automation guide (experimental)
 ---
 
-## What is 'automation'
+## What is "automation"
 
-Automation is an experimental feature of the `data-cli` and http://datahub.io/ which allows you to make a dataset always up-to-date. Usually there is a processing script alongside with a dataset, that gets a new data from the data-source and transforms it in a proper dataset. At the moment people run those processing scripts manually.
+Automation is an experimental feature of the `data-cli` and https://datahub.io/ which allows you to make a dataset always up-to-date. Usually, there is a processing script alongside with a dataset, that gets a new data from the data-source and transforms it into a proper dataset. At the moment people run those processing scripts manually.
 
-Automation is created to update and wrangle your data periodically and without your interaction. All you need is to set-up an automation configuration and push your dataset on the http://datahub.io once. Now your data will be always up-to-date until the data-source is alive.
+Automation is created to update and wrangle your data periodically and without your interaction. All you need is to set-up an automation configuration and push your dataset to the https://datahub.io once. Now your data will be always up-to-date until the data-source is alive.
 
 Here are steps you have to pass to automate a dataset:
 
@@ -14,12 +14,12 @@ Here are steps you have to pass to automate a dataset:
 
 Take your own dataset or choose one from https://github.com/datasets (check it is not automated yet). We have a lot of features to wrangle data, but for the first time choose a dataset with not too complex processing script.
 
-## 1. create a `.datahub` folder
+## 1. Create a `.datahub` folder
 
 The datahub pipeline uses `.datahub` sub-folder inside the datapackage folder to get instructions and metadata. So create the `datapackage_name/.datahub` folder.
 There will be `.datahub/flow.yaml` and `.datahub/datapackage.json` files stored.
 
-## 2. create a `.datahub/flow.yaml`
+## 2. Create a `.datahub/flow.yaml`
 
 Instructions for the automation is taken from the special configuration file. So create the `.datahub/flow.yaml` file. Here is template for you:
 
@@ -39,7 +39,7 @@ inputs:
       resource-mapping:
         # resource name and the link to original data-source file
         <resource-name>: <http://source-site.com/datafile.csv>
-      
+
 # the PROCESSING part describes what to do with data, how to 'process' it
 # processors are the tools that will wrangle your data. see:
 # https://github.com/frictionlessdata/datapackage-pipelines - dpp
@@ -56,10 +56,10 @@ processing:
     tabulator:
       compression: zip
     output: <resource-name>
-  
+
   # Datapackage-pipeline operations example. Here is the dpp docs:
   # https://github.com/frictionlessdata/datapackage-pipelines
-  - 
+  -
     input: <resource-name>
     dpp:
       - # delete some columns:
@@ -125,11 +125,11 @@ So create `.datahub/datapackage.json` file. Here is example for you:
   "license": "ODC-PDDL-1.0",
   // hope soon the readme will be grabbed automatically
   "readme": "the very long string of readme, copy of readme.md",
-  
+
   // other non-necessary fields like:
   // "homepage": "url",
   // "version": "not_n",
-  
+
   "sources": [
     {
       "name": "source_name",
@@ -137,11 +137,11 @@ So create `.datahub/datapackage.json` file. Here is example for you:
       "title": "title"
     }
   ],
-  
+
   // resources section describes the data structure: files, fields, etc
-  // see the datapackage.json description for more details 
+  // see the datapackage.json description for more details
   // https://frictionlessdata.io/guides/data-package/
-  // 
+  //
   // with the latest changes, the automation engine could infer the resource
   // schema automatically from the source data, so now we could delete 'resources'
   // section from this file.
@@ -168,7 +168,7 @@ So create `.datahub/datapackage.json` file. Here is example for you:
 }
 ```
 
-## 4. Pushing on the server
+## 4. Pushing to the server
 * check that owner&ownerid in your `flow.yaml` is equal to username and id from the `~/.config/datahub/config.json` file
 * do `data login`
 * do `data push-flow`
@@ -177,7 +177,7 @@ So create `.datahub/datapackage.json` file. Here is example for you:
 
 > `> Error! Cannot read property 'split' of null`
 
-If you see such error it means there were some error, but we lost it on the way. To see the actual error - please, use `--debug` flag: `data push-flow --debug`
+If you see such error it means there were some errors, but we lost it on the way. To see the actual error - please, use `--debug` flag: `data push-flow --debug`
 
 ### Pipeline Errors
 
@@ -192,5 +192,5 @@ If you see such error it means there were some error, but we lost it on the way.
 * update `readme.md` file - add automation description and a future dataset link on the datahub.io
 * update the `.datahub/datapackage.json` readme section
 * if you are planning to publish the dataset under 'core' user - change `owner/ownerid` to `core`
-* push the dataset with the `.datahub` folder on the github (the datahub.io not stores automation scripts in the result dataset)
+* push the dataset with the `.datahub` folder on the GitHub (the datahub.io not stores automation scripts in the result dataset)
 * (optional) ask Datahub staff to push dataset under 'core' if the data is important and you want everybody to use it.
