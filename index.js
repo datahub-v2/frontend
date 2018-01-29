@@ -2,6 +2,7 @@
 
 const path = require('path')
 const express = require('express')
+const cors = require('cors')
 const nunjucks = require('nunjucks')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
@@ -25,6 +26,7 @@ module.exports.makeApp = function () {
       extended: true
     })
   )
+  app.use(cors())
   app.use(cookieParser())
   app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
   app.use(flash())
