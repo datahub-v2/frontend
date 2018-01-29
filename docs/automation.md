@@ -123,10 +123,9 @@ So create `.datahub/datapackage.json` file. Here is example for you:
   "title": "package_title",
   "description": "description",
   "license": "ODC-PDDL-1.0",
-  // hope soon the readme will be grabbed automatically
   "readme": "the very long string of readme, copy of readme.md",
 
-  // other non-necessary fields like:
+  // other non-required fields like:
   // "homepage": "url",
   // "version": "not_n",
 
