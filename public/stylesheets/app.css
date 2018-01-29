@@ -7255,6 +7255,8 @@ body.docs div.row {
   margin-right: 0; }
   body.docs div.row img {
     margin: 60px 0; }
+  body.docs div.row .col-md-4 {
+    min-height: 129px; }
 body.docs .docs-section {
   margin: 50px 0 130px 0; }
   body.docs .docs-section div {
