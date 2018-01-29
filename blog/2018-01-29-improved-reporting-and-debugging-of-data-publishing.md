@@ -1,6 +1,6 @@
 ---
 title: Improved Reporting and Debugging of Data Publishing
-date: 2018-01-26
+date: 2018-01-29
 authors: ['anuveyatsu']
 ---
 
