@@ -33,11 +33,15 @@ body.download {
       padding: 0 !important;
       margin: 0 !important;
     }
+    a:nth-of-type(1) {
+      margin-right: 20px;
+    }
     a:nth-of-type(2) {
-      margin-right: 25px;
+      margin-left: 20px;
+      margin-right: 20px;
     }
     a:nth-of-type(3) {
-      margin-left: 25px;
+      margin-left: 20px;
     }
     .steps {
       padding: 0 40px;

@@ -757,7 +757,7 @@ module.exports = function () {
 
   // Download page
   router.get('/download', async (req, res) => {
-    let desktopAppUrl, binReleaseMacos, binReleaseLinux, etagForDesktop, etagForBinary
+    let desktopAppUrl, binReleaseMacos, binReleaseLinux, binReleaseWindows, etagForDesktop, etagForBinary
 
     if (req.app.locals.github) {
       etagForDesktop = req.app.locals.github.releases.desktop
@@ -772,7 +772,7 @@ module.exports = function () {
       method: 'GET',
       headers: {'If-None-Match': etagForDesktop}
     })
-    const binaryReleaseModified = await fetch('https://api.github.com/repos/datahq/datahub-cli/releases/latest', {
+    const binaryReleaseModified = await fetch('https://api.github.com/repos/datahq/data-cli/releases/latest', {
       method: 'GET',
       headers: {'If-None-Match': etagForBinary}
     })
@@ -807,8 +807,9 @@ module.exports = function () {
     if (binaryReleaseModified.status === 304) { // No new release
       binReleaseMacos = req.app.locals.github.releases.binary.macos
       binReleaseLinux = req.app.locals.github.releases.binary.linux
+      binReleaseWindows = req.app.locals.github.releases.binary.windows
     } else { // Go and get new release
-      let binRelease = await fetch('https://api.github.com/repos/datahq/datahub-cli/releases/latest')
+      let binRelease = await fetch('https://api.github.com/repos/datahq/data-cli/releases/latest')
       if (binRelease.status === 200) {
         const etag = binRelease.headers.get('ETag').slice(2)
         // Now get URLs for downloading binaries:
@@ -819,12 +820,16 @@ module.exports = function () {
         binReleaseLinux = binRelease.assets
           .find(asset => asset.name.includes('linux'))
           .browser_download_url
+        binReleaseWindows = binRelease.assets
+          .find(asset => asset.name.includes('win'))
+          .browser_download_url
         // Update binary release in the app.locals:
         const newRelease = {
           binary: {
             etag,
             macos: binReleaseMacos,
-            linux: binReleaseLinux
+            linux: binReleaseLinux,
+            windows: binReleaseWindows
           }
         }
         req.app.locals.github.releases = Object.assign(
@@ -834,6 +839,7 @@ module.exports = function () {
       } else { // If github api is unavailable then just have a link to releases page
         binReleaseMacos = 'https://github.com/datahq/datahub-cli/releases'
         binReleaseLinux = 'https://github.com/datahq/datahub-cli/releases'
+        binReleaseWindows = 'https://github.com/datahq/datahub-cli/releases'
       }
     }
 
@@ -841,7 +847,8 @@ module.exports = function () {
       title: 'Download',
       desktopAppUrl,
       binReleaseMacos,
-      binReleaseLinux
+      binReleaseLinux,
+      binReleaseWindows
     })
   })
 
