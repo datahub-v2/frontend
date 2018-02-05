@@ -3,11 +3,16 @@
 <pre class="hljs"><code>install.packages(<span class="hljs-string">"jsonlite"</span>)
 <span class="hljs-keyword">library</span>(<span class="hljs-string">"jsonlite"</span>)
 
-json_file &lt;- <span class="hljs-string">"http://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json"</span>
+json_file &lt;- <span class="hljs-string">"https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json"</span>
 json_data &lt;- fromJSON(paste(readLines(json_file), collapse=<span class="hljs-string">""</span>))
 
-<span class="hljs-comment"># access csv file by the index starting from 1</span>
-path_to_file = json_data$resources$path[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]
+<span class="hljs-comment"># access csv file by the type</span>
+<span class="hljs-keyword">for</span>(i <span class="hljs-keyword">in</span> <span class="hljs-number">1</span>:length(json_data$resources$datahub$type)){
+  <span class="hljs-keyword">if</span>(json_data$resources$datahub$type[i]==<span class="hljs-string">'derived/csv'</span>){
+    path_to_file = json_data$resources$path[i]
+  }
+}
+
 data &lt;- read.csv(url(path_to_file))
 print(data)
 </code></pre>
@@ -15,8 +20,6 @@ print(data)
 
 {% macro pandas(dataset) -%}
 <p>In order to work with Data Packages in Pandas you need to install the Frictionless Data data package library and the pandas extension:</p>
-
-
 <pre class="hljs"><code>pip install datapackage
 pip install jsontableschema-pandas
 </code></pre>
@@ -47,15 +50,18 @@ storage[storage.buckets[<span class="hljs-number">0</span>]]
 
 <pre class="hljs"><code><span class="hljs-keyword">from</span> datapackage <span class="hljs-keyword">import</span> Package
 
-package = Package(<span class="hljs-string">'http://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json'</span>)
+package = Package(<span class="hljs-string">'https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json'</span>)
 
 <span class="hljs-comment"># get list of resources:</span>
 resources = package.descriptor[<span class="hljs-string">'resources'</span>]
 resourceList = [resources[x][<span class="hljs-string">'name'</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(resources))]
 print(resourceList)
 
-data = package.resources[<span class="hljs-number">0</span>].read()
-print(data)
+<span class="hljs-comment"># print csv file</span>
+resourseTypeList = [resources[x][<span class="hljs-string">'datahub'</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(resources))]
+<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(len(resourseTypeList)):
+  <span class="hljs-keyword">if</span> (resourseTypeList[x][<span class="hljs-string">'type'</span>] == <span class="hljs-string">'derived/csv'</span>):
+    print(package.resources[x].read())
 </code></pre>
 {%- endmacro %}
 
@@ -68,13 +74,12 @@ print(data)
 </code></pre>
 </p>
 <p>Once the package is installed, use the following code snippet:</p>
-
 <pre class="hljs"><code><span class="hljs-keyword">const</span> {Dataset} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'data.js'</span>)
 
-<span class="hljs-keyword">const</span> path = <span class="hljs-string">'http://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json'</span>
+<span class="hljs-keyword">const</span> path = <span class="hljs-string">'https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json'</span>
 
 <span class="hljs-comment">// We're using self-invoking function here as we want to use async-await syntax:</span>
-(<span class="hljs-keyword">async</span> () =&gt; {
+;<span class="hljs-function">(<span class="hljs-params"><span class="hljs-keyword">async</span> (</span>) =&gt;</span> {
   <span class="hljs-keyword">const</span> dataset = <span class="hljs-keyword">await</span> Dataset.load(path)
 
   <span class="hljs-comment">// Get the first data file in this dataset</span>
@@ -85,24 +90,27 @@ print(data)
   <span class="hljs-keyword">const</span> buffer = <span class="hljs-keyword">await</span> file.buffer
 })()
 </code></pre>
+
 {%- endmacro %}
 
 {% macro ruby(dataset) -%}
 <p>Install the datapackage library created specially for Ruby language using <code>gem</code>:</p>
-<pre class="hljs"><code>gem install datapackage
-</code></pre>
-<p>Now get the dataset and read the data:</p>
 <pre class="hljs"><code><span class="hljs-keyword">require</span> <span class="hljs-string">'datapackage'</span>
 
-path = <span class="hljs-string">'http://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json'</span>
+path = <span class="hljs-string">'https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json'</span>
 
 package = DataPackage::Package.new(path)
 <span class="hljs-comment"># So package variable contains metadata. You can see it:</span>
 puts package
 
 <span class="hljs-comment"># Read data itself:</span>
-resource = package.resources[<span class="hljs-number">0</span>]
-data = resource.read
+resource = package.resources
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..resource.length
+  <span class="hljs-keyword">if</span> resource[i][<span class="hljs-string">'datahub'</span>][<span class="hljs-string">'type'</span>] == <span class="hljs-string">"derived/csv"</span> <span class="hljs-keyword">then</span>
+    data = resource[i].read
+    <span class="hljs-keyword">break</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
 puts data
 </code></pre>
 {%- endmacro %}
