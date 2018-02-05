@@ -101,6 +101,17 @@
     color: black;
     text-decoration: underline;
   }
+
+  .view-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: $state-danger-bg;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    padding-top: 93px;
+  }
 }
 h1 {
   span {

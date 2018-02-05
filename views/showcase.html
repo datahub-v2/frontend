@@ -332,7 +332,16 @@
   var DP_ID = JSON.parse('{{ dpId | safe }}');
 </script>
 
-<link rel="stylesheet" media="screen" href="/static/dpr-js/dist/main.css">
-<script type="text/javascript" src="/static/dpr-js/dist/bundle.js"></script>
+{% if status === 'SUCCEEDED' %}
+  <link rel="stylesheet" media="screen" href="/static/dpr-js/dist/main.css">
+  <script type="text/javascript" src="/static/dpr-js/dist/bundle.js"></script>
+{% else %}
+  <script>
+    var views = document.getElementsByClassName('react-me');
+    for (var i=0; i<views.length; i++) {
+      views[i].innerHTML = "<div class='view-placeholder'>This view will be available once the dataset is processed.</div>"
+    }
+  </script>
+{% endif %}
 
 {% endblock %}
