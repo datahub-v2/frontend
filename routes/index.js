@@ -737,10 +737,52 @@ module.exports = function () {
 
   router.get('/search', async (req, res) => {
     const token = req.cookies.jwt
-    const query = req.query.q ? `q="${req.query.q}"&size=20` : `size=20`
-    const packages = await api.search(`${query}`, token)
+    const from = req.query.from || 0
+    const size = req.query.size || 20
+    const query = req.query.q ? `q="${req.query.q}"&size=${size}` : `size=${size}`
+    const queryWithStart = req.query.q ? `q="${req.query.q}"&size=${size}&from=${from}` : `size=${size}&from=${from}`
+    const packages = await api.search(`${queryWithStart}`, token)
+    const total = packages.summary.total
+    const totalPages = Math.ceil(total/size)
+
+    function pagination(c, m) {
+      let current = c,
+          last = m,
+          delta = 2,
+          left = current - delta,
+          right = current + delta + 1,
+          range = [],
+          rangeWithDots = [],
+          l;
+
+      range.push(1)
+      for (let i = c - delta; i <= c + delta; i++) {
+        if (i >= left && i < right && i < m && i > 1) {
+          range.push(i);
+        }
+      }
+      range.push(m)
+
+      for (let i of range) {
+        if (l) {
+          if (i - l === 2) {
+            rangeWithDots.push(l + 1);
+          } else if (i - l !== 1) {
+            rangeWithDots.push('...');
+          }
+        }
+        rangeWithDots.push(i);
+        l = i;
+      }
+      return rangeWithDots;
+    }
+
+
+    let pages = pagination(parseInt(from, 10 ) + 1, totalPages)
+
     res.render('search.html', {
       packages,
+      pages,
       query: req.query.q
     })
   })

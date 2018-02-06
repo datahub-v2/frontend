@@ -101,6 +101,17 @@ module.exports.initMocks = function() {
   const extendedDp = require('./extended-dp/datapackage.json')
   nock(config.get('API_URL'))
     .persist()
+    .get('/metastore/search?q=%22test%22&size=20&from=0')
+    .reply(200, {
+      summary: {
+        total: 1
+      },
+      results: [
+        {
+          datapackage: extendedDp
+        }
+      ]
+    })
     .get('/metastore/search?q=%22test%22&size=20')
     .reply(200, {
       summary: {
