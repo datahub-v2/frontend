@@ -3,41 +3,40 @@
 <pre class="hljs"><code>install.packages(<span class="hljs-string">"jsonlite"</span>)
 <span class="hljs-keyword">library</span>(<span class="hljs-string">"jsonlite"</span>)
 
-json_file &lt;- <span class="hljs-string">"https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json"</span>
+json_file &lt;- <span class="hljs-string">'https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json'</span>
 json_data &lt;- fromJSON(paste(readLines(json_file), collapse=<span class="hljs-string">""</span>))
 
-<span class="hljs-comment"># access csv file by the type</span>
+<span class="hljs-comment"># get list of all resources:</span>
+print(json_data$resources$name)
+
+<span class="hljs-comment"># print all tabular data(if exists any)</span>
 <span class="hljs-keyword">for</span>(i <span class="hljs-keyword">in</span> <span class="hljs-number">1</span>:length(json_data$resources$datahub$type)){
   <span class="hljs-keyword">if</span>(json_data$resources$datahub$type[i]==<span class="hljs-string">'derived/csv'</span>){
     path_to_file = json_data$resources$path[i]
+    data &lt;- read.csv(url(path_to_file))
+    print(data)
   }
 }
-
-data &lt;- read.csv(url(path_to_file))
-print(data)
 </code></pre>
 {%- endmacro %}
 
 {% macro pandas(dataset) -%}
 <p>In order to work with Data Packages in Pandas you need to install the Frictionless Data data package library and the pandas extension:</p>
-<pre class="hljs"><code>pip install datapackage
-pip install jsontableschema-pandas
-</code></pre>
-<p>To get the data run following code:</p>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> datapackage
+<span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
 
-data_url = <span class="hljs-string">"http://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json"</span>
+data_url = <span class="hljs-string">'https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json'</span>
 
 <span class="hljs-comment"># to load Data Package into storage</span>
-storage = datapackage.push_datapackage(data_url, <span class="hljs-string">'pandas'</span>)
+package = datapackage.Package(data_url)
 
-<span class="hljs-comment"># data frames available (corresponding to data files in original dataset)</span>
-storage.buckets
-
-<span class="hljs-comment"># you can access datasets inside storage, e.g. the first one:</span>
-storage[storage.buckets[<span class="hljs-number">0</span>]]
+<span class="hljs-comment"># to load only tabular data</span>
+resources = package.resources
+<span class="hljs-keyword">for</span> resource <span class="hljs-keyword">in</span> resources:
+    <span class="hljs-keyword">if</span> resource.tabular:
+        data = pd.read_csv(resource.descriptor[<span class="hljs-string">'path'</span>])
+        <span class="hljs-keyword">print</span> (data)
 </code></pre>
-
 {%- endmacro %}
 
 {% macro python(dataset) -%}
@@ -52,16 +51,16 @@ storage[storage.buckets[<span class="hljs-number">0</span>]]
 
 package = Package(<span class="hljs-string">'https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json'</span>)
 
-<span class="hljs-comment"># get list of resources:</span>
+<span class="hljs-comment"># get list of all resources:</span>
 resources = package.descriptor[<span class="hljs-string">'resources'</span>]
 resourceList = [resources[x][<span class="hljs-string">'name'</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(resources))]
 print(resourceList)
 
-<span class="hljs-comment"># print csv file</span>
-resourseTypeList = [resources[x][<span class="hljs-string">'datahub'</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(resources))]
-<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(len(resourseTypeList)):
-  <span class="hljs-keyword">if</span> (resourseTypeList[x][<span class="hljs-string">'type'</span>] == <span class="hljs-string">'derived/csv'</span>):
-    print(package.resources[x].read())
+<span class="hljs-comment"># print all tabular data(if exists any)</span>
+resources = package.resources
+<span class="hljs-keyword">for</span> resource <span class="hljs-keyword">in</span> resources:
+    <span class="hljs-keyword">if</span> resource.tabular:
+        print(resource.read())
 </code></pre>
 {%- endmacro %}
 
@@ -81,13 +80,20 @@ resourseTypeList = [resources[x][<span class="hljs-string">'datahub'</span>] <sp
 <span class="hljs-comment">// We're using self-invoking function here as we want to use async-await syntax:</span>
 ;<span class="hljs-function">(<span class="hljs-params"><span class="hljs-keyword">async</span> (</span>) =&gt;</span> {
   <span class="hljs-keyword">const</span> dataset = <span class="hljs-keyword">await</span> Dataset.load(path)
-
-  <span class="hljs-comment">// Get the first data file in this dataset</span>
-  <span class="hljs-keyword">const</span> file = dataset.resources[<span class="hljs-number">0</span>]
-  <span class="hljs-comment">// Get a raw stream</span>
-  <span class="hljs-keyword">const</span> stream = <span class="hljs-keyword">await</span> file.stream()
-  <span class="hljs-comment">// entire file as a buffer (be careful with large files!)</span>
-  <span class="hljs-keyword">const</span> buffer = <span class="hljs-keyword">await</span> file.buffer
+  <span class="hljs-comment">// get list of all resources:</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> id <span class="hljs-keyword">in</span> dataset.resources) {
+    <span class="hljs-built_in">console</span>.log(dataset.resources[id]._descriptor.name)
+  }
+  <span class="hljs-comment">// get all tabular data(if exists any)</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> id <span class="hljs-keyword">in</span> dataset.resources) {
+    <span class="hljs-keyword">if</span> (dataset.resources[id]._descriptor.format === <span class="hljs-string">"csv"</span>) {
+      <span class="hljs-keyword">const</span> file = dataset.resources[id]
+      <span class="hljs-comment">// Get a raw stream</span>
+      <span class="hljs-keyword">const</span> stream = <span class="hljs-keyword">await</span> file.stream()
+      <span class="hljs-comment">// entire file as a buffer (be careful with large files!)</span>
+      <span class="hljs-keyword">const</span> buffer = <span class="hljs-keyword">await</span> file.buffer
+    }
+  }
 })()
 </code></pre>
 
@@ -100,17 +106,17 @@ resourseTypeList = [resources[x][<span class="hljs-string">'datahub'</span>] <sp
 path = <span class="hljs-string">'https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json'</span>
 
 package = DataPackage::Package.new(path)
-<span class="hljs-comment"># So package variable contains metadata. You can see it:</span>
-puts package
 
-<span class="hljs-comment"># Read data itself:</span>
-resource = package.resources
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..resource.length
-  <span class="hljs-keyword">if</span> resource[i][<span class="hljs-string">'datahub'</span>][<span class="hljs-string">'type'</span>] == <span class="hljs-string">"derived/csv"</span> <span class="hljs-keyword">then</span>
-    data = resource[i].read
-    <span class="hljs-keyword">break</span>
+<span class="hljs-comment"># get list of all resources:</span>
+resources = package.descriptor[<span class="hljs-string">'resources'</span>]
+resources.each_with_index {<span class="hljs-params">|val, index|</span> puts <span class="hljs-string">"<span class="hljs-subst">#{resources[index][<span class="hljs-string">'name'</span>]}</span>"</span> }
+
+<span class="hljs-comment"># print all tabular data(if exists any)</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..resources.length
+  <span class="hljs-keyword">if</span> resources[i].tabular? <span class="hljs-keyword">then</span>
+    data = resources[i].read
+    puts data
   <span class="hljs-keyword">end</span>
 <span class="hljs-keyword">end</span>
-puts data
 </code></pre>
 {%- endmacro %}
