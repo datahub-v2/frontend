@@ -6935,6 +6935,15 @@ div.logout {
   .showcase .anchor-link {
     color: black;
     text-decoration: underline; }
+  .showcase .view-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #eaeaea;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    padding-top: 93px; }
 
 h1 span {
   vertical-align: middle !important;
