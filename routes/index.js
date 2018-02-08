@@ -857,13 +857,13 @@ module.exports = function () {
         // Now get URLs for downloading binaries:
         binRelease = await binRelease.json()
         binReleaseMacos = binRelease.assets
-          .find(asset => asset.name.includes('macos'))
+          .find(asset => asset.name.includes('macos.gz'))
           .browser_download_url
         binReleaseLinux = binRelease.assets
-          .find(asset => asset.name.includes('linux'))
+          .find(asset => asset.name.includes('linux.gz'))
           .browser_download_url
         binReleaseWindows = binRelease.assets
-          .find(asset => asset.name.includes('win'))
+          .find(asset => asset.name.includes('win.exe.gz'))
           .browser_download_url
         // Update binary release in the app.locals:
         const newRelease = {
