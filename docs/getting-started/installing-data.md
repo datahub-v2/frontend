@@ -13,13 +13,18 @@ There are two options for installation:
 ## Installing binaries
 
 1. Go to the [releases page](/download)
-2. Download the pre-built binary for your platform (MacOS and LinuxOS x64 at present)
-3. Make it executable
+2. Download the pre-built binary for your platform (MacOS, LinuxOS x64 or Windows)
+3. Uncompress downloaded asset
+
+    ```bash
+    $ gunzip -f data-{os-distribution}.gz
+    ```
+4. Make it executable
 
     ```bash
     $ chmod +x data-{os-distribution}
     ```
-4. Move the binary into your `$PATH` e.g. on Mac you could move to `/usr/local/bin/`
+5. Move the binary into your `$PATH` e.g. on Mac you could move to `/usr/local/bin/`
 
     ```bash
     $ mv data-{os-distribution} /usr/local/bin/data
@@ -36,7 +41,7 @@ $ cp /usr/bin/xdg-open /usr/local/bin/xdg-open
 You can also install it from `npm` as follows:
 
 ```bash
-$ npm install -g datahub-cli
+$ npm install -g data-cli
 ```
 
 ## Verifying
