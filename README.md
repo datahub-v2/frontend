@@ -40,3 +40,10 @@ To build the CSS:
 
    `sass --watch public/sass:public/stylesheets`
 
+To run in watch mode:
+
+```bash
+# note the -e which means we watch for changes in templates too
+nodemon -e "js html" index.js
+```
+
