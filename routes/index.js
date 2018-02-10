@@ -307,6 +307,7 @@ module.exports = function () {
     const parsedWithFrontMatter = fm(text)
     res.render('awesome.html', {
       title: parsedWithFrontMatter.attributes.title,
+      page: req.params.page,
       editpath: editpath,
       description: parsedWithFrontMatter.attributes.description,
       content: utils.md.render(parsedWithFrontMatter.body)

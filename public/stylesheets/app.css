@@ -7209,49 +7209,53 @@ body.dashboard .timeago, body.dashboard .info {
   font-size: 12px; }
 
 /* common css for styling "textual" pages like docs, blog and awesome */
-body.textual .page-header h1 {
-  text-align: center; }
-body.textual .page-header p {
-  text-align: center;
-  color: #757575;
-  font-size: 12px; }
-body.textual .header-anchor i {
-  font-size: 16px;
-  color: #999;
-  padding: 0 6px; }
-body.textual img {
-  max-width: 100%; }
-body.textual p.info {
-  color: #757575;
-  font-size: 12px;
-  border-top: 1px solid #999;
-  margin: 50px 0; }
-body.textual p.meta-info {
-  line-height: calc(1em + 12px); }
-body.textual div.info {
-  border: 1px solid #ff7900;
-  border-radius: 2px;
-  margin: 40px 0;
-  padding: 20px;
-  color: #757575; }
-  body.textual div.info p {
-    margin: 0; }
-body.textual div.row img {
-  margin: 60px 0; }
-body.textual div.cli-output {
-  border: 1px solid #000;
-  border-radius: 2px;
-  margin: 40px 0;
-  padding: 20px;
-  background-color: #000;
-  color: white; }
-  body.textual div.cli-output .table-striped > tbody > tr:nth-of-type(odd), body.textual div.cli-output table > tbody > tr:nth-of-type(odd), body.textual div.cli-output body.docs table > tbody > tr:nth-of-type(odd), body.docs body.textual div.cli-output table > tbody > tr:nth-of-type(odd), body.textual div.cli-output body.blog table > tbody > tr:nth-of-type(odd), body.blog body.textual div.cli-output table > tbody > tr:nth-of-type(odd) {
-    background-color: transparent; }
-  body.textual div.cli-output p {
-    margin: 0; }
-  body.textual div.cli-output a:hover {
-    color: #ff7900;
-    text-decoration: none; }
+body.textual {
+  /* breadcrumbs underneath the title */ }
+  body.textual .page-header h1 {
+    text-align: center; }
+  body.textual .page-header p {
+    text-align: center;
+    color: #757575;
+    font-size: 12px; }
+  body.textual .header-anchor i {
+    font-size: 16px;
+    color: #999;
+    padding: 0 6px; }
+  body.textual img {
+    max-width: 100%; }
+  body.textual p.info {
+    color: #757575;
+    font-size: 12px;
+    border-top: 1px solid #999;
+    margin: 50px 0; }
+  body.textual p.meta-info {
+    line-height: calc(1em + 12px); }
+  body.textual div.info {
+    border: 1px solid #ff7900;
+    border-radius: 2px;
+    margin: 40px 0;
+    padding: 20px;
+    color: #757575; }
+    body.textual div.info p {
+      margin: 0; }
+  body.textual div.row img {
+    margin: 60px 0; }
+  body.textual div.cli-output {
+    border: 1px solid #000;
+    border-radius: 2px;
+    margin: 40px 0;
+    padding: 20px;
+    background-color: #000;
+    color: white; }
+    body.textual div.cli-output .table-striped > tbody > tr:nth-of-type(odd), body.textual div.cli-output table > tbody > tr:nth-of-type(odd), body.textual div.cli-output body.docs table > tbody > tr:nth-of-type(odd), body.docs body.textual div.cli-output table > tbody > tr:nth-of-type(odd), body.textual div.cli-output body.blog table > tbody > tr:nth-of-type(odd), body.blog body.textual div.cli-output table > tbody > tr:nth-of-type(odd) {
+      background-color: transparent; }
+    body.textual div.cli-output p {
+      margin: 0; }
+    body.textual div.cli-output a:hover {
+      color: #ff7900;
+      text-decoration: none; }
+  body.textual .breadcrumbs {
+    text-align: center; }
 
 body.docs .page-header h1 {
   text-align: center; }
