@@ -92,6 +92,8 @@ resources = package.resources
       <span class="hljs-keyword">const</span> stream = <span class="hljs-keyword">await</span> file.stream()
       <span class="hljs-comment">// entire file as a buffer (be careful with large files!)</span>
       <span class="hljs-keyword">const</span> buffer = <span class="hljs-keyword">await</span> file.buffer
+      <span class="hljs-comment">// print data</span>
+      stream.pipe(process.stdout)
     }
   }
 })()
