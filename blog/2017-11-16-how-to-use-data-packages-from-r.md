@@ -16,10 +16,12 @@ There are several ways to get data in R, but in this tutorial, we are going to u
 
 ```r
 library("jsonlite")
-json_file <- "https://datahub.io/core/finance-vix/datapackage.json"
+
+json_file <- 'https://datahub.io/core/finance-vix/datapackage.json'
 json_data <- fromJSON(paste(readLines(json_file), collapse=""))
-resources = json_data$resources
-View(resources)
+
+# get list of all resources:
+print(json_data$resources$name)
 ```
 
 and you would get following table printed:
@@ -30,9 +32,14 @@ and you would get following table printed:
 Our data is now available in different formats such as CSV, JSON, ZIP. To get it in the CSV format:
 
 ```r
-path_to_file = json_data$resources$path[[1]]
-data <- read.csv(url(path_to_file))
-View(data)
+# print all tabular data(if exists any)
+for(i in 1:length(json_data$resources$datahub$type)){
+  if(json_data$resources$datahub$type[i]=='derived/csv'){
+    path_to_file = json_data$resources$path[i]
+    data <- read.csv(url(path_to_file))
+    print(data)
+  }
+}
 ```
 
 ![](/static/img/docs/r-screenshot-data.png)

@@ -118,17 +118,24 @@ curl -L https://datahub.io/core/country-list/datapackage.json | jq ".resources"
 
 If you are using R here's how to get the data you want  quickly loaded:
 
-```
+```r
 install.packages("jsonlite")
 library("jsonlite")
 
-json_file <- "https://datahub.io/core/country-list/datapackage.json"
+json_file <- 'https://datahub.io/core/country-list/datapackage.json'
 json_data <- fromJSON(paste(readLines(json_file), collapse=""))
 
-# access csv file by the index starting from 1
-path_to_file = json_data$resources[[1]]$path
-data <- read.csv(url(path_to_file))
-print(data)
+# get list of all resources:
+print(json_data$resources$name)
+
+# print all tabular data(if exists any)
+for(i in 1:length(json_data$resources$datahub$type)){
+  if(json_data$resources$datahub$type[i]=='derived/csv'){
+    path_to_file = json_data$resources$path[i]
+    data <- read.csv(url(path_to_file))
+    print(data)
+  }
+}
 ```
 
 ### Python
@@ -148,44 +155,49 @@ from datapackage import Package
 
 package = Package('https://datahub.io/core/country-list/datapackage.json')
 
-# get list of resources:
+# get list of all resources:
 resources = package.descriptor['resources']
 resourceList = [resources[x]['name'] for x in range(0, len(resources))]
 print(resourceList)
 
-data = package.resources[0].read()
-print(data)
+# print all tabular data(if exists any)
+resources = package.resources
+for resource in resources:
+    if resource.tabular:
+        print(resource.read())
 ```
 
 ### Pandas
 
-In order to work with Data Packages in Pandas you need to install the Frictionless Data data package library and the pandas extension:
+In order to work with Data Packages in Pandas you need to install the Frictionless Data data package library and the pandas:
 
 ```bash
 pip install datapackage
-pip install jsontableschema-pandas
+pip install pandas
 ```
 
 To get the data run following code:
 
 ```python
 import datapackage
+import pandas as pd
 
-data_url = "https://datahub.io/core/country-list/datapackage.json"
+data_url = 'https://datahub.io/core/country-list/datapackage.json'
 
 # to load Data Package into storage
-storage = datapackage.push_datapackage(data_url, 'pandas')
+package = datapackage.Package(data_url)
 
-# data frames available (corresponding to data files in original dataset)
-storage.buckets
-
-# you can access datasets inside storage, e.g. the first one:
-storage[storage.buckets[0]]
+# to load only tabular data
+resources = package.resources
+for resource in resources:
+    if resource.tabular:
+        data = pd.read_csv(resource.descriptor['path'])
+        print (data)
 ```
 
-### Ruby, JavaScript and many more
+### JavaScript and many more
 
-We also have support for JavaScript, SQL, Ruby and PHP. See our "Getting Data" tutorial for more:
+We also have support for JavaScript, SQL, and PHP. See our "Getting Data" tutorial for more:
 
 https://datahub.io/docs/getting-started/getting-data
 
