@@ -17,24 +17,35 @@ There are two options for installation:
 3. Uncompress downloaded asset
 
     ```bash
+    # MacOS and Linux:
     $ gunzip -f data-{os-distribution}.gz
+
+    # Windows:
+    $ gzip -d data-win.exe.gz
     ```
 4. Make it executable
 
     ```bash
+    # MacOS and Linux only:
     $ chmod +x data-{os-distribution}
     ```
 5. Move the binary into your `$PATH` e.g. on Mac you could move to `/usr/local/bin/`
 
     ```bash
+    # MacOS and Linux:
     $ mv data-{os-distribution} /usr/local/bin/data
+
+    # Windows (the path may change depending on your OS distribution and configurations):
+    $ move data-win.exe "C:\Windows\System32\data.exe"
     ```
 
-**Note:** *For linux users, if you encounter errors related to location of `xdg-open` package. Use the following command to copy it from `/usr/bin/xdg-open` to `/usr/local/bin/xdg-open`.*
+:::info
+For linux users, if you encounter errors related to location of `xdg-open` package. Use the following command to copy it from `/usr/bin/xdg-open` to `/usr/local/bin/xdg-open`:
 
-```
+```bash
 $ cp /usr/bin/xdg-open /usr/local/bin/xdg-open
 ```
+:::
 
 ## Installing via npm
 
