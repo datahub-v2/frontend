@@ -86,7 +86,7 @@ test('Showcase page displays 404 if there is no successful revision found', asyn
   const res = await request(app)
     .get('/bad-user/bad-package')
     .expect(404)
-  t.is(res.text, 'Sorry, this page was not found.')
+  t.true(res.text.includes('Sorry, this page was not found'))
 })
 
 test('Showcase page returns 500 if status api times out', async t => {
