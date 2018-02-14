@@ -65,11 +65,14 @@ module.exports.makeApp = function () {
 
   app.use((err, req, res, next) => {
     if (err.status === 404 || err.name === 'Forbidden') {
-      res.status(404).send('Sorry, this page was not found.')
+      res.status(404).render('404.html', {
+        message: 'Sorry, this page was not found',
+        comment: 'You might need to Login to access more datasets'
+      })
       return
     } else {
       console.error(err)
-      res.status(500).send('Something failed. Please, try again later.')
+      res.status(500).send( 'Something failed. Please, try again later.')
     }
   })
 
