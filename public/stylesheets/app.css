@@ -6756,6 +6756,9 @@ body.search .package-summary {
   body.search .package-summary .meta {
     font-size: 12px;
     margin-bottom: 10px; }
+body.search li.current-page a.page-link {
+  color: #ff7900;
+  background: white; }
 
 body.owner .owner-page-title {
   margin: 0; }

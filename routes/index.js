@@ -793,12 +793,13 @@ module.exports = function () {
       return rangeWithDots;
     }
 
-
-    let pages = pagination(parseInt(from, 10 ) + 1, totalPages)
+    const currentPage = parseInt(from, 10) + 1
+    const pages = pagination(currentPage, totalPages)
 
     res.render('search.html', {
       packages,
       pages,
+      currentPage,
       query: req.query.q
     })
   })
