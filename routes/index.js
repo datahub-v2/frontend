@@ -215,7 +215,7 @@ module.exports = function () {
         res.redirect('/')
       }
     } else {
-      res.status(404).send('Sorry, this page was not found.')
+      res.status(404).render('404.html', {message: 'Sorry, this page was not found'})
       return
     }
   })
@@ -257,7 +257,7 @@ module.exports = function () {
       var page = req.params[0]
       var filePath = 'docs/' + page + '.md'
       if (!fs.existsSync(filePath)) {
-        res.status(404).send('Sorry no documentation was found')
+        res.status(404).render('404.html', {message: 'Sorry no documentation was found'})
         return
       }
 
@@ -356,7 +356,7 @@ module.exports = function () {
         })
       })
     } else {
-      res.status(404).send('Sorry no post was found')
+      res.status(404).render('404.html', {message: 'Sorry no post was found'})
       return
     }
   }
@@ -450,7 +450,10 @@ module.exports = function () {
           // TODO: we should probably have API for it.
           const emailHash = req.cookies.email ? md5(req.cookies.email) : ''
           if (userAndPkgId.userid !== emailHash && userAndPkgId.userid !== req.params.owner) {
-            res.status(404).send('Sorry, this page was not found.')
+            res.status(404).render('404.html', {
+              message: 'Sorry, this page was not found',
+              comment: 'You might need to Login to access more datasets'
+            })
             return
           }
           // Only if above stuff is passed we use original dp:
@@ -580,7 +583,10 @@ module.exports = function () {
     let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     if (!userAndPkgId.userid) {
-      res.status(404).send('Sorry, this page was not found.')
+      res.status(404).render('404.html', {
+        message: 'Sorry, this page was not found',
+        comment: 'You might need to Login to access more datasets'
+      })
       return
     }
 
@@ -630,7 +636,10 @@ module.exports = function () {
     let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     if (!userAndPkgId.userid) {
-      res.status(404).send('Sorry, this page was not found.')
+      res.status(404).render('404.html', {
+        message: 'Sorry, this page was not found',
+        comment: 'You might need to Login to access more datasets'
+      })
       return
     }
     // Get the latest successful revision, if does not exist show 404
@@ -672,7 +681,9 @@ module.exports = function () {
     }
     // Check if resource was found and give 404 if not
     if (!resource) {
-      res.status(404).send('Sorry, we cannot locate that file for you.')
+      res.status(404).render('404.html', {
+        message: 'Sorry, we cannot locate that file for you'
+      })
     }
 
     // If resource was found then identify required format by given extension
@@ -680,7 +691,9 @@ module.exports = function () {
       resource = resource.alternates.find(res => (extension.substring(1) === res.format && res.datahub.type !== 'derived/preview'))
       // If given format was not found then show 404
       if (!resource) {
-        res.status(404).send('Sorry, we cannot locate that file for you.')
+        res.status(404).render('404.html', {
+          message: 'Sorry, we cannot locate that file for you'
+        })
       }
     }
 
@@ -730,7 +743,9 @@ module.exports = function () {
         dataset: req.params.name
       })
     } else if (response.status === 404) {
-      res.status(404).send('Sorry, this page was not found.')
+      res.status(404).render('404.html', {
+        message: 'Sorry, this page was not found'
+      })
     } else {
       next(response)
     }
@@ -900,7 +915,9 @@ module.exports = function () {
     // First check if user exists using resolver
     const userProfile = await api.getProfile(req.params.owner)
     if (!userProfile.found) {
-      res.status(404).send('Sorry, this page was not found.')
+      res.status(404).render('404.html', {
+        message: 'Sorry, this page was not found'
+      })
       return
     }
     const token = req.cookies.jwt

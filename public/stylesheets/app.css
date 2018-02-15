@@ -7457,4 +7457,28 @@ body.download {
       font-size: 14px;
       font-weight: bold; }
 
+body.not-found {
+  display: table;
+  height: 100%;
+  text-align: center;
+  width: 100%; }
+  body.not-found * {
+    line-height: 1.2;
+    margin: 0; }
+  body.not-found div {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 2em auto; }
+  body.not-found h1 {
+    font-size: 2em;
+    font-weight: 400; }
+  body.not-found p {
+    margin: 0 auto; }
+  @media only screen and (max-width: 280px) {
+    body.not-found {
+      width: 95%; }
+      body.not-found h1 {
+        font-size: 1.5em;
+        margin: 0 0 0.3em; } }
+
 /*# sourceMappingURL=app.css.map */
