@@ -33,6 +33,13 @@ See the [docs](http://docs.datahub.io/developers/) for more information.
 
 ## Developers
 
+Storage manager api doesn't allow requests coming from localhost or any other locations.
+So, when you run the server locally some scripts from the showcase page could not be loaded.
+To fix this, please run
+```
+git submodule init && git submodule update
+```
+
 To build the CSS:
 
 1. Install sass
