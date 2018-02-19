@@ -1,6 +1,6 @@
 {% macro r(dataset) -%}
 <p>If you are using R here's how to get the data you want  quickly loaded:</p>
-<pre class="hljs"><code>install.packages(<span class="hljs-string">"jsonlite"</span>)
+<pre class="hljs"><code>install.packages(<span class="hljs-string">"jsonlite", repos="https://cran.rstudio.com/"</span>)
 <span class="hljs-keyword">library</span>(<span class="hljs-string">"jsonlite"</span>)
 
 json_file &lt;- <span class="hljs-string">'https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json'</span>
@@ -18,6 +18,7 @@ print(json_data$resources$name)
   }
 }
 </code></pre>
+<p><i><strong>Note:</strong> You might need to run the script with root permissions if you are running on Linux machine</i></p>
 {%- endmacro %}
 
 {% macro pandas(dataset) -%}
