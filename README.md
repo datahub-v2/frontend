@@ -33,6 +33,12 @@ See the [docs](http://docs.datahub.io/developers/) for more information.
 
 ## Developers
 
+The javascript portion of the app, which is responsible for rendering views,
+ comes from a different repo. That repo must be submoduled in and then built:
+```
+git submodule init && git submodule update
+```
+
 To build the CSS:
 
 1. Install sass
