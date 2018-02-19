@@ -33,9 +33,8 @@ See the [docs](http://docs.datahub.io/developers/) for more information.
 
 ## Developers
 
-Storage manager api doesn't allow requests coming from localhost or any other locations.
-So, when you run the server locally some scripts from the showcase page could not be loaded.
-To fix this, please run
+The javascript portion of the app, which is responsible for rendering views,
+ comes from a different repo. That repo must be submoduled in and then built:
 ```
 git submodule init && git submodule update
 ```
