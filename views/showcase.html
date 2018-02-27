@@ -99,19 +99,14 @@
               <td class="col-xs-2">{{ dataset.datahub.modified }}</td>
               <td class="col-xs-2">
                 {% if dataset.licenses %}
-                  {% for item in dataset.licenses %}
-                  <i class="fa fa-gavel"></i>
-                  {% if item.path %}
-                    <a href="{{item.path}}" title="{{item.title}}">{{item.name}}</a>
-                  {% else %}
-                    {{item.name}}
-                  {% endif %}
-                  {% endfor %}
+                  <i class="fa fa-gavel"></i> {{snippets.listify(dataset.licenses)}}
                 {% elif dataset.license %}
-                <i class="fa fa-gavel"></i> {{ dataset.license }}
+                  <i class="fa fa-gavel"></i> <span title="{{ dataset.license }}">{{ dataset.license }}</span>
                 {% endif %}
               </td>
-              <td class="col-xs-2">{{snippets.listify(dataset.sources)}}</td>
+              <td class="col-xs-2">
+                <i class="fa fa-external-link-square"></i> {{snippets.listify(dataset.sources)}}
+              </td>
             </tr>
           </tbody>
 
@@ -147,15 +142,15 @@
           {% for resource in dataset.downloads %}
             <tr>
               <td class="col-xs-2">
-                <i class="fa fa-file-text-o"></i> <a href="#resource-{{resource.name}}" onclick="scrollDown(this)" class="anchor-link">{{resource.name}}</a>
+                <i class="fa fa-file-text-o"></i> <a href="#resource-{{resource.name}}" onclick="scrollDown(this)" class="anchor-link" title="{{resource.title or resource.name}}">{{resource.name}}</a>
               </td>
-              <td class="col-xs-4" title="{{ resource.title or resource.description }}">
-                {{ resource.title or resource.description }}
+              <td class="col-xs-4" title="{{ resource.description or resource.title }}">
+                {{ resource.description or resource.title }}
               </td>
-              <td class="col-xs-1">
+              <td class="col-xs-1" title="{{ resource.prettyBytes }}">
                 {{ resource.prettyBytes }}
               </td>
-              <td class="col-xs-1">
+              <td class="col-xs-1" title="{{ resource.modified }}">
                 {{ resource.modified }}
               </td>
               <td class="download truncate col-xs-4">

@@ -2,13 +2,12 @@
 
 {% macro listify(list_) -%}
   {% for item in list_ or [] %}
-    <i class="fa fa-external-link-square"></i>
     {% if item.path %}
-    <a href="{{item.path}}" title="Uses data from {{item.title}}" target="_blank">
-      {{item.title}}
+    <a href="{{item.path}}" title="Uses data from '{{item.title or item.name}}'" target="_blank">
+      {{item.title or item.name}}
     </a>
     {% else %}
-     {{item.title}}
+    <span title="Uses data from '{{item.title or item.name}}'">{{item.title or item.name}}</span>
     {% endif %}
   {% endfor %}
 {%- endmacro %}
