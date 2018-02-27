@@ -173,6 +173,7 @@
 
       <!-- preview + field information -->
       {% for resource in dataset.resources %}
+      {% if resource.format !== 'zip' %}
       <div class="resource-info part">
         <!-- Heading for each resource -->
         <h2 id="resource-{{resource.name}}" class="section-title">
@@ -215,7 +216,7 @@
           This is a preview version. There might be more data in <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}" onclick="trackOutboundLink(this.href)">the original version.</a>
         </p>
         {% if resource.format == "csv" %}
-         <h2 class="section-title">Field information</h2>
+         <h3 class="section-title">Field information</h3>
          <table class="table table-bordered table-striped resource-summary">
            <thead>
              <tr>
@@ -238,6 +239,7 @@
          </table>
        {% endif %}
       </div>
+      {% endif %}
       {% endfor %}
     </div>
   </div>
