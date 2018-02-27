@@ -181,7 +181,11 @@
       <div class="resource-info part">
         <!-- Heading for each resource -->
         <h2 id="resource-{{resource.name}}" class="section-title">
+          {% if resource.title %}
+          {{resource.title}} [{{resource.name}}]
+          {% else %}
           {{resource.name}}
+          {% endif %}
           &nbsp;
           <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}" onclick="trackOutboundLink(this.href)">
             <i class="fa fa-arrow-circle-o-down" aria-hidden="true" style="font-size:0.9em"></i>
