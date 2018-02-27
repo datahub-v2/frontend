@@ -120,7 +120,11 @@
       </div>
 
       <!-- short readme -->
-      <div class="readme-snippet readable-width">{{dataset.readmeSnippet}} <a href="#readme" onclick="scrollDown(this)">read more</a></div>
+      {% if dataset.readmeSnippet %}
+        <div class="readme-snippet readable-width">{{dataset.readmeSnippet}} <a href="#readme" onclick="scrollDown(this)">read more</a></div>
+      {% else %}
+        <div class="readme-snippet readable-width">{{dataset.readmeHtml|safe}}</div>
+      {% endif %}
 
       <!-- download button -->
       <a href="#data" class="btn btn-lg btn-primary" onclick="scrollDown(this)">Download</a>
@@ -246,6 +250,7 @@
 </div>
 
 <!-- readme section -->
+{% if dataset.readmeSnippet %}
 <div class="section-gray">
   <div class="container">
     <div class="inner_container">
@@ -255,7 +260,8 @@
       </div>
     </div>
   </div>
-</div><!-- end of readme section -->
+</div>
+{% endif %}<!-- end of readme section -->
 
 <!-- import into your tool section -->
 <div class="container">
