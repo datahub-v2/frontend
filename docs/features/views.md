@@ -63,6 +63,21 @@ Finally, you need to connect your view with the underlying data source in the `d
 ]
 ```
 
+In the `spec` property of the views, you also can set suffixes for axis ticks. For example, you might have numbers that are in billions so you want to append `B` letter for all tick labels. You'd simply have `ySuffix` or `xSuffix` property in your `spec`:
+
+```javascript
+...
+"views": [
+  {
+    ...
+    "spec": {
+      ...,
+      "ySuffix": "B"
+    }
+  }
+]
+```
+
 To learn more see the examples live examples below.
 
 # Examples
