@@ -63,7 +63,7 @@ Finally, you need to connect your view with the underlying data source in the `d
 ]
 ```
 
-In the `spec` property of the views, you also can set suffixes for axis ticks. For example, you might have numbers that are in billions so you want to append `B` letter for all tick labels. You'd simply have `ySuffix` or `xSuffix` property in your `spec`:
+In the `spec` property of the views, you also can set suffixes for axis ticks. For example, you might have numbers that are in billions so you want to append `B` letter for all tick labels. You'd simply have `ySuffix` or `xSuffix` property in your `spec` (see the snippet below). Another common situation would be if you need to set custom axis titles, for which we have `xTitle` and `yTitle` properties:
 
 ```javascript
 ...
@@ -72,7 +72,9 @@ In the `spec` property of the views, you also can set suffixes for axis ticks. F
     ...
     "spec": {
       ...,
-      "ySuffix": "B"
+      "ySuffix": "B",
+      "xTitle": "my custom abscissa title",
+      "yTitle": "my custom ordinate title"
     }
   }
 ]
