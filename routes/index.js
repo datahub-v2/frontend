@@ -755,9 +755,13 @@ module.exports = function () {
     const token = req.cookies.jwt
     const from = req.query.from || 0
     const size = req.query.size || 20
-    const query = req.query.q ? `q="${req.query.q}"&size=${size}` : `size=${size}`
-    const queryWithStart = req.query.q ? `q="${req.query.q}"&size=${size}&from=${from}` : `size=${size}&from=${from}`
-    const packages = await api.search(`${queryWithStart}`, token)
+    let query
+    if (req.query.q) {
+      query = `q="${req.query.q}"&size=${size}&from=${from}`
+    } else {
+      query = `size=${size}&from=${from}`
+    }
+    const packages = await api.search(`${query}`, token)
     const total = packages.summary.total
     const totalPages = Math.ceil(total/size)
 
@@ -793,7 +797,7 @@ module.exports = function () {
       return rangeWithDots;
     }
 
-    const currentPage = parseInt(from, 10) + 1
+    const currentPage = parseInt(from, 10) / 20 + 1
     const pages = pagination(currentPage, totalPages)
 
     res.render('search.html', {
@@ -921,7 +925,7 @@ module.exports = function () {
       })
       return
     }
-    
+
     const token = req.cookies.jwt
     const events = await api.getEvents(`owner="${req.params.owner}"&size=10`, token)
     events.results = events.results.map(item => {

@@ -39,14 +39,14 @@ Search Datasets
               </li>
               {% for page in pages %}
                 {% if page == '...' %}
-                <li class="page-item disabled"><a class="page-link" href="/search?q={{ query }}&from={{ page -1 }}">{{page}}</a></li>
+                <li class="page-item disabled"><span class="page-link">{{page}}</span></li>
                 {% else %}
-                <li class="page-item {{ 'current-page' if currentPage == page }}"><a class="page-link" href="/search?q={{ query }}&from={{ page -1 }}">{{page}}</a></li>
+                <li class="page-item {{ 'current-page' if currentPage == page }}"><a class="page-link" href="/search?q={{ query }}&from={{ (page - 1) * 20 }}">{{page}}</a></li>
                 {% endif %}
 
               {% endfor %}
               <li class="page-item">
-                <a class="page-link" href="/search?q={{ query }}&from={{ (packages.summary.total/20) | round(0, 'ceil') | int }}" aria-label="Next">
+                <a class="page-link" href="/search?q={{ query }}&from={{ packages.summary.total - (packages.summary.total % 20) | int }}" aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>
                   <span class="sr-only">Next</span>
                 </a>
