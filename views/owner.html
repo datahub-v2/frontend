@@ -71,6 +71,32 @@
         <div id="publisher-package-list">
           {% if packages.results|length > 0 %}
             {{ snippets.package_list_show(packages.results) }}
+            {% if packages.summary.total > 20 %}
+              <nav aria-label="Datasets">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="/{{ owner }}?from=0" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  {% for page in pages %}
+                    {% if page == '...' %}
+                    <li class="page-item disabled"><span class="page-link">{{page}}</span></li>
+                    {% else %}
+                    <li class="page-item {{ 'current-page' if currentPage == page }}"><a class="page-link" href="/{{ owner }}?from={{ (page - 1) * 20 }}">{{page}}</a></li>
+                    {% endif %}
+
+                  {% endfor %}
+                  <li class="page-item">
+                    <a class="page-link" href="/{{ owner }}?from={{ packages.summary.total - (packages.summary.total % 20) | int }}" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            {% endif %}
           {% else %}
             <p>This publisher has no data packages.</p>
           {% endif %}

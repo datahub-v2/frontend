@@ -755,46 +755,17 @@ module.exports = function () {
     const token = req.cookies.jwt
     const from = req.query.from || 0
     const size = req.query.size || 20
-    const query = req.query.q ? `q="${req.query.q}"&size=${size}` : `size=${size}`
-    const queryWithStart = req.query.q ? `q="${req.query.q}"&size=${size}&from=${from}` : `size=${size}&from=${from}`
-    const packages = await api.search(`${queryWithStart}`, token)
+    let query
+    if (req.query.q) {
+      query = `q="${req.query.q}"&size=${size}&from=${from}`
+    } else {
+      query = `size=${size}&from=${from}`
+    }
+    const packages = await api.search(`${query}`, token)
     const total = packages.summary.total
     const totalPages = Math.ceil(total/size)
-
-    function pagination(c, m) {
-      let current = c,
-          last = m,
-          delta = 2,
-          left = current - delta,
-          right = current + delta + 1,
-          range = [],
-          rangeWithDots = [],
-          l;
-
-      range.push(1)
-      for (let i = c - delta; i <= c + delta; i++) {
-        if (i >= left && i < right && i < m && i > 1) {
-          range.push(i);
-        }
-      }
-      range.push(m)
-
-      for (let i of range) {
-        if (l) {
-          if (i - l === 2) {
-            rangeWithDots.push(l + 1);
-          } else if (i - l !== 1) {
-            rangeWithDots.push('...');
-          }
-        }
-        rangeWithDots.push(i);
-        l = i;
-      }
-      return rangeWithDots;
-    }
-
-    const currentPage = parseInt(from, 10) + 1
-    const pages = pagination(currentPage, totalPages)
+    const currentPage = parseInt(from, 10) / 20 + 1
+    const pages = utils.pagination(currentPage, totalPages)
 
     res.render('search.html', {
       packages,
@@ -921,18 +892,31 @@ module.exports = function () {
       })
       return
     }
+
     const token = req.cookies.jwt
+    // Get the latest available 10 events:
     const events = await api.getEvents(`owner="${req.params.owner}"&size=10`, token)
     events.results = events.results.map(item => {
       item.timeago = timeago().format(item.timestamp)
       return item
     })
-    const packages = await api.search(`datahub.ownerid="${userProfile.profile.id}"&size=100`, token)
+    // Fetch information about the publisher:
     const joinDate = new Date(userProfile.profile.join_date)
     const joinYear = joinDate.getUTCFullYear()
     const joinMonth = joinDate.toLocaleString('en-us', { month: "long" })
+    // Pagination - show 20 items per page:
+    const from = req.query.from || 0
+    const size = req.query.size || 20
+    const packages = await api.search(`datahub.ownerid="${userProfile.profile.id}"&size=${size}&from=${from}`, token)
+    const total = packages.summary.total
+    const totalPages = Math.ceil(total/size)
+    const currentPage = parseInt(from, 10) / 20 + 1
+    const pages = utils.pagination(currentPage, totalPages)
+    
     res.render('owner.html', {
       packages,
+      pages,
+      currentPage,
       events: events.results,
       emailHash: userProfile.profile.id,
       joinDate: joinMonth + ' ' + joinYear,
