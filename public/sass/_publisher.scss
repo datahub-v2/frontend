@@ -80,4 +80,10 @@ body.owner {
     margin: 0;
   }
 
+  li.current-page {
+    a.page-link {
+      color: $brand-warning;
+      background: white;
+    }
+  }
 }
