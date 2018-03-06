@@ -242,6 +242,11 @@
          </table>
        {% endif %}
       </div>
+      {% else %}
+      <!-- Placeholder div elements for React components: preview tables -->
+      <div id="resource-{{loop.index - 1}}" class="react-me tables"
+           data-type="resource-preview" data-resource="{{ loop.index - 1 }}"></div>
+      <!-- End of div elements for React -->
       {% endif %}
       {% endfor %}
     </div>
