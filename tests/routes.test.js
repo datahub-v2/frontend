@@ -164,7 +164,6 @@ test('"API" for datapackage.json works if logged in and private dataset', async 
 test('"API" for datapackage.json returns 404 not logged in and private dataset', async t => {
   const res = await request(app)
     .get('/admin/private-package/datapackage.json')
-    .expect(404)
   t.is(res.statusCode, 404)
 })
 
@@ -185,6 +184,23 @@ test('Downloading a resource by name or index works for csv and json', async t =
     .get('/admin/demo-package/r/0.json')
   t.is(res.statusCode, 302)
   t.true(res.header.location.includes('_json.json'))
+})
+
+test('Per view URLs work', async t => {
+  // By index:
+  let res = await request(app)
+    .get('/admin/demo-package/view/0')
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('<!-- Views -->'))
+  // By name:
+  res = await request(app)
+    .get('/admin/demo-package/view/graph')
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('<!-- Views -->'))
+  // 404:
+  res = await request(app)
+    .get('/admin/demo-package/view/1')
+  t.is(res.statusCode, 404)
 })
 
 test('Events page works', async t => {

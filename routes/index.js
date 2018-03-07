@@ -578,38 +578,33 @@ module.exports = function () {
   router.get('/:owner/:name', renderShowcase('successful'))
   router.get('/:owner/:name/v/:revisionId', renderShowcase())
 
-  router.get('/:owner/:name/datapackage.json', async (req, res, next) => {
-    let normalizedDp = null
+  async function prepareNormalizedDp(req, res, next) {
     let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
     if (!userAndPkgId.userid) {
-      res.status(404).render('404.html', {
-        message: 'Sorry, this page was not found',
-        comment: 'You might need to Login to access more datasets'
-      })
-      return
+      throw {status: 404}
     }
 
-    // Get the latest successful revision, if does not exist show 404
-    let latestSuccessfulRevision
-    try {
-      latestSuccessfulRevision = await api.specStoreStatus(
-        userAndPkgId.userid,
-        userAndPkgId.packageid,
-        'successful'
-      )
-    } catch (err) {
-      next(err)
-      return
-    }
+    // Get the latest successful revision:
+    const latestSuccessfulRevision = await api.specStoreStatus(
+      userAndPkgId.userid,
+      userAndPkgId.packageid,
+      'successful'
+    )
 
     const revisionId = latestSuccessfulRevision.id.split('/')[2]
+    return await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, revisionId, token)
+  }
+
+  router.get('/:owner/:name/datapackage.json', async (req, res, next) => {
+    let normalizedDp
     try {
-      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, revisionId, token)
+      normalizedDp = await prepareNormalizedDp(req, res, next)
     } catch (err) {
       next(err)
       return
     }
+
     let redirectUrl = `${normalizedDp.path}/datapackage.json`
     let resp = await fetch(redirectUrl)
     // After changes in pkgstore, we ended up with some datasets that cannot be
@@ -632,31 +627,9 @@ module.exports = function () {
   })
 
   router.get('/:owner/:name/r/:fileNameOrIndex', async (req, res, next) => {
-    let normalizedDp = null
-    let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
-    const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
-    if (!userAndPkgId.userid) {
-      res.status(404).render('404.html', {
-        message: 'Sorry, this page was not found',
-        comment: 'You might need to Login to access more datasets'
-      })
-      return
-    }
-    // Get the latest successful revision, if does not exist show 404
-    let latestSuccessfulRevision
+    let normalizedDp
     try {
-      latestSuccessfulRevision = await api.specStoreStatus(
-        userAndPkgId.userid,
-        userAndPkgId.packageid,
-        'successful'
-      )
-    } catch (err) {
-      next(err)
-      return
-    }
-    try {
-      const revisionId = latestSuccessfulRevision.id.split('/')[2]
-      normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, revisionId, token)
+      normalizedDp = await prepareNormalizedDp(req, res, next)
     } catch (err) {
       next(err)
       return
@@ -711,6 +684,51 @@ module.exports = function () {
     }
 
     res.redirect(finalPath)
+  })
+
+  // Per view URL:
+  router.get('/:owner/:name/view/:viewNameOrIndex', async (req, res, next) => {
+    let normalizedDp
+    try {
+      normalizedDp = await prepareNormalizedDp(req, res, next)
+    } catch (err) {
+      next(err)
+      return
+    }
+    // First try to find a view by name, e.g., if a number is given but view name is a number:
+    // We're using "==" here as we want string '1' to be equal to number 1:
+    let view = normalizedDp.views.find(item => item.name == req.params.viewNameOrIndex)
+    // 'view' wasn't found, now get a view by index:
+    view = view || normalizedDp.views[req.params.viewNameOrIndex]
+    if (!view) { // 'view' wasn't found - return 404
+      res.status(404).render('404.html', {
+        message: 'Sorry, this page was not found'
+      })
+      return
+    }
+    // Replace original 'views' property with a single required 'view':
+    normalizedDp.views = [view]
+
+    if (view.resources) { // 'view' has 'resources' property then find required resources:
+      const newResources = []
+      view.resources.forEach(res => {
+        if (res.constructor.name === 'Object') { // It's Object so use its 'name' property:
+          res = res.name
+        }
+        let resource = normalizedDp.resources.find(item => item.name == res)
+        resource = resource || normalizedDp.resources[res]
+        newResources.push(resource)
+      })
+      // Replace original 'resources' property with a new list that is needed for the 'view':
+      normalizedDp.resources = newResources
+    } else { // Use only the first resource as by default:
+      normalizedDp.resources = [normalizedDp.resources[0]]
+    }
+    // Render the page with stripped dp:
+    res.render('view.html', {
+      // eslint-disable-next-line no-useless-escape, quotes
+      dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'")
+    })
   })
 
   router.get('/:owner/:name/events', async (req, res, next) => {
@@ -912,7 +930,7 @@ module.exports = function () {
     const totalPages = Math.ceil(total/size)
     const currentPage = parseInt(from, 10) / 20 + 1
     const pages = utils.pagination(currentPage, totalPages)
-    
+
     res.render('owner.html', {
       packages,
       pages,

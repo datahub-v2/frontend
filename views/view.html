@@ -1,0 +1,13 @@
+<!-- Views -->
+<div class="react-me part" data-type="data-views"></div>
+<div class="react-me tables" data-type="resource-preview" data-resource="0"></div>
+
+{% block scripts %}
+  <!-- pass DP_ID to frontend -->
+  <script type="text/javascript">
+   var DP_ID = JSON.parse('{{ dpId | safe }}');
+  </script>
+
+  <link rel="stylesheet" media="screen" href="/static/dpr-js/dist/main.css">
+  <script type="text/javascript" src="/static/dpr-js/dist/bundle.js"></script>
+{% endblock %}
