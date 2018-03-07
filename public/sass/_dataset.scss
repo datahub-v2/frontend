@@ -259,6 +259,20 @@ h2.publisher {
   padding-left: 0;
 }
 
+.share-and-embed {
+  margin-bottom: 100px;
+}
+.copy-input {
+  width: 220px;
+  margin: 0 10px;
+}
+.copy-button {
+  @extend .btn;
+  @extend .btn-default;
+  margin: 0 14px 0 0;
+  padding: 1px 10px;
+}
+
 .handsontable {
   height: 432px;
   overflow: hidden;
