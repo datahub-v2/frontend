@@ -60,7 +60,7 @@ print(resourceList)
 <span class="hljs-comment"># print all tabular data(if exists any)</span>
 resources = package.resources
 <span class="hljs-keyword">for</span> resource <span class="hljs-keyword">in</span> resources:
-    <span class="hljs-keyword">if</span> resource.tabular:
+    <span class="hljs-keyword">if</span> resource.descriptor['datahub']['type'] == 'derived/csv':
         print(resource.read())
 </code></pre>
 {%- endmacro %}

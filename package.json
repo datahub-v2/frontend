@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "start dev": "export API_URL=https://api-testing.datahub.io; export BITSTORE_URL=https://pkgstore-testing.datahub.io; node index.js",
+    "start dev": "export API_URL=https://api.datahub.io; export BITSTORE_URL=https://pkgstore.datahub.io; node index.js",
     "test": "ava -v",
     "watch:test": "npm run test -- --watch",
     "lint": "xo --quite"
