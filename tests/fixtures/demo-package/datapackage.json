@@ -288,6 +288,7 @@
   "version": "0.1.0",
   "views": [
     {
+      "name": "graph",
       "id": "Graph",
       "state": {
         "graphType": "lines",
