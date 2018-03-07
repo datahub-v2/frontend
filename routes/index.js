@@ -726,6 +726,7 @@ module.exports = function () {
     }
     // Render the page with stripped dp:
     res.render('view.html', {
+      title: req.params.name,
       // eslint-disable-next-line no-useless-escape, quotes
       dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'")
     })
