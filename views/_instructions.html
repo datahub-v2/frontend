@@ -52,16 +52,13 @@ resources = package.resources
 
 package = Package(<span class="hljs-string">'https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json'</span>)
 
-<span class="hljs-comment"># get list of all resources:</span>
-resources = package.descriptor[<span class="hljs-string">'resources'</span>]
-resourceList = [resources[x][<span class="hljs-string">'name'</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(resources))]
-print(resourceList)
+<span class="hljs-comment"># print list of all resources:</span>
+<span class="hljs-keyword">print</span>(package.resource_names)
 
-<span class="hljs-comment"># print all tabular data(if exists any)</span>
-resources = package.resources
-<span class="hljs-keyword">for</span> resource <span class="hljs-keyword">in</span> resources:
-    <span class="hljs-keyword">if</span> resource.tabular:
-        print(resource.read())
+<span class="hljs-comment"># print processed tabular data (if exists any)</span>
+<span class="hljs-keyword">for</span> resource <span class="hljs-keyword">in</span> package.resources:
+    <span class="hljs-keyword">if</span> resource.descriptor['datahub']['type'] == 'derived/csv':
+        <span class="hljs-keyword">print</span>(resource.read())
 </code></pre>
 {%- endmacro %}
 
