@@ -21,7 +21,10 @@ test('Dashboard page renders when jwt in cookies setup', async t => {
     .set('Cookie', ['jwt=1a2b3c;id=publisher;username=publisher;'])
   t.is(res.statusCode, 200)
   t.true(res.text.includes('Your Dashboard'))
-  t.true(res.text.includes('121kB'))
+  t.true(res.text.includes('PUBLIC'))
+  t.true(res.text.includes('98kB'))
+  t.true(res.text.includes('PRIVATE'))
+  t.true(res.text.includes('23kB'))
   t.true(res.text.includes('<!-- Events -->'))
 })
 

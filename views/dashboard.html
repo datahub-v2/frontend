@@ -37,14 +37,16 @@ Dashboard
             <tr>
               <th>PLAN</th>
               <th>DATASETS</th>
-              <th>ON DISK</th>
+              <th>PUBLIC</th>
+              <th>PRIVATE</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="main-info">{{ currentUser.plan }}</td>
               <td class="main-info">{{ totalPackages }}</td>
-              <td class="main-info">{{ totalSpace }}</td>
+              <td class="main-info">{{ publicSpaceUsage }}</td>
+              <td class="main-info">{{ privateSpaceUsage }}</td>
             </tr>
           </tbody>
         </table>

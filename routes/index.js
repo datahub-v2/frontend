@@ -195,9 +195,11 @@ module.exports = function () {
         const packages = await api.search(`datahub.ownerid="${req.cookies.id}"&size=0`, req.cookies.jwt)
         const currentUser = utils.getCurrentUser(req.cookies)
 
-        let storage
+        let storage, storagePublic, storagePrivate
         try {
-          storage = await api.getStorage(req.cookies.username)
+          storage = await api.getStorage({owner: req.cookies.username})
+          storagePrivate = await api.getStorage({owner: req.cookies.username, findability: 'private'})
+          storagePublic = storage.totalBytes - storagaPrivate.totalBytes
         } catch (err) {
           // Log the error but continue loading the page without storage info
           console.error(err)
@@ -208,7 +210,8 @@ module.exports = function () {
           currentUser,
           events: events.results,
           totalPackages: packages.summary.total,
-          totalSpace: storage ? bytes(storage.totalBytes, {decimalPlaces: 0}) : 'N/A'
+          publicSpaceUsage: storagePublic ? bytes(storagePublic, {decimalPlaces: 0}) : 'N/A',
+          privateSpaceUsage: storagePrivate ? bytes(storagePrivate.totalBytes, {decimalPlaces: 0}) : 'N/A'
         })
       } else {
         req.flash('message', 'Your token has expired. Please, login to see your dashboard.')
@@ -551,7 +554,7 @@ module.exports = function () {
         const [owner, name, revision] = status.id.split('/')
         let storage
         try {
-          storage = await api.getStorage(owner, name, revision)
+          storage = await api.getStorage({owner, pkgId: name, flowId: revision})
         } catch (err) {
           // Log the error but continue loading the page without storage info
           console.error(err)

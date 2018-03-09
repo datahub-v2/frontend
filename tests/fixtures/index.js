@@ -430,4 +430,6 @@ module.exports.initMocks = function() {
     .reply(200, {totalBytes: 1111})
     .get('/storage/owner/publisher')
     .reply(200, {totalBytes: 123456})
+    .get('/storage/owner/publisher?findability=private')
+    .reply(200, {totalBytes: 23456})
 }
