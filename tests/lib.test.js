@@ -154,11 +154,11 @@ test('Filemanager API works', async t => {
   let owner = 'admin'
   let pkgId = 'demo-package'
   let flowId = 1
-  let res = await api.getStorage(owner)
+  let res = await api.getStorage({owner})
   t.is(res.totalBytes, 1234)
-  res = await api.getStorage(owner, pkgId)
+  res = await api.getStorage({owner, pkgId})
   t.is(res.totalBytes, 123)
-  res = await api.getStorage(owner, pkgId, flowId)
+  res = await api.getStorage({owner, pkgId, flowId})
   t.is(res.totalBytes, 12)
 })
 
