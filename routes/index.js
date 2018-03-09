@@ -199,7 +199,7 @@ module.exports = function () {
         try {
           storage = await api.getStorage({owner: req.cookies.username})
           storagePrivate = await api.getStorage({owner: req.cookies.username, findability: 'private'})
-          storagePublic = storage.totalBytes - storagaPrivate.totalBytes
+          storagePublic = storage.totalBytes - storagePrivate.totalBytes
         } catch (err) {
           // Log the error but continue loading the page without storage info
           console.error(err)
