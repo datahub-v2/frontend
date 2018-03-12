@@ -8,6 +8,7 @@ module.exports.dataPackage = require('./demo-package/datapackage.json')
 module.exports.readme = fs.readFileSync('tests/fixtures/demo-package/README.md').toString()
 module.exports.reportResource = require('./reports/report-resource.json')
 module.exports.failedReport = require('./reports/failed-report.json')
+module.exports.originalDp = require('./original-demo-package/datapackage.json')
 
 module.exports.initMocks = function() {
   var data = module.exports
@@ -225,7 +226,7 @@ module.exports.initMocks = function() {
     inputs: [
       {
         parameters: {
-          descriptor: data.dataPackage
+          descriptor: data.originalDp
         }
       }
     ],
@@ -292,6 +293,12 @@ module.exports.initMocks = function() {
       state: 'SUCCEEDED',
       spec_contents: {meta: {findability: 'private'}}
     })
+    .get('/source/admin/private-package/1')
+    .reply(200, {
+      id: 'admin/private-package/1',
+      state: 'SUCCEEDED',
+      spec_contents: specContents
+    })
     .get('/source/bad-user/bad-package/successful')
     .reply(404)
     .get('/source/core/co2-ppm/successful')
@@ -299,30 +306,66 @@ module.exports.initMocks = function() {
       id: 'core/co2-ppm/1',
       state: 'SUCCEEDED'
     })
+    .get('/source/core/co2-ppm/1')
+    .reply(200, {
+      id: 'core/co2-ppm/1',
+      state: 'SUCCEEDED',
+      spec_contents: specContents
+    })
     .get('/source/core/house-prices-us/successful')
     .reply(200, {
       id: 'core/house-prices-us/1',
       state: 'SUCCEEDED'
+    })
+    .get('/source/core/house-prices-us/1')
+    .reply(200, {
+      id: 'core/house-prices-us/1',
+      state: 'SUCCEEDED',
+      spec_contents: specContents
     })
     .get('/source/core/gold-prices/successful')
     .reply(200, {
       id: 'core/gold-prices/1',
       state: 'SUCCEEDED'
     })
+    .get('/source/core/gold-prices/1')
+    .reply(200, {
+      id: 'core/gold-prices/1',
+      state: 'SUCCEEDED',
+      spec_contents: specContents
+    })
     .get('/source/examples/simple-graph-spec/successful')
     .reply(200, {
       id: 'examples/simple-graph-spec/1',
       state: 'SUCCEEDED'
+    })
+    .get('/source/examples/simple-graph-spec/1')
+    .reply(200, {
+      id: 'examples/simple-graph-spec/1',
+      state: 'SUCCEEDED',
+      spec_contents: specContents
     })
     .get('/source/examples/vega-views-tutorial-lines/successful')
     .reply(200, {
       id: 'examples/vega-views-tutorial-lines/1',
       state: 'SUCCEEDED'
     })
+    .get('/source/examples/vega-views-tutorial-lines/1')
+    .reply(200, {
+      id: 'examples/vega-views-tutorial-lines/1',
+      state: 'SUCCEEDED',
+      spec_contents: specContents
+    })
     .get('/source/examples/geojson-tutorial/successful')
     .reply(200, {
       id: 'examples/geojson-tutorial/1',
       state: 'SUCCEEDED'
+    })
+    .get('/source/examples/geojson-tutorial/1')
+    .reply(200, {
+      id: 'examples/geojson-tutorial/1',
+      state: 'SUCCEEDED',
+      spec_contents: specContents
     })
 
   nock(`${config.get('API_URL')}/auth`)
