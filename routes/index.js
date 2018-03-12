@@ -258,7 +258,6 @@ module.exports = function () {
   async function showDoc (req, res) {
     if (req.params[0]) {
       const page = req.params[0]
-      //request raw page from github
       const BASE = 'https://raw.githubusercontent.com/datahq/content/master/'
       const filePath = 'docs/' + page + '.md'
       const gitpath = BASE + filePath
@@ -318,49 +317,42 @@ module.exports = function () {
 
   // ==============
   // Blog
-  router.get('/blog', async (req, res) => {
-    const listOfPosts = []
-    const resp = await fetch('https://api.github.com/repos/datahq/content/contents/blog')
-    let posts = await resp.text()
-    posts = JSON.parse(posts)
-    for (let post of posts) {
-      const filePath = post.path
-      const resPost = await fetch(post.download_url)
-      const text = await resPost.text()
-      let parsedWithFM = fm(text)
-      parsedWithFM.body = utils.md.render(parsedWithFM.body)
-      parsedWithFM.attributes.date = moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY')
-      parsedWithFM.attributes.authors = parsedWithFM.attributes.authors.map(author => authors[author])
-      parsedWithFM.path = `blog/${post.name.slice(11, -3)}`
-      listOfPosts.unshift(parsedWithFM)
-    }
-    res.render('blog.html', {
-      title: 'Home',
-      posts: listOfPosts
-    })
-  })
+  router.get('/blog', (req, res) => {
+   const listOfPosts = []
+   fs.readdirSync('blog/').forEach(post => {
+     const filePath = `blog/${post}`
+     const text = fs.readFileSync(filePath, 'utf8')
+     let parsedWithFM = fm(text)
+     parsedWithFM.body = utils.md.render(parsedWithFM.body)
+     parsedWithFM.attributes.date = moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY')
+     parsedWithFM.attributes.authors = parsedWithFM.attributes.authors.map(author => authors[author])
+     parsedWithFM.path = `blog/${post.slice(11, -3)}`
+     listOfPosts.unshift(parsedWithFM)
+   })
+   res.render('blog.html', {
+     title: 'Home',
+     posts: listOfPosts
+   })
+ })
 
   router.get('/blog/:post', showPost)
 
-  async function showPost(req, res) {
+  function showPost(req, res) {
     const page = req.params.post
-    const resp = await fetch('https://api.github.com/repos/datahq/content/contents/blog')
-    let body = await resp.text()
-    body = JSON.parse(body)
-    const fileDetails = body.find(post => {
-      return post.name.slice(11, -3) === page
+    const fileName = fs.readdirSync('blog/').find(post => {
+      return post.slice(11, -3) === page
     })
-    const fileName = fileDetails.name
     if (fileName) {
-      const filePath = fileDetails.path
-      const resPost = await fetch(fileDetails.download_url)
-      const text = await resPost.text()
-      const parsedWithFM = fm(text)
-      res.render('post.html', {
-        title: parsedWithFM.attributes.title,
-        date: moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY'),
-        authors: parsedWithFM.attributes.authors.map(author => authors[author]),
-        content: utils.md.render(parsedWithFM.body)
+      const filePath = `blog/${fileName}`
+      fs.readFile(filePath, 'utf8', function(err, text) {
+        if (err) throw err
+        const parsedWithFM = fm(text)
+        res.render('post.html', {
+          title: parsedWithFM.attributes.title,
+          date: moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY'),
+          authors: parsedWithFM.attributes.authors.map(author => authors[author]),
+          content: utils.md.render(parsedWithFM.body)
+        })
       })
     } else {
       res.status(404).render('404.html', {message: 'Sorry no post was found'})
