@@ -321,9 +321,9 @@ module.exports = function () {
   router.get('/blog', async (req, res) => {
     const listOfPosts = []
     const resp = await fetch('https://api.github.com/repos/datahq/content/contents/blog')
-    let body = await resp.text()
-    body = JSON.parse(body)
-    for (let post of body) {
+    let posts = await resp.text()
+    posts = JSON.parse(posts)
+    for (let post of posts) {
       const filePath = post.path
       const resPost = await fetch(post.download_url)
       const text = await resPost.text()
