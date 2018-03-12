@@ -689,9 +689,53 @@ module.exports = function () {
       })
     }
 
+    // If resource is tabular or geojson + requested extension is HTML,
+    // then render embeddable HTML table or map:
+    const isTabular = resource.datahub && resource.datahub.type === 'derived/csv'
+    if ((isTabular || resource.format === 'geojson') && extension.substring(1) === 'html') {
+      // Prepare minified dp.json with the required resource:
+      normalizedDp.resources = [resource]
+      normalizedDp.views = []
+      if (isTabular) { // For tabular resource we need to prepare 'preview' view:
+        const preview = {
+          "datahub": {
+            "type": "preview"
+          },
+          "resources": [
+            resource.name
+          ],
+          "specType": "table"
+        }
+        normalizedDp.views.push(preview)
+      }
+      // Handle private resources:
+      if (normalizedDp.datahub.findability === 'private') {
+        const authzToken = await api.authz(token)
+        if (resource.alternates) {
+          const previewResource = resource.alternates.find(res => res.datahub.type === 'derived/preview')
+          if (previewResource) {
+            previewResource.path = await getSignedUrl(previewResource.path)
+          } else {
+            resource.path = await getSignedUrl(resource.path)
+          }
+        } else {
+          resource.path = await getSignedUrl(resource.path)
+        }
+      }
+      // Render the page with stripped dp:
+      res.render('view.html', {
+        title: req.params.name,
+        // eslint-disable-next-line no-useless-escape, quotes
+        dpId: JSON.stringify(normalizedDp).replace(/\\/g, '\\\\').replace(/\'/g, "\\'")
+      })
+      return
+    }
+
     // If resource was found then identify required format by given extension
     if (!(resource.format === extension.substring(1))) {
-      resource = resource.alternates.find(res => (extension.substring(1) === res.format && res.datahub.type !== 'derived/preview'))
+      if (resource.alternates) {
+        resource = resource.alternates.find(res => (extension.substring(1) === res.format && res.datahub.type !== 'derived/preview'))
+      }
       // If given format was not found then show 404
       if (!resource) {
         res.status(404).render('404.html', {
@@ -700,17 +744,21 @@ module.exports = function () {
       }
     }
 
+    async function getSignedUrl(path) {
+      const authzToken = await api.authz(token)
+      let resp = await fetch(path)
+      if (resp.status === 403) {
+        const signedUrl = await api.checkForSignedUrl(
+          path, userAndPkgId.userid, null, authzToken
+        )
+        return signedUrl.url
+      }
+    }
+
     // If dataset's findability is private then get a signed url for the resource
     let finalPath = resource.path
     if (normalizedDp.datahub.findability === 'private') {
-      const authzToken = await api.authz(token)
-      let resp = await fetch(resource.path)
-      if (resp.status === 403) {
-        const signedUrl = await api.checkForSignedUrl(
-          resource.path, userAndPkgId.userid, null, authzToken
-        )
-        finalPath = signedUrl.url
-      }
+      finalPath = await getSignedUrl(finalPath)
     }
 
     res.redirect(finalPath)

@@ -189,6 +189,17 @@ test('Downloading a resource by name or index works for csv and json', async t =
   t.true(res.header.location.includes('_json.json'))
 })
 
+test('Embeddable HTML tables work', async t => {
+  let res = await request(app)
+    .get('/admin/demo-package/r/demo-resource.html')
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('<!-- Views -->'))
+  res = await request(app)
+    .get('/admin/demo-package/r/0.html')
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('<!-- Views -->'))
+})
+
 test('Per view URLs work', async t => {
   // By index:
   let res = await request(app)
