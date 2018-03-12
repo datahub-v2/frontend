@@ -277,6 +277,8 @@
         <li><a data-toggle="pill" href="#pandas">Pandas</a></li>
         <li><a data-toggle="pill" href="#python">Python</a></li>
         <li><a data-toggle="pill" href="#javascript">JavaScript</a></li>
+        <li><a data-toggle="pill" href="#curl">cURL</a></li>
+        <li><a data-toggle="pill" href="#data-cli">data-cli</a></li>
       </ul>
       <!-- content for instructions -->
       <div class="tab-content">
@@ -304,6 +306,19 @@
             {{instructions.javascript(dataset)}}
           </div>
         </div>
+
+        <div id="curl" class="tab-pane fade">
+          <div class="part">
+            {{instructions.curl(dataset)}}
+          </div>
+        </div>
+
+        <div id="data-cli" class="tab-pane fade">
+          <div class="part">
+            {{instructions.data_cli(dataset)}}
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
