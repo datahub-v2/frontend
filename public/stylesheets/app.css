@@ -7117,6 +7117,10 @@ h2.publisher {
 .share-and-embed {
   margin-bottom: 100px; }
 
+.tables .share-and-embed {
+  margin: 20px 0;
+  text-align: left; }
+
 .copy-input {
   width: 220px;
   margin: 0 10px; }
