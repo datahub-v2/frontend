@@ -255,29 +255,25 @@ module.exports = function () {
   // ==============
   // Docs (patterns, standards etc)
 
-  const showDoc = function(req, res) {
+  async function showDoc (req, res) {
     if (req.params[0]) {
-      var page = req.params[0]
-      var filePath = 'docs/' + page + '.md'
-      if (!fs.existsSync(filePath)) {
-        res.status(404).render('404.html', {message: 'Sorry no documentation was found'})
-        return
-      }
-
-      fs.readFile(filePath, 'utf8', function(err, text) {
-        if (err) throw err
-        const parsedWithFM = fm(text)
-        const content = utils.md.render(parsedWithFM.body)
-        const date = parsedWithFM.attributes.date
-          ? moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY')
-          : null
-        const githubPath = '//github.com/okfn/data.okfn.org/blob/master/' + filePath
-        res.render('docs.html', {
-          title: parsedWithFM.attributes.title,
-          date,
-          content,
-          githubPath
-        })
+      const page = req.params[0]
+      const BASE = 'https://raw.githubusercontent.com/datahq/content/master/'
+      const filePath = 'docs/' + page + '.md'
+      const gitpath = BASE + filePath
+      const resp = await fetch(gitpath)
+      const text = await resp.text()
+      const parsedWithFM = fm(text)
+      const content = utils.md.render(parsedWithFM.body)
+      const date = parsedWithFM.attributes.date
+        ? moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY')
+        : null
+      const githubPath = '//github.com/okfn/data.okfn.org/blob/master/' + path
+      res.render('docs.html', {
+        title: parsedWithFM.attributes.title,
+        date,
+        content,
+        githubPath
       })
     } else {
       res.render('docs_home.html', {
