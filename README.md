@@ -25,10 +25,7 @@ When running locally, use test api address in `.env`:
 API_URL=https://api-testing.datahub.io
 BITSTORE_URL=https://pkgstore-testing.datahub.io
 ```
-or run  
-```
-npm start dev
-```
+
 See the [docs](http://docs.datahub.io/developers/) for more information.
 
 ## Developers
@@ -46,10 +43,15 @@ To build the CSS:
 
    `sass --watch public/sass:public/stylesheets`
 
-To run in watch mode:
+Now run the server:
+```
+export API_URL=https://api.datahub.io
+export BITSTORE_URL=https://pkgstore.datahub.io
+npm start
+```
 
+To run in watch mode:
 ```bash
 # note the -e which means we watch for changes in templates too
 nodemon -e "js html" index.js
 ```
-

@@ -1,5 +1,5 @@
 {% macro r(dataset) -%}
-<p>If you are using R here's how to get the data you want  quickly loaded:</p>
+<p>If you are using R here's how to get the data you want quickly loaded:</p>
 <pre class="hljs"><code>install.packages(<span class="hljs-string">"jsonlite", repos="https://cran.rstudio.com/"</span>)
 <span class="hljs-keyword">library</span>(<span class="hljs-string">"jsonlite"</span>)
 
@@ -95,5 +95,29 @@ package = Package(<span class="hljs-string">'https://datahub.io/{{dataset.datahu
     }
   }
 })()
+</code></pre>
+{%- endmacro %}
+
+{% macro data_cli(dataset) -%}
+<p>
+  <strong>Data-cli</strong> or just <strong>data</strong> is the program to get and post your data with the datahub.<br>
+    Use <strong>data</strong> with the datahub.io almost like you use <strong>git</strong> with the github.
+  Here is <a href="/docs/getting-started/installing-data">installation instructions</a>.
+</p>
+
+<pre class="hljs"><code><span class="hljs-keyword">data get </span><span class="hljs-string">https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}</span>
+<span class="hljs-keyword">tree </span><span class="hljs-string">{{dataset.datahub.owner}}/{{dataset.name}}</span>
+</code></pre>
+{%- endmacro %}
+
+{% macro curl(dataset) -%}
+<p>Also you can get the data using cURL:</p>
+<pre class="hljs"><code><span class="hljs-comment"># Get a list of dataset's resources</span>
+<span class="hljs-keyword">curl</span> -L -s <span class="hljs-string">https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json</span> | <span class="hljs-keyword">grep</span> path
+
+<span class="hljs-comment"># Get resources</span>
+{% for resource in dataset.resources %}
+<span class="hljs-keyword">curl </span><span class="hljs-string">{{ resource.path }}</span>
+{% endfor %}
 </code></pre>
 {%- endmacro %}
