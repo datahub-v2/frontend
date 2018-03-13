@@ -7542,7 +7542,18 @@ body.not-found {
         font-size: 1.5em;
         margin: 0 0 0.3em; } }
 
-.view .share-and-embed {
-  display: none; }
+.view {
+  height: 100%;
+  padding: 0; }
+  .view .share-and-embed {
+    display: none; }
+  .view .tables:not(:empty) {
+    height: 100%; }
+    .view .tables:not(:empty) div {
+      height: 100%; }
+      .view .tables:not(:empty) div .handsontable {
+        height: 100%;
+        margin: 0;
+        z-index: 1000; }
 
 /*# sourceMappingURL=app.css.map */

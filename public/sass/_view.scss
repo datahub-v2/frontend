@@ -1,5 +1,18 @@
 .view {
+  height: 100%;
+  padding: 0;
   .share-and-embed {
     display: none;
+  }
+  .tables:not(:empty) {
+    height: 100%;
+    div {
+      height: 100%;
+      .handsontable {
+        height: 100%;
+        margin: 0;
+        z-index: 1000;
+      }
+    }
   }
 }
