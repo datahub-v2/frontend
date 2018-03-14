@@ -258,11 +258,11 @@ module.exports = function () {
   async function showDoc (req, res) {
     if (req.params[0]) {
       const page = req.params[0] 
-      const path = req.params[0] ? 'docs/' + req.params[0] + '.md' : 'README.md'
       const BASE = 'https://raw.githubusercontent.com/datahq/datahub-content/master/'
       const filePath = 'docs/' + page + '.md'
       const gitpath = BASE + filePath
-      const editpath = 'https://github.com/datahq/datahub-content/edit/master/' + path
+      const editpath = 'https://github.com/datahq/datahub-content/edit/master/' + filePath
+      console.log(editpath)
       const resp = await fetch(gitpath)
       const text = await resp.text()
       const parsedWithFM = fm(text)
