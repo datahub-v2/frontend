@@ -8,11 +8,38 @@
     height: 100%;
     div {
       height: 100%;
+      .datahub-meta {
+        height: auto;
+        position: fixed;
+        bottom: 0;
+        left: calc(50% - 55.85px);
+        border-bottom: 0;
+      }
       .handsontable {
-        height: 100%;
+        height: calc(100% - 20px);
         margin: 0;
         z-index: 1000;
+        .ht_master {
+          border-bottom: 1px solid $gray-light;
+        }
       }
+      div[id*='hTable'] {
+        border-bottom: 0 !important;
+      }
+      ~ .handsontable {
+        height: 100%;
+      }
+    }
+  }
+  .datahub-meta {
+    font-size: 10px;
+    display: block;
+    text-align: center;
+    border-bottom: 0.5px solid $gray-light;
+    z-index: 1001;
+    .dataset-name {
+      color: $black;
+      font-weight: bold;
     }
   }
 }

@@ -7121,6 +7121,9 @@ h2.publisher {
   margin: 20px 0;
   text-align: left; }
 
+.datahub-meta {
+  display: none; }
+
 .copy-input {
   width: 220px;
   margin: 0 10px; }
@@ -7555,9 +7558,30 @@ body.not-found {
     height: 100%; }
     .view .tables:not(:empty) div {
       height: 100%; }
+      .view .tables:not(:empty) div .datahub-meta {
+        height: auto;
+        position: fixed;
+        bottom: 0;
+        left: calc(50% - 55.85px);
+        border-bottom: 0; }
       .view .tables:not(:empty) div .handsontable {
-        height: 100%;
+        height: calc(100% - 20px);
         margin: 0;
         z-index: 1000; }
+        .view .tables:not(:empty) div .handsontable .ht_master {
+          border-bottom: 1px solid #999; }
+      .view .tables:not(:empty) div div[id*='hTable'] {
+        border-bottom: 0 !important; }
+      .view .tables:not(:empty) div ~ .handsontable {
+        height: 100%; }
+  .view .datahub-meta {
+    font-size: 10px;
+    display: block;
+    text-align: center;
+    border-bottom: 0.5px solid #999;
+    z-index: 1001; }
+    .view .datahub-meta .dataset-name {
+      color: #000;
+      font-weight: bold; }
 
 /*# sourceMappingURL=app.css.map */
