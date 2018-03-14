@@ -12,6 +12,14 @@
     <link rel="icon" type="img/ico" href="/static/img/favicon.ico" sizes="16x16">
     <link rel="stylesheet" media="screen" href="/static/stylesheets/app.css">
     <link rel="stylesheet" media="screen" href="/static/dpr-js/dist/main.css">
+    <script>
+      var trackOutboundLink = function(url) {
+        ga('send', 'event', 'outbound', 'click', url, {
+         'transport': 'beacon',
+         'hitCallback': function(){document.location = url;}
+        });
+      }
+    </script>
   </head>
   <!-- Views -->
   <body class="view">
