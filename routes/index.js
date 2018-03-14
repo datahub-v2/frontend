@@ -262,7 +262,6 @@ module.exports = function () {
       const filePath = 'docs/' + page + '.md'
       const gitpath = BASE + filePath
       const editpath = 'https://github.com/datahq/datahub-content/edit/master/' + filePath
-      console.log(editpath)
       const resp = await fetch(gitpath)
       const text = await resp.text()
       const parsedWithFM = fm(text)
