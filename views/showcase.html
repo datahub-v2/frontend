@@ -283,7 +283,19 @@
       <!-- content for instructions -->
       <div class="tab-content">
 
-        <div id="r" class="tab-pane fade in active">
+        <div id="data-cli" class="tab-pane fade in active">
+          <div class="part">
+            {{instructions.data_cli(dataset)}}
+          </div>
+        </div>
+
+        <div id="curl" class="tab-pane fade">
+          <div class="part">
+            {{instructions.curl(dataset)}}
+          </div>
+        </div>
+
+        <div id="r" class="tab-pane fade">
           <div class="part">
             {{instructions.r(dataset)}}
           </div>
@@ -304,18 +316,6 @@
         <div id="javascript" class="tab-pane fade">
           <div class="part">
             {{instructions.javascript(dataset)}}
-          </div>
-        </div>
-
-        <div id="curl" class="tab-pane fade">
-          <div class="part">
-            {{instructions.curl(dataset)}}
-          </div>
-        </div>
-
-        <div id="data-cli" class="tab-pane fade">
-          <div class="part">
-            {{instructions.data_cli(dataset)}}
           </div>
         </div>
 
