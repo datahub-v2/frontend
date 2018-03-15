@@ -55,20 +55,24 @@
       </div>
       <div class="col-sm-offset-2 col-sm-7">
         <div class="row">
-          <div class="col-sm-6 col-xs-12">
+          <div class="col-sm-4 col-xs-12">
             <h2 class="owner-page-title">Datasets <span class="badge" title="{{packages.summary.total}} published datasets">{{packages.summary.total}}</span></h2>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-8 col-xs-6">
             {% if packages.results|length > 0 %}
-            <div class="input-group pull-right col-xs-12">
-              <input id="publisher-package-input" type="text" class="form-control"
-                     onkeyup="dpFilterFunction()" placeholder="Filter data packages by title" />
-            </div>
+              <form class="search-form form form-inline" class="input-group col-xs-12" action="/{{ owner }}" method="GET">
+                <input type="text" class="form-control input-lg" placeholder="Search ..." name="q" value="{{ query }}" required/>
+              <button class="btn btn-primary" type="submit">Search</button>
+              </form>
             {% endif %}
           </div>
         </div>
 
         <div id="publisher-package-list">
+          
+          <h4 class="search-summary">
+            {{ packages.summary.total }} datasets found
+          </h4>
           {% if packages.results|length > 0 %}
             {{ snippets.package_list_show(packages.results) }}
             {% if packages.summary.total > 20 %}
@@ -105,24 +109,4 @@
     </div>
   </div>
 </div>
-{% endblock %}
-
-{% block scripts %}
-<script>
-function dpFilterFunction() {
-  var packages = document.getElementById("publisher-package-list")
-       .getElementsByClassName("package-summary");
-  var input = document.getElementById('publisher-package-input');
-  var filter = input.value.toLowerCase();
-  for (var i=0; i < packages.length; i++){
-    var pack = packages[i];
-    var a = pack.getElementsByTagName("h3")[0].innerText.toLowerCase();
-    if (a.indexOf(filter) > -1){
-      pack.style.display = "";
-    } else {
-      pack.style.display = "none";
-    }
-  }
-}
-</script>
 {% endblock %}
