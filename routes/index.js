@@ -1041,12 +1041,8 @@ module.exports = function () {
     // Pagination - show 20 items per page:
     const from = req.query.from || 0
     const size = req.query.size || 20
-    let packages
-    if (req.query.q) {
-      packages = await api.search(`datahub.ownerid="${userProfile.profile.id}"&q="${req.query.q}"&size=${size}&from=${from}`, token)
-    } else {
-      packages = await api.search(`datahub.ownerid="${userProfile.profile.id}"&size=${size}&from=${from}`, token)
-    }
+    const query = req.query.q ? `&q="${req.query.q}"` : ""
+    const packages = await api.search(`datahub.ownerid="${userProfile.profile.id}"${query}&size=${size}&from=${from}`, token)
     const total = packages.summary.total
     const totalPages = Math.ceil(total/size)
     const currentPage = parseInt(from, 10) / 20 + 1
