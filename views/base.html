@@ -200,6 +200,15 @@
         avatar.src = src;
       }
     </script>
+
+    {% if login %}
+    <script>
+      var userid = getCookie('id');
+      if (userid) {
+        ga('set', 'userId', userid); // Set the user ID using signed-in user_id.
+      }
+    </script>
+    {% endif %}
   </body>
 
 </html>
