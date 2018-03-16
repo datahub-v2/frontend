@@ -59,16 +59,14 @@
             <h2 class="owner-page-title">Datasets <span class="badge" title="{{packages.summary.total}} published datasets">{{packages.summary.total}}</span></h2>
           </div>
           <div class="col-sm-6">
-            {% if packages.results|length > 0 %}
-            <div class="input-group pull-right col-xs-12">
-              <input id="publisher-package-input" type="text" class="form-control"
-                     onkeyup="dpFilterFunction()" placeholder="Filter data packages by title" />
-            </div>
-            {% endif %}
+            <form class="search-form form form-inline" class="input-group col-xs-12" action="/{{ owner }}" method="GET">
+              <input type="text" class="form-control" placeholder="Search..." name="q" value="{{ query }}" required/>
+            </form>
           </div>
         </div>
 
         <div id="publisher-package-list">
+
           {% if packages.results|length > 0 %}
             {{ snippets.package_list_show(packages.results) }}
             {% if packages.summary.total > 20 %}
@@ -97,32 +95,10 @@
                 </ul>
               </nav>
             {% endif %}
-          {% else %}
-            <p>This publisher has no data packages.</p>
           {% endif %}
         </div>
       </div>
     </div>
   </div>
 </div>
-{% endblock %}
-
-{% block scripts %}
-<script>
-function dpFilterFunction() {
-  var packages = document.getElementById("publisher-package-list")
-       .getElementsByClassName("package-summary");
-  var input = document.getElementById('publisher-package-input');
-  var filter = input.value.toLowerCase();
-  for (var i=0; i < packages.length; i++){
-    var pack = packages[i];
-    var a = pack.getElementsByTagName("h3")[0].innerText.toLowerCase();
-    if (a.indexOf(filter) > -1){
-      pack.style.display = "";
-    } else {
-      pack.style.display = "none";
-    }
-  }
-}
-</script>
 {% endblock %}
