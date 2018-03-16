@@ -6865,6 +6865,10 @@ body.owner .event-action, body.owner .join-date {
 body.owner li.current-page a.page-link {
   color: #ff7900;
   background: white; }
+body.owner .form-control {
+  width: 100%; }
+body.owner .search-form {
+  margin-bottom: 20px; }
 
 .hljs {
   display: block;
