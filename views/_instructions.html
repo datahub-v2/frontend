@@ -22,7 +22,13 @@ print(json_data$resources$name)
 {%- endmacro %}
 
 {% macro pandas(dataset) -%}
-<p>In order to work with Data Packages in Pandas you need to install the Frictionless Data data package library and the pandas extension:</p>
+<p>Install the Frictionless Data data package library and the pandas itself:</p>
+<pre class="hljs"><code>pip install datapackage
+pip install pandas
+</code></pre>
+
+<p>Now you can use the datapackage in the Pandas:</p>
+
 <pre class="hljs"><code><span class="hljs-keyword">import</span> datapackage
 <span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
 
