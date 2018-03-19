@@ -261,6 +261,16 @@ h2.publisher {
 
 .share-and-embed {
   margin-bottom: 100px;
+  div {
+    display: inline-block;
+    z-index: 10000;
+  }
+  .hover-text {
+    color: white;
+    background: $black;
+    padding: 4px 6px;
+    border-radius: 2px;
+  }
 }
 .tables {
   .share-and-embed {
@@ -273,13 +283,21 @@ h2.publisher {
 }
 .copy-input {
   width: 220px;
-  margin: 0 10px;
+  margin: 0 5px 0 10px;
 }
 .copy-button {
   @extend .btn;
   @extend .btn-default;
-  margin: 0 14px 0 0;
-  padding: 2px 10px;
+  margin: 0 14px 2px 0;
+  padding: 2px 10px 1px;
+  border-radius: 1px;
+  border-color: $gray-light;
+  &:hover {
+    border-color: $gray-light;
+  }
+  i {
+    color: $gray;
+  }
 }
 
 .handsontable {

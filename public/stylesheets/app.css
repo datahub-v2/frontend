@@ -7120,6 +7120,14 @@ h2.publisher {
 
 .share-and-embed {
   margin-bottom: 100px; }
+  .share-and-embed div {
+    display: inline-block;
+    z-index: 10000; }
+  .share-and-embed .hover-text {
+    color: white;
+    background: #000;
+    padding: 4px 6px;
+    border-radius: 2px; }
 
 .tables .share-and-embed {
   margin: 20px 0;
@@ -7130,11 +7138,17 @@ h2.publisher {
 
 .copy-input {
   width: 220px;
-  margin: 0 10px; }
+  margin: 0 5px 0 10px; }
 
 .copy-button {
-  margin: 0 14px 0 0;
-  padding: 2px 10px; }
+  margin: 0 14px 2px 0;
+  padding: 2px 10px 1px;
+  border-radius: 1px;
+  border-color: #999; }
+  .copy-button:hover {
+    border-color: #999; }
+  .copy-button i {
+    color: #757575; }
 
 .handsontable {
   height: 432px;
