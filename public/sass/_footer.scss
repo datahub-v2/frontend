@@ -7,7 +7,6 @@ footer .connect li a {
 footer {
   position: absolute;
   right: 0;
-  bottom: 0;
   left: 0;
   .container {
     padding-top: 0;
@@ -21,5 +20,38 @@ footer {
   }
   a img {
     vertical-align: top;
+  }
+  @media (max-width: $screen-lg-min) {
+    align-items: center;
+    text-align: center;
+    .logo {
+      margin-bottom: 15px;
+    }
+    li {
+      display: inline-block !important;
+    }
+    .pull-right {
+      float: none !important;
+    }
+    a {
+      margin: 30px;
+    }
+
+    @media (max-width: $screen-sm-min) {
+      align-items: center;
+      text-align: center;
+      .logo {
+        margin-bottom: 15px;
+      }
+      li {
+        display: inline-block !important;
+      }
+      .pull-right {
+        float: none !important;
+      }
+      a {
+        margin: 20px 10px;
+      }
+    }
   }
 }

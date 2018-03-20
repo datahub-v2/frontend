@@ -6532,7 +6532,6 @@ footer .connect li a {
 footer {
   position: absolute;
   right: 0;
-  bottom: 0;
   left: 0; }
   footer .container, footer .container-no-top-padding {
     padding-top: 0; }
@@ -6543,6 +6542,30 @@ footer {
     padding: 0 !important; }
   footer a img {
     vertical-align: top; }
+  @media (max-width: 1200px) {
+    footer {
+      align-items: center;
+      text-align: center; }
+      footer .logo {
+        margin-bottom: 15px; }
+      footer li {
+        display: inline-block !important; }
+      footer .pull-right {
+        float: none !important; }
+      footer a {
+        margin: 30px; } }
+  @media (max-width: 1200px) and (max-width: 768px) {
+    footer {
+      align-items: center;
+      text-align: center; }
+      footer .logo {
+        margin-bottom: 15px; }
+      footer li {
+        display: inline-block !important; }
+      footer .pull-right {
+        float: none !important; }
+      footer a {
+        margin: 20px 10px; } }
 
 /* Jumbotron main
 ====================================*/
