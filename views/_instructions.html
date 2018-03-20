@@ -123,7 +123,7 @@ package = Package(<span class="hljs-string">'https://datahub.io/{{dataset.datahu
 
 <span class="hljs-comment"># Get resources</span>
 {% for resource in dataset.resources %}
-<span class="hljs-keyword">curl </span><span class="hljs-string">-L https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/r/{{loop.index0}}.{{resource.path.split('.').slice(-1)[0]}}</span>
+<span class="hljs-keyword">curl </span><span class="hljs-string">-L https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/r/{{loop.index0}}.{{resource.format}}</span>
 {% endfor %}
 </code></pre>
 {%- endmacro %}
