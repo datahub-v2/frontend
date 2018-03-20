@@ -18,23 +18,33 @@
       </p>
       {% endif %}
     </div>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+    <div class="row" id="page">
+      <div class="col-md-8 col-md-offset-2" id="content">
         {{content | safe}}
-
-        <p class="info">If you have questions, comments or feedback join our <a href="https://gitter.im/datahubio/chat" target="_blank">chat channel</a> or open an issue on our <a href="https://github.com/datahubio/qa" target="_blank">tracker</a>.</p>
-      </div>
-      <div class="col-md-2 pre-scrollable">
-        <ul data-spy="affix">
-          <a href="{{ editpath }}" class="btn btn-primary btn-md">
-            Edit this page
-            <br/>
-            <small>(on github)</small>
-          </a>
-        </ul>
       </div>
     </div>
   </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.getElementById('content').insertAdjacentHTML(
+    'beforeend',
+    `<p class="info">If you have questions, comments or feedback join our <a href="https://gitter.im/datahubio/chat" target="_blank">chat channel</a> or open an issue on our <a href="https://github.com/datahubio/qa" target="_blank">tracker</a>.</p>`
+  )
+  document.getElementById('page').insertAdjacentHTML(
+    'beforeend',
+    `<div class="col-md-2 pre-scrollable">
+      <ul data-spy="affix">
+        <a href="{{ editpath }}" class="btn btn-primary btn-md">
+          Edit this page
+          <br/>
+          <small>(on github)</small>
+        </a>
+      </ul>
+    </div>`
+  )
+</script>
 {% endblock %}
