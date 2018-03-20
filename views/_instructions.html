@@ -108,7 +108,7 @@ package = Package(<span class="hljs-string">'https://datahub.io/{{dataset.datahu
 <p>
   <strong>Data-cli</strong> or just <strong>data</strong> is the program to get and post your data with the datahub.<br>
     Use <strong>data</strong> with the datahub.io almost like you use <strong>git</strong> with the github.
-  Here is <a href="/docs/getting-started/installing-data">installation instructions</a>.
+  Here are <a href="/docs/getting-started/installing-data">installation instructions</a>.
 </p>
 
 <pre class="hljs"><code><span class="hljs-keyword">data get </span><span class="hljs-string">https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}</span>
@@ -117,7 +117,6 @@ package = Package(<span class="hljs-string">'https://datahub.io/{{dataset.datahu
 {%- endmacro %}
 
 {% macro curl(dataset) -%}
-<p>Also you can get the data using cURL:</p>
 <pre class="hljs"><code><span class="hljs-comment"># Get a list of dataset's resources</span>
 <span class="hljs-keyword">curl</span> -L -s <span class="hljs-string">https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}/datapackage.json</span> | <span class="hljs-keyword">grep</span> path
 
