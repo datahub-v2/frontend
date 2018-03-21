@@ -26,11 +26,15 @@ module.exports = function () {
   router.get('/', async (req, res) => {
     // Get showcase packages for the front page
     let listOfShowcasePkgId = config.get('showcasePackages')
-    listOfShowcasePkgId = await Promise.all(listOfShowcasePkgId.map(async pkgId => {
-      const status = await api.specStoreStatus(pkgId.ownerid, pkgId.name, 'successful')
-      pkgId.revisionId = status.id.split('/')[2] // Id is in `userid/dataset/id` form so we need the latest part
-      return pkgId
-    }))
+    try {
+      listOfShowcasePkgId = await Promise.all(listOfShowcasePkgId.map(async pkgId => {
+        const status = await api.specStoreStatus(pkgId.ownerid, pkgId.name, 'successful')
+        pkgId.revisionId = status.id.split('/')[2] // Id is in `userid/dataset/id` form so we need the latest part
+        return pkgId
+      }))
+    } catch (err) {
+      req.flash('message', 'We are facing some technical problems and working to fix them! Please come back later')
+    }
     const showcasePackages = await api.getPackages(listOfShowcasePkgId)
     res.render('home_new.html', {
       title: 'Home',
@@ -228,7 +232,7 @@ module.exports = function () {
 
   async function showDoc (req, res) {
     if (req.params[0]) {
-      const page = req.params[0] 
+      const page = req.params[0]
       const BASE = 'https://raw.githubusercontent.com/datahq/datahub-content/master/'
       const filePath = 'docs/' + page + '.md'
       const gitpath = BASE + filePath
