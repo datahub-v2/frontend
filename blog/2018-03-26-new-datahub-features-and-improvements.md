@@ -10,7 +10,7 @@ During the last month we were focused on polishing the existing product - DataHu
 
 ## New ways to share data
 
-Say, you are creating PhD thesis or a blog article. And you need to share some data in a pretty-looking form? That's so easy with the DataHub - just [upload your data](http://datahub.io/docs/getting-started/publishing-data)  and follow steps below.
+Say, you are creating PhD thesis or a blog article. And you need to share some data in a pretty-looking form? That's so easy with the DataHub - just [upload your data](https://datahub.io/docs/getting-started/publishing-data)  and follow steps below.
 
 ### Share data tables
 
@@ -22,7 +22,7 @@ The **Share link** opens the table in the full-screen mode. Your colleague can e
 
 The **Embed snippet** allows you to integrate the table into your HTML document or a web-site:
 
-<iframe src="http://datahub.io/core/gini-index/r/0.html" width="100%" height="300px" frameborder="0"></iframe>
+<iframe src="https://datahub.io/core/gini-index/r/0.html" width="100%" height="300px" frameborder="0"></iframe>
 
 **Note:** preview table contains only 2000 rows of original data to avoid possible browser crash cause of the big data.
 
@@ -34,11 +34,11 @@ The same idea works with graphs - each view for a dataset could be easily shared
 
 and here is the embedded version right here:
 
-<iframe src="http://datahub.io/core/gini-index/view/0" width="100%" height="475px" frameborder="0"></iframe>
+<iframe src="https://datahub.io/core/gini-index/view/0" width="100%" height="475px" frameborder="0"></iframe>
 
 ## Other small features
 
 - Data push command now shows a progress-bar when uploading files
 - User can add custom titles and axis suffixes to the views
 - TSV files are supported now
-- DataHub [API documentation](http://datahub.io/docs/features/api) has been added.
+- DataHub [API documentation](https://datahub.io/docs/features/api) has been added.
