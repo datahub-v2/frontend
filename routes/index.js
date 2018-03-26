@@ -342,7 +342,7 @@ module.exports = function () {
     'zelima': {name: 'Irakli Mchedlishvili', gravatar: md5('irakli.mchedlishvili@datopian.com'), username: 'zelima1'},
     'mikanebu': {name: 'Meiran Zhiyenbayev', gravatar: md5('meiran1991@gmail.com'), username: 'Mikanebu'},
     'akariv': {name: 'Adam Kariv', gravatar: md5('adam.kariv@gmail.com'), username: 'akariv'},
-    'acckiygerman': {name: 'Dima German', gravatar: md5('dmitry.german@datopian.com'), username: 'acckiygerman'}
+    'acckiygerman': {name: 'Dmitry German', gravatar: md5('dmitry.german@datopian.com'), username: 'AcckiyGerman'}
   }
   // ===== /end blog
 
