@@ -1,5 +1,5 @@
 ---
-title: New DataHub Features and Improvements
+title: New Features and Improvements
 date: 2018-03-26
 authors: ['acckiygerman']
 ---
