@@ -53,7 +53,9 @@ a {
 }
 
 .vertical-center {
-  height: calc(100vh - 345px);
+  @media (min-width: $screen-xs-min) {
+    height: calc(100vh - 251px); /* 251px is sum of heights of banner, navbar and footer */
+  }
   width: 100%;
   text-align: center;  /* align the inline(-block) elements horizontally */
 }

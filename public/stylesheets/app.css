@@ -6377,10 +6377,13 @@ a {
     color: #000; }
 
 .vertical-center {
-  height: calc(100vh - 345px);
   width: 100%;
   text-align: center;
   /* align the inline(-block) elements horizontally */ }
+  @media (min-width: 480px) {
+    .vertical-center {
+      height: calc(100vh - 251px);
+      /* 251px is sum of heights of banner, navbar and footer */ } }
 
 .vertical-center:before {
   /* create a full-height inline block pseudo=element */
