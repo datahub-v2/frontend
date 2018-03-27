@@ -9,7 +9,9 @@ Sign up | Login
   <div class="container">
     <h1>Sign up or Login &ndash; It's Free</h1>
     <p>To sign up or login, please use your existing GitHub account</p>
-    <a href="{{ githubLoginUrl }}" class="btn btn-default login">GitHub <span class="fa fa-github fa-lg"></a>
+    <a href="{{ githubLoginUrl }}" class="btn btn-default login" onclick="trackOutboundLink('github-login')">
+      GitHub <span class="fa fa-github fa-lg">
+    </a>
   </div>
 </div>
 {% endblock %}
