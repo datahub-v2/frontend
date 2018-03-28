@@ -11,6 +11,13 @@
 	border-bottom: 1px solid #eaeaea;
 }
 
+.nav > li > a {
+	padding: 10px;
+	@media (max-width: 1199px) {
+		padding: 10px 7px;
+	}
+}
+
 .navbar {
   border: 0;
   min-height: 60px;
@@ -45,6 +52,16 @@
 	.navbar-nav > li > a.download-link {
     color: $brand-warning;
   }
+
+	.navbar-nav > li > a.join-link {
+    color: $brand-warning;
+  }
+
+	.navbar-nav > li > a.chat {
+		@media (min-width: 1200px) {
+			margin-right: 60px;
+		}
+	}
 
   .navbar-nav > li > a.chat:after {
     content: '';
