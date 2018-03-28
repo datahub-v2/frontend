@@ -8,9 +8,12 @@ Sign up | Login
 <div class="vertical-center">
   <div class="container">
     <h1>Sign up or Login and start publishing! &ndash; It's Free</h1>
-    <p>To sign up or login, please use your existing GitHub account</p>
+    <p>To sign up or login, please use your existing GitHub or Google accounts</p>
     <a href="{{ githubLoginUrl }}" class="btn btn-default login" onclick="trackOutboundLink('github-login')">
       GitHub <span class="fa fa-github fa-lg">
+    </a>
+    <a href="{{ googleLoginUrl }}" class="btn btn-default login onclick="trackOutboundLink('google-login')"">
+      Google <span class="fa fa-google fa-lg"></span>
     </a>
   </div>
 </div>
