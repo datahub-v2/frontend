@@ -105,7 +105,9 @@
                 {% endif %}
               </td>
               <td class="col-xs-2">
-                <i class="fa fa-external-link-square"></i> {{snippets.listify(dataset.sources)}}
+                {% if dataset.sources %}
+                  <i class="fa fa-external-link-square"></i> {{snippets.listify(dataset.sources)}}
+                {% endif %}
               </td>
             </tr>
           </tbody>
