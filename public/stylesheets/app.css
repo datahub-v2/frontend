@@ -7610,30 +7610,26 @@ body.not-found {
   .view .share-and-embed {
     display: none; }
   .view .tables:not(:empty) {
-    height: 100%; }
-    .view .tables:not(:empty) div {
+    height: calc(100% - 20px); }
+    .view .tables:not(:empty) div:not(.wtSpreader) {
       height: 100%; }
-      .view .tables:not(:empty) div .datahub-meta {
+      .view .tables:not(:empty) div:not(.wtSpreader) .datahub-meta {
         height: auto;
         position: fixed;
         bottom: 0;
         left: calc(50% - 55.85px);
         border-bottom: 0; }
-      .view .tables:not(:empty) div .handsontable {
-        height: calc(100% - 20px);
+      .view .tables:not(:empty) div:not(.wtSpreader) .handsontable {
+        height: 100%;
         margin: 0;
         z-index: 1000; }
-        .view .tables:not(:empty) div .handsontable .ht_master {
-          border-bottom: 1px solid #999; }
-      .view .tables:not(:empty) div div[id*='hTable'] {
-        border-bottom: 0 !important; }
-      .view .tables:not(:empty) div ~ .handsontable {
+      .view .tables:not(:empty) div:not(.wtSpreader) ~ .handsontable {
         height: 100%; }
   .view .datahub-meta {
     font-size: 10px;
     display: block;
     text-align: center;
-    border-bottom: 0.5px solid #999;
+    border-bottom: 0.5px solid #e6e6e6;
     z-index: 1001; }
     .view .datahub-meta .dataset-name {
       color: #000;
