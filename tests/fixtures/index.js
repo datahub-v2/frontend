@@ -176,7 +176,7 @@ module.exports.initMocks = function() {
   // Not authenticated returns urls for login
   nock(config.get('API_URL'))
     .persist()
-    .get(`/auth/check?jwt=undefined&next=${config.get('SITE_URL')}/success`)
+    .get(`/auth/check?jwt=undefined&next=${config.get('SITE_URL')}/success?client=web`)
     .reply(200, {
       "authenticated": false,
       "providers": {
@@ -191,7 +191,7 @@ module.exports.initMocks = function() {
   // GitHub
   nock(config.get('API_URL'))
     .persist()
-    .get(`/auth/check?jwt=1a2b3c&next=${config.get('SITE_URL')}/success`)
+    .get(`/auth/check?jwt=1a2b3c&next=${config.get('SITE_URL')}/success?client=web`)
     .reply(200, {
       "authenticated": true,
       "profile": {
@@ -207,7 +207,7 @@ module.exports.initMocks = function() {
   // GOOGLE
   nock(config.get('API_URL'))
     .persist()
-    .get(`/auth/check?jwt=1a2b3c4d&next=${config.get('SITE_URL')}/success`)
+    .get(`/auth/check?jwt=1a2b3c4d&next=${config.get('SITE_URL')}/success?client=web`)
     .reply(200, {
       "authenticated": true,
       "profile": {
