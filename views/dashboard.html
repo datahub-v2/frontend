@@ -7,7 +7,6 @@ Dashboard
 {% block bodyclass %}dashboard{% endblock %}
 
 {% block content %}
-<body onload="trackOutboundLink('{{client}}')">
 <div class="container">
   <div class="inner_container">
     <div class="alert alert-info" role="alert">
@@ -79,5 +78,10 @@ Dashboard
     {% endif %}
   </div>
 </div>
-</body>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  trackOutboundLink('{{client}}');
+</script>
 {% endblock %}
