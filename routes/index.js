@@ -162,6 +162,7 @@ module.exports = function () {
     if (req.cookies.jwt) {
       const isAuthenticated = await api.authenticate(req.cookies.jwt)
       if (isAuthenticated) {
+        const client = req.session.client || 'dashboard-check'
         const events = await api.getEvents(`owner="${req.cookies.username}"&size=10`, req.cookies.jwt)
         events.results = events.results.map(item => {
           item.timeago = timeago().format(item.timestamp)
@@ -186,7 +187,8 @@ module.exports = function () {
           events: events.results,
           totalPackages: packages.summary.total,
           publicSpaceUsage: storagePublic ? bytes(storagePublic, {decimalPlaces: 0}) : 'N/A',
-          privateSpaceUsage: storagePrivate ? bytes(storagePrivate.totalBytes, {decimalPlaces: 0}) : 'N/A'
+          privateSpaceUsage: storagePrivate ? bytes(storagePrivate.totalBytes, {decimalPlaces: 0}) : 'N/A',
+          client
         })
       } else {
         req.flash('message', 'Your token has expired. Please, login to see your dashboard.')
@@ -211,7 +213,9 @@ module.exports = function () {
   router.get('/success', async (req, res) => {
     const jwt = req.query.jwt
     const isAuthenticated = await api.authenticate(jwt)
+    const client = `login-${req.query.client}`
     if (isAuthenticated.authenticated) {
+      req.session.client = client
       res.cookie('jwt', jwt)
       res.cookie('email', isAuthenticated.profile.email)
       res.cookie('id', isAuthenticated.profile.id)

@@ -79,3 +79,9 @@ Dashboard
   </div>
 </div>
 {% endblock %}
+
+{% block scripts %}
+<script>
+  trackOutboundLink('{{client}}');
+</script>
+{% endblock %}
