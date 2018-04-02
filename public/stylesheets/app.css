@@ -6768,27 +6768,50 @@ footer {
 
 /* Section 1
 ====================================*/
-.section {
-  padding: 30px 0 0 0; }
-  .section h1 {
-    font-size: 3em;
-    margin: 0.5em 0;
-    line-height: 1.625; }
-  .section h3 {
-    text-align: left;
-    margin: 0 0 15px 0; }
-  .section p {
-    text-align: left;
-    margin-bottom: 30px; }
-  .section .row {
-    margin-bottom: 40px; }
-  .section input {
-    width: 50%;
-    margin: auto;
-    margin-bottom: 100px;
-    -webkit-box-shadow: none !important;
-    -moz-box-shadow: none !important;
-    box-shadow: none !important; }
+.section img {
+  box-shadow: 0 4px 38px 10px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+.section h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: normal;
+  line-height: 34px;
+  text-align: left; }
+.section h2 {
+  margin: 10px 0 0 0;
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 20px;
+  color: #757575; }
+.section h3 {
+  text-align: left;
+  margin: 0 0 15px 0; }
+.section ul {
+  margin: 40px auto 0 20px;
+  padding: 0;
+  max-width: 440px;
+  list-style: square; }
+.section .aside {
+  padding: 60px 15px; }
+.section .left {
+  padding-right: 20px; }
+.section .right {
+  padding-left: 20px; }
+.section .img-wrapper-left {
+  padding-right: 60px; }
+.section .img-wrapper-right {
+  padding-left: 60px; }
+.section p {
+  text-align: left;
+  margin-bottom: 30px; }
+.section .row {
+  margin-bottom: 40px; }
+.section input {
+  width: 50%;
+  margin: auto;
+  margin-bottom: 100px;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important; }
 
 .section-gray {
   background-color: #fafafa; }
