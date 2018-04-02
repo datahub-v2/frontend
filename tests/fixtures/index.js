@@ -32,13 +32,17 @@ module.exports.initMocks = function() {
     .reply(200, data.dataPackage, {'access-control-allow-origin': '*'})
     .get('/core/co2-ppm/1/README.md')
     .reply(200, data.readme, {'access-control-allow-origin': '*'})
-    .get('/core/house-prices-us/1/datapackage.json')
+    .get('/core/country-list/1/datapackage.json')
     .reply(200, data.dataPackage, {'access-control-allow-origin': '*'})
-    .get('/core/house-prices-us/1/README.md')
+    .get('/core/country-list/1/README.md')
     .reply(200, data.readme, {'access-control-allow-origin': '*'})
-    .get('/core/gold-prices/1/datapackage.json')
+    .get('/core/s-and-p-500-companies/1/datapackage.json')
     .reply(200, data.dataPackage, {'access-control-allow-origin': '*'})
-    .get('/core/gold-prices/1/README.md')
+    .get('/core/s-and-p-500-companies/1/README.md')
+    .reply(200, data.readme, {'access-control-allow-origin': '*'})
+    .get('/core/world-cities/1/datapackage.json')
+    .reply(200, data.dataPackage, {'access-control-allow-origin': '*'})
+    .get('/core/world-cities/1/README.md')
     .reply(200, data.readme, {'access-control-allow-origin': '*'})
     .get('/examples/simple-graph-spec/1/datapackage.json')
     .reply(200, data.dataPackage, {'access-control-allow-origin': '*'})
@@ -312,25 +316,36 @@ module.exports.initMocks = function() {
       state: 'SUCCEEDED',
       spec_contents: specContents
     })
-    .get('/source/core/house-prices-us/successful')
+    .get('/source/core/country-list/successful')
     .reply(200, {
-      id: 'core/house-prices-us/1',
+      id: 'core/country-list/1',
       state: 'SUCCEEDED'
     })
-    .get('/source/core/house-prices-us/1')
+    .get('/source/core/country-list/1')
     .reply(200, {
-      id: 'core/house-prices-us/1',
+      id: 'core/country-list/1',
       state: 'SUCCEEDED',
       spec_contents: specContents
     })
-    .get('/source/core/gold-prices/successful')
+    .get('/source/core/s-and-p-500-companies/successful')
     .reply(200, {
-      id: 'core/gold-prices/1',
+      id: 'core/s-and-p-500-companies/1',
       state: 'SUCCEEDED'
     })
-    .get('/source/core/gold-prices/1')
+    .get('/source/core/s-and-p-500-companies/1')
     .reply(200, {
-      id: 'core/gold-prices/1',
+      id: 'core/s-and-p-500-companies/1',
+      state: 'SUCCEEDED',
+      spec_contents: specContents
+    })
+    .get('/source/core/world-cities/successful')
+    .reply(200, {
+      id: 'core/s-and-p-500-companies/1',
+      state: 'SUCCEEDED'
+    })
+    .get('/source/core/world-cities/1')
+    .reply(200, {
+      id: 'core/s-and-p-500-companies/1',
       state: 'SUCCEEDED',
       spec_contents: specContents
     })
@@ -425,15 +440,20 @@ module.exports.initMocks = function() {
       userid: 'admin',
       packageid: 'failed-package'
     })
-    .get('/resolve?path=core/house-prices-us')
+    .get('/resolve?path=core/country-list')
     .reply(200, {
       userid: 'core',
-      packageid: 'house-prices-us'
+      packageid: 'country-list'
     })
-    .get('/resolve?path=core/gold-prices')
+    .get('/resolve?path=core/s-and-p-500-companies')
     .reply(200, {
       userid: 'core',
-      packageid: 'gold-prices'
+      packageid: 's-and-p-500-companies'
+    })
+    .get('/resolve?path=core/world-cities')
+    .reply(200, {
+      userid: 'core',
+      packageid: 'world-cities'
     })
     .get('/resolve?path=admin/private-package')
     .reply(200, {

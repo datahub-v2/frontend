@@ -36,9 +36,11 @@ module.exports = function () {
       req.flash('message', 'We are facing some technical problems and working to fix them! Please come back later')
     }
     const showcasePackages = await api.getPackages(listOfShowcasePkgId)
+    showcasePackages.map((pkg, idx) => pkg.revisionId = listOfShowcasePkgId[idx].revisionId)
     res.render('home_new.html', {
       title: 'Home',
-      showcasePackages
+      firstColumnPackages: showcasePackages.slice(0, 2),
+      secondColumnPackages: showcasePackages.slice(2)
     })
   })
 

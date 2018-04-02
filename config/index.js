@@ -24,9 +24,10 @@ nconf.defaults({
   SITE_URL: process.env.SITE_URL || 'http://0.0.0.0:4000',
   BITSTORE_URL: process.env.BITSTORE_URL || 'http://127.0.0.1:4000/static/fixtures/',
   showcasePackages: [
+    {ownerid: 'core', name: 'country-list'},
+    {ownerid: 'core', name: 's-and-p-500-companies'},
     {ownerid: 'core', name: 'co2-ppm'},
-    {ownerid: 'core', name: 'house-prices-us'},
-    {ownerid: 'core', name: 'gold-prices'}
+    {ownerid: 'core', name: 'world-cities'}
   ],
   tutorialPackages: [
     {ownerid: 'examples', name: 'simple-graph-spec'},
