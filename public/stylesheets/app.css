@@ -6768,7 +6768,7 @@ footer {
 
 /* Section 1
 ====================================*/
-.section img {
+.section img:not(.avatar) {
   box-shadow: 0 4px 38px 10px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 .section h1 {
   margin: 0;
@@ -6784,7 +6784,16 @@ footer {
   color: #757575; }
 .section h3 {
   text-align: left;
-  margin: 0 0 15px 0; }
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  line-height: 20px; }
+  .section h3 a {
+    color: #000 !important;
+    text-decoration: underline; }
+.section p.readme {
+  display: none; }
+.section .package-summary {
+  margin-bottom: 60px; }
 .section ul {
   margin: 40px auto 0 20px;
   padding: 0;
@@ -6812,6 +6821,23 @@ footer {
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important; }
+
+.popular-datasets {
+  padding: 60px 0; }
+  .popular-datasets h1 {
+    text-align: center !important;
+    margin-bottom: 60px; }
+  .popular-datasets .datasets-column-left {
+    border-right: 2px solid #e6e6e6;
+    padding-right: 45px; }
+  .popular-datasets .datasets-column-right {
+    padding-left: 45px; }
+  .popular-datasets .button-wrapper {
+    text-align: center; }
+
+a.btn-primary:hover {
+  background-color: white;
+  color: #000; }
 
 .section-gray {
   background-color: #fafafa; }

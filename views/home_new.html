@@ -73,7 +73,7 @@ class="prompt" style="display:none"><span class="square">■</span> ~/my-data $ 
       <p class="info"><span style="font-size: 100%; font-family: monospace">❒</span> <strong>datahub</strong> is the fastest way for individuals and teams to <strong>find, share and publish</strong> high quality data online</p>
       <div class="row text-center call-to-action call-to-action-new">
         <div>
-          <a href="#showcase" class="arrow" onclick="scrollDown(this)">
+          <a href="#next-section" class="arrow" onclick="scrollDown(this)">
             <i class="fa fa-angle-down" aria-hidden="true"></i>
           </a>
         </div>
@@ -83,7 +83,7 @@ class="prompt" style="display:none"><span class="square">■</span> ~/my-data $ 
 </div><!-- End of jumbotron main -->
 
 <!-- Publish and Deploy your Data -->
-<div class="section-gray">
+<div class="section-gray" id="next-section">
   <div class="container home">
     <div class="inner_container">
       <div class="section">
@@ -111,8 +111,8 @@ class="prompt" style="display:none"><span class="square">■</span> ~/my-data $ 
         </div>
       </div>
     </div>
-  </div><!-- End of Publish and Deploy your Data -->
-</div>
+  </div>
+</div><!-- End of Publish and Deploy your Data -->
 
 <!-- Quality Data ready to Integrate -->
 <div class="container home">
@@ -143,6 +143,30 @@ class="prompt" style="display:none"><span class="square">■</span> ~/my-data $ 
     </div>
   </div>
 </div><!-- End of Quality Data ready to Integrate -->
+
+<!-- Some of our most popular data -->
+<div class="section-gray">
+  <div class="container home">
+    <div class="inner_container">
+      <div class="section popular-datasets">
+        <h1>Some of our most popular data</h1>
+        <div class="row">
+          <div class="col-md-6 datasets-column-left">
+            {{ snippets.package_list_show(firstColumnPackages) }}
+          </div>
+          <div class="col-md-6 datasets-column-right">
+            {{ snippets.package_list_show(secondColumnPackages) }}
+          </div>
+        </div>
+        <div class="button-wrapper">
+          <a href="/search" class="btn btn-lg btn-primary">
+            See more datasets
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- End of Some of our most popular data  -->
 {% endblock %}
 
 {% block scripts %}

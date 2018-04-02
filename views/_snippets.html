@@ -21,10 +21,7 @@
           {{ package.title or package.name }}
         </a>
       </h3>
-      <div class="publisher">
-        <img src="https://www.gravatar.com/avatar/{{package.datahub.ownerid}}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar" />
-        <a href="/{{ package.datahub.owner }}">{{ package.datahub.owner }}</a>
-      </div>
+
       <div class="meta">
         {% if package.datahub.findability === 'unlisted' %}
         <span class="label label-primary" title="This dataset is not published yet.">unlisted</span>
@@ -32,6 +29,17 @@
         <span class="label label-primary" title="This dataset is not published yet.">private</span>
         {% endif %}
         <strong>{{ package.name }}</strong> | files {{ package.resources|length }} | {{ package.datahub.stats.prettyBytes }}
+      </div>
+      <div class="meta">
+        {% if package.revisionId %}
+          <strong>v{{ package.revisionId }}</strong> updated {{ package.datahub.modified }}
+        {% else %}
+          updated {{ package.datahub.modified }}
+        {% endif %}
+      </div>
+      <div class="publisher">
+        <img src="https://www.gravatar.com/avatar/{{package.datahub.ownerid}}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar" />
+        <a href="/{{ package.datahub.owner }}">{{ package.datahub.owner }}</a>
       </div>
       {% if package.readmeSnippet %}
       <p class="readme">

@@ -263,7 +263,7 @@
 ====================================*/
 
 .section {
-  img {
+  img:not(.avatar) {
     box-shadow: 0 4px 38px 10px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   h1 {
@@ -283,6 +283,18 @@
   h3 {
     text-align: left;
     margin: 0 0 15px 0;
+    font-size: 16px;
+    line-height: 20px;
+    a {
+      color: $black !important;
+      text-decoration: underline;
+    }
+  }
+  p.readme {
+    display: none;
+  }
+  .package-summary {
+    margin-bottom: 60px;
   }
   ul {
     margin: 40px auto 0 20px;
@@ -319,6 +331,31 @@
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
     box-shadow: none !important;
+  }
+}
+
+.popular-datasets {
+  padding: 60px 0;
+  h1 {
+    text-align: center !important;
+    margin-bottom: 60px;
+  }
+  .datasets-column-left {
+    border-right: 2px solid lighten($gray-light, 30%);
+    padding-right: 45px;
+  }
+  .datasets-column-right {
+    padding-left: 45px;
+  }
+  .button-wrapper {
+    text-align: center;
+  }
+}
+
+a.btn-primary {
+  &:hover {
+    background-color: white;
+    color: $black;
   }
 }
 
