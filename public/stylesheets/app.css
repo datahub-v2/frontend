@@ -6801,15 +6801,17 @@ footer {
   list-style: square; }
 .section .aside {
   padding: 60px 15px; }
-.section .consulting h1, .section .consulting h2 {
-  text-align: center; }
-.section .consulting ul.left {
-  padding: 0 0 0 25%; }
-.section .consulting ul.right {
-  padding: 0 25% 0 0; }
-.section .consulting .btn-wrapper {
-  text-align: center;
-  margin-top: 160px; }
+.section .consulting {
+  padding: 60px 15px; }
+  .section .consulting h1, .section .consulting h2 {
+    text-align: center; }
+  .section .consulting ul.left {
+    padding: 0 0 0 25%; }
+  .section .consulting ul.right {
+    padding: 0 25% 0 0; }
+  .section .consulting .btn-wrapper {
+    text-align: center;
+    margin-top: 160px; }
 .section a.btn-default, .section a.copy-button {
   color: #ff7900; }
 .section .left {
