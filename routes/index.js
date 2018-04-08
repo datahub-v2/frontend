@@ -1041,7 +1041,7 @@ module.exports = function () {
       joinDate: joinMonth + ' ' + joinYear,
       owner: req.params.owner,
       name: userProfile.profile.name,
-      query: queryString
+      queryString: queryString
     })
   })
 
