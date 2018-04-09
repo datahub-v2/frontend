@@ -156,12 +156,12 @@
                 {{ resource.modified }}
               </td>
               <td class="download truncate col-xs-4">
-                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}" onclick="trackOutboundLink(this.href)">
+                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}">
                   {{ resource.format }} ({{resource.prettyBytes}})
                 </a>
                 {% for alt in resource.otherFormats %}
                 ,
-                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ alt.format }}" onclick="trackOutboundLink(this.href)">
+                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ alt.format }}">
                   {{alt.format}} ({{alt.prettyBytes}})
                 </a>
                 {% endfor %}
@@ -184,7 +184,7 @@
           {{resource.name}}
           {% endif %}
           &nbsp;
-          <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}" onclick="trackOutboundLink(this.href)">
+          <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}">
             <i class="fa fa-arrow-circle-o-down" aria-hidden="true" style="font-size:0.9em"></i>
           </a>
         </h2>
@@ -218,7 +218,7 @@
              data-type="resource-preview" data-resource="{{ loop.index - 1 }}"></div>
         <!-- End of div elements for React -->
         <p class="notice">
-          This is a preview version. There might be more data in <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}" onclick="trackOutboundLink(this.href)">the original version.</a>
+          This is a preview version. There might be more data in <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}">the original version.</a>
         </p>
         {% if resource.format == "csv" %}
          <h3 class="section-title">Field information</h3>
