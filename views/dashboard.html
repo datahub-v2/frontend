@@ -82,6 +82,6 @@ Dashboard
 
 {% block scripts %}
 <script>
-  trackOutboundLink('{{client}}');
+  dataLayer.push({loginClient: '{{ client }}'})
 </script>
 {% endblock %}
