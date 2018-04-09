@@ -1026,7 +1026,6 @@ module.exports = function () {
     const size = req.query.size || 20
     const query = req.query.q ? `&q="${req.query.q}"` : ""
     const packages = await api.search(`datahub.ownerid="${userProfile.profile.id}"${query}&size=${size}&from=${from}`, token)
-    const queryString = req.query.q ? `&q=${req.query.q}` : ""
     const total = packages.summary.total
     const totalPages = Math.ceil(total/size)
     const currentPage = parseInt(from, 10) / 20 + 1
@@ -1041,7 +1040,8 @@ module.exports = function () {
       joinDate: joinMonth + ' ' + joinYear,
       owner: req.params.owner,
       name: userProfile.profile.name,
-      queryString: queryString
+      queryString: req.query.q || '',
+      query
     })
   })
 
