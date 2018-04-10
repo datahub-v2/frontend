@@ -179,6 +179,9 @@
         if (parts.length == 2) return parts.pop().split(";").shift();
       }
 
+      // Set the userid for Google Tags Manager:
+      dataLayer.push({'userId': getCookie('id')});
+
       function scrollDown(el) {
         document.querySelector(el.attributes.href.value).scrollIntoView({
           behavior: 'smooth'
