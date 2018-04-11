@@ -55,3 +55,7 @@ To run in watch mode:
 # note the -e which means we watch for changes in templates too
 nodemon -e "js html" index.js
 ```
+
+### Analytics
+
+We use Google Tag Manager to manage all tags (eg, google analytics, optimize and more) so instead of adding a new script into templates, you should consider editing via UI of Tag Manager.
