@@ -1,3 +1,4 @@
+{% import '_snippets.html' as snippets %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,16 @@
   <meta name="description" content="{{title}}. Data online made easy. Share and find data, quickly and easily. Simple, solid, slick. Frictionless and fast. Built for data scientists and wranglers. Managed by Datopian and Open Knowledge International">
   <meta name="keywords" content="data,datasets,data publishing,data sharing,data hosting,data package,reference data,indicators">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="og:title" content="DataHub">
+  <meta name="og:url" content="https://datahub.io/">
+  <meta name="og:description" content="https://datahub.io/">
+  <meta name="og:image" content="/static/img/datahub-cube-edited.svg">
+  <meta name="twitter:card" content="player">
+  <meta name="twitter:creator	" content="@datahubio">
+  <meta name="twitter:site" content="@datahubio">
+  {% if dataset.readmeSnippet %}
+    <meta name="summary" content="{{dataset.readmeSnippet}}">
+  {% endif %}
   <link rel="icon" type="img/ico" href="/static/img/favicon.ico" sizes="16x16">
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
