@@ -16,6 +16,7 @@ const config = require('../config')
 const lib = require('../lib')
 const utils = require('../lib/utils')
 
+const datapackage = require('datapackage')
 
 module.exports = function () {
   // eslint-disable-next-line new-cap
@@ -558,6 +559,34 @@ module.exports = function () {
       }
     }
   }
+
+  router.get('/tools/validate', async (req, res) => {
+    let dataset
+    let loading_error
+    let valid
+    let errors
+
+    if (req.query.q){
+      try {
+        dataset = await datapackage.Package.load(req.query.q)
+      } catch (err) {
+        loading_error = err
+      }
+    }
+
+    if (dataset){
+      valid = dataset.valid
+      errors = dataset.errors
+    }
+
+    res.render('validate.html', {
+      query: req.query.q,
+      dataset,
+      loading_error,
+      valid,
+      errors,
+    })
+  })
 
   router.get('/:owner/:name', renderShowcase('successful'))
   router.get('/:owner/:name/v/:revisionId', renderShowcase())
