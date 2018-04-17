@@ -339,3 +339,31 @@ test('awesome non existing page returns 404', async t => {
   t.is(res.status, 200)
   t.true(res.text.includes('404'))
 })
+
+test('Validate page works', async t => {
+  const res = await request(app).get('/tools/validate')
+  t.is(res.status, 200)
+  t.true(res.text.includes('Data Package Validator'))
+})
+
+test('Validate shows Loading descriptor error', async t => {
+  const res = await request(app).get('/tools/validate?q=lalala')
+  t.is(res.status, 200)
+  t.true(res.text.includes('Error loading data package'))
+})
+
+test('Validate valid descriptor', async t => {
+  const query = '/tools/validate?q=https%3A%2F%2Fraw.githubusercontent.com%2Ffrictionlessdata%2Ftest-data%2Fmaster%2Fpackages%2Fbasic-csv%2Fdatapackage.json'
+  const res = await request(app).get(query)
+  t.is(res.status, 200)
+  t.true(res.text.includes('Descriptor is'))
+  t.true(res.text.includes('Valid'))
+})
+
+test('Validate invalid descriptor', async t => {
+  const query = '/tools/validate?q=https%3A%2F%2Fraw.githubusercontent.com%2Ffrictionlessdata%2Ftest-data%2Fmaster%2Fpackages%2Finvalid-descriptor%2Fdatapackage.json'
+  const res = await request(app).get(query)
+  t.is(res.status, 200)
+  t.true(res.text.includes('Descriptor is'))
+  t.true(res.text.includes('Invalid'))
+})
