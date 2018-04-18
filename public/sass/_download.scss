@@ -18,7 +18,7 @@ body.download {
       font-size: 12px;
     }
     p.message {
-      margin: 50px 0 30px;
+      margin: 30px 0;
     }
     p.command {
       color: $gray;
@@ -41,6 +41,12 @@ body.download {
       margin-right: 20px;
     }
     a:nth-of-type(3) {
+      margin-left: 20px;
+    }
+    a:nth-of-type(4) {
+      margin-right: 20px;
+    }
+    a:nth-of-type(5) {
       margin-left: 20px;
     }
     .steps {

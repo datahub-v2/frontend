@@ -933,7 +933,7 @@ module.exports = function () {
 
   // Download page
   router.get('/download', async (req, res) => {
-    let desktopAppUrl, binReleaseMacos, binReleaseLinux, binReleaseWindows, etagForDesktop, etagForBinary
+    let desktopAppUrl, binReleaseMacos, binReleaseLinux, binReleaseWindows, etagForDesktop, etagForBinary, msiX64, msiX86
 
     if (req.app.locals.github) {
       etagForDesktop = req.app.locals.github.releases.desktop
@@ -984,6 +984,8 @@ module.exports = function () {
       binReleaseMacos = req.app.locals.github.releases.binary.macos
       binReleaseLinux = req.app.locals.github.releases.binary.linux
       binReleaseWindows = req.app.locals.github.releases.binary.windows
+      msiX64 = req.app.locals.github.releases.binary.msiX64
+      msiX86 = req.app.locals.github.releases.binary.msiX86
     } else { // Go and get new release
       let binRelease = await fetch('https://api.github.com/repos/datahq/data-cli/releases/latest')
       if (binRelease.status === 200) {
@@ -999,13 +1001,24 @@ module.exports = function () {
         binReleaseWindows = binRelease.assets
           .find(asset => asset.name.includes('win.exe.gz'))
           .browser_download_url
+        msiX64 = binRelease.assets
+          .find(asset => asset.name.includes('data-x64'))
+          .browser_download_url
+        msiX86 = binRelease.assets
+          .find(asset => asset.name.includes('data-x86'))
+          .browser_download_url
+        // If msi isn't available yet, use previous version:
+        msiX64 = msiX64 || req.app.locals.github.releases.binary.msiX64
+        msiX86 = msiX86 || req.app.locals.github.releases.binary.msiX86
         // Update binary release in the app.locals:
         const newRelease = {
           binary: {
             etag,
             macos: binReleaseMacos,
             linux: binReleaseLinux,
-            windows: binReleaseWindows
+            windows: binReleaseWindows,
+            msiX64,
+            msiX86
           }
         }
         req.app.locals.github.releases = Object.assign(
@@ -1013,9 +1026,11 @@ module.exports = function () {
           newRelease
         )
       } else { // If github api is unavailable then just have a link to releases page
-        binReleaseMacos = 'https://github.com/datahq/datahub-cli/releases'
-        binReleaseLinux = 'https://github.com/datahq/datahub-cli/releases'
-        binReleaseWindows = 'https://github.com/datahq/datahub-cli/releases'
+        binReleaseMacos = 'https://github.com/datahq/data-cli/releases'
+        binReleaseLinux = 'https://github.com/datahq/data-cli/releases'
+        binReleaseWindows = 'https://github.com/datahq/data-cli/releases'
+        msiX64 = 'https://github.com/datahq/data-cli/releases'
+        msiX86 = 'https://github.com/datahq/data-cli/releases'
       }
     }
 
@@ -1024,7 +1039,9 @@ module.exports = function () {
       desktopAppUrl,
       binReleaseMacos,
       binReleaseLinux,
-      binReleaseWindows
+      binReleaseWindows,
+      msiX64,
+      msiX86
     })
   })
 
