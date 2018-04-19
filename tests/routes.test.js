@@ -349,7 +349,7 @@ test('Validate page works', async t => {
 test('Validate shows Loading descriptor error', async t => {
   const res = await request(app).get('/tools/validate?q=lalala')
   t.is(res.status, 200)
-  t.true(res.text.includes('Error loading data package'))
+  t.true(res.text.includes('Error while loading'))
 })
 
 test('Validate valid descriptor', async t => {

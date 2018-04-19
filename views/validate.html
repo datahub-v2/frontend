@@ -11,7 +11,7 @@ Validate Datasets
 <div class="container">
     <div class="inner_container">
         <div class="row">
-            <div class="col-md-7 col-md-offset-2 col-sm-12">
+            <div class="col-md-10 col-md-offset-2">
                 <h1>Data Package Validator</h1>
                 <form class="search-form form form-inline" class="input-group col-xs-12" action="/tools/validate" method="GET">
                     <input type="text" class="form-control input-lg" placeholder="Paste link to your datapackage.json" name="q" value="{{ query }}" required autofocus/>
@@ -20,27 +20,29 @@ Validate Datasets
             </div>
         </div>
         <div class="row">
-            <div class="col-md-7 col-md-offset-2 col-sm-12">
+            <div class="col-md-9 col-md-offset-2">
                 {% if loading_error %}
-                    <h3>Error loading data package:</h3>
-                    {{ loading_error }}
+                    <h4>Error while loading the data package, please check that you provided a correct URL to the datapackage.json file.</h4>
                 {% endif %}
 
                 {% if dataset %}
                     <h2>
                         Descriptor is
-                        {% if valid == true %}
-                        Valid
+                        {% if dataset.valid %}
+                            <b style="color: green">Valid</b>
                         {% else %}
-                        Invalid
+                            <b style="color: red">Invalid</b>
                         {% endif %}
                     </h2>
                 {% endif %}
 
-                {% if errors.length > 0 %}
-                    {{ errors }}
+                {% if dataset.errors.length > 0 %}
+                    {{ dataset.errors }}
                 {% endif %}
-
+                <!--
+                    Datapackage details has been deleted, as we don't validate the datapackage itself,
+                 but only the descriptor file.
+                    Instead we add a data-cli advertising.
                 {% if dataset %}
                     <h3>Datapackage:</h3>
                     <h4>Name: <strong>{{ dataset.descriptor.name }}</strong></h4>
@@ -54,6 +56,18 @@ Validate Datasets
                         {% endfor %}
                     </ul>
                 {% endif %}
+                -->
+                <hr>
+                <p>The online validator checks the data-package descriptor, but not the data stored inside.</p>
+                Please use our <a href="/docs/features/data-cli">offline tool</a> to:
+                <ul>
+                    <li>Validate the data-package resources</li>
+                    <li>View and transform tabular data files</li>
+                    <li>Create a data-package</li>
+                    <li>Upload and download data-packages</li>
+                    <li>and many more...</li>
+                </ul>
+                <a href="/download">Download data-cli</a>
             </div>
         </div>
     </div>

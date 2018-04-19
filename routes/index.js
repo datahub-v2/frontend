@@ -563,28 +563,19 @@ module.exports = function () {
   router.get('/tools/validate', async (req, res) => {
     let dataset
     let loading_error
-    let valid
-    let errors
 
     if (req.query.q){
       try {
         dataset = await datapackage.Package.load(req.query.q)
       } catch (err) {
-        loading_error = err
+        loading_error = true
       }
-    }
-
-    if (dataset){
-      valid = dataset.valid
-      errors = dataset.errors
     }
 
     res.render('validate.html', {
       query: req.query.q,
       dataset,
       loading_error,
-      valid,
-      errors,
     })
   })
 
