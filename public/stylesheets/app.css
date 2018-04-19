@@ -6868,38 +6868,38 @@ h2.section-title {
 .normal {
   margin-bottom: 10px !important; }
 
-body.search h1 {
+body.search h1, body.validate h1 {
   font-weight: 300;
   font-size: 30px;
   margin-bottom: 10px; }
-body.search .search-icon {
+body.search .search-icon, body.validate .search-icon {
   display: inline-block;
   vertical-align: text-bottom; }
-body.search .search-form {
+body.search .search-form, body.validate .search-form {
   margin-bottom: 30px; }
-  body.search .search-form input {
+  body.search .search-form input, body.validate .search-form input {
     border-color: #000;
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
     box-shadow: none !important;
     width: 80%;
     height: 38px; }
-  body.search .search-form button {
+  body.search .search-form button, body.validate .search-form button {
     margin-left: 7px; }
-body.search h4.search-summary {
+body.search h4.search-summary, body.validate h4.search-summary {
   color: #000;
   margin: 1.5em 0em 0.8em 0em; }
-body.search .package-summary {
+body.search .package-summary, body.validate .package-summary {
   margin-bottom: 20px; }
-  body.search .package-summary .publisher {
+  body.search .package-summary .publisher, body.validate .package-summary .publisher {
     margin: 0 0 10px 0; }
-  body.search .package-summary .package-title a, body.search .package-summary .package-title-published a, body.search .package-summary .package-title-unlisted a {
+  body.search .package-summary .package-title a, body.validate .package-summary .package-title a, body.search .package-summary .package-title-published a, body.validate .package-summary .package-title-published a, body.search .package-summary .package-title-unlisted a, body.validate .package-summary .package-title-unlisted a {
     text-decoration: underline;
     color: #000; }
-  body.search .package-summary .meta {
+  body.search .package-summary .meta, body.validate .package-summary .meta {
     font-size: 12px;
     margin-bottom: 10px; }
-body.search li.current-page a.page-link {
+body.search li.current-page a.page-link, body.validate li.current-page a.page-link {
   color: #ff7900;
   background: white; }
 
@@ -7700,5 +7700,15 @@ body.not-found {
     .view .datahub-meta .dataset-name {
       color: #000;
       font-weight: bold; }
+
+body.validate h2 {
+  font-size: 24px;
+  margin: 12px 0; }
+body.validate .output {
+  margin-bottom: 30px; }
+body.validate .valid {
+  color: green; }
+body.validate .invalid {
+  color: red; }
 
 /*# sourceMappingURL=app.css.map */

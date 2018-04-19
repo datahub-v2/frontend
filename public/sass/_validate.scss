@@ -1,0 +1,17 @@
+body.validate {
+  @extend .search;
+
+  h2 {
+    font-size: 24px;
+    margin: 12px 0;
+  }
+  .output {
+    margin-bottom: 30px;
+  }
+  .valid {
+    color: green;
+  }
+  .invalid {
+    color: red;
+  }
+}
