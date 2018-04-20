@@ -38,7 +38,7 @@ module.exports = function () {
     }
     const showcasePackages = await api.getPackages(listOfShowcasePkgId)
     showcasePackages.map((pkg, idx) => pkg.revisionId = listOfShowcasePkgId[idx].revisionId)
-    res.render('home_new.html', {
+    res.render('home.html', {
       title: 'Home',
       firstColumnPackages: showcasePackages.slice(0, 2),
       secondColumnPackages: showcasePackages.slice(2)

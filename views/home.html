@@ -14,7 +14,6 @@ Welcome - Home
     <div class="jumbotron jumbotron-primary">
       <div class="row">
         <div class="text-center">
-          <img src="/static/img/datahub-cube-edited.svg" class="img-responsive main-img" alt="">
           <h1 class="main-title">Data online made simple</h1>
         </div>
       </div>
@@ -33,14 +32,24 @@ Welcome - Home
               <div class="body">
                 <div class="console-inner">
                   <pre>
-  <span class="prompt"><span class="square">■</span> ~/my-data $</span> ls
-  datapackage.json   data.csv
-  <span class="prompt"><span class="square">■</span> ~/my-data $</span> data push
-  &gt; Uploading [====================] 100% 8.5s
-  &gt; Push complete (9.61MB) [8509ms]
-  &gt; Ready! https://datahub.io/your-username/my-data
-    (copied to clipboard)
-  <span class="prompt"><span class="square">■</span> ~/my-data $</span> <span class="cursor"></span>
+<span class="prompt"><span class="square">■</span> ~/my-data $ <span
+class="txt-show"
+data-start="2000"
+data-text='ls'></span><span class="cursor"></span>
+</span><span class="output" style="display:none">   data.csv</span><span
+class="prompt" style="display:none"><span class="square">■</span> ~/my-data $ <span
+class="txt-show"
+data-start="4500"
+data-text='data push data.csv'></span><span class="cursor"></span>
+</span><span
+class="prompt" style="display:none">   &gt; Uploading <span
+class="txt-show" data-start="12500" data-text="..................."></span> <span class="output" style="display:none">100% 8.5s</span>
+</span><span
+class="output" style="display:none">   &gt; Push complete (9.61MB) [8509ms]
+   &gt; Ready! https://datahub.io/your-username/my-data
+     (copied to clipboard)
+</span><span
+class="prompt" style="display:none"><span class="square">■</span> ~/my-data $ <span class="cursor"></span></span>
                   </pre>
                 </div>
               </div>
@@ -48,39 +57,23 @@ Welcome - Home
           </div>
         </div>
         <div class="col-md-6">
-          <div class="browser">
-            <div class="window">
-              <div class="header">
-                <span class="icon close-terminal"></span>
-                <span class="icon minimize"></span>
-                <span class="icon fullScreen"></span>
-                <div class="title title-bg">
-                  https://datahub.io/you/your-data
-                </div>
-              </div>
-              <div class="body">
-                <img src="/static/img/terminal-white.png" class="img-responsive" />
-              </div>
-            </div>
+          <div class="primary-call-to-action">
+            <a href="/core" class="btn btn-lg btn-default btn-block">
+              Core datasets
+            </a>
+            <a href="/requests" class="btn btn-lg btn-default btn-block">
+              Request data
+            </a>
+            <a href="/download" class="btn btn-lg btn-primary btn-block">
+              Start publishing for free!
+            </a>
           </div>
         </div>
       </div>
-      <div class="row text-center call-to-action">
-  			<h2 class="subtitle">Power and Simplicity.</h2>
-  			<p><span style="font-size: 100%; font-family: monospace">❒</span> <strong>datahub</strong> is the fastest way for individuals and teams to <strong>find, share and publish</strong> high quality data online</p>
+      <p class="info"><span style="font-size: 100%; font-family: monospace">❒</span> <strong>datahub</strong> is the fastest way for individuals and teams to <strong>find, share and publish</strong> high quality data online</p>
+      <div class="row text-center call-to-action call-to-action-new">
         <div>
-          <a href="#showcase" class="btn btn-lg btn-primary" onclick="scrollDown(this)">
-            Explore Datasets
-          </a>
-          <a href="/download" class="btn btn-lg btn-primary">
-            Get Started
-          </a>
-          <div class="request-access">
-            Want to try out publishing data? We're in alpha and you can <a href="/login">sign up to request early access &raquo;</a>
-          </div>
-        </div>
-        <div>
-          <a href="#showcase" class="arrow" onclick="scrollDown(this)">
+          <a href="#next-section" class="arrow" onclick="scrollDown(this)">
             <i class="fa fa-angle-down" aria-hidden="true"></i>
           </a>
         </div>
@@ -89,35 +82,227 @@ Welcome - Home
   </div>
 </div><!-- End of jumbotron main -->
 
-<!-- Section 1 -->
-<div class="section-gray" id="showcase">
-<div class="container home">
-  <div class="inner_container">
-    <div class="section section-centered">
-      <div class="row">
-        <h2 class="section-title">Some of our most popular data</h2>
-
-        {{ snippets.package_list_show(showcasePackages) }}
-
-        <a href="/search" class="btn btn-lg btn-primary">
-          See more datasets
-        </a>
+<!-- Publish and Deploy your Data -->
+<div class="section-gray" id="next-section">
+  <div class="container home">
+    <div class="inner_container">
+      <div class="section">
+        <div class="row">
+          <div class="col-md-6 aside left img-wrapper-left">
+            <a href="/core/finance-vix">
+              <img src="/static/img/finance-vix.png" class="img-responsive" />
+            </a>
+          </div>
+          <div class="col-md-6 aside right">
+            <h1>Publish and Deploy your Data</h1>
+            <h2>
+              Power and simplicity - <b>data</b> is the fastest way for individuals, teams and organizations to publish, deploy and share their data.
+            </h2>
+            <ul>
+              <li>
+                Store, share and showcase your data with the world or just privately <a href="/docs/getting-started/publishing-data">read more &rsaquo;</a>
+              </li>
+              <li>
+                Powerful tools to <a href="/blog/data-validation-in-the-datahub">validate</a> and <a href="/docs/automation">automate</a>
+              </li>
+              <li>
+                Teams and permissions to make it easy to collaborate <a href="/docs/features/teams-and-permissions">read more &rsaquo;</a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div><!-- End of section 1 -->
+</div><!-- End of Publish and Deploy your Data -->
 
-<!-- Section 2 -->
+<!-- Quality Data ready to Integrate -->
 <div class="container home">
   <div class="inner_container">
-    <div class="section section-centered">
+    <div class="section">
       <div class="row">
-        <h2 class="section-title">Tutorials</h2>
-
-        {{ snippets.package_list_show(tutorialPackages) }}
+        <div class="col-md-6 aside left">
+          <h1>Quality Data ready to Integrate</h1>
+          <h2>
+            Data as you’d want to use it.
+          </h2>
+          <ul>
+            <li>
+              High quality data ready to inspect, download and use <a href="/docs/core-data">read more &rsaquo;</a>
+            </li>
+            <li>
+              Bulk and API access ready for automated integration with SDKs in Python, JS and many more <a href="/docs/getting-started/getting-data">read more &rsaquo;</a>
+            </li>
+            <li>
+              <a href="/requests">Send a request</a> if you need a help to find some good, quality dataset
+            </li>
+            <li>
+              Frictionless Data format: <a href="/docs/data-packages">Data Package</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 aside right img-wrapper-right">
+          <iframe src="/core/finance-vix/r/0.html" width="100%" height="300px" frameborder="0"></iframe>
+        </div>
       </div>
     </div>
   </div>
-</div><!-- End of section 2 -->
+</div><!-- End of Quality Data ready to Integrate -->
+
+<!-- Some of our most popular data -->
+<div class="section-gray">
+  <div class="container home">
+    <div class="inner_container">
+      <div class="section popular-datasets">
+        <h1>Some of our most popular data</h1>
+        <div class="row">
+          <div class="col-md-6 datasets-column-left">
+            {{ snippets.package_list_show(firstColumnPackages) }}
+          </div>
+          <div class="col-md-6 datasets-column-right">
+            {{ snippets.package_list_show(secondColumnPackages) }}
+          </div>
+        </div>
+        <div class="button-wrapper">
+          <a href="/search" class="btn btn-lg btn-primary">
+            See more datasets
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- End of Some of our most popular data  -->
+
+<!-- DataOS offer -->
+<div class="container home">
+  <div class="inner_container">
+    <div class="section">
+      <div class="row">
+        <div class="col-md-6 aside left img-wrapper-left">
+          <img src="/static/img/data-os-offer.png" class="img-responsive" />
+        </div>
+        <div class="col-md-6 aside right">
+          <h1>DataOS: Open source framework for processing/wrangling data</h1>
+          <h2>
+            Automate your data processes with our open source framework
+          </h2>
+          <ul>
+            <li>
+              Completely open source with professiona maintainence and supported
+            </li>
+            <li>
+              End-to-end solution with all parts are fully integrated
+            </li>
+            <li>
+              Not just tools but a standardized approach and pattern for working with your data
+            </li>
+          </ul>
+          <br />
+          <a href="/docs/data-os" class="btn btn-default">Learn more about DataOS</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- End of DataOS offer -->
+
+<!-- Consulting offer -->
+<div class="section-gray">
+  <div class="container home">
+    <div class="inner_container">
+      <div class="section">
+        <div class="row consulting">
+          <h1>Hire us to build and improve your data-driven project</h1>
+          <h2>
+            We have decades of experience building data systems for clients large and small.
+          </h2>
+          <div class="col-md-6 left">
+            <ul class="left">
+              <li>
+                Automate data collection, integration and presentation
+              </li>
+              <li>
+                Build dashboards and visualizations
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6 right">
+            <ul class="right">
+              <li>
+                Scrape, clean and normalize data
+              </li>
+              <li>
+                Build data portals and platforms whether bespoke or using products like CKAN (our CEO designed and built CKAN)
+              </li>
+            </ul>
+          </div>
+          <div class="btn-wrapper">
+            <a href="/docs/consulting" class="btn btn-default">Hire us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- End of Consulting offer -->
+{% endblock %}
+
+{% block scripts %}
+<!-- script for animation of terminal -->
+<script>
+  var TxtRotate = function(el, text, start) {
+    this.text = text;
+    this.el = el;
+    this.delay = parseInt(start);
+    this.txt = '';
+    var that = this;
+    setTimeout(function(){
+      that.tick();
+    }, that.delay);
+  };
+
+  TxtRotate.prototype.tick = function() {
+    var prompts = document.getElementsByClassName('prompt');
+    var cursors = document.getElementsByClassName('cursor');
+    var fullTxt = this.text;
+
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+
+    this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+    var that = this;
+    var delta = 300 - Math.random() * 100;
+
+    setTimeout(function() {
+      that.tick();
+    }, delta);
+
+    setTimeout(function() {
+      if (that.txt === fullTxt) {
+        var outputs = document.getElementsByClassName('output')
+        if (fullTxt === 'ls') {
+          cursors[0].style.display = 'none';
+          outputs[0].style.display = 'block';
+          prompts[1].style.display = 'block';
+        } else if (fullTxt === 'data push data.csv') {
+          cursors[1].style.display = 'none';
+          prompts[2].style.display = 'block';
+        } else if (fullTxt.includes('...')) {
+          outputs[1].style.display = 'inline-block';
+          outputs[2].style.display = 'block';
+          prompts[3].style.display = 'block';
+        }
+      }
+    }, 2000);
+  };
+
+  window.onload = function() {
+    var elements = document.getElementsByClassName('txt-show');
+    for (var i=0; i<elements.length; i++) {
+      var start = elements[i].getAttribute('data-start');
+      var text = elements[i].getAttribute('data-text');
+      if (text) {
+        new TxtRotate(elements[i], text, start);
+      }
+    }
+  };
+</script>
 {% endblock %}
