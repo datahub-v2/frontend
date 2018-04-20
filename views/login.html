@@ -4,6 +4,8 @@
 Sign up | Login
 {% endblock %}
 
+{% block bodyclass %}login{% endblock %}
+
 {% block content %}
 <div class="vertical-center">
   <div class="container">
@@ -15,6 +17,9 @@ Sign up | Login
     <a href="{{ googleLoginUrl }}" class="btn btn-default login">
       Google <span class="fa fa-google fa-lg"></span>
     </a>
+    <p class="info">
+      By joining, you agree to our <a href="/docs/terms-of-service">Term of Service</a>.
+    </p>
   </div>
 </div>
 {% endblock %}

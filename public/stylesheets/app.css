@@ -7711,4 +7711,13 @@ body.validate .valid {
 body.validate .invalid {
   color: red; }
 
+body.login p.info {
+  margin: auto;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  color: #757575;
+  font-size: 12px; }
+  body.login p.info a {
+    color: black; }
+
 /*# sourceMappingURL=app.css.map */
