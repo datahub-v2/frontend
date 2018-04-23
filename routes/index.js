@@ -1043,6 +1043,12 @@ module.exports = function () {
     })
   })
 
+  // Thank you page
+  router.get('/thanks', async (req, res) => {
+    req.flash('message', 'Thank you! We\'ve recieved your request and will get back to you soon!')
+    res.redirect('/')
+  })
+
   // MUST come last in order to catch all the publisher pages
   router.get('/:owner', async (req, res) => {
     // First check if user exists using resolver

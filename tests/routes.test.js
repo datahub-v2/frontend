@@ -275,6 +275,12 @@ test('Consulting page returns 200 and has correct content', async t => {
   t.true(res.text.includes('<!-- consulting page test placeholder -->'))
 })
 
+test('Thank you page redirects to home page (but cannot test flash message here)', async t => {
+  const res = await request(app).get('/thanks')
+  t.is(res.statusCode, 302)
+  t.is(res.header.location, '/')
+})
+
 test('Publisher page returns 200 and has correct content', async t => {
   const res = await request(app)
     .get('/publisher')
