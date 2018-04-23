@@ -1036,6 +1036,13 @@ module.exports = function () {
     })
   })
 
+  // Consulting page
+  router.get('/consulting', async (req, res) => {
+    res.render('consulting.html', {
+      title: 'Consulting'
+    })
+  })
+
   // MUST come last in order to catch all the publisher pages
   router.get('/:owner', async (req, res) => {
     // First check if user exists using resolver
