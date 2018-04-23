@@ -7720,4 +7720,9 @@ body.login p.info {
   body.login p.info a {
     color: black; }
 
+body.consulting h1 {
+  margin-bottom: 1.5em; }
+body.consulting input[type="submit"] {
+  margin: 20px 0 80px; }
+
 /*# sourceMappingURL=app.css.map */
