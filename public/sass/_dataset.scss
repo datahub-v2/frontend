@@ -3,6 +3,20 @@
   @media (max-width: $screen-xs-min) {
     margin-bottom: 3em;
   }
+  .modal-body {
+    h4 {
+      margin: 24px 0;
+    }
+    form {
+      height: 320px;
+    }
+    input[type="submit"] {
+      margin: 20px 0;
+    }
+  }
+  div.alert.alert-success {
+    margin-bottom: 0;
+  }
   a.btn {
     padding: 8px 25px;
   }

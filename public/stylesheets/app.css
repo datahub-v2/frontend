@@ -7022,6 +7022,14 @@ div.logout {
   @media (max-width: 480px) {
     .showcase {
       margin-bottom: 3em; } }
+  .showcase .modal-body h4 {
+    margin: 24px 0; }
+  .showcase .modal-body form {
+    height: 320px; }
+  .showcase .modal-body input[type="submit"] {
+    margin: 20px 0; }
+  .showcase div.alert.alert-success {
+    margin-bottom: 0; }
   .showcase a.btn, .showcase a.copy-button {
     padding: 8px 25px; }
   .showcase .status {

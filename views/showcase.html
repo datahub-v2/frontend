@@ -12,6 +12,69 @@
 <!-- Load goodtables-ui so we can use it in the body of this page. -->
 <script src="https://unpkg.com/goodtables-ui@1.1.3/dist/goodtables-ui.min.js"></script>
 
+{% if owner == 'core' %}
+<div class="container">
+  <div class="inner_container">
+    <div class="alert alert-success" role="alert">
+      We're introducing a <strong>premium data</strong> service that includes notifications, data customization and <a href="#" data-toggle="modal" data-target="#premium-data">more</a>.<br />
+      <a href="#" data-toggle="modal" data-target="#premium-data">Sign up</a> for our free trial program to find out more and tell us what you'd most want to see first!
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="premium-data" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title" id="myModalLabel">Premium data offer</h3>
+          </div>
+          <div class="modal-body">
+            <h4>
+              These are what you get along with this offer
+            </h4>
+            <ul>
+              <li>
+                Notifications of data updates and schema changes
+              </li>
+              <li>
+                Warranty / guaranteed updates
+              </li>
+              <li>
+                Workflow integration (e.g. Python packages, NPM packages)
+              </li>
+              <li>
+                Customized data (e.g. you need different or additional data)
+              </li>
+              <li>
+                Or suggest your own feature in the form below!
+              </li>
+            </ul>
+            <h4>
+              Get Started &mdash; Contact Us
+            </h4>
+            <form action="https://formspree.io/support@datahub.io" method="POST" name="premium-data">
+              <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" class="form-control" name="email" required autofocus
+                  placeholder="Your e-mail address" id="inputEmail"
+                  pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' />
+              </div>
+              <label for="features">Which features you like the most?</label>
+              <textarea class="form-control" rows="2" name="features-i-like"
+                id="features" placeholder="Optional: tell us what do you think about offered features"></textarea>
+              <label for="suggested-feature">or suggest your own feature ...</label>
+              <textarea class="form-control" rows="2" name="suggested-feature" id="suggested-feature" placeholder="Optional: let us know what do you want along with this offer - we'll consider your suggestion and get back to you."></textarea>
+              <input type="hidden" name="_next" value="https://datahub.io/thanks?next=core/{{dataset.name}}" />
+              <input type="hidden" name="_subject" value="Premium data signup request" />
+              <input type="submit" value="Send" class="btn btn-primary pull-right">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
 <!-- title and owner info -->
 <div class="container">
   <div class="inner_container">
