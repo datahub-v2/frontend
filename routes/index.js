@@ -1045,8 +1045,9 @@ module.exports = function () {
 
   // Thank you page
   router.get('/thanks', async (req, res) => {
+    const dest = req.query.next ? `/${req.query.next}` : '/'
     req.flash('message', 'Thank you! We\'ve recieved your request and will get back to you soon!')
-    res.redirect('/')
+    res.redirect(dest)
   })
 
   // MUST come last in order to catch all the publisher pages
