@@ -398,6 +398,21 @@
 {% endblock %}
 
 {% block scripts %}
+<!-- Check if 'source' param exists in the URL and use it as a tracker -->
+<!-- Note that we're tracking if showcase page visit is coming from the CLI -->
+<script>
+  function getURLParameter(sParam) {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) {
+      var sParameterName = sURLVariables[i].split('=');
+      if (sParameterName[0] == sParam) {
+          return sParameterName[1];
+      }
+    }
+  }
+  dataLayer.push({'source': getURLParameter('source') || 'web'});
+</script>
 <!-- script for tabs to work as anchors (used for instructions in showcase page) -->
 <script>
   jQuery("ul.nav-pills > li > a").on("shown.bs.tab", function (e) {
