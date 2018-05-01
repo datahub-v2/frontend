@@ -13,6 +13,7 @@
 <script src="https://unpkg.com/goodtables-ui@1.1.3/dist/goodtables-ui.min.js"></script>
 
 <!-- Premium data offer -->
+{% if owner == 'core' %}
 <div class="container">
   <div class="inner_container">
     <div class="alert alert-success" role="alert">
@@ -35,7 +36,8 @@
       </div>
     </div>
   </div>
-</div><!-- End of Premium data offer -->
+</div>
+{% endif %}<!-- End of Premium data offer -->
 
 <!-- title and owner info -->
 <div class="container">
