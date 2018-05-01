@@ -542,12 +542,6 @@ module.exports = function () {
           console.error(err)
         }
 
-        // Show banner about Premium data offer only on top 10 datasets:
-        const top10CoreDatasets = [
-          'country-list', 'country-codes', 's-and-p-500-companies', 'world-cities',
-          'language-codes', 's-and-p-500', 'co2-ppm', 'gold-prices', 'population',
-          'finance-vix'
-        ]
         // Now render the page:
         res.render('showcase.html', {
           title: req.params.owner + ' | ' + req.params.name,
@@ -560,8 +554,7 @@ module.exports = function () {
           failUrl: `/${req.params.owner}/${req.params.name}/v/${revisionId}`,
           successUrl: `/${req.params.owner}/${req.params.name}`,
           statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/${revisionId}`,
-          failedPipelines,
-          showPremiumDataOffer: top10CoreDatasets.includes(normalizedDp.name)
+          failedPipelines
         })
       }
     }
@@ -1047,6 +1040,14 @@ module.exports = function () {
   router.get('/consulting', async (req, res) => {
     res.render('consulting.html', {
       title: 'Consulting'
+    })
+  })
+
+  // Premium data
+  router.get('/premium-data', async (req, res) => {
+    res.render('premium-data.html', {
+      title: "Premium data",
+      submitted: !!(req.query.done)
     })
   })
 

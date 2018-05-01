@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      {{title}} - DataHub - Frictionless Data
+    </title>
+    <meta name="author" content="Datopian">
+    <meta name="description" content="{{title}}. Data online made easy. Share and find data, quickly and easily. Simple, solid, slick. Frictionless and fast. Built for data scientists and wranglers. Managed by Datopian and Open Knowledge International">
+    <meta name="keywords" content="data,datasets,data publishing,data sharing,data hosting,data package,reference data,indicators">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WCTXGJ8');</script>
+    <!-- End Google Tag Manager -->
+    <link rel="icon" type="img/ico" href="/static/img/favicon.ico" sizes="16x16">
+    <link rel="stylesheet" media="screen" href="/static/stylesheets/app.css">
+    <link rel="stylesheet" media="screen" href="/static/dpr-js/dist/main.css">
+  </head>
+  <!-- Premium data -->
+  <body class="premium-data">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCTXGJ8"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {% if submitted %}
+      <div class="vertical-center">
+        <h3>Thank you!</h3>
+        <p>We've recieved your request and will get back to you soon!</p>
+      </div>
+    {% else %}
+      <h4>
+        These are what you get along with this offer
+      </h4>
+      <ul>
+        <li>
+          Notifications of data updates and schema changes
+        </li>
+        <li>
+          Warranty / guaranteed updates
+        </li>
+        <li>
+          Workflow integration (e.g. Python packages, NPM packages)
+        </li>
+        <li>
+          Customized data (e.g. you need different or additional data)
+        </li>
+        <li>
+          Or suggest your own feature in the form below!
+        </li>
+      </ul>
+      <h4>
+        Get Started &mdash; Contact Us
+      </h4>
+      <form action="https://formspree.io/support@datahub.io" method="POST" name="premium-data">
+        <div class="form-group">
+          <label for="inputEmail">Email address</label>
+          <input type="email" class="form-control" name="email" required autofocus
+            placeholder="Your e-mail address" id="inputEmail"
+            pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' />
+        </div>
+        <label for="features">Which features you like the most?</label>
+        <textarea class="form-control" rows="2" name="features-i-like"
+          id="features" placeholder="Optional: tell us what do you think about offered features"></textarea>
+        <label for="suggested-feature">or suggest your own feature ...</label>
+        <textarea class="form-control" rows="2" name="suggested-feature" id="suggested-feature" placeholder="Optional: let us know what do you want along with this offer - we'll consider your suggestion and get back to you."></textarea>
+        <input type="hidden" name="_next" value="https://datahub.io/premium-data?done=1" />
+        <input type="hidden" name="_subject" value="Premium data signup request" />
+        <input type="submit" value="Send" class="btn btn-primary pull-right">
+      </form>
+    {% endif %}
+  </body>
+</html>

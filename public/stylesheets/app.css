@@ -7738,4 +7738,15 @@ body.requests textarea {
 body.requests input[type="submit"] {
   margin: 20px 0; }
 
+body.premium-data {
+  padding-bottom: 0; }
+  body.premium-data .vertical-center {
+    height: 200px !important; }
+  body.premium-data h4 {
+    margin: 20px 0; }
+  body.premium-data form {
+    height: 320px; }
+  body.premium-data input[type="submit"] {
+    margin: 20px 0; }
+
 /*# sourceMappingURL=app.css.map */
