@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+Pricing
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="inner_container">
+    <h1 class="text-center">Payments</h1>
+
+    {% if amount %}
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 text-center">
+
+          <div class="payment-descriptions">
+
+          <h3>Description: Dataset Request.</h3>
+          <p>Please proceed to pay for the datasets requested. Once the payments are received, our team will reach back to acknowledge the transaction.</p>
+          <h3>Total Amount: ${{ amount }}</h3>
+
+          </div>
+
+          <form action="/pay/checkout" method="POST">
+            <script
+              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="{{ publishableKey }}"
+              data-amount="{{ amount * 100 }}"
+              data-name="Datahub"
+              data-image="/static/img/datahub-cube-edited.svg"
+              data-locale="auto"
+              data-zip-code="true">
+            </script>
+            <input type="hidden" name="chargeAmount" value="{{ amount * 100 }}" />
+          </form>
+
+          <p class="txt-pd-40">Our Payments are Processed by Stripe and are 100% secure</p>
+
+
+
+        </div>
+      </div>
+    {% elif paymentSucceeded %}
+
+      <!-- Success Message -->
+      <div class="row">
+        <div class="col-sm-12">
+          {% if paymentSucceeded == 1 %}
+          <div class="payment-response text-center" id="payment-success">
+              <img src="/static/img/success.png" />
+              <h2>Payments Success!</h2>
+              <p>Awesome! We have received your payments and our team will get back to you within next 24hrs!</p>
+          </div>
+          {% else %}
+          <div class="payment-response text-center" id="payment-failed">
+              <img src="/static/img/error.png" />
+              <h2>Payments Failed!</h2>
+              <p>Oh no! Something went wrong, please try again.</p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

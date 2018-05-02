@@ -12,6 +12,8 @@ const moment = require('moment')
 const md5 = require('md5')
 const timeago = require('timeago.js')
 
+var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+
 const config = require('../config')
 const lib = require('../lib')
 const utils = require('../lib/utils')
@@ -1057,6 +1059,48 @@ module.exports = function () {
     req.flash('message', 'Thank you! We\'ve recieved your request and will get back to you soon!')
     res.redirect(dest)
   })
+
+  //Payments Page
+  router.get('/pay', (req, res) => {
+    let paymentSucceeded, amount
+    if (req.query.amount) {
+      amount = req.query.amount
+    } else if (req.query.success) {
+      paymentSucceeded = req.query.success
+    } else {
+      res.status(404).render('404.html', {
+        message: 'Sorry, this page was not found'
+      })
+      return
+    }
+
+    res.render('pay.html', {
+       getPayment: true,
+       publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+       amount,
+       paymentSucceeded
+    })
+  })
+
+  //Payment Charging the amount
+  router.post('/pay/checkout',(req,res) => {
+      var token = req.body.stripeToken
+      var chargeAmount = req.body.chargeAmount
+
+      const charge = stripe.charges.create({
+        amount: chargeAmount,
+        currency: 'usd',
+        description: 'Example charge',
+        source: token,
+      }, (err, charge) => {
+        if(err && err.type=="StripeCardError"){
+          res.redirect('/pay?success=0')
+        }
+      })
+      res.redirect('/pay?success=1')
+  })
+
+
 
   // MUST come last in order to catch all the publisher pages
   router.get('/:owner', async (req, res) => {
