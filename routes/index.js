@@ -1062,29 +1062,42 @@ module.exports = function () {
 
   //Payments Page
   router.get('/pay', (req, res) => {
+    let paymentSucceeded, amount
+    if (req.query.amount) {
+      amount = req.query.amount
+    } else if (req.query.success) {
+      paymentSucceeded = req.query.success
+    } else {
+      res.status(404).render('404.html', {
+        message: 'Sorry, this page was not found'
+      })
+      return
+    }
+
     res.render('pay.html', {
-       getPayment:true
+       getPayment: true,
+       amount,
+       paymentSucceeded
     })
   })
 
   //Payment Charging the amount
-  router.post('/charge',(req,res) => {
-      var token = req.body.stripeToken;
-      var chargeAmount = req.body.chargeAmount;
+  router.post('/pay/checkout',(req,res) => {
+      var token = req.body.stripeToken
+      var chargeAmount = req.body.chargeAmount
 
       const charge = stripe.charges.create({
         amount: chargeAmount,
         currency: 'usd',
         description: 'Example charge',
         source: token,
-      },function(err,charge){
-        if(err & err.type=="StripeCardError"){
-          console.log("Error!: Your card was declined");
+      }, (err, charge) => {
+        if(err && err.type=="StripeCardError"){
+          res.redirect('/pay?success=0')
         }
-      });
-      console.log('Your payment was successful');
-      res.redirect('/paymentsuccess');
-  });
+      })
+      res.redirect('/pay?success=1')
+  })
 
 
 
