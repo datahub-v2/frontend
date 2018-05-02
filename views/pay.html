@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+Pricing
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="inner_container">
+    <h1 class="text-center">Payments</h1>
+
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 text-center">
+        <br/>
+
+        <h3>Description: Dataset Request</h3>
+        <p>Please proceed to pay for the datasets requested. Once the payments are received, our team will reach back to acknowledge the transaction.</p>
+        <h3>Total Amount: $3</h3>
+        <br/>
+        <form action="/charge" method="POST">
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_7Y93Se5eFEWgcXTl0bKkWuUX"
+            data-amount="300"
+            data-name="Datahub"
+            data-image="/static/img/datahub-cube-edited.svg"
+            data-locale="auto"
+            data-zip-code="true">
+          </script>
+          <input type="hidden" name="chargeAmount" value="300" />
+        </form>
+      </div>
+    </div>
+    
+    <span class="text-center">Our Payments are Processed by Stripe and are 100% secure</span>
+    <br/><br/><br/><br/><br/>
+  </div>
+</div>
+{% endblock %}

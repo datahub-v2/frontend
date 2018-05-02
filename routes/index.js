@@ -12,6 +12,8 @@ const moment = require('moment')
 const md5 = require('md5')
 const timeago = require('timeago.js')
 
+var stripe = require('stripe')('sk_test_ANerXF1rnUKx0SDLa3LCu5Dx');
+
 const config = require('../config')
 const lib = require('../lib')
 const utils = require('../lib/utils')
@@ -1057,6 +1059,31 @@ module.exports = function () {
     req.flash('message', 'Thank you! We\'ve recieved your request and will get back to you soon!')
     res.redirect(dest)
   })
+
+  //Payments Page
+  router.get('/pay', (req, res) => {
+    res.render('pay.html', {
+    })
+  })
+
+  //Charging the amount
+  router.post('/charge',(req,res) => {
+      var token = req.body.stripeToken;
+      var chargeAmount = req.body.chargeAmount;
+
+      const charge = stripe.charges.create({
+        amount: chargeAmount,
+        currency: 'usd',
+        description: 'Example charge',
+        source: token,
+      },function(err,charge){
+        if(err & err.type=="StripeCardError"){
+          console.log("Error!: Your card was declined");
+        }
+      });
+      console.log('Your payment was successful');
+      res.redirect('/paymentsuccess');
+  });
 
   // MUST come last in order to catch all the publisher pages
   router.get('/:owner', async (req, res) => {
