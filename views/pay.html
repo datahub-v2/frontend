@@ -11,12 +11,15 @@ Pricing
 
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 text-center">
-        <br/>
 
-        <h3>Description: Dataset Request</h3>
+        <div class="payment-descriptions">
+
+        <h3>Description: Dataset Request.</h3>
         <p>Please proceed to pay for the datasets requested. Once the payments are received, our team will reach back to acknowledge the transaction.</p>
         <h3>Total Amount: $3</h3>
-        <br/>
+
+        </div>
+
         <form action="/charge" method="POST">
           <script
             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -29,11 +32,33 @@ Pricing
           </script>
           <input type="hidden" name="chargeAmount" value="300" />
         </form>
+
+        <span class="txt-pd-40">Our Payments are Processed by Stripe and are 100% secure</span>
+
+
+
       </div>
     </div>
     
-    <span class="text-center">Our Payments are Processed by Stripe and are 100% secure</span>
-    <br/><br/><br/><br/><br/>
+    <!-- Success Message -->
+    <div class="row">
+      <div class="col-sm-12">
+
+        <div class="payment-response text-center" id="payment-success">
+            <img src="/static/img/success.png" />
+            <h2>Payments Success!</h2>
+            <p>Awesome! We have received your payments and our team will get back to you within next 24hrs!</p>
+        </div>
+        
+        <div class="payment-response text-center" id="payment-failed">
+            <img src="/static/img/error.png" />
+            <h2>Payments Failed!</h2>
+            <p>Oh no! Something went wrong, please try again.</p>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </div>
 {% endblock %}

@@ -1063,10 +1063,11 @@ module.exports = function () {
   //Payments Page
   router.get('/pay', (req, res) => {
     res.render('pay.html', {
+       getPayment:true
     })
   })
 
-  //Charging the amount
+  //Payment Charging the amount
   router.post('/charge',(req,res) => {
       var token = req.body.stripeToken;
       var chargeAmount = req.body.chargeAmount;
@@ -1084,6 +1085,8 @@ module.exports = function () {
       console.log('Your payment was successful');
       res.redirect('/paymentsuccess');
   });
+
+
 
   // MUST come last in order to catch all the publisher pages
   router.get('/:owner', async (req, res) => {
