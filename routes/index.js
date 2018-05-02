@@ -1090,14 +1090,16 @@ module.exports = function () {
       const charge = stripe.charges.create({
         amount: chargeAmount,
         currency: 'usd',
-        description: 'Example charge',
+        description: 'Data Requests',
         source: token,
       }, (err, charge) => {
-        if(err && err.type=="StripeCardError"){
+        if(err){
+          req.flash('message', err.message)
           res.redirect('/pay?success=0')
+        } else {
+          res.redirect('/pay?success=1')
         }
       })
-      res.redirect('/pay?success=1')
   })
 
 
