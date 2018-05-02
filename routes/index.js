@@ -12,7 +12,7 @@ const moment = require('moment')
 const md5 = require('md5')
 const timeago = require('timeago.js')
 
-var stripe = require('stripe')('sk_test_ANerXF1rnUKx0SDLa3LCu5Dx');
+var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 const config = require('../config')
 const lib = require('../lib')
@@ -1076,6 +1076,7 @@ module.exports = function () {
 
     res.render('pay.html', {
        getPayment: true,
+       publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
        amount,
        paymentSucceeded
     })

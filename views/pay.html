@@ -24,7 +24,7 @@ Pricing
           <form action="/pay/checkout" method="POST">
             <script
               src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="pk_test_7Y93Se5eFEWgcXTl0bKkWuUX"
+              data-key="{{ publishableKey }}"
               data-amount="{{ amount * 100 }}"
               data-name="Datahub"
               data-image="/static/img/datahub-cube-edited.svg"
