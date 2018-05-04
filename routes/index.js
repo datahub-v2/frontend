@@ -5,6 +5,7 @@ const path = require('path')
 const urllib = require('url')
 
 const express = require('express')
+const sm = require('sitemap')
 const fetch = require('node-fetch')
 const bytes = require('bytes')
 const fm = require('front-matter')
@@ -44,6 +45,59 @@ module.exports = function () {
       title: 'Home',
       firstColumnPackages: showcasePackages.slice(0, 2),
       secondColumnPackages: showcasePackages.slice(2)
+    })
+  })
+
+  // Sitemap:
+  router.get('/sitemap.xml', async (req, res) => {
+    // Create sitemap object with existing static paths:
+    const sitemap = sm.createSitemap({
+      host: 'https://datahub.io',
+      cacheTime: 600000,
+      urls: router.stack.reduce((urls, route) => {
+        const pathToIgnore = [
+          '/pay', '/pay/checkout', '/thanks', '/logout',
+          '/success', '/user/login', '/sitemap.xml', '/dashboard'
+        ]
+        if (
+          route.route.path.constructor.name == 'String'
+          && !route.route.path.includes(':')
+          && !pathToIgnore.includes(route.route.path)
+        ) {
+          urls.push({
+            url: urllib.resolve('https://datahub.io', route.route.path),
+            changefreq: 'monthly'
+          })
+        }
+        return urls
+      }, [])
+    })
+    // Include additional path, e.g., blog posts, awesome pages:
+    const leftoverPages = [
+      '/awesome/football', '/awesome/climate-change', '/awesome/linking-open-data',
+      '/awesome/war-and-peace', '/awesome/world-bank', '/docs'
+    ]
+    fs.readdirSync('blog/').forEach(post => {
+      leftoverPages.push(`blog/${post.slice(11, -3)}`)
+    })
+    leftoverPages.forEach(page => {
+      sitemap.add({url: urllib.resolve('https://datahub.io', page)})
+    })
+    // Add special users' publisher pages and their datasets:
+    const specialUsers = ['core', 'machine-learning', 'examples']
+    await Promise.all(specialUsers.map(async user => {
+      sitemap.add({url: urllib.resolve('https://datahub.io', user)})
+      const packages = await api.search(`datahub.ownerid="${user}"&size=100`)
+      packages.results.forEach(pkg => sitemap.add({url: urllib.resolve('https://datahub.io', pkg.id)}))
+    }))
+    // Generate sitemap object into XML and respond:
+    sitemap.toXML((err, xml) => {
+      if (err) {
+        console.log(err)
+        return res.status(500).end();
+      }
+      res.header('Content-Type', 'application/xml')
+      res.send( xml )
     })
   })
 
