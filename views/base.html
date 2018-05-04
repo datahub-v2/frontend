@@ -12,20 +12,25 @@
   <!-- Twitter card -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@datahubio" />
-  <meta name="twitter:title" content="{{title}}" />
+  <meta name="twitter:title" content="{% block title%}{{title}}{% endblock %}" />
   <meta name="twitter:image" content="https://datahub.io/static/img/logo-cube.png" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="{{title}}" />
+  <meta property="og:title" content="{% block title%}{{title}}{% endblock %}" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DataHub" />
   <meta property="og:image" content="https://datahub.io/static/img/logo-cube.png" />
+  <meta property="og:image:alt" content="DataHub logo" />
   <meta property="fb:app_id" content="188583668435715" />
 
   {% if dataset and dataset.readmeSnippet %}
   <meta name="description" content="{{dataset.readmeSnippet}}" />
   <meta name="twitter:description" content="{{dataset.readmeSnippet}}" />
   <meta property="og:description" content="{{dataset.readmeSnippet}}" />
+  {% elif content %}
+  <meta name="description" content="{{content| truncate(200) | safe}}" />
+  <meta name="twitter:description" content="{{content| truncate(200) | safe}}" />
+  <meta property="og:description" content="{{content| truncate(200) | safe}}" />
   {% else %}
   <meta name="description" content="{{title}}. Data online made easy. Share and find data, quickly and easily. Simple, solid, slick. Frictionless and fast. Built for data scientists and wranglers. Managed by Datopian and Open Knowledge International">
   <meta name="twitter:description" content="❒ datahub is the fastest way for individuals and teams to find, share and publish high quality data online" />
