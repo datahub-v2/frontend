@@ -12,11 +12,11 @@
   <!-- Twitter card -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@datahubio" />
-  <meta name="twitter:title" content="{% block title%}{{title}}{% endblock %}" />
+  <meta name="twitter:title" content="{{dataset.title or title}}" />
   <meta name="twitter:image" content="https://datahub.io/static/img/logo-cube.png" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="{% block title%}{{title}}{% endblock %}" />
+  <meta property="og:title" content="{{dataset.title or title}}" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DataHub" />
   <meta property="og:image" content="https://datahub.io/static/img/logo-cube.png" />
