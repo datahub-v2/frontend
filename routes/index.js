@@ -210,6 +210,7 @@ module.exports = function () {
     const githubLoginUrl = providers.providers.github.url
     const googleLoginUrl = providers.providers.google.url
     res.render('login.html', {
+      title: 'Sign up | Login',
       githubLoginUrl,
       googleLoginUrl
     })
@@ -319,6 +320,7 @@ module.exports = function () {
     })
     res.render('blog.html', {
       title: 'Home',
+      description: 'DataHub blog posts.',
       posts: listOfPosts
     })
   })
@@ -337,6 +339,7 @@ module.exports = function () {
         const parsedWithFM = fm(text)
         res.render('post.html', {
           title: parsedWithFM.attributes.title,
+          description: parsedWithFM.body.substring(0,200).replace(/\n/g, ' '),
           date: moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY'),
           authors: parsedWithFM.attributes.authors.map(author => authors[author]),
           content: utils.md.render(parsedWithFM.body)
@@ -907,6 +910,8 @@ module.exports = function () {
     const pages = utils.pagination(currentPage, totalPages)
 
     res.render('search.html', {
+      title: 'Search Datasets',
+      description: 'Search for public datasets on DataHub.',
       packages,
       pages,
       currentPage,
@@ -916,11 +921,15 @@ module.exports = function () {
 
   router.get('/pricing', (req, res) => {
     res.render('pricing.html', {
+      title: 'Pricing',
+      description: 'Membership Plans'
     })
   })
 
   router.get('/requests', (req, res) => {
     res.render('requests.html', {
+      title: 'Data Requests',
+      description: 'Engage the Data Concierge. We offer a service to locate and/or prepare data for you.'
     })
   })
 
@@ -1137,6 +1146,8 @@ module.exports = function () {
     const pages = utils.pagination(currentPage, totalPages)
 
     res.render('owner.html', {
+      title: req.params.owner + ' publisher page',
+      description: userProfile.profile.name,
       packages,
       pages,
       currentPage,
