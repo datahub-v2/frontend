@@ -13,6 +13,8 @@ test('Home page returns 200 and has correct content', async t => {
     .expect(200)
   t.is(res.statusCode, 200)
   t.true(res.text.includes('DataHub'))
+  // Check if keywords are on place:
+  t.true(res.text.includes('data,open data,datasets,datahub,data hub,public data,data package,reference data,csv,json,excel'))
 })
 
 test('Dashboard page renders when jwt in cookies setup', async t => {
@@ -61,6 +63,8 @@ test('Showcase page with short URL works, if there is a latest successful revisi
   t.is(res.statusCode, 200)
   t.true(res.text.includes('Read me'))
   t.true(res.text.includes('DEMO - CBOE Volatility Index'))
+  // Keywords are on place:
+  t.true(res.text.includes('test,keyword'))
 })
 
 test('Showcase page returns 200 if logged in and private dataset', async t => {

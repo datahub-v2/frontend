@@ -18,6 +18,7 @@ var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 const config = require('../config')
 const lib = require('../lib')
 const utils = require('../lib/utils')
+const keywords = require('../public/seo/keywords.json')
 
 const datapackage = require('datapackage')
 
@@ -601,6 +602,18 @@ module.exports = function () {
           console.error(err)
         }
 
+        // Get the keywords from the dictionary:
+        let datasetKeywords = keywords
+          .find(item => item.name === req.params.name)
+        datasetKeywords = datasetKeywords
+          ? datasetKeywords.keywords.join(',')
+          : ''
+        // Get the common keywords:
+        const generalKeywords = keywords
+          .find(item => item.name === 'general')
+          .keywords
+          .join(',')
+
         // Now render the page:
         res.render('showcase.html', {
           title: req.params.owner + ' | ' + req.params.name,
@@ -613,7 +626,8 @@ module.exports = function () {
           failUrl: `/${req.params.owner}/${req.params.name}/v/${revisionId}`,
           successUrl: `/${req.params.owner}/${req.params.name}`,
           statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/${revisionId}`,
-          failedPipelines
+          failedPipelines,
+          keywords: datasetKeywords + generalKeywords
         })
       }
     }

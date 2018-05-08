@@ -1,0 +1,172 @@
+[
+  {
+    "name": "general",
+    "keywords": [
+      "data",
+      "open data",
+      "datasets",
+      "public data",
+      "data package",
+      "reference data",
+      "csv",
+      "json",
+      "excel"
+    ]
+  },
+  {
+    "name": "demo-package",
+    "keywords": [
+      "test",
+      "keyword"
+    ]
+  },
+  {
+    "name": "country-list",
+    "path": "/core/country-list",
+    "keywords": [
+      "country list",
+      "iso country codes",
+      "+2 country code",
+      "list of countries",
+      "countries with 2 digit codes",
+      "country ISO 3166-1 codes",
+      "country names",
+      "ISO 3166-1-alpha-2"
+    ]
+  },
+  {
+    "name": "s-and-p-500-companies",
+    "path": "/core/s-and-p-500-companies",
+    "keywords": [
+      "s&p 500 companies",
+      "list of s&p 500 companies",
+      "list of companies",
+      "standard and poor's 500",
+      "s&p 500 list",
+      "s and p",
+      "constituents"
+    ]
+  },
+  {
+    "name": "world-cities",
+    "path": "/core/world-cities",
+    "keywords": [
+      "world cities",
+      "list of cities in the world",
+      "countries and cities",
+      "major cities",
+      "major cities of the world",
+      "country ISO 3166-1 codes",
+      "geonames",
+      "worldwide toponyms"
+    ]
+  },
+  {
+    "name": "language-codes",
+    "path": "/core/language-codes",
+    "keywords": [
+      "language codes",
+      "ISO Language Codes",
+      "ISO 639-1",
+      "ISO 693-2",
+      "IETF Language Types",
+      "IETF Language tags"
+    ]
+  },
+  {
+    "name": "country-codes",
+    "path": "/core/country-codes",
+    "keywords": [
+      "country codes",
+      "iso 4217",
+      "ISO 3166 codes",
+      "ITU dialing codes",
+      "Country or Area official names in different languages",
+      "Country Area names in Arabic",
+      "Country Area names in Chinese",
+      "Country Area names in English",
+      "Country Area names in Spanish",
+      "Country Area names in French",
+      "Country Area names in Russian",
+      "Alpha-2 Alpha-3 and Numeric codes from ISO 3166-1",
+      "ISO 4217 country name and currency number of minor units",
+      "ISO 4217 currency name and currency numeric code",
+      "UNTERM",
+      "CLDR display name",
+      "Distinguishing signs of vehicles",
+      "Country classification",
+      "EDGAR country code",
+      "FIFA codes",
+      "FIPS codes",
+      "GAUL codes",
+      "Geoname ID",
+      "Global Code and name",
+      "IOC",
+      "ITU",
+      "Intermediate Region Code",
+      "Intermediate Region Name",
+      "Land Locked Developing Countries",
+      "Least Developed Countries",
+      "Machine-Readable Cataloging codes",
+      "Region Code and Name",
+      "Small Island Developing States (SIDS)",
+      "Sub-region Code and Name",
+      "Top level domain from Geonames",
+      "WMO",
+      "country status"
+    ]
+  },
+  {
+    "name": "global-temp",
+    "path": "/core/global-temp",
+    "keywords": [
+      "Global Temperature",
+      "gistemp",
+      "Global Temperature Time Series",
+      "global monthly mean data temperature anomalies",
+      "global annual mean temperature anomalies"
+    ]
+  },
+  {
+    "name": "population-growth-estimates-and-projections",
+    "path": "/core/population-growth-estimates-and-projections",
+    "keywords": [
+      "population growth estimates and projections",
+      "population growth",
+      "population estimates for low medium and high fertility variants",
+      "population"
+    ]
+  },
+  {
+    "name": "continent-codes",
+    "path": "/core/continent-codes",
+    "keywords": [
+      "continent codes",
+      "List of continent codes",
+      "list of continents",
+      "iso continent codes"
+    ]
+  },
+  {
+    "name": "airport-codes",
+    "path": "/core/airport-codes",
+    "keywords": [
+      "airport codes",
+      "IATA airport code",
+      "ICAO airport code",
+      "Airport codes from around the world",
+      "airport locations"
+    ]
+  },
+  {
+    "name": "un-locode",
+    "path": "/core/un-locode",
+    "keywords": [
+      "unlocode",
+      "un locode",
+      "UN-LOCODE Codelist",
+      "United Nations Code for Trade and Transport Locations",
+      "locode"
+    ]
+  }
+]
