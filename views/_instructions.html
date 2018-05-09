@@ -107,11 +107,11 @@ package = Package(<span class="hljs-string">'https://datahub.io/{{dataset.datahu
 {% macro data_cli(dataset) -%}
 <p>
   <strong>Data-cli</strong> or just <strong>data</strong> is the program to get and post your data with the datahub.<br>
-    Use <strong>data</strong> with the datahub.io almost like you use <strong>git</strong> with the github.
-  Here are <a href="/docs/getting-started/installing-data">installation instructions</a>.
+  <a href="/download">Download CLI tool</a> and use it with the datahub almost like you use <strong>git</strong> with the github:
 </p>
 
 <pre class="hljs"><code><span class="hljs-keyword">data get </span><span class="hljs-string">https://datahub.io/{{dataset.datahub.owner}}/{{dataset.name}}</span>
+<span class="hljs-keyword">data info </span><span class="hljs-string">{{dataset.datahub.owner}}/{{dataset.name}}</span>
 <span class="hljs-keyword">tree </span><span class="hljs-string">{{dataset.datahub.owner}}/{{dataset.name}}</span>
 </code></pre>
 {%- endmacro %}
