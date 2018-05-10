@@ -58,6 +58,7 @@ body.home {
       .btn-custom 
       {
           padding:9px 35px;
+          border-radius:5px;
       }
 
       .btn-blue
@@ -320,12 +321,13 @@ body.home {
       {
           margin-top:25px;
       }
-      .publish-data .right-box ul li::before
+      .publish-data .right-box ul li::before 
       {
-          content: "•"; 
-          color:#20add0;
-          margin-right:10px;
-      }
+        content: "\25CF";
+        font-family: FontAwesome;
+        color: #21add0;
+        margin-right: 8px;
+    }
 
 
       /***************************8 request-data *******************/ 
@@ -452,12 +454,13 @@ body.home {
       {
           margin-top:25px;
       }
-      .core-datasets .right-box ul li::before
+      .core-datasets .right-box ul li:before 
       {
-          content: "•"; 
-          color:#20add0;
-          margin-right:10px;
-      }
+        content: "\25CF";
+        font-family: FontAwesome;
+        color: #21add0;
+        margin-right: 8px;
+    }
 
       .core-datasets .table tbody tr td:nth-child(4),.core-datasets .table tbody tr td:nth-child(5) {
           font-weight:400;
@@ -511,8 +514,29 @@ body.home {
           left:80%;
           width:20%;
       }
-
-
+      .data-os .artwork 
+      {
+        background-image:url("../img/dotted.png");
+        height:220px;
+        margin-top:30px;
+        margin-bottom:10px;
+        background-size:contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+      .data-os .content .number 
+      {
+        background-color:#20add0;
+        color:#fff;
+        height:40px;
+        width:40px;
+        padding:7px;
+        border-radius:50px;
+      }
+      .data-os .content p
+      {
+        font-weight:700 !important;
+      }
       /********************** section 6 ******************/ 
       .hire-us 
       {
@@ -561,6 +585,7 @@ body.home {
           background-image:url('../img/footer-bg.jpg');
           background-repeat: no-repeat;
           background-size:contain;
+          background-position:top center;
       }
 
       footer h3 {
@@ -699,6 +724,16 @@ body.home {
             padding-bottom: auto;
             height:auto;
           }
+         
+          .data-os .artwork 
+          {
+            display:none;
+          }
+          .data-os .content 
+          {
+            margin-top:90px;
+          }
+         
       }
 
 
@@ -715,6 +750,14 @@ body.home {
         
         .xs-pad-right-0 {
             padding-right:0;
+        }
+        .data-os .content 
+        {
+          margin-top:70px;
+        }
+        .data-os .artwork 
+        {
+          display:none;
         }
     }
     

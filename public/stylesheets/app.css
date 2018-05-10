@@ -6364,7 +6364,8 @@ body.home {
   body.home .color-blue {
     color: #20add0; }
   body.home .btn-custom {
-    padding: 9px 35px; }
+    padding: 9px 35px;
+    border-radius: 5px; }
   body.home .btn-blue {
     background-color: #20add0;
     color: #fff; }
@@ -6519,9 +6520,10 @@ background: @include background-image(linear-gradient(top, rgba(51,48,123,1) 0%,
   body.home .publish-data .right-box ul li {
     margin-top: 25px; }
   body.home .publish-data .right-box ul li::before {
-    content: "ΓÇó";
-    color: #20add0;
-    margin-right: 10px; }
+    content: "\25CF";
+    font-family: FontAwesome;
+    color: #21add0;
+    margin-right: 8px; }
   body.home .request-data {
     padding: 140px 0px 50px 0px; }
   body.home .request-data .left-sec h1 {
@@ -6588,10 +6590,11 @@ background: @include background-image(linear-gradient(top, rgba(51,48,123,1) 0%,
     margin: 25px 0px 35px 0px; }
   body.home .core-datasets .right-box ul li {
     margin-top: 25px; }
-  body.home .core-datasets .right-box ul li::before {
-    content: "ΓÇó";
-    color: #20add0;
-    margin-right: 10px; }
+  body.home .core-datasets .right-box ul li:before {
+    content: "\25CF";
+    font-family: FontAwesome;
+    color: #21add0;
+    margin-right: 8px; }
   body.home .core-datasets .table tbody tr td:nth-child(4), body.home .core-datasets body.textual table tbody tr td:nth-child(4), body.textual body.home .core-datasets table tbody tr td:nth-child(4), body.home .core-datasets body.docs table tbody tr td:nth-child(4), body.docs body.home .core-datasets table tbody tr td:nth-child(4), body.home .core-datasets body.blog table tbody tr td:nth-child(4), body.blog body.home .core-datasets table tbody tr td:nth-child(4), body.home .core-datasets .table tbody tr td:nth-child(5), body.home .core-datasets body.textual table tbody tr td:nth-child(5), body.textual body.home .core-datasets table tbody tr td:nth-child(5), body.home .core-datasets body.docs table tbody tr td:nth-child(5), body.docs body.home .core-datasets table tbody tr td:nth-child(5), body.home .core-datasets body.blog table tbody tr td:nth-child(5), body.blog body.home .core-datasets table tbody tr td:nth-child(5) {
     font-weight: 400; }
   body.home .core-datasets .info-1 {
@@ -6626,6 +6629,23 @@ background: @include background-image(linear-gradient(top, rgba(51,48,123,1) 0%,
     top: 40px;
     left: 80%;
     width: 20%; }
+  body.home .data-os .artwork {
+    background-image: url("../img/dotted.png");
+    height: 220px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center; }
+  body.home .data-os .content .number {
+    background-color: #20add0;
+    color: #fff;
+    height: 40px;
+    width: 40px;
+    padding: 7px;
+    border-radius: 50px; }
+  body.home .data-os .content p {
+    font-weight: 700 !important; }
   body.home .hire-us {
     padding: 70px 0px 70px 0px; }
   body.home .hire-us .left-sec h1 {
@@ -6653,7 +6673,8 @@ background: @include background-image(linear-gradient(top, rgba(51,48,123,1) 0%,
     background-color: #f5f9fc;
     background-image: url("../img/footer-bg.jpg");
     background-repeat: no-repeat;
-    background-size: contain; }
+    background-size: contain;
+    background-position: top center; }
   body.home footer h3 {
     padding: 0px 0 15px 0;
     color: #abaae6;
@@ -6733,7 +6754,11 @@ background: @include background-image(linear-gradient(top, rgba(51,48,123,1) 0%,
       content: "";
       display: block;
       padding-bottom: auto;
-      height: auto; } }
+      height: auto; }
+    body.home .data-os .artwork {
+      display: none; }
+    body.home .data-os .content {
+      margin-top: 90px; } }
   @media screen and (max-width: 480px) {
     body.home .publish-data .img-sec .blue-box {
       position: absolute;
@@ -6743,7 +6768,11 @@ background: @include background-image(linear-gradient(top, rgba(51,48,123,1) 0%,
       border: 15px solid #fff;
       border-right: 0px; }
     body.home .xs-pad-right-0 {
-      padding-right: 0; } }
+      padding-right: 0; }
+    body.home .data-os .content {
+      margin-top: 70px; }
+    body.home .data-os .artwork {
+      display: none; } }
   @media screen and (max-width: 1200px) {
     body.home .square {
       width: 100%; }
