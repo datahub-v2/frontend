@@ -30,6 +30,7 @@ module.exports = function () {
   // Front page:
   router.get('/', async (req, res) => {
     // Get showcase packages for the front page
+    /*
     let listOfShowcasePkgId = config.get('showcasePackages')
     try {
       listOfShowcasePkgId = await Promise.all(listOfShowcasePkgId.map(async pkgId => {
@@ -40,12 +41,12 @@ module.exports = function () {
     } catch (err) {
       req.flash('message', 'We are facing some technical problems and working to fix them! Please come back later')
     }
-    const showcasePackages = await api.getPackages(listOfShowcasePkgId)
-    showcasePackages.map((pkg, idx) => pkg.revisionId = listOfShowcasePkgId[idx].revisionId)
+    const showcasePackages = await api.getPackages(listOfShowcasePkgId) 
+    showcasePackages.map((pkg, idx) => pkg.revisionId = listOfShowcasePkgId[idx].revisionId) */
     res.render('home.html', {
       title: 'Home',
-      firstColumnPackages: showcasePackages.slice(0, 2),
-      secondColumnPackages: showcasePackages.slice(2)
+      /* firstColumnPackages: showcasePackages.slice(0, 2),
+      secondColumnPackages: showcasePackages.slice(2) */
     })
   })
 
