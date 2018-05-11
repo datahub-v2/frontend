@@ -1,8 +1,8 @@
 @import "customVariables";
 @import "../bootstrap/assets/stylesheets/bootstrap";
 //@import "generals";
-//@import "navbar";
-//@import "footer";
+@import "navbar";
+@import "footer";
 @import "home";
 @import "search";
 @import "publisher";
