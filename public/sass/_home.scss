@@ -614,3 +614,38 @@ body.home {
           }
     }
 }
+
+
+/* Susbscribe */
+.subscribe-form
+{
+padding:100px;
+
+}
+.custom-input
+{
+display: block;
+    
+    height: 38px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.7142857143;
+    color: #757575;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #000;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.subscribe-form h3
+{
+margin-bottom:40px;
+}
+#form-for-blog
+{
+padding-top:30px;
+}

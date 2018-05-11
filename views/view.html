@@ -10,11 +10,15 @@
     <meta name="keywords" content="data,datasets,data publishing,data sharing,data hosting,data package,reference data,indicators">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WCTXGJ8');</script>
+    <script>
+      if (!window.location.host.includes('datahub.io') && !window.location.host.includes('localhost')) {
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WCTXGJ8');
+      }
+    </script>
     <!-- End Google Tag Manager -->
     <link rel="icon" type="img/ico" href="/static/img/favicon.ico" sizes="16x16">
     <link rel="stylesheet" media="screen" href="/static/stylesheets/app.css">
