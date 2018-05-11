@@ -46,7 +46,7 @@
 
   <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
-  
+
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -56,7 +56,7 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCTXGJ8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-   
+
   <section class="banner">
     <img src="/static/img/ellipse.png" class="ellipse"/>
     <div class="container">
@@ -67,7 +67,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>                        
+                      <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#" id="logo">datahub.io</a>
                   </div>
@@ -98,14 +98,14 @@
                           <button class="btn btn-custom  btn-blue btn-outline">Start Publishing</button>
                       </li>
                     </ul>
-                    
+
                   </div>
                 </div>
             </nav>
         </div>
-        
+
+        {% if home %}
         <p class="clearfix"></p>
-        
         <div class="row">
             <div class="col-sm-6">
                 <div class="left-sec">
@@ -118,8 +118,10 @@
                 <img src="/static/img/banner.png" class="img-responsive hidden-xs"/>
             </div>
         </div>
+        {% endif %}
     </div>
-</section><!-- End of page header -->
+  </section><!-- End of page header -->
+
 
     {% if message.length > 0 %}
     <div class="container">
@@ -137,13 +139,13 @@
           <div class="row">
               <div class="col-md-4 col-sm-3">
                   <h3>datahub.io</h3>
-                  
+
                   <p>At Datahub, we provide various solutions to Publish and Deploy
-your Data with power and simplicity. Datahub is the fastest way 
+your Data with power and simplicity. Datahub is the fastest way
 for individuals, teams and organizations to publish, deploy and
 share their data.</p>
               </div>
-              
+
               <div class="col-sm-3 col-md-2 col-md-offset-1">
                   <label>Links</label>
                   <ul>
@@ -167,7 +169,7 @@ share their data.</p>
                       </li>
                   </ul>
               </div>
-              
+
               <div class="col-sm-2">
                   <label>Support</label>
                   <ul>
