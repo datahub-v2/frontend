@@ -6393,14 +6393,14 @@ a {
     margin-top: 20px; }
 
 .container, .container-no-top-padding {
-  padding-left: 5%;
-  padding-right: 5%; }
+  /* padding-left: 5%;
+  padding-right: 5%; */ }
   @media (min-width: 768px) {
     .container, .container-no-top-padding {
       padding-top: 30px; } }
 
 .inner_container {
-  max-width: 960px;
+  /* max-width: 960px; */
   margin: auto; }
 
 .table, body.textual table, body.docs table, body.blog table {
@@ -6440,7 +6440,7 @@ a {
   border-bottom: 1px solid #eaeaea; }
 
 .nav > li > a {
-  padding: 10px; }
+  padding: 10px 17px; }
   @media (max-width: 1199px) {
     .nav > li > a {
       padding: 10px 7px; } }
@@ -6468,7 +6468,7 @@ a {
   .navbar .navbar-nav > li > a {
     text-transform: uppercase;
     font-size: 13px;
-    color: #999; }
+    color: #252525; }
   .navbar .navbar-nav > li > a.download-link {
     color: #ff7900; }
   .navbar .navbar-nav > li > a.join-link {
@@ -6584,6 +6584,9 @@ footer {
   padding-left: 0px !important;
   padding-right: 0px !important; }
 
+.home-banner {
+  padding-top: 30px; }
+
 .jumbotron-secondary form {
   margin-top: 30px; }
   .jumbotron-secondary form input, .jumbotron-secondary form textarea {
@@ -6612,7 +6615,14 @@ footer {
     margin: auto; }
   .container .jumbotron h1, .container-no-top-padding .jumbotron h1 {
     font-weight: 200;
-    margin-bottom: 30px; }
+    margin-bottom: 30px;
+    font-size: 42px;
+    line-height: 1.3em; }
+  .container .jumbotron p, .container-no-top-padding .jumbotron p {
+    font-size: 16px;
+    border-left: 2px solid #fe7d17;
+    padding-bottom: 4px;
+    padding-left: 10px; }
   .container .jumbotron h1.main-title, .container-no-top-padding .jumbotron h1.main-title {
     margin: 30px 0 20px; }
   .container .jumbotron .message, .container-no-top-padding .jumbotron .message {
@@ -6756,6 +6766,26 @@ footer {
   font-size: 14px;
   margin-top: 20px;
   text-align: center; }
+
+/********************** three elements section ******************/
+.three-elements {
+  margin-top: -100px;
+  margin-bottom: 50px; }
+
+.three-elements .element {
+  text-align: center;
+  padding: 40px 40px;
+  background-color: #fafafa;
+  border-radius: 7px;
+  margin-bottom: 30px; }
+
+.three-elements .element h4 {
+  margin-top: 15px;
+  font-size: 32px;
+  font-weight: 200; }
+
+.three-elements .element p {
+  margin: 20px 0px 25px 0px; }
 
 /* Section 1
 ====================================*/

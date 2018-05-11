@@ -13,6 +13,11 @@
   padding-right: 0px !important;
 }
 
+.home-banner {
+  padding-top:30px;
+}
+
+
 .jumbotron-secondary {
   form {
     margin-top: 30px;
@@ -52,6 +57,14 @@
   h1 {
     font-weight: 200;
     margin-bottom: 30px;
+    font-size:42px;
+    line-height: 1.3em;
+  }
+  p {
+    font-size: 16px;
+    border-left: 2px solid #fe7d17;
+    padding-bottom: 4px;
+    padding-left: 10px;
   }
   h1.main-title {
     margin: 30px 0 20px;
@@ -257,6 +270,31 @@
     margin-top:20px;
     text-align:center;
   }
+}
+
+
+/********************** three elements section ******************/ 
+.three-elements {
+  margin-top:-100px;
+  margin-bottom:50px;
+}
+.three-elements .element
+{
+  text-align:center;
+  padding:40px 40px;
+  background-color:#fafafa;
+  border-radius:7px;
+  margin-bottom:30px;
+}
+.three-elements .element h4 
+{
+  margin-top:15px;
+  font-size: 32px;
+  font-weight: 200;
+}
+.three-elements .element p 
+{
+  margin:20px 0px 25px 0px;
 }
 
 /* Section 1

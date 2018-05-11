@@ -10,77 +10,57 @@ Welcome - Home
 {% block content %}
 <!-- Jumbotron main -->
 <div class="container">
-  <div class="inner_container">
+  <div class="inner_container home-banner">
     <div class="jumbotron jumbotron-primary">
-      <div class="row">
-        <div class="text-center">
-          <h1 class="main-title">Data online made simple</h1>
-        </div>
-      </div>
       <div class="row demo">
         <div class="col-md-6">
-          <div class="console">
-            <div class="window">
-              <div class="header">
-                <span class="icon close-terminal"></span>
-                <span class="icon minimize"></span>
-                <span class="icon fullScreen"></span>
-                <div class="title">
-                  bash
-                </div>
-              </div>
-              <div class="body">
-                <div class="console-inner">
-                  <pre>
-<span class="prompt"><span class="square">■</span> ~/my-data $ <span
-class="txt-show"
-data-start="2000"
-data-text='ls'></span><span class="cursor"></span>
-</span><span class="output" style="display:none">   data.csv</span><span
-class="prompt" style="display:none"><span class="square">■</span> ~/my-data $ <span
-class="txt-show"
-data-start="4500"
-data-text='data push data.csv'></span><span class="cursor"></span>
-</span><span
-class="prompt" style="display:none">   &gt; Uploading <span
-class="txt-show" data-start="12500" data-text="..................."></span> <span class="output" style="display:none">100% 8.5s</span>
-</span><span
-class="output" style="display:none">   &gt; Push complete (9.61MB) [8509ms]
-   &gt; Ready! https://datahub.io/your-username/my-data
-     (copied to clipboard)
-</span><span
-class="prompt" style="display:none"><span class="square">■</span> ~/my-data $ <span class="cursor"></span></span>
-                  </pre>
-                </div>
-              </div>
+            <div class="left-sec">
+                <h1>Find, Share and Publish <br> Quality Data with Datahub</h1>
+                <p>At Datahub, we provide various solutions to Publish and Deploy your Data with power and simplicity. Datahub is the fastest way for individuals, teams and organizations to publish, deploy and share their data.</p>
+                <a class="btn btn-primary">See Products</a>
             </div>
-          </div>
         </div>
         <div class="col-md-6">
-          <div class="primary-call-to-action">
-            <a href="/core" class="btn btn-lg btn-default btn-block">
-              Core datasets
-            </a>
-            <a href="/requests" class="btn btn-lg btn-default btn-block">
-              Request data
-            </a>
-            <a href="/download" class="btn btn-lg btn-primary btn-block">
-              Start publishing for free!
-            </a>
-          </div>
-        </div>
-      </div>
-      <p class="info"><span style="font-size: 100%; font-family: monospace">❒</span> <strong>datahub</strong> is the fastest way for individuals and teams to <strong>find, share and publish</strong> high quality data online</p>
-      <div class="row text-center call-to-action call-to-action-new">
-        <div>
-          <a href="#next-section" class="arrow" onclick="scrollDown(this)">
-            <i class="fa fa-angle-down" aria-hidden="true"></i>
-          </a>
+            <img src="static/img/banner.png" class="img-responsive center-block hidden-xs"/>
         </div>
       </div>
     </div>
   </div>
 </div><!-- End of jumbotron main -->
+
+<!-- three element section -->
+<section class="three-elements">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="element">
+                    <img src="static/img/earth-globe.png" class="img-responsive  center-block" />
+                    <h4>Publish Data</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet at ante at pharetra. Nam euismod amet. </p>
+                    <a href="#">Learn More <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="col-sm-4">
+                <div class="element">
+                    <img src="static/img/request.png" class="img-responsive  center-block" />
+                    <h4>Request Data</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet at ante at pharetra. Nam euismod amet. </p>
+                    <a href="#">Learn More <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="col-sm-4">
+                <div class="element">
+                    <img src="static/img/core.png" class="img-responsive  center-block" />
+                    <h4>Core Datasets</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet at ante at pharetra. Nam euismod amet. </p>
+                    <a href="#">Learn More <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Publish and Deploy your Data -->
 <div class="section-gray" id="next-section">
