@@ -6428,6 +6428,11 @@ a {
   .ReactVirtualized__Table__rowColumn:last-of-type {
     border-right: 0; }
 
+.btn-orange {
+  background-color: #ff7900;
+  border-color: #ff7900;
+  padding: 8px 20px; }
+
 /* Navbar
 ====================================*/
 .banner {
@@ -6481,7 +6486,7 @@ a {
     width: 8px;
     height: 8px;
     display: inline-block;
-    background: #8be2df;
+    background: #59c040;
     margin-left: 6px;
     border-radius: 50%; }
   .navbar a.nav-avatar {
@@ -6616,13 +6621,17 @@ footer {
   .container .jumbotron h1, .container-no-top-padding .jumbotron h1 {
     font-weight: 200;
     margin-bottom: 30px;
-    font-size: 42px;
+    font-size: 46px;
     line-height: 1.3em; }
+    .container .jumbotron h1 span, .container-no-top-padding .jumbotron h1 span {
+      color: #ff7900;
+      font-size: 46px !important;
+      position: relative;
+      top: -7px; }
   .container .jumbotron p, .container-no-top-padding .jumbotron p {
-    font-size: 16px;
-    border-left: 2px solid #fe7d17;
+    font-size: 18px;
     padding-bottom: 4px;
-    padding-left: 10px; }
+    line-height: 2em; }
   .container .jumbotron h1.main-title, .container-no-top-padding .jumbotron h1.main-title {
     margin: 30px 0 20px; }
   .container .jumbotron .message, .container-no-top-padding .jumbotron .message {
