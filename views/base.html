@@ -83,7 +83,7 @@
                     <ul class="nav navbar-nav">
                       <li><a href="#">Home</a></li>
                       <li><a href="#">About</a></li>
-                      <li><a href="#">Collection</a></li>
+                      <li><a href="#">Datasets</a></li>
                       <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products<span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -102,9 +102,15 @@
                         </ul>
                       </li>
                       <li><a href="#">Chat</a></li>
+                      {% if login %}
+                      <li>
+                        <a href="/logout">Logout</a>
+                      </li>
+                      {% else %}
                       <li>
                           <button class="btn btn-custom  btn-blue btn-outline">Start Publishing</button>
                       </li>
+                      {% endif %}
                     </ul>
 
                   </div>
