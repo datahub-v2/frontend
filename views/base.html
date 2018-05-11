@@ -51,7 +51,10 @@
   {'GTM-WCTXGJ8':true});</script>
   <!-- End Minimize page flickering -->
   <link rel="stylesheet" media="screen" href="/static/stylesheets/app.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -61,86 +64,78 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCTXGJ8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-    <div class="banner" style="margin-bottom:0">
-      <div><span style="font-weight:600"><i class="fa fa-bullhorn" aria-hidden="true"></i> We need your feedback, please fill in our <a href="https://goo.gl/forms/s1aKuCEhob3aTRWL2" target="_blank">2 minute survey!</a></span> This is the rebooted DataHub &ndash; <a href="https://github.com/datahq/datahub-qa" style="color:black;text-decoration:underline;">please report issues here</a>.</div>
-    </div>
-    <!-- Page header -->
-    <div class="navbar navbar-default">
-      <div class="container">
-        <div class="inner_container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="main-logo pull-left" href="/">
-              <img class="img-responsive" src="/static/img/datahub-cube-edited.svg">
-            </a>
-          </div>
-          <!--
-          <div class="nav navbar-nav searchbox">
-            <form class="form-inline" action="/search" method="GET">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Find data" name="q">
-              </div>
-            </form>
-          </div>
-          -->
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <a href="/docs/about">About</a>
-              </li>
-              <li>
-                <a href="/blog">Blog</a>
-              </li>
-              <li>
-                <a href="/search">Datasets</a>
-              </li>
-              <li>
-                <a href="/awesome">Awesome</a>
-              </li>
-              <li>
-                <a href="/requests">Requests</a>
-              </li>
-              <li>
-                <a href="/docs">Docs</a>
-              </li>
-              <li>
-                <a href="/pricing">Pricing</a>
-              </li>
-              <li>
-                <a href="/download" class="download-link">Download</a>
-              </li>
-              <li>
-                <a href="https://gitter.im/datahubio/chat" class="chat">Chat</a>
-              </li>
-  						<!--
-              <li>
-                <a href="/">DISCOVER</a>
-              </li>
-  						-->
-              {% if login %}
-                <li>
-                  <a class="nav-link nav-avatar" href="#" tabindex="0" data-toggle="popover" title=""
-                    data-content="<p><a href='/dashboard' class='a-popover'>Dashboard</a></p><p><a href='/logout' class='a-popover'>Logout</a></p>">
-                    <img src="" id="avatar" class="img-responsive img-circle nav-avatar" />
-                  </a>
-                </li>
-              {% else %}
-                <li>
-                  <a href="/login">Login</a>
-                </li>
-                <li>
-                  <a href="/login" class="join-link">Join free</a>
-                </li>
-              {% endif %}
-            </ul>
-          </div>
+
+  <section class="banner">
+    <img src="/static/img/ellipse.png" class="ellipse"/>
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#" id="logo">datahub.io</a>
+                  </div>
+                  <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                      <li><a href="#">Home</a></li>
+                      <li><a href="#">About</a></li>
+                      <li><a href="#">Datasets</a></li>
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Page 1-1</a></li>
+                          <li><a href="#">Page 1-2</a></li>
+                          <li><a href="#">Page 1-3</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#">Tools</a></li>
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Docs<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Page 1-1</a></li>
+                          <li><a href="#">Page 1-2</a></li>
+                          <li><a href="#">Page 1-3</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#">Chat</a></li>
+                      {% if login %}
+                      <li>
+                        <a href="/logout">Logout</a>
+                      </li>
+                      {% else %}
+                      <li>
+                          <button class="btn btn-custom  btn-blue btn-outline">Start Publishing</button>
+                      </li>
+                      {% endif %}
+                    </ul>
+
+                  </div>
+                </div>
+            </nav>
         </div>
-      </div>
-    </div><!-- End of page header -->
+
+        {% if home %}
+        <p class="clearfix"></p>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="left-sec">
+                    <h1>Find, Share and Publish <br> Quality Data with Datahub</h1>
+                    <p>At Datahub, we provide various solutions to Publish and Deploy your Data with power and simplicity. Datahub is the fastest way for individuals, teams and organizations to publish, deploy and share their data.</p>
+                    <a class="btn btn-custom btn-blue">See Products</a>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <img src="/static/img/banner.png" class="img-responsive hidden-xs"/>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+  </section><!-- End of page header -->
+
 
     {% if message.length > 0 %}
     <div class="container">
@@ -153,53 +148,81 @@
     {% block content %}{{content}}{% endblock %}
 
     <!-- footer -->
-    <footer>
+    <footer class="footer">
       <div class="container">
-        <div class="inner_container">
           <div class="row">
-            <div class="col-lg-1 logo">
-              <a href="https://datahub.io/">
-                <img src="/static/img/datahub-cube-edited.svg" height="48" alt="DataHub - A Frictionless Data project by Datopian and Open Knowledge International" />
-              </a>
-            </div>
-            <div class="col-lg-2">
-              <ul class="nav">
-                <li>
-                  <a href="/">Home</a>
-                </li>
-                <li>
-                  <a href="/docs/terms-of-service">Terms of Service</a>
-                </li>
-                <li>
-                  <a href="/docs/privacy">Privacy Policy</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-7">
-              <a href="https://datopian.com/" rel="external" target="_blank">
-                <img src="/static/img/datopian-logo.png" height="32" alt="Datopian">
-              </a>
-              <a href="https://okfn.org/" rel="external" target="_blank">
-                <img src="/static/img/oki.png" width="123" height="32" alt="Open Knowledge" style="-webkit-filter: grayscale(100%);filter: grayscale(100%);">
-              </a>
-              <a href="http://www.sloan.org/" rel="external" target="_blank">
-                <img src="/static/img/sloan-foundation.png" width="147" height="32" alt="Sloan Foundation">
-              </a>
-            </div>
-            <div class="col-lg-2">
-              <ul class="nav pull-right">
-                <li>
-                  <a href="http://docs.datahub.io/developers/api/" target="_blank">API</a>
-                </li>
-                <li>
-                  <a href="http://old.datahub.io/" target="_blank">Old DataHub</a>
-                </li>
-              </ul>
-            </div>
+              <div class="col-md-4 col-sm-3">
+                  <h3>datahub.io</h3>
+
+                  <p>At Datahub, we provide various solutions to Publish and Deploy
+your Data with power and simplicity. Datahub is the fastest way
+for individuals, teams and organizations to publish, deploy and
+share their data.</p>
+              </div>
+
+              <div class="col-sm-3 col-md-2 col-md-offset-1">
+                  <label>Links</label>
+                  <ul>
+                      <li>
+                          <a href="#">Home</a>
+                      </li>
+                      <li>
+                          <a href="#">API</a>
+                      </li>
+                      <li>
+                          <a href="#">Old Datahub</a>
+                      </li>
+                      <li>
+                          <a href="#">Blog</a>
+                      </li>
+                      <li>
+                          <a href="#">Docs</a>
+                      </li>
+                      <li>
+                          <a href="#">Register</a>
+                      </li>
+                  </ul>
+              </div>
+
+              <div class="col-sm-2">
+                  <label>Support</label>
+                  <ul>
+                      <li>
+                          <a href="#">Contact</a>
+                      </li>
+                      <li>
+                          <a href="#">FAQ</a>
+                      </li>
+                  </ul>
+              </div>
+              <div class="col-sm-3 col-md-2 col-md-offset-1">
+                  <label>Contact</label>
+                  <ul>
+                      <li>
+                          <a href="#">info@datahub.io</a>
+                      </li>
+                      <li>
+                          <a href="#">+44 xxx xxxx</a>
+                      </li>
+                  </ul>
+              </div>
           </div>
-        </div>
       </div>
-    </footer>
+  </footer>
+  <div class="footer-bottom">
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-8 text-left">
+                      <p>&copy; 2018 All Rights Reserved </p>
+                  </div>
+                  <div class="col-sm-4 social-icons">
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                      <a href="#"><i class="fab fa-twitter"></i></a>
+                  </div>
+              </div>
+          </div>
+    </div>
     <!-- End of footer -->
 
     {% block scripts %}{% endblock %}

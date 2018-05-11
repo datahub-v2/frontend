@@ -1,22 +1,22 @@
 /* General stylings
 =====================================*/
-html {
-  height: 100%;
-  box-sizing: border-box;
-}
-body {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  position: relative;
-  min-height: 100%;
-  padding-bottom: 122px;
-  @media (max-width: $screen-xs-min) {
-    .row {
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-}
+// html {
+//   height: 100%;
+//   box-sizing: border-box;
+// }
+// body {
+//   text-rendering: optimizeLegibility;
+//   -webkit-font-smoothing: antialiased;
+//   position: relative;
+//   min-height: 100%;
+//   padding-bottom: 122px;
+//   @media (max-width: $screen-xs-min) {
+//     .row {
+//       margin-left: 0;
+//       margin-right: 0;
+//     }
+//   }
+// }
 .container-no-top-padding {
   @extend .container;
   padding-top: 0 !important;
@@ -45,12 +45,12 @@ body {
 p {
   overflow-wrap: break-word;
 }
-a {
-  color: $brand-warning;
-  &:hover {
-    color: $black;
-  }
-}
+// a {
+//   color: $brand-warning;
+//   &:hover {
+//     color: $black;
+//   }
+// }
 
 .vertical-center {
   @media (min-width: $screen-xs-min) {
@@ -77,21 +77,21 @@ a {
   }
 }
 
-.container {
-  padding-left: 5%;
-  padding-right: 5%;
-  @media (min-width: 768px) {
-    padding-top: 30px;
-  }
-}
-.inner_container {
-  max-width: 960px;
-  margin: auto;
-}
-
-.table {
-  font-size: 12px;
-}
+// .container {
+//   padding-left: 5%;
+//   padding-right: 5%;
+//   @media (min-width: 768px) {
+//     padding-top: 30px;
+//   }
+// }
+// .inner_container {
+//   max-width: 960px;
+//   margin: auto;
+// }
+//
+// .table {
+//   font-size: 12px;
+// }
 
 .ReactVirtualized__Table__headerRow {
   height: 30px !important;

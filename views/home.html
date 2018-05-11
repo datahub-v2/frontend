@@ -8,328 +8,472 @@ Welcome - Home
 {% block bodyclass %}home{% endblock %}
 
 {% block content %}
-<!-- Jumbotron main -->
-<div class="container">
-  <div class="inner_container">
-    <div class="jumbotron jumbotron-primary">
-      <div class="row">
-        <div class="text-center">
-          <h1 class="main-title">Data online made simple</h1>
+<!-----------------three element section----------------->
+    <section class="three-elements">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="element">
+                        <img src="/static/img/earth-globe.png" class="img-responsive  center-block" />
+                        <h4>Publish Data</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet at ante at pharetra. Nam euismod amet. </p>
+                        <a href="#">Learn More <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-sm-4">
+                    <div class="element">
+                        <img src="/static/img/request.png" class="img-responsive  center-block" />
+                        <h4>Request Data</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet at ante at pharetra. Nam euismod amet. </p>
+                        <a href="#">Learn More <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-sm-4">
+                    <div class="element">
+                        <img src="/static/img/core.png" class="img-responsive  center-block" />
+                        <h4>Core Datasets</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet at ante at pharetra. Nam euismod amet. </p>
+                        <a href="#">Learn More <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+    
+    
+    
+    <!-------------- publish-data-section -------------------->
+    <section class="publish-data">
+      
+      <div class="col-sm-4 padding-left-0 sm-pad-right-0">
+          <div class="img-sec">
+              <img src="/static/img/sec3.jpg" class="img-responsive"/>
+              <div class="blue-box back-dark-blue">
+                  <img src="/static/img/earth-globe.png" class="responsive"/>
+                  <p class="color-white">No Starting Cost</p>
+                  <p>Datahub Provides free plan to start publishing data without paying any upfront cost.</p>
+                  <a href="#" >View Pricing</a>
+              </div>
+          </div>
       </div>
-      <div class="row demo">
-        <div class="col-md-6">
-          <div class="console">
-            <div class="window">
-              <div class="header">
-                <span class="icon close-terminal"></span>
-                <span class="icon minimize"></span>
-                <span class="icon fullScreen"></span>
-                <div class="title">
-                  bash
-                </div>
+      <div class="container">
+          <div class="col-sm-6 col-sm-offset-2">
+              <div class="right-box">
+                  <h3 class="color-blue heading2">Data Publishing with Datahub.</h3>
+                  <h1 class="heading1">Publish and Deploy <br> your Data</h1>
+                  <p>Power and simplicity - data is the fastest way for individuals, teams and organizations to publish, deploy and share their data.</p>
+                  <ul>
+                      <li>Store, share and showcase your data with the world or just privately.</li>
+                      <li>Powerful tools to validate and automate</li>
+                      <li>Teams and permissions to make it easy to collaborate.</li>
+                  </ul>
+                  <a class="btn btn-custom btn-blue">See Products</a>
               </div>
-              <div class="body">
-                <div class="console-inner">
-                  <pre>
-<span class="prompt"><span class="square">■</span> ~/my-data $ <span
-class="txt-show"
-data-start="2000"
-data-text='ls'></span><span class="cursor"></span>
-</span><span class="output" style="display:none">   data.csv</span><span
-class="prompt" style="display:none"><span class="square">■</span> ~/my-data $ <span
-class="txt-show"
-data-start="4500"
-data-text='data push data.csv'></span><span class="cursor"></span>
-</span><span
-class="prompt" style="display:none">   &gt; Uploading <span
-class="txt-show" data-start="12500" data-text="..................."></span> <span class="output" style="display:none">100% 8.5s</span>
-</span><span
-class="output" style="display:none">   &gt; Push complete (9.61MB) [8509ms]
-   &gt; Ready! https://datahub.io/your-username/my-data
-     (copied to clipboard)
-</span><span
-class="prompt" style="display:none"><span class="square">■</span> ~/my-data $ <span class="cursor"></span></span>
-                  </pre>
-                </div>
+          </div>
+      </div>
+</section>
+
+
+<!------------------------ request-data --------------------> 
+
+<section class="request-data">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-12">
+              <h3 class="color-blue heading2">Request Data from Datahub.</h3>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-4">
+              <div class="left-sec">
+                  <h1 class="heading1">Not finding the right Data? We can get it for you.</h1>
+                  <a class="btn btn-custom btn-blue">Request Data</a>
+                  <br/><br/>
               </div>
+          </div>
+          <div class="col-sm-8">
+                  <div class="col-sm-12 col-md-6">
+                      <div class="card">
+                          <div class="icon pull-left purple">
+                              <img src="/static/img/sec4-1.png" class="img-responsive"/>
+                          </div>
+                          <h4>Fast and Time Saving for you</h4>
+                          <p>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</p>
+                      </div>
+                      <p class="clearfix"></p>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                      <div class="card">
+                          <div class="icon pull-left brown">
+                              <img src="/static/img/sec4-2.png" class="img-responsive"/>
+                          </div>
+                          <h4>Fast and Time Saving for you</h4>
+                          <p>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</p>
+                      </div>
+                      <p class="clearfix"></p>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                      <div class="card">
+                          <div class="icon pull-left blue">
+                              <img src="/static/img/sec4-3.png" class="img-responsive"/>
+                          </div>
+                          <h4>Fast and Time Saving for you</h4>
+                          <p>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</p>
+                      </div>
+                      <p class="clearfix"></p>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                      <div class="card">
+                          <div class="icon pull-left red">
+                              <img src="/static/img/sec4-4.png" class="img-responsive"/>
+                          </div>
+                          <h4>Fast and Time Saving for you</h4>
+                          <p>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</p>
+                      </div>
+                  </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-------------------------- section 5 ------------------------> 
+
+<section class="core-datasets">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-6">
+              <br/><br/>
+              <div class="square back-dark-blue square-sm">
+                  <div class="content">
+                      <h4>Natural Gas</h4>
+                      <p>Time series of major 
+Natural Gas Prices</p>
+                      <a href="#">View</a>
+                  </div>
+              </div>
+              <div class="square back-dark-blue square-sm">
+                  <div class="content">
+                      <h4>Population Growth</h4>
+                      <p>
+                          Total Population - Both Sexes. 
+De facto population in a country</p>
+                      <a href="#">View</a>
+                  </div>
+              </div>
+              <div class="square back-dark-blue square-md">
+                  <div class="content">
+                     <img src="/static/img/co2.png" width="70" />
+                     <h4>CO2 PPM</h4>
+                     <p>CO2 PPM - Trends in 
+Atmospheric Carbon Dioxide
+co2-ppm | files 7 | 300kB</p>
+                     <a href="#">View Dataset</a>
+                  </div>
+              </div>
+              
+              <div class="square back-dark-blue square-md move-up">
+                  <div class="content">
+                     <img src="/static/img/worldwide.png" width="70" />
+                     <h4>Country List</h4>
+                     <p>List of all countries with their 
+                         2 digit codes  (ISO 3166-1) country-list | files 2 | 27kB</p>
+                     <a href="#">View Dataset</a>
+                  </div>
+              </div>
+              <div class="square back-dark-blue square-sm">
+                  <div class="content">
+                     <h4>Major cities of the world</h4>
+                     <p>List of all the major cities
+in the world </p>
+                     <a href="#">View</a>
+                  </div>
+              </div>
+              <div class="square back-dark-blue square-sm">
+                  <div class="content">
+                     <h4>S&P 500 Companies</h4>
+                     <p>S&P 500 Companies with 
+Financial Information</p>
+                     <a href="#">View</a>
+                  </div>
+              </div>
+              <p class="clearfix"></p>
+              <br/><br/>
+          </div>
+          
+          <div class="col-sm-6">
+              <div class="right-box">
+                  <h3 class="color-blue heading2">Core Datasets, data as you’d want to use it.</h3>
+                  <h1 class="heading1">Quality Data ready <br>to Integrate.</h1>
+                  <p>Power and simplicity - data is the fastest way for individuals, teams and organizations to publish, deploy and share their data.</p>
+                  <ul>
+                      <li>High quality data ready to inspect, download and use <a href="#" class="color-blue">read more</a></li>
+                      <li>Bulk and API access ready for automated integration with 
+                          SDKs in Python, JS and many more  <a href="#" class="color-blue">read more</a></li>
+                      <li>Send a request if you need a help to find some good, 
+quality dataset</li>
+                  </ul>
+                  <a class="btn btn-custom btn-blue">Discover Datasets</a>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Table Section -->
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="table-section hidden-xs">
+                  <div class="row">
+                      <div class="col-sm-8">
+                          <p class="info-1">Data of Popution in Major Cities of The World</p>
+                      </div>
+                      <div class="col-sm-4">
+                          <p class="info-2">Powered by DataHub</p>
+                      </div>
+                      <br/> <br/>
+                  </div>
+                  
+                  <table class="table table-striped table-responsive">
+                      <thead>
+                        <tr>
+                          <th width="20%">Name</th>
+                          <th width="20%">Country</th>
+                          <th width="20%">Population Growth</th>
+                          <th width="20%">Some Data</th>
+                          <th width="20%">24h Data</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>les Escaldes</td>
+                          <td>Andorra</td>
+                          <td class="color-red">-2.45%</td>
+                          <td>$73.99 B</td>
+                          <td>$4588</td>
+                        </tr>
+                        <tr>
+                          <td>Dubai</td>
+                          <td>United Arab Emirates</td>
+                          <td class="color-red">-2.45%</td>
+                          <td>$73.99 B</td>
+                          <td>$4588</td>
+                        </tr>
+                        <tr>
+                          <td>Sharjah</td>
+                          <td>United Arab Emirates</td>
+                          <td class="color-red">-2.45%</td>
+                          <td>$73.99 B</td>
+                          <td>$4588</td>
+                        </tr>
+                        <tr>
+                          <td>Norwa</td>
+                          <td>Australia</td>
+                          <td class="color-red">-2.45%</td>
+                          <td>$73.99 B</td>
+                          <td>$4588</td>
+                        </tr>
+                        <tr>
+                          <td>Nerang</td>
+                          <td>Australia</td>
+                          <td class="color-red">-2.45%</td>
+                          <td>$73.99 B</td>
+                          <td>$4588</td>
+                        </tr>
+                        <tr>
+                          <td>Paris</td>
+                          <td>France</td>
+                          <td class="color-red">-2.45%</td>
+                          <td>$73.99 B</td>
+                          <td>$4588</td>
+                        </tr>
+                        <tr>
+                          <td>Berlin</td>
+                          <td>Germany</td>
+                          <td class="color-red">-2.45%</td>
+                          <td>$73.99 B</td>
+                          <td>$4588</td>
+                        </tr>
+                        <tr>
+                          <td>Ottawa</td>
+                          <td>Canada</td>
+                          <td class="color-red">-2.45%</td>
+                          <td>$73.99 B</td>
+                          <td>$4588</td>
+                        </tr>
+                        <tr>
+                          <td>Vancouver</td>
+                          <td>Canada</td>
+                          <td class="color-red">-2.45%</td>
+                          <td>$73.99 B</td>
+                          <td>$4588</td>
+                        </tr>
+                        <tr>
+                          <td>Houston</td>
+                          <td>United States</td>
+                          <td class="color-red">-2.45%</td>
+                          <td>$73.99 B</td>
+                          <td>$4588</td>
+                        </tr>
+                        <tr>
+                          <td>Melbourne</td>
+                          <td>Australia</td>
+                          <td class="color-red">-2.45%</td>
+                          <td>$73.99 B</td>
+                          <td>$4588</td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+              </div>
+              
+          </div>
+      </div> 
+      
+  </div>
+  
+  
+</section>
+
+<!-- section data os  -->
+<section class="data-os">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-7">
+              <div class="left-sec">
+                  <h3 class="color-blue heading2">Automate your data processes with our open source framework.</h3>
+                  <h1 class="heading1">DataOS: Open source framework <br/> for processing data.</h1>
+                  <br/>
+                  <a class="btn btn-custom btn-blue">Explore DataOS</a>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <div class="artwork">
+    </div>
+    <div class="container">
+      <div class="main">
+      <div class="row">
+        
+        <div class="col-md-4">
+          <div class="content">
+            <div class="col-xs-2">
+                <div class="number text-center">
+                  <span>1</span>
+                </div>
+            </div>
+            <div class="col-xs-10 padding-right-0">
+              <p>Completely open source with  professional maintainence and supported.</p>
             </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="primary-call-to-action">
-            <a href="/core" class="btn btn-lg btn-default btn-block">
-              Core datasets
-            </a>
-            <a href="/requests" class="btn btn-lg btn-default btn-block">
-              Request data
-            </a>
-            <a href="/download" class="btn btn-lg btn-primary btn-block">
-              Start publishing for free!
-            </a>
-          </div>
-        </div>
-      </div>
-      <p class="info"><span style="font-size: 100%; font-family: monospace">❒</span> <strong>datahub</strong> is the fastest way for individuals and teams to <strong>find, share and publish</strong> high quality data online</p>
-      <div class="row text-center call-to-action call-to-action-new">
-        <div>
-          <a href="#next-section" class="arrow" onclick="scrollDown(this)">
-            <i class="fa fa-angle-down" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div><!-- End of jumbotron main -->
 
-<!-- Publish and Deploy your Data -->
-<div class="section-gray" id="next-section">
-  <div class="container home">
-    <div class="inner_container">
-      <div class="section">
-        <div class="row">
-          <div class="col-md-6 aside left img-wrapper-left">
-            <a href="/core/finance-vix">
-              <img src="/static/img/finance-vix.png" class="img-responsive" />
-            </a>
-          </div>
-          <div class="col-md-6 aside right">
-            <h1>Publish and Deploy your Data</h1>
-            <h2>
-              Power and simplicity - <b>data</b> is the fastest way for individuals, teams and organizations to publish, deploy and share their data.
-            </h2>
-            <ul>
-              <li>
-                Store, share and showcase your data with the world or just privately <a href="/docs/getting-started/publishing-data">read more &rsaquo;</a>
-              </li>
-              <li>
-                Powerful tools to <a href="/blog/data-validation-in-the-datahub">validate</a> and <a href="/docs/automation">automate</a>
-              </li>
-              <li>
-                Teams and permissions to make it easy to collaborate <a href="/docs/features/teams-and-permissions">read more &rsaquo;</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div><!-- End of Publish and Deploy your Data -->
-
-<!-- Quality Data ready to Integrate -->
-<div class="container home">
-  <div class="inner_container">
-    <div class="section">
-      <div class="row">
-        <div class="col-md-6 aside left">
-          <h1>Quality Data ready to Integrate</h1>
-          <h2>
-            Data as you’d want to use it.
-          </h2>
-          <ul>
-            <li>
-              High quality data ready to inspect, download and use <a href="/docs/core-data">read more &rsaquo;</a>
-            </li>
-            <li>
-              Bulk and API access ready for automated integration with SDKs in Python, JS and many more <a href="/docs/getting-started/getting-data">read more &rsaquo;</a>
-            </li>
-            <li>
-              <a href="/requests">Send a request</a> if you need a help to find some good, quality dataset
-            </li>
-            <li>
-              Frictionless Data format: <a href="/docs/data-packages">Data Package</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-6 aside right img-wrapper-right">
-          <iframe src="/core/finance-vix/r/0.html" width="100%" height="300px" frameborder="0"></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-</div><!-- End of Quality Data ready to Integrate -->
-
-<!-- Some of our most popular data -->
-<div class="section-gray">
-  <div class="container home">
-    <div class="inner_container">
-      <div class="section popular-datasets">
-        <h1>Some of our most popular data</h1>
-        <div class="row">
-          <div class="col-md-6 datasets-column-left">
-            {{ snippets.package_list_show(firstColumnPackages) }}
-          </div>
-          <div class="col-md-6 datasets-column-right">
-            {{ snippets.package_list_show(secondColumnPackages) }}
-          </div>
-        </div>
-        <div class="button-wrapper">
-          <a href="/search" class="btn btn-lg btn-primary">
-            See more datasets
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div><!-- End of Some of our most popular data  -->
-
-<!-- DataOS offer -->
-<div class="container home">
-  <div class="inner_container">
-    <div class="section">
-      <div class="row">
-        <div class="col-md-6 aside left img-wrapper-left">
-          <img src="/static/img/data-os-offer.png" class="img-responsive" />
-        </div>
-        <div class="col-md-6 aside right">
-          <h1>DataOS: Open source framework for processing/wrangling data</h1>
-          <h2>
-            Automate your data processes with our open source framework
-          </h2>
-          <ul>
-            <li>
-              Completely open source with professiona maintainence and supported
-            </li>
-            <li>
-              End-to-end solution with all parts are fully integrated
-            </li>
-            <li>
-              Not just tools but a standardized approach and pattern for working with your data
-            </li>
-          </ul>
-          <br />
-          <a href="/docs/data-os" class="btn btn-default">Learn more about DataOS</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div><!-- End of DataOS offer -->
-
-<!-- Consulting offer -->
-<div class="section-gray">
-  <div class="container home">
-    <div class="inner_container">
-      <div class="section">
-        <div class="row consulting">
-          <h1>Hire us to build and improve your data-driven project</h1>
-          <h2>
-            We have decades of experience building data systems for clients large and small.
-          </h2>
-          <div class="col-md-6 left">
-            <ul class="left">
-              <li>
-                Automate data collection, integration and presentation
-              </li>
-              <li>
-                Build dashboards and visualizations
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-6 right">
-            <ul class="right">
-              <li>
-                Scrape, clean and normalize data
-              </li>
-              <li>
-                Build data portals and platforms whether bespoke or using products like CKAN (our CEO designed and built CKAN)
-              </li>
-            </ul>
-          </div>
-          <div class="btn-wrapper">
-            <a href="/consulting" class="btn btn-default">Hire us</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div><!-- End of Consulting offer -->
-<!-- Subscribe Form -->
-<div class="subscribe-form text-center">
-<div class="row">
-<div class="col-sm-4 col-sm-offset-4">
-<form action="https://datahub.us12.list-manage.com/subscribe/post" method="POST">
-    <input type="hidden" name="u" value="d7c1b37384908cd31dbe44d77">
-    <input type="hidden" name="id" value="97878f666d">
-    <div id="mergeTable" class="mergeTable">
-        <div class="mergeRow dojoDndItem mergeRow-email" id="mergeRow-0">
-            <h3>Subscribe and Download</h3>
-            <div class="field-group form-group">
-                <input type="email" class="form-control  custom-input" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Enter Your Email" required  >
-				
-				
+        <div class="col-md-4">
+          <div class="content">
+            <div class="col-xs-2">
+                <div class="number text-center">
+                  <span>2</span>
+                </div>
             </div>
+            <div class="col-xs-10 padding-right-0">
+              <p>End-to-end solution with all 
+                parts are fully integrated.</p>
+            </div>
+          </div>
         </div>
-    </div>
 
-    <div class="submit_container clear">
-        <input type="submit" class="formEmailButton btn btn-lg btn-primary" name="submit" value="Subscribe">
+        <div class="col-md-4">
+          <div class="content">
+            <div class="col-xs-2">
+                <div class="number text-center">
+                  <span>3</span>
+                </div>
+            </div>
+            <div class="col-xs-10 padding-right-0">
+              <p>Not just tools but a standardized approach and 
+                pattern for working with your data.</p>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
-    <input type="hidden" name="ht" value="7e3c30f92918a0476227f6e94f3fe76633002feb:MTUyNTg0Nzk0My44ODk=">
-    <input type="hidden" name="mc_signupsource" value="hosted">
-</form>
-</div>
-</div>
-</div>
+ 
+  
+  
+ <!-- <div class="dotted-area">
+      <img src="/static/img/dotted-1.png" id="dotted-1"/>
+      <img src="/static/img/dotted-2.png" id="dotted-2"/>
+      <img src="/static/img/dotted-3.png" id="dotted-3"/>
+      <img src="/static/img/dotted-4.png" id="dotted-4"/>
+  </div> -->
+ 
+</section>
+<p class="clearfix">
+
+</p>
+<!------------------------ section 6 ---------------------> 
+<section class="hire-us">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-6">
+              <div class="left-sec">
+                  <h3 class="color-blue heading2">Team with excellence and beyond.</h3>
+                  <h1 class="heading1">Hire us to build and improve your data-driven project.</h1>
+                  <p>We have decades of experience building data systems for clients large and small. Our team of talented developers
+and managers can help you plans with minimum hassle.</p>
+                  <a class="btn btn-custom btn-blue">Hire Us</a>
+                  <br/><br/><br/>
+              </div>
+          </div>
+          <div class="col-sm-6">
+              <div class="right-sec">
+                  <div class="row">
+                      <div class="list">
+                          <div class="col-sm-10 padding-left-0">
+                              <h5><img src="/static/img/tick.png"/> Automation</h5>
+                              <p>Automate data collection, integration and presentation</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="list">
+                          <div class="col-sm-10 padding-left-0">
+                              <h5><img src="/static/img/tick.png"/> Scrapping</h5>
+                              <p>Scrape, clean and normalize data</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="list">
+                          <div class="col-sm-10 padding-left-0">
+                              <h5><img src="/static/img/tick.png"/> Informative Visuals</h5>
+                              <p>Build dashboards and visualizations</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="list">
+                          <div class="col-sm-10 padding-left-0">
+                              <h5><img src="/static/img/tick.png"/> Manage</h5>
+                              <p>Scrape, clean and normalize data</p>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="row">
+                      <div class="list">
+                          <div class="col-sm-10 padding-left-0">
+                              <h5><img src="/static/img/tick.png"/> Data Portals</h5>
+                              <p>Build data portals and platforms whether bespoke or using products like CKAN (our CEO designed and built CKAN)</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
 {% endblock %}
 
-{% block scripts %}
-<!-- script for animation of terminal -->
-<script>
-  var TxtRotate = function(el, text, start) {
-    this.text = text;
-    this.el = el;
-    this.delay = parseInt(start);
-    this.txt = '';
-    var that = this;
-    setTimeout(function(){
-      that.tick();
-    }, that.delay);
-  };
 
-  TxtRotate.prototype.tick = function() {
-    var prompts = document.getElementsByClassName('prompt');
-    var cursors = document.getElementsByClassName('cursor');
-    var fullTxt = this.text;
-
-    this.txt = fullTxt.substring(0, this.txt.length + 1);
-
-    this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
-    var that = this;
-    var delta = 300 - Math.random() * 100;
-
-    setTimeout(function() {
-      that.tick();
-    }, delta);
-
-    setTimeout(function() {
-      if (that.txt === fullTxt) {
-        var outputs = document.getElementsByClassName('output')
-        if (fullTxt === 'ls') {
-          cursors[0].style.display = 'none';
-          outputs[0].style.display = 'block';
-          prompts[1].style.display = 'block';
-        } else if (fullTxt === 'data push data.csv') {
-          cursors[1].style.display = 'none';
-          prompts[2].style.display = 'block';
-        } else if (fullTxt.includes('...')) {
-          outputs[1].style.display = 'inline-block';
-          outputs[2].style.display = 'block';
-          prompts[3].style.display = 'block';
-        }
-      }
-    }, 2000);
-  };
-
-  window.onload = function() {
-    var elements = document.getElementsByClassName('txt-show');
-    for (var i=0; i<elements.length; i++) {
-      var start = elements[i].getAttribute('data-start');
-      var text = elements[i].getAttribute('data-text');
-      if (text) {
-        new TxtRotate(elements[i], text, start);
-      }
-    }
-  };
-</script>
-{% endblock %}
