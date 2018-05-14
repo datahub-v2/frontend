@@ -289,7 +289,7 @@
   text-align:center;
   padding:40px 40px;
   background-color:#fafafa;
-  border-radius:7px;
+  /*border-radius:7px;*/
   margin-bottom:30px;
 }
 .three-elements .element h4 
@@ -478,6 +478,98 @@ margin-bottom:40px;
 padding-top:30px;
 }
 
+
+/******************** publish-data-section ********************/  
+
+.publish-data .img-sec 
+{
+    position:relative;
+}
+.publish-data .img-sec .grey-box 
+{
+    position:absolute;
+    bottom:-90px;
+    right:-120px;
+    max-width:318px;
+    padding:25px 30px 30px 30px;
+    border:15px solid #fff;
+    background-color:#fafafa;
+
+    p.inner-heading {
+      font-size: 24px;
+      font-weight:300;
+    }
+}
+.publish-data .img-sec .grey-box img 
+{
+    width:80px;
+}
+.publish-data .img-sec .grey-box p:nth-child(3)
+{
+    margin:5px 0px 15px 0px;
+}
+.publish-data .right-box h1 
+{
+    margin:0px 0px 20px 0px;
+}
+.publish-data .right-box ul 
+{
+    padding-left:0px;
+    list-style: none;
+    margin:25px 0px 35px 0px;
+}
+.publish-data .right-box ul li 
+{
+    margin-top:25px;
+}
+.publish-data .right-box ul li::before
+{
+    content: "\2022"; 
+    color:#ff7900;
+    margin-right:10px;
+}
+.publish-data 
+{
+    padding:100px 0px 60px 0px;
+
+    @media screen and (max-width:768px){
+        padding: 50px 0px 60px 0px;
+        
+        .right-box {
+            margin-top:130px;
+        }
+        
+        .img-sec .grey-box 
+        {
+            position:absolute;
+            bottom:-110px;
+            right:0px;
+            max-width:300px;
+            border:15px solid #fff;
+            border-right:0px;
+        }
+        
+        .sm-pad-right-0 {
+            padding-right:0;
+        }
+        
+    }
+  
+  
+  @media screen and (max-width:480px){
+     .img-sec .grey-box 
+      {
+          position:absolute;
+          bottom:-110px;
+          right:0px;
+          max-width:300px;
+          border:15px solid #fff;
+          border-right:0px;
+      }
+      
+  }
+ 
+}
 
 /********************** section 6 ******************/ 
 .hire-us 
