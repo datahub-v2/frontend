@@ -6333,8 +6333,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   position: relative;
-  min-height: 100%;
-  padding-bottom: 122px; }
+  min-height: 100%; }
   @media (max-width: 480px) {
     body .row {
       margin-left: 0;
@@ -6565,60 +6564,64 @@ a {
   .navbar-nav > li > a {
     padding-top: 20px;
     padding-bottom: 20px; } }
-footer {
-  background: #ededed;
-  padding: 25px 0;
-  margin-top: 0; }
+/* Footer */
+.footer {
+  padding: 140px 0 60px;
+  background-color: #fafafa;
+  background-image: url("../img/footer-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: contain; }
+  @media screen and (max-width: 768px) {
+    .footer {
+      padding: 120px 0 60px !important; }
+      .footer label {
+        padding-top: 30px; } }
 
-footer p, footer a {
-  color: #b5b5b5;
-  font-size: 14px;
-  margin-right: 3em; }
+footer h3 {
+  padding: 0px 0 15px 0; }
 
-footer a:hover {
-  color: #666;
-  text-decoration: none; }
+footer p {
+  color: #636363; }
 
-footer .connect li a {
-  font-size: 28px; }
+footer label {
+  text-transform: uppercase;
+  color: #313131;
+  padding: 0px 0 15px 0; }
 
-footer {
-  position: absolute;
-  right: 0;
-  left: 0; }
-  footer .container, footer .container-no-top-padding {
-    padding-top: 0; }
-  footer .nav {
-    display: inline-block; }
-  footer ul li a {
-    color: #000;
-    padding: 0 !important; }
-  footer a img {
-    vertical-align: top; }
-  @media (max-width: 1200px) {
-    footer {
-      align-items: center;
-      text-align: center; }
-      footer .logo {
-        margin-bottom: 15px; }
-      footer li {
-        display: inline-block !important; }
-      footer .pull-right {
-        float: none !important; }
-      footer a {
-        margin: 30px; } }
-  @media (max-width: 1200px) and (max-width: 768px) {
-    footer {
-      align-items: center;
-      text-align: center; }
-      footer .logo {
-        margin-bottom: 15px; }
-      footer li {
-        display: inline-block !important; }
-      footer .pull-right {
-        float: none !important; }
-      footer a {
-        margin: 20px 10px; } }
+footer ul {
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+
+footer ul li {
+  padding-bottom: 8px; }
+
+footer ul li a {
+  color: #000000; }
+
+.footer-bottom {
+  background-color: #eee;
+  padding: 20px 0 10px 0; }
+  @media screen and (max-width: 768px) {
+    .footer-bottom .social-icons {
+      text-align: left; } }
+
+.footer-bottom p {
+  color: #9e9fb5; }
+
+.footer-bottom .social-icons {
+  padding-top: 2px;
+  text-align: right; }
+
+.footer-bottom .social-icons a {
+  padding-right: 10px;
+  color: #121046; }
+
+.footer-bottom .social-icons a:hover {
+  opacity: .7; }
+
+.footer-bottom .fas {
+  font-size: 16px; }
 
 /* Jumbotron main
 ====================================*/

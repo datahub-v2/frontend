@@ -153,55 +153,81 @@
 
     {% block content %}{{content}}{% endblock %}
 
-    <!-- footer -->
-    <footer>
-      <div class="container">
-        <div class="inner_container">
-          <div class="row">
-            <div class="col-lg-1 logo">
-              <a href="https://datahub.io/">
-                <img src="/static/img/datahub-cube-edited.svg" height="48" alt="DataHub - A Frictionless Data project by Datopian and Open Knowledge International" />
-              </a>
+
+    <!-- Footer Sections -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-3">
+                    <img class="img-responsive" src="/static/img/datahub-cube-edited.svg" width=60>
+                    <br/>
+                    <p>At Datahub, we provide various solutions to Publish and Deploy your Data with power and simplicity. Datahub is the fastest way for individuals, teams and organizations to publish, deploy and share their data.</p>
+                </div>
+                
+                <div class="col-sm-3 col-md-2 col-md-offset-1">
+                    <label>Links</label>
+                    <ul>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>
+                            <a href="/docs/terms-of-service">Terms of Service</a>
+                          </li>
+                        <li>
+                            <a href="/docs/privacy">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="http://docs.datahub.io/developers/api/">API</a>
+                        </li>
+                        <li>
+                            <a href="/blog">Blog</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                
+                <div class="col-sm-2">
+                    <label>Support</label>
+                    <ul>
+                        <li>
+                            <a href="/requests">Request Data</a>
+                        </li>
+                        <li>
+                            <a href="https://gitter.im/datahubio/chat">Chat</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-md-2 col-md-offset-1">
+                    <label>Contact</label>
+                    <ul>
+                        <li>
+                            <a href="mailto:support@datahub.io">support@datahub.io</a>
+                        </li>
+                        <!-- <li>
+                            <a href="#">+44 xxx xxxx</a>
+                        </li> -->
+                    </ul>
+                </div>
             </div>
-            <div class="col-lg-2">
-              <ul class="nav">
-                <li>
-                  <a href="/">Home</a>
-                </li>
-                <li>
-                  <a href="/docs/terms-of-service">Terms of Service</a>
-                </li>
-                <li>
-                  <a href="/docs/privacy">Privacy Policy</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-7">
-              <a href="https://datopian.com/" rel="external" target="_blank">
-                <img src="/static/img/datopian-logo.png" height="32" alt="Datopian">
-              </a>
-              <a href="https://okfn.org/" rel="external" target="_blank">
-                <img src="/static/img/oki.png" width="123" height="32" alt="Open Knowledge" style="-webkit-filter: grayscale(100%);filter: grayscale(100%);">
-              </a>
-              <a href="http://www.sloan.org/" rel="external" target="_blank">
-                <img src="/static/img/sloan-foundation.png" width="147" height="32" alt="Sloan Foundation">
-              </a>
-            </div>
-            <div class="col-lg-2">
-              <ul class="nav pull-right">
-                <li>
-                  <a href="http://docs.datahub.io/developers/api/" target="_blank">API</a>
-                </li>
-                <li>
-                  <a href="http://old.datahub.io/" target="_blank">Old DataHub</a>
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
-      </div>
     </footer>
-    <!-- End of footer -->
+    <div class="footer-bottom">
+            <div class="container pad-top-0">
+                <div class="row">
+                    <div class="col-sm-8 text-left">
+                        <p>&copy; 2018 All Rights Reserved </p>
+                    </div>
+                    <!-- <div class="col-sm-4 social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div> -->
+                </div>
+            </div>
+	</div>
+  <!-- end of footer -->
+  
+    
 
     {% block scripts %}{% endblock %}
     <script type="text/javascript" src="/static/js/smoothscroll.js"></script>
