@@ -6428,7 +6428,8 @@ a {
     border-right: 0; }
 
 .color-red {
-  color: #e70000 !important; }
+  color: #e70000 !important;
+  font-weight: 600 !important; }
 
 .color-white {
   color: #fff; }
@@ -6437,7 +6438,8 @@ a {
   color: #20add0; }
 
 .color-green {
-  color: #59c040; }
+  color: #59c040 !important;
+  font-weight: 600 !important; }
 
 .pad-top-0 {
   padding-top: 0; }
@@ -6600,14 +6602,14 @@ footer ul li a {
   color: #000000; }
 
 .footer-bottom {
-  background-color: #eee;
+  background-color: #fafafa;
   padding: 20px 0 10px 0; }
   @media screen and (max-width: 768px) {
     .footer-bottom .social-icons {
       text-align: left; } }
 
 .footer-bottom p {
-  color: #9e9fb5; }
+  color: #909090; }
 
 .footer-bottom .social-icons {
   padding-top: 2px;
@@ -7138,9 +7140,6 @@ h2.section-title {
   content: "\2022";
   color: #ff7900;
   margin-right: 10px; }
-
-.core-datasets .table tbody tr td:nth-child(4), .core-datasets body.textual table tbody tr td:nth-child(4), body.textual .core-datasets table tbody tr td:nth-child(4), .core-datasets body.docs table tbody tr td:nth-child(4), body.docs .core-datasets table tbody tr td:nth-child(4), .core-datasets body.blog table tbody tr td:nth-child(4), body.blog .core-datasets table tbody tr td:nth-child(4), .core-datasets .table tbody tr td:nth-child(5), .core-datasets body.textual table tbody tr td:nth-child(5), body.textual .core-datasets table tbody tr td:nth-child(5), .core-datasets body.docs table tbody tr td:nth-child(5), body.docs .core-datasets table tbody tr td:nth-child(5), .core-datasets body.blog table tbody tr td:nth-child(5), body.blog .core-datasets table tbody tr td:nth-child(5) {
-  font-weight: 400; }
 
 .core-datasets .info-1 {
   color: #4a4a4a; }
