@@ -1,57 +1,76 @@
-footer{ background:#ededed; padding: 25px 0; margin-top: 0; }
-footer p, footer a { color:#b5b5b5; font-size:14px; margin-right: 3em;}
-footer a:hover { color:#666; text-decoration: none;}
-footer .connect li a {
-  font-size: 28px;
-}
-footer {
-  position: absolute;
-  right: 0;
-  left: 0;
-  .container {
-    padding-top: 0;
-  }
-  .nav {
-    display: inline-block;
-  }
-  ul li a {
-    color: $black;
-    padding: 0 !important;
-  }
-  a img {
-    vertical-align: top;
-  }
-  @media (max-width: $screen-lg-min) {
-    align-items: center;
-    text-align: center;
-    .logo {
-      margin-bottom: 15px;
-    }
-    li {
-      display: inline-block !important;
-    }
-    .pull-right {
-      float: none !important;
-    }
-    a {
-      margin: 30px;
-    }
+/* Footer */
+.footer {
+  padding:140px 0 60px;
+  background-color:#fafafa;
+  background-image:url('../img/footer-bg.jpg');
+  background-repeat: no-repeat;
+  background-size:contain;
 
-    @media (max-width: $screen-sm-min) {
-      align-items: center;
-      text-align: center;
-      .logo {
-        margin-bottom: 15px;
-      }
-      li {
-        display: inline-block !important;
-      }
-      .pull-right {
-        float: none !important;
-      }
-      a {
-        margin: 20px 10px;
-      }
+  @media screen and (max-width:768px){
+    
+        padding: 120px 0 60px !important;
+    label {
+        padding-top:30px;
     }
   }
+}
+
+footer h3 {
+  padding:0px 0 15px 0;
+}
+
+footer p {
+  color:#636363;
+}
+
+footer label {
+  text-transform:uppercase;
+  color:#313131;
+  padding:0px 0 15px 0;
+}
+
+footer ul {
+  padding:0;
+  margin:0;
+  list-style: none;
+}
+
+footer ul li {
+  padding-bottom:8px;
+}
+
+footer ul li a {
+  color:#000000;
+}
+
+.footer-bottom {
+    background-color:#fafafa;
+    padding:20px 0 10px 0;
+
+    @media screen and (max-width:768px){
+      .social-icons {
+          text-align:left;
+      }
+    }
+}
+
+.footer-bottom p {
+  color:#909090;
+}
+
+.footer-bottom .social-icons{ 
+  padding-top:2px;
+  text-align:right;
+}
+.footer-bottom .social-icons a {
+  padding-right:10px;
+  color:#121046;
+}
+.footer-bottom .social-icons a:hover {
+  opacity:.7;
+}
+
+.footer-bottom .fas {
+  
+  font-size:16px;
 }
