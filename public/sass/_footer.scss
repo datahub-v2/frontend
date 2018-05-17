@@ -7,7 +7,7 @@
   background-size:contain;
 
   @media screen and (max-width:768px){
-    
+
         padding: 120px 0 60px !important;
     label {
         padding-top:30px;
@@ -25,7 +25,7 @@ footer p {
 
 footer label {
   text-transform:uppercase;
-  color:#313131;
+  color:#ff7900;
   padding:0px 0 15px 0;
 }
 
@@ -58,7 +58,7 @@ footer ul li a {
   color:#909090;
 }
 
-.footer-bottom .social-icons{ 
+.footer-bottom .social-icons{
   padding-top:2px;
   text-align:right;
 }
@@ -71,6 +71,6 @@ footer ul li a {
 }
 
 .footer-bottom .fas {
-  
+
   font-size:16px;
 }

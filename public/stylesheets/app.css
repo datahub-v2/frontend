@@ -6464,6 +6464,32 @@ a {
 .heading-slim {
   font-weight: 200; }
 
+.heading2 {
+  padding-top: 0;
+  margin-top: 0; }
+
+/* Tables */
+.table, body.textual table, body.docs table, body.blog table {
+  box-shadow: 0px 0px 24px #e8e8e8; }
+
+.table thead tr th, body.textual table thead tr th, body.docs table thead tr th, body.blog table thead tr th {
+  padding: 20px;
+  background-color: #fafafa;
+  color: #000; }
+
+.table > thead > tr > th, body.textual table > thead > tr > th, body.docs table > thead > tr > th, body.blog table > thead > tr > th {
+  border-bottom: 0px solid #ddd; }
+
+.table > tbody > tr > td, body.textual table > tbody > tr > td, body.docs table > tbody > tr > td, body.blog table > tbody > tr > td, .table > tbody > tr > th, body.textual table > tbody > tr > th, body.docs table > tbody > tr > th, body.blog table > tbody > tr > th, .table > tfoot > tr > td, body.textual table > tfoot > tr > td, body.docs table > tfoot > tr > td, body.blog table > tfoot > tr > td, .table > tfoot > tr > th, body.textual table > tfoot > tr > th, body.docs table > tfoot > tr > th, body.blog table > tfoot > tr > th, .table > thead > tr > td, body.textual table > thead > tr > td, body.docs table > thead > tr > td, body.blog table > thead > tr > td, .table > thead > tr > th, body.textual table > thead > tr > th, body.docs table > thead > tr > th, body.blog table > thead > tr > th {
+  border-top: 0px solid #ddd; }
+
+.table > tbody > tr > td, body.textual table > tbody > tr > td, body.docs table > tbody > tr > td, body.blog table > tbody > tr > td {
+  padding: 10px 0 10px 30px;
+  color: #353535; }
+
+.table-striped > tbody > tr:nth-of-type(odd), body.textual table > tbody > tr:nth-of-type(odd), body.docs table > tbody > tr:nth-of-type(odd), body.blog table > tbody > tr:nth-of-type(odd) {
+  background-color: #fafafa; }
+
 /* Navbar
 ====================================*/
 .banner {
@@ -6574,7 +6600,7 @@ footer p {
 
 footer label {
   text-transform: uppercase;
-  color: #313131;
+  color: #ff7900;
   padding: 0px 0 15px 0; }
 
 footer ul {
@@ -6955,6 +6981,12 @@ h2.section-title {
 .subscribe-form {
   padding: 50px 50px 100px 50px; }
 
+.subscribe-heading {
+  padding-bottom: 45px; }
+
+.subscribe-input {
+  margin-bottom: 30px; }
+
 .custom-input {
   display: block;
   height: 38px;
@@ -7009,7 +7041,7 @@ h2.section-title {
   margin: 25px 0px 35px 0px; }
 
 .publish-data .right-box ul li {
-  margin-top: 25px; }
+  margin-top: 10px; }
 
 .publish-data .right-box ul li::before {
   content: "\2022";
@@ -7130,9 +7162,6 @@ h2.section-title {
 .core-datasets .right-box h1 {
   margin: 0px 0px 30px 0px; }
 
-.core-datasets .right-box p, li {
-  color: #3a3864; }
-
 .core-datasets .right-box ul {
   padding-left: 0px;
   list-style: none;
@@ -7147,7 +7176,9 @@ h2.section-title {
   margin-right: 10px; }
 
 .core-datasets .info-1 {
-  color: #4a4a4a; }
+  font-size: 25px;
+  font-weight: 200;
+  padding-bottom: 20px; }
 
 .core-datasets .info-2 {
   color: #ff7900;
@@ -7187,7 +7218,7 @@ h2.section-title {
   background: #fff;
   width: 65px;
   height: 65px;
-  margin: 15px 30px 10px 0px;
+  margin: 0 30px 15px 0px;
   border-radius: 40px; }
 
 .request-data .icon img {
@@ -7206,6 +7237,8 @@ h2.section-title {
 /************** data os **********************/
 .data-os {
   padding: 70px 0; }
+  .data-os .content p {
+    font-size: 16px; }
 
 .data-os .heading1 {
   padding-bottom: 10px; }

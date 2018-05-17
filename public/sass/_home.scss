@@ -476,6 +476,15 @@ h2.section-title {
 padding:50px 50px 100px 50px;
 
 }
+.subscribe-heading {
+  padding-bottom :45px
+
+}
+
+.subscribe-input {
+  margin-bottom:30px
+}
+
 .custom-input
 {
 display: block;
@@ -546,7 +555,7 @@ padding-top:30px;
 }
 .publish-data .right-box ul li
 {
-    margin-top:25px;
+    margin-top:10px;
 }
 .publish-data .right-box ul li::before
 {
@@ -737,10 +746,6 @@ padding-top:30px;
 {
     margin:0px 0px 30px 0px;
 }
-.core-datasets .right-box p,li
-{
-    color:#3a3864;
-}
 .core-datasets .right-box ul
 {
     padding-left:0px;
@@ -760,7 +765,9 @@ padding-top:30px;
 
 
 .core-datasets .info-1 {
-    color:#4a4a4a;
+    font-size: 25px;
+    font-weight: 200;
+    padding-bottom: 20px;
 }
 
 .core-datasets .info-2 {
@@ -811,7 +818,7 @@ box-shadow: 2px 3px 16px 0px rgba(97,97,97,0.14);
     background:#fff;
     width:65px;
     height:65px;
-    margin:15px 30px 10px 0px;
+    margin: 0 30px 15px 0px;
     border-radius:40px;
 
 }
@@ -839,6 +846,10 @@ box-shadow: 2px 3px 16px 0px rgba(97,97,97,0.14);
 /************** data os **********************/
 .data-os {
     padding:70px 0;
+
+    .content p {
+      font-size:16px;
+    }
 }
 
 .data-os .heading1 {
