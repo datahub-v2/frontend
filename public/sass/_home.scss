@@ -821,7 +821,15 @@ box-shadow: 2px 3px 16px 0px rgba(97,97,97,0.14);
     margin: 0 30px 15px 0px;
     border-radius:40px;
 
+	@media screen and (max-width:480px){
+		width: 35px;
+		height: 35px;
+		margin:0 10px 15px 0;
+		display:none !important;
+	}
 }
+
+
 
 .request-data .icon img
 {
@@ -850,6 +858,12 @@ box-shadow: 2px 3px 16px 0px rgba(97,97,97,0.14);
     .content p {
       font-size:16px;
     }
+	
+	.main {
+		@media screen and (max-width:768px){
+			padding-top:20px;
+		}
+	}
 }
 
 .data-os .heading1 {
