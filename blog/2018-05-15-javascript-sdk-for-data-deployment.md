@@ -1,7 +1,7 @@
 ---
 title: JavaScript SDK for data deployment
 date: 2018-05-15
-authors: ['anuveyatsu']
+authors: ['acckiygerman', 'anuveyatsu']
 ---
 
 Here we explain how you can use JavaScript SDK for data deployment purposes. If you need a detailed step-by-step tutorial, please, go to this article:
