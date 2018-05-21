@@ -7328,6 +7328,8 @@ body.search h1, body.validate h1 {
   font-weight: 300;
   font-size: 30px;
   margin-bottom: 10px; }
+body.search .search-banner, body.validate .search-banner {
+  margin-top: 30px; }
 body.search .search-icon, body.validate .search-icon {
   display: inline-block;
   vertical-align: text-bottom; }
