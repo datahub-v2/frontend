@@ -60,7 +60,7 @@ module.exports = function () {
     })
     // Include additional path, e.g., blog posts, awesome pages:
     const leftoverPages = [
-      '/awesome/football', '/awesome/climate-change', '/awesome/linking-open-data',
+      '/awesome/football', '/awesome/climate-change', '/awesome/linked-open-data',
       '/awesome/war-and-peace', '/awesome/world-bank', '/docs'
     ]
     fs.readdirSync('blog/').forEach(post => {
