@@ -835,20 +835,21 @@ module.exports = function () {
       })
       return
     }
-    // Get the latest successful revision, if does not exist show 404
-    let latestSuccessfulRevision
+    // Get the specific revision if id is given,
+    // if not get the latest successful revision, if does not exist show 404
+    let revision
     try {
-      latestSuccessfulRevision = await api.specStoreStatus(
+      revision = await api.specStoreStatus(
         userAndPkgId.userid,
         userAndPkgId.packageid,
-        'successful'
+        req.query.v || 'successful'
       )
     } catch (err) {
       next(err)
       return
     }
     try {
-      const revisionId = latestSuccessfulRevision.id.split('/')[2]
+      const revisionId = revision.id.split('/')[2]
       normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, revisionId, token)
     } catch (err) {
       next(err)
