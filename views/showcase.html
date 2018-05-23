@@ -183,12 +183,12 @@
                 {{ resource.modified }}
               </td>
               <td class="download truncate col-xs-4">
-                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}">
+                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}{{ '?v='+revisionId if revisionId }}">
                   {{ resource.format }} ({{resource.prettyBytes}})
                 </a>
                 {% for alt in resource.otherFormats %}
                 ,
-                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ alt.format }}">
+                <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ alt.format }}{{ '?v='+revisionId if revisionId }}">
                   {{alt.format}} ({{alt.prettyBytes}})
                 </a>
                 {% endfor %}
@@ -211,7 +211,7 @@
           {{resource.name}}
           {% endif %}
           &nbsp;
-          <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}">
+          <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}{{ '?v='+revisionId if revisionId }}">
             <i class="fa fa-arrow-circle-o-down" aria-hidden="true" style="font-size:0.9em"></i>
           </a>
         </h2>
@@ -245,7 +245,7 @@
              data-type="resource-preview" data-resource="{{ loop.index - 1 }}"></div>
         <!-- End of div elements for React -->
         <p class="notice">
-          This is a preview version. There might be more data in <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}">the original version.</a>
+          This is a preview version. There might be more data in <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}{{ '?v='+revisionId if revisionId }}">the original version.</a>
         </p>
         {% if resource.format == "csv" %}
          <h3 class="section-title">Field information</h3>
@@ -356,7 +356,7 @@
 <!-- Link to datapackage.json - putting here to be hidden for now -->
 <div class="container">
   <div class="inner_container">
-    <a href="/{{ owner }}/{{ dataset.name }}/datapackage.json" class="btn btn-default" style="margin-top:-80px">Datapackage.json</a>
+    <a href="/{{ owner }}/{{ dataset.name }}/datapackage.json{{ '?v='+revisionId if revisionId }}" class="btn btn-default" style="margin-top:-80px">Datapackage.json</a>
   </div>
 </div><!-- end of link to datapackage.json -->
 {% endblock %}

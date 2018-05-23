@@ -528,9 +528,9 @@ module.exports = function () {
         }
       }
 
-      renderPage(revisionStatus)
+      renderPage(revisionStatus, revision ? true : false)
 
-      async function renderPage(status) {
+      async function renderPage(status, shortUrl) {
         // Check if it's a private dataset and sign urls if so:
         if (status.spec_contents.meta.findability === 'private') {
           const authzToken = await api.authz(token)
@@ -611,6 +611,7 @@ module.exports = function () {
           failUrl: `/${req.params.owner}/${req.params.name}/v/${revisionId}`,
           successUrl: `/${req.params.owner}/${req.params.name}`,
           statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/${revisionId}`,
+          revisionId: shortUrl ? null : revisionId,
           failedPipelines,
           keywords: datasetKeywords + generalKeywords
         })
@@ -652,20 +653,24 @@ module.exports = function () {
       return
     }
 
-    // Get the latest successful revision, if does not exist show 404
-    let latestSuccessfulRevision
-    try {
-      latestSuccessfulRevision = await api.specStoreStatus(
-        userAndPkgId.userid,
-        userAndPkgId.packageid,
-        'successful'
-      )
-    } catch (err) {
-      next(err)
-      return
+    // Get the specific revision if id is given,
+    // if not get the latest successful revision, if does not exist show 404
+    let revisionId = req.query.v
+    if (!revisionId) {
+      let revisionStatus
+      try {
+        revisionStatus = await api.specStoreStatus(
+          userAndPkgId.userid,
+          userAndPkgId.packageid,
+          'successful'
+        )
+      } catch (err) {
+        next(err)
+        return
+      }
+      revisionId = revisionStatus.id.split('/')[2]
     }
 
-    const revisionId = latestSuccessfulRevision.id.split('/')[2]
     try {
       normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, revisionId, token)
     } catch (err) {
@@ -704,20 +709,26 @@ module.exports = function () {
       })
       return
     }
-    // Get the latest successful revision, if does not exist show 404
-    let latestSuccessfulRevision
-    try {
-      latestSuccessfulRevision = await api.specStoreStatus(
-        userAndPkgId.userid,
-        userAndPkgId.packageid,
-        'successful'
-      )
-    } catch (err) {
-      next(err)
-      return
+
+    // Get the specific revision if id is given,
+    // if not get the latest successful revision, if does not exist show 404
+    let revisionId = req.query.v
+    if (!revisionId) {
+      let revisionStatus
+      try {
+        revisionStatus = await api.specStoreStatus(
+          userAndPkgId.userid,
+          userAndPkgId.packageid,
+          'successful'
+        )
+      } catch (err) {
+        next(err)
+        return
+      }
+      revisionId = revisionStatus.id.split('/')[2]
     }
+
     try {
-      const revisionId = latestSuccessfulRevision.id.split('/')[2]
       normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, revisionId, token)
     } catch (err) {
       next(err)
@@ -835,21 +846,26 @@ module.exports = function () {
       })
       return
     }
+
     // Get the specific revision if id is given,
     // if not get the latest successful revision, if does not exist show 404
-    let revision
-    try {
-      revision = await api.specStoreStatus(
-        userAndPkgId.userid,
-        userAndPkgId.packageid,
-        req.query.v || 'successful'
-      )
-    } catch (err) {
-      next(err)
-      return
+    let revisionId = req.query.v
+    if (!revisionId) {
+      let revisionStatus
+      try {
+        revisionStatus = await api.specStoreStatus(
+          userAndPkgId.userid,
+          userAndPkgId.packageid,
+          'successful'
+        )
+      } catch (err) {
+        next(err)
+        return
+      }
+      revisionId = revisionStatus.id.split('/')[2]
     }
+
     try {
-      const revisionId = revision.id.split('/')[2]
       normalizedDp = await api.getPackage(userAndPkgId.userid, userAndPkgId.packageid, revisionId, token)
     } catch (err) {
       next(err)
