@@ -362,8 +362,7 @@
 {% endblock %}
 
 {% block scripts %}
-<!-- Check if 'source' param exists in the URL and use it as a tracker -->
-<!-- Note that we're tracking if showcase page visit is coming from the CLI -->
+<!-- Function for reading query params -->
 <script>
   function getURLParameter(sParam) {
     var sPageURL = window.location.search.substring(1);
@@ -375,7 +374,6 @@
       }
     }
   }
-  dataLayer.push({'source': getURLParameter('source') || 'web'});
 </script>
 <!-- script for tabs to work as anchors (used for instructions in showcase page) -->
 <script>
