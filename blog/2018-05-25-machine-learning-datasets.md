@@ -1,10 +1,8 @@
 ---
 title: Machine learning datasets
 date: 2018-05-25
-authors: [svetozarstojkovic, 'Branko-Dj']
+authors: ['svetozarstojkovic', 'branko-dj']
 ---
-
-# Machine learning datasets
 
 We have created a number of `machine learning` datasets that can be interesting for professionals and students from the field.
 
@@ -71,13 +69,13 @@ https://datahub.io/machine-learning/hepatitis#python
 ### Getting a dataset
 First thing to do is install datapackage library
 
-```
+```bash
 pip install datapackage
 ```
 
 Then you need to get your dataset using the "Import into your tool" (option at the bottom of the page)
 
-```
+```python
 from datapackage import Package
 
 package = Package('https://datahub.io/machine-learning/hepatitis/datapackage.json')
