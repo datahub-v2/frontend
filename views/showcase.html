@@ -126,14 +126,14 @@
               <td class="col-xs-2">{{ dataset.datahub.modified }}</td>
               <td class="col-xs-2">
                 {% if dataset.licenses %}
-                  <i class="fa fa-gavel"></i> {{snippets.listify(dataset.licenses)}}
+                  <i class="fas fa-gavel"></i> {{snippets.listify(dataset.licenses)}}
                 {% elif dataset.license %}
-                  <i class="fa fa-gavel"></i> <span title="{{ dataset.license }}">{{ dataset.license }}</span>
+                  <i class="fas fa-gavel"></i> <span title="{{ dataset.license }}">{{ dataset.license }}</span>
                 {% endif %}
               </td>
               <td class="col-xs-2">
                 {% if dataset.sources %}
-                  <i class="fa fa-external-link-square"></i> {{snippets.listify(dataset.sources)}}
+                  <i class="fas fa-external-link-square-alt"></i> {{snippets.listify(dataset.sources)}}
                 {% endif %}
               </td>
             </tr>
@@ -171,7 +171,7 @@
           {% for resource in dataset.downloads %}
             <tr>
               <td class="col-xs-2">
-                <i class="fa fa-file-text-o"></i> <a href="#resource-{{resource.name}}" onclick="scrollDown(this)" class="anchor-link" title="{{resource.title or resource.name}}">{{resource.name}}</a>
+                <i class="far fa-file-alt"></i> <a href="#resource-{{resource.name}}" onclick="scrollDown(this)" class="anchor-link" title="{{resource.title or resource.name}}">{{resource.name}}</a>
               </td>
               <td class="col-xs-4" title="{{ resource.description or resource.title }}">
                 {{ resource.description or resource.title }}
@@ -212,7 +212,7 @@
           {% endif %}
           &nbsp;
           <a href="/{{ owner }}/{{ dataset.name }}/r/{{ resource.name }}.{{ resource.format }}{{ '?v='+revisionId if revisionId }}">
-            <i class="fa fa-arrow-circle-o-down" aria-hidden="true" style="font-size:0.9em"></i>
+            <i class="far fa-arrow-alt-circle-down" aria-hidden="true" style="font-size:0.9em"></i>
           </a>
         </h2>
         <!-- Render validation reports for each resource: -->

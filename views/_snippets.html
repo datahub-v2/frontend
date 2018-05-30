@@ -101,13 +101,13 @@
                 var pipelinesDiv = document.getElementById(`${resource.name}-pipeline`);
                 resourcePipelines.forEach(function(pipeline) {
                   if (out.pipelines[pipeline].status === 'INPROGRESS' || out.pipelines[pipeline].status === 'QUEUED') { // Running - have a spinner
-                    pipelinesDiv.innerHTML += '<div class="progressing-item"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true" id="spinner"></i> ' + out.pipelines[pipeline].title + '</div>';
+                    pipelinesDiv.innerHTML += '<div class="progressing-item"><i class="fas fa-spinner fa-pulse fa-fw" aria-hidden="true" id="spinner"></i> ' + out.pipelines[pipeline].title + '</div>';
                   } else if (out.pipelines[pipeline].status === 'FAILED') { // Failed - have a cross
-                    pipelinesDiv.innerHTML += '<div class="progressing-item"><i class="fa fa-times" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
+                    pipelinesDiv.innerHTML += '<div class="progressing-item"><i class="fas fa-times" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
                   } else if (out.pipelines[pipeline].status === 'SUCCEEDED') { // Success - have a tick
-                    pipelinesDiv.innerHTML += '<div class="progressing-item"><i class="fa fa-check" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
+                    pipelinesDiv.innerHTML += '<div class="progressing-item"><i class="fas fa-check" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
                   } else { // Unknown state just leave at gray
-                    pipelinesDiv.innerHTML += '<div class="progressing-item"><i class="fa fa-question" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
+                    pipelinesDiv.innerHTML += '<div class="progressing-item"><i class="fas fa-question" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
                   }
                 })
               })
@@ -125,13 +125,13 @@
               mainPipelines.innerHTML = '';
               otherPipelines.forEach(function(pipeline) {
                 if (out.pipelines[pipeline].status === 'INPROGRESS' || out.pipelines[pipeline].status === 'QUEUED') { // Running - have a spinner
-                  mainPipelines.innerHTML += '<div class="main-item"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true" id="spinner"></i> ' + out.pipelines[pipeline].title + '</div>';
+                  mainPipelines.innerHTML += '<div class="main-item"><i class="fas fa-spinner fa-pulse fa-fw" aria-hidden="true" id="spinner"></i> ' + out.pipelines[pipeline].title + '</div>';
                 } else if (out.pipelines[pipeline].status === 'FAILED') { // Failed - have a cross
-                  mainPipelines.innerHTML += '<div class="main-item"><i class="fa fa-times" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
+                  mainPipelines.innerHTML += '<div class="main-item"><i class="fas fa-times" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
                 } else if (out.pipelines[pipeline].status === 'SUCCEEDED') { // Success - have a tick
-                  mainPipelines.innerHTML += '<div class="main-item"><i class="fa fa-check" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
+                  mainPipelines.innerHTML += '<div class="main-item"><i class="fas fa-check" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
                 } else { // Unknown state just leave at gray
-                  mainPipelines.innerHTML += '<div class="main-item"><i class="fa fa-question" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
+                  mainPipelines.innerHTML += '<div class="main-item"><i class="fas fa-question" aria-hidden="true"></i> ' + out.pipelines[pipeline].title + '</div>';
                 }
               })
 
