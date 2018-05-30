@@ -299,6 +299,7 @@ module.exports = function () {
       const githubPath = '//github.com/okfn/data.okfn.org/blob/master/' + path
       res.render('docs.html', {
         title: parsedWithFM.attributes.title,
+        description: parsedWithFM.body.substring(0,200).replace(/\n/g, ' '),
         date,
         editpath: editpath,
         content,
@@ -306,7 +307,8 @@ module.exports = function () {
       })
     } else {
       res.render('docs_home.html', {
-        title: 'Documentation'
+        title: 'Documentation',
+        description: 'Learn how to use DataHub. Find out about DataHub features and read the tutorials.'
       })
     }
   }
@@ -634,6 +636,8 @@ module.exports = function () {
     }
 
     res.render('validate.html', {
+      title: 'Validate Datasets',
+      description: 'Data Package Validator. The online validator checks the data package descriptor (also known as datapackage.json file).',
       query: req.query.q,
       dataset,
       loading_error,
@@ -983,7 +987,7 @@ module.exports = function () {
 
     res.render('search.html', {
       title: 'Search Datasets',
-      description: 'Search for public datasets on DataHub.',
+      description: 'Search for public datasets on DataHub. Quickly find data in various formats: csv, json, excel and more.',
       packages,
       pages,
       currentPage,
@@ -994,7 +998,7 @@ module.exports = function () {
   router.get('/pricing', (req, res) => {
     res.render('pricing.html', {
       title: 'Pricing',
-      description: 'Membership Plans'
+      description: 'Membership Plans on DataHub'
     })
   })
 
@@ -1110,6 +1114,7 @@ module.exports = function () {
 
     res.render('download.html', {
       title: 'Download',
+      description: 'Command line tool for data wrangling. Download the tool for your OS (linux, mac or windows) and start wrangling, sharing and publishing your data online.',
       desktopAppUrl,
       binReleaseMacos,
       binReleaseLinux,
@@ -1122,7 +1127,8 @@ module.exports = function () {
   // Consulting page
   router.get('/consulting', async (req, res) => {
     res.render('consulting.html', {
-      title: 'Consulting'
+      title: 'Consulting',
+      description: 'Team with excellence and beyond. Hire us to build and improve your data-driven project. We have decades of experience building data systems for clients large and small.'
     })
   })
 
