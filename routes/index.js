@@ -591,12 +591,17 @@ module.exports = function () {
           console.error(err)
         }
 
-        // Get the keywords from the dictionary:
-        let datasetKeywords = keywords
+        // Get the seo object from the dict:
+        let seoDict = keywords
           .find(item => item.name === req.params.name)
-        datasetKeywords = datasetKeywords
-          ? datasetKeywords.keywords.join(',')
-          : ''
+        let metaDescription, datasetKeywords = ''
+        if (seoDict) {
+          // Get the descriptions for popular datasets:
+          metaDescription = seoDict.description
+          // Get the keywords:
+          datasetKeywords = seoDict.keywords.join(',')
+        }
+
         // Get the common keywords:
         const generalKeywords = keywords
           .find(item => item.name === 'general')
@@ -617,7 +622,8 @@ module.exports = function () {
           statusApi: `${config.get('API_URL')}/source/${userAndPkgId.userid}/${userAndPkgId.packageid}/${revisionId}`,
           revisionId: shortUrl ? null : revisionId,
           failedPipelines,
-          keywords: datasetKeywords + generalKeywords
+          keywords: datasetKeywords + generalKeywords,
+          metaDescription
         })
       }
     }

@@ -65,6 +65,8 @@ test('Showcase page with short URL works, if there is a latest successful revisi
   t.true(res.text.includes('DEMO - CBOE Volatility Index'))
   // Keywords are on place:
   t.true(res.text.includes('test,keyword'))
+  // Meta description is on place:
+  t.true(res.text.includes('Description for demo-package.'))
 })
 
 test('Showcase page returns 200 if logged in and private dataset', async t => {
