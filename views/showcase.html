@@ -282,76 +282,76 @@
   </div>
 </div>
 
-<!-- readme section -->
-{% if dataset.readmeSnippet %}
+<!-- import into your tool section -->
 <div class="section-gray">
   <div class="container">
     <div class="inner_container">
       <div class="dataset show">
-        <h2 id="readme" class="section-title">Read me</h2>
-        <div class="readme part readable-width">{{dataset.readmeHtml|safe}}</div>
-      </div>
-    </div>
-  </div>
-</div>
-{% endif %}<!-- end of readme section -->
+        <h2 class="section-title">Import into your tool</h2>
+        <ul class="nav nav-pills">
+          <li class="active"><a data-toggle="pill" href="#data-cli">data-cli</a></li>
+          <li><a data-toggle="pill" href="#curl">cURL</a></li>
+          <li><a data-toggle="pill" href="#r">R</a></li>
+          <li><a data-toggle="pill" href="#pandas">Pandas</a></li>
+          <li><a data-toggle="pill" href="#python">Python</a></li>
+          <li><a data-toggle="pill" href="#javascript">JavaScript</a></li>
+        </ul>
+        <!-- content for instructions -->
+        <div class="tab-content">
 
-<!-- import into your tool section -->
-<div class="container">
-  <div class="inner_container">
-    <div class="dataset show">
-      <h2 class="section-title">Import into your tool</h2>
-      <ul class="nav nav-pills">
-        <li class="active"><a data-toggle="pill" href="#data-cli">data-cli</a></li>
-        <li><a data-toggle="pill" href="#curl">cURL</a></li>
-        <li><a data-toggle="pill" href="#r">R</a></li>
-        <li><a data-toggle="pill" href="#pandas">Pandas</a></li>
-        <li><a data-toggle="pill" href="#python">Python</a></li>
-        <li><a data-toggle="pill" href="#javascript">JavaScript</a></li>
-      </ul>
-      <!-- content for instructions -->
-      <div class="tab-content">
-
-        <div id="data-cli" class="tab-pane fade in active">
-          <div class="part">
-            {{instructions.data_cli(dataset)}}
+          <div id="data-cli" class="tab-pane fade in active">
+            <div class="part">
+              {{instructions.data_cli(dataset)}}
+            </div>
           </div>
-        </div>
 
-        <div id="curl" class="tab-pane fade">
-          <div class="part">
-            {{instructions.curl(dataset)}}
+          <div id="curl" class="tab-pane fade">
+            <div class="part">
+              {{instructions.curl(dataset)}}
+            </div>
           </div>
-        </div>
 
-        <div id="r" class="tab-pane fade">
-          <div class="part">
-            {{instructions.r(dataset)}}
+          <div id="r" class="tab-pane fade">
+            <div class="part">
+              {{instructions.r(dataset)}}
+            </div>
           </div>
-        </div>
 
-        <div id="pandas" class="tab-pane fade">
-          <div class="part">
-            {{instructions.pandas(dataset)}}
+          <div id="pandas" class="tab-pane fade">
+            <div class="part">
+              {{instructions.pandas(dataset)}}
+            </div>
           </div>
-        </div>
 
-        <div id="python" class="tab-pane fade">
-          <div class="part">
-            {{instructions.python(dataset)}}
+          <div id="python" class="tab-pane fade">
+            <div class="part">
+              {{instructions.python(dataset)}}
+            </div>
           </div>
-        </div>
 
-        <div id="javascript" class="tab-pane fade">
-          <div class="part">
-            {{instructions.javascript(dataset)}}
+          <div id="javascript" class="tab-pane fade">
+            <div class="part">
+              {{instructions.javascript(dataset)}}
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
   </div>
 </div><!-- end of import into your tool section -->
+
+<!-- readme section -->
+{% if dataset.readmeSnippet %}
+<div class="container">
+  <div class="inner_container">
+    <div class="dataset show">
+      <h2 id="readme" class="section-title">Read me</h2>
+      <div class="readme part readable-width">{{dataset.readmeHtml|safe}}</div>
+    </div>
+  </div>
+</div>
+{% endif %}<!-- end of readme section -->
 
 <!-- Link to datapackage.json - putting here to be hidden for now -->
 <div class="container">
