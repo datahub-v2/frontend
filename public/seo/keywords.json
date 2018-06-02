@@ -11,14 +11,16 @@
       "csv",
       "json",
       "excel"
-    ]
+    ],
+    "description": "Download data tables in csv (excel) and json formats."
   },
   {
     "name": "demo-package",
     "keywords": [
       "test",
       "keyword"
-    ]
+    ],
+    "description": "Description for demo-package."
   },
   {
     "name": "country-list",
@@ -32,7 +34,8 @@
       "country ISO 3166-1 codes",
       "country names",
       "ISO 3166-1-alpha-2"
-    ]
+    ],
+    "description": "Country list: ISO 3166-1-alpha-2 English country names and code elements as two letter country codes. Also known as +2 country code and iso 3166."
   },
   {
     "name": "s-and-p-500-companies",
@@ -45,7 +48,8 @@
       "s&p 500 list",
       "s and p",
       "constituents"
-    ]
+    ],
+    "description": "List of companies in the S&P 500 (Standard and Poor's 500). Top 500 stocks in the US by market cap. S&P 500 companies or S&P 500 index."
   },
   {
     "name": "world-cities",
@@ -59,7 +63,8 @@
       "country ISO 3166-1 codes",
       "geonames",
       "worldwide toponyms"
-    ]
+    ],
+    "description": "List of all major cities in the world by country and administrative region."
   },
   {
     "name": "language-codes",
@@ -71,7 +76,8 @@
       "ISO 693-2",
       "IETF Language Types",
       "IETF Language tags"
-    ]
+    ],
+    "description": "Comprehensive language code information, consisting of ISO 639-1, ISO 639-2 and IETF language types. Two letter language codes. IETF language tags."
   },
   {
     "name": "country-codes",
@@ -114,7 +120,8 @@
       "Top level domain from Geonames",
       "WMO",
       "country status"
-    ]
+    ],
+    "description": "Comprehensive country code information, including ISO 3166 codes, ITU dialing codes, ISO 4217 currency codes, and many others."
   },
   {
     "name": "global-temp",
@@ -125,7 +132,8 @@
       "Global Temperature Time Series",
       "global monthly mean data temperature anomalies",
       "global annual mean temperature anomalies"
-    ]
+    ],
+    "description": "Global temperature data or gistemp: average temperature by year, temperature time series, monthly mean data temperature anomalies."
   },
   {
     "name": "population-growth-estimates-and-projections",
@@ -135,7 +143,8 @@
       "population growth",
       "population estimates for low medium and high fertility variants",
       "population"
-    ]
+    ],
+    "description": "Population growth estimates and projections for low, medium and high fertility variants."
   },
   {
     "name": "continent-codes",
@@ -145,7 +154,8 @@
       "List of continent codes",
       "list of continents",
       "iso continent codes"
-    ]
+    ],
+    "description": "List of continents: continent abbreviations and ISO continent codes."
   },
   {
     "name": "airport-codes",
@@ -156,7 +166,8 @@
       "ICAO airport code",
       "Airport codes from around the world",
       "airport locations"
-    ]
+    ],
+    "description": "Airport codes. IATA airport code. ICAO airport code. Airport codes from around the world and coordinates."
   },
   {
     "name": "un-locode",
@@ -167,6 +178,32 @@
       "UN-LOCODE Codelist",
       "United Nations Code for Trade and Transport Locations",
       "locode"
-    ]
+    ],
+    "description": "The United Nations Code for Trade and Transport Locations. Known as unlocode, un/locode or un location code."
+  },
+  {
+    "name": "bond-yields-uk-10y",
+    "path": "/core/bond-yields-uk-10y",
+    "keywords": [
+      "10 year gilt yield",
+      "uk 10 year bond yield",
+      "uk government bond yields",
+      "uk 10 year gilt",
+      "uk bond yields"
+    ],
+    "description": "10 year nominal yields on UK government bonds from the Bank of England: quarterly and annual data, UK 10 year gilt yield."
+  },
+  {
+    "name": "gold-prices",
+    "path": "/core/gold-prices",
+    "keywords": [
+      "price of gold",
+      "gold prices",
+      "historical gold prices excel",
+      "gold price history",
+      "gold price data",
+      "gold price usd"
+    ],
+    "description": "Monthly gold prices since 1950 in USD (London market). Historical gold prices csv, excel, json. Gold price data."
   }
 ]
