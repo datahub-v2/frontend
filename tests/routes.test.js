@@ -67,6 +67,8 @@ test('Showcase page with short URL works, if there is a latest successful revisi
   t.true(res.text.includes('test,keyword'))
   // Meta description is on place:
   t.true(res.text.includes('Description for demo-package.'))
+  // Keywords are in the readme:
+  t.true(res.text.includes('<hr>Keywords and keyphrases: test, keyword.'))
 })
 
 test('Showcase page returns 200 if logged in and private dataset', async t => {

@@ -600,6 +600,8 @@ module.exports = function () {
           metaDescription = seoDict.description
           // Get the keywords:
           datasetKeywords = seoDict.keywords.join(',')
+          // Add keywords to README:
+          normalizedDp.readmeHtml += `\n<hr>Keywords and keyphrases: ${datasetKeywords.replace(/,/g, ', ')}.`
         }
 
         // Get the common keywords:
