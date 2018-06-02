@@ -596,8 +596,12 @@ module.exports = function () {
           .find(item => item.name === req.params.name)
         let metaDescription, datasetKeywords = ''
         if (seoDict) {
+          // Get the general meta description:
+          const generalMetaDescription = keywords
+            .find(item => item.name === 'general')
+            .description
           // Get the descriptions for popular datasets:
-          metaDescription = seoDict.description
+          metaDescription = seoDict.description + ' ' + generalMetaDescription
           // Get the keywords:
           datasetKeywords = seoDict.keywords.join(',')
           // Add keywords to README:
