@@ -58,10 +58,25 @@ module.exports = function () {
         return urls
       }, [])
     })
-    // Include additional path, e.g., blog posts, awesome pages:
+    // Include additional path, e.g., blog posts, awesome pages, docs:
     const leftoverPages = [
       '/awesome/football', '/awesome/climate-change', '/awesome/linked-open-data',
-      '/awesome/war-and-peace', '/awesome/world-bank', '/docs'
+      '/awesome/war-and-peace', '/awesome/world-bank', '/awesome/economic-data',
+      '/awesome/reference-data', '/awesome/machine-learning-data', '/awesome/inflation',
+      '/awesome/property-prices', '/awesome/wealth-income-and-inequality',
+      '/docs', '/docs/getting-started/installing-data', '/docs/getting-started/publishing-data',
+      '/docs/getting-started/push-excel', '/docs/getting-started/getting-data',
+      '/docs/getting-started/how-to-use-info-cat-and-get-commands-of-data-tool',
+      '/docs/getting-started/datapackage-find-prepare-share-guide', '/docs/automation',
+      '/docs/tutorials/js-sdk-tutorial', '/docs/tutorials/auto-publish-your-datasets-using-travis-ci',
+      '/docs/features/data-cli', '/docs/features/views', '/docs/features/preview-tables-for-your-data',
+      '/docs/features/auto-generated-csv-json-and-zip', '/docs/features/api',
+      '/docs/core-data', '/docs/core-data/curators', '/docs/core-data/curators-guide',
+      '/docs/data-packages', '/docs/data-packages/tabular', '/docs/data-packages/csv',
+      '/docs/data-packages/publish', '/docs/data-packages/publish-any',
+      '/docs/data-packages/publish-faq', '/docs/data-packages/publish-geo',
+      '/docs/data-packages/publish-online', '/docs/data-packages/publish-tabular',
+      '/docs/misc/markdown', '/docs/faq'
     ]
     fs.readdirSync('blog/').forEach(post => {
       leftoverPages.push(`blog/${post.slice(11, -3)}`)
