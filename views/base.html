@@ -23,10 +23,14 @@
   <meta property="og:image:alt" content="DataHub logo" />
   <meta property="fb:app_id" content="188583668435715" />
 
-  {% if dataset and dataset.readmeSnippet %}
-  <meta name="description" content="{{metaDescription or dataset.readmeSnippet}}" />
-  <meta name="twitter:description" content="{{metaDescription or dataset.readmeSnippet}}" />
-  <meta property="og:description" content="{{metaDescription or dataset.readmeSnippet}}" />
+  {% if metaDescription %}
+  <meta name="description" content="{{metaDescription}}" />
+  <meta name="twitter:description" content="{{metaDescription}}" />
+  <meta property="og:description" content="{{metaDescription}}" />
+  {% elif dataset and dataset.readmeSnippet %}
+  <meta name="description" content="{{dataset.readmeSnippet}}" />
+  <meta name="twitter:description" content="{{dataset.readmeSnippet}}" />
+  <meta property="og:description" content="{{dataset.readmeSnippet}}" />
   {% else %}
   <meta name="description" content="{{description or 'Find, Share and Publish Quality Data Online. The fastest way for individuals, teams and organizations to publish, deploy and share their data.'}}">
   <meta name="twitter:description" content="{{description or 'Find, Share and Publish Quality Data Online. The fastest way for individuals, teams and organizations to publish, deploy and share their data.'}}" />

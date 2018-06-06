@@ -63,7 +63,7 @@ module.exports = function () {
       '/awesome/football', '/awesome/climate-change', '/awesome/linked-open-data',
       '/awesome/war-and-peace', '/awesome/world-bank', '/awesome/economic-data',
       '/awesome/reference-data', '/awesome/machine-learning-data', '/awesome/inflation',
-      '/awesome/property-prices', '/awesome/wealth-income-and-inequality',
+      '/awesome/property-prices', '/awesome/wealth-income-and-inequality', '/awesome/logistics-data',
       '/docs', '/docs/getting-started/installing-data', '/docs/getting-started/publishing-data',
       '/docs/getting-started/push-excel', '/docs/getting-started/getting-data',
       '/docs/getting-started/how-to-use-info-cat-and-get-commands-of-data-tool',
@@ -355,7 +355,9 @@ module.exports = function () {
       page: req.params.page,
       editpath: editpath,
       description: parsedWithFrontMatter.attributes.description,
-      content: utils.md.render(parsedWithFrontMatter.body)
+      content: utils.md.render(parsedWithFrontMatter.body),
+      metaDescription: parsedWithFrontMatter.attributes.description + '\n' + parsedWithFrontMatter.attributes.keywords,
+      keywords: parsedWithFrontMatter.attributes.keywords
     })
   }
   /* end awesome  */
