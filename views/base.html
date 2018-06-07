@@ -61,8 +61,8 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="/static/js/emojify.js"></script>
 </head>
 <body class="{% block bodyclass %}{{bodyclass}}{% endblock %}">
   <!-- Google Tag Manager (noscript) -->
@@ -170,7 +170,7 @@
                     <br/>
                     <p>At Datahub, we provide various solutions to Publish and Deploy your Data with power and simplicity. Datahub is the fastest way for individuals, teams and organizations to publish, deploy and share their data.</p>
                 </div>
-                
+
                 <div class="col-sm-3 col-md-2 col-md-offset-1">
                     <label>Links</label>
                     <ul>
@@ -189,10 +189,10 @@
                         <li>
                             <a href="/blog">Blog</a>
                         </li>
-                        
+
                     </ul>
                 </div>
-                
+
                 <div class="col-sm-2">
                     <label>Support</label>
                     <ul>
@@ -236,12 +236,26 @@
             </div>
 	</div>
   <!-- end of footer -->
-  
-    
+
+
 
     {% block scripts %}{% endblock %}
     <script type="text/javascript" src="/static/js/smoothscroll.js"></script>
     <script>
+      // Emojify text:
+      emojify.setConfig({
+        only_crawl_id    : null,            // Use to restrict where emojify.js applies
+        img_dir          : '/static/img/emoji',  // Directory for emoji images
+        ignored_tags     : {                // Ignore the following tags
+            'SCRIPT'  : 1,
+            'TEXTAREA': 1,
+            'A'       : 1,
+            'PRE'     : 1,
+            'CODE'    : 1
+        }
+      });
+      emojify.run();
+
       function getCookie(name) {
         var value = "; " + document.cookie;
         var parts = value.split("; " + name + "=");
@@ -271,7 +285,7 @@
         avatar.src = src;
       }
     </script>
-    
+
 
 
   </body>
