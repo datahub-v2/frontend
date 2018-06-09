@@ -13,14 +13,14 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@datahubio" />
   <meta name="twitter:title" content="{{dataset.title or title}}" />
-  <meta name="twitter:image" content="https://datahub.io/static/img/logo-cube.png" />
+  <meta name="twitter:image" content="{{metaImage or 'https://datahub.io/static/img/logo-cube.png'}}" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="{{dataset.title or title}}" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DataHub" />
-  <meta property="og:image" content="https://datahub.io/static/img/logo-cube.png" />
-  <meta property="og:image:alt" content="DataHub logo" />
+  <meta property="og:image" content="{{metaImage or 'https://datahub.io/static/img/logo-cube.png'}}" />
+  <meta property="og:image:alt" content="DataHub" />
   <meta property="fb:app_id" content="188583668435715" />
 
   {% if metaDescription %}

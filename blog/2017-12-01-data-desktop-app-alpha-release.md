@@ -2,6 +2,7 @@
 title: Data desktop app - alpha release with drag and drop data publishing support
 date: 2017-12-01
 authors: ['anuveyatsu']
+image: '/static/img/docs/app-cli-update.png'
 ---
 
 We are pleased to announce the launch of our new desktop application for DataHub users. The app brings drag and drop publishing of data. In addition, users can preview and validate their data prior to upload. Currently the app is in alpha and only available for MacOS -- but we plan Linux and Windows soon! Get the app now from:
@@ -37,4 +38,3 @@ Ready to publish your data? Just hit the "Go!" button on the top of the page and
 In addition, to drag and drop publishing the desktop app auto-installs the command line program and will automatically keep it up to date for you:
 
 ![](/static/img/docs/app-cli-update.png)
-

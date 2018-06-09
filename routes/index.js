@@ -320,7 +320,8 @@ module.exports = function () {
         date,
         editpath: editpath,
         content,
-        githubPath
+        githubPath,
+        metaImage: parsedWithFM.attributes.image
       })
     } else {
       res.render('docs_home.html', {
@@ -359,7 +360,8 @@ module.exports = function () {
       description: parsedWithFrontMatter.attributes.description,
       content: utils.md.render(parsedWithFrontMatter.body),
       metaDescription: parsedWithFrontMatter.attributes.description + '\n' + parsedWithFrontMatter.attributes.keywords,
-      keywords: parsedWithFrontMatter.attributes.keywords
+      keywords: parsedWithFrontMatter.attributes.keywords,
+      metaImage: parsedWithFrontMatter.attributes.image
     })
   }
   /* end awesome  */
@@ -403,7 +405,8 @@ module.exports = function () {
           description: parsedWithFM.body.substring(0,200).replace(/\n/g, ' '),
           date: moment(parsedWithFM.attributes.date).format('MMMM Do, YYYY'),
           authors: parsedWithFM.attributes.authors.map(author => authors[author]),
-          content: utils.md.render(parsedWithFM.body)
+          content: utils.md.render(parsedWithFM.body),
+          metaImage: parsedWithFM.attributes.image
         })
       })
     } else {
