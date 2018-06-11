@@ -64,7 +64,7 @@ module.exports = function () {
       '/awesome/war-and-peace', '/awesome/world-bank', '/awesome/economic-data',
       '/awesome/reference-data', '/awesome/machine-learning-data', '/awesome/inflation',
       '/awesome/property-prices', '/awesome/wealth-income-and-inequality', '/awesome/logistics-data',
-      '/awesome/demography', '/awesome/education', '/awesome/geojson',
+      '/awesome/demographics', '/awesome/education', '/awesome/geojson',
       '/awesome/healthcare-data', '/awesome/stock-market-data',
       '/docs', '/docs/getting-started/installing-data', '/docs/getting-started/publishing-data',
       '/docs/getting-started/push-excel', '/docs/getting-started/getting-data',
