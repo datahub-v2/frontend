@@ -1256,10 +1256,20 @@ module.exports = function () {
     const totalPages = Math.ceil(total/size)
     const currentPage = parseInt(from, 10) / 20 + 1
     const pages = utils.pagination(currentPage, totalPages)
-
+    let title, description = ''
+    if (req.params.owner === 'core') {
+      title = 'Core Datasets'
+      description = 'Core datasets maintained by the DataHub team. Important, commonly-used data as high quality, easy-to-use & open data packages. Download data tables in csv (excel) and json.'
+    } else if (req.params.owner === 'machine-learning') {
+      title = 'Machine Learning Datasets'
+      description = 'Machine Learning / Statistical Data. Examples of machine learning datasets. Machine learning data sets on the DataHub under the @machine-learning account.'
+    } else {
+      title = req.params.owner + ' datasets'
+      description = userProfile.profile.name
+    }
     res.render('owner.html', {
-      title: req.params.owner + ' publisher page',
-      description: userProfile.profile.name,
+      title,
+      description,
       packages,
       pages,
       currentPage,
