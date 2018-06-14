@@ -42,6 +42,7 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "bytes": "^2.5.0",
+    "cheerio": "^1.0.0-rc.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
@@ -62,6 +63,7 @@
     "nock": "^9.0.13",
     "node-fetch": "^1.7.1",
     "nunjucks": "^3.0.1",
+    "phantom": "^4.0.12",
     "remove-markdown": "^0.2.0",
     "sanitize-html": "^1.14.1",
     "sitemap": "^1.13.0",

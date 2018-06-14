@@ -12,6 +12,8 @@ const fm = require('front-matter')
 const moment = require('moment')
 const md5 = require('md5')
 const timeago = require('timeago.js')
+const phantom = require('phantom')
+const cheerio = require('cheerio')
 
 var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
@@ -874,7 +876,36 @@ module.exports = function () {
     res.redirect(finalPath)
   })
 
-  // Per view URL:
+  // Per view URL - SVG:
+  router.get('/:owner/:name/view/:viewNameOrIndex.:format', async (req, res, next) => {
+    const instance = await phantom.create()
+    const page = await instance.createPage()
+    page.property('viewportSize', {width: 1280, height: 800})
+    page.property('onConsoleMessage', function(msg) {console.log(msg)})
+    const status = await page.open(`https://datahub.io/${req.params.owner}/${req.params.name}`)
+    // Need to set timeout to allow React part of the page to load the graphs:
+    setTimeout(async() => {
+      const content = await page.property('content')
+      const $ = cheerio.load(content)
+      // The graphs are in the first 'react-me' element:
+      const svg = $('div.react-me').first().children().first().children().eq(0).html()
+      await instance.exit()
+      if (req.params.format === 'svg') {
+        res.render('view_svg.html', {
+          title: req.params.name,
+          svg
+        })
+      } else if (req.params.format === 'png') {
+        // Convert SVG => PNG
+      } else {
+        res.status(404).render('404.html', {
+          message: 'Sorry, this page was not found'
+        })
+        return
+      }
+    }, 2000)
+  })
+  // Per view URL - embed and share:
   router.get('/:owner/:name/view/:viewNameOrIndex', async (req, res, next) => {
     let normalizedDp = null
     let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
