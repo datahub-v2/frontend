@@ -14,6 +14,7 @@ const md5 = require('md5')
 const timeago = require('timeago.js')
 const phantom = require('phantom')
 const cheerio = require('cheerio')
+const mcache = require('memory-cache')
 
 var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
@@ -28,6 +29,25 @@ module.exports = function () {
   // eslint-disable-next-line new-cap
   const router = express.Router()
   const api = new lib.DataHubApi(config)
+
+  // Function for caching responses:
+  const cache = (duration) => {
+    return (req, res, next) => {
+      let key = '__express__' + req.originalUrl || req.url
+      let cachedBody = mcache.get(key)
+      if (cachedBody) {
+        res.send(cachedBody)
+        return
+      } else {
+        res.sendResponse = res.send
+        res.send = (body) => {
+          mcache.put(key, body, duration * 60000)
+          res.sendResponse(body)
+        }
+        next()
+      }
+    }
+  }
 
   // Front page:
   router.get('/', async (req, res) => {
@@ -876,12 +896,11 @@ module.exports = function () {
     res.redirect(finalPath)
   })
 
-  // Per view URL - SVG:
-  router.get('/:owner/:name/view/:viewIndex.svg', async (req, res, next) => {
+  // Per view URL - SVG (caching response for 7 days or 10080 minutes):
+  router.get('/:owner/:name/view/:viewIndex.svg', cache(10080), async (req, res, next) => {
     const instance = await phantom.create()
     const page = await instance.createPage()
     page.property('viewportSize', {width: 1280, height: 800})
-    // page.property('onConsoleMessage', function(msg) {console.log(msg)})
     let source = `https://datahub.io/${req.params.owner}/${req.params.name}`
     if (req.query.v) {
       source += `/v/${req.query.v}`
@@ -895,7 +914,6 @@ module.exports = function () {
       const svg = $('div.react-me').first().children().first().children().eq(req.params.viewIndex).html()
       await instance.exit()
       res.render('view_svg.html', {
-        title: req.params.name,
         svg
       })
     }, 2000)
@@ -905,7 +923,7 @@ module.exports = function () {
     const instance = await phantom.create()
     const page = await instance.createPage()
     // page.property('onConsoleMessage', function(msg) {console.log(msg)})
-    let source = `http://localhost:4000/${req.params.owner}/${req.params.name}/view/${req.params.viewIndex}.svg`
+    let source = `https://datahub.io/${req.params.owner}/${req.params.name}/view/${req.params.viewIndex}.svg`
     if (req.query.v) {
       source += `?v=${req.query.v}`
     }

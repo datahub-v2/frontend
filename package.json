@@ -58,6 +58,7 @@
     "markdown-it-container": "^2.0.0",
     "markdown-it-table-of-contents": "^0.3.2",
     "md5": "^2.2.1",
+    "memory-cache": "^0.2.0",
     "moment": "^2.18.1",
     "nconf": "^0.8.4",
     "nock": "^9.0.13",
