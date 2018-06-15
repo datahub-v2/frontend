@@ -881,8 +881,12 @@ module.exports = function () {
     const instance = await phantom.create()
     const page = await instance.createPage()
     page.property('viewportSize', {width: 1280, height: 800})
-    page.property('onConsoleMessage', function(msg) {console.log(msg)})
-    const status = await page.open(`https://datahub.io/${req.params.owner}/${req.params.name}`)
+    // page.property('onConsoleMessage', function(msg) {console.log(msg)})
+    let source = `https://datahub.io/${req.params.owner}/${req.params.name}`
+    if (req.query.v) {
+      source += `/v/${req.query.v}`
+    }
+    const status = await page.open(source)
     // Need to set timeout to allow React part of the page to load the graphs:
     setTimeout(async() => {
       const content = await page.property('content')
