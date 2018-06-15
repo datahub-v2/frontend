@@ -897,7 +897,7 @@ module.exports = function () {
   })
 
   // Per view URL - SVG (caching response for 7 days or 10080 minutes):
-  router.get('/:owner/:name/view/:viewIndex.svg', cache(10080), async (req, res, next) => {
+  router.get('/:owner/:name/view/:viewIndex.svg', async (req, res, next) => {
     const instance = await phantom.create()
     const page = await instance.createPage()
     page.property('viewportSize', {width: 1280, height: 800})

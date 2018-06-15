@@ -65,6 +65,7 @@
     "node-fetch": "^1.7.1",
     "nunjucks": "^3.0.1",
     "phantom": "^4.0.12",
+    "phantomjs-prebuilt": "^2.1.16",
     "remove-markdown": "^0.2.0",
     "sanitize-html": "^1.14.1",
     "sitemap": "^1.13.0",
