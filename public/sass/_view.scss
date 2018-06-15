@@ -37,18 +37,3 @@
     }
   }
 }
-
-.view-svg {
-  .dataset-meta, .share-and-embed, .modebar {
-    display: none;
-  }
-  .js-plotly-plot .plotly .main-svg {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    pointer-events: none;
-  }
-  .js-plotly-plot .plotly svg {
-    overflow: hidden;
-  }
-}

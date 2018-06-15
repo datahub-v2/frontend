@@ -911,11 +911,25 @@ module.exports = function () {
       const content = await page.property('content')
       const $ = cheerio.load(content)
       // The graphs are in the first 'react-me' element:
-      const svg = $('div.react-me').first().children().first().children().eq(req.params.viewIndex).html()
+      let svg = $('div.react-me').first().children().first().children().eq(req.params.viewIndex).html()
       await instance.exit()
-      res.render('view_svg.html', {
-        svg
-      })
+      // Add stylings:
+      svg = `<style>
+        .datahub-meta, .share-and-embed, .modebar {
+          display: none;
+        }
+        .js-plotly-plot .plotly .main-svg {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          pointer-events: none;
+        }
+        .js-plotly-plot .plotly svg {
+          overflow: hidden;
+        }
+      </style>` + svg
+      res.send(svg)
+      res.end()
     }, 2000)
   })
   // Per view URL - PNG:

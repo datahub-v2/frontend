@@ -8157,16 +8157,6 @@ body.not-found {
       color: #000;
       font-weight: bold; }
 
-.view-svg .dataset-meta, .view-svg .share-and-embed, .view-svg .modebar {
-  display: none; }
-.view-svg .js-plotly-plot .plotly .main-svg {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  pointer-events: none; }
-.view-svg .js-plotly-plot .plotly svg {
-  overflow: hidden; }
-
 body.validate h2 {
   font-size: 24px;
   margin: 12px 0; }
