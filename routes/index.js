@@ -892,7 +892,7 @@ module.exports = function () {
       const content = await page.property('content')
       const $ = cheerio.load(content)
       // The graphs are in the first 'react-me' element:
-      const svg = $('div.react-me').first().children().first().children().eq(0).html()
+      const svg = $('div.react-me').first().children().first().children().eq(req.params.viewNameOrIndex).html()
       await instance.exit()
       if (req.params.format === 'svg') {
         res.render('view_svg.html', {
