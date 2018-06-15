@@ -877,7 +877,7 @@ module.exports = function () {
   })
 
   // Per view URL - SVG:
-  router.get('/:owner/:name/view/:viewNameOrIndex.:format', async (req, res, next) => {
+  router.get('/:owner/:name/view/:viewIndex.svg', async (req, res, next) => {
     const instance = await phantom.create()
     const page = await instance.createPage()
     page.property('viewportSize', {width: 1280, height: 800})
@@ -892,22 +892,34 @@ module.exports = function () {
       const content = await page.property('content')
       const $ = cheerio.load(content)
       // The graphs are in the first 'react-me' element:
-      const svg = $('div.react-me').first().children().first().children().eq(req.params.viewNameOrIndex).html()
+      const svg = $('div.react-me').first().children().first().children().eq(req.params.viewIndex).html()
       await instance.exit()
-      if (req.params.format === 'svg') {
-        res.render('view_svg.html', {
-          title: req.params.name,
-          svg
-        })
-      } else if (req.params.format === 'png') {
-        // Convert SVG => PNG
-      } else {
-        res.status(404).render('404.html', {
-          message: 'Sorry, this page was not found'
-        })
-        return
-      }
+      res.render('view_svg.html', {
+        title: req.params.name,
+        svg
+      })
     }, 2000)
+  })
+  // Per view URL - PNG:
+  router.get('/:owner/:name/view/:viewIndex.png', async (req, res, next) => {
+    const instance = await phantom.create()
+    const page = await instance.createPage()
+    // page.property('onConsoleMessage', function(msg) {console.log(msg)})
+    let source = `http://localhost:4000/${req.params.owner}/${req.params.name}/view/${req.params.viewIndex}.svg`
+    if (req.query.v) {
+      source += `?v=${req.query.v}`
+    }
+    const status = await page.open(source)
+    if (status === 'success') {
+      const base64 = await page.renderBase64('PNG')
+      await instance.exit()
+      const img = new Buffer(base64, 'base64')
+      res.writeHead(200, {
+       'Content-Type': 'image/png',
+       'Content-Length': img.length
+     });
+      res.end(img)
+    }
   })
   // Per view URL - embed and share:
   router.get('/:owner/:name/view/:viewNameOrIndex', async (req, res, next) => {
