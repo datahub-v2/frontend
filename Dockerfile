@@ -1,6 +1,6 @@
 FROM node:7-alpine
 WORKDIR /frontend-app
 ADD . /frontend-app
-RUN npm install
+RUN yarn
 EXPOSE 4000
-CMD npm start
+CMD yarn start
