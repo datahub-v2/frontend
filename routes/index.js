@@ -896,8 +896,8 @@ module.exports = function () {
     res.redirect(finalPath)
   })
 
-  // Per view URL - SVG (caching response for 7 days or 10080 minutes):
-  router.get('/:owner/:name/view/:viewIndex.svg', async (req, res, next) => {
+  // Per view URL - SVG (caching response for 1 day or 1440 minutes):
+  router.get('/:owner/:name/view/:viewIndex.svg', cache(1440), async (req, res, next) => {
     const instance = await phantom.create()
     const page = await instance.createPage()
     page.property('viewportSize', {width: 1280, height: 800})
@@ -930,7 +930,7 @@ module.exports = function () {
       </style>` + svg
       res.send(svg)
       res.end()
-    }, 2000)
+    }, 3000)
   })
   // Per view URL - PNG:
   router.get('/:owner/:name/view/:viewIndex.png', async (req, res, next) => {
