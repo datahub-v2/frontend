@@ -658,6 +658,13 @@ module.exports = function () {
           .keywords
           .join(',')
 
+        // Check if views are available so we can set meta image tags:
+        let metaImage
+        if (normalizedDp.resources.length <= normalizedDp.views.length) {
+          // This means views have regular views on top of preview views:
+          metaImage = `https://datahub.io/${req.params.owner}/${normalizedDp.name}/view/0.png`
+        }
+
         // Now render the page:
         res.render('showcase.html', {
           title: req.params.owner + ' | ' + req.params.name,
@@ -673,7 +680,8 @@ module.exports = function () {
           revisionId: shortUrl ? null : revisionId,
           failedPipelines,
           keywords: datasetKeywords + generalKeywords,
-          metaDescription
+          metaDescription,
+          metaImage
         })
       }
     }
