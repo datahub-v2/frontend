@@ -16,12 +16,12 @@ node_js:
   - "8"
 
 install:
-  - npm install
+  - yarn
 
 services:
   - docker
 script:
-  - npm test
+  - yarn test
   - curl -s https://raw.githubusercontent.com/datahq/deploy/master/apps_travis_script.sh > .travis.sh
   - bash .travis.sh script
 

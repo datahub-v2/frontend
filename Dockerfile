@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM node:8
 WORKDIR /frontend-app
 ADD . /frontend-app
 RUN yarn
