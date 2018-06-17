@@ -225,6 +225,20 @@ test('Per view URLs work', async t => {
   t.is(res.statusCode, 404)
 })
 
+test('SVG version of the views work', async t => {
+  let res = await request(app)
+    .get('/core/finance-vix/view/0.svg')
+  t.is(res.statusCode, 200)
+  t.true(res.text.includes('<svg class="main-svg"'))
+})
+
+test('PNG version of the views work', async t => {
+  let res = await request(app)
+    .get('/core/finance-vix/view/0.png')
+  t.is(res.statusCode, 200)
+  t.is(res.header['content-type'], 'image/png')
+})
+
 test('Events page works', async t => {
   const notExist = await request(app)
     .get('/bad-user/bad-package/events')
