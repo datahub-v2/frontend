@@ -13,7 +13,6 @@ env:
     - DEPLOY_GIT_USER=dhq-deployer
 
 node_js:
-  - "7"
   - "8"
 
 install:
