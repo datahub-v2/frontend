@@ -8,13 +8,14 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const flash = require('connect-flash')
+const ua = require('universal-analytics')
 
 const config = require('./config')
 const routes = require('./routes')
 
 module.exports.makeApp = function () {
   const app = express()
-
+  const visitor = ua('UA-80458846-4')
   app.set('config', config)
   app.set('port', config.get('app:port'))
   app.set('views', path.join(__dirname, '/views'))
@@ -32,6 +33,8 @@ module.exports.makeApp = function () {
   app.use(flash())
   // Check if looged in and set locals for nunjucks
   app.use((req, res, next) => {
+    // Track requested page path as event so we can know how many users are using adblockers:
+    visitor.event('Pageviews server-side tracking', req.originalUrl).send()
     // Check if credentials are passed in query params:
     if (req.query.jwt) {
       res.cookie('jwt', req.query.jwt)
