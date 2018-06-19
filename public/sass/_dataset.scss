@@ -375,3 +375,16 @@ div.readme {
     }
   }
 }
+
+div.related-datasets {
+  margin-bottom: 3.5em;
+  a {
+    color: $black;
+    text-decoration: underline;
+    margin-right: 14px;
+  }
+  i {
+    font-size: 0.8em;
+    margin: 0 4px 0 0;
+  }
+}

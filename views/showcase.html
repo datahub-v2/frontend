@@ -278,6 +278,17 @@
       <!-- End of div elements for React -->
       {% endif %}
       {% endfor %}
+
+      <!-- Related datasets -->
+      {% if dataset.related %}
+        <h2 class="section-title">Similar Datasets</h2>
+        <div class="related-datasets">
+          {% for item in dataset.related %}
+          <i class="fas fa-square-full"></i> <a href="{{item.path}}">{{item.title}}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+      <!-- End of Related datasets -->
     </div>
   </div>
 </div>

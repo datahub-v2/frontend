@@ -7755,6 +7755,16 @@ div.readme .header-anchor i {
   color: #999;
   padding: 0 6px; }
 
+div.related-datasets {
+  margin-bottom: 3.5em; }
+  div.related-datasets a {
+    color: #000;
+    text-decoration: underline;
+    margin-right: 14px; }
+  div.related-datasets i {
+    font-size: 0.8em;
+    margin: 0 4px 0 0; }
+
 .table-pricing > tbody > tr > td, body.dashboard .table-dashboard > tbody > tr > td,
 .table-pricing > tbody > tr > th,
 body.dashboard .table-dashboard > tbody > tr > th,
