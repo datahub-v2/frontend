@@ -375,6 +375,8 @@ module.exports = function () {
     const text = await resp.text()
     // parse the raw .md page and render it with a template.
     const parsedWithFrontMatter = fm(text)
+    const published = parsedWithFrontMatter.attributes.date
+    const modified = parsedWithFrontMatter.attributes.modified
     res.render('awesome.html', {
       title: parsedWithFrontMatter.attributes.title,
       page: req.params.page,
@@ -384,8 +386,8 @@ module.exports = function () {
       metaDescription: parsedWithFrontMatter.attributes.description + '\n' + parsedWithFrontMatter.attributes.keywords,
       keywords: parsedWithFrontMatter.attributes.keywords,
       metaImage: parsedWithFrontMatter.attributes.image,
-      published: parsedWithFrontMatter.attributes.date.toISOString(),
-      modified: parsedWithFrontMatter.attributes.modified.toISOString()
+      published: published ? published.toISOString() : '',
+      modified: modified ? modified.toISOString() : ''
     })
   }
   /* end awesome  */
