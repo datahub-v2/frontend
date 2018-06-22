@@ -42,4 +42,30 @@
   </div>
 </div>
 
+{% if page %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "headline": "{{title}}",
+  "mainEntityOfPage": "https://datahub.io/awesome/{{page}}",
+  "datePublished": "{{published}}",
+  "dateModified": "{{modified}}",
+  "author": {
+    "@type": "Organization",
+    "name": "DataHub"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DataHub",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://datahub.io/static/img/logo-cube.png"
+    }
+  },
+  "description": "{{description}}"
+}
+</script>
+{% endif %}
+
 {% endblock %}

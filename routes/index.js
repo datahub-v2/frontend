@@ -383,7 +383,9 @@ module.exports = function () {
       content: utils.md.render(parsedWithFrontMatter.body),
       metaDescription: parsedWithFrontMatter.attributes.description + '\n' + parsedWithFrontMatter.attributes.keywords,
       keywords: parsedWithFrontMatter.attributes.keywords,
-      metaImage: parsedWithFrontMatter.attributes.image
+      metaImage: parsedWithFrontMatter.attributes.image,
+      published: parsedWithFrontMatter.attributes.date.toISOString(),
+      modified: parsedWithFrontMatter.attributes.modified.toISOString()
     })
   }
   /* end awesome  */
