@@ -205,5 +205,139 @@
       "gold price usd"
     ],
     "description": "Monthly gold prices since 1950 in USD (London market). Historical gold prices csv, excel, json. Gold price data."
+  },
+  {
+    "name": "s-and-p-500",
+    "path": "/core/s-and-p-500",
+    "keywords": [
+      "s&p 500 companies",
+      "s and p 500",
+      "sandp500",
+      "s&p 500 index",
+      "s&p 500 historical data since 1870"
+    ],
+    "description": "S&P 500 index data including level, dividend, earnings and P/E ratio on a monthly basis since 1870. The data provided here is a tidied and CSV’d version of that collected and prepared by the Economist Robert Shiller."
+  },
+  {
+    "name": "bond-yields-us-10y",
+    "path": "/core/bond-yields-us-10y",
+    "keywords": [
+      "us 10 year bond yield historical data",
+      "10 year us government bond yield",
+      "long term government bond rate",
+      "us bond rates"
+    ],
+    "description": "10 year nominal yields on US government bonds from the Federal Reserve. The 10 year government bond yield is considered a standard indicator of long-term interest rates. The data is updated on monthly basis."
+  },
+  {
+    "name": "currency-codes",
+    "path": "/core/currency-codes",
+    "keywords": [
+      "iso 4217",
+      "iso currency codes",
+      "iso 4217 currency code",
+      "iso4217",
+      "iso 4217 currency codes",
+      "iso-4217"
+    ],
+    "description": "List of currencies and their 3 digit codes as defined by ISO 4217. The data provided here is the consolidation of Table A.1 'Current currency & funds code list' and Table A.3 'Historic denominations'."
+  },
+  {
+    "name": "oil-prices",
+    "path": "/core/oil-prices",
+    "keywords": [
+      "brent crude oil price history excel",
+      "oil spot price",
+      "wti price",
+      "oil price history",
+      "daily crude oil prices",
+      "oil price data",
+      "brent crude spot price",
+      "oil price chart"
+    ],
+    "description": "Europe Brent and WTI (Western Texas Intermediate) Spot Prices from EIA U.S. (Energy Information Administration). Data is available as annual, monthly, weekly and daily timeseries."
+  },
+  {
+    "name": "iso-container-codes",
+    "path": "/core/iso-container-codes",
+    "keywords": [
+      "iso 6346",
+      "iso container",
+      "container code",
+      "container iso codes",
+      "container code list",
+      "iso type container"
+    ],
+    "description": "Coded list of ISO 6346 shipping containers, used in international trade and electronic shipping messages."
+  },
+  {
+    "name": "imf-weo",
+    "path": "/core/imf-weo",
+    "keywords": [
+      "world economic outlook database",
+      "imf weo database",
+      "imf data",
+      "imf weo"
+    ],
+    "description": "IMF World Economic Outlook (WEO) database. The source database is made of annual values for each country on 45 indicators since 1980. In addition the database includes the IMF projects approximately 6 years into the future."
+  },
+  {
+    "name": "euribor",
+    "path": "/core/euribor",
+    "keywords": [
+      "euribor rates",
+      "euribor 3",
+      "euribor 12",
+      "euribor 3m",
+      "euribor 6m"
+    ],
+    "description": "Euribor rates by year and granularity for all available maturity levels. Only monthly granularity is provided. The oldest available data are from 1999."
+  },
+  {
+    "name": "house-prices-us",
+    "path": "/core/house-prices-us",
+    "keywords": [
+      "case shiller index data",
+      "house price index",
+      "us house price index"
+    ],
+    "description": "Case-Shiller Index of US residential house prices. Data comes from S&P Case-Shiller data and includes both the national index and the indices for 20 metropolitan regions. The indices are created using a repeat-sales methodology."
+  },
+  {
+    "name": "gdp-us",
+    "path": "/core/gdp-us",
+    "keywords": [
+      "us gdp",
+      "usa gdp",
+      "united states of america gross domestic product",
+      "us gdp by year",
+      "us gdp quarterly",
+      "us gdp data",
+      "us gdp growth"
+    ],
+    "description": "Gross Domestic Product (GDP) of the United States (US) both nominal and real on an annual and quarterly basis. Annual data is provided since 1930 and quarterly data since 1947. Both total GDP (levels) and annualized percentage change in GDP are provided. Both levels and changes are available both in current dollars (nominal GDP) and in chained 2009 dollars (real GDP)."
+  },
+  {
+    "name": "top-level-domain-names",
+    "path": "/core/top-level-domain-names",
+    "keywords": [
+      "tld names",
+      "top level domain",
+      "top level domain names",
+      "top level domain list",
+      "tld domain"
+    ],
+    "description": "The delegation details of top-level domains. The data were copied manually from “The Internet Assigned Numbers Authority (IANA)” site, and then posted to Excel file and saved as CSV file."
+  },
+  {
+    "name": "co2-ppm",
+    "path": "/core/co2-ppm",
+    "keywords": [
+      "mauna loa co2 data",
+      "co2 mm",
+      "co2 data",
+      "co2 ppm"
+    ],
+    "description": "CO2 PPM - Trends in Atmospheric Carbon Dioxide. Two main series are provided: the Mauna Loa series (which has the longest continuous series since 1958) and a Global Average series (a global average over marine surface sites)."
   }
 ]
