@@ -371,7 +371,6 @@ module.exports = function () {
     const path = req.params.page + '.md'
     //request raw page from github
     let gitpath = BASE + path
-    console.log(gitpath)
     const resp = await fetch(gitpath)
     const text = await resp.text()
     // parse the raw .md page and render it with a template.
@@ -938,9 +937,9 @@ module.exports = function () {
     const instance = await phantom.create()
     const page = await instance.createPage()
     page.property('viewportSize', {width: 1280, height: 800})
-    let source = `https://datahub.io/${req.params.owner}/${req.params.name}`
+    let source = `https://datahub.io/${req.params.owner}/${req.params.name}/view/${req.params.viewIndex}`
     if (req.query.v) {
-      source += `/v/${req.query.v}`
+      source += `?v=${req.query.v}`
     }
     const status = await page.open(source)
     // Need to set timeout to allow React part of the page to load the graphs:
@@ -948,7 +947,7 @@ module.exports = function () {
       const content = await page.property('content')
       const $ = cheerio.load(content)
       // The graphs are in the first 'react-me' element:
-      let svg = $('div.react-me').first().children().first().children().eq(req.params.viewIndex).html()
+      let svg = $('div.react-me').first().children().first().children().eq(0).html()
       await instance.exit()
       // Add stylings:
       svg = `<style>
