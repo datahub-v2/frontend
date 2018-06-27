@@ -363,7 +363,32 @@ module.exports = function () {
    * https://github.com/datahubio/awesome
    */
   router.get('/awesome', showAwesomePage)
+  router.get('/awesome/dashboards/:page', showAwesomeDashboardPage)
   router.get('/awesome/:page', showAwesomePage)
+
+  async function showAwesomeDashboardPage(req, res) {
+    const BASE = 'https://raw.githubusercontent.com/datahubio/awesome-data/master/dashboards/'
+    const path = req.params.page + '.md'
+    //request raw page from github
+    let gitpath = BASE + path
+    console.log(gitpath)
+    const resp = await fetch(gitpath)
+    const text = await resp.text()
+    // parse the raw .md page and render it with a template.
+    const parsedWithFrontMatter = fm(text)
+    const published = parsedWithFrontMatter.attributes.date
+    const modified = parsedWithFrontMatter.attributes.modified
+    res.render('awesome-dashboard.html', {
+      title: parsedWithFrontMatter.attributes.title,
+      description: parsedWithFrontMatter.attributes.description,
+      content: utils.md.render(parsedWithFrontMatter.body),
+      metaDescription: parsedWithFrontMatter.attributes.description + '\n' + parsedWithFrontMatter.attributes.keywords,
+      keywords: parsedWithFrontMatter.attributes.keywords,
+      metaImage: parsedWithFrontMatter.attributes.image,
+      published: published ? published.toISOString() : '',
+      modified: modified ? modified.toISOString() : ''
+    })
+  }
 
   async function showAwesomePage(req, res) {
     const BASE = 'https://raw.githubusercontent.com/datahubio/awesome-data/master/'
