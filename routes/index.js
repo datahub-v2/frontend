@@ -1127,6 +1127,13 @@ module.exports = function () {
     })
   })
 
+  router.get('/data-os', (req, res) => {
+    res.render('data-os.html', {
+      title: 'DataOS',
+      description: 'aa'
+    })
+  })
+
   router.get('/requests', (req, res) => {
     res.render('requests.html', {
       title: 'Data Requests',
