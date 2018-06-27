@@ -139,6 +139,12 @@ a {
 .pad-top-0 {
   padding-top:0;
 }
+.pad-left-0 {
+  padding-left:0;
+}
+.pad-right-0 {
+  padding-right:0;
+}
 
 .margin-top-0 {
   margin-top:0;
@@ -160,4 +166,36 @@ a {
 
 .emoji {
   margin: 0 !important;
+}
+.input-label-custom
+{
+  color:#8b8a8a;
+  font-weight:200;
+  margin-bottom:0px;
+}
+.input-form-custom 
+{
+  border-bottom:2px solid #c8c8c8 !important;
+  border:none;
+  padding:5px 0px;
+  margin-bottom:30px;
+  box-shadow:none;
+  
+}
+.input-form-custom:hover 
+{
+  box-shadow:none;
+}
+.input-form-custom:focus 
+{
+  box-shadow:none !important;
+  border-color:#000 !important;
+}
+.input-form-custom:active 
+{
+  box-shadow:none;
+}
+
+.no-pad{
+  padding:0px;
 }

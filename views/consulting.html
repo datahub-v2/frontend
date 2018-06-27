@@ -5,26 +5,287 @@
 {% block bodyclass %}consulting{% endblock %}
 
 {% block content %}
-<!-- consulting page test placeholder -->
-<div class="container">
-  <div class="inner_container">
+
+<section class="hire-us-heading">
+  <div class="container container-condensed">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h1>Get in touch to hire us</h1>
-        <form action="https://formspree.io/support@datahub.io" method="POST" name="consulting">
-          <div class="form-group">
-            <input type="email" class="form-control" name="email" required autofocus placeholder="Your e-mail address" pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' />
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="name" placeholder="Your name" />
-          </div>
-          <textarea class="form-control" rows="3" name="message" placeholder="Message"></textarea>
-          <input type="hidden" name="_next" value="https://datahub.io/thanks" />
-          <input type="hidden" name="_subject" value="Consulting request" />
-          <input type="submit" value="Send" class="btn btn-primary pull-right">
-        </form>
+      <div class="col-sm-12">
+        <h1><img src="static/img/hire-us-logo.jpg">Hire Us</h1>
+        <p>We can help you design, build or enhance your own data-infrastructure
+          <br/>or data-driven project.</p>
       </div>
     </div>
   </div>
-</div>
+</section>
+
+
+<!---------------------- who-we-are ---------------------->
+
+
+<section class="who-we-are">
+  <div class="container container-condensed">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>Who we are</h2>
+        <p>Datahub is an organization with founders having over 20 years of data consultancy experience, <br/> ranging from G7 governments to leading companies in the Silicon Valley</p>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="member">
+          <div class="col-sm-12">
+              <div class="col-sm-2">
+                  <img src="static/img/rufus.jpg" class="center-block"/>
+              </div>
+              <div class="col-sm-9">
+                <h3>Rufus</h3>
+                <p>Rufus Pollock is an entrepreneur and technologist who has worked on data platforms and open data for over fifteen years with governments, businesses, and non-profits all over the world.</p>
+              </div>
+            </div>
+      </div>
+
+    </div>
+
+    <div class="member">
+    <div class="row">
+      
+          <div class="col-sm-12">
+              <div class="col-sm-2">
+                  <img src="static/img/adam.jpg" class="center-block"/>
+              </div>
+              <div class="col-sm-9">
+                <h3>Adam</h3>
+                <p>Adam Kariv is an experienced technologist and open data activist, with over 25 years of experience in a wide range of areas from embedded systems, mobile applications, scalable services to big data analysis and UI design.</p>
+              </div>
+            </div>
+      </div>
+    </div>
+
+    <div class="member">
+    <div class="row">
+      
+          <div class="col-sm-12">
+              <div class="col-sm-2">
+                  <img src="static/img/irakli.jpg" class="center-block"/>
+              </div>
+              <div class="col-sm-9">
+                <h3>Irakali</h3>
+                <p>Irakali is a Self-educated Python and JavaScript developer with over 2 years of experience of working with data-driven projects and applications on the back-end.
+                </p>
+              </div>
+            </div>
+      </div>
+    </div>
+
+    <div class="member">
+    <div class="row">
+        
+            <div class="col-sm-12">
+                <div class="col-sm-2">
+                    <img src="static/img/anuar.jpg" class="center-block"/>
+                </div>
+                <div class="col-sm-9">
+                  <h3>Anuar</h3>
+                  <p>Anuar is a JavaScript developer and data enthusiast based in Kazakhstan. He holds MSc degree from the University of Warwick and has a background in the field of Mathematics and Computer Modelling.</p>
+                </div>
+              </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+
+
+<!---------------------- What-have-we-done ---------------------->
+
+
+<section class="what-have-we-done">
+    <div class="container container-condensed">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2>What we have done</h2>
+          <div class="col-sm-6 no-pad">
+              <p>We’ve built many successful and well known open data platforms and are the authors of industry-leading data specifications and tools</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="member project-entry">
+      <div class="row">
+            <div class="col-sm-12">
+              <div class="row">
+                  <div class="col-sm-2">
+                      <div class="thumb">
+                          <img src="static/img/work1.jpg" class="img-responsive"/>
+                      </div>
+                  </div>
+                  <div class="col-sm-8">
+                    <h3>Frictionless Data</h3>
+                    <p>Frictionless Data shortens the path from data to insight with a collection of specifications and software for the publication, transport, and consumption of data. </p>
+                  </div>
+                  <div class="col-sm-2">
+                      <a href="https://frictionlessdata.io/" target="_blank" class="btn btn-primary">Visit</a>
+                  </div>
+              </div>
+                
+              </div>
+        </div>
+  
+      </div>
+  
+
+      <div class="member project-entry">
+      <div class="row">
+          
+              <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="thumb">
+                            <img src="static/img/work2.jpg" class="img-responsive"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                      <h3>OpenSpending</h3>
+                      <p>OpenSpending is a free, open and global platform to search, visualize and analyze financial data in the public sphere. Start searching, or read on to contribute data, code, or domain expertise.</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <a href="https://openspending.org/" target="_blank" class="btn btn-primary">Visit</a>
+                    </div>
+                </div>
+                  
+                </div>
+          </div>
+      </div>
+  
+      <div class="member project-entry">
+      <div class="row">
+          
+              <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="thumb">
+                            <img src="static/img/work3.jpg" class="img-responsive"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                      <h3>CKAN</h3>
+                      <p>CKAN is a powerful data management system that makes data accessible – by providing tools to streamline publishing, sharing, finding and using data.</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <a href="https://ckan.org/" target="_blank" class="btn btn-primary">Visit</a>
+                        
+                    </div>
+                </div>
+                  
+                </div>
+          </div>
+      </div>
+ 
+      </div>
+    </div>
+  </section>
+
+
+  <!---------------------- What-we-can-do ---------------------->
+
+  <section class="what-we-can-do">
+    <div class="container container-condensed">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2>What we can do for you</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+
+           <div class="list">
+             <div class="row">
+                <div class="col-xs-1 pad-left-0-custom">
+                    <img src="static/img/tick.png"/>
+                 </div>
+                 <div class="col-xs-10  pad-left-0">
+                    <p>Assess and develop your data model and data governance and maturity strategy</p>
+                 </div>
+             </div>
+           </div>
+
+           <div class="list">
+              <div class="row">
+                 <div class="col-xs-1 pad-left-0-custom">
+                     <img src="static/img/tick.png"/>
+                  </div>
+                  <div class="col-xs-10  pad-left-0">
+                     <p>Analyse and design your data infrastructure or data-centric 
+                      project</p>
+                  </div>
+              </div>
+            </div>
+            
+        </div>
+
+        <div class="col-sm-6">
+            
+                       <div class="list">
+                         <div class="row">
+                            <div class="col-xs-1 pad-left-0-custom">
+                                <img src="static/img/tick.png"/>
+                             </div>
+                             <div class="col-xs-10 pad-left-0">
+                                <p>Build a data collection and processing system - we can
+                                  clean up your data swamp and make your data manageable 
+                                  again</p>
+                             </div>
+                         </div>
+                       </div>
+            
+                       <div class="list">
+                          <div class="row">
+                             <div class="col-xs-1 pad-left-0-custom">
+                                 <img src="static/img/tick.png"/>
+                              </div>
+                              <div class="col-xs-10  pad-left-0">
+                                 <p>Master data repository design and development</p>
+                              </div>
+                          </div>
+                        </div>
+                        
+                    </div>
+      </div>
+    </div>
+  </section>
+
+<!-- consulting page test placeholder -->
+<section class="getintouch">
+    <div class="container container-condensed">
+        <div class="inner_container">
+          <div class="row">
+            <div class="col-sm-5">
+              <h2>Get in touch with us</h2>
+              <form action="https://formspree.io/support@datahub.io" method="POST" name="consulting">
+                <div class="form-group">
+                  <label class="input-label-custom">Your email</label>
+                  <input type="email" class="form-control input-form-custom" name="email" required pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' />
+                </div>
+                <div class="form-group">
+                  <label class="input-label-custom">Your name</label>
+                  <input type="text" class="form-control input-form-custom" name="name" />
+                </div>
+                <label class="input-label-custom">Message</label>
+                <textarea class="form-control input-form-custom" rows="3" name="message"></textarea>
+                <input type="hidden" name="_next" value="https://datahub.io/thanks" />
+                <input type="hidden" name="_subject" value="Consulting request" />
+                <input type="submit" value="Send" class="btn btn-primary">
+              </form>
+            </div>
+            <div class="col-sm-7">
+                <img src="static/img/hireus.jpg" class="img-responsive center-block hidden-sm hidden-xs"/>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
 {% endblock %}

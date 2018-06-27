@@ -1151,6 +1151,13 @@ module.exports = function () {
     })
   })
 
+  router.get('/data-os', (req, res) => {
+    res.render('data-os.html', {
+      title: 'DataOS',
+      description: 'aa'
+    })
+  })
+
   router.get('/requests', (req, res) => {
     res.render('requests.html', {
       title: 'Data Requests',
@@ -1274,10 +1281,10 @@ module.exports = function () {
   })
 
   // Consulting page
-  router.get('/consulting', async (req, res) => {
+  router.get('/hire-us', async (req, res) => {
     res.render('consulting.html', {
-      title: 'Consulting',
-      description: 'Team with excellence and beyond. Hire us to build and improve your data-driven project. We have decades of experience building data systems for clients large and small.'
+      title: 'Hire Us ',
+      description: 'We are a team with excellence and beyond. Hire us to build and improve your data-driven project. We have decades of experience building data systems for clients large and small.'
     })
   })
 

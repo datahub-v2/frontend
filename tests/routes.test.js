@@ -292,7 +292,7 @@ test('Download page returns 200 and has correct content', async t => {
 })
 
 test('Consulting page returns 200 and has correct content', async t => {
-  const res = await request(app).get('/consulting')
+  const res = await request(app).get('/hire-us')
   t.is(res.statusCode, 200)
   t.true(res.text.includes('<!-- consulting page test placeholder -->'))
 })
