@@ -8375,10 +8375,19 @@ body.dataos .DataOS-Process {
       z-index: 100;
       margin: 0px; }
       body.dataos .DataOS-Process .icon-groups .grouping .element-external {
-        float: left; }
+        float: left;
+        margin-left: 9%; }
+        @media screen and (min-width: 1024px) and (max-width: 1200px) {
+          body.dataos .DataOS-Process .icon-groups .grouping .element-external {
+            margin-left: 0%; } }
+        @media screen and (max-width: 1024px) {
+          body.dataos .DataOS-Process .icon-groups .grouping .element-external {
+            display: none; } }
         body.dataos .DataOS-Process .icon-groups .grouping .element-external .element {
-          margin-right: 110px;
           width: 140px; }
+          @media screen and (min-width: 1024px) and (max-width: 1200px) {
+            body.dataos .DataOS-Process .icon-groups .grouping .element-external .element {
+              margin-right: 60px; } }
           body.dataos .DataOS-Process .icon-groups .grouping .element-external .element .thumb {
             background: #f0f0f0;
             height: 100px;
@@ -8390,14 +8399,19 @@ body.dataos .DataOS-Process {
           margin-right: 0px !important; }
         body.dataos .DataOS-Process .icon-groups .grouping .element-external p {
           position: relative;
-          left: -60px;
+          left: -22px;
           top: 10px; }
+      body.dataos .DataOS-Process .icon-groups .grouping .element-external:first-child {
+        margin-left: 0; }
+  @media screen and (max-width: 1024px) {
+    body.dataos .DataOS-Process .icon-groups {
+      display: none; } }
   body.dataos .DataOS-Process .list {
     margin: 30px 0px 0px 0px; }
     body.dataos .DataOS-Process .list p span {
       color: #ff7900;
-      font-size: 20px;
-      font-weight: 200;
+      font-size: 22px;
+      font-weight: 400;
       margin-right: 5px; }
 body.dataos .why-dataos {
   margin: 20px 0px 80px 0px; }
