@@ -70,6 +70,10 @@ body.consulting {
         }
         .member{ 
             margin-top:50px;
+            
+            @media screen and (max-width:768px){
+              margin-top:80px;
+            }
             .thumb{
               height:140px;
               width:140px;
@@ -137,5 +141,5 @@ body.consulting {
     }
   }
 
-
+  
 }

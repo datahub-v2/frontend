@@ -6490,6 +6490,9 @@ a {
 .input-form-custom:active {
   box-shadow: none; }
 
+.no-pad {
+  padding: 0px; }
+
 /* Navbar
 ====================================*/
 .banner {
@@ -8258,6 +8261,9 @@ body.consulting .what-have-we-done {
     margin-top: 0px; }
   body.consulting .what-have-we-done .member {
     margin-top: 50px; }
+    @media screen and (max-width: 768px) {
+      body.consulting .what-have-we-done .member {
+        margin-top: 80px; } }
     body.consulting .what-have-we-done .member .thumb {
       height: 140px;
       width: 140px; }
