@@ -12,8 +12,7 @@ const fm = require('front-matter')
 const moment = require('moment')
 const md5 = require('md5')
 const timeago = require('timeago.js')
-const phantom = require('phantom')
-const cheerio = require('cheerio')
+const puppeteer = require('puppeteer')
 const mcache = require('memory-cache')
 
 var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
@@ -934,63 +933,34 @@ module.exports = function () {
     res.redirect(finalPath)
   })
 
-  // Per view URL - SVG (caching response for 1 day or 1440 minutes):
-  router.get('/:owner/:name/view/:viewIndex.svg', cache(1440), async (req, res, next) => {
-    const instance = await phantom.create()
-    const page = await instance.createPage()
-    page.property('viewportSize', {width: 1280, height: 800})
+  // Per view URL - PNG (caching response for 1 day or 1440 minutes):
+  router.get('/:owner/:name/view/:viewIndex.png', cache(1440), async (req, res, next) => {
+    const browser = await puppeteer.launch()
+    const page = await browser.newPage()
     let source = `https://datahub.io/${req.params.owner}/${req.params.name}/view/${req.params.viewIndex}`
     if (req.query.v) {
       source += `?v=${req.query.v}`
     }
-    const status = await page.open(source)
-    // Need to set timeout to allow React part of the page to load the graphs:
-    setTimeout(async() => {
-      const content = await page.property('content')
-      const $ = cheerio.load(content)
-      // The graphs are in the first 'react-me' element:
-      let svg = $('div.react-me').first().children().first().children().eq(0).html()
-      await instance.exit()
-      // Add stylings:
-      svg = `<style>
-        .datahub-meta, .share-and-embed, .modebar {
-          display: none;
-        }
-        .js-plotly-plot .plotly .main-svg {
-          position: absolute;
-          top: 0px;
-          left: 0px;
-          pointer-events: none;
-        }
-        .js-plotly-plot .plotly svg {
-          overflow: hidden;
-        }
-      </style>` + svg
-      res.send(svg)
-      res.end()
-    }, 3000)
+    page.setViewport({width: 1280, height: 800})
+    await page.goto(source)
+    await page.waitForSelector('svg')
+    const dims = await page.evaluate(() => {
+      const svg = document.querySelector('svg').getBoundingClientRect()
+      return {
+        width: svg.width,
+        height: svg.height
+      }
+    })
+    page.setViewport(dims)
+    const img = await page.screenshot({fullPage: true})
+    await browser.close()
+    res.writeHead(200, {
+     'Content-Type': 'image/png',
+     'Content-Length': img.length
+    });
+    return res.end(img)
   })
-  // Per view URL - PNG:
-  router.get('/:owner/:name/view/:viewIndex.png', async (req, res, next) => {
-    const instance = await phantom.create()
-    const page = await instance.createPage()
-    // page.property('onConsoleMessage', function(msg) {console.log(msg)})
-    let source = `https://datahub.io/${req.params.owner}/${req.params.name}/view/${req.params.viewIndex}.svg`
-    if (req.query.v) {
-      source += `?v=${req.query.v}`
-    }
-    const status = await page.open(source)
-    if (status === 'success') {
-      const base64 = await page.renderBase64('PNG')
-      await instance.exit()
-      const img = new Buffer(base64, 'base64')
-      res.writeHead(200, {
-       'Content-Type': 'image/png',
-       'Content-Length': img.length
-     });
-      res.end(img)
-    }
-  })
+
   // Per view URL - embed and share:
   router.get('/:owner/:name/view/:viewNameOrIndex', async (req, res, next) => {
     let normalizedDp = null
