@@ -485,7 +485,7 @@ module.exports = function () {
       // If specStoreStatus API does not respond within 10 sec,
       // then proceed to error handler and show 500:
       const timeoutObj = setTimeout(() => {
-        next('status api timed out')
+        next(`status api timed out for ${req.params.owner}/${req.params.name}`)
         return
       }, 10000)
 
@@ -855,6 +855,7 @@ module.exports = function () {
       res.status(404).render('404.html', {
         message: 'Sorry, we cannot locate that file for you'
       })
+      return
     }
 
     // If resource is tabular or geojson + requested extension is HTML,
@@ -909,6 +910,7 @@ module.exports = function () {
         res.status(404).render('404.html', {
           message: 'Sorry, we cannot locate that file for you'
         })
+        return
       }
     }
 
