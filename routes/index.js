@@ -935,7 +935,7 @@ module.exports = function () {
 
   // Per view URL - PNG (caching response for 1 day or 1440 minutes):
   router.get('/:owner/:name/view/:viewIndex.png', cache(1440), async (req, res, next) => {
-    const options = process.env.dev ? '' : {executablePath: '/usr/bin/chromium-browser'}
+    const options = process.env.dev ? '' : {executablePath: '/usr/bin/chromium-browser', args: ['--no-sandbox', '--disable-setuid-sandbox']}
     const browser = await puppeteer.launch(options)
     const page = await browser.newPage()
     let source = `https://datahub.io/${req.params.owner}/${req.params.name}/view/${req.params.viewIndex}`
