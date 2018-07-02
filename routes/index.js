@@ -12,8 +12,7 @@ const fm = require('front-matter')
 const moment = require('moment')
 const md5 = require('md5')
 const timeago = require('timeago.js')
-const phantom = require('phantom')
-const cheerio = require('cheerio')
+const puppeteer = require('puppeteer')
 const mcache = require('memory-cache')
 
 var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
@@ -363,7 +362,31 @@ module.exports = function () {
    * https://github.com/datahubio/awesome
    */
   router.get('/awesome', showAwesomePage)
+  router.get('/awesome/dashboards/:page', showAwesomeDashboardPage)
   router.get('/awesome/:page', showAwesomePage)
+
+  async function showAwesomeDashboardPage(req, res) {
+    const BASE = 'https://raw.githubusercontent.com/datahubio/awesome-data/master/dashboards/'
+    const path = req.params.page + '.md'
+    //request raw page from github
+    let gitpath = BASE + path
+    const resp = await fetch(gitpath)
+    const text = await resp.text()
+    // parse the raw .md page and render it with a template.
+    const parsedWithFrontMatter = fm(text)
+    const published = parsedWithFrontMatter.attributes.date
+    const modified = parsedWithFrontMatter.attributes.modified
+    res.render('awesome-dashboard.html', {
+      title: parsedWithFrontMatter.attributes.title,
+      description: parsedWithFrontMatter.attributes.description,
+      content: utils.md.render(parsedWithFrontMatter.body),
+      metaDescription: parsedWithFrontMatter.attributes.description + '\n' + parsedWithFrontMatter.attributes.keywords,
+      keywords: parsedWithFrontMatter.attributes.keywords,
+      metaImage: parsedWithFrontMatter.attributes.image,
+      published: published ? published.toISOString() : '',
+      modified: modified ? modified.toISOString() : ''
+    })
+  }
 
   async function showAwesomePage(req, res) {
     const BASE = 'https://raw.githubusercontent.com/datahubio/awesome-data/master/'
@@ -455,13 +478,15 @@ module.exports = function () {
   // Function for rendering showcase page:
   function renderShowcase(revision) {
     return async (req, res, next) => {
+      // Sometimes we're getting situation when owner is undefined, we want to return in such situations:
+      if (!req.params.owner) return
       let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
       // Hit the resolver to get userid and packageid:
       const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
       // If specStoreStatus API does not respond within 10 sec,
       // then proceed to error handler and show 500:
       const timeoutObj = setTimeout(() => {
-        next('status api timed out')
+        next(`status api timed out for ${req.params.owner}/${req.params.name}`)
         return
       }, 10000)
 
@@ -831,6 +856,7 @@ module.exports = function () {
       res.status(404).render('404.html', {
         message: 'Sorry, we cannot locate that file for you'
       })
+      return
     }
 
     // If resource is tabular or geojson + requested extension is HTML,
@@ -885,6 +911,7 @@ module.exports = function () {
         res.status(404).render('404.html', {
           message: 'Sorry, we cannot locate that file for you'
         })
+        return
       }
     }
 
@@ -908,65 +935,42 @@ module.exports = function () {
     res.redirect(finalPath)
   })
 
-  // Per view URL - SVG (caching response for 1 day or 1440 minutes):
-  router.get('/:owner/:name/view/:viewIndex.svg', cache(1440), async (req, res, next) => {
-    const instance = await phantom.create()
-    const page = await instance.createPage()
-    page.property('viewportSize', {width: 1280, height: 800})
-    let source = `https://datahub.io/${req.params.owner}/${req.params.name}`
-    if (req.query.v) {
-      source += `/v/${req.query.v}`
-    }
-    const status = await page.open(source)
-    // Need to set timeout to allow React part of the page to load the graphs:
-    setTimeout(async() => {
-      const content = await page.property('content')
-      const $ = cheerio.load(content)
-      // The graphs are in the first 'react-me' element:
-      let svg = $('div.react-me').first().children().first().children().eq(req.params.viewIndex).html()
-      await instance.exit()
-      // Add stylings:
-      svg = `<style>
-        .datahub-meta, .share-and-embed, .modebar {
-          display: none;
-        }
-        .js-plotly-plot .plotly .main-svg {
-          position: absolute;
-          top: 0px;
-          left: 0px;
-          pointer-events: none;
-        }
-        .js-plotly-plot .plotly svg {
-          overflow: hidden;
-        }
-      </style>` + svg
-      res.send(svg)
-      res.end()
-    }, 3000)
-  })
   // Per view URL - PNG:
   router.get('/:owner/:name/view/:viewIndex.png', async (req, res, next) => {
-    const instance = await phantom.create()
-    const page = await instance.createPage()
-    // page.property('onConsoleMessage', function(msg) {console.log(msg)})
-    let source = `https://datahub.io/${req.params.owner}/${req.params.name}/view/${req.params.viewIndex}.svg`
-    if (req.query.v) {
-      source += `?v=${req.query.v}`
-    }
-    const status = await page.open(source)
-    if (status === 'success') {
-      const base64 = await page.renderBase64('PNG')
-      await instance.exit()
-      const img = new Buffer(base64, 'base64')
+    try {
+      const options = {args: ['--no-sandbox', '--disable-setuid-sandbox']}
+      const browser = await puppeteer.launch(options)
+      const page = await browser.newPage()
+      let source = `https://datahub.io/${req.params.owner}/${req.params.name}/view/${req.params.viewIndex}`
+      if (req.query.v) {
+        source += `?v=${req.query.v}`
+      }
+      page.setViewport({width: 1280, height: 800})
+      await page.goto(source)
+      await page.waitForSelector('svg')
+      const dims = await page.evaluate(() => {
+        const svg = document.querySelector('svg').getBoundingClientRect()
+        return {
+          width: svg.width,
+          height: svg.height
+        }
+      })
+      page.setViewport(dims)
+      const img = await page.screenshot({fullPage: true})
+      await browser.close()
       res.writeHead(200, {
        'Content-Type': 'image/png',
        'Content-Length': img.length
-     });
-      res.end(img)
+      });
+      return res.end(img)
+    } catch (err) {
+      next(err)
+      return
     }
   })
-  // Per view URL - embed and share:
-  router.get('/:owner/:name/view/:viewNameOrIndex', async (req, res, next) => {
+
+  // Per view URL - embed and share (caching response for 1 day or 1440 minutes):
+  router.get('/:owner/:name/view/:viewNameOrIndex', cache(1440), async (req, res, next) => {
     let normalizedDp = null
     let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))

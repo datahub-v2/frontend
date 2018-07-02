@@ -47,6 +47,7 @@ Now run the server:
 ```
 export API_URL=https://api.datahub.io
 export BITSTORE_URL=https://pkgstore.datahub.io
+export dev=true
 npm start
 ```
 
@@ -54,6 +55,12 @@ To run in watch mode:
 ```bash
 # note the -e which means we watch for changes in templates too
 nodemon -e "js html" index.js
+```
+
+To run tests (make sure all environment variables are set):
+
+```bash
+yarn test
 ```
 
 ### Analytics
