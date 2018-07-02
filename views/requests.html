@@ -43,7 +43,7 @@
         <form action="https://formspree.io/support@datahub.io" method="POST" name="requests">
           <div class="form-group">
             <label for="inputEmail">Email address</label>
-            <input type="email" class="form-control" name="email" required autofocus
+            <input type="email" class="form-control" name="_replyto" id="_replyto" required autofocus
               placeholder="Your e-mail address" id="inputEmail"
               pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' />
           </div>
@@ -53,7 +53,7 @@
           <label for="inOrderTo">In order to ...</label>
           <textarea class="form-control" rows="3" name="in-order-to" id="inOrderTo" placeholder="OPTIONAL. Let us know what you want to use the data for. This helps us do a better job because knowing why you want it makes it much easier to find and format the data to best suit your needs."></textarea>
           <input type="hidden" name="_next" value="https://datahub.io/thanks" />
-          <input type="hidden" name="_subject" value="Data requests" />
+          <input type="hidden" name="_subject" id="_subject" value="Data requests - " />
           <input type="submit" value="Send" class="btn btn-primary pull-right">
         </form>
       </div>
@@ -61,4 +61,14 @@
 
   </div>
 </div>
+
+<script>
+    //Populating subject with email
+    $(document).ready(function(){
+        var subject = $("#_subject").val();
+        $("#_replyto").on("input",function(){
+            $("#_subject").val(subject+$(this).val());
+        })
+    });
+</script>
 {% endblock %}

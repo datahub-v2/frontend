@@ -1,8 +1,8 @@
-body.dataos {
+body.datafactory {
     h1 {
       margin-bottom: 1.5em;
     }
-    .data-os-heading{
+    .data-factory-heading{
         margin:30px 0px 20px 0px;
         h1{
           font-weight: 200;
@@ -55,7 +55,7 @@ body.dataos {
     }
 
 
-    .DataOS-Process{
+    .datafactory-process{
         margin:60px 0px 60px 0px;
         h2{
             font-size:36px;
@@ -68,6 +68,8 @@ body.dataos {
         }
         .icon-groups{
             margin: 30px 0px 170px 0px;
+            
+
             .dots{
                 background-image: url("../img/dataos/dot.jpg");
                 background-repeat: repeat-x;
@@ -84,11 +86,22 @@ body.dataos {
                 margin:0px;
                 .element-external{
                     float: left;
+                    margin-left: 9%;
+
+                    @media screen and (min-width:1024px) and (max-width:1200px){
+                        margin-left: 0%;
+                    }
+
+                    @media screen and (max-width:1024px) {
+                        display:none;
+                    }
+
                     .element{
-                        
-                        margin-right:110px;
                         width:140px;
-                        
+                        @media screen and (min-width:1024px) and (max-width:1200px){
+                            margin-right:60px;
+                        }
+
                         .thumb{
                             background:#f0f0f0;
                             height:100px;
@@ -101,37 +114,48 @@ body.dataos {
                         
                         
                     }
+
                     .margin-right-0{
                         margin-right:0px !important;
                     }
                     p{
                         position:relative;
-                        left:-60px;
+                        left: -22px;
                         top:10px;
                      }  
 
 
                 }
                 
+                .element-external:first-child {
+                    margin-left:0;
+                }
                 
                 
             }
             
         }
+
+        @media screen and (max-width:1024px) {
+            .icon-groups{
+                display:none;
+            }
+        }
+
         .list{
             margin:30px 0px 0px 0px;
             p{
                 span{
                     color:$brand-warning;
-                    font-size:20px;
-                    font-weight:200;
+                    font-size: 22px;
+                    font-weight: 400;
                     margin-right:5px;
                 }
             }
         }
     }
 
-    .why-dataos{
+    .why-datafactory{
         margin:20px 0px 80px 0px;
         .img1{
             margin-top:30px;
@@ -162,7 +186,7 @@ body.dataos {
               }
         }
     }
-    .dataos-contain{
+    .datafactory-contain{
         margin:70px 0px 80px 0px;
         @media screen and (max-width: 768px){
             margin:70px 0px 100px 0px;

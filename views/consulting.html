@@ -267,16 +267,16 @@
               <form action="https://formspree.io/support@datahub.io" method="POST" name="consulting">
                 <div class="form-group">
                   <label class="input-label-custom">Your email</label>
-                  <input type="email" class="form-control input-form-custom" name="email" required pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' />
+                  <input type="email" class="form-control input-form-custom" name="_replyto" id="_replyto" required pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' />
                 </div>
                 <div class="form-group">
                   <label class="input-label-custom">Your name</label>
-                  <input type="text" class="form-control input-form-custom" name="name" />
+                  <input type="text" class="form-control input-form-custom" name="name" id="name" required/>
                 </div>
                 <label class="input-label-custom">Message</label>
-                <textarea class="form-control input-form-custom" rows="3" name="message"></textarea>
+                <textarea class="form-control input-form-custom" rows="3" name="message" required></textarea>
                 <input type="hidden" name="_next" value="https://datahub.io/thanks" />
-                <input type="hidden" name="_subject" value="Consulting request" />
+                <input type="hidden" name="_subject" id="_subject" value="Hire Us request - " />
                 <input type="submit" value="Send" class="btn btn-primary">
               </form>
             </div>
@@ -287,5 +287,15 @@
         </div>
       </div>
 </section>
+<script>
+  //Populating subject with name
+  $(document).ready(function(){
+      var subject = $("#_subject").val();
+      $("#name").on("input",function(){
+
+          $("#_subject").val(subject+$(this).val());
+      })
+  });
+</script>
 
 {% endblock %}
