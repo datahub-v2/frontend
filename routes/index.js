@@ -478,6 +478,8 @@ module.exports = function () {
   // Function for rendering showcase page:
   function renderShowcase(revision) {
     return async (req, res, next) => {
+      // Sometimes we're getting situation when owner is undefined, we want to return in such situations:
+      if (!req.params.owner) return
       let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
       // Hit the resolver to get userid and packageid:
       const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
