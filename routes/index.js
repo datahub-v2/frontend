@@ -935,37 +935,42 @@ module.exports = function () {
     res.redirect(finalPath)
   })
 
-  // Per view URL - PNG (caching response for 1 day or 1440 minutes):
-  router.get('/:owner/:name/view/:viewIndex.png', cache(1440), async (req, res, next) => {
-    const options = process.env.dev ? '' : {args: ['--no-sandbox', '--disable-setuid-sandbox']}
-    const browser = await puppeteer.launch(options)
-    const page = await browser.newPage()
-    let source = `https://datahub.io/${req.params.owner}/${req.params.name}/view/${req.params.viewIndex}`
-    if (req.query.v) {
-      source += `?v=${req.query.v}`
-    }
-    page.setViewport({width: 1280, height: 800})
-    await page.goto(source)
-    await page.waitForSelector('svg')
-    const dims = await page.evaluate(() => {
-      const svg = document.querySelector('svg').getBoundingClientRect()
-      return {
-        width: svg.width,
-        height: svg.height
+  // Per view URL - PNG:
+  router.get('/:owner/:name/view/:viewIndex.png', async (req, res, next) => {
+    try {
+      const options = {args: ['--no-sandbox', '--disable-setuid-sandbox']}
+      const browser = await puppeteer.launch(options)
+      const page = await browser.newPage()
+      let source = `https://datahub.io/${req.params.owner}/${req.params.name}/view/${req.params.viewIndex}`
+      if (req.query.v) {
+        source += `?v=${req.query.v}`
       }
-    })
-    page.setViewport(dims)
-    const img = await page.screenshot({fullPage: true})
-    await browser.close()
-    res.writeHead(200, {
-     'Content-Type': 'image/png',
-     'Content-Length': img.length
-    });
-    return res.end(img)
+      page.setViewport({width: 1280, height: 800})
+      await page.goto(source)
+      await page.waitForSelector('svg')
+      const dims = await page.evaluate(() => {
+        const svg = document.querySelector('svg').getBoundingClientRect()
+        return {
+          width: svg.width,
+          height: svg.height
+        }
+      })
+      page.setViewport(dims)
+      const img = await page.screenshot({fullPage: true})
+      await browser.close()
+      res.writeHead(200, {
+       'Content-Type': 'image/png',
+       'Content-Length': img.length
+      });
+      return res.end(img)
+    } catch (err) {
+      next(err)
+      return
+    }
   })
 
-  // Per view URL - embed and share:
-  router.get('/:owner/:name/view/:viewNameOrIndex', async (req, res, next) => {
+  // Per view URL - embed and share (caching response for 1 day or 1440 minutes):
+  router.get('/:owner/:name/view/:viewNameOrIndex', cache(1440), async (req, res, next) => {
     let normalizedDp = null
     let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
     const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
