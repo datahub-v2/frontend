@@ -8311,58 +8311,58 @@ body.consulting .getintouch {
       body.consulting .getintouch img {
         margin-top: 20px; } }
 
-body.dataos h1 {
+body.datafactory h1 {
   margin-bottom: 1.5em; }
-body.dataos .data-os-heading {
+body.datafactory .data-factory-heading {
   margin: 30px 0px 20px 0px; }
-  body.dataos .data-os-heading h1 {
+  body.datafactory .data-factory-heading h1 {
     font-weight: 200;
     margin-bottom: 20px;
     font-size: 46px;
     line-height: 1.3em; }
-    body.dataos .data-os-heading h1 img {
+    body.datafactory .data-factory-heading h1 img {
       width: 40px;
       margin-right: 15px;
       position: relative;
       bottom: 5px; }
-  body.dataos .data-os-heading p {
+  body.datafactory .data-factory-heading p {
     font-size: 18px; }
-body.dataos .use-open-framework {
+body.datafactory .use-open-framework {
   margin: 70px 0px 80px 0px; }
-  body.dataos .use-open-framework .img1 {
+  body.datafactory .use-open-framework .img1 {
     box-shadow: 2px 3px 16px 0px rgba(97, 97, 97, 0.14);
     width: 70%;
     border-radius: 4px; }
     @media screen and (max-width: 768px) {
-      body.dataos .use-open-framework .img1 {
+      body.datafactory .use-open-framework .img1 {
         width: 100%;
         margin: 0px; } }
-  body.dataos .use-open-framework h2 {
+  body.datafactory .use-open-framework h2 {
     font-size: 36px;
     font-weight: 200;
     margin-top: 0px;
     margin-bottom: 40px !important; }
     @media screen and (max-width: 768px) {
-      body.dataos .use-open-framework h2 {
+      body.datafactory .use-open-framework h2 {
         margin-top: 40px; } }
-  body.dataos .use-open-framework .list {
+  body.datafactory .use-open-framework .list {
     margin-top: 20px; }
     @media screen and (max-width: 768px) {
-      body.dataos .use-open-framework .list .pad-left-0-custom {
+      body.datafactory .use-open-framework .list .pad-left-0-custom {
         padding-left: 0px;
         margin-left: 0px; } }
-body.dataos .DataOS-Process {
+body.datafactory .datafactory-process {
   margin: 60px 0px 60px 0px; }
-  body.dataos .DataOS-Process h2 {
+  body.datafactory .datafactory-process h2 {
     font-size: 36px;
     font-weight: 200;
     margin-top: 0px; }
     @media screen and (max-width: 768px) {
-      body.dataos .DataOS-Process h2 {
+      body.datafactory .datafactory-process h2 {
         margin-top: 0px; } }
-  body.dataos .DataOS-Process .icon-groups {
+  body.datafactory .datafactory-process .icon-groups {
     margin: 30px 0px 170px 0px; }
-    body.dataos .DataOS-Process .icon-groups .dots {
+    body.datafactory .datafactory-process .icon-groups .dots {
       background-image: url("../img/dataos/dot.jpg");
       background-repeat: repeat-x;
       height: 30px;
@@ -8370,115 +8370,115 @@ body.dataos .DataOS-Process {
       position: relative;
       top: 72px;
       z-index: -100; }
-    body.dataos .DataOS-Process .icon-groups .grouping {
+    body.datafactory .datafactory-process .icon-groups .grouping {
       padding: 0px;
       z-index: 100;
       margin: 0px; }
-      body.dataos .DataOS-Process .icon-groups .grouping .element-external {
+      body.datafactory .datafactory-process .icon-groups .grouping .element-external {
         float: left;
         margin-left: 9%; }
         @media screen and (min-width: 1024px) and (max-width: 1200px) {
-          body.dataos .DataOS-Process .icon-groups .grouping .element-external {
+          body.datafactory .datafactory-process .icon-groups .grouping .element-external {
             margin-left: 0%; } }
         @media screen and (max-width: 1024px) {
-          body.dataos .DataOS-Process .icon-groups .grouping .element-external {
+          body.datafactory .datafactory-process .icon-groups .grouping .element-external {
             display: none; } }
-        body.dataos .DataOS-Process .icon-groups .grouping .element-external .element {
+        body.datafactory .datafactory-process .icon-groups .grouping .element-external .element {
           width: 140px; }
           @media screen and (min-width: 1024px) and (max-width: 1200px) {
-            body.dataos .DataOS-Process .icon-groups .grouping .element-external .element {
+            body.datafactory .datafactory-process .icon-groups .grouping .element-external .element {
               margin-right: 60px; } }
-          body.dataos .DataOS-Process .icon-groups .grouping .element-external .element .thumb {
+          body.datafactory .datafactory-process .icon-groups .grouping .element-external .element .thumb {
             background: #f0f0f0;
             height: 100px;
             width: 100px; }
-            body.dataos .DataOS-Process .icon-groups .grouping .element-external .element .thumb img {
+            body.datafactory .datafactory-process .icon-groups .grouping .element-external .element .thumb img {
               width: 100%;
               padding: 20px; }
-        body.dataos .DataOS-Process .icon-groups .grouping .element-external .margin-right-0 {
+        body.datafactory .datafactory-process .icon-groups .grouping .element-external .margin-right-0 {
           margin-right: 0px !important; }
-        body.dataos .DataOS-Process .icon-groups .grouping .element-external p {
+        body.datafactory .datafactory-process .icon-groups .grouping .element-external p {
           position: relative;
           left: -22px;
           top: 10px; }
-      body.dataos .DataOS-Process .icon-groups .grouping .element-external:first-child {
+      body.datafactory .datafactory-process .icon-groups .grouping .element-external:first-child {
         margin-left: 0; }
   @media screen and (max-width: 1024px) {
-    body.dataos .DataOS-Process .icon-groups {
+    body.datafactory .datafactory-process .icon-groups {
       display: none; } }
-  body.dataos .DataOS-Process .list {
+  body.datafactory .datafactory-process .list {
     margin: 30px 0px 0px 0px; }
-    body.dataos .DataOS-Process .list p span {
+    body.datafactory .datafactory-process .list p span {
       color: #ff7900;
       font-size: 22px;
       font-weight: 400;
       margin-right: 5px; }
-body.dataos .why-dataos {
+body.datafactory .why-datafactory {
   margin: 20px 0px 80px 0px; }
-  body.dataos .why-dataos .img1 {
+  body.datafactory .why-datafactory .img1 {
     margin-top: 30px;
     width: 70%; }
     @media screen and (max-width: 768px) {
-      body.dataos .why-dataos .img1 {
+      body.datafactory .why-datafactory .img1 {
         width: 100%;
         margin: 20px 0px 0px 0px !important; } }
-  body.dataos .why-dataos h2 {
+  body.datafactory .why-datafactory h2 {
     font-size: 36px;
     font-weight: 200;
     margin-top: 0px;
     margin-bottom: 40px !important; }
     @media screen and (max-width: 768px) {
-      body.dataos .why-dataos h2 {
+      body.datafactory .why-datafactory h2 {
         margin-top: 40px; } }
-  body.dataos .why-dataos .list {
+  body.datafactory .why-datafactory .list {
     margin-top: 20px; }
     @media screen and (max-width: 768px) {
-      body.dataos .why-dataos .list .pad-left-0-custom {
+      body.datafactory .why-datafactory .list .pad-left-0-custom {
         padding-left: 0px;
         margin-left: 0px; } }
-body.dataos .dataos-contain {
+body.datafactory .datafactory-contain {
   margin: 70px 0px 80px 0px; }
   @media screen and (max-width: 768px) {
-    body.dataos .dataos-contain {
+    body.datafactory .datafactory-contain {
       margin: 70px 0px 100px 0px; } }
-  body.dataos .dataos-contain .img1 {
+  body.datafactory .datafactory-contain .img1 {
     box-shadow: 2px 3px 16px 0px rgba(97, 97, 97, 0.3);
     width: 70%;
     margin-top: 120px;
     border-radius: 4px; }
     @media screen and (max-width: 768px) {
-      body.dataos .dataos-contain .img1 {
+      body.datafactory .datafactory-contain .img1 {
         margin-top: 30px !important;
         width: 100%;
         margin: 0px; } }
-  body.dataos .dataos-contain h2 {
+  body.datafactory .datafactory-contain h2 {
     font-size: 36px;
     font-weight: 200;
     margin-top: 0px;
     margin-bottom: 40px !important; }
     @media screen and (max-width: 768px) {
-      body.dataos .dataos-contain h2 {
+      body.datafactory .datafactory-contain h2 {
         margin-top: 0px; } }
-  body.dataos .dataos-contain .list {
+  body.datafactory .datafactory-contain .list {
     margin-top: 20px; }
     @media screen and (max-width: 768px) {
-      body.dataos .dataos-contain .list .pad-left-0-custom {
+      body.datafactory .datafactory-contain .list .pad-left-0-custom {
         padding-left: 0px;
         margin-left: 0px; } }
-body.dataos .three-elements {
+body.datafactory .three-elements {
   margin-top: -20px;
   margin-bottom: 50px; }
-body.dataos .three-elements .element {
+body.datafactory .three-elements .element {
   text-align: center;
   padding: 60px 10px 60px 10px;
   background-color: #fafafa;
   /*border-radius:7px;*/
   margin-bottom: 30px; }
-body.dataos .three-elements .element h4 {
+body.datafactory .three-elements .element h4 {
   margin: 30px 0px 60px 0px;
   font-size: 32px;
   font-weight: 200; }
-body.dataos .three-elements .element p {
+body.datafactory .three-elements .element p {
   margin: 20px 0px 25px 0px; }
 
 body.requests textarea {

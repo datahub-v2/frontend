@@ -1127,10 +1127,10 @@ module.exports = function () {
     })
   })
 
-  router.get('/data-os', (req, res) => {
-    res.render('data-os.html', {
-      title: 'DataOS',
-      description: 'aa'
+  router.get('/data-factory', (req, res) => {
+    res.render('data-factory.html', {
+      title: 'Data Factory',
+      description: 'Data Factory - Automate your data processes with our open source framework.'
     })
   })
 
