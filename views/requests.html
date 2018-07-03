@@ -42,16 +42,43 @@
 
         <form action="https://formspree.io/support@datahub.io" method="POST" name="requests">
           <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" id="name" required autofocus
+              placeholder="Your Name" />
+          </div>
+          <div class="form-group">
             <label for="inputEmail">Email address</label>
             <input type="email" class="form-control" name="_replyto" id="_replyto" required autofocus
-              placeholder="Your e-mail address" id="inputEmail"
+              placeholder="Your e-mail address"
               pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' />
           </div>
-          <label for="whatINeed">I want ...</label>
-          <textarea class="form-control" rows="3" name="what-i-need" required
-            id="whatINeed" placeholder="What kind of data would you like? It's fine to only have a vague idea as we're expert data sleuths ..."></textarea>
-          <label for="inOrderTo">In order to ...</label>
-          <textarea class="form-control" rows="3" name="in-order-to" id="inOrderTo" placeholder="OPTIONAL. Let us know what you want to use the data for. This helps us do a better job because knowing why you want it makes it much easier to find and format the data to best suit your needs."></textarea>
+
+          <div class="form-group">
+            <label for="category">Dataset Category</label>
+            <select name="dataset_category" id="dataset_category" class="form-control" required>
+              <option value="">Select Dataset Category</option>
+              <option value="Demographics">Demographics</option>
+              <option value="Economic/Financial">Economic/Financial</option>
+              <option value="Environmental/Climate Change">Environmental/Climate Change</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Medical">Medical</option>
+              <option value="Opinion polls">Opinion polls</option>
+              <option value="Science/Research">Science/Research</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="whatINeed">I want ...</label>
+            <textarea class="form-control" rows="3" name="what-i-need" required
+              id="whatINeed" placeholder="What kind of data would you like? It's fine to only have a vague idea as we're expert data sleuths ..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="inOrderTo">In order to ...</label>
+            <textarea class="form-control" rows="3" name="in-order-to" id="inOrderTo" placeholder="OPTIONAL. Let us know what you want to use the data for. This helps us do a better job because knowing why you want it makes it much easier to find and format the data to best suit your needs."></textarea>
+          </div>
+
           <input type="hidden" name="_next" value="https://datahub.io/thanks" />
           <input type="hidden" name="_subject" id="_subject" value="Data requests - " />
           <input type="submit" value="Send" class="btn btn-primary pull-right">
@@ -66,7 +93,7 @@
     //Populating subject with email
     $(document).ready(function(){
         var subject = $("#_subject").val();
-        $("#_replyto").on("input",function(){
+        $("#name").on("input",function(){
             $("#_subject").val(subject+$(this).val());
         })
     });
