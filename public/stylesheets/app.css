@@ -8363,7 +8363,7 @@ body.datafactory .datafactory-process {
   body.datafactory .datafactory-process .icon-groups {
     margin: 30px 0px 170px 0px; }
     body.datafactory .datafactory-process .icon-groups .dots {
-      background-image: url("../img/dataos/dot.jpg");
+      background-image: url("../img/data-factory/dot.jpg");
       background-repeat: repeat-x;
       height: 30px;
       width: 90%;
