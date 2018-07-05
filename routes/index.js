@@ -215,6 +215,9 @@ module.exports = function () {
     '/*/dataset/imf-weo/*'
   ], redirectToDest('/core/imf-weo'))
 
+  // 'global-airport' => 'airport-codes'
+  router.get('/dataset/global-airports', redirectToDest('/core/airport-codes'))
+
   // Finally, redirections for login and dashboard pages
   router.get('/user/login', redirectToDest('/login'))
   router.get(['/dashboard/datasets', '/dashboard/groups'], redirectToDest('/dashboard'))
