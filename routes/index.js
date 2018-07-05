@@ -108,11 +108,20 @@ module.exports = function () {
       sitemap.add({url: urllib.resolve('https://datahub.io', page)})
     })
     // Add special users' publisher pages and their datasets:
-    const specialUsers = ['core', 'machine-learning', 'examples']
+    const specialUsers = ['core', 'machine-learning', 'examples', 'world-bank', 'five-thirty-eight']
     await Promise.all(specialUsers.map(async user => {
       sitemap.add({url: urllib.resolve('https://datahub.io', user)})
-      const packages = await api.search(`datahub.ownerid="${user}"&size=100`)
+      let packages = await api.search(`datahub.ownerid="${user}"&size=100`)
       packages.results.forEach(pkg => sitemap.add({url: urllib.resolve('https://datahub.io', pkg.id)}))
+      let total = packages.summary.total
+      total -= 100
+      let from = 1
+      while (total > 0) {
+        from += 100
+        packages = await api.search(`datahub.ownerid="${user}"&size=100&from=${from}`)
+        packages.results.forEach(pkg => sitemap.add({url: urllib.resolve('https://datahub.io', pkg.id)}))
+        total -= 100
+      }
     }))
     // Generate sitemap object into XML and respond:
     sitemap.toXML((err, xml) => {
