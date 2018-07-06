@@ -953,13 +953,19 @@ module.exports = function () {
       const options = {args: ['--no-sandbox', '--disable-setuid-sandbox']}
       const browser = await puppeteer.launch(options)
       const page = await browser.newPage()
+      page.on('error', (err) => {
+        console.log(`Puppetter error occurred on ${req.originalUrl}: ${err}`)
+      })
+      page.on('pageerror', (pageerr) => {
+        console.log(`Puppetter pageerror occurred on ${req.originalUrl}: ${pageerr}`)
+      })
       let source = `https://datahub.io/${req.params.owner}/${req.params.name}/view/${req.params.viewIndex}`
       if (req.query.v) {
         source += `?v=${req.query.v}`
       }
       page.setViewport({width: 1280, height: 800})
       await page.goto(source)
-      await page.waitForSelector('svg')
+      await page.waitForSelector('svg', {timeout: 15000})
       const dims = await page.evaluate(() => {
         const svg = document.querySelector('svg').getBoundingClientRect()
         return {
@@ -976,6 +982,10 @@ module.exports = function () {
       });
       return res.end(img)
     } catch (err) {
+      if (err.message.includes('timeout')) {
+        console.log(`Puppetter timeout (15s) occurred on ${req.originalUrl}`)
+        err.status = 404
+      }
       next(err)
       return
     }
