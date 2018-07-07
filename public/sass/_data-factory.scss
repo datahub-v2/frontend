@@ -24,9 +24,7 @@ body.datafactory {
     .use-open-framework{
         margin:70px 0px 80px 0px;
         .img1{
-            box-shadow: 2px 3px 16px 0px rgba(97, 97, 97, 0.14);
             width:70%;
-            border-radius:4px;
             @media screen and (max-width: 768px){
                 width:100%;
                 margin:0px;
@@ -158,8 +156,8 @@ body.datafactory {
     .why-datafactory{
         margin:20px 0px 80px 0px;
         .img1{
-            margin-top:30px;
-            width:70%;
+            margin-top:-20px;
+            width:75%;
             @media screen and (max-width: 768px){
                 width:100%;
                 margin:20px 0px 0px 0px !important;

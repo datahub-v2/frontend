@@ -8330,9 +8330,7 @@ body.datafactory .data-factory-heading {
 body.datafactory .use-open-framework {
   margin: 70px 0px 80px 0px; }
   body.datafactory .use-open-framework .img1 {
-    box-shadow: 2px 3px 16px 0px rgba(97, 97, 97, 0.14);
-    width: 70%;
-    border-radius: 4px; }
+    width: 70%; }
     @media screen and (max-width: 768px) {
       body.datafactory .use-open-framework .img1 {
         width: 100%;
@@ -8416,8 +8414,8 @@ body.datafactory .datafactory-process {
 body.datafactory .why-datafactory {
   margin: 20px 0px 80px 0px; }
   body.datafactory .why-datafactory .img1 {
-    margin-top: 30px;
-    width: 70%; }
+    margin-top: -20px;
+    width: 75%; }
     @media screen and (max-width: 768px) {
       body.datafactory .why-datafactory .img1 {
         width: 100%;
