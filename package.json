@@ -67,6 +67,7 @@
     "remove-markdown": "^0.2.0",
     "sanitize-html": "^1.14.1",
     "sitemap": "^1.13.0",
+    "slash": "^2.0.0",
     "stripe": "^5.8.0",
     "timeago.js": "^3.0.2",
     "universal-analytics": "^0.4.17",

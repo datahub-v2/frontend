@@ -14,6 +14,7 @@ const md5 = require('md5')
 const timeago = require('timeago.js')
 const puppeteer = require('puppeteer')
 const mcache = require('memory-cache')
+const slash = require('slash')
 
 var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
@@ -494,7 +495,9 @@ module.exports = function () {
       if (!req.params.owner) return
       let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
       // Hit the resolver to get userid and packageid:
-      const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
+      const userAndPkgId = await api.resolve(
+        slash(path.join(req.params.owner, req.params.name))
+      )
       // If specStoreStatus API does not respond within 10 sec,
       // then proceed to error handler and show 500:
       const timeoutObj = setTimeout(() => {
@@ -755,7 +758,9 @@ module.exports = function () {
   router.get('/:owner/:name/datapackage.json', async (req, res, next) => {
     let normalizedDp = null
     let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
-    const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
+    const userAndPkgId = await api.resolve(
+      slash(path.join(req.params.owner, req.params.name))
+    )
     if (!userAndPkgId.userid) {
       res.status(404).render('404.html', {
         message: 'Sorry, this page was not found',
@@ -812,7 +817,9 @@ module.exports = function () {
   router.get('/:owner/:name/r/:fileNameOrIndex', async (req, res, next) => {
     let normalizedDp = null
     let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
-    const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
+    const userAndPkgId = await api.resolve(
+      slash(path.join(req.params.owner, req.params.name))
+    )
     if (!userAndPkgId.userid) {
       res.status(404).render('404.html', {
         message: 'Sorry, this page was not found',
@@ -995,7 +1002,9 @@ module.exports = function () {
   router.get('/:owner/:name/view/:viewNameOrIndex', cache(1440), async (req, res, next) => {
     let normalizedDp = null
     let token = req.cookies.jwt ? req.cookies.jwt : req.query.jwt
-    const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
+    const userAndPkgId = await api.resolve(
+      slash(path.join(req.params.owner, req.params.name))
+    )
     if (!userAndPkgId.userid) {
       res.status(404).render('404.html', {
         message: 'Sorry, this page was not found',
@@ -1085,7 +1094,9 @@ module.exports = function () {
   router.get('/:owner/:name/events', async (req, res, next) => {
     // First check if dataset exists
     const token = req.cookies.jwt
-    const userAndPkgId = await api.resolve(path.join(req.params.owner, req.params.name))
+    const userAndPkgId = await api.resolve(
+      slash(path.join(req.params.owner, req.params.name))
+    )
     // Get the latest successful revision, if does not exist show 404
     let latestSuccessfulRevision
     try {
