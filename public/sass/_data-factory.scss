@@ -9,7 +9,7 @@ body.datafactory {
           margin-bottom: 20px;
           font-size: 46px;
           line-height: 1.3em;
-    
+
           img{
             width:40px;
             margin-right:15px;
@@ -35,7 +35,7 @@ body.datafactory {
             font-weight:200;
             margin-top:0px;
             margin-bottom:40px !important;
-            @media screen and (max-width: 768px) 
+            @media screen and (max-width: 768px)
             {
                 margin-top:40px;
             }
@@ -59,14 +59,14 @@ body.datafactory {
             font-size:36px;
             font-weight:200;
             margin-top:0px;
-            @media screen and (max-width: 768px) 
+            @media screen and (max-width: 768px)
             {
                 margin-top:0px;
             }
         }
         .icon-groups{
             margin: 30px 0px 170px 0px;
-            
+
 
             .dots{
                 background-image: url("../img/data-factory/dot.jpg");
@@ -76,7 +76,7 @@ body.datafactory {
                 position:relative;
                 top:72px;
                 z-index:-100;
-                
+
             }
             .grouping{
                 padding:0px;
@@ -109,8 +109,8 @@ body.datafactory {
                                 padding:20px;
                             }
                         }
-                        
-                        
+
+
                     }
 
                     .margin-right-0{
@@ -120,18 +120,18 @@ body.datafactory {
                         position:relative;
                         left: -22px;
                         top:10px;
-                     }  
+                     }
 
 
                 }
-                
+
                 .element-external:first-child {
                     margin-left:0;
                 }
-                
-                
+
+
             }
-            
+
         }
 
         @media screen and (max-width:1024px) {
@@ -168,7 +168,7 @@ body.datafactory {
             font-weight:200;
             margin-top:0px;
             margin-bottom:40px !important;
-            @media screen and (max-width: 768px) 
+            @media screen and (max-width: 768px)
             {
                 margin-top:40px;
             }
@@ -205,7 +205,7 @@ body.datafactory {
             font-weight:200;
             margin-top:0px;
             margin-bottom:40px !important;
-            @media screen and (max-width: 768px) 
+            @media screen and (max-width: 768px)
             {
                 margin-top:0px;
             }
@@ -243,5 +243,136 @@ body.datafactory {
       {
         margin:20px 0px 25px 0px;
       }
-      
+
+      .console {
+        width: 450px;
+        height: 310px;
+        border-radius: 5px;
+        background: #000;
+        box-shadow: 70px 70px 100px 10px rgba(0,0,0,0.1);
+        margin: auto;
+      }
+
+      .window {
+        border: 1px solid #333;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        border-radius: 5px;
+        box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.1);
+      }
+
+      .browser {
+        background: #fff;
+        width: 450px;
+        height: 290px;
+        border-radius: 5px;
+        margin: auto;
+      }
+
+      .browser .window {
+        border-color:#fff;
+      }
+
+      .header {
+        width: 100%;
+        height: 36px;
+        position: absolute;
+
+        .title {
+          color: #999;
+          font-size: 12px;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+          position: absolute;
+          top: 6px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          width: 200px;
+          margin: auto;
+          border-radius: 4px;
+          padding: 4px;
+        }
+
+        .title-bg {
+          background-color: #F7F7F7;
+        }
+
+        .icon {
+          border-radius: 50%;
+          display: inline-block;
+          width: 12px;
+          height: 12px;
+          position: absolute;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+        }
+
+        // rename from close to handle conflict with bootstrap
+        .close-terminal {
+          background-color: #ff5f56;
+          left: 13px;
+        }
+        .minimize {
+          background-color: #ffbd2e;
+          left: 33px;
+        }
+        .fullScreen {
+          background-color: #27c93f;
+          left: 53px;
+        }
+      }
+
+      .body {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        padding-top: 43px;
+        position: absolute;
+        overflow: auto;
+      }
+
+      .console-inner {
+        color: #fff;
+        font-size: 12px;
+        font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+        line-height: 24px;
+        margin: 0 16px;
+
+        text-align: left;
+
+        pre {
+          font-size: 12px;
+          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+          line-height: 20px;
+          margin: 0;
+          white-space: pre-wrap;
+          color: #fff;
+          background-color: transparent;
+          border: none;
+        }
+
+        .prompt {
+          color: #ccc;
+        }
+        .square {
+          color: #fff;
+        }
+
+        .cursor {
+          background: #f81ce5;
+          display: inline-block;
+          width: 7px;
+          height: 15px;
+          vertical-align: middle;
+        }
+      }
+
+      .browser .body img {
+        margin: auto;
+        max-height: 100%;
+      }
 }
