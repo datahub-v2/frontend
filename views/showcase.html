@@ -16,10 +16,7 @@
 {% if owner == 'core' %}
 <div class="container">
   <div class="inner_container">
-    <div class="alert alert-success" role="alert">
-      We're introducing a <strong>premium data</strong> service that includes notifications, data customization and <a href="#" data-toggle="modal" data-target="#premium-data" class="premium-data-link">more</a>.<br />
-      <a href="#" data-toggle="modal" data-target="#premium-data" class="premium-data-link">Sign up</a> for our free trial program to find out more and tell us what you'd most want to see first!
-    </div>
+
 
     <!-- Modal -->
     <div class="modal fade" id="premium-data" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -37,6 +34,14 @@
     </div>
   </div>
 </div>
+
+  
+    <!-- Bottom Area to show the alert -->
+    <div class="stripe-ribbon" id="showcase-offer">
+      <p>Now you can Request Additional Data and Customized columns from our team! </p>
+      <a href="#" data-toggle="modal" data-target="#premium-data">Try It Now</a>
+    </div>
+
 {% endif %}<!-- End of Premium data offer -->
 
 <!-- title and owner info -->
@@ -401,6 +406,14 @@
   jQuery('.nav.nav-pills a[href="' + hash + '"]').tab('show', function() {
       jQuery(document).scrollTop();
   });
+  
+
+  //Slide out function for showcase
+  $(window).on('load', function() {
+    $("#showcase-offer").animate({
+      bottom:0
+    },1000);
+   });
 </script>
 
 <!-- pass DP_ID to front-end -->
