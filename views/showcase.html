@@ -251,10 +251,12 @@
         <!-- End of reports rendering -->
 
         <!-- Premium Data Offer Link -->
+        {% if owner == 'core' %}
         <div class="data-offer-txt">
             <img src="/static/img/cube.png" />
             <p> You can customize this data to meet your requirements - <a href="#" data-toggle="modal" data-target="#premium-data">Get Started</a></p>
         </div>
+        {% endif %}
 
         <!-- Placeholder div elements for React components: preview tables -->
         <div id="resource-{{loop.index - 1}}" class="react-me tables"
@@ -388,6 +390,7 @@
   </div>
 </div><!-- end of link to datapackage.json -->
 
+{% if owner == 'core' %}
 <div class="container premium_dataoffer">
   <div class="inner_container">
     <div class="row">
@@ -455,7 +458,7 @@
     </div>
   </div>
 </div>
-
+{% endif %}
 {% endblock %}
 
 
