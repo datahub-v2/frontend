@@ -26,39 +26,39 @@
       </h4>
       <ul>
         <li>
-          Notifications of data updates and schema changes
+          <img src="/static/img/tick.png" /> Notifications of data updates and schema changes
         </li>
         <li>
-          Warranty / guaranteed updates
+          <img src="/static/img/tick.png" /> Warranty / guaranteed updates
         </li>
         <li>
-          Workflow integration (e.g. Python packages, NPM packages)
+          <img src="/static/img/tick.png" /> Workflow integration (e.g. Python packages, NPM packages)
         </li>
         <li>
-          Customized data (e.g. you need different or additional data)
+          <img src="/static/img/tick.png" /> Customized data (e.g. you need different or additional data)
         </li>
         <li>
-          Or suggest your own feature in the form below!
+          <img src="/static/img/tick.png" /> Or suggest your own feature in the form below!
         </li>
       </ul>
-      <h4>
-        Get Started &mdash; Contact Us
-      </h4>
+      <div class="separator">
+        <center>
+          <h6><span>Contact</span></h6>
+        </center>
+      </div>
       <form action="https://formspree.io/support@datahub.io" method="POST" name="premium-data">
         <div class="form-group">
-          <label for="inputEmail">Email address</label>
-          <input type="email" class="form-control" name="email" required autofocus
+          <label for="inputEmail" class="input-label-custom">Email address</label>
+          <input type="email" class="form-control input-form-custom" name="email" required autofocus
             placeholder="Your e-mail address" id="inputEmail"
             pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' />
         </div>
-        <label for="features">Which features you like the most?</label>
-        <textarea class="form-control" rows="2" name="features-i-like"
-          id="features" placeholder="Optional: tell us what do you think about offered features"></textarea>
-        <label for="suggested-feature">or suggest your own feature ...</label>
-        <textarea class="form-control" rows="2" name="suggested-feature" id="suggested-feature" placeholder="Optional: let us know what do you want along with this offer - we'll consider your suggestion and get back to you."></textarea>
+        <label for="message" class="input-label-custom">Message</label>
+        <textarea class="form-control input-form-custom" rows="2" name="message"
+          id="message" ></textarea>
         <input type="hidden" name="_next" value="https://datahub.io/premium-data?done=1" />
         <input type="hidden" name="_subject" value="Premium data signup request" />
-        <input type="submit" value="Send" class="btn btn-primary pull-right">
+        <input type="submit" value="Send Request" class="btn btn-primary pull-right">
       </form>
     {% endif %}
   </body>

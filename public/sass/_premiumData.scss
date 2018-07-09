@@ -1,10 +1,14 @@
 body.premium-data {
   padding-bottom: 0;
+  overflow:hidden;
+
   .vertical-center {
     height: 200px !important;
   }
   h4 {
     margin: 20px 0;
+    font-weight:300;
+    font-size:22px;
   }
   form {
     height: 320px;
@@ -12,4 +16,41 @@ body.premium-data {
   input[type="submit"] {
     margin: 20px 0;
   }
+  ul {
+    list-style: none;
+    margin-left:0;
+    padding-left:0;
+
+    li {
+      padding-bottom:5px;
+      
+      img {
+        padding-right:3px;
+      }
+    }
+  }
+  .input-form-custom {
+    margin-bottom: 15px;
+  }
+  .separator {
+    padding-top:10px;
+    text-align:center;
+    h6 { 
+      width: 150px;
+      text-align: center;
+      border-bottom: 1.5px solid #e6e6e6;
+      line-height: 0.1em;
+      margin:10px 0 20px;
+    } 
+    h6 span {
+      background:#fff; 
+      padding:0 10px;     
+      font-size: 17px;
+      font-weight: 500;
+      color: #cdcdcd; 
+    }
+
+    }
+    
+    
 }
