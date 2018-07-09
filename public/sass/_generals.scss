@@ -169,8 +169,8 @@ a {
 }
 .input-label-custom
 {
-  color:#8b8a8a;
-  font-weight:200;
+  color:#000;
+  font-weight:400;
   margin-bottom:0px;
 }
 .input-form-custom 
@@ -198,4 +198,65 @@ a {
 
 .no-pad{
   padding:0px;
+}
+
+/* New Modal Styling */
+.modal-new {
+  .modal-header {
+      background-color:#fafafa;
+      position:relative;
+
+      .modal-title {
+          font-weight:300;
+          
+          .title-img {
+              width: 51px;
+              margin-right: 20px;
+              margin-left: 14px;
+          }
+      }
+
+      .close {
+        height: 30px;
+        width: 30px;
+        background: #fafafa;
+        border-radius: 40px;
+        position: absolute;
+        top: -15px;
+        right: 30px;
+        opacity:1;
+        font-size: 26px;
+        box-shadow: 1px 2px 3px #e4e4e4;
+
+        span {
+          position:relative;
+          top:-2px;
+        }
+      }
+  }
+
+  .modal-content {
+      border:0px;
+      box-shadow: 0px 0px 0px transparent;
+  }
+
+
+  .modal-body {
+    @media screen and (min-width:500px){
+        padding:0px 35px;
+    }  
+    
+  }
+    
+  @media screen and (min-width:768px){
+      .modal-dialog {
+          width:520px;
+      }
+  }
+  @media screen and (max-width:768px){
+      .modal-dialog {
+        margin: 20px 10px;
+      }
+  }
+  
 }

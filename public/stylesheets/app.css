@@ -6469,8 +6469,8 @@ a {
   margin: 0 !important; }
 
 .input-label-custom {
-  color: #8b8a8a;
-  font-weight: 200;
+  color: #000;
+  font-weight: 400;
   margin-bottom: 0px; }
 
 .input-form-custom {
@@ -6492,6 +6492,43 @@ a {
 
 .no-pad {
   padding: 0px; }
+
+/* New Modal Styling */
+.modal-new .modal-header {
+  background-color: #fafafa;
+  position: relative; }
+  .modal-new .modal-header .modal-title {
+    font-weight: 300; }
+    .modal-new .modal-header .modal-title .title-img {
+      width: 51px;
+      margin-right: 20px;
+      margin-left: 14px; }
+  .modal-new .modal-header .close {
+    height: 30px;
+    width: 30px;
+    background: #fafafa;
+    border-radius: 40px;
+    position: absolute;
+    top: -15px;
+    right: 30px;
+    opacity: 1;
+    font-size: 26px;
+    box-shadow: 1px 2px 3px #e4e4e4; }
+    .modal-new .modal-header .close span {
+      position: relative;
+      top: -2px; }
+.modal-new .modal-content {
+  border: 0px;
+  box-shadow: 0px 0px 0px transparent; }
+@media screen and (min-width: 500px) {
+  .modal-new .modal-body {
+    padding: 0px 35px; } }
+@media screen and (min-width: 768px) {
+  .modal-new .modal-dialog {
+    width: 520px; } }
+@media screen and (max-width: 768px) {
+  .modal-new .modal-dialog {
+    margin: 20px 10px; } }
 
 /* Navbar
 ====================================*/
@@ -8612,15 +8649,43 @@ body.requests input[type="submit"] {
   margin: 20px 0; }
 
 body.premium-data {
-  padding-bottom: 0; }
+  padding-bottom: 0;
+  overflow: hidden; }
   body.premium-data .vertical-center {
     height: 200px !important; }
   body.premium-data h4 {
-    margin: 20px 0; }
+    margin: 20px 0;
+    font-weight: 300;
+    font-size: 22px; }
   body.premium-data form {
     height: 320px; }
   body.premium-data input[type="submit"] {
     margin: 20px 0; }
+  body.premium-data ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0; }
+    body.premium-data ul li {
+      padding-bottom: 5px; }
+      body.premium-data ul li img {
+        padding-right: 3px; }
+  body.premium-data .input-form-custom {
+    margin-bottom: 15px; }
+  body.premium-data .separator {
+    padding-top: 10px;
+    text-align: center; }
+    body.premium-data .separator h6 {
+      width: 150px;
+      text-align: center;
+      border-bottom: 1.5px solid #e6e6e6;
+      line-height: 0.1em;
+      margin: 10px 0 20px; }
+    body.premium-data .separator h6 span {
+      background: #fff;
+      padding: 0 10px;
+      font-size: 17px;
+      font-weight: 500;
+      color: #cdcdcd; }
 
 /* Payments
 ============== */
