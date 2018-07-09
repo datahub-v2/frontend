@@ -35,11 +35,11 @@
   </div>
 </div>
 
-  
+
     <!-- Bottom Area to show the alert -->
     <div class="stripe-ribbon" id="showcase-offer">
-      <p>Now you can Request Additional Data and Customized columns from our team! </p>
-      <a href="#" data-toggle="modal" data-target="#premium-data">Try It Now</a>
+      <p>Now you can request additional data and/or customized columns! </p>
+      <a href="#" data-toggle="modal" data-target="#premium-data">Try It Now!</a>
     </div>
 
 {% endif %}<!-- End of Premium data offer -->
@@ -225,13 +225,7 @@
         </h2>
         <!-- Render validation reports for each resource: -->
         <div id="report-{{loop.index - 1}}"></div>
-        
-        <!-- Premium Data Offer Link -->
-        <div class="data-offer-txt">
-            <img src="/static/img/cube.png" />
-            <p> You can customize this data to meet your requirements, or our team can do it for you. </p>
-            <a href="#" data-toggle="modal" data-target="#premium-data">Get Started</a>
-        </div>
+
         <script>
           if ('{{resource.report}}') {
             var report = JSON.parse(`{{ resource.report | dump | safe }}`);
@@ -255,6 +249,13 @@
           }
         </script>
         <!-- End of reports rendering -->
+
+        <!-- Premium Data Offer Link -->
+        <div class="data-offer-txt">
+            <img src="/static/img/cube.png" />
+            <p> You can customize this data to meet your requirements - <a href="#" data-toggle="modal" data-target="#premium-data">Get Started</a></p>
+        </div>
+
         <!-- Placeholder div elements for React components: preview tables -->
         <div id="resource-{{loop.index - 1}}" class="react-me tables"
              data-type="resource-preview" data-resource="{{ loop.index - 1 }}"></div>
@@ -391,11 +392,11 @@
   <div class="inner_container">
     <div class="row">
         <div class="col-sm-12">
-            <h3>Request Customized Datasets</h3>
+            <h3>Request Customized Data</h3>
             <br/>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-md-4 col-sm-6">
             <div class="card">
@@ -485,7 +486,7 @@
   jQuery('.nav.nav-pills a[href="' + hash + '"]').tab('show', function() {
       jQuery(document).scrollTop();
   });
-  
+
 
   //Slide out function for showcase
   $(window).on('load', function() {
