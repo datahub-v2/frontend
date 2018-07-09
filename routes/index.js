@@ -135,6 +135,12 @@ module.exports = function () {
     })
   })
 
+  // Redirects
+  // Old data-os page to new data-factory:
+  router.get('/docs/data-os', (req, res) => {
+    res.redirect(301, '/data-factory')
+  })
+
   // ----------------------------
   // Redirects from old datahub.io to new website
 
