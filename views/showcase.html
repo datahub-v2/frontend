@@ -16,27 +16,32 @@
 {% if owner == 'core' %}
 <div class="container">
   <div class="inner_container">
-    <div class="alert alert-success" role="alert">
-      We're introducing a <strong>premium data</strong> service that includes notifications, data customization and <a href="#" data-toggle="modal" data-target="#premium-data" class="premium-data-link">more</a>.<br />
-      <a href="#" data-toggle="modal" data-target="#premium-data" class="premium-data-link">Sign up</a> for our free trial program to find out more and tell us what you'd most want to see first!
-    </div>
+
 
     <!-- Modal -->
-    <div class="modal fade" id="premium-data" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-new modal fade" id="premium-data" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title" id="myModalLabel">Premium data offer</h3>
+            <h3 class="modal-title" id="myModalLabel"><img src="/static/img/text-msg.png" class="title-img"/> Premium data offer</h3>
           </div>
           <div class="modal-body">
-            <iframe src="/premium-data" width="100%" height="570px" frameborder="0"></iframe>
+            <iframe src="/premium-data" width="100%" height="550px" frameborder="0"></iframe>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+    <!-- Bottom Area to show the alert -->
+    <div class="stripe-ribbon" id="showcase-offer">
+      <p>Now you can request additional data and/or customized columns! </p>
+      <a href="#" data-toggle="modal" data-target="#premium-data">Try It Now!</a>
+    </div>
+
 {% endif %}<!-- End of Premium data offer -->
 
 <!-- title and owner info -->
@@ -220,6 +225,7 @@
         </h2>
         <!-- Render validation reports for each resource: -->
         <div id="report-{{loop.index - 1}}"></div>
+
         <script>
           if ('{{resource.report}}') {
             var report = JSON.parse(`{{ resource.report | dump | safe }}`);
@@ -243,6 +249,13 @@
           }
         </script>
         <!-- End of reports rendering -->
+
+        <!-- Premium Data Offer Link -->
+        <div class="data-offer-txt">
+            <img src="/static/img/cube.png" />
+            <p> You can customize this data to meet your requirements - <a href="#" data-toggle="modal" data-target="#premium-data">Get Started</a></p>
+        </div>
+
         <!-- Placeholder div elements for React components: preview tables -->
         <div id="resource-{{loop.index - 1}}" class="react-me tables"
              data-type="resource-preview" data-resource="{{ loop.index - 1 }}"></div>
@@ -367,13 +380,85 @@
 </div>
 {% endif %}<!-- end of readme section -->
 
+
 <!-- Link to datapackage.json - putting here to be hidden for now -->
 <div class="container">
   <div class="inner_container">
     <a href="/{{ owner }}/{{ dataset.name }}/datapackage.json{{ '?v='+revisionId if revisionId }}" class="btn btn-default" style="margin-top:-80px">Datapackage.json</a>
   </div>
 </div><!-- end of link to datapackage.json -->
+
+<div class="container premium_dataoffer">
+  <div class="inner_container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Request Customized Data</h3>
+            <br/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <div class="card">
+                <div class="icon pull-left shadow">
+                    <img src="/static/img/data-offer-icon-1.png" class="img-responsive"/>
+                </div>
+                <p>Notifications of data updates and schema changes</p>
+            </div>
+            <p class="clearfix"></p>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card">
+                <div class="icon pull-left shadow">
+                    <img src="/static/img/data-offer-icon-2.png" class="img-responsive"/>
+                </div>
+                <p>Warranty / guaranteed updates</p>
+            </div>
+            <p class="clearfix"></p>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card">
+                <div class="icon pull-left shadow">
+                    <img src="/static/img/data-offer-icon-3.png" class="img-responsive"/>
+                </div>
+                <p>Workflow integration (e.g. Python packages, NPM packages)</p>
+            </div>
+            <p class="clearfix"></p>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card">
+                <div class="icon pull-left shadow">
+                    <img src="/static/img/data-offer-icon-4.png" class="img-responsive"/>
+                </div>
+                <p>Customized data (e.g. you need different or additional data)</p>
+            </div>
+            <p class="clearfix"></p>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card">
+                <div class="icon pull-left shadow">
+                    <img src="/static/img/data-offer-icon-5.png" class="img-responsive"/>
+                </div>
+                <p>Or suggest your own feature from the link below</p>
+            </div>
+            <p class="clearfix"></p>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+          <a href="#" data-toggle="modal" data-target="#premium-data" class="btn btn-primary">Try It Now</a> <br/>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
+
+
 
 {% block scripts %}
 <!-- Function for reading query params -->
@@ -401,6 +486,14 @@
   jQuery('.nav.nav-pills a[href="' + hash + '"]').tab('show', function() {
       jQuery(document).scrollTop();
   });
+
+
+  //Slide out function for showcase
+  $(window).on('load', function() {
+    $("#showcase-offer").animate({
+      bottom:0
+    },1000);
+   });
 </script>
 
 <!-- pass DP_ID to front-end -->
