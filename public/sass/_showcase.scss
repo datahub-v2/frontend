@@ -77,6 +77,22 @@ body.showcase {
     }
   }
     
+  .data-offer-txt {
+    padding-top:8px;
+    img {
+        width: 33px;
+        padding-right:7px;
+        display:inline;
+    }
+    p {
+        display:inline;
+    }
+    a {
+        display:inline;
+        position: relative;
+        top: 1px;
+    }
+  }
 
     .footer-bottom {
     padding-bottom: 30px;

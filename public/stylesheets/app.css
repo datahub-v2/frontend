@@ -8667,6 +8667,18 @@ body.showcase .premium_dataoffer {
   body.showcase .premium_dataoffer .card p {
     line-height: 1.5;
     padding-top: 12px; }
+body.showcase .data-offer-txt {
+  padding-top: 8px; }
+  body.showcase .data-offer-txt img {
+    width: 33px;
+    padding-right: 7px;
+    display: inline; }
+  body.showcase .data-offer-txt p {
+    display: inline; }
+  body.showcase .data-offer-txt a {
+    display: inline;
+    position: relative;
+    top: 1px; }
 body.showcase .footer-bottom {
   padding-bottom: 30px; }
 

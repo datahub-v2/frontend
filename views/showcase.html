@@ -225,6 +225,13 @@
         </h2>
         <!-- Render validation reports for each resource: -->
         <div id="report-{{loop.index - 1}}"></div>
+        
+        <!-- Premium Data Offer Link -->
+        <div class="data-offer-txt">
+            <img src="/static/img/cube.png" />
+            <p> You can customize this data to meet your requirements, or our team can do it for you. </p>
+            <a href="#" data-toggle="modal" data-target="#premium-data">Get Started</a>
+        </div>
         <script>
           if ('{{resource.report}}') {
             var report = JSON.parse(`{{ resource.report | dump | safe }}`);
