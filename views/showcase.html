@@ -372,13 +372,85 @@
 </div>
 {% endif %}<!-- end of readme section -->
 
+
 <!-- Link to datapackage.json - putting here to be hidden for now -->
 <div class="container">
   <div class="inner_container">
     <a href="/{{ owner }}/{{ dataset.name }}/datapackage.json{{ '?v='+revisionId if revisionId }}" class="btn btn-default" style="margin-top:-80px">Datapackage.json</a>
   </div>
 </div><!-- end of link to datapackage.json -->
+
+<div class="container premium_dataoffer">
+  <div class="inner_container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Request Customized Datasets</h3>
+            <br/>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <div class="card">
+                <div class="icon pull-left shadow">
+                    <img src="/static/img/data-offer-icon-1.png" class="img-responsive"/>
+                </div>
+                <p>Notifications of data updates and schema changes</p>
+            </div>
+            <p class="clearfix"></p>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card">
+                <div class="icon pull-left shadow">
+                    <img src="/static/img/data-offer-icon-2.png" class="img-responsive"/>
+                </div>
+                <p>Warranty / guaranteed updates</p>
+            </div>
+            <p class="clearfix"></p>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card">
+                <div class="icon pull-left shadow">
+                    <img src="/static/img/data-offer-icon-3.png" class="img-responsive"/>
+                </div>
+                <p>Workflow integration (e.g. Python packages, NPM packages)</p>
+            </div>
+            <p class="clearfix"></p>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card">
+                <div class="icon pull-left shadow">
+                    <img src="/static/img/data-offer-icon-4.png" class="img-responsive"/>
+                </div>
+                <p>Customized data (e.g. you need different or additional data)</p>
+            </div>
+            <p class="clearfix"></p>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card">
+                <div class="icon pull-left shadow">
+                    <img src="/static/img/data-offer-icon-5.png" class="img-responsive"/>
+                </div>
+                <p>Or suggest your own feature from the link below</p>
+            </div>
+            <p class="clearfix"></p>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+          <a href="#" data-toggle="modal" data-target="#premium-data" class="btn btn-primary">Try It Now</a> <br/>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
+
+
 
 {% block scripts %}
 <!-- Function for reading query params -->

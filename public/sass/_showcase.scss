@@ -1,4 +1,5 @@
-.stripe-ribbon {
+body.showcase {
+    .stripe-ribbon {
     position: fixed;
     bottom:-40px;
     background-color:#000;
@@ -32,6 +33,52 @@
     }
   }
 
-.footer-bottom {
-  padding-bottom: 30px;
+  .premium_dataoffer {
+    padding-bottom:20px;
+    
+    .icon.shadow
+    {
+        -webkit-box-shadow: 2px 3px 16px 0px rgba(97, 97, 97, 0.14);
+        -moz-box-shadow: 2px 3px 16px 0px rgba(97,97,97,0.14);
+        box-shadow: 2px 3px 16px 0px rgba(97,97,97,0.14);
+    }
+    .icon
+    {
+        background:#fff;
+        width:55px;
+        height:55px;
+        margin: 0 30px 15px 0px;
+        border-radius:40px;
+    
+        @media screen and (max-width:480px){
+            width: 35px;
+            height: 35px;
+            margin:0 10px 15px 0;
+            display:none !important;
+        }
+    }
+    .icon img
+    {
+        padding: 13px;
+    }
+    .card
+    {
+        margin-top: 0;
+        padding-bottom: 24px;
+    }
+    .card h4
+    {
+        margin-bottom:10px;
+    }
+    .card p
+    {
+        line-height:1.5;
+        padding-top: 12px;
+    }
+  }
+    
+
+    .footer-bottom {
+    padding-bottom: 30px;
+    }
 }

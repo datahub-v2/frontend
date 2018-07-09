@@ -8612,7 +8612,7 @@ body.datafactory .browser .body img {
   margin: auto;
   max-height: 100%; }
 
-.stripe-ribbon {
+body.showcase .stripe-ribbon {
   position: fixed;
   bottom: -40px;
   background-color: #000;
@@ -8620,13 +8620,13 @@ body.datafactory .browser .body img {
   z-index: 1000;
   text-align: center;
   padding: 5px 0; }
-  .stripe-ribbon p {
+  body.showcase .stripe-ribbon p {
     margin: 0;
     color: #fff; }
     @media screen and (min-width: 1024px) {
-      .stripe-ribbon p {
+      body.showcase .stripe-ribbon p {
         display: inline; } }
-  .stripe-ribbon a {
+  body.showcase .stripe-ribbon a {
     margin-left: 15px;
     background-color: #fff;
     border-radius: 2px;
@@ -8634,13 +8634,40 @@ body.datafactory .browser .body img {
     color: #000;
     font-size: 12px; }
     @media screen and (min-width: 1024px) {
-      .stripe-ribbon a {
+      body.showcase .stripe-ribbon a {
         display: inline; } }
-  .stripe-ribbon a:hover {
+  body.showcase .stripe-ribbon a:hover {
     text-decoration: none;
     background-color: #eee; }
-
-.footer-bottom {
+body.showcase .premium_dataoffer {
+  padding-bottom: 20px; }
+  body.showcase .premium_dataoffer .icon.shadow {
+    -webkit-box-shadow: 2px 3px 16px 0px rgba(97, 97, 97, 0.14);
+    -moz-box-shadow: 2px 3px 16px 0px rgba(97, 97, 97, 0.14);
+    box-shadow: 2px 3px 16px 0px rgba(97, 97, 97, 0.14); }
+  body.showcase .premium_dataoffer .icon {
+    background: #fff;
+    width: 55px;
+    height: 55px;
+    margin: 0 30px 15px 0px;
+    border-radius: 40px; }
+    @media screen and (max-width: 480px) {
+      body.showcase .premium_dataoffer .icon {
+        width: 35px;
+        height: 35px;
+        margin: 0 10px 15px 0;
+        display: none !important; } }
+  body.showcase .premium_dataoffer .icon img {
+    padding: 13px; }
+  body.showcase .premium_dataoffer .card {
+    margin-top: 0;
+    padding-bottom: 24px; }
+  body.showcase .premium_dataoffer .card h4 {
+    margin-bottom: 10px; }
+  body.showcase .premium_dataoffer .card p {
+    line-height: 1.5;
+    padding-top: 12px; }
+body.showcase .footer-bottom {
   padding-bottom: 30px; }
 
 body.requests textarea {
