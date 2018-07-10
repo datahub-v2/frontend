@@ -46,6 +46,9 @@ body.blog {
   div.row img {
     margin: 60px 0;
   }
+  footer img, a img {
+    margin: 0 !important;
+  }
   .container .inner_container {
     .post {
       margin-bottom: 80px;

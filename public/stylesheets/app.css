@@ -8075,6 +8075,8 @@ body.blog div.info {
     margin: 0; }
 body.blog div.row img {
   margin: 60px 0; }
+body.blog footer img, body.blog a img {
+  margin: 0 !important; }
 body.blog .container .inner_container .post, body.blog .container-no-top-padding .inner_container .post {
   margin-bottom: 80px; }
 body.blog .container .inner_container a h2, body.blog .container-no-top-padding .inner_container a h2 {
