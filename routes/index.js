@@ -385,25 +385,10 @@ module.exports = function () {
   router.get('/awesome/:page', showAwesomePage)
 
   async function showAwesomeDashboardPage(req, res) {
-    const BASE = 'https://raw.githubusercontent.com/datahubio/awesome-data/master/dashboards/'
-    const path = req.params.page + '.md'
-    //request raw page from github
-    let gitpath = BASE + path
-    const resp = await fetch(gitpath)
-    const text = await resp.text()
-    // parse the raw .md page and render it with a template.
-    const parsedWithFrontMatter = fm(text)
-    const published = parsedWithFrontMatter.attributes.date
-    const modified = parsedWithFrontMatter.attributes.modified
-    res.render('awesome-dashboard.html', {
-      title: parsedWithFrontMatter.attributes.title,
-      description: parsedWithFrontMatter.attributes.description,
-      content: utils.md.render(parsedWithFrontMatter.body),
-      metaDescription: parsedWithFrontMatter.attributes.description + '\n' + parsedWithFrontMatter.attributes.keywords,
-      keywords: parsedWithFrontMatter.attributes.keywords,
-      metaImage: parsedWithFrontMatter.attributes.image,
-      published: published ? published.toISOString() : '',
-      modified: modified ? modified.toISOString() : ''
+    const page = 'dashboards/' + req.params.page + '.html'
+    res.render(page, { // attributes are hard coded for now since we have only dashboard:
+      title: 'Climate Change Dashboard',
+      description: 'State of the World and Impacts of Global Climate Change.'
     })
   }
 
