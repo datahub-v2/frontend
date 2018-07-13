@@ -7850,7 +7850,7 @@ body.dashboard .table-dashboard > thead > tr > th {
   border: none; }
 
 .table.pricing, body.textual table.pricing, body.docs table.pricing, body.blog table.pricing {
-  width: 650px;
+  width: 750px;
   margin: auto;
   margin-top: 30px; }
   .table.pricing tbody, body.textual table.pricing tbody, body.docs table.pricing tbody, body.blog table.pricing tbody, .table.pricing td, body.textual table.pricing td, body.docs table.pricing td, body.blog table.pricing td, .table.pricing th, body.textual table.pricing th, body.docs table.pricing th, body.blog table.pricing th, .table.pricing tr, body.textual table.pricing tr, body.docs table.pricing tr, body.blog table.pricing tr {
