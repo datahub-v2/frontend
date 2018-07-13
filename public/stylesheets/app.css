@@ -7888,6 +7888,10 @@ body.dashboard .table-dashboard > thead > tr > th {
 .table.pricing.premium-data td.left-heading, body.textual table.pricing.premium-data td.left-heading, body.docs table.pricing.premium-data td.left-heading, body.blog table.pricing.premium-data td.left-heading {
   text-align: left; }
 
+div.hire-us {
+  padding: 0 18%;
+  margin: 60px 0; }
+
 body.dashboard .table-dashboard th {
   font-size: 0.8em; }
 body.dashboard .table-dashboard .main-info {
