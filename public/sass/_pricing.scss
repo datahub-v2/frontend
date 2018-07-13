@@ -57,3 +57,12 @@
     color: $gray-light;
   }
 }
+
+.table.pricing.premium-data {
+  th, td {
+    text-align: center;
+  }
+  td.left-heading {
+    text-align: left;
+  }
+}

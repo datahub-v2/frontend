@@ -7883,6 +7883,11 @@ body.dashboard .table-dashboard > thead > tr > th {
     font-size: 12px;
     color: #999; }
 
+.table.pricing.premium-data th, body.textual table.pricing.premium-data th, body.docs table.pricing.premium-data th, body.blog table.pricing.premium-data th, .table.pricing.premium-data td, body.textual table.pricing.premium-data td, body.docs table.pricing.premium-data td, body.blog table.pricing.premium-data td {
+  text-align: center; }
+.table.pricing.premium-data td.left-heading, body.textual table.pricing.premium-data td.left-heading, body.docs table.pricing.premium-data td.left-heading, body.blog table.pricing.premium-data td.left-heading {
+  text-align: left; }
+
 body.dashboard .table-dashboard th {
   font-size: 0.8em; }
 body.dashboard .table-dashboard .main-info {
