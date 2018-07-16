@@ -38,7 +38,8 @@
         {% endif %}
       </div>
       <div class="publisher">
-        <img src="https://www.gravatar.com/avatar/{{package.datahub.ownerid}}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar" />
+        <!-- In the 'src' property of 'img' tag below, we need to use an avatar_url for the user. However,  -->
+        <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
         <a href="/{{ package.datahub.owner }}">{{ package.datahub.owner }}</a>
       </div>
       {% if package.readmeSnippet %}
