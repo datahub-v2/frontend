@@ -1393,6 +1393,7 @@ module.exports = function () {
       title = req.params.owner + ' datasets'
       description = userProfile.profile.name
     }
+    const avatar = userProfile.profile.avatar_url || `https://www.gravatar.com/avatar/${userProfile.profile.gravatar}?s=300&d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png`
     res.render('owner.html', {
       title,
       description,
@@ -1400,7 +1401,7 @@ module.exports = function () {
       pages,
       currentPage,
       events: events.results,
-      emailHash: userProfile.profile.id,
+      avatar,
       joinDate: joinMonth + ' ' + joinYear,
       owner: req.params.owner,
       name: userProfile.profile.name,
