@@ -942,6 +942,7 @@ module.exports = function () {
       finalPath = await getSignedUrl(finalPath)
     }
 
+    res.header('Origin', req.protocol + '://' + req.get('host') + req.originalUrl)
     res.redirect(finalPath)
   })
 
