@@ -225,6 +225,15 @@ module.exports = function () {
   // 'global-airport' => 'airport-codes'
   router.get('/dataset/global-airports', redirectToDest('/core/airport-codes'))
 
+  // 'dblp' => '/awesome/bibliographic-data'
+  router.get('/dataset/dblp', redirectToDest('/awesome/bibliographic-data'))
+
+  // 'yago' => `/awesome/yago`
+  router.get('/dataset/yago', redirectToDest('/awesome/yago'))
+
+  // 'opencorporates' => '/awesome/opencorporates'
+  router.get('/dataset/opencorporates', redirectToDest('/awesome/opencorporates'))
+
   // Finally, redirections for login and dashboard pages
   router.get('/user/login', redirectToDest('/login'))
   router.get(['/dashboard/datasets', '/dashboard/groups'], redirectToDest('/dashboard'))
