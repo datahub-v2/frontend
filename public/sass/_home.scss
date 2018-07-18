@@ -40,7 +40,11 @@
 }
 
 .home-banner {
-  padding-top:30px;
+  padding-top:0px;
+
+  .img-responsive {
+    max-width: 70%;
+  }
 }
 
 
@@ -82,21 +86,21 @@
 
   h1 {
     font-weight: 200;
-    margin-bottom: 30px;
-    font-size:46px;
+    margin-bottom: 5px;
+    font-size:36px;
     line-height: 1.3em;
 
     span {
       color: #ff7900;
-      font-size: 46px !important;
+      font-size: 36px !important;
       position: relative;
       top: -7px;
     }
   }
   p {
-    font-size: 18px;
-    padding-bottom: 4px;
-    line-height: 2em;
+    font-size: 15px;
+    padding-bottom: 0px;
+    line-height: 1.7em;
   }
   h1.main-title {
     margin: 30px 0 20px;
@@ -105,7 +109,7 @@
     font-style: italic;
   }
   a {
-    margin: 20px 0;
+    margin: 0px 0;
   }
 
   .request-access {
@@ -117,6 +121,9 @@
 .jumbotron .demo {
   margin-top: 25px;
 
+  .left-sec {
+    margin-top:-10px;
+  }
   .console {
     width: 450px;
     height: 290px;
@@ -294,7 +301,7 @@
   }
 
   .container .jumbotron-primary {
-    min-height: calc(100vh - 114px);
+    min-height: auto;
   }
 
   .info {
@@ -307,28 +314,45 @@
 
 /********************** three elements section ******************/
 .three-elements {
-  margin-top:-100px;
-  margin-bottom:50px;
+  margin-bottom:10px;
+  @media screen and (min-width:768px) {
+    margin-top:-20px  
+  }
 }
 .three-elements .element
 {
   text-align:center;
-  padding:40px 40px;
+
+  @media screen and (min-width:768px) {
+    text-align: left;
+  }
+  padding:12px 10px 15px 20px;
   background-color:#fafafa;
   /*border-radius:7px;*/
   margin-bottom:30px;
 }
 .three-elements .element h4
 {
-  margin-top:15px;
-  font-size: 32px;
+  margin-top: 10px;
+  font-size: 24px;
   font-weight: 200;
 }
 .three-elements .element p
 {
-  margin:20px 0px 25px 0px;
+  line-height: 1.4em;
+  font-size: 13px;
+  margin: 2px 0px 6px 0px;
 }
 
+.three-elements .element img {
+  margin-top: 16px;
+  max-width:70%;
+
+}
+
+.three-elements .element #publish-img {
+  max-width: 75%;
+}
 /* Section 1
 ====================================*/
 

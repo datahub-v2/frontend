@@ -6712,7 +6712,9 @@ footer ul li a {
   padding-right: 0px !important; }
 
 .home-banner {
-  padding-top: 30px; }
+  padding-top: 0px; }
+  .home-banner .img-responsive {
+    max-width: 70%; }
 
 .jumbotron-secondary form {
   margin-top: 30px; }
@@ -6742,30 +6744,32 @@ footer ul li a {
     margin: auto; }
   .container .jumbotron h1, .container-no-top-padding .jumbotron h1 {
     font-weight: 200;
-    margin-bottom: 30px;
-    font-size: 46px;
+    margin-bottom: 5px;
+    font-size: 36px;
     line-height: 1.3em; }
     .container .jumbotron h1 span, .container-no-top-padding .jumbotron h1 span {
       color: #ff7900;
-      font-size: 46px !important;
+      font-size: 36px !important;
       position: relative;
       top: -7px; }
   .container .jumbotron p, .container-no-top-padding .jumbotron p {
-    font-size: 18px;
-    padding-bottom: 4px;
-    line-height: 2em; }
+    font-size: 15px;
+    padding-bottom: 0px;
+    line-height: 1.7em; }
   .container .jumbotron h1.main-title, .container-no-top-padding .jumbotron h1.main-title {
     margin: 30px 0 20px; }
   .container .jumbotron .message, .container-no-top-padding .jumbotron .message {
     font-style: italic; }
   .container .jumbotron a, .container-no-top-padding .jumbotron a {
-    margin: 20px 0; }
+    margin: 0px 0; }
   .container .jumbotron .request-access, .container-no-top-padding .jumbotron .request-access {
     font-size: 80%;
     text-style: italic; }
 
 .jumbotron .demo {
   margin-top: 25px; }
+  .jumbotron .demo .left-sec {
+    margin-top: -10px; }
   .jumbotron .demo .console {
     width: 450px;
     height: 290px;
@@ -6892,7 +6896,7 @@ footer ul li a {
 .home .primary-call-to-action {
   padding: 6% 15%; }
 .home .container .jumbotron-primary, .home .container-no-top-padding .jumbotron-primary {
-  min-height: calc(100vh - 114px); }
+  min-height: auto; }
 .home .info {
   font-size: 14px;
   margin-top: 20px;
@@ -6900,23 +6904,37 @@ footer ul li a {
 
 /********************** three elements section ******************/
 .three-elements {
-  margin-top: -100px;
-  margin-bottom: 50px; }
+  margin-bottom: 10px; }
+  @media screen and (min-width: 768px) {
+    .three-elements {
+      margin-top: -20px; } }
 
 .three-elements .element {
   text-align: center;
-  padding: 40px 40px;
+  padding: 12px 10px 15px 20px;
   background-color: #fafafa;
   /*border-radius:7px;*/
   margin-bottom: 30px; }
+  @media screen and (min-width: 768px) {
+    .three-elements .element {
+      text-align: left; } }
 
 .three-elements .element h4 {
-  margin-top: 15px;
-  font-size: 32px;
+  margin-top: 10px;
+  font-size: 24px;
   font-weight: 200; }
 
 .three-elements .element p {
-  margin: 20px 0px 25px 0px; }
+  line-height: 1.4em;
+  font-size: 13px;
+  margin: 2px 0px 6px 0px; }
+
+.three-elements .element img {
+  margin-top: 16px;
+  max-width: 70%; }
+
+.three-elements .element #publish-img {
+  max-width: 75%; }
 
 /* Section 1
 ====================================*/

@@ -21,7 +21,7 @@ Welcome - Home
             <div class="left-sec">
                 <h1>Find, Share and Publish <br> Quality Data with <span>Datahub</span></h1>
                 <p>At Datahub, we provide various solutions to Publish and Deploy your Data with power and simplicity. Datahub is the fastest way for individuals, teams and organizations to publish, deploy and share their data.</p>
-                <a class="btn btn-primary btn-orange" href="#products">See Products</a>
+                <a class="btn btn-primary btn-orange" href="/login">Join for Free</a>
             </div>
         </div>
       </div>
@@ -35,26 +35,44 @@ Welcome - Home
         <div class="row">
             <div class="col-sm-4">
                 <div class="element">
-                    <img src="static/img/core.png" class="img-responsive  center-block" />
-                    <h4>Core Datasets</h4>
-                    <p>Datahub provides important, commonly-used data as high quality, easy-to-use and open data packages.</p>
-                    <a href="#core-datasets">Learn More <i class="fas fa-chevron-right"></i></a>
+                    <div class="row">
+                            <div class="col-sm-3">
+                                <img src="static/img/core.png" class="img-responsive  center-block" />
+                            </div>
+                            <div class="col-sm-8 no-pad">
+                                <h4>Core Datasets</h4>
+                                <p>Datahub provides important, commonly-used data as high quality, easy-to-use and open data packages.</p>
+                                <a href="/core">Find Datasets &rsaquo;</a>
+                            </div>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-4">
               <div class="element">
-                  <img src="static/img/request.png" class="img-responsive  center-block" />
-                  <h4>Request Data</h4>
-                  <p>A service to locate and/or prepare data. There is no cost for making a request and all requests are completely confidential.</p>
-                  <a href="#request-data">Learn More <i class="fas fa-chevron-right"></i></a>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img src="static/img/request.png" class="img-responsive  center-block" />
+                        </div>
+                        <div class="col-sm-8 no-pad">
+                            <h4>Request Data</h4>
+                            <p>A service to locate and/or prepare data. There is no cost for making a request and all requests are completely confidential.</p>
+                            <a href="/requests">Request Now &rsaquo;</a>
+                        </div>
+                    </div>
               </div>
             </div>
             <div class="col-sm-4">
                 <div class="element">
-                    <img src="static/img/earth-globe.png" class="img-responsive  center-block" />
-                    <h4>Publish Data</h4>
-                    <p>Securely share and elegantly put data online with quality checks, versioning, data APIs, notifications & integrations.</p>
-                    <a href="#publish-data">Learn More <i class="fas fa-chevron-right"></i></a>
+                    <div class="row">
+                        <div class="col-sm-3">
+                                <img src="static/img/earth-globe.png" class="img-responsive  center-block" id="publish-img" />
+                        </div>
+                        <div class="col-sm-8 no-pad">
+                            <h4>Publish Data</h4>
+                            <p>Securely share and elegantly put data online with quality checks, versioning, data APIs, notifications & integrations.</p>
+                            <a href="/download">Start Publishing &rsaquo;</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,7 +86,7 @@ Welcome - Home
   <div class="container">
       <div class="row">
           <div class="col-sm-6">
-              <div class="square square-sm">
+              <div class="square square-sm" onclick="window.location='/core/s-and-p-500-companies'">
                   <div class="content">
                       <h4>S&P 500 Companies</h4>
                       <p>S&P 500 Companies with Financial Information</p>
@@ -121,13 +139,13 @@ Welcome - Home
 
           <div class="col-sm-6">
               <div class="right-box">
-                  <h3 class="heading2 heading-slim"><a href="/core">Core Datasets</a>, data as you’d want to use it</h3>
+                  <h3 class="heading2 heading-slim">Core Datasets, data as you’d want to use it</h3>
                   <h1 class="heading1 heading-slim">Quality Data ready to Integrate</h1>
                   <ul>
                       <li>High quality data ready to inspect, download and use. <a href="/docs/core-data" class=" ">Read more &rsaquo;</a></li>
                       <li>Bulk and API access ready for automated integration with
                           SDKs in Python, JS and many more. <a href="/docs/getting-started/getting-data" class=" ">Read more &rsaquo;</a></li>
-                      <li><a href="/requests">Send a request</a> if you need a help to find some good, quality dataset.</li>
+                      <li>Send a request if you need a help to find some good, quality dataset.</li>
                   </ul>
                   <a href="/core" class="btn btn-primary">Discover Datasets</a>
               </div>
@@ -342,7 +360,7 @@ Welcome - Home
               <img src="static/img/earth-globe.png" class="responsive"/>
               <p class="inner-heading">No Starting Cost</p>
               <p>Datahub Provides free plan to start publishing data without paying any upfront cost.</p>
-              <a href="/pricing" >View Pricing</a>
+
           </div>
       </div>
   </div>
@@ -355,8 +373,9 @@ Welcome - Home
               <ul>
                   <li>Store, share and showcase your data with the world or just privately. <a href="/docs/getting-started/publishing-data">Read more &rsaquo;</a></li>
                   <li>Powerful tools to <a href="/blog/data-validation-in-the-datahub">validate</a> and  <a href="/docs/automation">automate</a></li>
-                  <li>Teams and permissions to make it easy to collaborate. <a href="/docs/features/teams-and-permissions">Read more &rsaquo;</a></li>
+                  <li>Teams and permissions to make it easy to collaborate. <a href="/docs/features/teams-and-permissions">Read more &rsaquo;</a> </li>
               </ul>
+              <a href="/download" class="btn btn-primary">Start Publishing</a>
           </div>
       </div>
   </div>
