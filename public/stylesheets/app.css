@@ -8715,6 +8715,52 @@ body.showcase .data-offer-txt {
     top: 1px; }
 body.showcase .footer-bottom {
   padding-bottom: 30px; }
+@media screen and (max-width: 480px) {
+  body.showcase .similar-datasets {
+    margin-bottom: 40px; } }
+body.showcase .similar-datasets .element {
+  background-color: #fafafa;
+  height: 145px;
+  position: relative;
+  margin-bottom: 50px;
+  padding: 16px; }
+  @media screen and (max-width: 480px) {
+    body.showcase .similar-datasets .element {
+      margin-bottom: 20px;
+      height: auto; } }
+  body.showcase .similar-datasets .element h3 {
+    padding: 0px;
+    margin: 0px;
+    font-weight: 500; }
+  body.showcase .similar-datasets .element .bottom {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    padding: 16px;
+    width: 100%; }
+    @media screen and (max-width: 480px) {
+      body.showcase .similar-datasets .element .bottom {
+        position: static;
+        padding: 16px 0; } }
+    body.showcase .similar-datasets .element .bottom .img-sec {
+      width: 100%; }
+      body.showcase .similar-datasets .element .bottom .img-sec span {
+        margin-left: 5px;
+        vertical-align: 5px; }
+      body.showcase .similar-datasets .element .bottom .img-sec img {
+        width: 17px;
+        position: relative;
+        top: 3px; }
+    body.showcase .similar-datasets .element .bottom .content {
+      width: 100%; }
+      body.showcase .similar-datasets .element .bottom .content p {
+        margin: 0px;
+        padding: 0px;
+        font-size: 12px; }
+      body.showcase .similar-datasets .element .bottom .content a span {
+        font-size: 10px; }
+body.showcase .similar-datasets .element:hover {
+  cursor: pointer; }
 
 body.requests textarea {
   margin: 0px 0; }
