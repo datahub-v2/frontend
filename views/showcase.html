@@ -297,16 +297,37 @@
       {% endif %}
       {% endfor %}
 
-      <!-- Related datasets -->
+      <!-- Similar datasets -->
       {% if dataset.related %}
         <h2 class="section-title">Similar Datasets</h2>
-        <div class="related-datasets">
-          {% for item in dataset.related %}
-          <i class="fas fa-square-full"></i> <a href="{{item.path}}">{{item.title}}</a>
-          {% endfor %}
-        </div>
+        <section class="similar-datasets">
+          <div class="row">
+            {% for item in dataset.related %}
+            <div class="col-sm-3">
+              <div class="element">
+
+                <h4>{{item.title}}</h4>
+
+                <div class="bottom">
+                   <div class="content">
+                     {% if item.publisher %}
+                     <p class="pull-left"><i class="far fa-user"></i> <a href="/{{item.publisher}}" class="secondary">{{item.publisher}}</a></p><br />
+                     {% endif %}
+                     {% if item.formats %}
+                     <p class="pull-left"><i class="far fa-file-alt"></i> {{ item.formats | join(',') }}</p><br />
+                     {% endif %}
+                     <p class="pull-left"><a href="{{item.path}}" class="pull-right">View &rsaquo;</a></p>
+                   </div>
+                   <p></p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+
       {% endif %}
-      <!-- End of Related datasets -->
+      <!-- End of Similar datasets -->
     </div>
   </div>
 </div>
