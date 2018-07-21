@@ -297,80 +297,37 @@
       {% endif %}
       {% endfor %}
 
-      <!-- Related datasets -->
+      <!-- Similar datasets -->
       {% if dataset.related %}
         <h2 class="section-title">Similar Datasets</h2>
-        <div class="related-datasets">
-          {% for item in dataset.related %}
-          <i class="fas fa-square-full"></i> <a href="{{item.path}}">{{item.title}}</a>
-          {% endfor %}
-        </div>
         <section class="similar-datasets">
           <div class="row">
-            <div class="col-sm-4">
+            {% for item in dataset.related %}
+            <div class="col-sm-3">
               <div class="element">
 
-                <h3>UK Gross Domestic Product (GDP)</h3>
+                <h4>{{item.title}}</h4>
 
                 <div class="bottom">
-                   <div class="img-sec">
-                      <img src="/static/img/file.png" class="img-responsive pull-left"/><span>11</span>
-                   </div>
                    <div class="content">
-                     <p class="pull-left">Size:10mb  |  Created: 4 Months ago</p>
-                     <a class="pull-right">View &rsaquo;</a>
+                     {% if item.publisher %}
+                     <p class="pull-left"><i class="far fa-user"></i> <a href="/{{item.publisher}}" class="secondary">{{item.publisher}}</a></p><br />
+                     {% endif %}
+                     {% if item.formats %}
+                     <p class="pull-left"><i class="far fa-file-alt"></i> {{ item.formats | join(',') }}</p><br />
+                     {% endif %}
+                     <p class="pull-left"><a href="{{item.path}}" class="pull-right">View &rsaquo;</a></p>
                    </div>
-                  
-                  <p></p>
+                   <p></p>
                 </div>
-                      
-            </div>
-            </div>
-
-            <div class="col-sm-4">
-                <div class="element">
-  
-                  <h3>Annual Infilation by GDP deflator and by consumer prices</h3>
-  
-                  <div class="bottom">
-                     <div class="img-sec">
-                        <img src="/static/img/file.png" class="img-responsive pull-left"/><span>4</span>
-                     </div>
-                     <div class="content">
-                       <p class="pull-left">Size:15mb  |  Created:6 Months ago</p>
-                       <a class="pull-right">View &rsaquo;</a>
-                     </div>
-                    
-                    <p></p>
-                  </div>
-                        
               </div>
-              </div>
-
-              <div class="col-sm-4">
-                  <div class="element">
-    
-                    <h3>Country, regional and world GDP (Gross Domestic Product)</h3>
-    
-                    <div class="bottom">
-                       <div class="img-sec">
-                          <img src="/static/img/file.png" class="img-responsive pull-left"/><span>2</span>
-                       </div>
-                       <div class="content">
-                         <p class="pull-left">Size:19mb  |  Created: 7 Months ago</p>
-                         <a class="pull-right">View &rsaquo;</a>
-                       </div>
-                      
-                      <p></p>
-                    </div>
-                          
-                </div>
-                </div>
+            </div>
+            {% endfor %}
           </div>
         </section>
 
       {% endif %}
-      <!-- End of Related datasets -->
+      <!-- End of Similar datasets -->
     </div>
   </div>
 </div>
