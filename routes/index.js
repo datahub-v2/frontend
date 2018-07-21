@@ -222,8 +222,8 @@ module.exports = function () {
     '/*/dataset/imf-weo/*'
   ], redirectToDest('/core/imf-weo'))
 
-  // 'global-airport' => 'airport-codes'
-  router.get('/dataset/global-airports', redirectToDest('/core/airport-codes'))
+  // 'global-airport' 'open-flights' => 'airport-codes'
+  router.get(['/dataset/global-airports', '/dataset/open-flights'], redirectToDest('/core/airport-codes'))
 
   // 'dblp' => '/awesome/bibliographic-data'
   router.get('/dataset/dblp', redirectToDest('/awesome/bibliographic-data'))
@@ -233,6 +233,21 @@ module.exports = function () {
 
   // 'opencorporates' => '/awesome/opencorporates'
   router.get('/dataset/opencorporates', redirectToDest('/awesome/opencorporates'))
+
+  // '/dataset/freebase' => '/awesome/linked-open-data#freebase'
+  router.get('/dataset/freebase', redirectToDest('/awesome/linked-open-data#freebase'))
+
+  // '/dataset/atp-wta-professional-tennis-tournament-data' => '/sports-data/atp-world-tour-tennis-data'
+  router.get('/dataset/atp-wta-professional-tennis-tournament-data', redirectToDest('/sports-data/atp-world-tour-tennis-data'))
+
+  // '/dataset/fifa-world-cup-2014-all-players' => '/awesome/football'
+  router.get('/dataset/fifa-world-cup-2014-all-players', redirectToDest('/awesome/football'))
+
+  // '/dataset/imdb' => '/awesome/movies-and-tv'
+  router.get('/dataset/imdb', redirectToDest('/awesome/movies-and-tv'))
+
+  // '/dataset/exchange-rates' => '/core/exchange-rates'
+  router.get('/dataset/exchange-rates', redirectToDest('/core/exchange-rates'))
 
   // Finally, redirections for login and dashboard pages
   router.get('/user/login', redirectToDest('/login'))
