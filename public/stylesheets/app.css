@@ -8883,5 +8883,16 @@ body.premium-data {
         .sub-dashboard .graphs .detailed-icon .detail p {
           font-size: 16px;
           font-weight: 500; }
+  .sub-dashboard .nav-tabs {
+    border-bottom: 3px solid #ddd !important; }
+    .sub-dashboard .nav-tabs li a {
+      color: #a7a7a7;
+      font-weight: 700; }
+  .sub-dashboard .nav-tabs > li.active > a, .sub-dashboard .nav-tabs > li.active > a:hover, .sub-dashboard .nav-tabs > li.active > a:focus {
+    color: #ff7900;
+    background-color: transparent;
+    border: 0px solid transparent;
+    border-bottom: 3px solid #ff7900;
+    cursor: default; }
 
 /*# sourceMappingURL=app.css.map */

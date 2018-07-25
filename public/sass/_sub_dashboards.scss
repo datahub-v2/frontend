@@ -90,6 +90,24 @@
         }
         
     }
+
+    .nav-tabs {
+        border-bottom: 3px solid #ddd !important;
+
+        li {
+            a {
+                color: #a7a7a7;
+                font-weight: 700;
+            }
+        }
+    }
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+        color: #ff7900;
+        background-color:transparent;
+        border: 0px solid transparent;
+        border-bottom:3px solid #ff7900;
+        cursor: default;
+    }
 }
 
 
