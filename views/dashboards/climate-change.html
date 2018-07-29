@@ -6,217 +6,391 @@
 
 {% block content %}
 <!-- awesome page test placeholder -->
+<section class="sub-dashboard">
 <div class="container">
   <div class="inner_container">
-    <div class="page-header">
-      <h1>
-        Climate Change Dashboard
-        <br/>
-        <small>State of the World and Impacts of Global Climate Change.</small>
-      </h1>
-    </div>
-
-    <ul class="nav nav-pills">
+    <section class="heading">
+        <div class="row">
+          <div class="col-sm-1">
+            <img src="/static/img/climate.png" class="section-logo">
+          </div>
+          <div class="col-sm-9">
+            <h1>Climate Change Dashboard</h1>
+            <p>State of the world and impacts of Global Climate Change</p>
+          </div>
+        </div>
+    </section>
+    
+    <ul class="nav nav-tabs">
       <li class="active"><a data-toggle="pill" href="#state-of-the-world">State of the World</a></li>
       <li><a data-toggle="pill" href="#population" onclick="loadIframes(this)">Population</a></li>
       <li><a data-toggle="pill" href="#impact" onclick="loadIframes(this)">Impact</a></li>
+      <li><a data-toggle="pill" href="#countries" onclick="loadIframes(this)">Countries by CO2 emission</a></li>
     </ul>
 
+    <div>
+        
+    </div>
+    
     <div class="tab-content">
-      <div id="state-of-the-world" class="tab-pane fade in active">
-        <div class="row">
-          <!-- Trends of CO2 -->
-          <div class="col-md-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                Trends of CO2 PPM from 1958 to the latest available date (Mauna Loa series)
+      <div  class="tab-pane fade in active"  id="state-of-the-world">
+        <!-- Trends of CO2 -->
+        <section class="graphs">
+            <div class="gray-back">
+                <div class="row">
+                    <div class="col-sm-8">
+                      <h3>Trends in Atmospheric Carbon Dioxide </h3>
+                      <p>Trends of CO2 PPM from 1958 to the latest available date (Mauna Loa series)</p>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="/core/co2-ppm" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8">
+                  <iframe data-src="https://datahub.io/core/co2-ppm/view/0" width="100%" height="480px" frameborder="0"></iframe>
               </div>
-              <div class="panel-body">
-                <iframe data-src="https://datahub.io/core/co2-ppm/view/0" width="100%" height="475px" frameborder="0"></iframe>
+              <div class="col-sm-4">
+                <p class="desc"><span>Description:</span> CO2 PPM - Trends in Atmospheric Carbon Dioxide. Data are sourced from the US Government's Earth System Research Laboratory, Global Monitoring Division.</p>
               </div>
-              <div class="panel-footer"><a href="/core/co2-ppm">Explore this dataset &raquo;</a></div>
+            </div>
+        </section>
+        <!-- End of Trends of CO2 -->
+
+        <!-- Growth rate of CO2 level -->
+        <section class="graphs">
+            <div class="gray-back">
+                <div class="row">
+                    <div class="col-sm-8">
+                      <h3>Trends in Atmospheric Carbon Dioxide </h3>
+                      <p>Annual growth rate of CO2 level (Mauna Loa series)</p>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="/core/co2-ppm" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8">
+                  <iframe data-src="https://datahub.io/core/co2-ppm/view/1" width="100%" height="480px" frameborder="0"></iframe>
+              </div>
+              <div class="col-sm-4">
+                <p class="desc"><span>Description:</span> CO2 PPM - Trends in Atmospheric Carbon Dioxide. Data are sourced from the US Government's Earth System Research Laboratory, Global Monitoring Division.</p>
+              </div>
+            </div>
+        </section>
+        <!-- End of Growth rate of CO2 level -->
+
+        <!-- Global CO2 Emissions from Fossil Fuels -->
+        <section class="graphs">
+          <div class="gray-back">
+              <div class="row">
+                  <div class="col-sm-8">
+                    <h3>Global CO2 Emissions from Fossil Fuels </h3>
+                    <p>CO2 Emissions from fossil-fuels annually since 1751 till 2014</p>
+                  </div>
+                  <div class="col-sm-4">
+                    <a href="/core/co2-fossil-global" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8">
+                <iframe data-src="https://datahub.io/core/co2-fossil-global/view/0" width="100%" height="480px" frameborder="0"></iframe>
+            </div>
+            <div class="col-sm-4">
+              <p class="desc"><span>Description:</span> Global CO2 Emissions from fossil-fuels annually since 1751 till 2014. Data Data comes from the Carbon Dioxide Information Analysis Center (CDIAC).</p>
             </div>
           </div>
-          <!-- End of Trends of CO2 -->
-          <!-- Growth rate of CO2 level -->
-          <div class="col-md-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                Annual growth rate of CO2 level (Mauna Loa series)
-              </div>
-              <div class="panel-body">
-                <iframe data-src="https://datahub.io/core/co2-ppm/view/1" width="100%" height="475px" frameborder="0"></iframe>
-              </div>
-              <div class="panel-footer"><a href="/core/co2-ppm">Explore this dataset &raquo;</a></div>
+      </section>
+      <!-- End of Global CO2 Emissions from Fossil Fuels -->
+
+
+      <!-- Growth rate of CO2 emissions per capita -->
+      <section class="graphs">
+        <div class="gray-back">
+            <div class="row">
+                <div class="col-sm-8">
+                  <h3>Global growth rate of CO2 emissions from Fossil Fuels per Capita</h3>
+                  <p>CO2 Emissions from fossil-fuels annually since 1751 till 2014</p>
+                </div>
+                <div class="col-sm-4">
+                  <a href="/core/co2-fossil-global" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                </div>
             </div>
-          </div>
-          <!-- End of Growth rate of CO2 level -->
         </div>
         <div class="row">
-          <!-- Global CO2 Emissions from Fossil Fuels -->
-          <div class="col-md-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                Global CO2 Emissions from Fossil Fuels (~99% of total CO2 Emisions)
-              </div>
-              <div class="panel-body">
-                <iframe data-src="https://datahub.io/core/co2-fossil-global/view/0" width="100%" height="475px" frameborder="0"></iframe>
-              </div>
-              <div class="panel-footer"><a href="/core/co2-fossil-global">Explore this dataset &raquo;</a></div>
-            </div>
+          <div class="col-sm-8">
+              <iframe data-src="https://datahub.io/core/co2-fossil-global/view/1" width="100%" height="480px" frameborder="0"></iframe>
           </div>
-          <!-- End of Global CO2 Emissions from Fossil Fuels -->
-          <!-- Growth rate of CO2 emissions per capita -->
-          <div class="col-md-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                Global growth rate of CO2 emissions from Fossil Fuels per Capita
-              </div>
-              <div class="panel-body">
-                <iframe data-src="https://datahub.io/core/co2-fossil-global/view/1" width="100%" height="475px" frameborder="0"></iframe>
-              </div>
-              <div class="panel-footer"><a href="/core/co2-fossil-global">Explore this dataset &raquo;</a></div>
-            </div>
+          <div class="col-sm-4">
+            <p class="desc"><span>Description:</span> Global CO2 Emissions from fossil-fuels annually since 1751 till 2014. Data Data comes from the Carbon Dioxide Information Analysis Center (CDIAC).</p>
           </div>
-          <!-- End of Growth rate of CO2 emissions per capita -->
         </div>
-      </div>
+    </section>
+    <!-- End of Growth rate of CO2 emissions per capita -->
+
+
+    </div>
 
       <div id="population" class="tab-pane fade">
-        <div class="row">
-          <div class="col-md-5">
-            <!-- Countries by carbon emission in 2014 -->
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                Which countries had most of carbon emission in 2014?
-              </div>
-              <div class="panel-body">
-                <iframe data-src="https://datahub.io/core/co2-fossil-by-nation/view/0" width="100%" height="475px" frameborder="0"></iframe>
-              </div>
-              <div class="panel-footer"><a href="/core/co2-fossil-by-nation">Explore this dataset &raquo;</a></div>
+
+        <!-- China population trend -->
+        <section class="graphs">
+            <div class="gray-back">
+                <div class="row">
+                    <div class="col-sm-8">
+                      <h3>China population trend</h3>
+                      <p>Population figures for China from 1960 to 2016</p>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="/core/population" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                    </div>
+                </div>
             </div>
-            <!-- End of Countries by carbon emission in 2014 -->
-            <!-- Countries by carbon emission per capita in 2014 -->
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                Which countries had most per capita carbon emission in 2014?
+            <div class="row">
+              <div class="col-sm-8">
+                  <iframe data-src="https://datahub.io/core/population/view/1" width="100%" height="480px" frameborder="0"></iframe>
               </div>
-              <div class="panel-body">
-                <iframe data-src="https://datahub.io/core/co2-fossil-by-nation/view/3" width="100%" height="475px" frameborder="0"></iframe>
+              <div class="col-sm-4">
+                <p class="desc"><span>Description:</span> Population figures for countries, regions (e.g. Asia) and the world. Data comes originally from World Bank and has been converted into standard CSV.
+                </p>
               </div>
-              <div class="panel-footer"><a href="/core/co2-fossil-by-nation">Explore this dataset &raquo;</a></div>
             </div>
-            <!-- End of Countries by carbon emission per capita in 2014 -->
-          </div>
-          <div class="col-md-4">
-            <!-- Carbon emission trend in China -->
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                What is carbon emission trend in China?
-              </div>
-              <div class="panel-body">
-                <iframe data-src="https://datahub.io/core/co2-fossil-by-nation/view/1" width="100%" height="475px" frameborder="0"></iframe>
-              </div>
-              <div class="panel-footer"><a href="/core/co2-fossil-by-nation">Explore this dataset &raquo;</a></div>
+        </section>
+        <!-- End of China population trend -->
+
+        <!-- USA population trend -->
+        <section class="graphs">
+            <div class="gray-back">
+                <div class="row">
+                    <div class="col-sm-8">
+                      <h3>USA population trend</h3>
+                      <p>Population figures for USA from 1960 to 2016</p>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="/core/population" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                    </div>
+                </div>
             </div>
-            <!-- End of Carbon emission trend in China -->
-            <!-- Carbon emission trend in USA -->
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                What is carbon emission trend in the USA?
+            <div class="row">
+              <div class="col-sm-8">
+                  <iframe data-src="https://datahub.io/core/population/view/2" width="100%" height="480px" frameborder="0"></iframe>
               </div>
-              <div class="panel-body">
-                <iframe data-src="https://datahub.io/core/co2-fossil-by-nation/view/2" width="100%" height="475px" frameborder="0"></iframe>
+              <div class="col-sm-4">
+                  <p class="desc"><span>Description:</span> Population figures for countries, regions (e.g. Asia) and the world. Data comes originally from World Bank and has been converted into standard CSV.
+                  </p>
               </div>
-              <div class="panel-footer"><a href="/core/co2-fossil-by-nation">Explore this dataset &raquo;</a></div>
             </div>
-            <!-- End of Carbon emission trend in USA -->
-          </div>
-          <div class="col-md-3">
-            <!-- China population trend -->
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                China population trend
-              </div>
-              <div class="panel-body">
-                <iframe data-src="https://datahub.io/core/population/view/1" width="100%" height="475px" frameborder="0"></iframe>
-              </div>
-              <div class="panel-footer"><a href="/core/population">Explore this dataset &raquo;</a></div>
+        </section>
+        <!-- End of USA population trend -->
+
+        <!-- World population trend -->
+        <section class="graphs">
+            <div class="gray-back">
+                <div class="row">
+                    <div class="col-sm-8">
+                      <h3>World population trend</h3>
+                      <p>Population figures for countries, regions</p>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="/core/population" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                    </div>
+                </div>
             </div>
-            <!-- End of China population trend -->
-            <!-- USA population trend -->
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                US population trend
+            <div class="row">
+              <div class="col-sm-8">
+                  <iframe data-src="https://datahub.io/core/population/view/0" width="100%" height="480px" frameborder="0"></iframe>
               </div>
-              <div class="panel-body">
-                <iframe data-src="https://datahub.io/core/population/view/2" width="100%" height="475px" frameborder="0"></iframe>
+              <div class="col-sm-4">
+                  <p class="desc"><span>Description:</span> Population figures for countries, regions (e.g. Asia) and the world. Data comes originally from World Bank and has been converted into standard CSV.</p>
               </div>
-              <div class="panel-footer"><a href="/core/population">Explore this dataset &raquo;</a></div>
             </div>
-            <!-- End of USA population trend -->
-            <!-- World population trend -->
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                World population trend
-              </div>
-              <div class="panel-body">
-                <iframe data-src="https://datahub.io/core/population/view/0" width="100%" height="475px" frameborder="0"></iframe>
-              </div>
-              <div class="panel-footer"><a href="/core/population">Explore this dataset &raquo;</a></div>
-            </div>
-            <!-- End of World population trend -->
-          </div>
-        </div>
+        </section>
+        <!-- End of World population trend -->
+
       </div>
 
       <div id="impact" class="tab-pane fade">
-        <div class="row">
-          <!-- Global temparature -->
-          <div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                Global temperature
-              </div>
-              <div class="panel-body">
-                <iframe data-src="https://datahub.io/core/global-temp/view/0" width="100%" height="475px" frameborder="0"></iframe>
-              </div>
-              <div class="panel-footer"><a href="/core/global-temp">Explore this dataset &raquo;</a></div>
+
+        <!-- Global temparature -->
+        <section class="graphs">
+            <div class="gray-back">
+                <div class="row">
+                    <div class="col-sm-8">
+                      <h3>Global temperature</h3>
+                      <p>Average global mean temprature anomalies in degree Celsius relative to a base period.</p>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="/core/global-temp" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                    </div>
+                </div>
             </div>
-          </div>
-          <!-- End of Global temparature -->
-          <!-- Change in the mass balance of Glaciers -->
-          <div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                Mass of glacier
+            <div class="row">
+              <div class="col-sm-8">
+                  <iframe data-src="https://datahub.io/core/global-temp/view/0" width="100%" height="480px" frameborder="0"></iframe>
               </div>
-              <div class="panel-body">
-                <iframe data-src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="475px" frameborder="0"></iframe>
+              <div class="col-sm-4">
+                <p class="desc"><span>Description:</span> Global Temperature Time Series. Data are included from the GISS Surface Temperature (GISTEMP) analysis and the global component of Climate at a Glance (GCAG). Two datasets are provided: 1) global monthly mean and 2) annual mean temperature anomalies in degrees Celsius from 1880 to the present.</p>
               </div>
-              <div class="panel-footer"><a href="/core/glacier-mass-balance">Explore this dataset &raquo;</a></div>
             </div>
-          </div>
-          <!-- End of Change in the mass balance of Glaciers -->
-          <!-- Change in sea level -->
-          <div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                Sea level rise
-              </div>
-              <div class="panel-body">
-                <iframe data-src="https://datahub.io/core/sea-level-rise/view/0" width="100%" height="475px" frameborder="0"></iframe>
-              </div>
-              <div class="panel-footer"><a href="/core/sea-level-rise">Explore this dataset &raquo;</a></div>
+        </section>
+        <!-- End of Global temparature -->
+
+
+        <!-- Mass of glacier -->
+        <section class="graphs">
+            <div class="gray-back">
+                <div class="row">
+                    <div class="col-sm-8">
+                      <h3>Mass of glacier</h3>
+                      <p>Average cumulative mass balance of reference Glaciers worldwide</p>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="/core/glacier-mass-balance" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                    </div>
+                </div>
             </div>
-          </div>
-          <!-- End of Change in sea level -->
-        </div>
+            <div class="row">
+              <div class="col-sm-8">
+                  <iframe data-src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="480px" frameborder="0"></iframe>
+              </div>
+              <div class="col-sm-4">
+                <p class="desc"><span>Description:</span> Average cumulative mass balance of "reference" Glaciers worldwide from 1945-2014 sourced from US EPA and the World Glacier Monitoring Service (WGMS). This is cumulative change in mass balance of a set of "reference" glaciers worldwide beginning in 1945. </p>
+              </div>
+            </div>
+        </section>
+        <!-- End of Mass of glacier -->
+        
+        <!-- Change in sea level -->
+        <section class="graphs">
+            <div class="gray-back">
+                <div class="row">
+                    <div class="col-sm-8">
+                      <h3>Sea level rise</h3>
+                      <p>Global Average Absolute Sea Level Change, 1880-2014</p>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="/core/sea-level-rise" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8">
+                  <iframe data-src="https://datahub.io/core/sea-level-rise/view/0" width="100%" height="480px" frameborder="0"></iframe>
+              </div>
+              <div class="col-sm-4">
+                <p class="desc"><span>Description:</span> Global Average Absolute Sea Level Change, 1880-2014 from the US Environmental Protection Agency using data from CSIRO, 2015; NOAA, 2015.
+                  <br/><br/>
+                  This data contains “cumulative changes in sea level for the world’s oceans since 1880, based on a combination of long-term tide gauge measurements and recent satellite measurements.</p>
+              </div>
+            </div>
+        </section>
+        <!-- End of Change in sea level -->
+
       </div>
+
+      <div id="countries" class="tab-pane fade">
+          
+
+          <!-- Carbon emission trend in China -->
+          <section class="graphs">
+              <div class="gray-back">
+                  <div class="row">
+                      <div class="col-sm-8">
+                        <h3>What is carbon emission trend in China?</h3>
+                        <p>CO2 Emissions from fossil-fuels annually</p>
+                      </div>
+                      <div class="col-sm-4">
+                        <a href="/core/co2-fossil-by-nation" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-8">
+                    <iframe data-src="https://datahub.io/core/co2-fossil-by-nation/view/1" width="100%" height="480px" frameborder="0"></iframe>
+                </div>
+                <div class="col-sm-4">
+                  <p class="desc"><span>Description:</span> China's CO2 Emissions from fossil-fuels annually since 1800 till 2014.</p>
+                </div>
+              </div>
+          </section>
+          <!-- End of Carbon emission trend in China -->
+
+          <!-- Carbon emission trend in USA -->
+          <section class="graphs">
+              <div class="gray-back">
+                  <div class="row">
+                      <div class="col-sm-8">
+                        <h3>What is carbon emission trend in the USA?</h3>
+                        <p>CO2 Emissions from fossil-fuels annually</p>
+                      </div>
+                      <div class="col-sm-4">
+                        <a href="/core/co2-fossil-by-nation" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-8">
+                    <iframe data-src="https://datahub.io/core/co2-fossil-by-nation/view/2" width="100%" height="480px" frameborder="0"></iframe>
+                </div>
+                <div class="col-sm-4">
+                  <p class="desc"><span>Description:</span> USA's CO2 Emissions from fossil-fuels annually since 1800 till 2014.</p>
+                </div>
+              </div>
+          </section>
+          <!-- End of Carbon emission trend in USA -->
+
+          
+          <!-- Countries by carbon emission in 2014 -->
+          <section class="graphs">
+            <div class="gray-back">
+                <div class="row">
+                    <div class="col-sm-8">
+                      <h3>Which countries had most of carbon emission in 2014?</h3>
+                      <p>CO2 Emissions from Fossil Fuels since 1751, By Nation</p>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="/core/co2-fossil-by-nation" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                  <iframe data-src="https://datahub.io/core/co2-fossil-by-nation/view/0" width="100%" height="660px" frameborder="0"></iframe>
+              </div>
+            </div>
+        </section>
+        <!-- End of Countries by carbon emission in 2014 -->
+
+        <!-- Countries by carbon emission per capita in 2014 -->
+        <section class="graphs">
+            <div class="gray-back">
+                <div class="row">
+                    <div class="col-sm-8">
+                      <h3>Which countries had most per capita carbon emission in 2014?</h3>
+                      <p>CO2 Emissions from Fossil Fuels since 1751</p>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="/core/co2-fossil-by-nation" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                  <iframe data-src="https://datahub.io/core/co2-fossil-by-nation/view/3" width="100%" height="800px" frameborder="0"></iframe>
+              </div>
+            </div>
+        </section>
+        <!-- End of Countries by carbon emission per capita in 2014 -->
+      </div>
+
+
     </div>
   </div>
 </div>
-
+</section>
 {% endblock %}
 
 {% block scripts %}

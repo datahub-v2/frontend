@@ -1,0 +1,113 @@
+.sub-dashboard
+{
+    padding-top: 70px;
+
+    .section-logo {
+        width:67px;
+        margin:0 !important;
+
+        @media screen and (max-width:768px){
+            padding-bottom: 15px;
+            padding-top: 15px;
+        }
+    }
+    .heading{
+        margin:0px 0px 50px 0px;
+        h1{
+            font-weight: 200;
+            margin: -10px 0px 10px 0px;
+            font-size: 38px;
+            
+            @media screen and (max-width:768px){
+                font-size: 22px;
+            }
+        }
+        p{
+            font-size: 18px;
+        }
+    }
+    .graphs{
+        margin:50px 0px 50px 0px;
+        border:1px solid #dfdede;
+        h1,h2,h3,h4,p,ul,li{
+            padding:0px;
+            margin:0px;
+        }
+
+        iframe {
+            margin-top: 15px;
+        }
+        .gray-back{
+            background-color:$gray-very-light;
+            padding: 20px 22px;
+
+            h3{
+                margin:0px 0px 8px 0px;
+            }
+            a{
+                margin-top:12px;
+                @media screen and (max-width:768px){
+                    float:left !important;
+                }
+            }
+        }
+        .desc{
+            margin-top: 53px;
+            padding-right:10px;
+            @media screen and (max-width:768px)
+            {
+                display:none;
+            }
+            span{
+                font-weight:500;
+            }
+        }
+        .detailed-icon{
+            margin:40px 0px 60px 0px;
+            @media screen and (max-width:400px){
+                margin-top:50px;
+            }
+            img{
+                width:50px;
+                margin:0px;
+                padding:0px;
+                float:left;
+            }
+            .detail{
+                margin-left:90px;
+                span{
+                    color:$gray-light;
+                    font-size:14px;
+                    line-height:1;
+                    font-weight:500;
+                }
+                p{
+                    font-size:16px;
+                    font-weight:500;
+                }
+            }
+         
+        }
+        
+    }
+
+    .nav-tabs {
+        border-bottom: 3px solid #ddd !important;
+
+        li {
+            a {
+                color: #a7a7a7;
+                font-weight: 700;
+            }
+        }
+    }
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+        color: #ff7900;
+        background-color:transparent;
+        border: 0px solid transparent;
+        border-bottom:3px solid #ff7900;
+        cursor: default;
+    }
+}
+
+
