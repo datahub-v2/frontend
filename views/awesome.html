@@ -9,7 +9,12 @@
 <div class="container">
   <div class="inner_container">
     <div class="page-header">
+	  
       <h1>
+		{% if page %}
+		<img src="/static/img/awesome-data/{{image}}" />
+		{% endif %} 
+		
         {{title}}
         <br/>
         <small>{{description or 'DataHub Awesome Datasets'}}</small>
