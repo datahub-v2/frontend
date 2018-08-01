@@ -438,8 +438,7 @@ module.exports = function () {
       keywords: parsedWithFrontMatter.attributes.keywords,
       metaImage: parsedWithFrontMatter.attributes.image,
       published: published ? published.toISOString() : '',
-      modified: modified ? modified.toISOString() : '',
-	  image: parsedWithFrontMatter.attributes.metaImage
+      modified: modified ? modified.toISOString() : ''
     })
   }
   /* end awesome  */
