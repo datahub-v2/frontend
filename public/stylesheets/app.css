@@ -7901,6 +7901,174 @@ div.hire-us {
   padding: 0 18%;
   margin: 60px 0; }
 
+@media screen and (max-width: 480px) {
+  body.dashboard .pad-left-zero {
+    padding-left: 0px !important; }
+  body.dashboard .pad-right-zero {
+    padding-right: 0px !important; } }
+body.dashboard .user-detail {
+  background-color: #fafafa !important;
+  padding: 25px 50px 35px 50px; }
+  @media screen and (max-width: 500px) {
+    body.dashboard .user-detail {
+      padding: 35px 10px 35px 10px !important;
+      text-align: center; } }
+  @media screen and (max-width: 500px) {
+    body.dashboard .user-detail .detail {
+      margin-bottom: 30px; } }
+  body.dashboard .user-detail .detail img {
+    width: 50px;
+    border-radius: 50px; }
+    @media screen and (max-width: 500px) {
+      body.dashboard .user-detail .detail img {
+        margin-bottom: 10px; } }
+  body.dashboard .user-detail .detail p, body.dashboard .user-detail .detail a, body.dashboard .user-detail .detail h2, body.dashboard .user-detail .detail h3, body.dashboard .user-detail .detail h4, body.dashboard .user-detail .detail h5 {
+    padding: 0px;
+    margin: 0px;
+    line-height: 1.5; }
+  body.dashboard .user-detail .detail .name {
+    font-weight: 600; }
+  body.dashboard .user-detail .detail .email {
+    color: #999;
+    margin-bottom: 10px; }
+  body.dashboard .user-detail .detail .border-custom {
+    width: 60px;
+    border-top: 1px solid #eeeeee; }
+    @media screen and (max-width: 500px) {
+      body.dashboard .user-detail .detail .border-custom {
+        margin: 0px auto; } }
+  body.dashboard .user-detail .detail h3 {
+    font-weight: 300;
+    line-height: 0.7;
+    margin-top: 10px; }
+    body.dashboard .user-detail .detail h3 span {
+      color: #999; }
+  body.dashboard .user-detail .detail2 {
+    margin-top: 13px; }
+    body.dashboard .user-detail .detail2 h1, body.dashboard .user-detail .detail2 h2, body.dashboard .user-detail .detail2 h3, body.dashboard .user-detail .detail2 p {
+      padding: 0px;
+      margin: 0px; }
+    body.dashboard .user-detail .detail2 p {
+      color: #999; }
+body.dashboard .links {
+  margin-top: 10px; }
+  @media screen and (max-width: 480px) {
+    body.dashboard .links {
+      text-align: left; } }
+  body.dashboard .links img {
+    margin-left: 15px;
+    width: 17px; }
+    @media screen and (max-width: 480px) {
+      body.dashboard .links img {
+        margin-left: 0px; } }
+  body.dashboard .links a {
+    margin-left: 4px; }
+  body.dashboard .links .hide {
+    display: none; }
+    @media screen and (max-width: 500px) {
+      body.dashboard .links .hide {
+        display: block !important; } }
+body.dashboard .main-dashboard {
+  margin: 50px 0px 50px 0px; }
+  body.dashboard .main-dashboard h1, body.dashboard .main-dashboard h2, body.dashboard .main-dashboard h3, body.dashboard .main-dashboard h4, body.dashboard .main-dashboard h5, body.dashboard .main-dashboard p {
+    padding: 0px;
+    margin: 0px; }
+  body.dashboard .main-dashboard .history {
+    margin-bottom: 50px; }
+    body.dashboard .main-dashboard .history .heading p {
+      font-size: 18px;
+      color: #999; }
+    body.dashboard .main-dashboard .history .heading hr {
+      margin-top: -13px;
+      margin-left: 70px;
+      margin-bottom: 0px; }
+  body.dashboard .main-dashboard .latest-blogs .heading {
+    margin-bottom: 60px; }
+    body.dashboard .main-dashboard .latest-blogs .heading p {
+      font-size: 18px;
+      color: #999; }
+    body.dashboard .main-dashboard .latest-blogs .heading hr {
+      margin-top: -13px;
+      margin-left: 112px;
+      margin-bottom: 0px; }
+  body.dashboard .main-dashboard .latest-blogs .content a {
+    font-size: 18px; }
+  body.dashboard .main-dashboard .latest-blogs .content p {
+    color: #999;
+    margin-left: 10px; }
+  body.dashboard .main-dashboard .popular-dataset-section .heading {
+    margin-bottom: 25px; }
+    body.dashboard .main-dashboard .popular-dataset-section .heading h2 {
+      font-size: 36px;
+      font-weight: 200; }
+      @media screen and (max-width: 768px) {
+        body.dashboard .main-dashboard .popular-dataset-section .heading h2 {
+          margin-bottom: 20px;
+          font-size: 30px; } }
+    body.dashboard .main-dashboard .popular-dataset-section .heading #custom-search-input {
+      padding: 3px;
+      border: solid 1px #E4E4E4;
+      border-radius: 0px;
+      margin-top: 10px;
+      background-color: #fff; }
+    body.dashboard .main-dashboard .popular-dataset-section .heading #custom-search-input input {
+      border: 0;
+      box-shadow: none;
+      height: 0px;
+      padding: 12px  10px;
+      font-size: 15px; }
+    body.dashboard .main-dashboard .popular-dataset-section .heading #custom-search-input button {
+      margin: 2px 0 0 0;
+      background: none;
+      box-shadow: none;
+      border: 0;
+      color: #666666;
+      padding: 0 8px 0 10px;
+      border-left: solid 1px #ccc; }
+    body.dashboard .main-dashboard .popular-dataset-section .heading #custom-search-input button:hover {
+      border: 0;
+      box-shadow: none;
+      border-left: solid 1px #ccc; }
+    body.dashboard .main-dashboard .popular-dataset-section .heading #custom-search-input .glyphicon-search {
+      font-size: 15px; }
+  body.dashboard .main-dashboard .popular-dataset-section .square {
+    background-color: #fafafa;
+    padding: 15px 20px 15px 25px;
+    min-height: 280px;
+    position: relative;
+    margin-top: 30px;
+    cursor: pointer; }
+    @media screen and (max-width: 500px) {
+      body.dashboard .main-dashboard .popular-dataset-section .square {
+        min-height: 350px; } }
+  body.dashboard .main-dashboard .popular-dataset-section .square:hover {
+    transition: 0.3s ease;
+    background-color: #f5f5f5; }
+  body.dashboard .main-dashboard .popular-dataset-section .square h3 {
+    color: #000;
+    margin-bottom: 10px; }
+  body.dashboard .main-dashboard .popular-dataset-section .square p {
+    color: #313131;
+    margin-top: 30px; }
+    @media screen and (max-width: 500px) {
+      body.dashboard .main-dashboard .popular-dataset-section .square p {
+        margin-top: 15px; } }
+  body.dashboard .main-dashboard .popular-dataset-section .square .content span {
+    color: #999; }
+  body.dashboard .main-dashboard .popular-dataset-section .square .content a {
+    position: absolute;
+    bottom: 20px;
+    left: 25px; }
+  @media screen and (max-width: 768px) {
+    body.dashboard .main-dashboard .popular-dataset-section {
+      padding: 80px 0px 70px 0px; }
+      body.dashboard .main-dashboard .popular-dataset-section .square, body.dashboard .main-dashboard .popular-dataset-section .square-sm, body.dashboard .main-dashboard .popular-dataset-section .square-md {
+        width: 100% !important; }
+      body.dashboard .main-dashboard .popular-dataset-section .square:after {
+        content: "";
+        display: block;
+        padding-bottom: auto;
+        height: auto; } }
 body.dashboard .table-dashboard th {
   font-size: 0.8em; }
 body.dashboard .table-dashboard .main-info {
