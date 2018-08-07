@@ -398,7 +398,8 @@ module.exports = function () {
         editpath: editpath,
         content,
         githubPath,
-        metaImage: parsedWithFM.attributes.image
+        metaImage: parsedWithFM.attributes.image,
+        editable: parsedWithFM.attributes.editable
       })
     } else {
       res.render('docs_home.html', {
