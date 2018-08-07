@@ -15,14 +15,19 @@ Dashboard
          <div class="detail">
            
             <div class="col-sm-4">
-                <img src="/static/img/adam.jpg"/>
+
+                {% if currentUser.email != None %}
+                <img src="https://www.gravatar.com/avatar/{{ currentUser.emailHash }}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" />
+                {% else %}
+                  <img src="/static/img/logo-cube03.png" />
+                {% endif %}
             </div>
                 
             <div class="col-sm-8">
-                <p class="name">Adam Johnson</p>
-                <p class="email">abc@gmail.com</p>
+                <a href="/{{ currentUser.username }}" class="name">{{ currentUser.username }}</a>
+                <p class="email">{{ currentUser.email }}</p>
                 <div class="border-custom"></div>
-                <h3><span>Plan:</span>Basic</h3>
+                <h3><span>Plan:</span> {{ currentUser.plan }}</h3>
             </div>
             
 
@@ -33,19 +38,19 @@ Dashboard
       <div class="col-sm-9 col-xs-12">
         <div class="col-sm-4">
           <div class="detail2 text-center">
-            <h1>91</h1>
+            <h1>{{ totalPackages }}</h1>
             <p>Datasets</p>
           </div>
         </div>
         <div class="col-sm-4">
             <div class="detail2 text-center">
-                <h1>2 GB</h1>
+                <h1>{{ publicSpaceUsage }}</h1>
                 <p>Public</p>
               </div>
         </div>
         <div class="col-sm-4">
             <div class="detail2 text-center">
-                <h1>227 KB</h1>
+                <h1>{{ privateSpaceUsage }}</h1>
                 <p>Private</p>
               </div>
         </div>
@@ -53,9 +58,9 @@ Dashboard
     </div>
   </section>
   <div class="links text-right">
-      <img src="/static/img/download.png"/><a href="#" >Download Publisher Tools</a>   
+      <img src="/static/img/download.png"/><a href="/download" >Download Publisher Tools</a>   
       <br class="hide"> 
-      <img src="/static/img/read.png"/><a href="#">Read Instructions</a>
+      <img src="/static/img/read.png"/><a href="/docs/getting-started/installing-data">Read Instructions</a>
   </div>
 
 <section class="main-dashboard">
@@ -66,24 +71,68 @@ Dashboard
         <div class="heading">
             <p>History</p>
             <hr>
+
+            <div class="timeline">
+                <div class="event event-flow">
+                  <a href="/{{ currentUser.username }}/{{ item.dataset }}" class="event-main">co2-ppm</a>
+                  <p class="event-action">finish - 22mins</p>
+                </div>
+                <div class="event event-account">
+                  <p class="event-main">You</p>
+                  <p class="event-action">finish - 22mins</p>
+                </div>
+                <div class="event event-account">
+                    <p class="event-main">You</p>
+                    <p class="event-action">finish - 22mins</p>
+                  </div>
+                <div class="event event-flow">
+                  <a href="/{{ currentUser.username }}/{{ item.dataset }}" class="event-main">co2-ppm</a>
+                  <p class="event-action">finish - 22mins</p>
+                </div>
+            </div>
+
+            {% if events|length > 0 %}
+              <div class="timeline">
+              {% for item in events %}
+                {% if item.event_entity === 'flow' %}
+                <div class="event event-flow">
+                  <a href="/{{ currentUser.username }}/{{ item.dataset }}" class="event-main">{{ item.dataset }}</a>
+                  <p class="event-action">{{ item.event_action }} - {{ item.timeago }}</p>
+                </div>
+                {% elif item.event_entity === 'account' %}
+                <div class="event event-account">
+                    <p class="event-main">You</p> {{ item.event_action }}
+                    <p class="event-action">finish - 22mins</p>
+                </div>
+                {% endif %}
+              {% endfor %}
+              </div>
+            {% else %}
+              <span class="info">No events.</span>
+            {% endif %}
+
         </div>
       </div>
 
-      <div class="latest-blogs">
+      <div class="latest-blogs hidden-sm hidden-xs">
           <div class="heading">
               <p>Latest Blogs</p>
               <hr>
           </div>
           <div class="content">
             <a href="#">Why Datasets are required?</a>
-            <p>- Henry Doberman</p>
+            <br/>
+            <a href="#" class="author"> Henry Dolbyman </a>
+            <p class="dated">July 18th, 2018</p>
           </div>
 
           <hr>
 
           <div class="content">
               <a href="#">Next Gen Data Source</a>
-              <p>- Henry Doberman</p>
+              <br/>
+              <a href="#" class="author"> Henry Dolbyman </a>
+              <p class="dated">July 18th, 2018</p>
           </div>
 
           <hr>
@@ -91,7 +140,9 @@ Dashboard
 
           <div class="content">
               <a href="#">Usage of Stats</a>
-              <p>- Henry Doberman</p>
+              <br/>
+              <a href="#" class="author"> Henry Dolbyman </a>
+              <p class="dated">July 18th, 2018</p>
           </div>
 
           <hr>
@@ -99,7 +150,9 @@ Dashboard
 
           <div class="content">
               <a href="#">Why Datasets are required?</a>
-              <p>- Henry Doberman</p>
+              <br/>
+              <a href="#" class="author"> Henry Dolbyman </a>
+              <p class="dated">July 18th, 2018</p>
           </div>
         </div>
      

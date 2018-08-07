@@ -142,6 +142,17 @@ body.dashboard {
           color:$gray-light;
           margin-left:10px;
         }
+
+        a.author {
+          font-size:12px;
+          margin-left:10px;
+          color:#000;
+          font-style: italic;
+        }
+
+        p.dated {
+          font-size:12px;
+        }
       }
     }
 
@@ -272,47 +283,60 @@ body.dashboard {
   .timeline {
     position: relative;
     max-width: 100%;
-    margin: 0 auto 40px 13px;
-    border-bottom: 3px solid $gray-very-light;
+    margin: 30px auto 40px 13px;
   }
   .timeline::after {
     content: '';
     position: absolute;
     width: 1px;
-    background-color: $gray-light;
+    border-right: 4px dotted #cecece;
+    background-color: #fff; 
     top: 0;
     bottom: 0;
-    margin-left: -3px;
+    margin-left: -5px;
   }
 
   .event {
-    padding: 10px 40px;
+    padding: 15px 40px;
     position: relative;
     background-color: inherit;
-    border-top: 1px solid $gray-very-light;
+     .event-main {
+       font-size:17px !important;
+     }
+     p {
+       font-size:12px !important;
+     }
+
+     p.event-main {
+       color:#3c3c3c !important;
+     }
   }
 
   .event-flow::after, .event-account::after {
     font-family: FontAwesome;
     font-size: 12px;
-    color: $gray;
+    color: #ff7900;
     position: absolute;
     width: 25px;
     height: 25px;
     background-color: white;
-    border: 1px solid $gray-light;
+    border: 1.5px solid #ff7900;
     border-radius: 50%;
     z-index: 1;
     left: -16px;
-    padding: 2px 0 0 7px;
+    top:30%;
   }
 
   .event-flow::after {
-    content: '\f1c9';
+    content: '\f00c';
+    padding: 2px 0 0 6px;
   }
 
   .event-account::after {
-    content: '\f2c0';
+    content: '\f0e7';
+    padding: 1px 0 0 9px;
+    font-size: 13px;
+
   }
 
   .timeago, .info {
