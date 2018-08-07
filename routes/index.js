@@ -288,14 +288,26 @@ module.exports = function () {
     if (req.cookies.jwt) {
       const isAuthenticated = await api.authenticate(req.cookies.jwt)
       if (isAuthenticated) {
+        // This is for tracking:
         const client = req.session.client || 'dashboard-check'
-        const events = await api.getEvents(`owner="${req.cookies.username}"&size=10`, req.cookies.jwt)
+
+        const userProfile = await api.getProfile(req.cookies.username)
+        if (!userProfile.found) {
+          res.status(404).render('404.html', {
+            message: 'Sorry, this page was not found'
+          })
+          return
+        }
+        const avatar = userProfile.profile.avatar_url || `https://www.gravatar.com/avatar/${userProfile.profile.gravatar}?s=300&d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png`
+
+        const token = req.cookies.jwt
+        // Get the latest available 10 events:
+        const events = await api.getEvents(`owner="${req.cookies.username}"&size=10`, token)
         events.results = events.results.map(item => {
           item.timeago = timeago().format(item.timestamp)
           return item
         })
-        const packages = await api.search(`datahub.ownerid="${req.cookies.id}"&size=0`, req.cookies.jwt)
-        const currentUser = utils.getCurrentUser(req.cookies)
+        const packages = await api.search(`datahub.ownerid="${req.cookies.id}"&size=0`, token)
 
         let storage, storagePublic, storagePrivate
         try {
@@ -309,7 +321,8 @@ module.exports = function () {
 
         res.render('dashboard.html', {
           title: 'Dashboard',
-          currentUser,
+          profile: {username: req.cookies.username, email: req.cookies.email, plan: 'BASIC'},
+          avatar,
           events: events.results,
           totalPackages: packages.summary.total,
           publicSpaceUsage: storagePublic ? bytes(storagePublic, {decimalPlaces: 0}) : 'N/A',
