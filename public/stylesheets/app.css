@@ -7933,8 +7933,9 @@ body.dashboard .table-dashboard > thead > tr > th {
   text-align: left; }
 
 div.hire-us {
-  padding: 0 35% 0 0;
-  margin: 60px 0; }
+  padding: 0 0 0 0;
+  margin: 60px 0;
+  text-align: center; }
   @media screen and (max-width: 550px) {
     div.hire-us {
       padding: 0 0 0 0; } }
@@ -7971,7 +7972,8 @@ body.dashboard .user-detail {
     font-weight: 600; }
   body.dashboard .user-detail .detail .email {
     color: #999;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    font-size: 12px; }
   body.dashboard .user-detail .detail .border-custom {
     width: 60px;
     border-top: 1px solid #eeeeee; }
