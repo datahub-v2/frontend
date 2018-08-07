@@ -14,7 +14,7 @@ Dashboard
       <div class="col-sm-4 col-xs-12">
          <div class="detail">
            
-            <div class="col-sm-4 text-center">
+            <div class="col-sm-3 text-center">
 
                 {% if currentUser.email != None %}
                 <img src="https://www.gravatar.com/avatar/{{ currentUser.emailHash }}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" />
@@ -23,7 +23,7 @@ Dashboard
                 {% endif %}
             </div>
                 
-            <div class="col-sm-8">
+            <div class="col-sm-9">
                 <a href="/{{ currentUser.username }}" class="name">{{ currentUser.username }}</a>
                 <p class="email">{{ currentUser.email }}</p>
                 <div class="border-custom"></div>
