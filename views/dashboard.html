@@ -7,33 +7,33 @@ Dashboard
 {% block bodyclass %}dashboard{% endblock %}
 
 {% block content %}
+<div class="container">
+  <div class="inner_container">
+    <div class="alert alert-info" role="alert">
+      <p>Thank you for signing up <i class="far fa-hand-paper" aria-hidden="true"></i> We need your feedback, please fill in our <a href="https://docs.google.com/forms/d/e/1FAIpQLSftMblNkMcfbMsOQNh6G5_e5Ut8PwseJUOIf079StW5K7fU1w/viewform?usp=pp_url&entry.1134149563&entry.647346014&entry.783731634&entry.1867832994&entry.158198641&entry.1225821941=Yes&entry.435264640&entry.431722203" target="_blank">2 minute survey!</a></p>
+    </div>
+  </div>
+</div>
 
 <div class="container">
   <section class="user-detail">
     <div class="row">
       <div class="col-sm-4 col-xs-12">
          <div class="detail">
-           
+
             <div class="col-sm-4 text-center">
-
-                {% if currentUser.email != None %}
-                <img src="https://www.gravatar.com/avatar/{{ currentUser.emailHash }}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" />
-                {% else %}
-                  <img src="/static/img/logo-cube03.png" />
-                {% endif %}
+                <img src="{{avatar}}" />
             </div>
-                
+
             <div class="col-sm-8">
-                <a href="/{{ currentUser.username }}" class="name">{{ currentUser.username }}</a>
-                <p class="email">{{ currentUser.email }}</p>
+                <a href="/{{ profile.username }}" class="name">{{ profile.username }}</a>
+                <p class="email">{{ profile.email }}</p>
                 <div class="border-custom"></div>
-                <h3><span>Plan:</span> {{ currentUser.plan }}</h3>
+                <h3><span>Plan:</span> {{profile.plan}}</h3>
             </div>
-            
 
-            
          </div>
-         
+
       </div>
       <div class="col-sm-8 col-xs-12">
         <div class="col-sm-4">
@@ -58,8 +58,8 @@ Dashboard
     </div>
   </section>
   <div class="links text-right">
-      <img src="/static/img/download.png"/><a href="/download" >Download Publisher Tools</a>   
-      <br class="hide"> 
+      <img src="/static/img/download.png"/><a href="/download" >Download Publisher Tools</a>
+      <br class="hide">
       <img src="/static/img/read.png"/><a href="/docs/getting-started/installing-data">Read Instructions</a>
   </div>
 
@@ -76,7 +76,7 @@ Dashboard
               {% for item in events %}
                 {% if item.event_entity === 'flow' %}
                 <div class="event event-flow">
-                  <a href="/{{ currentUser.username }}/{{ item.dataset }}" class="event-main">{{ item.dataset }}</a>
+                  <a href="/{{ profile.username }}/{{ item.dataset }}" class="event-main">{{ item.dataset }}</a>
                   <p class="event-action">{{ item.event_action }} - {{ item.timeago }}</p>
                 </div>
                 {% elif item.event_entity === 'account' %}
@@ -94,49 +94,6 @@ Dashboard
 
         </div>
       </div>
-
-      <div class="latest-blogs hidden-sm hidden-xs">
-          <div class="heading">
-              <p>Latest Blogs</p>
-              <hr>
-          </div>
-          <div class="content">
-            <a href="#">Why Datasets are required?</a>
-            <br/>
-            <a href="#" class="author"> Henry Dolbyman </a>
-            <p class="dated">July 18th, 2018</p>
-          </div>
-
-          <hr>
-
-          <div class="content">
-              <a href="#">Next Gen Data Source</a>
-              <br/>
-              <a href="#" class="author"> Henry Dolbyman </a>
-              <p class="dated">July 18th, 2018</p>
-          </div>
-
-          <hr>
-
-
-          <div class="content">
-              <a href="#">Usage of Stats</a>
-              <br/>
-              <a href="#" class="author"> Henry Dolbyman </a>
-              <p class="dated">July 18th, 2018</p>
-          </div>
-
-          <hr>
-
-
-          <div class="content">
-              <a href="#">Why Datasets are required?</a>
-              <br/>
-              <a href="#" class="author"> Henry Dolbyman </a>
-              <p class="dated">July 18th, 2018</p>
-          </div>
-        </div>
-     
     </div>
 
 
@@ -146,43 +103,41 @@ Dashboard
           <div class="row">
               <div class="col-sm-8 pad-left-zero  pad-right-zero"><h2 class="text-left">Popular Datasets</h2></div>
               <div class="col-sm-4 pad-left-zero  pad-right-zero">
-                  <!----------- searchbox -------------->
+                  <!-- searchbox -->
                   <div id="custom-search-input">
                       <div class="input-group col-md-12">
-                          <input type="text" class="form-control input-lg" placeholder="Search" />
+                          <input type="text" class="form-control input-lg" placeholder="Search" id="search-input" />
                           <span class="input-group-btn">
-                              <button class="btn btn-info btn-lg" type="button">
+                              <button class="btn btn-info btn-lg" type="button" onclick="goToSearch()">
                                   <i class="glyphicon glyphicon-search"></i>
                               </button>
                           </span>
                       </div>
                   </div>
-                  <!------- search box ended------>
+                  <!-- search box ended -->
               </div>
           </div>
-            
+
         </div>
 
         <div class="row">
           <div class="col-sm-6 pad-left-zero  pad-right-zero">
             <div class="square">
               <div class="content">
-                 
-                 <h3>Population Growth</h3>
-                 <span>Updated 6 months ago</span>
-                 <p>Total Population - Both Sexes. De facto population in a country, area or region as of 1 July of the year indicalation in ...</p>
-                 <a href="#">View Dataset</a>
+                 <h3>List of Countries</h3>
+                 <span>Updated regularly</span>
+                 <p>This list states the country names (official short names in English) in alphabetical order as given in ISO 3166-1 and the corresponding ISO 3166-1-alpha-2 code elements.</p>
+                 <a href="/core/country-list">View Dataset</a>
               </div>
           </div>
           </div>
           <div class="col-sm-6  pad-left-zero  pad-right-zero">
               <div class="square">
                 <div class="content">
-                   
-                   <h3>Natural Gas</h3>
-                   <span>Updated 6 months ago</span>
-                   <p>Total Population - Both Sexes. De facto population in a country, area or region as of 1 July of the year indicalation in ...</p>
-                   <a href="#">View Dataset</a>
+                   <h3>Language Codes</h3>
+                   <span>Updated regularly</span>
+                   <p>Comprehensive language code information, consisting of ISO 639-1, ISO 639-2 and IETF language types.</p>
+                   <a href="/core/language-codes">View Dataset</a>
                 </div>
             </div>
             </div>
@@ -192,23 +147,20 @@ Dashboard
             <div class="col-sm-6 pad-left-zero  pad-right-zero">
               <div class="square">
                 <div class="content">
-                   
-                   <h3>City Population Annual 
-                   Timeseries (UN Statistics..</h3>
-                   <span>Updated 6 months ago</span>
-                   <p>Total Population - Both Sexes. De facto population in a country, area or region as of 1 July of the year indicalation in ...</p>
-                   <a href="#">View Dataset</a>
+                   <h3>S&P 500 Companies</h3>
+                   <span>Updated regularly</span>
+                   <p>List of companies in the S&P 500 (Standard and Poor's 500).</p>
+                   <a href="/core/s-and-p-500-companies">View Dataset</a>
                 </div>
             </div>
             </div>
             <div class="col-sm-6 pad-left-zero  pad-right-zero">
                 <div class="square">
                   <div class="content">
-                     
-                     <h3>UK Gross Domestic Product (GDP)</h3>
-                     <span>Updated 6 months ago</span>
-                     <p>Total Population - Both Sexes. De facto population in a country, area or region as of 1 July of the year indicalation in ...</p>
-                     <a href="#">View Dataset</a>
+                     <h3>S&P 500 Index Data</h3>
+                     <span>Updated monthly</span>
+                     <p>Standard and Poor's (S&P) 500 Index Data including Dividend, Earnings and P/E Ratio.</p>
+                     <a href="/core/s-and-p-500">View Dataset</a>
                   </div>
               </div>
               </div>
@@ -218,23 +170,20 @@ Dashboard
               <div class="col-sm-6 pad-left-zero  pad-right-zero">
                 <div class="square">
                   <div class="content">
-                     
-                     <h3>European NUTS boundar
-                        ies as GeoJSON at 1:60m </h3>
-                     <span>Updated 6 months ago</span>
-                     <p>Total Population - Both Sexes. De facto population in a country, area or region as of 1 July of the year indicalation in ...</p>
-                     <a href="#">View Dataset</a>
+                     <h3>Major cities of the world</h3>
+                     <span>Updated regularly</span>
+                     <p>List of major cities in the world with population more than 15,000 inhabitants.</p>
+                     <a href="/core/world-cities">View Dataset</a>
                   </div>
               </div>
               </div>
               <div class="col-sm-6 pad-left-zero  pad-right-zero">
                   <div class="square">
                     <div class="content">
-                       
-                       <h3>Major cities of the world</h3>
-                       <span>Updated 6 months ago</span>
-                       <p>Total Population - Both Sexes. De facto population in a country, area or region as of 1 July of the year indicalation in ...</p>
-                       <a href="#">View Dataset</a>
+                       <h3>Airport Codes</h3>
+                       <span>Updated daily</span>
+                       <p>Airport codes, IATA airport codes, ICAO airport codes, airport codes from around the world, airport locations.</p>
+                       <a href="/core/airport-codes">View Dataset</a>
                     </div>
                 </div>
                 </div>
@@ -243,14 +192,17 @@ Dashboard
     </div>
   </div>
 </section>
- 
+
 </div>
-
-
 {% endblock %}
 
 {% block scripts %}
 <script>
   dataLayer.push({'loginClient': '{{ client }}'});
+
+  function goToSearch() {
+    var query = document.getElementById('search-input').value;
+    window.location.href = '/search?q=' + query;
+  }
 </script>
 {% endblock %}
