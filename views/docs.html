@@ -34,6 +34,10 @@
     'beforeend',
     `<p class="info">If you have questions, comments or feedback join our <a href="https://gitter.im/datahubio/chat" target="_blank">chat channel</a> or open an issue on our <a href="https://github.com/datahubio/qa" target="_blank">tracker</a>.</p>`
   )
+</script>
+
+{% if editable!=false %}
+  <script>
   document.getElementById('page').insertAdjacentHTML(
     'beforeend',
     `<div class="col-md-2 pre-scrollable">
@@ -46,5 +50,7 @@
       </ul>
     </div>`
   )
-</script>
+  </script>
+{% endif %}
+
 {% endblock %}
