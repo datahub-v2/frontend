@@ -8288,6 +8288,8 @@ body.docs div.cli-output {
   body.docs div.cli-output a:hover {
     color: #ff7900;
     text-decoration: none; }
+body.docs footer img {
+  margin: 0 !important; }
 
 body.blog .page-header h1 {
   text-align: center; }
