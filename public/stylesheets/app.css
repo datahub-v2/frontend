@@ -7858,34 +7858,71 @@ body.dashboard .table-dashboard > thead > tr > td,
 body.dashboard .table-dashboard > thead > tr > th {
   border: none; }
 
+.nav-tabs {
+  border-bottom: 3px solid #ddd !important; }
+  .nav-tabs li a {
+    color: #a7a7a7;
+    font-weight: 700; }
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  color: #ff7900;
+  background-color: transparent;
+  border: 0px solid transparent;
+  border-bottom: 3px solid #ff7900;
+  cursor: default; }
+
+.headings {
+  margin-top: 40px;
+  margin-bottom: 10px; }
+  .headings .section-logo {
+    width: 67px;
+    margin: 0 !important; }
+    @media screen and (max-width: 768px) {
+      .headings .section-logo {
+        padding-bottom: 15px;
+        padding-top: 15px; } }
+  .headings h1 {
+    font-size: 25px;
+    font-weight: 200;
+    margin-top: 0px !important;
+    line-height: 0.8; }
+
 .table.pricing, body.textual table.pricing, body.docs table.pricing, body.blog table.pricing {
-  width: 750px;
-  margin: auto;
-  margin-top: 30px; }
+  width: 100%;
+  border: 1px solid #fafafa; }
   .table.pricing tbody, body.textual table.pricing tbody, body.docs table.pricing tbody, body.blog table.pricing tbody, .table.pricing td, body.textual table.pricing td, body.docs table.pricing td, body.blog table.pricing td, .table.pricing th, body.textual table.pricing th, body.docs table.pricing th, body.blog table.pricing th, .table.pricing tr, body.textual table.pricing tr, body.docs table.pricing tr, body.blog table.pricing tr {
     vertical-align: middle;
     border: none;
-    text-align: left;
+    text-align: center;
     padding: 0; }
+  .table.pricing .color-gray, body.textual table.pricing .color-gray, body.docs table.pricing .color-gray, body.blog table.pricing .color-gray {
+    background-color: #fafafa; }
   .table.pricing th, body.textual table.pricing th, body.docs table.pricing th, body.blog table.pricing th {
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 200;
+    padding-bottom: 10px;
+    padding-top: 10px;
     width: 150px; }
   .table.pricing td, body.textual table.pricing td, body.docs table.pricing td, body.blog table.pricing td {
     font-size: 14px;
     padding: 17px 0; }
   .table.pricing .pricing td, body.textual table.pricing .pricing td, body.docs table.pricing .pricing td, body.blog table.pricing .pricing td {
-    font-weight: 500;
+    font-weight: 400;
     font-size: 18px; }
   .table.pricing .left-heading, body.textual table.pricing .left-heading, body.docs table.pricing .left-heading, body.blog table.pricing .left-heading {
     font-size: 12px;
-    font-weight: 100;
-    text-transform: uppercase;
-    padding: 17px 0; }
+    color: #999;
+    font-weight: 600;
+    text-align: left !important;
+    padding-left: 15px !important;
+    border-right: 1px solid #fafafa !important;
+    text-transform: uppercase; }
   .table.pricing i.fa-times, body.textual table.pricing i.fa-times, body.docs table.pricing i.fa-times, body.blog table.pricing i.fa-times {
-    color: red; }
+    color: red;
+    font-size: 18px; }
   .table.pricing i.fa-check, body.textual table.pricing i.fa-check, body.docs table.pricing i.fa-check, body.blog table.pricing i.fa-check {
-    color: green; }
+    color: #36a736;
+    font-size: 18px; }
   .table.pricing span.secondary, body.textual table.pricing span.secondary, body.docs table.pricing span.secondary, body.blog table.pricing span.secondary {
     color: #999; }
   .table.pricing tfoot td, body.textual table.pricing tfoot td, body.docs table.pricing tfoot td, body.blog table.pricing tfoot td {
@@ -7898,8 +7935,14 @@ body.dashboard .table-dashboard > thead > tr > th {
   text-align: left; }
 
 div.hire-us {
-  padding: 0 18%;
+  padding: 0 35% 0 0;
   margin: 60px 0; }
+  @media screen and (max-width: 550px) {
+    div.hire-us {
+      padding: 0 0 0 0; } }
+  div.hire-us div {
+    background-color: #fafafa;
+    border-color: transparent; }
 
 @media screen and (max-width: 480px) {
   body.dashboard .pad-left-zero {
