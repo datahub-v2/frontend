@@ -71,26 +71,6 @@ Dashboard
         <div class="heading">
             <p>History</p>
             <hr>
-
-            <div class="timeline">
-                <div class="event event-flow">
-                  <a href="/{{ currentUser.username }}/{{ item.dataset }}" class="event-main">co2-ppm</a>
-                  <p class="event-action">finish - 22mins</p>
-                </div>
-                <div class="event event-account">
-                  <p class="event-main">You</p>
-                  <p class="event-action">finish - 22mins</p>
-                </div>
-                <div class="event event-account">
-                    <p class="event-main">You</p>
-                    <p class="event-action">finish - 22mins</p>
-                  </div>
-                <div class="event event-flow">
-                  <a href="/{{ currentUser.username }}/{{ item.dataset }}" class="event-main">co2-ppm</a>
-                  <p class="event-action">finish - 22mins</p>
-                </div>
-            </div>
-
             {% if events|length > 0 %}
               <div class="timeline">
               {% for item in events %}
