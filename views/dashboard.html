@@ -11,10 +11,10 @@ Dashboard
 <div class="container">
   <section class="user-detail">
     <div class="row">
-      <div class="col-sm-3 col-xs-12">
+      <div class="col-sm-4 col-xs-12">
          <div class="detail">
            
-            <div class="col-sm-4">
+            <div class="col-sm-4 text-center">
 
                 {% if currentUser.email != None %}
                 <img src="https://www.gravatar.com/avatar/{{ currentUser.emailHash }}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" />
@@ -35,7 +35,7 @@ Dashboard
          </div>
          
       </div>
-      <div class="col-sm-9 col-xs-12">
+      <div class="col-sm-8 col-xs-12">
         <div class="col-sm-4">
           <div class="detail2 text-center">
             <h1>{{ totalPackages }}</h1>
@@ -247,78 +247,6 @@ Dashboard
 </div>
 
 
-
-<div class="container">
-  <div class="inner_container">
-    <div class="alert alert-info" role="alert">
-      <p>Thank you for signing up <i class="far fa-hand-paper" aria-hidden="true"></i> We need your feedback, please fill in our <a href="https://docs.google.com/forms/d/e/1FAIpQLSftMblNkMcfbMsOQNh6G5_e5Ut8PwseJUOIf079StW5K7fU1w/viewform?usp=pp_url&entry.1134149563&entry.647346014&entry.783731634&entry.1867832994&entry.158198641&entry.1225821941=Yes&entry.435264640&entry.431722203" target="_blank">2 minute survey!</a></p>
-    </div>
-    <div class="alert alert-success" role="alert">
-      To start publishing <span style="font-size: 100%; font-family: monospace">❒</span> data <a href="/download">download the command line tool now!</a>
-      <br />
-      You can find installation <i class="fas fa-book" aria-hidden="true"></i> instructions <a href="/docs/getting-started/installing-data">here.</a>
-    </div>
-    <h1 class="page-title">Your Dashboard</h1>
-    <div class="row">
-      <div class="col-xs-5">
-        <p class="user">
-          {% if currentUser.email != None %}
-            <img src="https://www.gravatar.com/avatar/{{ currentUser.emailHash }}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar-lg" />
-          {% else %}
-            <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
-          {% endif %}
-          <a href="/{{ currentUser.username }}">{{ currentUser.username }}</a>
-        </p>
-        <p>
-          <i class="fas fa-envelope" aria-hidden="true"></i>
-          {{ currentUser.email }}
-        </p>
-  	  </div>
-      <div class="col-xs-7">
-        <table class="table table-dashboard">
-          <thead>
-            <tr>
-              <th>PLAN</th>
-              <th>DATASETS</th>
-              <th>PUBLIC</th>
-              <th>PRIVATE</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="main-info">{{ currentUser.plan }}</td>
-              <td class="main-info">{{ totalPackages }}</td>
-              <td class="main-info">{{ publicSpaceUsage }}</td>
-              <td class="main-info">{{ privateSpaceUsage }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Events -->
-    <h3>Recent events</h3>
-    {% if events|length > 0 %}
-      <div class="timeline">
-      {% for item in events %}
-        {% if item.event_entity === 'flow' %}
-        <div class="event event-flow">
-          <a href="/{{ currentUser.username }}/{{ item.dataset }}">{{ item.dataset }}</a> - {{ item.event_action }}
-          <span class="pull-right timeago">{{ item.timeago }}</span>
-        </div>
-        {% elif item.event_entity === 'account' %}
-        <div class="event event-account">
-          <b>You</b> {{ item.event_action }}
-          <span class="pull-right timeago">{{ item.timeago }}</span>
-        </div>
-        {% endif %}
-      {% endfor %}
-      </div>
-    {% else %}
-      <span class="info">No events.</span>
-    {% endif %}
-  </div>
-</div>
 {% endblock %}
 
 {% block scripts %}
