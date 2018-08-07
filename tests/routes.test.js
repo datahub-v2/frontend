@@ -22,12 +22,15 @@ test('Dashboard page renders when jwt in cookies setup', async t => {
     .get('/dashboard')
     .set('Cookie', ['jwt=1a2b3c;id=publisher;username=publisher;'])
   t.is(res.statusCode, 200)
-  t.true(res.text.includes('Your Dashboard'))
-  t.true(res.text.includes('PUBLIC'))
+  // Has summary info about my datasets:
+  t.true(res.text.includes('Public'))
   t.true(res.text.includes('98kB'))
-  t.true(res.text.includes('PRIVATE'))
+  t.true(res.text.includes('Private'))
   t.true(res.text.includes('23kB'))
-  t.true(res.text.includes('<!-- Events -->'))
+  // Has history (aka events) section:
+  t.true(res.text.includes('History'))
+  // Has Popular dataset section:
+  t.true(res.text.includes('Popular Datasets'))
 })
 
 test('Login page works', async t => {

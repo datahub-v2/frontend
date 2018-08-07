@@ -12,76 +12,199 @@ Dashboard
     <div class="alert alert-info" role="alert">
       <p>Thank you for signing up <i class="far fa-hand-paper" aria-hidden="true"></i> We need your feedback, please fill in our <a href="https://docs.google.com/forms/d/e/1FAIpQLSftMblNkMcfbMsOQNh6G5_e5Ut8PwseJUOIf079StW5K7fU1w/viewform?usp=pp_url&entry.1134149563&entry.647346014&entry.783731634&entry.1867832994&entry.158198641&entry.1225821941=Yes&entry.435264640&entry.431722203" target="_blank">2 minute survey!</a></p>
     </div>
-    <div class="alert alert-success" role="alert">
-      To start publishing <span style="font-size: 100%; font-family: monospace">❒</span> data <a href="/download">download the command line tool now!</a>
-      <br />
-      You can find installation <i class="fas fa-book" aria-hidden="true"></i> instructions <a href="/docs/getting-started/installing-data">here.</a>
-    </div>
-    <h1 class="page-title">Your Dashboard</h1>
+  </div>
+</div>
+
+<div class="container">
+  <section class="user-detail">
     <div class="row">
-      <div class="col-xs-5">
-        <p class="user">
-          {% if currentUser.email != None %}
-            <img src="https://www.gravatar.com/avatar/{{ currentUser.emailHash }}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar-lg" />
-          {% else %}
-            <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
-          {% endif %}
-          <a href="/{{ currentUser.username }}">{{ currentUser.username }}</a>
-        </p>
-        <p>
-          <i class="fas fa-envelope" aria-hidden="true"></i>
-          {{ currentUser.email }}
-        </p>
-  	  </div>
-      <div class="col-xs-7">
-        <table class="table table-dashboard">
-          <thead>
-            <tr>
-              <th>PLAN</th>
-              <th>DATASETS</th>
-              <th>PUBLIC</th>
-              <th>PRIVATE</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="main-info">{{ currentUser.plan }}</td>
-              <td class="main-info">{{ totalPackages }}</td>
-              <td class="main-info">{{ publicSpaceUsage }}</td>
-              <td class="main-info">{{ privateSpaceUsage }}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="col-sm-4 col-xs-12">
+         <div class="detail">
+
+            <div class="col-sm-3 text-center">
+
+            <div class="col-sm-4 text-center">
+                <img src="{{avatar}}" />
+            </div>
+
+            <div class="col-sm-9">
+                <a href="/{{ profile.username }}" class="name">{{ profile.username }}</a>
+                <p class="email">{{ profile.email }}</p>
+                <div class="border-custom"></div>
+                <h3><span>Plan:</span> {{profile.plan}}</h3>
+            </div>
+
+         </div>
+
+      </div>
+      <div class="col-sm-8 col-xs-12">
+        <div class="col-sm-4">
+          <div class="detail2 text-center">
+            <h1>{{ totalPackages }}</h1>
+            <p>Datasets</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="detail2 text-center">
+                <h1>{{ publicSpaceUsage }}</h1>
+                <p>Public</p>
+              </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="detail2 text-center">
+                <h1>{{ privateSpaceUsage }}</h1>
+                <p>Private</p>
+              </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="links text-right">
+      <img src="/static/img/download.png"/><a href="/download" >Download Publisher Tools</a>
+      <br class="hide">
+      <img src="/static/img/read.png"/><a href="/docs/getting-started/installing-data">Read Instructions</a>
+  </div>
+
+<section class="main-dashboard">
+  <div class="row">
+    <div class="col-sm-3 pad-left-zero  pad-right-zero">
+
+      <div class="history">
+        <div class="heading">
+            <p>History</p>
+            <hr>
+            {% if events|length > 0 %}
+              <div class="timeline">
+              {% for item in events %}
+                {% if item.event_entity === 'flow' %}
+                <div class="event event-flow">
+                  <a href="/{{ profile.username }}/{{ item.dataset }}" class="event-main">{{ item.dataset }}</a>
+                  <p class="event-action">{{ item.event_action }} - {{ item.timeago }}</p>
+                </div>
+                {% elif item.event_entity === 'account' %}
+                <div class="event event-account">
+                    <p class="event-main">You</p> {{ item.event_action }}
+                    <p class="event-action">finish - 22mins</p>
+                </div>
+                {% endif %}
+              {% endfor %}
+              </div>
+            {% else %}
+              <br/>
+              <span class="info">No events.</span>
+            {% endif %}
+
+        </div>
       </div>
     </div>
 
-    <!-- Events -->
-    <h3>Recent events</h3>
-    {% if events|length > 0 %}
-      <div class="timeline">
-      {% for item in events %}
-        {% if item.event_entity === 'flow' %}
-        <div class="event event-flow">
-          <a href="/{{ currentUser.username }}/{{ item.dataset }}">{{ item.dataset }}</a> - {{ item.event_action }}
-          <span class="pull-right timeago">{{ item.timeago }}</span>
+
+    <div class="col-sm-8 col-sm-offset-1 pad-left-zero  pad-right-zero">
+      <div class="popular-dataset-section">
+        <div class="heading">
+          <div class="row">
+              <div class="col-sm-8 pad-left-zero  pad-right-zero"><h2 class="text-left">Popular Datasets</h2></div>
+              <div class="col-sm-4 pad-left-zero  pad-right-zero">
+                  <!-- searchbox -->
+                  <div id="custom-search-input">
+                      <div class="input-group col-md-12">
+                          <input type="text" class="form-control input-lg" placeholder="Search" id="search-input" />
+                          <span class="input-group-btn">
+                              <button class="btn btn-info btn-lg" type="button" onclick="goToSearch()">
+                                  <i class="glyphicon glyphicon-search"></i>
+                              </button>
+                          </span>
+                      </div>
+                  </div>
+                  <!-- search box ended -->
+              </div>
+          </div>
+
         </div>
-        {% elif item.event_entity === 'account' %}
-        <div class="event event-account">
-          <b>You</b> {{ item.event_action }}
-          <span class="pull-right timeago">{{ item.timeago }}</span>
+
+        <div class="row">
+          <div class="col-sm-6 pad-left-zero  pad-right-zero">
+            <div class="square">
+              <div class="content">
+                 <h3>List of Countries</h3>
+                 <span>Updated regularly</span>
+                 <p>This list states the country names (official short names in English) in alphabetical order as given in ISO 3166-1 and the corresponding ISO 3166-1-alpha-2 code elements.</p>
+                 <a href="/core/country-list">View Dataset</a>
+              </div>
+          </div>
+          </div>
+          <div class="col-sm-6  pad-left-zero  pad-right-zero">
+              <div class="square">
+                <div class="content">
+                   <h3>Language Codes</h3>
+                   <span>Updated regularly</span>
+                   <p>Comprehensive language code information, consisting of ISO 639-1, ISO 639-2 and IETF language types.</p>
+                   <a href="/core/language-codes">View Dataset</a>
+                </div>
+            </div>
+            </div>
         </div>
-        {% endif %}
-      {% endfor %}
+
+        <div class="row">
+            <div class="col-sm-6 pad-left-zero  pad-right-zero">
+              <div class="square">
+                <div class="content">
+                   <h3>S&P 500 Companies</h3>
+                   <span>Updated regularly</span>
+                   <p>List of companies in the S&P 500 (Standard and Poor's 500).</p>
+                   <a href="/core/s-and-p-500-companies">View Dataset</a>
+                </div>
+            </div>
+            </div>
+            <div class="col-sm-6 pad-left-zero  pad-right-zero">
+                <div class="square">
+                  <div class="content">
+                     <h3>S&P 500 Index Data</h3>
+                     <span>Updated monthly</span>
+                     <p>Standard and Poor's (S&P) 500 Index Data including Dividend, Earnings and P/E Ratio.</p>
+                     <a href="/core/s-and-p-500">View Dataset</a>
+                  </div>
+              </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-sm-6 pad-left-zero  pad-right-zero">
+                <div class="square">
+                  <div class="content">
+                     <h3>Major cities of the world</h3>
+                     <span>Updated regularly</span>
+                     <p>List of major cities in the world with population more than 15,000 inhabitants.</p>
+                     <a href="/core/world-cities">View Dataset</a>
+                  </div>
+              </div>
+              </div>
+              <div class="col-sm-6 pad-left-zero  pad-right-zero">
+                  <div class="square">
+                    <div class="content">
+                       <h3>Airport Codes</h3>
+                       <span>Updated daily</span>
+                       <p>Airport codes, IATA airport codes, ICAO airport codes, airport codes from around the world, airport locations.</p>
+                       <a href="/core/airport-codes">View Dataset</a>
+                    </div>
+                </div>
+                </div>
+            </div>
       </div>
-    {% else %}
-      <span class="info">No events.</span>
-    {% endif %}
+    </div>
   </div>
+</section>
+
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script>
   dataLayer.push({'loginClient': '{{ client }}'});
+
+  function goToSearch() {
+    var query = document.getElementById('search-input').value;
+    window.location.href = '/search?q=' + query;
+  }
 </script>
 {% endblock %}
