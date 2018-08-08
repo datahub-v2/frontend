@@ -16,22 +16,22 @@
           </div>
           <div class="col-sm-9">
             <h1>Climate Change Dashboard</h1>
-            <p>State of the world and impacts of Global Climate Change</p>
+            <p>State of the World and Impacts of Global Climate Change</p>
           </div>
         </div>
     </section>
-    
+
     <ul class="nav nav-tabs">
       <li class="active"><a data-toggle="pill" href="#state-of-the-world">State of the World</a></li>
-      <li><a data-toggle="pill" href="#population" onclick="loadIframes(this)">Population</a></li>
-      <li><a data-toggle="pill" href="#impact" onclick="loadIframes(this)">Impact</a></li>
-      <li><a data-toggle="pill" href="#countries" onclick="loadIframes(this)">Countries by CO2 emission</a></li>
+      <li><a data-toggle="pill" href="#population" onclick="loadIframes(this)">Population growth</a></li>
+      <li><a data-toggle="pill" href="#impact" onclick="loadIframes(this)">Global impact</a></li>
+      <li><a data-toggle="pill" href="#countries" onclick="loadIframes(this)">CO2 emission by country</a></li>
     </ul>
 
     <div>
-        
+
     </div>
-    
+
     <div class="tab-content">
       <div  class="tab-pane fade in active"  id="state-of-the-world">
         <!-- Trends of CO2 -->
@@ -39,7 +39,7 @@
             <div class="gray-back">
                 <div class="row">
                     <div class="col-sm-8">
-                      <h3>Trends in Atmospheric Carbon Dioxide </h3>
+                      <h3>CO2 PPM - Trends in Atmospheric Carbon Dioxide </h3>
                       <p>Trends of CO2 PPM from 1958 to the latest available date (Mauna Loa series)</p>
                     </div>
                     <div class="col-sm-4">
@@ -52,7 +52,7 @@
                   <iframe data-src="https://datahub.io/core/co2-ppm/view/0" width="100%" height="480px" frameborder="0"></iframe>
               </div>
               <div class="col-sm-4">
-                <p class="desc"><span>Description:</span> CO2 PPM - Trends in Atmospheric Carbon Dioxide. Data are sourced from the US Government's Earth System Research Laboratory, Global Monitoring Division.</p>
+                <p class="desc">Data are sourced from the US Government's Earth System Research Laboratory, Global Monitoring Division. Two main series are provided: the Mauna Loa series (which has the longest continuous series since 1958) and a Global Average series (a global average over marine surface sites).</p>
               </div>
             </div>
         </section>
@@ -63,7 +63,7 @@
             <div class="gray-back">
                 <div class="row">
                     <div class="col-sm-8">
-                      <h3>Trends in Atmospheric Carbon Dioxide </h3>
+                      <h3>CO2 PPM - Trends in Atmospheric Carbon Dioxide</h3>
                       <p>Annual growth rate of CO2 level (Mauna Loa series)</p>
                     </div>
                     <div class="col-sm-4">
@@ -72,11 +72,8 @@
                 </div>
             </div>
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-sm-12">
                   <iframe data-src="https://datahub.io/core/co2-ppm/view/1" width="100%" height="480px" frameborder="0"></iframe>
-              </div>
-              <div class="col-sm-4">
-                <p class="desc"><span>Description:</span> CO2 PPM - Trends in Atmospheric Carbon Dioxide. Data are sourced from the US Government's Earth System Research Laboratory, Global Monitoring Division.</p>
               </div>
             </div>
         </section>
@@ -112,7 +109,7 @@
         <div class="gray-back">
             <div class="row">
                 <div class="col-sm-8">
-                  <h3>Global growth rate of CO2 emissions from Fossil Fuels per Capita</h3>
+                  <h3>Global Growth Rate of CO2 Emissions from Fossil Fuels per Capita</h3>
                   <p>CO2 Emissions from fossil-fuels annually since 1751 till 2014</p>
                 </div>
                 <div class="col-sm-4">
@@ -121,11 +118,8 @@
             </div>
         </div>
         <div class="row">
-          <div class="col-sm-8">
+          <div class="col-sm-12">
               <iframe data-src="https://datahub.io/core/co2-fossil-global/view/1" width="100%" height="480px" frameborder="0"></iframe>
-          </div>
-          <div class="col-sm-4">
-            <p class="desc"><span>Description:</span> Global CO2 Emissions from fossil-fuels annually since 1751 till 2014. Data Data comes from the Carbon Dioxide Information Analysis Center (CDIAC).</p>
           </div>
         </div>
     </section>
@@ -135,56 +129,6 @@
     </div>
 
       <div id="population" class="tab-pane fade">
-
-        <!-- China population trend -->
-        <section class="graphs">
-            <div class="gray-back">
-                <div class="row">
-                    <div class="col-sm-8">
-                      <h3>China population trend</h3>
-                      <p>Population figures for China from 1960 to 2016</p>
-                    </div>
-                    <div class="col-sm-4">
-                      <a href="/core/population" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-8">
-                  <iframe data-src="https://datahub.io/core/population/view/1" width="100%" height="480px" frameborder="0"></iframe>
-              </div>
-              <div class="col-sm-4">
-                <p class="desc"><span>Description:</span> Population figures for countries, regions (e.g. Asia) and the world. Data comes originally from World Bank and has been converted into standard CSV.
-                </p>
-              </div>
-            </div>
-        </section>
-        <!-- End of China population trend -->
-
-        <!-- USA population trend -->
-        <section class="graphs">
-            <div class="gray-back">
-                <div class="row">
-                    <div class="col-sm-8">
-                      <h3>USA population trend</h3>
-                      <p>Population figures for USA from 1960 to 2016</p>
-                    </div>
-                    <div class="col-sm-4">
-                      <a href="/core/population" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-8">
-                  <iframe data-src="https://datahub.io/core/population/view/2" width="100%" height="480px" frameborder="0"></iframe>
-              </div>
-              <div class="col-sm-4">
-                  <p class="desc"><span>Description:</span> Population figures for countries, regions (e.g. Asia) and the world. Data comes originally from World Bank and has been converted into standard CSV.
-                  </p>
-              </div>
-            </div>
-        </section>
-        <!-- End of USA population trend -->
 
         <!-- World population trend -->
         <section class="graphs">
@@ -210,6 +154,48 @@
         </section>
         <!-- End of World population trend -->
 
+        <!-- China population trend -->
+        <section class="graphs">
+            <div class="gray-back">
+                <div class="row">
+                    <div class="col-sm-8">
+                      <h3>China population trend</h3>
+                      <p>Population figures for China from 1960 to 2016</p>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="/core/population" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                  <iframe data-src="https://datahub.io/core/population/view/1" width="100%" height="480px" frameborder="0"></iframe>
+              </div>
+            </div>
+        </section>
+        <!-- End of China population trend -->
+
+        <!-- USA population trend -->
+        <section class="graphs">
+            <div class="gray-back">
+                <div class="row">
+                    <div class="col-sm-8">
+                      <h3>USA population trend</h3>
+                      <p>Population figures for USA from 1960 to 2016</p>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="/core/population" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                  <iframe data-src="https://datahub.io/core/population/view/2" width="100%" height="480px" frameborder="0"></iframe>
+              </div>
+            </div>
+        </section>
+        <!-- End of USA population trend -->
+
       </div>
 
       <div id="impact" class="tab-pane fade">
@@ -220,7 +206,7 @@
                 <div class="row">
                     <div class="col-sm-8">
                       <h3>Global temperature</h3>
-                      <p>Average global mean temprature anomalies in degree Celsius relative to a base period.</p>
+                      <p>Global Temperature Time Series</p>
                     </div>
                     <div class="col-sm-4">
                       <a href="/core/global-temp" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
@@ -232,7 +218,7 @@
                   <iframe data-src="https://datahub.io/core/global-temp/view/0" width="100%" height="480px" frameborder="0"></iframe>
               </div>
               <div class="col-sm-4">
-                <p class="desc"><span>Description:</span> Global Temperature Time Series. Data are included from the GISS Surface Temperature (GISTEMP) analysis and the global component of Climate at a Glance (GCAG). Two datasets are provided: 1) global monthly mean and 2) annual mean temperature anomalies in degrees Celsius from 1880 to the present.</p>
+                <p class="desc">Global Temperature Time Series. Data are included from the GISS Surface Temperature (GISTEMP) analysis and the global component of Climate at a Glance (GCAG). Two datasets are provided: 1) global monthly mean and 2) annual mean temperature anomalies in degrees Celsius from 1880 to the present.</p>
               </div>
             </div>
         </section>
@@ -257,12 +243,12 @@
                   <iframe data-src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="480px" frameborder="0"></iframe>
               </div>
               <div class="col-sm-4">
-                <p class="desc"><span>Description:</span> Average cumulative mass balance of "reference" Glaciers worldwide from 1945-2014 sourced from US EPA and the World Glacier Monitoring Service (WGMS). This is cumulative change in mass balance of a set of "reference" glaciers worldwide beginning in 1945. </p>
+                <p class="desc">Average cumulative mass balance of "reference" Glaciers worldwide from 1945-2014 sourced from US EPA and the World Glacier Monitoring Service (WGMS). This is cumulative change in mass balance of a set of "reference" glaciers worldwide beginning in 1945. </p>
               </div>
             </div>
         </section>
         <!-- End of Mass of glacier -->
-        
+
         <!-- Change in sea level -->
         <section class="graphs">
             <div class="gray-back">
@@ -292,7 +278,48 @@
       </div>
 
       <div id="countries" class="tab-pane fade">
-          
+
+          <!-- Countries by carbon emission in 2014 -->
+          <section class="graphs">
+            <div class="gray-back">
+                <div class="row">
+                    <div class="col-sm-8">
+                      <h3>Which countries had most of carbon emission in 2014?</h3>
+                      <p>CO2 Emissions from Fossil Fuels since 1751, By Nation</p>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="/core/co2-fossil-by-nation" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                  <iframe data-src="https://datahub.io/core/co2-fossil-by-nation/view/0" width="100%" height="660px" frameborder="0"></iframe>
+              </div>
+            </div>
+          </section>
+          <!-- End of Countries by carbon emission in 2014 -->
+
+          <!-- Countries by carbon emission per capita in 2014 -->
+          <section class="graphs">
+              <div class="gray-back">
+                  <div class="row">
+                      <div class="col-sm-8">
+                        <h3>Which countries had most per capita carbon emission in 2014?</h3>
+                        <p>CO2 Emissions from Fossil Fuels since 1751</p>
+                      </div>
+                      <div class="col-sm-4">
+                        <a href="/core/co2-fossil-by-nation" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                    <iframe data-src="https://datahub.io/core/co2-fossil-by-nation/view/3" width="100%" height="800px" frameborder="0"></iframe>
+                </div>
+              </div>
+          </section>
+          <!-- End of Countries by carbon emission per capita in 2014 -->
 
           <!-- Carbon emission trend in China -->
           <section class="graphs">
@@ -308,11 +335,8 @@
                   </div>
               </div>
               <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-12">
                     <iframe data-src="https://datahub.io/core/co2-fossil-by-nation/view/1" width="100%" height="480px" frameborder="0"></iframe>
-                </div>
-                <div class="col-sm-4">
-                  <p class="desc"><span>Description:</span> China's CO2 Emissions from fossil-fuels annually since 1800 till 2014.</p>
                 </div>
               </div>
           </section>
@@ -332,60 +356,14 @@
                   </div>
               </div>
               <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-12">
                     <iframe data-src="https://datahub.io/core/co2-fossil-by-nation/view/2" width="100%" height="480px" frameborder="0"></iframe>
-                </div>
-                <div class="col-sm-4">
-                  <p class="desc"><span>Description:</span> USA's CO2 Emissions from fossil-fuels annually since 1800 till 2014.</p>
                 </div>
               </div>
           </section>
           <!-- End of Carbon emission trend in USA -->
 
-          
-          <!-- Countries by carbon emission in 2014 -->
-          <section class="graphs">
-            <div class="gray-back">
-                <div class="row">
-                    <div class="col-sm-8">
-                      <h3>Which countries had most of carbon emission in 2014?</h3>
-                      <p>CO2 Emissions from Fossil Fuels since 1751, By Nation</p>
-                    </div>
-                    <div class="col-sm-4">
-                      <a href="/core/co2-fossil-by-nation" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
-                  <iframe data-src="https://datahub.io/core/co2-fossil-by-nation/view/0" width="100%" height="660px" frameborder="0"></iframe>
-              </div>
-            </div>
-        </section>
-        <!-- End of Countries by carbon emission in 2014 -->
-
-        <!-- Countries by carbon emission per capita in 2014 -->
-        <section class="graphs">
-            <div class="gray-back">
-                <div class="row">
-                    <div class="col-sm-8">
-                      <h3>Which countries had most per capita carbon emission in 2014?</h3>
-                      <p>CO2 Emissions from Fossil Fuels since 1751</p>
-                    </div>
-                    <div class="col-sm-4">
-                      <a href="/core/co2-fossil-by-nation" target="_blank" class="btn btn-primary pull-right">Explore this Dataset</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
-                  <iframe data-src="https://datahub.io/core/co2-fossil-by-nation/view/3" width="100%" height="800px" frameborder="0"></iframe>
-              </div>
-            </div>
-        </section>
-        <!-- End of Countries by carbon emission per capita in 2014 -->
       </div>
-
 
     </div>
   </div>
