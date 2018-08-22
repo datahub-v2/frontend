@@ -76,12 +76,18 @@ Dashboard
                 {% if item.event_entity === 'flow' %}
                 <div class="event event-flow">
                   <a href="/{{ profile.username }}/{{ item.dataset }}" class="event-main">{{ item.dataset }}</a>
-                  <p class="event-action">{{ item.event_action }} - {{ item.timeago }}</p>
+                  <p class="event-action">
+                    {% if item.event_action=='finish' %}
+                        Finished - {{ item.timeago }}
+                    {% else %}
+                        {{ item.event_action }} - {{ item.timeago }}
+                    {% endif %}
+                  </p>
                 </div>
                 {% elif item.event_entity === 'account' %}
                 <div class="event event-account">
                     <p class="event-main">You</p> {{ item.event_action }}
-                    <p class="event-action">finish - 22mins</p>
+                    <p class="event-action">{{ item.timeago }}</p>
                 </div>
                 {% endif %}
               {% endfor %}
