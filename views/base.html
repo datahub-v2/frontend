@@ -27,10 +27,10 @@
   <meta name="description" content="{{metaDescription}}" />
   <meta name="twitter:description" content="{{metaDescription}}" />
   <meta property="og:description" content="{{metaDescription}}" />
-  {% elif dataset and dataset.readmeSnippet %}
-  <meta name="description" content="{{dataset.readmeSnippet}}" />
-  <meta name="twitter:description" content="{{dataset.readmeSnippet}}" />
-  <meta property="og:description" content="{{dataset.readmeSnippet}}" />
+  {% elif dataset and (dataset.description or dataset.readmeSnippet or dataset.readmeHtml) %}
+  <meta name="description" content="{{dataset.description or dataset.readmeSnippet or dataset.readmeHtml|safe}}" />
+  <meta name="twitter:description" content="{{dataset.description or dataset.readmeSnippet or dataset.readmeHtml|safe}}" />
+  <meta property="og:description" content="{{dataset.description or dataset.readmeSnippet or dataset.readmeHtml|safe}}" />
   {% else %}
   <meta name="description" content="{{description or 'Find, Share and Publish Quality Data Online. The fastest way for individuals, teams and organizations to publish, deploy and share their data.'}}">
   <meta name="twitter:description" content="{{description or 'Find, Share and Publish Quality Data Online. The fastest way for individuals, teams and organizations to publish, deploy and share their data.'}}" />

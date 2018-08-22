@@ -151,8 +151,14 @@
       <!-- short readme -->
       {% if dataset.readmeSnippet %}
         <div class="readme-snippet readable-width">{{dataset.readmeSnippet}} <a href="#readme" onclick="scrollDown(this)">read more</a></div>
-      {% else %}
+      {% elif dataset.readmeHtml %}
         <div class="readme-snippet readable-width">{{dataset.readmeHtml|safe}}</div>
+      {% elif dataset.description %}
+        {% if dataset.description|length > 250 %}
+          <div class="readme-snippet readable-width">{{dataset.description|truncate(200)}} <a href="#readme" onclick="scrollDown(this)">read more</a></div>
+        {% else %}
+          <div class="readme-snippet readable-width">{{dataset.description}}</div>
+        {% endif %}
       {% endif %}
 
       <!-- download button -->
@@ -392,12 +398,21 @@
 </div><!-- end of import into your tool section -->
 
 <!-- readme section -->
-{% if dataset.readmeSnippet %}
+{% if dataset.readmeSnippet or dataset.readmeHtml %}
 <div class="container">
   <div class="inner_container">
     <div class="dataset show">
       <h2 id="readme" class="section-title">Read me</h2>
       <div class="readme part readable-width">{{dataset.readmeHtml|safe}}</div>
+    </div>
+  </div>
+</div>
+{% elif dataset.description %}
+<div class="container">
+  <div class="inner_container">
+    <div class="dataset show">
+      <h2 id="readme" class="section-title">Read me</h2>
+      <div class="readme part readable-width">{{dataset.description}}</div>
     </div>
   </div>
 </div>

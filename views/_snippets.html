@@ -49,6 +49,24 @@
           explore more <span>&rsaquo;</span>
         </a>
       </p>
+      {% elif package.readmeHtml %}
+      <p class="readme">
+        {{ package.readmeHtml|safe }}
+        <a href="/{{ package.datahub.owner }}/{{ package.name }}">
+          explore more <span>&rsaquo;</span>
+        </a>
+      </p>
+      {% elif package.description %}
+      <p class="readme">
+        {% if package.description|length > 200 %}
+          {{ package.description|truncate(200) }}
+        {% else %}
+          {{ package.description }}
+        {% endif %}
+        <a href="/{{ package.datahub.owner }}/{{ package.name }}">
+          explore more <span>&rsaquo;</span>
+        </a>
+      </p>
       {% endif %}
     </div>
   {%- endfor %}
