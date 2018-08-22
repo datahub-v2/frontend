@@ -7,7 +7,7 @@ body.dashboard {
       padding-right:0px !important;
     }
   }
-  
+
   .user-detail{
     background-color:$gray-very-light !important;
     padding:25px 50px 35px 50px;
@@ -27,13 +27,13 @@ body.dashboard {
           {
             margin-bottom:10px;
           }
-        }  
+        }
       p,a,h2,h3,h4,h5{
         padding:0px;
         margin:0px;
         line-height:1.5;
       }
-      
+
       .name{
         font-weight:600;
       }
@@ -51,7 +51,7 @@ body.dashboard {
         {
           margin:0px auto;
         }
-        
+
       }
       h3{
         font-weight:300;
@@ -64,9 +64,9 @@ body.dashboard {
     }
 
     .detail2{
-      
+
       margin-top:13px;
-     
+
       h1,h2,h3,p{
         padding:0px;
         margin:0px;
@@ -97,7 +97,7 @@ body.dashboard {
         display:block !important;
       }
     }
-    
+
 
   }
   .main-dashboard{
@@ -158,7 +158,7 @@ body.dashboard {
     }
 
     .popular-dataset-section{
-    
+
       .heading{
         margin-bottom:25px;
         h2{
@@ -176,7 +176,7 @@ body.dashboard {
           margin-top:10px;
           background-color: #fff;
       }
-      
+
       #custom-search-input input{
           border: 0;
           box-shadow: none;
@@ -184,7 +184,7 @@ body.dashboard {
           padding:12px  10px;
           font-size:15px;
       }
-      
+
       #custom-search-input button{
           margin: 2px 0 0 0;
           background: none;
@@ -194,13 +194,13 @@ body.dashboard {
           padding: 0 8px 0 10px;
           border-left: solid 1px #ccc;
       }
-      
+
       #custom-search-input button:hover{
           border: 0;
           box-shadow: none;
           border-left: solid 1px #ccc;
       }
-      
+
       #custom-search-input .glyphicon-search{
           font-size: 15px;
       }
@@ -220,12 +220,12 @@ body.dashboard {
         transition:0.3s ease;
         background-color:#f5f5f5;
       }
-  
+
       .square h3 {
         color:#000;
         margin-bottom:10px;
       }
-  
+
       .square p {
         color:#313131;
         margin-top:30px;
@@ -242,13 +242,13 @@ body.dashboard {
         left:25px;
       }
       @media screen and (max-width:768px){
-  
+
         padding: 80px 0px 70px 0px;
-  
+
         .square, .square-sm,.square-md {
             width:100% !important;
         }
-  
+
         .square:after {
           content: "";
           display: block;
@@ -290,7 +290,7 @@ body.dashboard {
     position: absolute;
     width: 1px;
     border-right: 4px dotted #cecece;
-    background-color: #fff; 
+    background-color: #fff;
     top: 0;
     bottom: 0;
     margin-left: -5px;
@@ -329,11 +329,15 @@ body.dashboard {
 
   .event-flow::after {
     content: '\f00c';
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900; /* Fix version 5.0.9 */
     padding: 2px 0 0 6px;
   }
 
   .event-account::after {
     content: '\f0e7';
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900; /* Fix version 5.0.9 */
     padding: 1px 0 0 9px;
     font-size: 13px;
 
