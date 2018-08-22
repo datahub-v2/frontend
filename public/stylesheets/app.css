@@ -8164,6 +8164,9 @@ body.dashboard .event-flow::after, body.dashboard .event-account::after {
   top: 30%; }
 body.dashboard .event-flow::after {
   content: '\f00c';
+  font-family: 'Font Awesome\ 5 Free';
+  font-weight: 900;
+  /* Fix version 5.0.9 */
   padding: 2px 0 0 6px; }
 body.dashboard .event-account::after {
   content: '\f0e7';
