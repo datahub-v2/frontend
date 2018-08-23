@@ -1,4 +1,120 @@
 body.search {
+  .pad-left-zero{
+    padding-left:0px !important;
+  }
+  .pad-right-zero{
+    padding-right:0px !important;
+  }
+  .search-page{
+    .section-logo {
+        width:67px;
+        margin:0 !important;
+
+        @media screen and (max-width:768px){
+            padding-bottom: 15px;
+            padding-top: 15px;
+        }
+    }
+    .heading{
+        margin:0px 0px 50px 0px;
+        h1{
+            font-weight: 200;
+            margin: -10px 0px 10px 0px;
+            font-size: 38px;
+
+            @media screen and (max-width:768px){
+                font-size: 22px;
+            }
+        }
+        p{
+            font-size: 18px;
+        }
+    }
+    .search-section{
+        input{
+          width:100% !important;
+          border:2px solid #CACACA;
+        }
+        .btn{
+          width:100% !important;
+          padding:10px 12px !important;
+
+        }
+        h4{
+          color:#BBBBBB;
+        }
+    }
+    .results{
+
+      .square {
+        background-color:#fafafa;
+        padding:15px 20px 15px 25px;
+        position:relative;
+        margin-top:30px;
+        @media screen and (max-width:500px){
+          min-height:350px;
+        }
+      }
+      .square:hover{
+        transition:0.3s ease;
+        background-color:#f5f5f5;
+      }
+
+      .square h3 {
+        color:#000;
+        margin-bottom:10px;
+        margin-top:0px;
+      }
+
+      .square p {
+        color:#313131;
+        margin-top:10px;
+        @media screen and (max-width:500px){
+          margin-top:15px;
+        }
+      }
+      .square .content span {
+        color:$gray-light;
+      }
+      .square .content ul{
+        list-style:none;
+      }
+      .square .content ul li{
+        display:inline-block;
+        margin-left:20px;
+      }
+      .square .content ul li .core-img{
+        width:20px !important;
+        height:20px !important;
+        border-radius:40px;
+        margin-right:9px;
+      }
+      .square .content ul li .img-icons{
+        width:20px !important;
+        height:20px !important;
+        margin-right:9px;
+      }
+      @media screen and (max-width:768px){
+
+        padding: 80px 0px 70px 0px;
+
+        .square, .square-sm,.square-md {
+            width:100% !important;
+        }
+
+        .square:after {
+          content: "";
+          display: block;
+          padding-bottom: auto;
+          height:auto;
+        }
+    }
+
+    }
+
+  }
+
+  /*************
   h1 {
     font-weight: 300;
     font-size: 30px;
@@ -60,4 +176,7 @@ body.search {
       background: white;
     }
   }
+
+
+  *******************/
 }

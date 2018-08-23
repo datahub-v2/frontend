@@ -8,25 +8,121 @@
 {% block bodyclass %}search{% endblock %}
 
 {% block content %}
+
+<section class="search-page">
+  <div class="container">
+    <div class="inner-container">
+      <section class="heading">
+          <div class="row">
+            <div class="col-sm-1">
+              <img src="/static/img/find-data.png" class="section-logo">
+            </div>
+            <div class="col-sm-9">
+              <h1>Search for datasets</h1>
+              <p>State of the World and Impacts of Global Climate Change</p>
+            </div>
+          </div>
+      </section>
+
+      <section class="search-section">
+        <div class="row">
+          <form class="search-form form form-inline" class="input-group col-xs-12" action="/search" method="GET">
+            <div class="col-sm-6">
+              <input type="text" class="form-control input-lg" placeholder="Search ..." name="q" value="{{ query }}" required autofocus/>
+            </div>
+            <div class="col-sm-2">
+              <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+
+          </form>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-8">
+            <h4 class="search-summary">
+              {{ packages.summary.total }} datasets found
+            </h4>
+          </div>
+        </div>
+      </section>
+
+      <section class="results">
+        <div class="col-sm-8 pad-left-zero  pad-right-zero">
+          <div class="square">
+            <div class="content">
+              <div class="row">
+                <div class="col-sm-8">
+                  <h3>List of Countries</h3>
+                </div>
+                <div class="col-sm-4">
+                  <span class="pull-right">Updated regularly</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <span>population-growth-estimates-and-projections</span>
+                </div>
+                <div class="col-sm-6">
+                  <ul class="pull-right">
+                    <li><img src="/static/img/logo-cube03.png" class="core-img"/><span>Core</span></li>
+                    <li><img src="/static/img/folder.png" class="img-icons"/><span>Folder 7</span></li>
+                    <li><img src="/static/img/hard-disk.png" class="img-icons"/><span>Size</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <p>Total Population - Both Sexes. De facto population in a country, area or region as of 1 July of the year indicated. Figures are presented in thousands. Data Data comes from United Nations' Population Division datasets. Total population (both sexes combined) by region, subregion and country,  <a href="#">Explore more</a></p>
+
+                </div>
+              </div>
+
+
+
+
+
+            </div>
+        </div>
+        </div>
+
+      </section>
+    </div>
+  </div>
+</section>
+<!--
 <div class="container">
   <div class="inner_container">
     <div class="row">
       <div class="col-md-7 col-md-offset-1 col-sm-12">
-        <h1>
-          <svg class="search-icon" aria-hidden="true" height="30" viewBox="0 0 16 16" width="24"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"></path></svg>
-          Search for datasets
-        </h1>
+        <section class="heading">
+            <div class="row">
+              <div class="col-sm-1">
+                <img src="/static/img/climate.png" class="section-logo">
+              </div>
+              <div class="col-sm-9">
+                <h1>Climate Change Dashboard</h1>
+                <p>State of the World and Impacts of Global Climate Change</p>
+              </div>
+            </div>
+        </section>
+
         <form class="search-form form form-inline" class="input-group col-xs-12" action="/search" method="GET">
           <input type="text" class="form-control input-lg" placeholder="Search ..." name="q" value="{{ query }}" required autofocus/>
           <button class="btn btn-primary" type="submit">Search</button>
         </form>
       </div>
+
+
       <div class="col-md-4 search-banner">
         <div class="alert alert-success">
           <a href="/download">Download our CLI tool</a> for wrangling, fetching and deploying datasets.
         </div>
       </div>
+
     </div>
+
+
+
     <div class="row">
       <div class="col-md-7 col-md-offset-1">
         <h4 class="search-summary">
@@ -62,6 +158,12 @@
         <p style="font-style: italic;">Didn't find what you wanted? Make a <a href="/requests">quick data request</a> and we'll help you find it.
       </div>
     </div>
+
   </div>
 </div>
+
+----->
+
+
+
 {% endblock %}
