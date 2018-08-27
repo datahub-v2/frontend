@@ -73,6 +73,88 @@
   </div>
 {%- endmacro %}
 
+
+{% macro searchResults(packages) -%}
+<div class="package-summary-list">
+{%- for package in packages  %}
+  <div class="row">
+      <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero ">
+          <div class="square">
+            <div class="content">
+              <div class="row">
+                <div class="col-sm-8 pad-xs-left-zero pad-xs-right-zero">
+                  <a href="/{{ package.datahub.owner }}/{{ package.name }}"><h3>{{ package.title or package.name }}</h3></a>
+                </div>
+                <div class="col-sm-4 pad-xs-left-zero pad-xs-right-zero">
+                    <div class="meta">
+                      {% if package.datahub.findability === 'unlisted' %}
+                      <span class="label label-primary" title="This dataset is not published yet.">unlisted</span>
+                      {% elif package.datahub.findability === 'private' %}
+                      <span class="label label-primary" title="This dataset is not published yet.">private</span>
+                      {% endif %}
+                    </div>
+                  <span class="pull-right">
+                      {% if package.revisionId %}
+                      <strong>v{{ package.revisionId }}</strong> updated {{ package.datahub.modified }}
+                      {% else %}
+                        updated {{ package.datahub.modified }}
+                      {% endif %}
+                  </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                  <span>{{ package.name }}</span>
+                </div>
+                <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                  <ul class="pull-right">
+                    <li>
+                        <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
+                        <a href="/{{ package.datahub.owner }}"><span>{{ package.datahub.owner }}</span></a>
+                    </li>
+                    <li><img src="/static/img/folder.png" class="img-icons"/><span>Files {{ package.resources|length }}</span></li>
+                    <li><img src="/static/img/hard-disk.png" class="img-icons"/><span>{{ package.datahub.stats.prettyBytes }}</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero">
+                    {% if package.readmeSnippet %}
+                    <p class="readme">
+                      {{ package.readmeSnippet }}
+                      <a href="/{{ package.datahub.owner }}/{{ package.name }}">
+                        Explore Dataset <span>&rsaquo;</span>
+                      </a>
+                    </p>
+                    {% elif package.readmeHtml %}
+                    <p class="readme">
+                      {{ package.readmeHtml|safe }}
+                      <a href="/{{ package.datahub.owner }}/{{ package.name }}">
+                        Explore Dataset <span>&rsaquo;</span>
+                      </a>
+                    </p>
+                    {% elif package.description %}
+                    <p class="readme">
+                      {% if package.description|length > 200 %}
+                        {{ package.description|truncate(200) }}
+                      {% else %}
+                        {{ package.description }}
+                      {% endif %}
+                      <a href="/{{ package.datahub.owner }}/{{ package.name }}">
+                        Explore Dataset <span>&rsaquo;</span>
+                      </a>
+                    </p>
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+{%- endfor %}
+</div>
+{%- endmacro %}
+
 {% macro uploading(statusApi, failUrl, successUrl, resources) -%}
   <p class="progressing-heading" id="message">
     Your data is safely stored and is getting processed - it will be here soon!

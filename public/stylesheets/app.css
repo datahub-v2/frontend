@@ -7460,76 +7460,105 @@ body.search, body.validate {
 
 
   *******************/ }
+  @media screen and (max-width: 500px) {
+    body.search .pad-xs-left-zero, body.validate .pad-xs-left-zero {
+      padding-left: 0px !important; }
+    body.search .pad-xs-right-zero, body.validate .pad-xs-right-zero {
+      padding-right: 0px !important; } }
   body.search .pad-left-zero, body.validate .pad-left-zero {
     padding-left: 0px !important; }
   body.search .pad-right-zero, body.validate .pad-right-zero {
     padding-right: 0px !important; }
-  body.search .search-page .section-logo, body.validate .search-page .section-logo {
-    width: 67px;
-    margin: 0 !important; }
-    @media screen and (max-width: 768px) {
-      body.search .search-page .section-logo, body.validate .search-page .section-logo {
-        padding-bottom: 15px;
-        padding-top: 15px; } }
-  body.search .search-page .heading, body.validate .search-page .heading {
-    margin: 0px 0px 50px 0px; }
-    body.search .search-page .heading h1, body.validate .search-page .heading h1 {
-      font-weight: 200;
-      margin: -10px 0px 10px 0px;
-      font-size: 38px; }
+  body.search .search-page, body.validate .search-page {
+    padding-top: 35px; }
+    body.search .search-page .section-logo, body.validate .search-page .section-logo {
+      width: 67px;
+      margin: 0 !important; }
       @media screen and (max-width: 768px) {
-        body.search .search-page .heading h1, body.validate .search-page .heading h1 {
-          font-size: 22px; } }
-    body.search .search-page .heading p, body.validate .search-page .heading p {
-      font-size: 18px; }
-  body.search .search-page .search-section input, body.validate .search-page .search-section input {
-    width: 100% !important;
-    border: 2px solid #CACACA; }
-  body.search .search-page .search-section .btn, body.validate .search-page .search-section .btn, body.search .search-page .search-section .copy-button, body.validate .search-page .search-section .copy-button {
-    width: 100% !important;
-    padding: 10px 12px !important; }
-  body.search .search-page .search-section h4, body.validate .search-page .search-section h4 {
-    color: #BBBBBB; }
-  body.search .search-page .results .square, body.validate .search-page .results .square {
-    background-color: #fafafa;
-    padding: 15px 20px 15px 25px;
-    position: relative;
-    margin-top: 30px; }
+        body.search .search-page .section-logo, body.validate .search-page .section-logo {
+          padding-bottom: 15px;
+          padding-top: 15px; } }
+    body.search .search-page .heading, body.validate .search-page .heading {
+      margin: 0px 0px 50px 0px; }
+      body.search .search-page .heading h1, body.validate .search-page .heading h1 {
+        font-weight: 200;
+        margin: -10px 0px 10px 0px;
+        font-size: 38px; }
+        @media screen and (max-width: 768px) {
+          body.search .search-page .heading h1, body.validate .search-page .heading h1 {
+            font-size: 22px; } }
+      body.search .search-page .heading p, body.validate .search-page .heading p {
+        font-size: 14px; }
+    body.search .search-page .search-section, body.validate .search-page .search-section {
+      background-color: #fafafa;
+      padding: 30px;
+      margin-bottom: 30px; }
+      body.search .search-page .search-section input, body.validate .search-page .search-section input {
+        width: 100% !important;
+        border: 2px solid #d8d8d8; }
+        @media screen and (max-width: 500px) {
+          body.search .search-page .search-section input, body.validate .search-page .search-section input {
+            margin-bottom: 10px; } }
+      body.search .search-page .search-section input:focus, body.validate .search-page .search-section input:focus {
+        box-shadow: none !important; }
+      body.search .search-page .search-section .btn, body.validate .search-page .search-section .btn, body.search .search-page .search-section .copy-button, body.validate .search-page .search-section .copy-button {
+        width: 100% !important;
+        padding: 10px 12px !important; }
+      body.search .search-page .search-section h4, body.validate .search-page .search-section h4 {
+        color: #BBBBBB; }
+    body.search .search-page .results hr, body.validate .search-page .results hr {
+      margin-top: 40px !important;
+      margin-bottom: 34px !important; }
+    body.search .search-page .results .square, body.validate .search-page .results .square {
+      position: relative;
+      border-bottom: 1px solid #eeeeee;
+      padding: 30px 0px 30px 0px; }
+      @media screen and (max-width: 500px) {
+        body.search .search-page .results .square, body.validate .search-page .results .square {
+          padding: 30px 0px 30px 0px; } }
+    body.search .search-page .results .border-none, body.validate .search-page .results .border-none {
+      border: none !important; }
+    body.search .search-page .results .square h3, body.validate .search-page .results .square h3 {
+      color: #000;
+      margin-bottom: 10px;
+      margin-top: 0px; }
+    body.search .search-page .results .square p, body.validate .search-page .results .square p {
+      color: #313131;
+      margin-top: 10px; }
+      @media screen and (max-width: 500px) {
+        body.search .search-page .results .square p, body.validate .search-page .results .square p {
+          margin-top: 15px; } }
+    body.search .search-page .results .square .content span, body.validate .search-page .results .square .content span {
+      color: #999; }
     @media screen and (max-width: 500px) {
-      body.search .search-page .results .square, body.validate .search-page .results .square {
-        min-height: 350px; } }
-  body.search .search-page .results .square:hover, body.validate .search-page .results .square:hover {
-    transition: 0.3s ease;
-    background-color: #f5f5f5; }
-  body.search .search-page .results .square h3, body.validate .search-page .results .square h3 {
-    color: #000;
-    margin-bottom: 10px;
-    margin-top: 0px; }
-  body.search .search-page .results .square p, body.validate .search-page .results .square p {
-    color: #313131;
-    margin-top: 10px; }
-    @media screen and (max-width: 500px) {
-      body.search .search-page .results .square p, body.validate .search-page .results .square p {
-        margin-top: 15px; } }
-  body.search .search-page .results .square .content span, body.validate .search-page .results .square .content span {
-    color: #999; }
-  body.search .search-page .results .square .content ul, body.validate .search-page .results .square .content ul {
-    list-style: none; }
-  body.search .search-page .results .square .content ul li, body.validate .search-page .results .square .content ul li {
-    display: inline-block;
-    margin-left: 20px; }
-  body.search .search-page .results .square .content ul li .core-img, body.validate .search-page .results .square .content ul li .core-img {
-    width: 20px !important;
-    height: 20px !important;
-    border-radius: 40px;
-    margin-right: 9px; }
-  body.search .search-page .results .square .content ul li .img-icons, body.validate .search-page .results .square .content ul li .img-icons {
-    width: 20px !important;
-    height: 20px !important;
-    margin-right: 9px; }
-  @media screen and (max-width: 768px) {
-    body.search .search-page .results, body.validate .search-page .results {
-      padding: 80px 0px 70px 0px; }
+      body.search .search-page .results .square .content span.pull-right, body.validate .search-page .results .square .content span.pull-right {
+        float: left !important; } }
+    body.search .search-page .results .square .content ul, body.validate .search-page .results .square .content ul {
+      list-style: none; }
+      @media screen and (max-width: 500px) {
+        body.search .search-page .results .square .content ul, body.validate .search-page .results .square .content ul {
+          float: left !important;
+          margin: 0px;
+          padding: 0px; } }
+    body.search .search-page .results .square .content ul li, body.validate .search-page .results .square .content ul li {
+      display: inline-block;
+      margin-left: 20px; }
+      @media screen and (max-width: 500px) {
+        body.search .search-page .results .square .content ul li, body.validate .search-page .results .square .content ul li {
+          margin-left: 0px;
+          margin-right: 20px; } }
+    body.search .search-page .results .square .content ul li .core-img, body.validate .search-page .results .square .content ul li .core-img {
+      width: 20px !important;
+      height: 20px !important;
+      border-radius: 40px;
+      margin-right: 5px; }
+    body.search .search-page .results .square .content ul li .img-icons, body.validate .search-page .results .square .content ul li .img-icons {
+      width: 20px !important;
+      height: 20px !important;
+      margin-right: 5px; }
+    body.search .search-page .results .square .content p, body.validate .search-page .results .square .content p {
+      margin-bottom: 0px !important; }
+    @media screen and (max-width: 768px) {
       body.search .search-page .results .square, body.validate .search-page .results .square, body.search .search-page .results .square-sm, body.validate .search-page .results .square-sm, body.search .search-page .results .square-md, body.validate .search-page .results .square-md {
         width: 100% !important; }
       body.search .search-page .results .square:after, body.validate .search-page .results .square:after {
@@ -7537,6 +7566,29 @@ body.search, body.validate {
         display: block;
         padding-bottom: auto;
         height: auto; } }
+    body.search .search-page .side-box, body.validate .search-page .side-box {
+      margin-top: 20px;
+      position: fixed;
+      top: 302px;
+      margin-left: 20px;
+      width: 25.333%;
+      right: 111px;
+      background: #f7f7f7;
+      overflow-x: hidden;
+      padding: 20px; }
+      @media screen and (max-width: 1199px) {
+        body.search .search-page .side-box, body.validate .search-page .side-box {
+          display: none; } }
+      body.search .search-page .side-box img, body.validate .search-page .side-box img {
+        width: 30px;
+        margin-right: 20px; }
+      body.search .search-page .side-box h3, body.validate .search-page .side-box h3 {
+        margin: 0px 0px 10px 0px !important; }
+      body.search .search-page .side-box p, body.validate .search-page .side-box p {
+        line-height: 1.3; }
+  body.search .pagination > li > a, body.validate .pagination > li > a, body.search .pagination > li > span, body.validate .pagination > li > span {
+    border: 1px solid #fff !important;
+    padding: 6px 5px; }
 
 body.owner .owner-page-title {
   margin: 0; }
