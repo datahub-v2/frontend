@@ -17,6 +17,7 @@ const mcache = require('memory-cache')
 const slash = require('slash')
 
 var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const ua = require('universal-analytics')
 
 const config = require('../config')
 const lib = require('../lib')
@@ -1333,9 +1334,14 @@ module.exports = function () {
 
   // Premium data
   router.get('/premium-data', async (req, res) => {
+    const submitted = !!(req.query.done)
+    if (submitted) {
+      const visitor = ua('UA-80458846-4')
+      visitor.event('Premium data form submissions', 'success').send()
+    }
     res.render('premium-data.html', {
       title: "Premium data",
-      submitted: !!(req.query.done)
+      submitted
     })
   })
 
