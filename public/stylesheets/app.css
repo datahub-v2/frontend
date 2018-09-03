@@ -8170,6 +8170,9 @@ body.dashboard .event-flow::after {
   padding: 2px 0 0 6px; }
 body.dashboard .event-account::after {
   content: '\f0e7';
+  font-family: 'Font Awesome\ 5 Free';
+  font-weight: 900;
+  /* Fix version 5.0.9 */
   padding: 1px 0 0 9px;
   font-size: 13px; }
 body.dashboard .timeago, body.dashboard .info {
@@ -8628,7 +8631,7 @@ body.datafactory .data-factory-heading {
 body.datafactory .use-open-framework {
   margin: 70px 0px 80px 0px; }
   body.datafactory .use-open-framework .img1 {
-    width: 70%; }
+    width: 80%; }
     @media screen and (max-width: 768px) {
       body.datafactory .use-open-framework .img1 {
         width: 100%;
@@ -8711,9 +8714,13 @@ body.datafactory .datafactory-process {
       margin-right: 5px; }
 body.datafactory .why-datafactory {
   margin: 20px 0px 80px 0px; }
+  @media screen and (min-width: 768px) {
+    body.datafactory .why-datafactory .pad-left {
+      padding-left: 45px; } }
   body.datafactory .why-datafactory .img1 {
     margin-top: -20px;
-    width: 75%; }
+    width: 95%;
+    margin-right: 10px; }
     @media screen and (max-width: 768px) {
       body.datafactory .why-datafactory .img1 {
         width: 100%;
@@ -8738,9 +8745,8 @@ body.datafactory .datafactory-contain {
     body.datafactory .datafactory-contain {
       margin: 70px 0px 100px 0px; } }
   body.datafactory .datafactory-contain .img1 {
-    box-shadow: 2px 3px 16px 0px rgba(97, 97, 97, 0.3);
-    width: 70%;
-    margin-top: 120px;
+    width: 90%;
+    margin-top: 0px;
     border-radius: 4px; }
     @media screen and (max-width: 768px) {
       body.datafactory .datafactory-contain .img1 {
@@ -8873,7 +8879,7 @@ body.datafactory .browser .body img {
   margin: auto;
   max-height: 100%; }
 body.datafactory .img1.pull-up {
-  margin-top: -30px; }
+  margin-top: -50px; }
 
 body.showcase .stripe-ribbon {
   position: fixed;
