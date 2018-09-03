@@ -1165,14 +1165,13 @@ module.exports = function () {
     const token = req.cookies.jwt
     const from = req.query.from || 0
     const size = req.query.size || 20
-    let topResults;
+    let topResults
     let query
     if (req.query.q) {
-      query = `q="${req.query.q}"&size=${size}&from=${from}`;
-      topResults = false;
+      query = `q="${req.query.q}"&size=${size}&from=${from}`
+      topResults = false
     } else {
-      //query = `size=${size}&from=${from}`
-      topResults=true;
+      topResults=true
     }
     const packages = await api.search(`${query}`, token)
     const total = packages.summary.total
