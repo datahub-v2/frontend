@@ -42,7 +42,9 @@
               <div class="row">
                 <div class="col-sm-12">
                   <h4 class="search-summary">
-                    {{ packages.summary.total }} datasets found
+                    {% if defaultSearch == false %}
+                        {{ packages.summary.total }} datasets found
+                    {% endif %}
                   </h4>
                 </div>
               </div>
@@ -51,7 +53,11 @@
 
           <!-- Results -->
           <section class="results">
-            {{ snippets.searchResults(packages.results) }}
+            {% if defaultSearch == true %}
+              {{ snippets.defaultResults() }}
+            {% else %}
+              {{ snippets.searchResults(packages.results) }}
+            {% endif %}
           </section>
 
           <!-- Pagination -->
