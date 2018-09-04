@@ -10,175 +10,173 @@
   <div class="inner_container">
 
       <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="pill" href="#state-of-the-world">Publishing Plans</a></li>
-          <li><a data-toggle="pill" href="#population" onclick="loadIframes(this)">Premium Data</a></li>
-        </ul>
+        <li class="active"><a data-toggle="pill" href="#premium-data" onclick="loadIframes(this)">Premium Data</a></li>
+        <li><a data-toggle="pill" href="#publishing-plans">Publishing Plans</a></li>
+      </ul>
 
-    <div class="tab-content">
-     <div  class="tab-pane fade in active"  id="state-of-the-world">
-      <div class="headings">
-        <div class="row">
-          <div class="col-sm-12">
-              <h1>Publishing Plans</h1>
-              <p>
-                Start publishing for free - <a href="/download">get our CLI tool</a>
-              </p>
-          </div>
-        </div>
-          
-      </div>
-    
-    <div class="table-responsive">
-    <table class="table pricing">
-      <thead class="color-gray">
-        <tr class="text-center">
-          <th></th>
-          <th>Basic</th>
-          <th>Advanced</th>
-          <th>On Demand</th>
-          <th>Enterprise**</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="left-heading">Datasets</td>
-          <td>&infin;</td>
-          <td>&infin;</td>
-          <td>&infin;</td>
-          <td>&infin;</td>
-        </tr>
-        <tr>
-          <td class="left-heading">Storage</td>
-          <td>5GB <span class="secondary">*</span></td>
-          <td>50GB <span class="secondary">*</span></td>
-          <td>Pay as you go</td>
-          <td>&infin;</td>
-        </tr>
-        <tr>
-          <td class="left-heading">Private Data</td>
-          <td><i class="fas fa-times" aria-hidden="true"></i></td>
-          <td><i class="fas fa-check" aria-hidden="true"></i></td>
-          <td><i class="fas fa-check" aria-hidden="true"></i></td>
-          <td><i class="fas fa-check" aria-hidden="true"></i></td>
-        </tr>
-        <tr>
-          <td class="left-heading">Teams</td>
-          <td><span class="secondary">Coming soon</span></td>
-          <td><span class="secondary">Coming soon</span></td>
-          <td><span class="secondary">Coming soon</span></td>
-          <td><span class="secondary">Coming soon</span></td>
-        </tr>
-        <tr>
-          <td class="left-heading">Help DataHub<br/>thrive &amp; grow ☺</td>
-          <td><i class="fas fa-check" aria-hidden="true"></i></td>
-          <td><i class="fas fa-check" aria-hidden="true"></i><i class="fas fa-check" aria-hidden="true"></i></td>
-          <td><i class="fas fa-check" aria-hidden="true"></i><i class="fas fa-check" aria-hidden="true"></i></td>
-          <td><i class="fas fa-check" aria-hidden="true"></i><i class="fas fa-check" aria-hidden="true"></i></td>
-        </tr>
-        <tr class="pricing">
-          <td class="left-heading"></td>
-          <td>FREE</td>
-          <td>$5 <span class="secondary">/ mo</span></td>
-          <td><a href="mailto:support@datahub.io?subject=Enquiring re DataHub On Demand Pricing">Contact us</a></td>
-          <td><a href="mailto:support@datahub.io?subject=Enquiring re DataHub Enterprise Pricing">Contact us</a></td>
-        </tr>
-        <tr class="signup pricing">
-          <td class="left-heading"></td>
-          <td><a href="/login" class="btn btn-primary">Sign in</a></td>
-          <td><a href="mailto:support@datahub.io?subject=Becoming an Advanced Member of the DataHub" class="btn btn-primary">Sign up</td>
-          <td><a href="mailto:support@datahub.io?subject=Interested in DataHub On Demand Pricing">Contact us</a></td>
-          <td><a href="mailto:support@datahub.io?subject=Interested in DataHub Enterprise Pricing">Contact us</a></td>
-        </tr>
-      </tbody>
-    
-    </table>
-    </div>
-    <br>
-    <p>* These are soft limits. When they are exceeded we will notify you and give you time to upgrade your plan. Service is not interrupted and no extra costs are incurred.<br />
-      ** We host for you or you run on premise. Learn more about Enterprise plan <a href="/data-factory">here</a>.</p>
-      <br><br><br>
-    </div>
+      <div class="tab-content">
+        <div id="premium-data" class="tab-pane fade in active">
 
-    
+            <div class="headings">
+                <div class="row">
+                  <div class="col-sm-12">
+                      <h1>Premium Data</h1>
+                      <p>
+                          All our users have a free access to our <a href="/docs/core-data">core</a> datasets.<br />
+                          Now you can get additional features with 'Premium Data' offer.
+                      </p>
+                  </div>
+                </div>
 
-    <div id="population" class="tab-pane fade">
-
-        <div class="headings">
-            <div class="row">
-              <div class="col-sm-12">
-                  <h1>Premium Data</h1>
-                  <p>
-                      All our users have a free access to our <a href="/docs/core-data">core</a> datasets.<br />
-                      Now you can get additional features with 'Premium Data' offer.
-                  </p>
               </div>
+
+        <table class="table pricing premium-data">
+          <thead class="color-gray">
+            <tr>
+              <th></th>
+              <th>Standard</th>
+              <th>Premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="left-heading">Access to ready-to-use data</td>
+              <td><i class="fas fa-check" aria-hidden="true"></i></td>
+              <td><i class="fas fa-check" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td class="left-heading">CSV and JSON versions for tabular data</td>
+              <td><i class="fas fa-check" aria-hidden="true"></i></td>
+              <td><i class="fas fa-check" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td class="left-heading">API</td>
+              <td><i class="fas fa-check" aria-hidden="true"></i></td>
+              <td><i class="fas fa-check" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td class="left-heading">Warranty / guaranteed updates of the data</td>
+              <td><i class="fas fa-times" aria-hidden="true"></i></td>
+              <td><i class="fas fa-check" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td class="left-heading">Notifications of data updates</td>
+              <td><i class="fas fa-times" aria-hidden="true"></i></td>
+              <td><i class="fas fa-check" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td class="left-heading">Notifications of schema updates</td>
+              <td><i class="fas fa-times" aria-hidden="true"></i></td>
+              <td><i class="fas fa-check" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td class="left-heading">Workflow integration (e.g. Python packages, NPM packages)</td>
+              <td><i class="fas fa-times" aria-hidden="true"></i></td>
+              <td><i class="fas fa-check" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td class="left-heading">Customized data (e.g. you need different or additional data)</td>
+              <td><i class="fas fa-times" aria-hidden="true"></i></td>
+              <td><i class="fas fa-check" aria-hidden="true"></i></td>
+            </tr>
+            <tr class="signup pricing">
+              <td  class="left-heading"></td>
+              <td><a href="/login" class="btn btn-primary">Sign in</a></td>
+              <td><a href="mailto:support@datahub.io?subject=Interested in DataHub Premium Data Offer">Contact us</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="hire-us">
+            <div class="alert alert-success" role="alert">
+              We can help you design, build or enhance your own data-infrastructure or data-driven project - <a href="/hire-us">hire us</a>.
             </div>
-              
           </div>
-   
-    <table class="table pricing premium-data">
-      <thead class="color-gray">
-        <tr>
-          <th></th>
-          <th>Standard</th>
-          <th>Premium</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="left-heading">Access to ready-to-use data</td>
-          <td><i class="fas fa-check" aria-hidden="true"></i></td>
-          <td><i class="fas fa-check" aria-hidden="true"></i></td>
-        </tr>
-        <tr>
-          <td class="left-heading">CSV and JSON versions for tabular data</td>
-          <td><i class="fas fa-check" aria-hidden="true"></i></td>
-          <td><i class="fas fa-check" aria-hidden="true"></i></td>
-        </tr>
-        <tr>
-          <td class="left-heading">API</td>
-          <td><i class="fas fa-check" aria-hidden="true"></i></td>
-          <td><i class="fas fa-check" aria-hidden="true"></i></td>
-        </tr>
-        <tr>
-          <td class="left-heading">Warranty / guaranteed updates of the data</td>
-          <td><i class="fas fa-times" aria-hidden="true"></i></td>
-          <td><i class="fas fa-check" aria-hidden="true"></i></td>
-        </tr>
-        <tr>
-          <td class="left-heading">Notifications of data updates</td>
-          <td><i class="fas fa-times" aria-hidden="true"></i></td>
-          <td><i class="fas fa-check" aria-hidden="true"></i></td>
-        </tr>
-        <tr>
-          <td class="left-heading">Notifications of schema updates</td>
-          <td><i class="fas fa-times" aria-hidden="true"></i></td>
-          <td><i class="fas fa-check" aria-hidden="true"></i></td>
-        </tr>
-        <tr>
-          <td class="left-heading">Workflow integration (e.g. Python packages, NPM packages)</td>
-          <td><i class="fas fa-times" aria-hidden="true"></i></td>
-          <td><i class="fas fa-check" aria-hidden="true"></i></td>
-        </tr>
-        <tr>
-          <td class="left-heading">Customized data (e.g. you need different or additional data)</td>
-          <td><i class="fas fa-times" aria-hidden="true"></i></td>
-          <td><i class="fas fa-check" aria-hidden="true"></i></td>
-        </tr>
-        <tr class="signup pricing">
-          <td  class="left-heading"></td>
-          <td><a href="/login" class="btn btn-primary">Sign in</a></td>
-          <td><a href="mailto:support@datahub.io?subject=Interested in DataHub Premium Data Offer">Contact us</a></td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="hire-us">
-        <div class="alert alert-success" role="alert">
-          We can help you design, build or enhance your own data-infrastructure or data-driven project - <a href="/hire-us">hire us</a>.
-        </div>
       </div>
-  </div>
-</div>
+
+        <div  class="tab-pane fade in"  id="publishing-plans">
+         <div class="headings">
+           <div class="row">
+             <div class="col-sm-12">
+                 <h1>Publishing Plans</h1>
+                 <p>
+                   Start publishing for free - <a href="/download">get our CLI tool</a>
+                 </p>
+             </div>
+           </div>
+
+         </div>
+
+       <div class="table-responsive">
+       <table class="table pricing">
+         <thead class="color-gray">
+           <tr class="text-center">
+             <th></th>
+             <th>Basic</th>
+             <th>Advanced</th>
+             <th>On Demand</th>
+             <th>Enterprise**</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+             <td class="left-heading">Datasets</td>
+             <td>&infin;</td>
+             <td>&infin;</td>
+             <td>&infin;</td>
+             <td>&infin;</td>
+           </tr>
+           <tr>
+             <td class="left-heading">Storage</td>
+             <td>5GB <span class="secondary">*</span></td>
+             <td>50GB <span class="secondary">*</span></td>
+             <td>Pay as you go</td>
+             <td>&infin;</td>
+           </tr>
+           <tr>
+             <td class="left-heading">Private Data</td>
+             <td><i class="fas fa-times" aria-hidden="true"></i></td>
+             <td><i class="fas fa-check" aria-hidden="true"></i></td>
+             <td><i class="fas fa-check" aria-hidden="true"></i></td>
+             <td><i class="fas fa-check" aria-hidden="true"></i></td>
+           </tr>
+           <tr>
+             <td class="left-heading">Teams</td>
+             <td><span class="secondary">Coming soon</span></td>
+             <td><span class="secondary">Coming soon</span></td>
+             <td><span class="secondary">Coming soon</span></td>
+             <td><span class="secondary">Coming soon</span></td>
+           </tr>
+           <tr>
+             <td class="left-heading">Help DataHub<br/>thrive &amp; grow ☺</td>
+             <td><i class="fas fa-check" aria-hidden="true"></i></td>
+             <td><i class="fas fa-check" aria-hidden="true"></i><i class="fas fa-check" aria-hidden="true"></i></td>
+             <td><i class="fas fa-check" aria-hidden="true"></i><i class="fas fa-check" aria-hidden="true"></i></td>
+             <td><i class="fas fa-check" aria-hidden="true"></i><i class="fas fa-check" aria-hidden="true"></i></td>
+           </tr>
+           <tr class="pricing">
+             <td class="left-heading"></td>
+             <td>FREE</td>
+             <td>$5 <span class="secondary">/ mo</span></td>
+             <td><a href="mailto:support@datahub.io?subject=Enquiring re DataHub On Demand Pricing">Contact us</a></td>
+             <td><a href="mailto:support@datahub.io?subject=Enquiring re DataHub Enterprise Pricing">Contact us</a></td>
+           </tr>
+           <tr class="signup pricing">
+             <td class="left-heading"></td>
+             <td><a href="/login" class="btn btn-primary">Sign in</a></td>
+             <td><a href="mailto:support@datahub.io?subject=Becoming an Advanced Member of the DataHub" class="btn btn-primary">Sign up</td>
+             <td><a href="mailto:support@datahub.io?subject=Interested in DataHub On Demand Pricing">Contact us</a></td>
+             <td><a href="mailto:support@datahub.io?subject=Interested in DataHub Enterprise Pricing">Contact us</a></td>
+           </tr>
+         </tbody>
+
+       </table>
+       </div>
+       <br>
+       <p>* These are soft limits. When they are exceeded we will notify you and give you time to upgrade your plan. Service is not interrupted and no extra costs are incurred.<br />
+         ** We host for you or you run on premise. Learn more about Enterprise plan <a href="/data-factory">here</a>.</p>
+         <br><br><br>
+       </div>
+    </div>
   </div>
 </div>
 </section>
