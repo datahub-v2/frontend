@@ -8170,6 +8170,9 @@ body.dashboard .event-flow::after {
   padding: 2px 0 0 6px; }
 body.dashboard .event-account::after {
   content: '\f0e7';
+  font-family: 'Font Awesome\ 5 Free';
+  font-weight: 900;
+  /* Fix version 5.0.9 */
   padding: 1px 0 0 9px;
   font-size: 13px; }
 body.dashboard .timeago, body.dashboard .info {
@@ -9124,5 +9127,81 @@ body.premium-data {
     border: 0px solid transparent;
     border-bottom: 3px solid #ff7900;
     cursor: default; }
+
+body.awesome {
+  /********* data-cards ************/ }
+  body.awesome .pad-left-0 {
+    padding-left: 0px !important; }
+  body.awesome .pad-right-0 {
+    padding-right: 0px !important; }
+  body.awesome .awesome-dashboard-heading {
+    background: url("../img/world-map.jpg");
+    background-position: 299px 20px;
+    background-repeat: no-repeat;
+    padding: 30px 0px 100px 0px; }
+    @media screen and (max-width: 768px) {
+      body.awesome .awesome-dashboard-heading {
+        background-position: -50px 20px; } }
+    body.awesome .awesome-dashboard-heading h1 {
+      font-weight: 200;
+      margin-bottom: 20px;
+      font-size: 46px;
+      line-height: 1.3em; }
+    body.awesome .awesome-dashboard-heading p {
+      font-size: 18px; }
+  body.awesome .data-cards {
+    margin-top: -70px; }
+    body.awesome .data-cards .card-custom {
+      background: #fff;
+      height: 165px;
+      border: 1px solid #e4e4e4;
+      margin-top: 30px;
+      padding: 20px 10px 20px 20px; }
+      @media screen and (max-width: 768px) {
+        body.awesome .data-cards .card-custom {
+          margin-top: 30px; } }
+      body.awesome .data-cards .card-custom h3, body.awesome .data-cards .card-custom img {
+        padding: 0px;
+        margin: 0px; }
+      body.awesome .data-cards .card-custom .title {
+        font-size: 20px;
+        font-family: inherit;
+        font-weight: normal;
+        line-height: 1.1;
+        color: #000;
+        cursor: pointer; }
+      body.awesome .data-cards .card-custom p {
+        line-height: 1.2 !important;
+        margin-top: 5px;
+        color: #999; }
+      body.awesome .data-cards .card-custom .view {
+        position: absolute;
+        top: 100px;
+        cursor: pointer; }
+  body.awesome .bottom-section .content1 {
+    font-weight: 500;
+    margin: 40px 0px 0px 0px; }
+    body.awesome .bottom-section .content1 span {
+      color: #ff7900; }
+  body.awesome .bottom-section .data-offer {
+    background-color: #fafafa;
+    padding: 30px 50px 30px 50px;
+    margin: 40px 0px 50px 0px; }
+    @media screen and (max-width: 768px) {
+      body.awesome .bottom-section .data-offer {
+        text-align: left;
+        padding: 30px 20px 30px 20px; } }
+    @media screen and (max-width: 768px) {
+      body.awesome .bottom-section .data-offer .icon-img {
+        padding-left: 0px; } }
+    body.awesome .bottom-section .data-offer h3, body.awesome .bottom-section .data-offer img {
+      padding: 0px !important;
+      margin: 0px !important; }
+    body.awesome .bottom-section .data-offer h3 {
+      margin-top: 10px !important;
+      text-align: left !important; }
+    body.awesome .bottom-section .data-offer .content p {
+      line-height: 1.3 !important;
+      margin-bottom: 30px; }
 
 /*# sourceMappingURL=app.css.map */
