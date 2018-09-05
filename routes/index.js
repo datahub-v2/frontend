@@ -419,7 +419,13 @@ module.exports = function () {
    * return pages from the awesome github repo:
    * https://github.com/datahubio/awesome
    */
-  router.get('/awesome', showAwesomePage)
+  router.get('/awesome', (req, res) => {
+    res.render('awesome-home.html', {
+      title: 'Awesome Datasets',
+      description: 'Awesome data - high quality data and datasets organized by topic. Data Collections, Climate Change, Economic Data, Geodata, Inflation, Linked Open Data, Machine Learning, Reference Data, World Bank'
+    })
+  })
+
   router.get('/awesome/dashboards/:page', showAwesomeDashboardPage)
   router.get('/awesome/:page', showAwesomePage)
 

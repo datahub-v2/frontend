@@ -1,0 +1,121 @@
+body.awesome {
+
+    .pad-left-0
+    {
+        padding-left:0px !important;
+    }
+    .pad-right-0
+    {
+        padding-right:0px !important;
+    }
+    .highlight-text {
+        color: #66b106;
+        font-size: 14px;
+    }
+    .awesome-dashboard-heading{
+
+        background:url('../img/world-map.jpg');
+        background-position: 299px 20px;
+        background-repeat: no-repeat;
+        padding:30px 0px 100px 0px;
+
+        @media screen and (max-width: 768px){
+
+            background-position: -50px 20px;
+        }
+        h1{
+            font-weight: 200;
+            margin-bottom: 20px;
+            font-size: 46px;
+            line-height: 1.3em;
+        }
+        p{
+            font-size: 17px;
+            background-color:rgba(255,255,255,0.77);
+          }
+
+    }
+
+    /********* data-cards ************/
+
+    .data-cards{
+
+        margin-top:-70px;
+
+        .card-custom{
+            background:#fff;
+            height:140px;
+            border:1px solid #e4e4e4;
+            margin-top:30px;
+            @media screen and (max-width: 768px){
+            margin-top:30px;
+            }
+            padding:15px 10px 20px 20px;
+        h3,img{
+            padding:0px;
+            margin:0px;
+        }
+
+        .title{
+            font-size: 16.5px;
+            font-family: inherit;
+            font-weight: normal;
+            line-height: 1.1;
+            color:#000;
+            cursor:pointer;
+        }
+        p{
+            line-height:1.2 !important;
+            margin-top:0;
+            color:$gray-light;
+        }
+        .view{
+            position:absolute;
+            top: 80px;
+            cursor:pointer;
+        }
+
+
+    }
+    }
+
+    .bottom-section{
+        .content1{
+            font-weight:500;
+            margin:40px 0px 0px 0px;
+            span{
+                color:$brand-warning;
+            }
+        }
+
+        .data-offer{
+            background-color:$gray-very-light;
+            padding:30px 50px 30px 50px;
+            margin:40px 0px 50px 0px;
+            @media screen and (max-width: 768px){
+                text-align:left;
+                padding:30px 20px 30px 20px;
+            }
+            .icon-img{
+                @media screen and (max-width: 768px){
+
+                    padding-left:0px;
+                }
+            }
+            h3,img{
+                padding:0px !important;
+                margin:0px !important;
+            }
+            h3{
+                margin-top:10px !important;
+                text-align: left !important;
+            }
+            .content p{
+                line-height:1.3 !important;
+                margin-bottom:30px;
+            }
+        }
+    }
+
+
+}
