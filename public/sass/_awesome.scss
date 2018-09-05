@@ -10,6 +10,7 @@ body.awesome {
     }
     .highlight-text {
         color: #66b106;
+        font-size: 14px;
     }
     .awesome-dashboard-heading{
 
@@ -73,8 +74,8 @@ body.awesome {
             top: 80px;
             cursor:pointer;
         }
-        
-        
+
+
     }
     }
 
@@ -97,7 +98,7 @@ body.awesome {
             }
             .icon-img{
                 @media screen and (max-width: 768px){
-                   
+
                     padding-left:0px;
                 }
             }
@@ -115,6 +116,6 @@ body.awesome {
             }
         }
     }
-    
+
 
 }
