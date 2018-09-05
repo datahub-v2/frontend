@@ -24,7 +24,7 @@ body.datafactory {
     .use-open-framework{
         margin:70px 0px 80px 0px;
         .img1{
-            width:70%;
+            width:80%;
             @media screen and (max-width: 768px){
                 width:100%;
                 margin:0px;
@@ -155,9 +155,15 @@ body.datafactory {
 
     .why-datafactory{
         margin:20px 0px 80px 0px;
+        .pad-left {
+            @media screen and (min-width:768px){
+                padding-left:45px;
+            }
+        }
         .img1{
             margin-top:-20px;
-            width:75%;
+            width:95%;
+            margin-right:10px;
             @media screen and (max-width: 768px){
                 width:100%;
                 margin:20px 0px 0px 0px !important;
@@ -190,9 +196,8 @@ body.datafactory {
             margin:70px 0px 100px 0px;
         }
         .img1{
-            box-shadow: 2px 3px 16px 0px rgba(97, 97, 97, 0.30);
-            width:70%;
-            margin-top:120px;
+            width:90%;
+            margin-top:0px;
             border-radius: 4px;
             @media screen and (max-width: 768px){
                 margin-top:30px !important;
@@ -379,6 +384,6 @@ body.datafactory {
 
     
     .img1.pull-up {
-        margin-top: -30px;
+        margin-top: -50px;
     }
 }

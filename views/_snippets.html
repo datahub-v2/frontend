@@ -73,6 +73,89 @@
   </div>
 {%- endmacro %}
 
+
+{% macro searchResults(packages) -%}
+<div class="package-summary-list">
+{%- for package in packages  %}
+  <div class="row">
+      <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero ">
+          <div class="square">
+            <div class="content">
+              <div class="row">
+                <div class="col-sm-8 pad-xs-left-zero pad-xs-right-zero">
+                  <a href="/{{ package.datahub.owner }}/{{ package.name }}"><h3>{{ package.title or package.name }}</h3></a>
+                </div>
+                <div class="col-sm-4 pad-xs-left-zero pad-xs-right-zero">
+                    <div class="meta">
+                      {% if package.datahub.findability === 'unlisted' %}
+                      <span class="label label-primary" title="This dataset is not published yet.">unlisted</span>
+                      {% elif package.datahub.findability === 'private' %}
+                      <span class="label label-primary" title="This dataset is not published yet.">private</span>
+                      {% endif %}
+                    </div>
+                  <span class="pull-right">
+                      {% if package.revisionId %}
+                      <strong>v{{ package.revisionId }}</strong> updated {{ package.datahub.modified }}
+                      {% else %}
+                        updated {{ package.datahub.modified }}
+                      {% endif %}
+                  </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4 pad-xs-left-zero pad-xs-right-zero">
+                  <span>{{ package.name }}</span>
+                </div>
+                <div class="col-sm-8 pad-xs-left-zero pad-xs-right-zero">
+                  <ul class="pull-right">
+                    <li>
+                        <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar" />
+                        <a href="/{{ package.datahub.owner }}"><span>{{ package.datahub.owner }}</span></a>
+                    </li>
+                    <li><img src="/static/img/folder.png" class="img-icons"/><span>Files {{ package.resources|length }}</span></li>
+                    <li><img src="/static/img/hard-disk.png" class="img-icons"/><span>{{ package.datahub.stats.prettyBytes }}</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero">
+                    {% if package.readmeSnippet %}
+                    <p class="readme">
+                      {{ package.readmeSnippet }}
+                      <a href="/{{ package.datahub.owner }}/{{ package.name }}">
+                        Explore Dataset <span>&rsaquo;</span>
+                      </a>
+                    </p>
+                    {% elif package.readmeHtml %}
+                    <p class="readme">
+                      {{ package.readmeHtml|safe }}
+                      <a href="/{{ package.datahub.owner }}/{{ package.name }}">
+                        Explore Dataset <span>&rsaquo;</span>
+                      </a>
+                    </p>
+                    {% elif package.description %}
+                    <p class="readme">
+                      {% if package.description|length > 200 %}
+                        {{ package.description|truncate(200) }}
+                      {% else %}
+                        {{ package.description }}
+                      {% endif %}
+                      <a href="/{{ package.datahub.owner }}/{{ package.name }}">
+                        Explore Dataset <span>&rsaquo;</span>
+                      </a>
+                    </p>
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+{%- endfor %}
+</div>
+{%- endmacro %}
+
+
 {% macro uploading(statusApi, failUrl, successUrl, resources) -%}
   <p class="progressing-heading" id="message">
     Your data is safely stored and is getting processed - it will be here soon!
@@ -194,4 +277,431 @@
       document.getElementById('spinner').classList.remove('fa-pulse');
     });
   </script>
+{%- endmacro %}
+
+{% macro defaultResults() -%}
+<div class="package-summary-list">
+
+    <!-- search result -->
+    <div class="row">
+        <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero ">
+            <div class="square">
+              <div class="content">
+                <div class="row">
+                  <div class="col-sm-8 pad-xs-left-zero pad-xs-right-zero">
+                    <a href="/core/world-cities"><h3>Major cities of the world</h3></a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <span>world-cities</span>
+                  </div>
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <ul class="pull-right">
+                      <li>
+                          <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar">
+                          <a href="/core"><span>core</span></a>
+                      </li>
+                      <li><img src="/static/img/folder.png" class="img-icons"><span>Files 2</span></li>
+                      <li><img src="/static/img/hard-disk.png" class="img-icons"><span>829kB</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero">
+                      
+                      <p class="readme">
+                          List of major cities in the world Data The data is extracted from geonames, a very exhaustive list of worldwide toponyms. This datapackage only list cities above 15,000 inhabitants. Each city is associated with its country and subcountry to reduce the number of ambiguities.
+                        <a href="/core/world-cities">
+                          Explore Dataset <span>›</span>
+                        </a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- end of search result -->
+
+    <!-- search result -->
+    <div class="row">
+        <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero ">
+            <div class="square">
+              <div class="content">
+                <div class="row">
+                  <div class="col-sm-8 pad-xs-left-zero pad-xs-right-zero">
+                    <a href="/core/global-temp"><h3>Global Temperature Time Series</h3></a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <span>global-temp</span>
+                  </div>
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <ul class="pull-right">
+                      <li>
+                          <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar">
+                          <a href="/core"><span>core</span></a>
+                      </li>
+                      <li><img src="/static/img/folder.png" class="img-icons"><span>Files 3</span></li>
+                      <li><img src="/static/img/hard-disk.png" class="img-icons"><span>510kB</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero">
+                      
+                      <p class="readme">
+                          Global Temperature Time Series. Data are included from the GISS Surface Temperature (GISTEMP) analysis and the global component of Climate at a Glance (GCAG). Two datasets are provided: 1) global monthly mean and 2) annual mean temperature anomalies in degrees Celsius from 1880 to the present.
+                        <a href="/core/global-temp">
+                          Explore Dataset <span>›</span>
+                        </a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- end of search result -->
+
+
+    <!-- search result -->
+    <div class="row">
+        <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero ">
+            <div class="square">
+              <div class="content">
+                <div class="row">
+                  <div class="col-sm-8 pad-xs-left-zero pad-xs-right-zero">
+                    <a href="/core/s-and-p-500-companies"><h3>S&P 500 Companies with Financial Information</h3></a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <span>s-and-p-500-companies</span>
+                  </div>
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <ul class="pull-right">
+                      <li>
+                          <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar">
+                          <a href="/core"><span>core</span></a>
+                      </li>
+                      <li><img src="/static/img/folder.png" class="img-icons"><span>Files 2</span></li>
+                      <li><img src="/static/img/hard-disk.png" class="img-icons"><span>61kB</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero">
+                      
+                      <p class="readme">
+                          List of companies in the S&P 500 (Standard and Poor's 500). The S&P 500 is a free-float, capitalization-weighted index of the top 500 publicly listed stocks in the US (top 500 by market cap). The dataset includes a list of all the stocks contained therein. 
+                        <a href="/core/s-and-p-500-companies">
+                          Explore Dataset <span>›</span>
+                        </a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- end of search result -->
+
+    <!-- search result -->
+    <div class="row">
+        <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero ">
+            <div class="square">
+              <div class="content">
+                <div class="row">
+                  <div class="col-sm-8 pad-xs-left-zero pad-xs-right-zero">
+                    <a href="/core/bond-yields-us-10y"><h3>10 year US Government Bond Yields (long-term interest rate)</h3></a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <span>bond-yields-us-10y</span>
+                  </div>
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <ul class="pull-right">
+                      <li>
+                          <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar">
+                          <a href="/core"><span>core</span></a>
+                      </li>
+                      <li><img src="/static/img/folder.png" class="img-icons"><span>Files 2</span></li>
+                      <li><img src="/static/img/hard-disk.png" class="img-icons"><span>90kB</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero">
+                      
+                      <p class="readme">
+                          10 year nominal yields on US government bonds from the Federal Reserve. The 10 year government bond yield is considered a standard indicator of long-term interest rates. 
+                        <a href="/core/bond-yields-us-10y">
+                          Explore Dataset <span>›</span>
+                        </a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- end of search result -->
+
+    <!-- search result -->
+    <div class="row">
+        <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero ">
+            <div class="square">
+              <div class="content">
+                <div class="row">
+                  <div class="col-sm-8 pad-xs-left-zero pad-xs-right-zero">
+                    <a href="/core/language-codes"><h3>ISO Language Codes (639-1 and 693-2) and IETF Language Types</h3></a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <span>language-codes</span>
+                  </div>
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <ul class="pull-right">
+                      <li>
+                          <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar">
+                          <a href="/core"><span>core</span></a>
+                      </li>
+                      <li><img src="/static/img/folder.png" class="img-icons"><span>Files 5</span></li>
+                      <li><img src="/static/img/hard-disk.png" class="img-icons"><span>187kB</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero">
+                      
+                      <p class="readme">
+                          Comprehensive language code information, consisting of ISO 639-1, ISO 639-2 and IETF language types. Data Data is taken from the Library of Congress as the ISO 639-2 Registration Authority, and from the Unicode Common Locale Data Repository.
+                        <a href="/core/language-codes">
+                          Explore Dataset <span>›</span>
+                        </a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- end of search result -->
+
+    <!-- search result -->
+    <div class="row">
+        <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero ">
+            <div class="square">
+              <div class="content">
+                <div class="row">
+                  <div class="col-sm-8 pad-xs-left-zero pad-xs-right-zero">
+                    <a href="/core/country-codes"><h3>Comprehensive country codes: ISO 3166, ITU, ISO 4217 currency codes and many more</h3></a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <span>country-codes</span>
+                  </div>
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <ul class="pull-right">
+                      <li>
+                          <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar">
+                          <a href="/core"><span>core</span></a>
+                      </li>
+                      <li><img src="/static/img/folder.png" class="img-icons"><span>Files 2</span></li>
+                      <li><img src="/static/img/hard-disk.png" class="img-icons"><span>295kB</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero">
+                      
+                      <p class="readme">
+                          Comprehensive country code information, including ISO 3166 codes, ITU dialing codes, ISO 4217 currency codes, and many others. Provided as a Tabular Data Package: view datapackage Data Data are fetched from multiple sources: Official formal and short names (in English, French, Spanish, Arabic
+                        <a href="/core/country-codes">
+                          Explore Dataset <span>›</span>
+                        </a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- end of search result -->
+
+    <!-- search result -->
+    <div class="row">
+        <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero ">
+            <div class="square">
+              <div class="content">
+                <div class="row">
+                  <div class="col-sm-8 pad-xs-left-zero pad-xs-right-zero">
+                    <a href="/core/airport-codes"><h3>Airport Codes</h3></a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <span>airport-codes</span>
+                  </div>
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <ul class="pull-right">
+                      <li>
+                          <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar">
+                          <a href="/core"><span>core</span></a>
+                      </li>
+                      <li><img src="/static/img/folder.png" class="img-icons"><span>Files 2</span></li>
+                      <li><img src="/static/img/hard-disk.png" class="img-icons"><span>36MB</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero">
+                      
+                      <p class="readme">
+                          The airport codes may refer to either IATA airport code, a three-letter code which is used in passenger reservation, ticketing and baggage-handling systems, or the ICAO airport code which is a four letter code used by ATC systems and for airports that do not have an IATA airport code
+                        <a href="/core/airport-codes">
+                          Explore Dataset <span>›</span>
+                        </a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- end of search result -->
+
+    <!-- search result -->
+    <div class="row">
+        <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero ">
+            <div class="square">
+              <div class="content">
+                <div class="row">
+                  <div class="col-sm-8 pad-xs-left-zero pad-xs-right-zero">
+                    <a href="/core/oil-prices"><h3>Brent and WTI Spot Prices</h3></a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <span>oil-prices</span>
+                  </div>
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <ul class="pull-right">
+                      <li>
+                          <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar">
+                          <a href="/core"><span>core</span></a>
+                      </li>
+                      <li><img src="/static/img/folder.png" class="img-icons"><span>Files 9</span></li>
+                      <li><img src="/static/img/hard-disk.png" class="img-icons"><span>2MB</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero">
+                      
+                      <p class="readme">
+                          Europe Brent and WTI (Western Texas Intermediate) Spot Prices (Annual/ Monthly/ Weekly/ Daily) from EIA U.S. (Energy Information Administration). Data Sources * Name: Daily Europe Brent Spot Price Web: https://www.eia.gov/dnav/pet/hist_xls/RBRTEd.xls * Name: Weekly Europe Brent Spot Price
+                        <a href="/core/oil-prices">
+                          Explore Dataset <span>›</span>
+                        </a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- end of search result -->
+
+
+    <!-- search result -->
+    <div class="row">
+        <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero ">
+            <div class="square">
+              <div class="content">
+                <div class="row">
+                  <div class="col-sm-8 pad-xs-left-zero pad-xs-right-zero">
+                    <a href="/core/natural-gas"><h3>Natural gas prices</h3></a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <span>natural-gas</span>
+                  </div>
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <ul class="pull-right">
+                      <li>
+                          <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar">
+                          <a href="/core"><span>core</span></a>
+                      </li>
+                      <li><img src="/static/img/folder.png" class="img-icons"><span>Files 3</span></li>
+                      <li><img src="/static/img/hard-disk.png" class="img-icons"><span>115kB</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero">
+                      
+                      <p class="readme">
+                          Time series of major Natural Gas Prices including US Henry Hub. Data comes from U.S. Energy Information Administration EIA Data Dataset contains Monthly and Daily prices of Natural gas, starting from January 1997, including April 2016. Prices are in nominal dollars. 
+                        <a href="/core/natural-gas">
+                          Explore Dataset <span>›</span>
+                        </a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- end of search result -->
+
+    <!-- search result -->
+    <div class="row">
+        <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero ">
+            <div class="square">
+              <div class="content">
+                <div class="row">
+                  <div class="col-sm-8 pad-xs-left-zero pad-xs-right-zero">
+                    <a href="/core/country-list"><h3>List of all countries with their 2 digit codes (ISO 3166-1)</h3></a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <span>country-list</span>
+                  </div>
+                  <div class="col-sm-6 pad-xs-left-zero pad-xs-right-zero">
+                    <ul class="pull-right">
+                      <li>
+                          <img src="/static/img/logo-cube03.png" class="img-responsive img-circle avatar">
+                          <a href="/core"><span>core</span></a>
+                      </li>
+                      <li><img src="/static/img/folder.png" class="img-icons"><span>Files 2</span></li>
+                      <li><img src="/static/img/hard-disk.png" class="img-icons"><span>37kB</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 pad-xs-left-zero pad-xs-right-zero">
+                      
+                      <p class="readme">
+                          ISO 3166-1-alpha-2 English country names and code elements. This list states the country names (official short names in English) in alphabetical order as given in ISO 3166-1 and the corresponding ISO 3166-1-alpha-2 code elements.
+                        <a href="/core/country-list">
+                          Explore Dataset <span>›</span>
+                        </a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- end of search result -->
+</div>
 {%- endmacro %}

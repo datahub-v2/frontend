@@ -8,60 +8,133 @@
 {% block bodyclass %}search{% endblock %}
 
 {% block content %}
+
+<section class="search-page">
+  <div class="container">
+    <div class="inner-container">
+      <section class="heading">
+          <div class="row">
+            <div class="col-sm-1">
+              <img src="/static/img/find-data.png" class="section-logo">
+            </div>
+            <div class="col-sm-9">
+              <h1>Search for datasets</h1>
+              <p>There are thousands of datasets from financial market data and population growth to cryptocurrency prices. If you don’t find what you are looking for <a href="/requests">ask the Data Concierge</a> for a free quote for us to find you the data. </p>
+            </div>
+          </div>
+      </section>
+
+      <div class="col-sm-8 pad-left-zero pad-right-zero">
+          <!-- Form -->
+          <section class="search-section">
+              <div class="row">
+                <form class="search-form form form-inline" class="input-group col-xs-12" action="/search" method="GET">
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control input-lg" placeholder="Search ..." name="q" value="{{ query }}" required autofocus/>
+                  </div>
+                  <div class="col-sm-3">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                  </div>
+      
+                </form>
+              </div>
+      
+              <div class="row">
+                <div class="col-sm-12">
+                  <h4 class="search-summary">
+                    {% if defaultSearch == false %}
+                        {{ packages.summary.total }} datasets found
+                    {% endif %}
+                  </h4>
+                </div>
+              </div>
+          </section>
+          <!-- End of Form -->
+
+          <!-- Results -->
+          <section class="results">
+            {% if defaultSearch == true %}
+              {{ snippets.defaultResults() }}
+            {% else %}
+              {{ snippets.searchResults(packages.results) }}
+            {% endif %}
+          </section>
+
+          <!-- Pagination -->
+          {% if packages.summary.total > 20 %}
+            <nav aria-label="Datasets" class="text-center">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" href="/search?q={{ query }}&from=0" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                {% for page in pages %}
+                  {% if page == '...' %}
+                  <li class="page-item disabled"><span class="page-link">{{page}}</span></li>
+                  {% else %}
+                  <li class="page-item {{ 'current-page' if currentPage == page }}"><a class="page-link" href="/search?q={{ query }}&from={{ (page - 1) * 20 }}">{{page}}</a></li>
+                  {% endif %}
+
+                {% endfor %}
+                <li class="page-item">
+                  <a class="page-link" href="/search?q={{ query }}&from={{ packages.summary.total - (packages.summary.total % 20) | int }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          {% endif %}
+          <p style="font-style: italic;">Didn't find what you wanted? Make a <a href="/requests">quick data request</a> and we'll help you find it.
+          <!-- end of pagination -->
+      </div>
+      
+      <div class="col-sm-4 hidden-xs">
+          <div class="side-box">
+              <div class="col-sm-2"><img src="/static/img/message.png"/></div>
+              <div class="col-sm-10">
+                <h3>Premium Data Offer</h3>
+                <p>Now you can request additional data and/or customized columns!</p>
+                <a href="#" data-toggle="modal" data-target="#premium-data">Request Quote</a>
+              </div>
+          </div>
+      </div>
+      
+
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- Premium data offer -->
 <div class="container">
   <div class="inner_container">
-    <div class="row">
-      <div class="col-md-7 col-md-offset-1 col-sm-12">
-        <h1>
-          <svg class="search-icon" aria-hidden="true" height="30" viewBox="0 0 16 16" width="24"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"></path></svg>
-          Search for datasets
-        </h1>
-        <form class="search-form form form-inline" class="input-group col-xs-12" action="/search" method="GET">
-          <input type="text" class="form-control input-lg" placeholder="Search ..." name="q" value="{{ query }}" required autofocus/>
-          <button class="btn btn-primary" type="submit">Search</button>
-        </form>
-      </div>
-      <div class="col-md-4 search-banner">
-        <div class="alert alert-success">
-          <a href="/download">Download our CLI tool</a> for wrangling, fetching and deploying datasets.
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-7 col-md-offset-1">
-        <h4 class="search-summary">
-          {{ packages.summary.total }} datasets found
-        </h4>
-        {{ snippets.package_list_show(packages.results) }}
-        {% if packages.summary.total > 20 %}
-          <nav aria-label="Datasets">
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="/search?q={{ query }}&from=0" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              {% for page in pages %}
-                {% if page == '...' %}
-                <li class="page-item disabled"><span class="page-link">{{page}}</span></li>
-                {% else %}
-                <li class="page-item {{ 'current-page' if currentPage == page }}"><a class="page-link" href="/search?q={{ query }}&from={{ (page - 1) * 20 }}">{{page}}</a></li>
-                {% endif %}
 
-              {% endfor %}
-              <li class="page-item">
-                <a class="page-link" href="/search?q={{ query }}&from={{ packages.summary.total - (packages.summary.total % 20) | int }}" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        {% endif %}
-        <p style="font-style: italic;">Didn't find what you wanted? Make a <a href="/requests">quick data request</a> and we'll help you find it.
+
+    <!-- Modal -->
+    <div class="modal-new modal fade" id="premium-data" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title" id="myModalLabel"><img src="/static/img/text-msg.png" class="title-img"/> Premium data offer</h3>
+          </div>
+          <div class="modal-body">
+            <iframe src="/premium-data" width="100%" height="550px" frameborder="0"></iframe>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+ $(window).scroll(function(){
+  $(".side-box").css("top", Math.max(0, 302 - $(this).scrollTop()));
+});
+</script>
+
 {% endblock %}

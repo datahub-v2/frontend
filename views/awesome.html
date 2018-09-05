@@ -34,6 +34,8 @@
 
         <p class="info">If you have suggestions, questions or feedback join our <a href="https://gitter.im/datahubio/chat" target="_blank">chat channel</a> or open an issue on our <a href="https://github.com/datahubio/qa" target="_blank">issue tracker</a>.</p>
       </div>
+
+      {% if editable!=false %}
       <div class="col-md-2 pre-scrollable">
         <ul data-spy="affix">
           <a href="{{ editpath }}" class="btn btn-primary btn-md">
@@ -43,6 +45,8 @@
           </a>
         </ul>
       </div>
+      {% endif %}
+      
     </div>
   </div>
 </div>
