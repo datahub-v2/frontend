@@ -8337,6 +8337,63 @@ body.dashboard .event-account::after {
 body.dashboard .timeago, body.dashboard .info {
   color: #757575;
   font-size: 12px; }
+@-webkit-keyframes pulse {
+  0% {
+    box-shadow: 0 0 6px #FF6E00, inset 0 0 6px #FF6E00; }
+  50% {
+    box-shadow: 0 0 14px #FF6E00, inset 0 0 12px #FF6E00; }
+  100% {
+    box-shadow: 0 0 6px #FF6E00, inset 0 0 6px #FF6E00; } }
+@-moz-keyframes pulse {
+  0% {
+    box-shadow: 0 0 6px #FF6E00, inset 0 0 6px #FF6E00; }
+  50% {
+    box-shadow: 0 0 14px #FF6E00, inset 0 0 12px #FF6E00; }
+  100% {
+    box-shadow: 0 0 6px #FF6E00, inset 0 0 6px #FF6E00; } }
+@-o-keyframes pulse {
+  0% {
+    box-shadow: 0 0 6px #FF6E00, inset 0 0 6px #FF6E00; }
+  50% {
+    box-shadow: 0 0 14px #FF6E00, inset 0 0 12px #FF6E00; }
+  100% {
+    box-shadow: 0 0 6px #FF6E00, inset 0 0 6px #FF6E00; } }
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 6px #FF6E00, inset 0 0 6px #FF6E00; }
+  50% {
+    box-shadow: 0 0 14px #FF6E00, inset 0 0 12px #FF6E00; }
+  100% {
+    box-shadow: 0 0 6px #FF6E00, inset 0 0 6px #FF6E00; } }
+body.dashboard .pulse {
+  background-color: transparent;
+  width: 12px;
+  height: 12px;
+  border-radius: 50px;
+  box-shadow: 0 0 6px #FF6E00, inset 0 0 6px #FF6E00;
+  -webkit-animation: pulse 1.5s linear 1s infinite;
+  -moz-animation: pulse 1.5s linear 1s infinite;
+  -o-animation: pulse 1.5s linear 1s infinite;
+  animation: pulse 1.5s linear 1s infinite;
+  margin-top: 5px;
+  margin-right: 5px; }
+body.dashboard .premium-databox {
+  margin-top: 20px;
+  width: 100%;
+  right: 120px;
+  background: #f7f7f7;
+  overflow-x: hidden;
+  padding: 20px; }
+  body.dashboard .premium-databox img {
+    width: 30px;
+    margin-right: 20px; }
+  body.dashboard .premium-databox .tick {
+    width: 22px;
+    margin-right: 0; }
+  body.dashboard .premium-databox h3 {
+    margin: 0px 0px 10px 0px !important; }
+  body.dashboard .premium-databox p {
+    line-height: 2; }
 
 /* common css for styling "textual" pages like docs, blog and awesome */
 body.textual {

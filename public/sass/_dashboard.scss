@@ -347,4 +347,68 @@ body.dashboard {
     color: $gray;
     font-size: 12px;
   }
+
+  $pulseColor: #FF6E00;
+  @-webkit-keyframes pulse {
+    0% { box-shadow:0 0 6px $pulseColor, inset 0 0 6px $pulseColor; }
+    50% { box-shadow:0 0 14px $pulseColor, inset 0 0 12px $pulseColor; }
+    100% { box-shadow:0 0 6px $pulseColor, inset 0 0 6px $pulseColor; }
+  }
+  @-moz-keyframes pulse {
+    0% { box-shadow:0 0 6px $pulseColor, inset 0 0 6px $pulseColor; }
+    50% { box-shadow:0 0 14px $pulseColor, inset 0 0 12px $pulseColor; }
+    100% { box-shadow:0 0 6px $pulseColor, inset 0 0 6px $pulseColor; }
+  }
+
+  @-o-keyframes pulse {
+    0% { box-shadow:0 0 6px $pulseColor, inset 0 0 6px $pulseColor; }
+    50% { box-shadow:0 0 14px $pulseColor, inset 0 0 12px $pulseColor; }
+    100% { box-shadow:0 0 6px $pulseColor, inset 0 0 6px $pulseColor; }
+  }
+
+  @keyframes pulse {
+    0% { box-shadow:0 0 6px $pulseColor, inset 0 0 6px $pulseColor; }
+    50% { box-shadow:0 0 14px $pulseColor, inset 0 0 12px $pulseColor; }
+    100% { box-shadow:0 0 6px $pulseColor, inset 0 0 6px $pulseColor; }
+  }
+
+  .pulse {
+    background-color:transparent;
+    width:12px;
+    height:12px;
+    border-radius:50px;
+    box-shadow: 0 0 6px $pulseColor, inset 0 0 6px $pulseColor;
+    -webkit-animation: pulse 1.5s linear 1s infinite;
+    -moz-animation: pulse 1.5s linear 1s infinite;
+    -o-animation: pulse 1.5s linear 1s infinite;
+    animation: pulse 1.5s linear 1s infinite;
+    margin-top:5px;
+    margin-right:5px;
+  }
+
+  .premium-databox{
+    margin-top:20px;
+    width: 100%;
+    right: 120px;
+    background: #f7f7f7;
+    overflow-x: hidden;
+    padding: 20px;
+    @media screen and (max-width:1199px){
+      display:none;
+    }
+    img{
+      width:30px;
+      margin-right:20px;
+    }
+    .tick {
+      width:22px;
+      margin-right:0;
+    }
+    h3{
+      margin:0px 0px 10px 0px !important;
+    }
+    p{
+      line-height:2;
+    }
+  }
 }
