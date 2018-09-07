@@ -62,9 +62,11 @@
 
       <!-- Include publisher and dataset name in the subject of the form so we know from which dataset page it was sent -->
       <script>
-        var element = document.querySelector("input[name='_subject']");
+        var subjectElement = document.querySelector("input[name='_subject']");
         var parentLocation = parent.window.location.href.split('/');
-        element.value += parentLocation[3] + '/' + parentLocation[4];
+        subjectElement.value += parentLocation[3] + '/' + (parentLocation[4] || '');
+        var nextElement = document.querySelector("input[name='_next']");
+        nextElement.value += '&parent=' + parentLocation[3] + '/' + (parentLocation[4] || '');
       </script>
     {% endif %}
   </body>

@@ -1347,7 +1347,7 @@ module.exports = function () {
     const submitted = !!(req.query.done)
     if (submitted) {
       const visitor = ua('UA-80458846-4')
-      visitor.event('Premium data form submissions', 'success').send()
+      visitor.event('Premium data form submissions', 'success', req.query.parent).send()
     }
     res.render('premium-data.html', {
       title: "Premium data",
