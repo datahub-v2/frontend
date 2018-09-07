@@ -39,7 +39,7 @@
     <!-- Bottom Area to show the alert -->
     <div class="stripe-ribbon" id="showcase-offer">
       <p>Now you can request additional data and/or customized columns! </p>
-      <a href="#" data-toggle="modal" data-target="#premium-data" class="premium-data-link">Try It Now!</a>
+      <a href="#premium-data" data-toggle="modal" data-target="#premium-data" class="premium-data-link" onclick="dataLayer.push({'premium-data-link': 'sticky-btm-bar'})">Try It Now!</a>
     </div>
 
 {% endif %}<!-- End of Premium data offer -->
@@ -260,7 +260,7 @@
         {% if owner == 'core' %}
         <div class="data-offer-txt">
             <img src="/static/img/cube.png" />
-            <p> You can customize this data to meet your requirements - <a href="#" data-toggle="modal" data-target="#premium-data" class="premium-data-link">Get Started</a></p>
+            <p> You can customize this data to meet your requirements - <a href="#premium-data-2" data-toggle="modal" data-target="#premium-data" class="premium-data-link" onclick="dataLayer.push({'premium-data-link': 'inline-msg'})">Get Started</a></p>
         </div>
         {% endif %}
 
@@ -489,7 +489,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12">
-          <a href="#" data-toggle="modal" data-target="#premium-data" class="btn btn-primary premium-data-link">Try It Now</a> <br/>
+          <a href="#premium-data-3" data-toggle="modal" data-target="#premium-data" class="btn btn-primary premium-data-link" onclick="dataLayer.push({'premium-data-link': 'separate-section'})">Try It Now</a> <br/>
       </div>
     </div>
   </div>
