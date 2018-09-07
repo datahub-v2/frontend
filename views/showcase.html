@@ -13,7 +13,7 @@
 <script src="https://unpkg.com/goodtables-ui@1.1.3/dist/goodtables-ui.min.js"></script>
 
 <!-- Premium data offer -->
-{% if owner == 'core' %}
+{% if owner|lower == 'core' or owner|lower == 'sports-data' or owner|lower == 'machine-learning' or owner|lower == 'cryptocurrency' or owner|lower == 's-and-p-500-financial-data' or owner|lower == 'world-bank' or owner|lower == 'unece' %}
 <div class="container">
   <div class="inner_container">
 
@@ -257,7 +257,7 @@
         <!-- End of reports rendering -->
 
         <!-- Premium Data Offer Link -->
-        {% if owner == 'core' %}
+        {% if owner|lower == 'core' or owner|lower == 'sports-data' or owner|lower == 'machine-learning' or owner|lower == 'cryptocurrency' or owner|lower == 's-and-p-500-financial-data' or owner|lower == 'world-bank' or owner|lower == 'unece' %}
         <div class="data-offer-txt">
             <img src="/static/img/cube.png" />
             <p> You can customize this data to meet your requirements - <a href="#premium-data-2" data-toggle="modal" data-target="#premium-data" class="premium-data-link" onclick="dataLayer.push({'premium-data-link': 'inline-msg'})">Get Started</a></p>
@@ -426,7 +426,7 @@
   </div>
 </div><!-- end of link to datapackage.json -->
 
-{% if owner == 'core' %}
+{% if owner|lower == 'core' or owner|lower == 'sports-data' or owner|lower == 'machine-learning' or owner|lower == 'cryptocurrency' or owner|lower == 's-and-p-500-financial-data' or owner|lower == 'world-bank' or owner|lower == 'unece' %}
 <div class="container premium_dataoffer">
   <div class="inner_container">
     <div class="row">
