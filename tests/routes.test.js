@@ -356,10 +356,10 @@ test('Redirects to old.datahub.io', async t => {
 
 
 // TODO: mock out upstream awesome repo urls so no dependency on external calls
-test('awesome index page works', async t => {
-  const res = await request(app).get('/awesome')
+test('collections index page works', async t => {
+  const res = await request(app).get('/collections')
   t.is(res.status, 200)
-  t.true(res.text.includes('awesome'))
+  t.true(res.text.includes('collections'))
 })
 
 // test('awesome theme page works', async t => {
@@ -368,8 +368,8 @@ test('awesome index page works', async t => {
 //   t.true(res.text.includes('sport'))
 // })
 
-test('awesome non existing page returns 404', async t => {
-  const res = await request(app).get('/awesome/nonexistingpage')
+test('collections non existing page returns 404', async t => {
+  const res = await request(app).get('/collections/nonexistingpage')
   t.is(res.status, 200)
   t.true(res.text.includes('404'))
 })
