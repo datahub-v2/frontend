@@ -10,7 +10,11 @@ body.awesome {
     }
     .highlight-text {
         color: #66b106;
-        font-size: 14px;
+        font-size: 14px; 
+        a {
+            color:#66b106 !important;
+            text-decoration: underline !important;
+        }
     }
     .awesome-dashboard-heading{
 
