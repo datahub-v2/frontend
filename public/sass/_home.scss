@@ -947,44 +947,64 @@ box-shadow: 2px 3px 16px 0px rgba(97,97,97,0.14);
 
 
 /********************** section 6 ******************/
-.hire-us
+.our-clients
 {
-    padding:70px 0px 70px 0px;
+    padding:70px 0px 0px 0px;
 }
-.hire-us .left-sec h1
+.our-clients h1
 {
-    margin:16px 0px 30px 0px;
+    margin:16px 0px 25px 0px;
     font-weight:200;
-}
-.hire-us .left-sec h3 {
-  font-weight:200;
-}
-.hire-us .left-sec p
-{
-    margin-bottom:35px;
 }
 
-.hire-us .right-sec
+.our-clients p
 {
-    background-color:#fafafa;
-    width:100%;
-    border-radius:3px;
-    padding:50px 30px 50px 30px;
+    margin-bottom:45px;
 }
-.hire-us .right-sec h5
+.our-clients .upper-row img 
 {
-    font-weight:500;
-    margin-top:3px;
-    margin-left:5px;
-    margin-bottom:4px;
-    letter-spacing:1.5px;
+  margin-bottom:20px;
 }
-.hire-us .right-sec p
+.our-clients .upper-row .img1
 {
-    margin-left:5px;
-    font-weight:200;
+  width:75% !important;
+  @media screen and (max-width:768px) {
+    width:50% !important;
+  }
 }
-.hire-us .right-sec .list
+.our-clients .upper-row .img2
 {
-    margin-bottom:70px;
+  width:53% !important;
+  @media screen and (max-width:768px) {
+    width:45% !important;
+  }
 }
+.our-clients .upper-row .img3
+{
+  width:55% !important;
+  @media screen and (max-width:768px) {
+    width:45% !important;
+  }
+}
+.our-clients .upper-row .img4
+{
+  width:45% !important;
+  @media screen and (max-width:768px) {
+    width:38% !important;
+  }
+}
+.our-clients .lower-row ul  
+{
+  list-style:none;
+  padding:0px;
+  margin:0px;
+  @media screen and (max-width:768px) {
+    display:none;
+  }
+}
+.our-clients .lower-row ul li
+{
+  display:inline-block;
+  margin-right:60px;
+}
+
