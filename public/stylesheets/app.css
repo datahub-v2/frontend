@@ -9236,6 +9236,12 @@ body.requests textarea {
   margin: 0px 0; }
 body.requests input[type="submit"] {
   margin: 20px 0; }
+body.requests ol li {
+  padding: 4px 0; }
+body.requests h1 {
+  margin-bottom: 20px; }
+  body.requests h1 small {
+    color: #fe7900; }
 
 body.premium-data {
   padding-bottom: 0;
