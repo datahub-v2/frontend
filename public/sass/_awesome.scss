@@ -83,7 +83,9 @@ body.awesome {
             top: 80px;
             cursor:pointer;
         }
-
+        img {
+            width:45px;
+        }
 
     }
     }
@@ -173,4 +175,13 @@ body.awesome {
           line-height:1.3;
         }
       }
+}
+
+body.awesome-text {
+
+    .awesome-dashboard-heading {
+        h1 {
+            line-height: 0.7em;
+        }
+    }
 }
