@@ -5,4 +5,16 @@ body.requests {
   input[type="submit"] {
     margin: 20px 0;
   }
+
+  ol li {
+    padding:4px 0;
+  }
+
+  h1 {
+    
+    margin-bottom:20px;
+    small {
+      color:#fe7900;
+    }
+  }
 }
