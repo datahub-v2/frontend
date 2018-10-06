@@ -334,6 +334,37 @@
 
       {% endif %}
       <!-- End of Similar datasets -->
+
+
+      <!-- Search -->
+      <section class="similar-search hidden-xs hidden-sm">
+        <div class="row">
+            <div class="col-sm-1">
+                <div class="icon pull-left shadow">
+                    <img src="/static/img/icon-search.png" class="img-responsive"/>
+                </div>
+            </div>
+            <div class="col-sm-6">
+              <h3>Not found what you're looking for?</h3>
+              <p>You can search over a thousand datasets on datahub</p>
+            </div>
+            <div class="col-sm-5">
+                <!-- searchbox -->
+                <form class="search-form form form-inline" class="input-group col-xs-12" action="/search" method="GET">
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control input-lg" placeholder="Search ..." name="q" required autofocus/>
+                  </div>
+                  <div class="col-sm-3">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                  </div>
+      
+                </form>
+                <!-- search box ended -->
+            </div>
+        </div>
+      </section>
+      <!-- end of search -->
+
     </div>
   </div>
 </div>
@@ -533,6 +564,11 @@
       bottom:0
     },1000);
    });
+
+   function goToSearch() {
+    var query = document.getElementById('search-input').value;
+    window.location.href = '/search?q=' + query;
+  }
 </script>
 
 <!-- pass DP_ID to front-end -->
@@ -551,5 +587,6 @@
     }
   </script>
 {% endif %}
+
 
 {% endblock %}
