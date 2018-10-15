@@ -10,10 +10,12 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        	{% if page %}
-          <img src="/static/img/awesome-data/{{metaImage}}" width=70/>
+        	{% if metaImage %}
+            <img src="/static/img/awesome-data/{{metaImage}}" width=70/>
+          {% else %}
+            <img src="/static/img/awesome-data/default.png" width=70/>
           {% endif %} 
-        <h1 class="text-center">{{title}}</h1>
+        <h1 class="text-center">{{title or '404 Not Found'}}</h1>
         <div class="col-sm-8 col-sm-offset-2">
             <p class="text-center">{{description or 'Datahub Collections'}}<br/> 
               <div class="breadcrumbs">
@@ -38,7 +40,7 @@
     <div class="row">
       <div class="col-md-8">
         {{content | safe}}
-
+        
         <p class="info">Didn't find what you wanted? Make a quick <a href="/requests">request</a> and we will help you find it.</p>
       </div>
 
