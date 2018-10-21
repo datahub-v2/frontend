@@ -94,7 +94,7 @@
       color: #ff7900;
       font-size: 36px !important;
       position: relative;
-      top: -7px;
+      top: -5px;
     }
   }
   p {
@@ -872,7 +872,11 @@ box-shadow: 2px 3px 16px 0px rgba(97,97,97,0.14);
     line-height:1.5;
 }
 
-
+.hire-us {
+  .heading1,.heading2 {
+    font-weight:300;
+  }
+}
 
 /************** data os **********************/
 .data-os {
@@ -948,7 +952,7 @@ box-shadow: 2px 3px 16px 0px rgba(97,97,97,0.14);
 /********************** section 6 ******************/
 .our-clients
 {
-    padding:70px 0px 0px 0px;
+    padding:0px 0px 130px 0px;
 }
 .our-clients h1
 {
@@ -1005,5 +1009,77 @@ box-shadow: 2px 3px 16px 0px rgba(97,97,97,0.14);
 {
   display:inline-block;
   margin-right:60px;
+}
+
+/* Search */
+.similar-search
+{
+    .icon.shadow
+    {
+        -webkit-box-shadow: 2px 3px 16px 0px rgba(97, 97, 97, 0.14);
+        -moz-box-shadow: 2px 3px 16px 0px rgba(97,97,97,0.14);
+        box-shadow: 2px 3px 16px 0px rgba(97,97,97,0.14);
+    }
+    .icon
+    {
+        background:#fff;
+        width:80px;
+        height:80px;
+        margin: 0 30px 15px 0px;
+        border-radius:140px;
+
+        @media screen and (max-width:480px){
+            width: 35px;
+            height: 35px;
+            margin:0 10px 15px 0;
+            display:none !important;
+        }
+    }
+    .icon img
+    {
+        padding: 17px;
+    }
+
+    h3 {
+        font-size: 1.8em;
+        padding-top: 0;
+        margin-top: 13px;
+        margin-left: 20px;
+        margin-bottom: 5px;
+    } 
+    p {
+        font-size:1.2em;
+        color:#5d5d5d;
+        margin-left: 20px;
+    }
+
+    input{
+        width:100% !important;
+        border:2px solid #d8d8d8;
+        @media screen and (max-width:500px){
+          margin-bottom:10px;
+        }
+        
+      }
+      input:focus
+      {
+        box-shadow: none !important;
+      }
+      .btn{
+        width:100% !important;
+        padding:10px 12px !important;
+
+      }
+
+    .pad-none {
+      padding:0;
+      margin:0;
+    }
+
+      padding:0;
+
+      .search-form {
+          padding-top:0px;
+      }
 }
 
