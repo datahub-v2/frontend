@@ -63,14 +63,6 @@ body.owner {
     padding: 3px 0 0 7px;
   }
 
-  .event-flow::after {
-    content: '\f1c9';
-  }
-
-  .event-account::after {
-    content: '\f2c0';
-  }
-
   .timeago, .info {
     color: $gray;
     font-size: 11px;
@@ -92,5 +84,25 @@ body.owner {
   }
   .search-form {
     margin-bottom: 20px;
+  }
+
+  
+  /* Fix to events rendering */
+  .event-icon::after {
+    color:#fd7500;
+  }
+  .event-flow::after {
+    content: '\f00c';
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900; /* Fix version 5.0.9 */
+    padding: 2px 0 0 6px;
+  }
+
+  .event-account::after {
+    content: '\f0e7';
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900; /* Fix version 5.0.9 */
+    padding: 1px 0 0 9px;
+    font-size: 13px;
   }
 }
