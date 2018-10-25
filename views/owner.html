@@ -35,7 +35,7 @@
           <div class="timeline">
           {% for item in events %}
             {% if item.event_entity === 'flow' %}
-            <div class="event event-flow">
+            <div class="event event-flow event-icon">
               <a href="/{{ owner }}/{{ item.dataset }}">{{ item.dataset }}</a>
               <p class="event-action">
                 {{ item.event_action }} <span class="timeago">{{ item.timeago }}</span>
