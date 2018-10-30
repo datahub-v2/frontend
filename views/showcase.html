@@ -47,6 +47,12 @@
 <!-- title and owner info -->
 <div class="container">
   <div class="inner_container">
+    {% if owner|lower == 'core' and dataset.name|lower == 'euribor' %}
+    <div class="alert alert-info" role="alert" style="font-style: italic; font-size: 12px;">
+      The Euribor benchmark is created by the European Money Market Institude a.i.s.b.l. (EMMI). Euribor® is a registered trademark of EMMI. A licensing agreement with EMMI is mandatory for all commercial use of the registered trademark Euribor®. Datahub.io is not authorised by, licensed by or affiliated in any way with EMMI. EMMI declines all responsibility for the information on this website, including without limitation the completeness or the accuracy of the Euribor benchmark data.
+    </div>
+    {% endif %}
+
     {% if status === 'FAILED' %}
     <div class="alert alert-danger status" role="alert">
       <h3 class="error-log-heading">Processing this revision has failed. See below for details:</h3>
