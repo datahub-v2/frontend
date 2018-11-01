@@ -768,7 +768,8 @@ module.exports = function () {
           failedPipelines,
           keywords: datasetKeywords + generalKeywords,
           metaDescription,
-          metaImage
+          metaImage,
+          certified: revisionStatus.certified
         })
       }
     }

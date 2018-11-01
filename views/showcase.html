@@ -98,7 +98,19 @@
         {% elif dataset.datahub.findability === 'private' %}
         <span class="label label-primary" title="This dataset is not published yet.">private</span>
         {% endif %}
+
+        {% if certified %}
+            <!-- Certified -->
+            <div class="certified-tick" data-toggle="tooltip">
+              <p><img src="/static/img/certified.png" class="pull-left" /> Certified</p>
+            </div>
+            <!-- End of Certified -->
+        {% endif %}
       </h1>
+
+      
+      <p class="clearfix"></p>
+
       <p class="publisher">
         <img src="https://www.gravatar.com/avatar/{{ dataset.datahub.ownerid }}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar" />
         <a href="/{{ owner }}">{{ owner }}</a>
