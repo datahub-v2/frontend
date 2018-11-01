@@ -769,7 +769,7 @@ module.exports = function () {
           keywords: datasetKeywords + generalKeywords,
           metaDescription,
           metaImage,
-          certified:revisionStatus.certified
+          certified: revisionStatus.certified
         })
       }
     }
