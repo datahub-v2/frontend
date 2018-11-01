@@ -293,13 +293,17 @@
           behavior: 'smooth'
         });
       }
-      // Popover on avatar icon in navbar
+      // Popover on avatar icon in navbar and certified
       jQuery(document).ready(function(){
         jQuery('[data-toggle="popover"]').popover({
           'placement': 'bottom',
           'trigger': 'focus',
           'html': true
         });
+
+        $('.certified-tick').attr('data-original-title','<b>Datahub Certified</b> <ul><li>&#x25CF; Quality assured data </li><li>&#x25CF; Sources audited </li><li>&#x25CF; Premium data available for bespoke formatting, additional data and guaranteed updates with SLA</li></ul>');
+        $('[data-toggle="tooltip"]').tooltip({html:true}); 
+        
       });
       // Set avatar in navbar using id in cookies
       var src = `https://www.gravatar.com/avatar/${getCookie('id')}?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png`;

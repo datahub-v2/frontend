@@ -93,6 +93,7 @@ body.search {
         color:#000;
         margin-bottom:10px;
         margin-top:0px;
+        display:inline;
       }
 
       .square p {
@@ -183,9 +184,16 @@ body.search {
       }
     }
 
-    
+    /* Certified Adjustments */
+    .certified-tick {
+        img {
+          margin-top:5px;
+        }
+    }
 
   }
+
+
   .pagination > li > a,.pagination > li > span{
     border:1px solid #fff !important;
     padding: 6px 5px;
