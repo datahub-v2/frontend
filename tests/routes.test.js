@@ -319,7 +319,7 @@ test('Redirects from old to new website', async t => {
   for(let url of urls) {
     const expected = '/search'
     let res = await request(app).get(url)
-    t.is(res.statusCode, 302)
+    t.is(res.statusCode, 301)
     t.is(res.header.location, expected)
   }
 
@@ -327,7 +327,7 @@ test('Redirects from old to new website', async t => {
   for(let url of urls) {
     const expected = '/core'
     let res = await request(app).get(url)
-    t.is(res.statusCode, 302)
+    t.is(res.statusCode, 301)
     t.is(res.header.location, expected)
   }
 })

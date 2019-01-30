@@ -136,20 +136,27 @@ module.exports = function () {
     })
   })
 
+  // ----------------------------
   // Redirects
-  // Old data-os page to new data-factory:
+
+  function redirectToDest(dest) {
+    return (req, res) => {
+      res.redirect(301, dest)
+    }
+  }
+
+  // Redirects Old data-os page to new data-factory:
   router.get('/docs/data-os', (req, res) => {
     res.redirect(301, '/data-factory')
   })
 
+  // rename download to tools 2019-01-30
+  router.get([
+    '/download'
+  ], redirectToDest('/tools'))
+
   // ----------------------------
   // Redirects from old datahub.io to new website
-
-  function redirectToDest(dest) {
-    return (req, res) => {
-      res.redirect(302, dest)
-    }
-  }
 
   // Following paths to be redirected to new "/search" page
   router.get([
@@ -1227,7 +1234,7 @@ module.exports = function () {
   })
 
   // Download page
-  router.get('/download', async (req, res) => {
+  router.get('/tools', async (req, res) => {
     let desktopAppUrl, binReleaseMacos, binReleaseLinux, binReleaseWindows, etagForDesktop, etagForBinary, msiX64, msiX86
 
     if (req.app.locals.github) {
