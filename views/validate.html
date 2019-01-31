@@ -12,9 +12,16 @@
     <div class="row">
       <div class="col-md-9 col-md-offset-2">
         <h1>Data Package Validator</h1>
-        <form class="search-form form form-inline" class="input-group col-xs-12" action="/tools/validate" method="GET">
-          <input type="text" class="form-control input-lg" placeholder="Paste link to your datapackage.json" name="q" value="{{ query }}" required autofocus/>
-          <button class="btn btn-primary" type="submit">Validate</button>
+        <p>The online validator checks the data package descriptor (also known as <code>datapackage.json</code> file). If you want to validate offline data packages check out our <a href="/docs/features/data-cli">command line tool</a>.</p>
+
+        <form action="/tools/validate" method="GET">
+          <div class="form-group">
+            <h2>Paste your Data Package link</h2>
+            <input type="text" class="form-control" placeholder="Paste link to your datapackage.json" name="q" value="{{ query }}" required autofocus/>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit">Validate</button>
+          </div>
         </form>
       </div>
     </div>
@@ -27,19 +34,21 @@
         {% endif %}
 
         {% if dataset %}
-          <div class="alert alert-success">
-            <h2>
-              Descriptor is
-              {% if dataset.valid %}
-                  <span class="valid">Valid</span>
-              {% else %}
-                  <span class="invalid">Invalid</span>
-              {% endif %}
-            </h2>
-            {% if dataset.errors.length > 0 %}
-                {{ dataset.errors }}
+        <hr />
+
+        <div class="alert alert-success">
+          <h2>
+            Result: Data Package Descriptor is
+            {% if dataset.valid %}
+              <btn class="btn btn-lg btn-success">Valid</span>
+            {% else %}
+              <span class="btn btn-lg btn-danger">Invalid</span>
             {% endif %}
-          </div>
+          </h2>
+          {% if dataset.errors.length > 0 %}
+            {{ dataset.errors }}
+          {% endif %}
+        </div>
         {% endif %}
 
         <!--
@@ -60,17 +69,6 @@
           </ul>
         {% endif %}
         -->
-        <h2>What is it for?</h2>
-        <p>The online validator checks the data package descriptor (also known as `datapackage.json` file).</p>
-        Please use our <a href="/docs/features/data-cli">offline tool</a> to:
-        <ul>
-          <li>Validate the data package resources</li>
-          <li>View and transform tabular data files</li>
-          <li>Create a data-package</li>
-          <li>Upload and download data-packages</li>
-          <li>and many more...</li>
-        </ul>
-        <a href="/download" class="btn btn-primary">Download data tool</a>
       </div>
     </div>
   </div>
