@@ -8,71 +8,71 @@
 
 {% block content %}
 <div class="container">
-    <div class="inner_container">
-        <div class="row">
-            <div class="col-md-9 col-md-offset-2">
-                <h1>Data Package Validator</h1>
-                <form class="search-form form form-inline" class="input-group col-xs-12" action="/tools/validate" method="GET">
-                    <input type="text" class="form-control input-lg" placeholder="Paste link to your datapackage.json" name="q" value="{{ query }}" required autofocus/>
-                    <button class="btn btn-primary" type="submit">Validate</button>
-                </form>
-            </div>
-        </div>
-        <div class="row output">
-            <div class="col-md-8 col-md-offset-2">
-                {% if loading_error %}
-                <div class="alert alert-danger">
-                  <h4>Error while loading the data package, please check that you provided a correct URL to the datapackage.json file.</h4>
-                </div>
-                {% endif %}
-
-                {% if dataset %}
-                  <div class="alert alert-success">
-                    <h2>
-                        Descriptor is
-                        {% if dataset.valid %}
-                            <span class="valid">Valid</span>
-                        {% else %}
-                            <span class="invalid">Invalid</span>
-                        {% endif %}
-                    </h2>
-                    {% if dataset.errors.length > 0 %}
-                        {{ dataset.errors }}
-                    {% endif %}
-                  </div>
-                {% endif %}
-
-                <!--
-                    Datapackage details has been deleted, as we don't validate the datapackage itself,
-                 but only the descriptor file.
-                    Instead we add a data-cli advertising.
-                {% if dataset %}
-                    <h3>Datapackage:</h3>
-                    <h4>Name: <strong>{{ dataset.descriptor.name }}</strong></h4>
-                    {% if dataset.descriptor.title %}
-                        <h4>Title: <strong>{{ dataset.descriptor.title }}</strong></h4>
-                    {% endif %}
-                    <h4>Resources:</h4>
-                    <ul>
-                        {% for name in dataset.resourceNames %}
-                        <li>{{name}}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-                -->
-                <h2>What is it for?</h2>
-                <p>The online validator checks the data package descriptor (also known as `datapackage.json` file).</p>
-                Please use our <a href="/docs/features/data-cli">offline tool</a> to:
-                <ul>
-                    <li>Validate the data package resources</li>
-                    <li>View and transform tabular data files</li>
-                    <li>Create a data-package</li>
-                    <li>Upload and download data-packages</li>
-                    <li>and many more...</li>
-                </ul>
-                <a href="/download" class="btn btn-primary">Download data tool</a>
-            </div>
-        </div>
+  <div class="inner_container">
+    <div class="row">
+      <div class="col-md-9 col-md-offset-2">
+        <h1>Data Package Validator</h1>
+        <form class="search-form form form-inline" class="input-group col-xs-12" action="/tools/validate" method="GET">
+          <input type="text" class="form-control input-lg" placeholder="Paste link to your datapackage.json" name="q" value="{{ query }}" required autofocus/>
+          <button class="btn btn-primary" type="submit">Validate</button>
+        </form>
+      </div>
     </div>
+    <div class="row output">
+      <div class="col-md-8 col-md-offset-2">
+        {% if loading_error %}
+        <div class="alert alert-danger">
+          <h4>Error while loading the data package, please check that you provided a correct URL to the datapackage.json file.</h4>
+        </div>
+        {% endif %}
+
+        {% if dataset %}
+          <div class="alert alert-success">
+            <h2>
+              Descriptor is
+              {% if dataset.valid %}
+                  <span class="valid">Valid</span>
+              {% else %}
+                  <span class="invalid">Invalid</span>
+              {% endif %}
+            </h2>
+            {% if dataset.errors.length > 0 %}
+                {{ dataset.errors }}
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <!--
+            Datapackage details has been deleted, as we don't validate the datapackage itself,
+         but only the descriptor file.
+            Instead we add a data-cli advertising.
+        {% if dataset %}
+          <h3>Datapackage:</h3>
+          <h4>Name: <strong>{{ dataset.descriptor.name }}</strong></h4>
+          {% if dataset.descriptor.title %}
+              <h4>Title: <strong>{{ dataset.descriptor.title }}</strong></h4>
+          {% endif %}
+          <h4>Resources:</h4>
+          <ul>
+              {% for name in dataset.resourceNames %}
+              <li>{{name}}</li>
+              {% endfor %}
+          </ul>
+        {% endif %}
+        -->
+        <h2>What is it for?</h2>
+        <p>The online validator checks the data package descriptor (also known as `datapackage.json` file).</p>
+        Please use our <a href="/docs/features/data-cli">offline tool</a> to:
+        <ul>
+          <li>Validate the data package resources</li>
+          <li>View and transform tabular data files</li>
+          <li>Create a data-package</li>
+          <li>Upload and download data-packages</li>
+          <li>and many more...</li>
+        </ul>
+        <a href="/download" class="btn btn-primary">Download data tool</a>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
