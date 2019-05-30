@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "ava -v",
+    "test": "nyc ava -v",
     "watch:test": "npm run test -- --watch",
     "lint": "xo --quite"
   },
@@ -80,6 +80,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-node6": "^11.0.0",
     "mocha": "^3.4.2",
+    "nyc": "^14.1.1",
     "supertest": "^3.0.0"
   }
 }

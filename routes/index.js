@@ -1025,6 +1025,7 @@ module.exports = function () {
       page.setViewport({width: 1280, height: 800})
       await page.goto(source)
       await page.waitForSelector('svg', {timeout: 15000})
+      /* istanbul ignore next */
       const dims = await page.evaluate(() => {
         const svg = document.querySelector('svg').getBoundingClientRect()
         return {

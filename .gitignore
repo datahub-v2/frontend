@@ -9,3 +9,5 @@ yarn-error.log
 # misc
 sandbox/*
 .env
+
+.nyc_output/
