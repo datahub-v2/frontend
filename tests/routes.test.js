@@ -281,8 +281,8 @@ test('Pricing page returns 200 and has correct content', async t => {
   t.true(res.text.includes('Private'))
 })
 
-test('Download page returns 200 and has correct content', async t => {
-  const res = await request(app).get('/download')
+test('Download (tools) page returns 200 and has correct content', async t => {
+  const res = await request(app).get('/tools')
   t.is(res.statusCode, 200)
   t.true(res.text.includes('<!-- download page test placeholder -->'))
 })
