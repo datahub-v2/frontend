@@ -1227,13 +1227,6 @@ module.exports = function () {
     })
   })
 
-  router.get('/requests', (req, res) => {
-    res.render('requests.html', {
-      title: 'Data Requests',
-      description: 'Engage the Data Concierge. We offer a service to locate and/or prepare data for you.'
-    })
-  })
-
   // Download page
   router.get('/tools', async (req, res) => {
     let desktopAppUrl, binReleaseMacos, binReleaseLinux, binReleaseWindows, etagForDesktop, etagForBinary, msiX64, msiX86
