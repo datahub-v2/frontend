@@ -451,11 +451,11 @@ module.exports = function () {
   }
 
   async function showAwesomePage(req, res) {
-    const BASE = 'https://raw.githubusercontent.com/datahubio/awesome-data/master/'
+    const BASE = 'https://raw.githubusercontent.com/datasets/awesome-data/master/'
     const path = req.params.page ? req.params.page + '.md' : 'README.md'
     //request raw page from github
     let gitpath = BASE + path
-    let editpath = 'https://github.com/datahubio/awesome-data/edit/master/' + path
+    let editpath = 'https://github.com/datasets/awesome-data/edit/master/' + path
     const resp = await fetch(gitpath)
     const text = await resp.text()
     // parse the raw .md page and render it with a template.
