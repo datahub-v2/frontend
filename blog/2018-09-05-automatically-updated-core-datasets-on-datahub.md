@@ -1,6 +1,7 @@
 ---
 title: Automatically updated core datasets on DataHub
 date: 2018-09-05
+modified: 2020-06-24
 authors: ['anuveyatsu']
 ---
 
@@ -23,4 +24,4 @@ Check out a list of core datasets that are updated on a regular basis. From fina
 
 * [Population growth estimates and projections](/core/population-growth-estimates-and-projections) :clock1: updated annually
 
-There will be more automated datasets on :datahub: so join our [community chat on gitter](https://gitter.im/datahubio/chat) and our Newsletter (insert link) to receive the latest news!
+There will be more automated datasets on :datahub: so join our [community chat on :discord: Discord](https://discord.gg/KrRzMKU) and our Newsletter (insert link) to receive the latest news!
