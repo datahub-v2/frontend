@@ -49,4 +49,20 @@ During COVID-19 many open data sources were gathered, which explains the temptat
 
 For more publications on COVID-19 please see recent peer-reviewed articles, such as [Fergusson et al.](https://www.medrxiv.org/content/10.1101/2020.03.09.20033357v1)
 
-Find more illustrations and code at [Epidemiology101](https://github.com/DataForScience/Epidemiology101).
+Find more illustrations and code by B.Goncalves at [Epidemiology101](https://github.com/DataForScience/Epidemiology101).
+
+## Predictions of next waves and role of mobility data
+
+Prediction of next waves of COVID19 can be made using various models, 
+including classical simple SIR model or its variations. One can already see the effect of curve flattening by changing the parameters, such as mobility index or average number of interactions between people. For spatial statistics one may need to use spatially embedded models, such as more generic and complex models [Gleamviz model](http://www.gleamviz.org/).
+For calibrating these models, 
+one need to use expert-curated healthcare datasets available to COVID-19 researchers and data scientists.  Mobility trends are important components for prediction of epidemics spreading, therefore we are working on making finding open mobility datasets.
+Below we collected some references of datasets and peer-reviewed publications:
+
+1. Mobility data on the effect of confinement on mobility: [mobility data](https://github.com/datasciencecampus/google-mobility-reports-data/) on
+mobility of people in residential, non-residential areas;
+2. Mobility data and predictions from the perspective of so-called "mobility index" can be found on the website of Cuebiq and illustrated in [Gleamproject](https://covid19.gleamproject.org/mobility)
+3. Recent work and overview of predictive modeling of spreading COVID19 made and explained simply by B.Gonsalves, network scientist and physicist [here](https://medium.com/data-for-science/visualizing-the-spread-of-covid-19-a4ea21ee8e46)
+4. References resource of more than 128,000 scholarly articles about the novel coronavirus for use by the global research community: [coronawhy](https://www.coronawhy.org/cord19)
+
+
