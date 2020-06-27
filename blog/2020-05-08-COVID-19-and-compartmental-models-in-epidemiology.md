@@ -61,8 +61,8 @@ Below we collected some references of datasets and peer-reviewed publications:
 
 1. Mobility data on the effect of confinement on mobility: [mobility data](https://github.com/datasciencecampus/google-mobility-reports-data/) on
 mobility of people in residential, non-residential areas;
-2. Mobility data and predictions from the perspective of so-called "mobility index" can be found on the website of Cuebiq and illustrated in [Gleamproject](https://covid19.gleamproject.org/mobility)
-3. Recent work and overview of predictive modeling of spreading COVID19 made and explained simply by B.Gonsalves, network scientist and physicist [here](https://medium.com/data-for-science/visualizing-the-spread-of-covid-19-a4ea21ee8e46)
-4. References resource of more than 128,000 scholarly articles about the novel coronavirus for use by the global research community: [coronawhy](https://www.coronawhy.org/cord19)
+2. Mobility data and predictions from the perspective of so-called "mobility index" can be found on the website of Cuebiq and illustrated in [Gleamproject](https://covid19.gleamproject.org/mobility);
+3. Recent work and overview of predictive modeling of spreading COVID19 made and explained simply by B.Gonsalves, network scientist and physicist [here](https://medium.com/data-for-science/visualizing-the-spread-of-covid-19-a4ea21ee8e46);
+4. References resource of more than 128,000 scholarly articles about the novel coronavirus for use by the global research community: [coronawhy](https://www.coronawhy.org/cord19).
 
 
