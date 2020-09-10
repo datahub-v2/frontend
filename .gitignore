@@ -11,3 +11,7 @@ sandbox/*
 .env
 
 .nyc_output/
+
+# lockfiles
+package-lock.json
+yarn.lock
