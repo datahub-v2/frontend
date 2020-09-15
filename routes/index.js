@@ -348,13 +348,11 @@ module.exports = function () {
   })
 
   router.get('/login', async (req, res) => {
-    const providers = await api.authenticate()
-    const githubLoginUrl = providers.providers.github.url
-    const googleLoginUrl = providers.providers.google.url
+    const authResponse = await api.authenticate()
     res.render('login.html', {
       title: 'Sign up | Login',
-      githubLoginUrl,
-      googleLoginUrl
+      githubLoginUrl: authResponse.providers.github ? authResponse.providers.github.url : null,
+      googleLoginUrl: authResponse.providers.google ? authResponse.providers.google.url : null
     })
   })
 
