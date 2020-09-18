@@ -228,7 +228,7 @@ test('Per view URLs work', async t => {
   t.is(res.statusCode, 404)
 })
 
-test('PNG version of the views work', async t => {
+test.skip('PNG version of the views work', async t => {
   let res = await request(app)
     .get('/core/finance-vix/view/0.png')
   t.is(res.statusCode, 200)
