@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:10.24.0-alpine3.11
 
 RUN apt-get update && \
 apt-get install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 \
@@ -10,5 +10,6 @@ ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils 
 WORKDIR /frontend-app
 ADD . /frontend-app
 RUN yarn
+RUN yarn global add pm2
 EXPOSE 4000
-CMD yarn start
+CMD [ "pm2-runtime", "yarn", "--interpreter", "bash", "--name", "frontend", "--", "start" ]
