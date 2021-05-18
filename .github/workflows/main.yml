@@ -26,6 +26,7 @@ jobs:
           DEPLOY_GIT_USER: dhq-deployer
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
+          TRAVIS_COMMIT: ${{ env.GITHUB_SHA }}
         run: |
           curl -s https://raw.githubusercontent.com/datahq/deploy/master/apps_travis_script.sh > .travis.sh
           bash .travis.sh script
