@@ -24,7 +24,8 @@ jobs:
           DEPLOY_COMMIT_MESSAGE: "automatic update of dhq-frontend"
           DEPLOY_GIT_EMAIL: dhq-deployer@null.void
           DEPLOY_GIT_USER: dhq-deployer
-
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
         run: |
           curl -s https://raw.githubusercontent.com/datahq/deploy/master/apps_travis_script.sh > .travis.sh
           bash .travis.sh script
