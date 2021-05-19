@@ -7,4 +7,4 @@ RUN git submodule init && git submodule update
 RUN yarn
 RUN yarn global add pm2
 EXPOSE 4000
-CMD [ "pm2-runtime", "yarn", "--interpreter", "bash", "--name", "frontend", "--", "start" ]
+CMD [ "pm2-runtime", "yarn", "--interpreter", "sh", "--name", "frontend", "--", "start" ]
