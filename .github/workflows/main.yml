@@ -1,0 +1,33 @@
+name: Deploy Datahub
+on: [push]
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    services:
+      docker:
+        image: docker
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      - name: Deploy
+        env:
+          K8S_OPS_REPO_BRANCH: master
+          K8S_OPS_REPO_SLUG: datahq/deploy
+          DOCKER_IMAGE: datopian/datahub-frontend
+          DEPLOY_YAML_UPDATE_FILE: values.auto-updated.yaml
+          DEPLOY_VALUES_CHART_NAME: frontend
+          DEPLOY_VALUES_IMAGE_PROP: image
+          DEPLOY_COMMIT_MESSAGE: "automatic update of dhq-frontend"
+          DEPLOY_GIT_EMAIL: dhq-deployer@null.void
+          DEPLOY_GIT_USER: dhq-deployer
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
+          TRAVIS_COMMIT: ${{ env.GITHUB_SHA }}
+        run: |
+          curl -s https://raw.githubusercontent.com/datahq/deploy/master/apps_travis_script.sh > .travis.sh
+          bash .travis.sh script
+          bash .travis.sh deploy
