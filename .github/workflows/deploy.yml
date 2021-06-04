@@ -1,5 +1,7 @@
-name: Deploy Datahub
-on: [push]
+name: Deploy DataHub
+on:
+  push:
+    branches: [ master ]
 jobs:
   Deploy:
     runs-on: ubuntu-latest
