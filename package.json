@@ -47,7 +47,7 @@
     "cors": "^2.8.4",
     "datapackage": "^1.0.6",
     "dotenv": "^4.0.0",
-    "express": "^4.15.3",
+    "express": "^4.17.3",
     "express-ab": "^0.7.1",
     "express-session": "^1.15.5",
     "front-matter": "^2.2.0",
