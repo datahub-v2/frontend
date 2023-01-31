@@ -87,3 +87,4 @@ We use Google Tag Manager to manage all tags (eg, google analytics, optimize and
 2. The changes in frontend are auto deployed to the staging site of DataHub, located at https://testing.datahub.io.
 3. Once the staging site looks as expected, deployment to production happens by merging the automatically created pull request from step 1.
 4. That's it! Just wait for about 5 minutes and you should be able to see the changes reflected on [DataHub.io](https://datahub.io).
+
