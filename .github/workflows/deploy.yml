@@ -18,7 +18,7 @@ jobs:
       - name: Deploy
         env:
           K8S_OPS_REPO_BRANCH: master
-          K8S_OPS_REPO_SLUG: datahq/deploy
+          K8S_OPS_REPO_SLUG: datopian/deploy
           DOCKER_IMAGE: datopian/datahub-frontend
           DEPLOY_YAML_UPDATE_FILE: values.auto-updated.yaml
           DEPLOY_VALUES_CHART_NAME: frontend
