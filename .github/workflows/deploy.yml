@@ -24,8 +24,8 @@ jobs:
           DEPLOY_VALUES_CHART_NAME: frontend
           DEPLOY_VALUES_IMAGE_PROP: image
           DEPLOY_COMMIT_MESSAGE: "automatic update of dhq-frontend"
-          DEPLOY_GIT_EMAIL: dhq-deployer@null.void
-          DEPLOY_GIT_USER: dhq-deployer
+          DEPLOY_GIT_EMAIL: info@sagarg.com.np
+          DEPLOY_GIT_USER: sagargg
           GITHUB_TOKEN: ${{ secrets.DATAHUB_GITHUB_TOKEN }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
