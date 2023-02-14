@@ -348,12 +348,13 @@ module.exports = function () {
   })
 
   router.get('/login', async (req, res) => {
-    const authResponse = await api.authenticate()
-    res.render('login.html', {
-      title: 'Sign up | Login',
-      githubLoginUrl: authResponse.providers.github ? authResponse.providers.github.url : null,
-      googleLoginUrl: authResponse.providers.google ? authResponse.providers.google.url : null
-    })
+    res.redirect('/blog/we-have-some-important-updates-re-datahub')
+    // const authResponse = await api.authenticate()
+    // res.render('login.html', {
+    //   title: 'Sign up | Login',
+    //   githubLoginUrl: authResponse.providers.github ? authResponse.providers.github.url : null,
+    //   googleLoginUrl: authResponse.providers.google ? authResponse.providers.google.url : null
+    // })
   })
 
   router.get('/success', async (req, res) => {
