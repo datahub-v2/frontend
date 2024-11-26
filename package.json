@@ -61,7 +61,7 @@
     "moment": "^2.18.1",
     "nconf": "^0.8.4",
     "nock": "^9.0.13",
-    "node-fetch": "^1.7.1",
+    "node-fetch": "^2.6.7",
     "nunjucks": "^3.0.1",
     "puppeteer": "^1.13.0",
     "remove-markdown": "^0.2.0",
